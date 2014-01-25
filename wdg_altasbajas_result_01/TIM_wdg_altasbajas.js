@@ -41,6 +41,64 @@ var jornadasCalendarDTV = {
     objectParent : $("#show-j").parents('.wdg_altasbajas_result_01'),
 
     iniciar: function(fechaCalendar) {
+
+    	MaqueWdgAltas = "";
+
+
+    	
+		MaqueWdgAltas += '<div class="str_pleca_01">';
+		MaqueWdgAltas += '<div class="str_pleca_01_title">';
+		MaqueWdgAltas += '<strong class="background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<div class="division">';
+		MaqueWdgAltas += '<span>';
+		MaqueWdgAltas += '<img src="" width="45" height="30">';
+		MaqueWdgAltas += '</span>';
+		MaqueWdgAltas += '<h2 class="games"></h2>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<div class="filterResultado">	     ';
+		MaqueWdgAltas += '<div class="lineaResultado result2">';
+		MaqueWdgAltas += '<span class="title">Jornada</span>';
+		MaqueWdgAltas += '<div class="filter">';
+		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdown drop2">';
+		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdowncontent content2" id="name-jornada">';
+		MaqueWdgAltas += '<p></p>';
+		MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_listcontainer">';
+		MaqueWdgAltas += '<ul class="wdg_altasbajas_result_012_dropdownlist list2" id="nro_jornadas">	                            ';
+		MaqueWdgAltas += '</ul>  ';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '</div>            ';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<div id="circleGLoading">';
+		MaqueWdgAltas += '<div id="circleG_1" class="circleG"></div>';
+		MaqueWdgAltas += '<div id="circleG_2" class="circleG"></div>';
+		MaqueWdgAltas += '<div id="circleG_3" class="circleG"></div>';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<ul class="deg">';
+		MaqueWdgAltas += '<li id="show-j"></li>';
+		MaqueWdgAltas += '<li id="hidde-j"></li>';
+		MaqueWdgAltas += '</ul>';
+		MaqueWdgAltas += '<div class="controls"> ';
+		MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
+		MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
+		MaqueWdgAltas += '</a> ';
+		MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
+		MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
+		MaqueWdgAltas += '</a> ';
+		MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
+		MaqueWdgAltas += '<span>Ver todos</span> ';
+		MaqueWdgAltas += '</a> ';
+		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<div class="degraded"></div>';
+
+		$("#TIMwdg_altasbajas_result").html(MaqueWdgAltas);
+
+
         clearInterval(jornadasCalendarDTV.timerCalendar);
         jornadasCalendarDTV.timerCalendar = setInterval("jornadasCalendarDTV.actualizaContenido()", (timeRecarga * 1000));
         var timeToday = new Date(timeDTV.timeYear + "/" + timeDTV.timeMonth + "/" + timeDTV.timeDay);
