@@ -143,6 +143,7 @@ $(document).ready(function(){
 	
 	function recargamxmcompleto()
 	{
+		console.log("ejecutando recargamxmcompleto");
 		$.when(mxm()).done(function(request){	
 		//$(".wdg_mxm_live_02_list").html("");	
 		$(".wdg_mxm_live_02_list").empty();
@@ -276,10 +277,12 @@ $(document).ready(function(){
 		});
 	}
 	var recargamxm= function() {
-		$.when(mxm()).done(function(request){	
-			if (longitudini==0)
+		var tipo ="";
+		$.when(mxm()).done(function(request){
+		
+			if (longitudini===0)
 			{
-				if (request.action!=null)
+				if (request.action!==null)
 				{
 					longitudini=request.action.length;
 					longitudfin=parseInt(longitudini)-1;
@@ -294,16 +297,17 @@ $(document).ready(function(){
 					longitudini=request.action.length;
 				}
 				
+	
 
 			//console.log("longitudfin: "+longitudfin);						
 			//comentario=request.action[parseInt(longitudfin)].description;
 			if (longitudfin>=0)
 			{
-			/*console.log("titulo: "+request.action[parseInt(longitudfin)].titulo);
-			console.log("titulo_ant: "+titulo_ant);*/
+			//console.log("titulo: "+request.action[parseInt(longitudfin)].titulo);
+			//console.log("titulo_ant: "+titulo_ant);
 				
 				//console.log("comparo: "+titulo+" ** "+titulo_ant);
-			if (titulo===titulo_ant)
+			if (request.action[parseInt(longitudfin)].titulo===titulo_ant)
 			{
 				ban_titulo_ant=1;				
 			}
@@ -312,8 +316,8 @@ $(document).ready(function(){
 				titulo_ant=titulo;
 				ban_titulo_ant=0;
 			}
-			//console.log("comparo: "+comentario_ant+ " ** "+comentario);
-			if (comentario_ant===comentario)
+			//console.log("comparo: "+comentario_ant+ " ** "+request.action[parseInt(longitudfin)].description);
+			if (comentario_ant===request.action[parseInt(longitudfin)].description)
 			{
 				ban_comentario_ant=1;
 			}
@@ -322,7 +326,7 @@ $(document).ready(function(){
 				comentario_ant=comentario;
 				ban_comentario_ant=0;
 			}
-			if (ban_titulo_ant===1 || ban_comentario_ant===1)
+			if (ban_titulo_ant===1 && ban_comentario_ant===1)
 			{
 				/*if (request.action!=null)
 				{
@@ -387,7 +391,8 @@ $(document).ready(function(){
 			
 			else
 			{*/
-			
+			var classTemp = "";
+			classTemp= Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 			while (parseInt(longitudfin) >= 0)
 			{
 				var contenido='';
@@ -432,7 +437,7 @@ $(document).ready(function(){
 				
 				if(tipo == 'comentario')
 				{
-				contenido='<li><div class="time_icon"><div class="textcolor-title2 time">'+minuto+'</div><div class="icon-time"></div></div><div class="chronic">';
+				contenido='<li class="'+classTemp+'"><div class="time_icon"><div class="textcolor-title2 time">'+minuto+'</div><div class="icon-time"></div></div><div class="chronic">';
 				
 				
 				contenido+=titulo+'<div class="chronic_description">'+comentario+'</div><div class="wdg_mxm_live_02_verMas">';
@@ -499,7 +504,8 @@ $(document).ready(function(){
 					div_tit = titulo.split("@");
 					titulo= '@'+div_tit[1];
 					tit_opc= div_tit[0];
-					contenido='<li><div class="time_icon"><div class="icon-time twitter"><i class="tvsa-twitter"></i></div></div><div class="chronic"><p class="textcolor-title2">'+tit_opc+'<span class="textcolor-title4">'+titulo+'</span></p><div class="chronic_description">'+comentario+'</div></div>';
+					
+					contenido='<li class="'+classTemp+'" ><div class="time_icon"><div class="icon-time twitter"><i class="tvsa-twitter"></i></div></div><div class="chronic"><p class="textcolor-title2">'+tit_opc+'<span class="textcolor-title4">'+titulo+'</span></p><div class="chronic_description">'+comentario+'</div></div>';
 				}
 				
 				contenido+='</li>';
@@ -509,13 +515,19 @@ $(document).ready(function(){
 					$(".wdg_mxm_live_02").css('display','block');					
 					$(".wdg_mxm_live_02 .azul").css('display','block');					
 				}
-				$(".wdg_mxm_live_02_list").prepend(contenido);		
+				$(".wdg_mxm_live_02_list").prepend(contenido);
+				
+					
+				
 				gral++;
 				longitudfin--;
 			}
 			//}//fin del else de banderas titulo y comentario
 			
+			
 		});
+
+					
 		
 		$(window).resize(function() {
 		if(parseInt($(window).width())<=624){
