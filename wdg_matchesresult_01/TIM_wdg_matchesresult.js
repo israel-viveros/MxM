@@ -3,6 +3,87 @@
 	TickerTournamen : (typeof TickerTournamen === "undefined") ? 0 : TickerTournamen,
 	timeUpdate : 10000,
 
+	DrawCuerpo : function(){
+			var cuerpoHTML = "";			
+
+			cuerpoHTML += '<div class="windows8">';
+			cuerpoHTML += '<div class="wBall" id="wBall_1"><div class="wInnerBall"></div></div>';
+			cuerpoHTML += '<div class="wBall" id="wBall_2"><div class="wInnerBall"></div></div>';
+			cuerpoHTML += '<div class="wBall" id="wBall_3"><div class="wInnerBall"></div></div>';
+			cuerpoHTML += '<div class="wBall" id="wBall_4"><div class="wInnerBall"></div></div>';
+			cuerpoHTML += '<div class="wBall" id="wBall_5"><div class="wInnerBall"></div></div>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_container">';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_left">';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_top">';
+			cuerpoHTML += '<a class="title" href="#">Resultados</a>';
+			cuerpoHTML += '<a class="subtitle" href="#">Minuto a Minuto</a>';
+			cuerpoHTML += '<a href=""><span class="wdg_matchesresult_nike"></span></a>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_bottom">';
+			cuerpoHTML += '<div class="wdg_matchesresult_important" id="FListTournaments">';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<ul id="ListTournaments"></ul>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_visible">';
+			cuerpoHTML += '<p><a class="wdg_matchesresult_show" href=""><span class="wdg_matchesresult_sprite uparrow"></span>Ocultar</a></p>';
+			cuerpoHTML += '<p><a class="wdg_matchesresult_hide" href=""><span class="wdg_matchesresult_sprite downarrow"></span>Ver Más</a></p>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_right">';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_navcontainer">';
+			cuerpoHTML += '<div class="wdg_matchesresult_navarrowleft">';
+			cuerpoHTML += '<a class="wdg_matchesresult_navleft" href="#left">';
+			cuerpoHTML += '<i class="tvsa-double-caret-left"></i>';
+			cuerpoHTML += '</a> ';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_nav">';
+			cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
+			cuerpoHTML += '<li class="selected">';
+			cuerpoHTML += '<a href="">';
+			cuerpoHTML += '<p>Fútbol</p>';
+			cuerpoHTML += '</a> ';
+			cuerpoHTML += '</li>';
+			cuerpoHTML += '</ul>';
+			cuerpoHTML += '<div class="linedown"></div>    ';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_navarrowright">';
+			cuerpoHTML += '<a class="wdg_matchesresult_navright" href="#right">';
+			cuerpoHTML += '<i class="tvsa-double-caret-right"></i>';
+			cuerpoHTML += '</a>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div id="left" class="wdg_matchesresult_01_mobileleft">';
+			cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
+			cuerpoHTML += '<i class="tvsa-caret-left"></i>';
+			cuerpoHTML += '<!-- <span class="wdg_matchesresult_leftmobile"></span> -->';
+			cuerpoHTML += '</a>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_components">';
+			cuerpoHTML += '<ul class="wdg_matchesresult_01_list" id="listNow"></ul>  ';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div id="right" class="wdg_matchesresult_01_mobileright">';
+			cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
+			cuerpoHTML += '<i class="tvsa-caret-right"></i>';
+			cuerpoHTML += '<!-- <span class="wdg_matchesresult_rightmobile"></span> -->';
+			cuerpoHTML += '</a>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '<div class="wdg_matchesresult_01_arrows">';
+			cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
+			cuerpoHTML += '<span class="tvsa-double-caret-left active"></span>';
+			cuerpoHTML += '</a>';
+			cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
+			cuerpoHTML += '<span class="tvsa-double-caret-right inactive"></span>  ';
+			cuerpoHTML += '</a>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '</div>';
+			cuerpoHTML += '</div>';
+
+			$("#parentWDG_matchresult_01").html(cuerpoHTML);
+
+					
+	},
+
 
 
 	LoadMaster : function(idMaster){
@@ -21,7 +102,7 @@
 				
 			};
 			$("#ListTournaments").html(DrawList);
-			$("#FListTournaments a, #ListTournaments a").unbind().bind('click', function(event) {
+			$("#FListTournaments a, #ListTournaments a").bind('click', function(event) {
 				event.preventDefault();
 				$(".windows8").show('fast');
 				wdg_matchresult.LoadFirst($(this).data('url'));
@@ -39,6 +120,7 @@
 	},
 	LoadFirst: function(urlData,tipo){
 		//console.log("recibo"+ urlData);
+
 
 		$.ajax({
 			url: urlData,
@@ -58,9 +140,9 @@
 		
 	},
 	DrawContentFirst: function(contenido,tipo){
-		//console.log(contenido);
+		//console.log(contenido);		
 
-		if(tipo === "only"){
+		if(tipo === "only"){			
 			$("#FListTournaments").html('<a class="featured onShowItem" data-url="http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js" href="#" >'+contenido[0].EventTournamentName+'</a>');
 			setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
 		}
@@ -130,9 +212,10 @@
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({'width': nuevoWidth+'px','height':'150px','overflow':'hidden'});
 				}
 			});
+			FunctionsNaat();
 		}
 		$(".windows8").hide();
-		FunctionsNaat();
+		
 		
 
 		
@@ -165,8 +248,7 @@
 
 
 };
-
-
+	$.when(wdg_matchresult.DrawCuerpo()).done(function(){
 		(wdg_matchresult.TickerMaster>0) ? wdg_matchresult.LoadMaster(wdg_matchresult.TickerMaster) : '' ;
 		(wdg_matchresult.TickerTournamen>0) ? wdg_matchresult.LoadFirst('http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only') : '';
 		(typeof TickerMaster === "undefined" && typeof TickerTournamen === "undefined") ? $("#parentWDG_matchresult_01").remove() : '';
@@ -174,6 +256,10 @@
 		$(window).resize(function(event) {
 			FunctionsNaat();
 		});
+	});
+	
+
+		
 
 
 
