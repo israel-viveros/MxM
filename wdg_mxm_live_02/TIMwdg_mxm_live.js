@@ -437,7 +437,7 @@ $(document).ready(function(){
 				
 				if(tipo == 'comentario')
 				{
-				contenido='<li class="'+classTemp+'"><div class="time_icon"><div class="textcolor-title2 time">'+minuto+'</div><div class="icon-time"></div></div><div class="chronic">';
+				contenido='<li class="'+classTemp+'" style="display:none"><div class="time_icon"><div class="textcolor-title2 time">'+minuto+'</div><div class="icon-time"></div></div><div class="chronic">';
 				
 				
 				contenido+=titulo+'<div class="chronic_description">'+comentario+'</div><div class="wdg_mxm_live_02_verMas">';
@@ -505,7 +505,7 @@ $(document).ready(function(){
 					titulo= '@'+div_tit[1];
 					tit_opc= div_tit[0];
 					
-					contenido='<li class="'+classTemp+'" ><div class="time_icon"><div class="icon-time twitter"><i class="tvsa-twitter"></i></div></div><div class="chronic"><p class="textcolor-title2">'+tit_opc+'<span class="textcolor-title4">'+titulo+'</span></p><div class="chronic_description">'+comentario+'</div></div>';
+					contenido='<li class="'+classTemp+'" style="display:none"><div class="time_icon"><div class="icon-time twitter"><i class="tvsa-twitter"></i></div></div><div class="chronic"><p class="textcolor-title2">'+tit_opc+'<span class="textcolor-title4">'+titulo+'</span></p><div class="chronic_description">'+comentario+'</div></div>';
 				}
 				
 				contenido+='</li>';
@@ -523,7 +523,7 @@ $(document).ready(function(){
 				longitudfin--;
 			}
 			//}//fin del else de banderas titulo y comentario
-			
+			$("."+classTemp+"").fadeIn('slow');
 			
 		});
 
