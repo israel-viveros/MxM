@@ -1,7 +1,8 @@
 ; var idTorenoValidate = (typeof IdEventoMxm ==="undefined" || IdEventoMxm === "") ? 0 : IdEventoMxm;
 var idTeamValidate = (typeof IdEventoMxmtv === "undefined" || IdEventoMxmtv === "" ) ? 0 : IdEventoMxmtv;
+var idClubIdValidate = (typeof IdClub === "undefined" || IdClub === "" ) ? 0 : IdClub;
 var urlFinalHeader = (idTorenoValidate!=0 && idTeamValidate!=0)? 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+idTeamValidate+'/previo_alineacion.js' : console.log("Falta Id de torno y partido");
-var urlDropdown = (idTorenoValidate!=0 && idTeamValidate!=0)? 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+idTeamValidate+'/previo_alineacion.js' : console.log("Falta Id de torno y partido");
+var urlDropdown = (idTorenoValidate!=0 && idClubIdValidate!=0)? 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+idClubIdValidate+'/matchesclub.js' : console.log("Falta Id de torneo y/o club");
 
 
 
@@ -47,19 +48,20 @@ var wdg_smex_strategy = {
 	},
 
 	loadDropdown : function(){
-		
+		console.log("execute loaddropdown function");
 		var ContDropdown ="";
 		
 			$.ajax({
-			 url: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+idTeamValidate+'/previo_alineacion.js',
+			 url: urlDropdown,
 		  dataType: 'jsonp',		  
-		jsonpCallback:'datagame',
+		jsonpCallback:'matches',
 		  cache: false,
 		})
-		.done(function(data) {			
+		.done(function(data) {	
+		console.log(data);
 			ContDropdown += '<ul class="wdg_smex_strategy_01_dropdownlist">';			
-			for (var r = 0; r < data.PrevLineUps.localTeam.length; r++) {
-			ContDropdown += '<li><p data-field="'+data.PrevLineUps.localTeam[r].url+'">'+data.PrevLineUps.localTeam[r].week+'</p></li>';
+			for (var r = 0; r < data.Team.length; r++) {
+			ContDropdown += '<li><p data-field="'+data.Team[r].matchid+'">'+data.Team[r].week+'</p></li>';
 
 			};
 			ContDropdown += '</ul>';
@@ -284,9 +286,8 @@ var wdg_smex_strategy = {
 					
 
 					// calling the AJAX method
-					var I = String($(this).find('p').data('field'));
-					var f = I.split('/');			
-					wdg_smex_strategy.loadAlineacion($parent, f[4]);
+					
+					wdg_smex_strategy.loadAlineacion($parent,$(this).find('p').data('field'));
 //					wdg_smex_strategy.loadAlineacion($parent, 1455,'actualizacion');
 
 					
@@ -365,6 +366,14 @@ var wdg_smex_strategy = {
 
 };
 
+if(idClubIdValidate !== 0) { 
+	wdg_smex_strategy.PintaCacha('dropdown'); 
+}
+else{
+	if (urlFinalHeader!="") {
+		wdg_smex_strategy.PintaCacha('alineacionFinal');
+	};
+	
+}
 
-//wdg_smex_strategy.PintaCacha('dropdown');
-wdg_smex_strategy.PintaCacha('alineacionFinal');
+
