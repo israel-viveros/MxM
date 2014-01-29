@@ -8,7 +8,7 @@ datagame({
             {
                 "mode": "VISIT",
                 "url": "/futbol/data/284/20838/previo_alineacion.js",
-                "week": "GGGGG"
+                "week": "Final"
             },
             {
                 "mode": "LOCAL",
@@ -276,9 +276,9 @@ datagame({
     ],
     "goalsVisit": [
         {
-            "longName": "---------------- Antonio GutiÃƒÂ©rrez Rocancio",
-            "name": "----------------",
-            "nickName": "---------------- GutiÃƒÂ©rrez",
+            "longName": "TeÃƒÂ³filo Antonio GutiÃƒÂ©rrez Rocancio",
+            "name": "TeÃƒÂ³filo",
+            "nickName": "TeÃƒÂ³filo GutiÃƒÂ©rrez",
             "number": 29,
             "url": "/futbol/jugadores/teofiloantoniogutierrez/4721",
             "minute": 20,
@@ -667,7 +667,7 @@ datagame({
                         "type": "entraAlJuego",
                         "label": "Entra",
                         "minute": 65,
-                        "playeridchange": 99556
+                        "playeridchange": "5d66ba4e-a106-102c-8c37-0019b9d72a1e"
                     }
                 ]
             },
@@ -691,7 +691,7 @@ datagame({
                         "type": "entraAlJuego",
                         "label": "Entra",
                         "minute": 26,
-                        "playeridchange": 99556
+                        "playeridchange": "ed296b7e-0fd6-102d-ae51-0019b9d72a1e"
                     }
                 ]
             },
@@ -731,7 +731,7 @@ datagame({
                         "type": "entraAlJuego",
                         "label": "Entra",
                         "minute": 75,
-                        "playeridchange": 99556
+                        "playeridchange": "b2892066-a106-102c-8c37-0019b9d72a1e"
                     }
                 ]
             },
@@ -1048,9 +1048,9 @@ datagame({
                 "team": 2,
                 "guid": "74593f98-fd0d-102c-ae51-0019b9d72a1e",
                 "idjugador" : "897798",
-                "longName": "---------------- Antonio GutiÃƒÂ©rrez Rocancio",
-                "name": "----------------",
-                "nickName": "---------------- GutiÃƒÂ©rrez",
+                "longName": "TeÃƒÂ³filo Antonio GutiÃƒÂ©rrez Rocancio",
+                "name": "TeÃƒÂ³filo",
+                "nickName": "TeÃƒÂ³filo GutiÃƒÂ©rrez",
                 "number": 29,
                 "url": "/futbol/jugadores/teofiloantoniogutierrez/4721",
                 "image": "http://i2.esmas.com/sef/img/player/photo/7pxVm35r.jpg",
@@ -1122,8 +1122,8 @@ datagame({
                 "number": 28,
                 "url": "/futbol/jugadores/rogelio-alfredo-chavez/1245",
                 "image": "http://i2.esmas.com/sef/img/player/photo/rogeliocha7khvaaU.jpg",
-                "posx": 70,
-                "posy": 80,
+                "posx": 120,
+                "posy": 190,
                 "goals": 0,
                 "autogoals": 0,
                 "position": "D",
@@ -1132,7 +1132,7 @@ datagame({
                         "type": "entraAlJuego",
                         "label": "Entra",
                         "minute": 85,
-                        "playeridchange": 99556
+                        "playeridchange": "ab970aac-a106-102c-8c37-0019b9d72a1e"
                     }
                 ]
             },
@@ -1188,7 +1188,7 @@ datagame({
                         "type": "entraAlJuego",
                         "label": "Entra",
                         "minute": 78,
-                        "playeridchange": 99556
+                        "playeridchange": "6c171d90-a106-102c-8c37-0019b9d72a1e"
                     }
                 ]
             },
@@ -1212,7 +1212,7 @@ datagame({
                         "type": "entraAlJuego",
                         "label": "Entra",
                         "minute": 25,
-                        "playeridchange": 99556
+                        "playeridchange": "838be352-a106-102c-8c37-0019b9d72a1e"
                     },
                     {
                         "type": "penalFalladoSerie",
@@ -1287,10 +1287,10 @@ datagame({
                 ]
             },
             {
-                "longName": "------- Antonio GutiÃƒÂ©rrez Rocancio",
+                "longName": "TeÃƒÂ³filo Antonio GutiÃƒÂ©rrez Rocancio",
                 "idjugador" : "897798",
-                "name": "----------------",
-                "nickName": "---------------- GutiÃƒÂ©rrez",
+                "name": "TeÃƒÂ³filo",
+                "nickName": "TeÃƒÂ³filo GutiÃƒÂ©rrez",
                 "number": 29,
                 "url": "/futbol/jugadores/teofiloantoniogutierrez/4721",
                 "actions": [

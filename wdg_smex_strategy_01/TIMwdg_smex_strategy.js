@@ -8,84 +8,32 @@ var urlDropdown = (idTorenoValidate!=0 && idTeamValidate!=0)? 'http://lab.israel
 
 var wdg_smex_strategy = {
 
-	PintaCacha : function(){
+	PintaCacha : function(tipo){
 		var ContenidoMaq ="";
-		ContenidoMaq += '<div class="titulo textcolor-title4">Estrategia más utilizada</div>'
-		ContenidoMaq += '<div class="pleca_inferior">'
-		ContenidoMaq += '<div>'
-		ContenidoMaq += '<strong>Partidos</strong>'
-		ContenidoMaq += '</div>'
-		ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdown">'
-		ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdowncontent">'
-		ContenidoMaq += '<p></p>'
-		ContenidoMaq += '<div> <a id="dropdwon-right"  href="#" title="Link Description"> <i class="tvsa-caret-down"></i></a> </div>'
-		ContenidoMaq += '</div>'
-		ContenidoMaq += '<div class="wdg_smex_strategy_01_listcontainer">'		
-		ContenidoMaq += '</div>'
-		ContenidoMaq += '</div>'
-		ContenidoMaq += '</div>'
+		if(tipo === "dropdown"){			
+			ContenidoMaq += '<div class="titulo textcolor-title4">Estrategia más utilizada</div>'
+			ContenidoMaq += '<div class="pleca_inferior">'
+			ContenidoMaq += '<div>'
+			ContenidoMaq += '<strong>Partidos</strong>'
+			ContenidoMaq += '</div>'
+			ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdown">'
+			ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdowncontent">'
+			ContenidoMaq += '<p></p>'
+			ContenidoMaq += '<div> <a id="dropdwon-right"  href="#" title="Link Description"> <i class="tvsa-caret-down"></i></a> </div>'
+			ContenidoMaq += '</div>'
+			ContenidoMaq += '<div class="wdg_smex_strategy_01_listcontainer">'		
+			ContenidoMaq += '</div>'
+			ContenidoMaq += '</div>'
+			ContenidoMaq += '</div>'
+		}
+		if (tipo === "alineacionFinal") {
+			ContenidoMaq += '<ul class="menu">';
+	    	ContenidoMaq += '<li class="first active"><a href="#" data-query="inicial" class="ui-link">Alineación Inicial</a></li><li><a href="#" data-query="media" class="ui-link">Alineación Media</a></li><li><a href="#" data-query="final" class="ui-link">Alineación Final</a></li>';
+			ContenidoMaq += '</ul>';
+		}
 		ContenidoMaq += '<div class="field">';
 		ContenidoMaq += '<img class="cancha" src="../global/img/cancha.png" alt="field" width="624" height="334"/>';
-		ContenidoMaq += '<span class="players">';
-		/*
-		ContenidoMaq += '<span class="player local grid1" style="left:100px;top:100px;">';
-		ContenidoMaq += '<a href="#" title="Mario Goméz">';
-		ContenidoMaq += '<span class="number textcolor-title2">238</span>';
-		ContenidoMaq += '<span class="tooltip">';
-		ContenidoMaq += '<img class="playerfoto" src="http://lorempixel.com/51/38" alt="Mario Goméz" width="51" height="38" />';
-		ContenidoMaq += '<span class="arrow"></span>';
-		ContenidoMaq += '<span class="name">Mario "Looser" Goméz</span>';
-		ContenidoMaq += '<span class="position textcolor-title2">Picking boogers</span>';
-		ContenidoMaq += '<em>acciones</em>';
-		ContenidoMaq += '<span class="actions">';
-		ContenidoMaq += '<i class="tvsa-mxm-goal"></i>56\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-owngoal"></i>57\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-yellowcard"></i>58\'';
-		ContenidoMaq += '<i class="tvsa-mxm-goal"></i>56\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-owngoal"></i>57\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-yellowcard"></i>58\'';
-		ContenidoMaq += '<i class="tvsa-mxm-goal"></i>56\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-owngoal"></i>&nbsp;57\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-yellowcard"></i>&nbsp;58\'';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '</a>';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '<span class="player local grid2" style="left:300px;top:80px;">';
-		ContenidoMaq += '<a href="#" title="Mario Goméz">';
-		ContenidoMaq += '<span class="number textcolor-title2">09</span>';
-		ContenidoMaq += '<span class="tooltip">';
-		ContenidoMaq += '<img class="playerfoto" src="http://lorempixel.com/51/38" alt="Mario Goméz" width="51" height="38" />';
-		ContenidoMaq += '<span class="arrow"></span>';
-		ContenidoMaq += '<span class="name">Mario Goméz</span>';
-		ContenidoMaq += '<span class="position textcolor-title2">Some position</span>';
-		ContenidoMaq += '<em>acciones</em>';
-		ContenidoMaq += '<span class="actions">';
-		ContenidoMaq += '<i class="tvsa-mxm-goal"></i>&nbsp;56\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-owngoal"></i>&nbsp;57\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-yellowcard"></i>&nbsp;58\' ';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '</a>';
-		ContenidoMaq += '</span>';			
-		ContenidoMaq += '<span class="player grid3" style="left:80px;top:250px;">';
-		ContenidoMaq += '<a href="#" title="Mario Goméz">';
-		ContenidoMaq += '<span class="number textcolor-title2">09</span>';
-		ContenidoMaq += '<span class="tooltip">';
-		ContenidoMaq += '<img class="playerfoto" src="http://lorempixel.com/51/38" alt="Mario Goméz" width="51" height="38" />';
-		ContenidoMaq += '<span class="arrow"></span>';
-		ContenidoMaq += '<span class="name">Mario Goméz</span>';
-		ContenidoMaq += '<span class="position textcolor-title2">Missing the goal</span>';
-		ContenidoMaq += '<em>acciones</em>';
-		ContenidoMaq += '<span class="actions">';
-		ContenidoMaq += '<i class="tvsa-mxm-goal"></i>&nbsp;56\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-owngoal"></i>&nbsp;57\' ';
-		ContenidoMaq += '<i class="tvsa-mxm-yellowcard"></i>&nbsp;58\'';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '</span>';
-		ContenidoMaq += '</a>';
-		ContenidoMaq += '</span>';
-		*/
+		ContenidoMaq += '<span class="players">';		
 		ContenidoMaq += '</span>';
 		ContenidoMaq += '</div>';
 
@@ -94,6 +42,7 @@ var wdg_smex_strategy = {
 		setTimeout(function(){wdg_smex_strategy.loadDropdown()},1000);
 		wdg_smex_strategy.FunInicio();
 
+		(tipo==="alineacionFinal") ? wdg_smex_strategy.botonesAlineacion() : '';
 		
 	},
 
@@ -128,14 +77,13 @@ var wdg_smex_strategy = {
 
 	},
 	loadAlineacion: function(el,IDTemp,tipo) {
-		console.log("llamando loadAlineacion");
 		// var url = 'http://mxm.televisadeportes.esmas.com/futbol/data/284/20839/previo_alineacion.js?185';
 		//var url = '../wdg_smex_strategy_01/' + type + '.json'; // just an example using plain text files
 		
 		el.find('span.players').fadeOut('fast', function() {
 			$(this).empty().css("display", "none");
 		});
-		console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+IDTemp+'/previo_alineacion.js');
+		//console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+IDTemp+'/previo_alineacion.js');
 		$.ajax({
 		  url: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+IDTemp+'/previo_alineacion.js',
 		  dataType: 'jsonp',		  
@@ -143,9 +91,9 @@ var wdg_smex_strategy = {
 		  cache: false,
 		  success: function(data) {
 		  	console.log(data);		  	
-			var miHTML = '';
+			var miHTML = '', aliFinal = '',ArregloHidden="";
 			var equipo = new Array();
-			var positiony, positionx,vc,equipoString;
+			var positiony, positionx,vc,equipoString;			
 
 			equipo[0] = "lineuplocal";
 			equipo[1]= "lineUpVisit";
@@ -155,7 +103,7 @@ var wdg_smex_strategy = {
 			equipoString = String(equipo[t]);
 			//console.log(data[equipoString]);
 
-			for (var i = 0; i < data[equipoString].team.length; i++) {				
+			for (var i = 0; i < data[equipoString].team.length; i++) {			
 				/* arrow styles based on px values */
 				var arrow = '';
 				var actions = '',icon='';
@@ -172,8 +120,7 @@ var wdg_smex_strategy = {
 						switch(data[equipoString].team[i].actions[a].type){
 							case 'golVisitante': icon = 'tvsa-mxm-goal'; break;
 							case 'amonestacion': icon = 'tvsa-mxm-owngoal'; break;
-							case 'saleDelJuego': icon = 'tvsa-mxm-offside'; break;
-							case 'penalFalladoSerie': icon = ''; break;
+							case 'saleDelJuego': icon = 'tvsa-mxm-offside'; break;							
 							case 'entraAlJuego': icon = 'tvsa-mxm-goal'; break;
 							case 'expulsion': icon = 'tvsa-mxm-redcard'; break;
 							default: icon = ''; break;
@@ -184,7 +131,7 @@ var wdg_smex_strategy = {
 				}
 				if(parseInt(data[equipoString].team[i].team) === 1) { vc = "local"} else{ vc = "visit"}
 
-				miHTML += '<span class="player '+vc+' '+arrow+'" style="left:'+data[equipoString].team[i].posx+'px;top:'+positiony+'px;">'+
+				miHTML += '<span data-guid="'+data[equipoString].team[i].guid+'" class="player '+vc+' '+arrow+'" style="left:'+data[equipoString].team[i].posx+'px;top:'+positiony+'px;">'+
 					'<a href="#" title="'+data[equipoString].team[i].name+' '+data[equipoString].team[i].name+'">'+
 						'<span class="number textcolor-title2">'+data[equipoString].team[i].number+'</span>'+
 						'<span class="tooltip">'+
@@ -200,6 +147,49 @@ var wdg_smex_strategy = {
 			el.find('span.players').html(miHTML).fadeIn('slow');
 
 			(tipo ==="actualizacion" ) ? '' : $(".wdg_smex_strategy_01_dropdowncontent p").text(data.week);
+//Alineacion final
+			if(tipo==="Alineacionfinal"){
+								
+				console.log("calcula la alineacion final");
+				for (var d = 0; d < data[equipoString].substitutes.length; d++) {
+					//console.log(data[equipoString].substitutes[d].nickName);
+					if(typeof data[equipoString].substitutes[d].actions !== "undefined"){
+						if(parseInt(data[equipoString].substitutes[d].team) === 1) { vc = "local"} else{ vc = "visit"}
+						for (var f = 0; f < data[equipoString].substitutes[d].actions.length; f++) {
+							//console.log(data[equipoString].substitutes[d].actions[f]);
+							if(data[equipoString].substitutes[d].actions[f].type === "entraAlJuego" ){
+								//console.log(data[equipoString].substitutes[d].nickName);
+								//console.log(data[equipoString].substitutes[d].actions[f].playeridchange);								
+								ArregloHidden += String(data[equipoString].substitutes[d].actions[f].playeridchange)+',';
+
+								aliFinal += '<span data-guid="'+data[equipoString].substitutes[d].guid+'" class="player '+vc+' '+arrow+'" style="left:'+data[equipoString].substitutes[d].posx+'px;top:'+positiony+'px;">'+
+									'<a href="#" title="'+data[equipoString].substitutes[d].name+' '+data[equipoString].substitutes[d].name+'">'+
+										'<span class="number textcolor-title2">'+data[equipoString].substitutes[d].number+'</span>'+
+										'<span class="tooltip">'+
+											'<img class="playerfoto" src="'+data[equipoString].substitutes[d].image+'" alt="'+data[equipoString].substitutes[d].name+'" width="51" height="38" />'+
+											'<span class="arrow"></span>'+
+											'<span class="name">'+data[equipoString].substitutes[d].name+' '+data[equipoString].substitutes[d].nickName+'</span>'+
+											'<span class="position textcolor-title2">'+data[equipoString].substitutes[d].position+'</span>'+							
+										'</span>'+
+									'</a>'+
+								'</span>';
+							}
+
+							
+						};
+					}
+				};
+				console.log("Arreglo Hidden");
+				var arrspl = ArregloHidden.split(",");
+				for (var k = 0; k < arrspl.length; k++) {					
+					$("span[data-guid="+arrspl[k]+"]").remove();
+				};
+				el.find('span.players').append(aliFinal).fadeIn('slow');
+			}
+// Alineacion Final			
+		
+
+
 		};
 		  }
 		}).done(function() {
@@ -345,20 +335,36 @@ var wdg_smex_strategy = {
 			});
 		}
 		
+	},
+	botonesAlineacion : function(){
+		var preview="";
+		$("#containerWdgMexStrategy .menu li").unbind().bind('click', function(event) {
+			event.preventDefault();
+			$(this).parent('ul').find('li').each(function() {
+				$(this).removeClass('active');
+			});
+			$(this).addClass('active');
+
+			preview = String($(this).children('a').data('query')).toLowerCase();
+
+			switch(preview){
+				case 'inicial': wdg_smex_strategy.AlineacionInicial(); break;
+				case 'final': wdg_smex_strategy.AlineacionFinal(); break;
+			}
+
+			
+		});
+	},
+	AlineacionInicial: function(){
+		console.log("Es la alinacion INICIAL");
+		wdg_smex_strategy.loadAlineacion($("#containerWdgMexStrategy"), idTeamValidate);
+	},
+	AlineacionFinal: function(){
+		wdg_smex_strategy.loadAlineacion($("#containerWdgMexStrategy"), idTeamValidate,'Alineacionfinal');
 	}
 
 };
 
 
-wdg_smex_strategy.PintaCacha();
-
-
-
-
-
-
-
-	
-	
-
-
+//wdg_smex_strategy.PintaCacha('dropdown');
+wdg_smex_strategy.PintaCacha('alineacionFinal');
