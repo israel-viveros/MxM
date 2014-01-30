@@ -1,6 +1,6 @@
 var name_jor = "";
 var oficial = 1;
-var timeRecarga = 2;
+var timeRecarga = 6;
 
 
 
@@ -112,6 +112,7 @@ var jornadasCalendarDTV = {
         jornadasCalendarDTV.fechaAct = fechaCalendar;        
         jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo,
         jornadasCalendarDTV.numeroIdEquipo = (typeof IdEquipo=== "undefined") ? 0 : IdEquipo,
+        jornadasCalendarDTV.Jornada2 = (typeof IdTorneo2=== "undefined") ? 0 : IdTorneo2,
         urFinal = "";
 
         var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
@@ -119,7 +120,7 @@ var jornadasCalendarDTV = {
 
 
         if (jornadasCalendarDTV.numeroIdEquipo!=0 && jornadasCalendarDTV.numeroTorneoAct!=0){
-    	    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+jornadasCalendarDTV.numeroTorneoAct+"/jornada_"+jornadasCalendarDTV.numeroIdEquipo+"jsonp.js";    	    
+    	    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+jornadasCalendarDTV.numeroTorneoAct+"/jornada_"+jornadasCalendarDTV.numeroIdEquipo+"jsonp.js";
     	    $("#show-j").parents('.wdg_altasbajas_result_01').find('.full-timetable').css("visibility","hidden");
     	    $.ajax({
 	                    url: urFinal,
@@ -131,10 +132,31 @@ var jornadasCalendarDTV = {
 	                        crear_jornada(data)
 	                    }
 	                });
-    	    $("#show-j").parents('.wdg_altasbajas_result_01').children('.filterResultado').remove();
-    	    
+    	    $("#show-j").parents('.wdg_altasbajas_result_01').children('.filterResultado').remove();    	    
+	    }
+	   	// segunda jornada 
+
+	   	if (jornadasCalendarDTV.Jornada2!== 0 && jornadasCalendarDTV.numeroIdEquipo!==0){
+    	   	console.log("ejecuto la segunda ronda");
+
+
+    	   	 urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+jornadasCalendarDTV.Jornada2+"/jornada_"+jornadasCalendarDTV.numeroIdEquipo+"jsonp.js";    	    
+    	  $.ajax({
+	                    url: urFinal,
+	                    jsonpCallback: 'jornada',
+	                    dataType: 'jsonp',
+	                    cache: false,
+	                    data: 'v=' + timeDTV.returnData(),
+	                    success: function(data) {
+	                        crear_jornada(data,'jornada2')
+	                    }
+	                });
+
 
 	    }
+
+	   	//End segunda jornada
+
 	    if(jornadasCalendarDTV.numeroTorneoAct!==0 && jornadasCalendarDTV.numeroIdEquipo ===0){
 			urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js';
 
@@ -200,7 +222,7 @@ var jornadasCalendarDTV = {
     },
     jornadasCalendarDTV: function(fechaCalendar) {
         clearInterval(jornadasCalendarDTV.timerCalendar);
-        jornadasCalendarDTV.timerCalendar = setInterval("jornadasCalendarDTV.actualizaContenido()", (timeRecarga * 1000));
+        //jornadasCalendarDTV.timerCalendar = setInterval("jornadasCalendarDTV.actualizaContenido()", (timeRecarga * 1000));
 
         jornadasCalendarDTV.fechaAct = fechaCalendar;
 //        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
@@ -265,7 +287,7 @@ var jornadasCalendarDTV = {
 
     },
     actualizaContenido: function() {    	
-        if (jornadasCalendarDTV.fechaAct != '') {
+        if (jornadasCalendarDTV.fechaAct !== '') {
             jornadasCalendarDTV.jornadasCalendarDTV(jornadasCalendarDTV.fechaAct);
         }
     }
@@ -287,7 +309,7 @@ jornadasCalendarDTV.iniciar();
 
 
 
-function crear_jornada(data) {
+function crear_jornada(data,jornada2) {
     var bandera=0;
     if (data == null) {
         data = new Array();
@@ -308,6 +330,7 @@ function crear_jornada(data) {
 
     jornadasCalendarDTV.contenidoCentral = new Array();
     jornadasCalendarDTV.contenidohidde = new Array();
+    jornadasCalendarDTV.contenidoJornada2 = new Array();
 
     
     for (var i = 0; i < data.length; i++) {
@@ -396,13 +419,22 @@ function crear_jornada(data) {
             bandera=1;
         }
 
+        if(jornada2==="jornada2"){
+        	jornadasCalendarDTV.contenidoJornada2.push(partidoHtml);
+        }
+
     }
 
     if (jornadasCalendarDTV.contenidoCentral.length <= 0 && typeof IdTorneo === "undefined" && typeof IdTorneo === "undefined") {
         $('#show-j').html('<li><span class="calep_matches_lst_vacio">No Hay Eventos Disponibles</span></li>');
     } else {
-        $('#show-j').html(jornadasCalendarDTV.contenidoCentral.join(""));
+    if(jornada2==="jornada2"){    	
+        console.log("NUEVO CONTENIDO");
+        console.log(jornadasCalendarDTV.contenidoJornada2);
+    }else{
+    	$('#show-j').html(jornadasCalendarDTV.contenidoCentral.join(""));
         $('#hidde-j').html(jornadasCalendarDTV.contenidohidde.join(""));
+    }
     }
     $("#nro_jornadas").html(name_jor).children('li').bind('click', function(event) { actualizar_jornada($(this).data('jornada')); });
     $(".wdg_altasbajas_result_01_block").css("cursor","pointer").bind('click', function(event) { window.location.assign($(this).data("link")); });
@@ -410,6 +442,9 @@ function crear_jornada(data) {
     
     bandera ? $(".controls").css("display","block"): $(".controls").css("display","none");
     $("#circleGLoading").fadeOut("fast")
+
+
+    
 }
 
 
