@@ -1,5 +1,6 @@
 var name_jor = "";
 var oficial = 1;
+var timeRecarga = 2;
 
 
 
@@ -38,7 +39,7 @@ var jornadasCalendarDTV = {
     timerCalendar: 0,
     dataCalendar: '',
     dataCalendarH: '',
-    objectParent : $("#show-j").parents('.wdg_altasbajas_result_01'),
+//    objectParent : $("#show-j").parents('.wdg_altasbajas_result_01'),
 
     iniciar: function(fechaCalendar) {
 
@@ -58,21 +59,25 @@ var jornadasCalendarDTV = {
 		MaqueWdgAltas += '<h2 class="games"></h2>';
 		MaqueWdgAltas += '</div>';
 		MaqueWdgAltas += '<div class="filterResultado">	     ';
-		MaqueWdgAltas += '<div class="lineaResultado result2">';
-		MaqueWdgAltas += '<span class="title">Jornada</span>';
-		MaqueWdgAltas += '<div class="filter">';
-		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdown drop2">';
-		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdowncontent content2" id="name-jornada">';
-		MaqueWdgAltas += '<p></p>';
-		MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
-		MaqueWdgAltas += '</div>';
-		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_listcontainer">';
-		MaqueWdgAltas += '<ul class="wdg_altasbajas_result_012_dropdownlist list2" id="nro_jornadas">	                            ';
-		MaqueWdgAltas += '</ul>  ';
-		MaqueWdgAltas += '</div>';
-		MaqueWdgAltas += '</div>            ';
-		MaqueWdgAltas += '</div>';
-		MaqueWdgAltas += '</div>';
+
+		
+	MaqueWdgAltas += '<div class="lineaResultado result2">';
+	MaqueWdgAltas += '<span class="title">Jornada</span>';
+	MaqueWdgAltas += '<div class="filter">';
+	MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdown drop2">';
+	MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdowncontent content2" id="name-jornada">';
+	MaqueWdgAltas += '<p></p>';
+	MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
+	MaqueWdgAltas += '</div>';
+	MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_listcontainer">';
+	MaqueWdgAltas += '<ul class="wdg_altasbajas_result_012_dropdownlist list2" id="nro_jornadas">	                            ';
+	MaqueWdgAltas += '</ul>  ';
+	MaqueWdgAltas += '</div>';
+	MaqueWdgAltas += '</div>            ';
+	MaqueWdgAltas += '</div>';
+	MaqueWdgAltas += '</div>';
+
+
 		MaqueWdgAltas += '</div>';
 		MaqueWdgAltas += '<div id="circleGLoading">';
 		MaqueWdgAltas += '<div id="circleG_1" class="circleG"></div>';
@@ -106,17 +111,16 @@ var jornadasCalendarDTV = {
         jornadasCalendarDTV.fechaInicio = new Date(fechaCalendar);
         jornadasCalendarDTV.fechaAct = fechaCalendar;        
         jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo,
+        jornadasCalendarDTV.numeroIdEquipo = (typeof IdEquipo=== "undefined") ? 0 : IdEquipo,
         urFinal = "";
 
         var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
         var tiempoActual = fechaDiaActual.getTime() / 1000;
 
 
-        if (typeof IdEquipo !== "undefined" && IdEquipo !==""){
-    	    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/223/jornada_"+IdEquipo+"jsonp.js";
-
-    	    jornadasCalendarDTV.objectParent.children('.filterResultado').remove();
-    	    jornadasCalendarDTV.objectParent.find('.full-timetable').css("visibility","hidden");
+        if (typeof IdEquipo !== "undefined" && IdEquipo !=="" && typeof IdTorneo !== "undefined" && IdTorneo !==""){
+    	    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+IdTorneo+"/jornada_"+IdEquipo+"jsonp.js";    	    
+    	    $("#show-j").parents('.wdg_altasbajas_result_01').find('.full-timetable').css("visibility","hidden");
     	    $.ajax({
 	                    url: urFinal,
 	                    jsonpCallback: 'jornada',
@@ -127,9 +131,11 @@ var jornadasCalendarDTV = {
 	                        crear_jornada(data)
 	                    }
 	                });
+    	    $("#show-j").parents('.wdg_altasbajas_result_01').children('.filterResultado').remove();
+    	    
 
 	    }
-	    if(jornadasCalendarDTV.numeroTorneoAct!==0){
+	    if(jornadasCalendarDTV.numeroTorneoAct!==0 && jornadasCalendarDTV.numeroIdEquipo ===0){
 			urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js';
 
 				 $.ajax({
@@ -176,8 +182,8 @@ var jornadasCalendarDTV = {
 	        });
 
     	}else{
-    		if(typeof IdTorneo === "undefined" && typeof IdEquipo === "undefined" ){
-    			jornadasCalendarDTV.objectParent.remove();	
+    		if (typeof IdEquipo === "undefined" || IdEquipo ==="" && typeof IdTorneo === "undefined" || IdTorneo ===""){
+    			$("#show-j").parents('.wdg_altasbajas_result_01').remove();	
     		}
     		
     		
@@ -201,9 +207,9 @@ var jornadasCalendarDTV = {
 
         var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
         var tiempoActual = fechaDiaActual.getTime() / 1000;
-        if (typeof IdEquipo !== "undefined" && IdEquipo !==""){
+        if (typeof IdEquipo !== "undefined" && IdEquipo !=="" && typeof IdTorneo !== "undefined" && IdTorneo !==""){
         	$.ajax({
-		                url: "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/223/jornada_"+IdEquipo+"jsonp.js",
+		                url: "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+IdTorneo+"/jornada_"+IdEquipo+"jsonp.js",
 		                jsonpCallback: 'jornada',
 		                dataType: 'jsonp',
 		                cache: true,
@@ -214,7 +220,7 @@ var jornadasCalendarDTV = {
 		            });
 
         }
-        if(jornadasCalendarDTV.numeroTorneoAct!==0){
+        if(jornadasCalendarDTV.numeroTorneoAct!==0 && jornadasCalendarDTV.numeroIdEquipo===0){
 		    $.ajax({
 		        url: jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js',
 		        jsonpCallback: 'jornadalistado',
@@ -272,7 +278,10 @@ function actualizar_jornada(a) {
     jornadasCalendarDTV.jornadasCalendarDTV(a);    
     $("ul.deg").delay(10).fadeIn("slow");     
 }
+
+
 jornadasCalendarDTV.iniciar();
+ 
 
 
 
@@ -305,9 +314,10 @@ function crear_jornada(data) {
 
 
     	if(i===0){
-    		jornadasCalendarDTV.objectParent.find('.division span img').attr('src', data[i].tournament.icono);
-    		jornadasCalendarDTV.objectParent.find('.division h2').text(data[i].tournament.name);
-    		jornadasCalendarDTV.objectParent.find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/'+String(data[i].tournament.name).replace(/ /g ,"-").toLowerCase()+'/calendario/'+data[i].sef.tournamentid+'/');
+    		console.log("imagen--> "+data[i].tournament.icono);
+    		$("#show-j").parents('.wdg_altasbajas_result_01').find('.division span img').attr('src', data[i].tournament.icono);
+    		$("#show-j").parents('.wdg_altasbajas_result_01').find('.division h2').text(data[i].tournament.name);
+    		$("#show-j").parents('.wdg_altasbajas_result_01').find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/'+String(data[i].tournament.name).replace(/ /g ,"-").toLowerCase()+'/calendario/'+data[i].sef.tournamentid+'/');
     	}
     	
 
