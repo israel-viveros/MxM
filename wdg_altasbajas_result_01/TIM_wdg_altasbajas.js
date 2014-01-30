@@ -118,8 +118,8 @@ var jornadasCalendarDTV = {
         var tiempoActual = fechaDiaActual.getTime() / 1000;
 
 
-        if (typeof IdEquipo !== "undefined" && IdEquipo !=="" && typeof IdTorneo !== "undefined" && IdTorneo !==""){
-    	    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+IdTorneo+"/jornada_"+IdEquipo+"jsonp.js";    	    
+        if (jornadasCalendarDTV.numeroIdEquipo!=0 && jornadasCalendarDTV.numeroTorneoAct!=0){
+    	    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+jornadasCalendarDTV.numeroTorneoAct+"/jornada_"+jornadasCalendarDTV.numeroIdEquipo+"jsonp.js";    	    
     	    $("#show-j").parents('.wdg_altasbajas_result_01').find('.full-timetable').css("visibility","hidden");
     	    $.ajax({
 	                    url: urFinal,
@@ -182,7 +182,7 @@ var jornadasCalendarDTV = {
 	        });
 
     	}else{
-    		if (typeof IdEquipo === "undefined" || IdEquipo ==="" && typeof IdTorneo === "undefined" || IdTorneo ===""){
+    		if(jornadasCalendarDTV.numeroTorneoAct===0 && jornadasCalendarDTV.numeroIdEquipo ===0){
     			$("#show-j").parents('.wdg_altasbajas_result_01').remove();	
     		}
     		
@@ -203,7 +203,7 @@ var jornadasCalendarDTV = {
         jornadasCalendarDTV.timerCalendar = setInterval("jornadasCalendarDTV.actualizaContenido()", (timeRecarga * 1000));
 
         jornadasCalendarDTV.fechaAct = fechaCalendar;
-        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
+//        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
 
         var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
         var tiempoActual = fechaDiaActual.getTime() / 1000;
@@ -309,12 +309,11 @@ function crear_jornada(data) {
     jornadasCalendarDTV.contenidoCentral = new Array();
     jornadasCalendarDTV.contenidohidde = new Array();
 
-    var i = 0;
-    for (i = 0; i < data.length; i++) {
+    
+    for (var i = 0; i < data.length; i++) {
 
 
-    	if(i===0){
-    		console.log("imagen--> "+data[i].tournament.icono);
+    	if(i===0){    		
     		$("#show-j").parents('.wdg_altasbajas_result_01').find('.division span img').attr('src', data[i].tournament.icono);
     		$("#show-j").parents('.wdg_altasbajas_result_01').find('.division h2').text(data[i].tournament.name);
     		$("#show-j").parents('.wdg_altasbajas_result_01').find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/'+String(data[i].tournament.name).replace(/ /g ,"-").toLowerCase()+'/calendario/'+data[i].sef.tournamentid+'/');
