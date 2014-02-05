@@ -7,14 +7,8 @@
 		}, options);
 
 		var globalThis = this;
-
-
-
 		var name_jor = "";
 		var oficial = 1;
-		var timeRecarga = 600;
-
-
 
 
 		function regresaSiglas(abrev, nombre, numero) {
@@ -54,6 +48,9 @@ var jornadasCalendarDTV = {
     timerCalendar: 0,
     dataCalendar: '',
     dataCalendarH: '',
+    callbackJornada : 'jornada',
+    callbackListado: 'jornadalistado',
+    timeRecarga : 60000,
 
     iniciar: function(fechaCalendar) {
     
@@ -79,8 +76,8 @@ var jornadasCalendarDTV = {
 		MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
 		MaqueWdgAltas += '</div>';
 		MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_listcontainer">';
-		MaqueWdgAltas += '<ul class="wdg_altasbajas_result_012_dropdownlist list2" id="nro_jornadas">	                            ';
-		MaqueWdgAltas += '</ul>  ';
+		MaqueWdgAltas += '<ul class="wdg_altasbajas_result_012_dropdownlist list2" id="nro_jornadas">';
+		MaqueWdgAltas += '</ul>';
 		MaqueWdgAltas += '</div>';
 		MaqueWdgAltas += '</div>';
 		MaqueWdgAltas += '</div>';
@@ -91,6 +88,7 @@ var jornadasCalendarDTV = {
 		MaqueWdgAltas += '<div id="circleG_2" class="circleG"></div>';
 		MaqueWdgAltas += '<div id="circleG_3" class="circleG"></div>';
 		MaqueWdgAltas += '</div>';
+		MaqueWdgAltas += '<span style="display:none;" id="feedsAct" data-primero="" data-segundo=""></span>';
 		MaqueWdgAltas += '<ul class="deg">';
 		MaqueWdgAltas += '<li id="show-j"></li>';
 		MaqueWdgAltas += '<li id="hidde-j"></li>';		
@@ -98,22 +96,21 @@ var jornadasCalendarDTV = {
 		MaqueWdgAltas += '<div class="controls"> ';
 		MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
 		MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
-		MaqueWdgAltas += '</a> ';
+		MaqueWdgAltas += '</a>';
 		MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
 		MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
-		MaqueWdgAltas += '</a> ';
+		MaqueWdgAltas += '</a>';
 		MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
 		MaqueWdgAltas += '<span>Ver todos</span> ';
-		MaqueWdgAltas += '</a> ';
+		MaqueWdgAltas += '</a>';
 		MaqueWdgAltas += '</div>';
 		MaqueWdgAltas += '<div class="degraded"></div>';
 
 		globalThis.html(MaqueWdgAltas);
 
 
-        clearInterval(jornadasCalendarDTV.timerCalendar);
-        //jornadasCalendarDTV.timerCalendar = setInterval("jornadasCalendarDTV.actualizaContenido()", (timeRecarga * 1000));
-		jornadasCalendarDTV.timerCalendar = setInterval((function(){ jornadasCalendarDTV.actualizaContenido() }), (timeRecarga * 1000));
+        clearInterval(jornadasCalendarDTV.timerCalendar);        
+		jornadasCalendarDTV.timerCalendar = setInterval((function(){ jornadasCalendarDTV.actualizaContenido() }), jornadasCalendarDTV.timeRecarga);
         var timeToday = new Date(timeDTV.timeYear + "/" + timeDTV.timeMonth + "/" + timeDTV.timeDay);
         fechaCalendar = timeDTV.timeYear + "/" + timeDTV.timeMonth + "/" + timeDTV.timeDay;
         jornadasCalendarDTV.fechaInicio = new Date(fechaCalendar);
@@ -128,7 +125,7 @@ var jornadasCalendarDTV = {
         
 
         $.when(jornadasCalendarDTV.primeraJornada()).done(function(){
-        	setTimeout(function(){jornadasCalendarDTV.segundaJornada()},1000);        	
+        	setTimeout(function(){jornadasCalendarDTV.segundaJornada()},1000);
         });
         
 
@@ -139,7 +136,7 @@ var jornadasCalendarDTV = {
 
 				 $.ajax({
 	            url: urFinal,
-	            jsonpCallback: 'jornadalistado',
+	            jsonpCallback: jornadasCalendarDTV.callbackListado,
 	            dataType: 'jsonp',
 	            cache: true,
 	            data: 'v=' + timeDTV.returnData(),
@@ -165,15 +162,16 @@ var jornadasCalendarDTV = {
 
 	                $('#name-jornada').html("<p>" + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name + '</p><span class="tvsa-caret-down"></span>');
 	                $('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
-
-	                $.ajax({
-	                    url: jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js',
-	                    jsonpCallback: 'jornada',
+	                var urlfinalTmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js';
+	                $.ajax({	                	
+	                    url: urlfinalTmp,
+	                    jsonpCallback: jornadasCalendarDTV.callbackJornada,
 	                    dataType: 'jsonp',
 	                    cache: false,
 	                    data: 'v=' + timeDTV.returnData(),
 	                    success: function(data) {
-	                        crear_jornada(data)
+	                        crear_jornada(data);
+	                        $("#feedsAct").data("primero",urlfinalTmp);
 	                    }
 	                });
 
@@ -203,12 +201,13 @@ var jornadasCalendarDTV = {
     	    globalThis.find('.full-timetable').css("visibility","hidden");
     	    $.ajax({
 	                    url: urFinal,
-	                    jsonpCallback: 'jornada',
+	                    jsonpCallback: jornadasCalendarDTV.callbackJornada,
 	                    dataType: 'jsonp',
 	                    cache: false,
 	                    data: 'v=' + timeDTV.returnData(),
 	                    success: function(data) {
-	                       crear_jornada(data)
+	                       crear_jornada(data);
+	                       $("#feedsAct").data("primero",urFinal);
 	                    },
 	                    fail:function(){
 	                    	console.log("Algo salio mal en 1");
@@ -219,22 +218,75 @@ var jornadasCalendarDTV = {
 	    }
 	    $("#title-jornada").text("Resultados");
     },
+     jornadasCalendarDTV: function(fechaCalendar) {
+        clearInterval(jornadasCalendarDTV.timerCalendar);        
+		jornadasCalendarDTV.timerCalendar = setInterval((function(){ jornadasCalendarDTV.actualizaContenido() }), jornadasCalendarDTV.timeRecarga);
+
+        jornadasCalendarDTV.fechaAct = fechaCalendar;
+//        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
+
+        var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
+        var tiempoActual = fechaDiaActual.getTime() / 1000;
+      
+        if(jornadasCalendarDTV.numeroTorneoAct!==0 && jornadasCalendarDTV.numeroIdEquipo===0){
+		    $.ajax({
+		        url: jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js',
+		        jsonpCallback: jornadasCalendarDTV.callbackListado,
+		        dataType: 'jsonp',
+		        cache: true,
+		        data: 'v=' + timeDTV.returnData(),
+		        success: function(data) {
+		            if (data == null) {
+		                data = new Array();
+		            }
+
+		            jornadasCalendarDTV.dataCalendarH = data;
+
+		            var i = 0;
+		            for (i = 0; i < jornadasCalendarDTV.dataCalendarH.length; i++) {
+
+		                var valorj = jornadasCalendarDTV.dataCalendarH[i];
+		                jornadasCalendarDTV.jornadaPresente = i;
+
+		                if (tiempoActual <= valorj.startstamp) {
+		                    i = jornadasCalendarDTV.dataCalendarH.length + 1;
+		                } else if (tiempoActual <= valorj.endstamp) {
+		                    i = jornadasCalendarDTV.dataCalendarH.length + 1;
+		                }
+		            }
+					$('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
+					var urltmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js';
+		            $.ajax({
+		                url: urltmp,
+		                jsonpCallback: jornadasCalendarDTV.callbackJornada,
+		                dataType: 'jsonp',
+		                cache: false,		                
+		                success: function(data) {
+		                	$("#feedsAct").data("primero",urltmp);
+		                    crear_jornada(data);
+		                }
+		            });
+
+		        }
+		    });
+		}
+
+
+    },
     segundaJornada: function(){
     		// segunda jornada     		
 
 	   	if (jornadasCalendarDTV.Jornada2!== 0 && jornadasCalendarDTV.numeroIdEquipo!==0){
     	   	console.log("ejecuto la segunda ronda");
-
-
     	   	 urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/"+jornadasCalendarDTV.Jornada2+"/jornada_"+jornadasCalendarDTV.numeroIdEquipo+"jsonp.js";    	    
     	  $.ajax({
 	                    url: urFinal,
-	                    jsonpCallback: 'jornada',
+	                    jsonpCallback: jornadasCalendarDTV.callbackJornada,
 	                    dataType: 'jsonp',
-	                    cache: false,
-	                    data: 'v=' + timeDTV.returnData(),
+	                    cache: false,	                    
 	                    success: function(data) {
-	                        crear_jornada(data,'jornada2')
+	                    	$("#feedsAct").data("segundo",urFinal);
+	                        crear_jornada(data,'jornada2');	                        
 	                    },
 	                    fail:function(){
 	                    	console.log("Algo salio mal en 2");
@@ -249,14 +301,22 @@ var jornadasCalendarDTV = {
 	   },//End segunda jornada
 	   actualizaContenido:function(){
 	   	
+	   	var primerFeed = String($("#feedsAct").data("primero"));
+	   	var segundoFeed = String($("#feedsAct").data("segundo"));
 
 	   		if(jornadasCalendarDTV.numeroTorneoAct!==0 && jornadasCalendarDTV.numeroIdEquipo==0 && jornadasCalendarDTV.Jornada2 ===0 ){
 	   			console.log("actualizo listado...");
+	   			jornadasCalendarDTV.procesoActualiza(primerFeed);
 	   		}else if(jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0 && jornadasCalendarDTV.Jornada2 === 0){
 	   			console.log("un solo equipo");
+	   			jornadasCalendarDTV.procesoActualiza(primerFeed);
 	   			
 	   		}else if(jornadasCalendarDTV.Jornada2!==0 && jornadasCalendarDTV.numeroIdEquipo!==0 && jornadasCalendarDTV.numeroTorneoAct!==0){
 	   			console.log("un solo equipo 2 joarnadas");
+	   			$.when(jornadasCalendarDTV.procesoActualiza(primerFeed)).done(function(){
+	   				setTimeout(function(){jornadasCalendarDTV.procesoActualiza(segundoFeed)},1000);
+	   			});
+	   			
 	   			
 
 	   		}
@@ -264,13 +324,38 @@ var jornadasCalendarDTV = {
 
 	   },
 
-	   procesoActualiza: function(parametro){
+	   procesoActualiza: function(urlupdate){
 
-	   	
+	   	console.log("--->URL update: "+urlupdate);
+	   	var GolesActLocal,GolesActVisit,GolesNewLocal,GolesNewVisit;
+				$.ajax({
+					url: urlupdate,
+					jsonpCallback: jornadasCalendarDTV.callbackJornada,
+					dataType: 'jsonp',
+					cache: false,
+					success: function(data) {
+						for (var z = 0; z < data.length; z++) {							
+							GolesNewLocal = data[z].local.team.gol
+							GolesNewLocal = String(validaGoles(data[z].local.team.gol, data[z].local.team.golstatus, data[z].fechastamp));
+            				GolesNewVisit = String(validaGoles(data[z].visit.team.gol, data[z].visit.team.golstatus, data[z].fechastamp));
+							GolesActLocal = String($("."+data[z].fechastamp).children('.result').eq(0).text());
+							GolesActVisit = String($("."+data[z].fechastamp).children('.result').eq(1).text());
+							
+							(GolesActLocal!==GolesNewLocal) ? ($("."+data[z].fechastamp).children('.result').eq(0).text(GolesActLocal)) : '';
+							(GolesActVisit!==GolesNewVisit) ? ($("."+data[z].fechastamp).children('.result').eq(1).text(GolesActVisit)) : '';
+						};
+						
+						
+					},
+					fail: function() {
+						
+					}
+				});
 
 
+	   
 
-	   }
+	   }// End procesoActualiza
    
    
 
@@ -289,7 +374,12 @@ jornadasCalendarDTV.contenidoCentral = new Array();
     jornadasCalendarDTV.GlobalSort = new Array();
 
 
-
+function actualizar_jornada(a) {
+    $("ul.deg").fadeOut("fast");
+    $("#circleGLoading").fadeIn("fast");
+    jornadasCalendarDTV.jornadasCalendarDTV(a);    
+    $("ul.deg").delay(10).fadeIn("slow");     
+}
 
 function crear_jornada(data,jornada2) {
 	if(jornada2!=="jornada2"){
@@ -419,3 +509,380 @@ function crear_jornada(data,jornada2) {
 
 	}
 })(jQuery);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+;jQuery(function($){ 
+    (function($,T){
+    	/*Swipe*/
+    	var altWdgResult01 = 0;
+    	if ($(window).width() < 978 && $(window).width() > 624){
+    		altWdgResult01 = 568;
+    	}
+    	else{
+    		altWdgResult01 = 163;  		
+    	} 
+    	
+		$('.wdg_altasbajas_result_01 .deg').bind('swipeup',function(){
+			$(this).animate({
+                    'scrollTop': $(this).scrollTop() + altWdgResult01
+                }, 500);
+		});
+		$('.wdg_altasbajas_result_01 .deg').bind('swipedown',function(){
+			$(this).animate({
+                    'scrollTop': $(this).scrollTop() - altWdgResult01
+                }, 500);
+		});   		
+		
+    	
+        $('.wdg_altasbajas_result_01').each(function(ix,element){ 
+            var $this = $(this), 
+                Pointer = {
+                    UP: (T.getIsTouchDevice()) ? 'touchend' : 'mouseup',
+                    DOWN: (T.getIsTouchDevice()) ? 'touchstart' : 'mousedown'
+                }, 
+                $theUl = $this.find('>ul')
+            ;
+            
+            $this.find('a.prev, a.next, .deportes-prev, .deportes-next').click(function(event){
+                event.preventDefault();
+            });
+            
+            $this.find('a.prev, .deportes-prev').bind(Pointer.DOWN,function(){
+                $theUl.animate({
+                    'scrollTop': $theUl.scrollTop() - $theUl.height()-7
+                }, 500);
+            });
+            
+            $this.find('a.next, .deportes-next').bind(Pointer.DOWN,function(){
+                $theUl.animate({
+                    'scrollTop': $theUl.scrollTop() + $theUl.height()+7
+                }, 500);
+            }); 
+        });
+		
+
+      	$list = $('.wdg_altasbajas_result_01 .deg li').size();
+		$altura_li = parseInt($('.wdg_altasbajas_result_01 .deg li').height());
+		$altura = ($altura_li * $list) + $list;
+
+        var $parent = $('.wdg_altasbajas_result_01 ');
+        var $dropdownAnchor = $parent.find('.lineaResultado .filter');
+        $dropdownAnchor.on('click', function(evt) {
+            var $listItems = $(this).find('.wdg_altasbajas_result_012_dropdownlist');
+            var $visibility = $listItems.css('visibility');
+            var padre =$(this);
+            if ( $visibility == 'hidden' ) 
+                $listItems.css({
+                    visibility: 'visible',
+                    height: 'auto',
+                    'max-height' : '156px',
+                    'overflow-y': 'scroll',
+                    'overflow-x': 'hidden'         
+                });
+             else 
+                 $listItems.css({
+                    visibility: 'hidden',
+                    height: '0px'
+            });
+              var $dropdownItems2 = $(this).find('.wdg_altasbajas_result_012_dropdownlist li');
+            $dropdownItems2.bind('click', function(evt) {
+                evt.preventDefault();
+                padre.find('.wdg_altasbajas_result_012_dropdowncontent p').html($(this).find('p').html());
+            });
+           
+            $listItems.bind('mouseleave', function(evt) {
+                evt.preventDefault();
+                var visibilidad = $(this).css('visibility');
+                if ( visibilidad == 'visible' ) {
+                     $(this).css({
+                        visibility: 'hidden',
+                        height: '0px'       
+                    });
+                } 
+            });
+        });
+        
+      /*Monitoreo scroll*/
+		$('.wdg_altasbajas_result_01 .deg').scroll(function() {
+				var $war1_position = $(this).scrollTop();
+				
+				//alert($(this).height());
+				if($(window).width() < 624 ){$war1_altura = 813;}
+				if ($.browser.msie ){$war1_altura = 470;}
+				else{$war1_altura = $(this).height()}
+				
+				
+				if($war1_position >= $war1_altura) {
+					$(this).siblings('.degraded').css("visibility","hidden");
+					//$(this).siblings('.controls').children('.next').children('.tvsa-caret-down').css('color','#000');
+					
+					$(this).siblings('.controls').children().children('.tvsa-caret-down').parent().removeClass('bgactive');
+					$(this).siblings('.controls').children().children('.tvsa-caret-down').parent().addClass('bginactive');
+					
+      			}else{
+					$(this).siblings('.degraded').css("visibility","visible");
+					//$(this).siblings('.controls').children().children('.tvsa-caret-down').css('color','#FFF');
+					$(this).siblings('.controls').children().children('.tvsa-caret-down').parent().removeClass('bginactive');
+					$(this).siblings('.controls').children().children('.tvsa-caret-down').parent().addClass('bgactive');
+				}
+				
+				if($war1_position == 0){
+					//$(this).siblings('.controls').children('.prev').children('.tvsa-caret-up').css('color','#000');
+					$(this).siblings('.controls').children().children('.tvsa-caret-up').parent().removeClass('bgactive');
+					$(this).siblings('.controls').children().children('.tvsa-caret-up').parent().addClass('bginactive');
+				}
+				else{
+					//$(this).siblings('.controls').children('.prev').children('.tvsa-caret-up').css('color','#FFF');
+					$(this).siblings('.controls').children().children('.tvsa-caret-up').parent().removeClass('bginactive');
+					$(this).siblings('.controls').children().children('.tvsa-caret-up').parent().addClass('bgactive');
+				}
+				//console.log('Scroll: '+$war1_position+' suma: '+$(this).height());
+			});	   
+        
+
+    })($,Televisa);
+});
+
+if ($.browser.msie && parseInt($.browser.version, 10) <= 7){
+      $(function() {
+        var zIndexNumber = 1000;
+        $('.wdg_altasbajas_result_01 div').each(function() {
+            $(this).css('zIndex', zIndexNumber);
+            zIndexNumber -= 10;
+        });
+    });
+ }
