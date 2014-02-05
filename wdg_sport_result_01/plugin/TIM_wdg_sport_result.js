@@ -47,8 +47,8 @@
 				MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1">'+data.tiempo.replace(/'/g, "\'")+'</div>';
 				MaquetadoHEader += '<div class="leftside">';
 				MaquetadoHEader += '<div class="team1">';
-				MaquetadoHEader += '<div class="escudo"><img src="'+data.equipoLocal.logo+'" alt="'+data.partido.local+'" width="48" height="48"></div>';
-				MaquetadoHEader += '<div class="equipo">'+data.partido.local+'</div>';
+				MaquetadoHEader += '<div class="escudo"><img src="'+data.equipoLocal.logo+'" alt="'+data.equipoLocal.nombre+'" width="48" height="48"></div>';
+				MaquetadoHEader += '<div class="equipo">'+data.equipoLocal.nombre+'</div>';
 				MaquetadoHEader += '<div class="score">'+data.equipoLocal.goles+'</div>';	
 				MaquetadoHEader += (data.equipoLocal.penales==="") ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">'+data.equipoLocal.penales+'</span> PENALES</div>';
 				MaquetadoHEader += '</div>';
@@ -56,12 +56,12 @@
 				MaquetadoHEader += '<div class="team2">';
 				MaquetadoHEader += (data.equipoVisitante.penales==="") ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">'+data.equipoVisitante.penales+'</span> PENALES</div>';
 				MaquetadoHEader += '<div class="score">'+data.equipoVisitante.goles+'</div>';
-				MaquetadoHEader += '<div class="equipo">'+data.partido.visitante+'</div>';
-				MaquetadoHEader += '<div class="escudo"><img src="'+data.equipoVisitante.logo+'" width="48" height="48" alt="'+data.partido.visitante+'"></div>';
+				MaquetadoHEader += '<div class="equipo">'+data.equipoVisitante.nombre+'</div>';
+				MaquetadoHEader += '<div class="escudo"><img src="'+data.equipoVisitante.logo+'" width="48" height="48" alt="'+data.equipoVisitante.nombre+'"></div>';
 				MaquetadoHEader += '</div>';
 				MaquetadoHEader += '<div class="team2_m">';
-				MaquetadoHEader += (data.equipoVisitante.logo!=="") ? '<div class="escudo"><img src="'+data.equipoVisitante.logo+'" width="48" height="48" alt="'+data.partido.visitante+'"></div>' : '';
-				MaquetadoHEader += '<div class="equipo">'+data.partido.visitante+'</div>';
+				MaquetadoHEader += (data.equipoVisitante.logo!=="") ? '<div class="escudo"><img src="'+data.equipoVisitante.logo+'" width="48" height="48" alt="'+data.equipoVisitante.nombre+'"></div>' : '';
+				MaquetadoHEader += '<div class="equipo">'+data.equipoVisitante.nombre+'</div>';
 				MaquetadoHEader += '<div class="score">'+data.equipoVisitante.goles+'</div>';
 				MaquetadoHEader += (data.equipoVisitante.penales==="") ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">'+data.equipoVisitante.penales+'</span> PENALES</div>';
 				MaquetadoHEader += '</div>';
