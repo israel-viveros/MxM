@@ -12,9 +12,11 @@
 	var wdg_matchresult = {
 	TickerMaster : setting.tickermaster,
 	TickerTournamen : setting.tickertournament,
-	timeUpdate : 600000,
+	timeUpdateA : new Array(),
+	globalTimer:"",
 
 		DrawCuerpo : function(){
+				wdg_matchresult.horaServidor();
 				var cuerpoHTML = "";
 				cuerpoHTML += '<div class="windows8">';
 				cuerpoHTML += '<div class="wBall" id="wBall_1"><div class="wInnerBall"></div></div>';
@@ -89,7 +91,6 @@
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '</div>';
 				Globalthis.html(cuerpoHTML);
-				wdg_matchresult.horaServidor();
 		}, // END DrawCuerpo
 
 
@@ -116,7 +117,6 @@
 					$("#FListTournaments").parent().find('a').css('color', '#FFF').removeClass('onShowItem');
 					$(this).css('color', '#D6A256').addClass('onShowItem');
 				});	
-
 				wdg_matchresult.inicio();		
 			})
 			.fail(function() {
@@ -128,7 +128,7 @@
 
 
 		LoadFirst: function(urlData,tipo){
-			//console.log("recibo"+ urlData);
+			console.log("function LoadFirst");
 			$.ajax({
 				url: urlData,
 				type: 'GET',
@@ -138,7 +138,16 @@
 			})
 			.done(function(dataFirst) {
 				//console.log(dataFirst);
-				wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo)
+				//wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
+				(tipo==="update") ? wdg_matchresult.updateGoles(dataFirst) : wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
+				try{
+					console.log("SETIMER...");
+					clearInterval(wdg_matchresult.globalTimer);				
+					wdg_matchresult.setTimer();	
+					wdg_matchresult.timeUpdateA.length = 0;
+				}catch(e){
+						console.log("ha ocurrido un error al poner el setimer"+e);
+				}
 			})
 			.fail(function() {
 				console.log("Error al cargar: "+urlData);
@@ -150,12 +159,12 @@
 
 			if(tipo === "only"){			
 				$("#FListTournaments").html('<a class="featured onShowItem" data-url="http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js" href="#" >'+contenido[0].EventTournamentName+'</a>');
-				setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
+				//setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
 			}
 
 			var ItemView = "";		
 			for (var y = 0; y < contenido.length; y++) {
-				ItemView += '<li>';
+				ItemView += '<li id="'+contenido[y].TimeStamp+'">';
 				ItemView += '<div class="wdg_match_01">';
 				ItemView += '<div class="wdg_match_01_time background-color1">';
 				ItemView += '<p>';
@@ -170,7 +179,7 @@
 				ItemView += '</div>';
 				ItemView += '<div class="wdg_match_01_teamscore">';
 				ItemView += '<p>                ';
-				ItemView += '<a href="">'+contenido[y].equipos.visit.goals+'</a>';
+				ItemView += '<a href="">'+contenido[y].equipos.local.goals+'</a>';
 				ItemView += '</p>';
 				ItemView += '</div>';
 				ItemView += '</div>';
@@ -199,8 +208,13 @@
 				ItemView += '</div>';
 				ItemView += '</li>';
 
-				wdg_matchresult.DeterminaTiempoActualizacion(contenido[y].MatchDate,contenido[y].MatchHour2);
+				(contenido[y].periodabrev.toLowerCase()!=="fin") ? (wdg_matchresult.DeterminaTiempoActualizacion(contenido[y].MatchDate,contenido[y].MatchHour)) : '';				
+
 			};
+
+			(contenido.length<=4) ? ($(".wdg_matchesresult_hide, <4.wdg_matchesresult_show").hide()) : '';
+			
+
 			objMasc = $("#listNow");
 			
 			if(tipo === "update"){			
@@ -218,15 +232,49 @@
 
 		inicio : function(){		
 			wdg_matchresult.LoadFirst($("#FListTournaments a").eq(0).data("url"));
-			setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
+			//setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
 		},
 
-		updateInfo: function(){
+		updateInfo: function(){			
 			$("#FListTournaments").parent().find('a').each(function(index, el) {
 				if($(this).hasClass('onShowItem')){
 				 wdg_matchresult.LoadFirst($(this).data("url"),"update");
 				}
 			});
+		},
+		updateGoles:function(data){
+			console.log(data);
+			var selectorTMP,NuevoGolV,ActGolV,NuevoGolL,ActGolL,tituloAct,tituloNue;
+			for (var o = 0; o < data.matches.match.length; o++) {
+				//console.log(data.matches.match[o])
+				selectorTMP = $("#"+data.matches.match[o].TimeStamp);					
+				ActGolL= String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text().trim());
+				ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text().trim());
+				NuevoGolL = String(data.matches.match[o].equipos.local.goals.trim());
+				NuevoGolV = String(data.matches.match[o].equipos.visit.goals.trim());
+				tituloAct = selectorTMP.find(".textcolor-title5").text();
+				tituloNue = String(data.matches.match[o].periodabrev.trim());
+
+				console.log("TITLE"+tituloAct+"<->"+tituloNue);
+				console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
+				console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
+
+
+				if(ActGolL !== NuevoGolL){					
+					selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({'display':'none','position':'relative'}).text(NuevoGolL).fadeIn('slow');
+				}
+
+				if(ActGolV !== NuevoGolV){
+					selectorTMP.find('.wdg_match_01_teamscore').eq(1).css({'display':'none','position':'relative'}).text(NuevoGolV).fadeIn('slow');
+				}
+				if(tituloNue!==tituloAct){
+					selectorTMP.find(".textcolor-title5").css({'display':'none','position':'relative'}).text(tituloNue).fadeIn('slow');
+				}
+				
+
+
+
+			};
 		},
 		resize: function(){
 
@@ -266,73 +314,90 @@
 									fechas=m+'-'+arr[0]+'-'+anio;	
 									fechas = fechas+' '+horas+':00';
 
-									wdg_matchresult.horaServidor.vari =  new Date(fechas);
+									wdg_matchresult.horaServidor.vari =  fechas;
 
 
 								}
 						});
 			},// End timeUpdate()
 		
-		DeterminaTiempoActualizacion : function(dia,hora){	
-			
-				var tiempoActualizacion = 0;
+		DeterminaTiempoActualizacion : function(dia,hora){
+
 				var FechaPartido = dia.substring(3,5)+'-'+dia.substring(0,2)+'-'+dia.substring(8,10)+ ' '+ hora.substring(0,5)+':00';
-				
-									
 									var a = new Date(FechaPartido);
-									var b = wdg_matchresult.horaServidor.vari;
+									var b = new Date(wdg_matchresult.horaServidor.vari);
+									//console.log(a);
+									//console.log(b);
 
 						      var msDateA = Date.UTC(a.getFullYear(), a.getMonth()+1, a.getDate());
 						      var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
 
 								if (parseFloat(msDateA) < parseFloat(msDateB)) {
-									console.log("MENOR");
+									//console.log("MENOR");
 								} else {
 									if (parseFloat(msDateA) == parseFloat(msDateB)) {
-										console.log("IGUAL");
-										tiempoActualizacion = 60000;
+										//console.log("IGUAL");										
 										var resta = parseInt(b.getHours()-a.getHours());
 											//cop
 											if (b.getHours() >= a.getHours()) {
 												console.log("ya empezo el partido");
 												//Ya empezo el partido, actualizar valores cada minuto										
-												tiempoActualizacion = 60000;
+												wdg_matchresult.timeUpdateA.push(60000);
 											} else {
 												var h1= a.getHours();
 												var h2= b.getHours();
 												var m1= a.getMinutes();
 												var m2= b.getMinutes();
 												//Validar cuantos minutos faltan para el inicio del partido
-												var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
+												var minutosrestantes = parseInt((((h1 - h2) * 60) + m1) - m2);
 
 												if (minutosrestantes <= 15) {
-													console.log("faltan menos de 15 min");
+													//console.log("faltan menos de 15 min");
 													//Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
-													tiempoActualizacion = 60000;
+													wdg_matchresult.timeUpdateA.push(60000);
 
 												} else {
 													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
 													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
-													
-													(minutosrestantes>60) ? tiempoActualizacion = 900000 : '';											
+													//console.log("comparo-->"+minutosrestantes);
+													(minutosrestantes<=60) ? (wdg_matchresult.timeUpdateA.push(900000)) : '';
 												}
 											}
 											//cop
-											console.log(tiempoActualizacion)
-											setInterval(function(){wdf_sportResult.loadInfo('update')},tiempoActualizacion);
+											
+											
+											
 									} else {
 										if (parseFloat(msDateA) > parseFloat(msDateB)) {
-											console.log("MAYOR");
+											//console.log("MAYOR");
 											
 										} else {
-											console.log("Error no actualizo");
+											//console.log("Error no actualizo");
+											try{
+												wdg_matchresult.DeterminaTiempoActualizacion();
+											}catch(e){
+												//console.log("erro en actualizar catch"+e);
+											}
 										}
 									}
 								}
+								
+								console.log(wdg_matchresult.timeUpdateA.length);
 
 								
 					
 			},// End timeUpdate()
+
+			setTimer: function() {			
+				if (wdg_matchresult.timeUpdateA.length > 0) {
+					var tiempA = Math.min.apply(null, wdg_matchresult.timeUpdateA);
+					console.log("tiempo Actualizacion: " + tiempA);					
+					wdg_matchresult.globalTimer = setInterval(function() {
+						wdg_matchresult.updateInfo()
+					}, tiempA);
+				}
+
+			}
 	
 
 
@@ -347,7 +412,8 @@
 			}
 		}else if(wdg_matchresult.TickerTournamen!==0){
 			try{
-				wdg_matchresult.LoadFirst('http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only');
+				//wdg_matchresult.LoadFirst('http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only');
+				wdg_matchresult.LoadFirst('http://lab.israelviveros.com/deportes/wdg_matchesresult_01/pruebas/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only');
 			}catch(e){
 				console.log("Error en TickerTorunament"+e);
 			}
