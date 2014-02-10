@@ -1,0 +1,116 @@
+@media screen and (min-width: 624px){
+	.wdg_mxm_live_02{
+		margin-bottom: 36px;
+		width:624px;
+	}
+	.wdg_mxm_live_02 ul li .chronic{
+        width: 74%;
+    }
+    .wdg_mxm_live_02 .wdg_mxm_live_02_list{
+    	height: auto;
+    	width: 100%;
+    }
+    .wdg_mxm_live_02 .img_stage_01 {
+    	margin-bottom: 5px;
+		clear:both;
+		height: auto;
+		padding-top: 20px;
+    }
+    .wdg_mxm_live_02 ul li .icon-interactive2{
+        background: url("../img/dotted-vertical.png") repeat-y right;
+        padding-right: 4px !important;
+        margin-right: 4px !important;
+        float: left;
+        cursor: pointer;
+        padding-left: 0;
+    }
+    .wdg_mxm_live_02 ul li{
+		width:100%;
+        padding: 11px 10px 11px 0;
+    }
+    .wdg_mxm_live_02 ul li .time{
+		padding-left:0px;
+        display:block;
+        width:30px;
+        text-align:center;
+        margin-left: 2px;
+        margin-right: 25px;
+        float:left;
+    }
+	
+	.wdg_mxm_live_02 ul li .time_icon{
+		width: 60px;
+		float: left;
+	}
+	
+    .wdg_mxm_live_02 ul li .icon-time{
+        display:block;
+        width:33px;
+        text-align:center;
+        margin-left: 15px;
+        margin-right: 12px;
+        float:left;
+    }
+    .wdg_mxm_live_02 ul li .chronic_description{
+        width: 100%;
+        float: left;
+        font-size: 14px;
+		font-weight:normal;
+        margin-top:5px ;        
+    }
+    .wdg_mxm_live_02 ul li .chronic{
+        border-left: 1px solid #CCCCCC;
+	    float: left;
+	    font-size: 18px;
+	    font-weight: bold;
+	    margin-left: 5px;
+	    overflow: hidden;
+	    padding-left: 19px;
+	    width: 74%;
+    }
+    .wdg_mxm_live_02 ul li .icon-interactive {
+        float: right;
+        cursor: pointer;
+        margin-right: 20px;
+        font-size: 18px;
+        margin-top: 10px;
+        padding-left: 2px;
+    }
+     .wdg_mxm_live_02 ul li .icon-interactive2{
+        border-right: 0;
+        margin-left: 0;
+        float: left;
+        cursor: pointer;
+        font-size: 18px;
+        margin-top: 10px;
+        padding-right: 7px !important;
+    }
+    .wdg_mxm_live_02 .wdg_mxm_live_02_verMas{
+        float: left;
+	    font-size: 14px;
+	    font-style: italic;
+	    font-weight: bold;
+	    overflow: hidden;
+        line-height: 14px;
+        margin-top: 10px;
+        display: block;
+    }
+	.wdg_mxm_live_02 .degraded{
+        top:790px;
+		width:624px;
+    }
+	.wdg_mxm_live_02 .arrow_buttons{
+        margin-top: 22px;
+    }
+	.wdg_mxm_live_02 .scroll{
+		height:auto;
+		width:640px;
+		overflow:auto;
+	}
+    .wdg_mxm_live_02 ul li .chronic .textcolor-title4{
+        display: inline;
+    }
+	.wdg_mxm_live_02 .img_stage_01 div.img_stage_01_image img{
+		height: 468px;
+	}
+}
