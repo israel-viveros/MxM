@@ -1,157 +1,145 @@
 
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <!-- <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_altasbajas_result_01/"> -->
-	<title>Televisa -  wdg_altasbajas_result_01</title>
-    
-    <meta charset="utf-8" />
-    <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"> DO NOT ALLOW ZOOM -->
-	<meta name="viewport" content="width=device-width, user-scalable=1">   <!-- Allow ZOOM -->
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta name="apple-mobile-web-app-status-bar-style" content="black">
-    <!--[if IE]>
-    <meta http-equiv="imagetoolbar" content="no">
-    <![endif]-->
-    <meta name="robots" content="index,follow,noodp,noydir">
-    <link rel="shortcut icon" href="../global/img/favicon.ico" />
-    <link rel="stylesheet" href="../global/css/global.css" media="screen">
-     
-    <link rel="stylesheet" href="css/wdg_altasbajas_result_01_mobile.css" media="screen">
+    <head>
+        <!-- <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_altasbajas_result_01/"> -->
+        <title>Televisa -  wdg_altasbajas_result_01</title>
+
+        <meta charset="utf-8" />
+        <!--<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0;"> DO NOT ALLOW ZOOM -->
+        <meta name="viewport" content="width=device-width, user-scalable=1">   <!-- Allow ZOOM -->
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <!--[if IE]>
+        <meta http-equiv="imagetoolbar" content="no">
+        <![endif]-->
+        <meta name="robots" content="index,follow,noodp,noydir">
+        <link rel="shortcut icon" href="../global/img/favicon.ico" />
+        <link rel="stylesheet" href="../global/css/global.css" media="screen">
+
+        <link rel="stylesheet" href="css/wdg_altasbajas_result_01_mobile.css" media="screen">
         <link rel="stylesheet" href="css/wdg_altasbajas_result_01_tablet.css" media="screen and (min-width: 624px)">
-    <link rel="stylesheet" href="css/wdg_altasbajas_result_01.css" media="screen and (min-width: 948px)">
-    <link rel="stylesheet" href="../global/css/colores.css" />
-    <link rel="stylesheet" href="../global/css/jquery.mobile-1.3.2.min.css" />
-    <meta name="HandheldFriendly" content="true">
-	<meta name="format-detection" content="telephone=no">
-	<meta name="description" content="Esta es la descripcion">
-    <link rel="stylesheet" href="../global/css/tvsa-icons.css" />
-    <!--[if lt IE 9]>
-		<link rel="stylesheet" type="text/css" href="../global/css/tvsa-icons.ie7.css" />
-	<![endif]-->
-                
-    
-    <!--[if IE]> 
-    <script type="text/javascript">
-        function noError(){return true;}
-        window.onerror = noError;	
-        
-    </script>
-    <![endif]-->
-	
+        <link rel="stylesheet" href="css/wdg_altasbajas_result_01.css" media="screen and (min-width: 948px)">
+        <link rel="stylesheet" href="../global/css/colores.css" />
+        <link rel="stylesheet" href="../global/css/jquery.mobile-1.3.2.min.css" />
+        <meta name="HandheldFriendly" content="true">
+        <meta name="format-detection" content="telephone=no">
+        <meta name="description" content="Esta es la descripcion">
+        <link rel="stylesheet" href="../global/css/tvsa-icons.css" />
+        <!--[if lt IE 9]>
+                    <link rel="stylesheet" type="text/css" href="../global/css/tvsa-icons.ie7.css" />
+            <![endif]-->
+
+
+        <!--[if IE]> 
+        <script type="text/javascript">
+            function noError(){return true;}
+            window.onerror = noError;   
+            
+        </script>
+        <![endif]-->
 
 
 
+        <style>
+            #circleGLoading{width:46.666666666666664px;opacity: 1;position: absolute;top: 40%;z-index: 999;display: block;left: 40%;}
+            .circleG{background-color:#FFFFFF;float:left;height:10px;margin-left:5px;width:10px;-moz-animation-name:bounce_circleG;-moz-animation-duration:2.8499999999999996s;-moz-animation-iteration-count:infinite;-moz-animation-direction:linear;-moz-border-radius:7px;-webkit-animation-name:bounce_circleG;-webkit-animation-duration:2.8499999999999996s;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:linear;-webkit-border-radius:7px;-ms-animation-name:bounce_circleG;-ms-animation-duration:2.8499999999999996s;-ms-animation-iteration-count:infinite;-ms-animation-direction:linear;-ms-border-radius:7px;-o-animation-name:bounce_circleG;-o-animation-duration:2.8499999999999996s;-o-animation-iteration-count:infinite;-o-animation-direction:linear;-o-border-radius:7px;animation-name:bounce_circleG;animation-duration:2.8499999999999996s;animation-iteration-count:infinite;animation-direction:linear;border-radius:7px;}
+            #circleG_1{-moz-animation-delay:0.57s;-webkit-animation-delay:0.57s;-ms-animation-delay:0.57s;-o-animation-delay:0.57s;animation-delay:0.57s;}
+            #circleG_2{-moz-animation-delay:1.3299999999999998s;-webkit-animation-delay:1.3299999999999998s;-ms-animation-delay:1.3299999999999998s;-o-animation-delay:1.3299999999999998s;animation-delay:1.3299999999999998s;}
+            #circleG_3{-moz-animation-delay:1.7099999999999997s;-webkit-animation-delay:1.7099999999999997s;-ms-animation-delay:1.7099999999999997s;-o-animation-delay:1.7099999999999997s;animation-delay:1.7099999999999997s;}
+            @-moz-keyframes bounce_circleG{
+                0%{}
+                50%{background-color:#A70A0B}
+                100%{}
+            }
+
+            @-webkit-keyframes bounce_circleG{
+                0%{}
+                50%{background-color:#A70A0B}
+                100%{}
+            }
+
+            @-ms-keyframes bounce_circleG{
+                0%{}
+                50%{background-color:#A70A0B}
+                100%{}
+            }
+
+            @-o-keyframes bounce_circleG{
+                0%{}
+                50%{background-color:#A70A0B}
+                100%{}
+            }
+
+            @keyframes bounce_circleG{
+                0%{}
+                50%{background-color:#A70A0B}
+                100%{}
+            }
+        </style>
 
 
 
-    <style>
-#circleGLoading{width:46.666666666666664px;opacity: 1;position: absolute;top: 40%;z-index: 999;display: block;left: 40%;}
-.circleG{background-color:#FFFFFF;float:left;height:10px;margin-left:5px;width:10px;-moz-animation-name:bounce_circleG;-moz-animation-duration:2.8499999999999996s;-moz-animation-iteration-count:infinite;-moz-animation-direction:linear;-moz-border-radius:7px;-webkit-animation-name:bounce_circleG;-webkit-animation-duration:2.8499999999999996s;-webkit-animation-iteration-count:infinite;-webkit-animation-direction:linear;-webkit-border-radius:7px;-ms-animation-name:bounce_circleG;-ms-animation-duration:2.8499999999999996s;-ms-animation-iteration-count:infinite;-ms-animation-direction:linear;-ms-border-radius:7px;-o-animation-name:bounce_circleG;-o-animation-duration:2.8499999999999996s;-o-animation-iteration-count:infinite;-o-animation-direction:linear;-o-border-radius:7px;animation-name:bounce_circleG;animation-duration:2.8499999999999996s;animation-iteration-count:infinite;animation-direction:linear;border-radius:7px;}
-#circleG_1{-moz-animation-delay:0.57s;-webkit-animation-delay:0.57s;-ms-animation-delay:0.57s;-o-animation-delay:0.57s;animation-delay:0.57s;}
-#circleG_2{-moz-animation-delay:1.3299999999999998s;-webkit-animation-delay:1.3299999999999998s;-ms-animation-delay:1.3299999999999998s;-o-animation-delay:1.3299999999999998s;animation-delay:1.3299999999999998s;}
-#circleG_3{-moz-animation-delay:1.7099999999999997s;-webkit-animation-delay:1.7099999999999997s;-ms-animation-delay:1.7099999999999997s;-o-animation-delay:1.7099999999999997s;animation-delay:1.7099999999999997s;}
-@-moz-keyframes bounce_circleG{
-0%{}
-50%{background-color:#A70A0B}
-100%{}
-}
-
-@-webkit-keyframes bounce_circleG{
-0%{}
-50%{background-color:#A70A0B}
-100%{}
-}
-
-@-ms-keyframes bounce_circleG{
-0%{}
-50%{background-color:#A70A0B}
-100%{}
-}
-
-@-o-keyframes bounce_circleG{
-0%{}
-50%{background-color:#A70A0B}
-100%{}
-}
-
-@keyframes bounce_circleG{
-0%{}
-50%{background-color:#A70A0B}
-100%{}
-}
-</style>
+        <script type="text/javascript" src="../global/js/headjs.js"></script>
+        <script type="text/javascript" src="../global/js/jquery-1.10.2.js"></script>
+        <!--[if gte IE 9]><!-->
+        <script type="text/javascript" src="../global/js/jquery.mobile-1.3.2.min.js"></script>
+        <!--<![endif]-->
+        <script type="text/javascript" src="../global/js/jquery.migrate.js"></script>
+        <script type="text/javascript" src="../global/js/jquery.easing-1.3.js"></script>
+        <script type="text/javascript" src="../global/js/modernizr.js"></script>
 
 
 
+        <script type="text/javascript" src="../global/js/Televisa.js"></script>
+        <script type="text/javascript" src="../global/js/global.js"></script>
+        <script type="text/javascript" src="../global/js/jquery.corner.js"></script>
+        <script type="text/javascript" src="../global/js/jquery.placeholder.js"></script>
+        <script type="text/javascript" src="../global/js/jquery.jplayer.min.js"></script>
+        <script type="text/javascript" src="../global/js/jquery.mb.miniPlayer.js"></script>
+        <script type="text/javascript" src="../global/js/jplayer_request.js"></script>
+        <script type="text/javascript" src="../global/js/jquery.lightbox_me.js"></script>
+        <script type="text/javascript" src="../global/js/swipeupdown.js"></script>
+        <script type="text/javascript" src="../global/js/swipe2.js"></script>
+
+        <!-- <script type="text/javascript" src="js/wdg_altasbajas_result_01.js"></script> -->
 
 
-	
-    	<script type="text/javascript" src="../global/js/headjs.js"></script>
-	<script type="text/javascript" src="../global/js/jquery-1.10.2.js"></script>
-	<!--[if gte IE 9]><!-->
-    <script type="text/javascript" src="../global/js/jquery.mobile-1.3.2.min.js"></script>
-	<!--<![endif]-->
-	<script type="text/javascript" src="../global/js/jquery.migrate.js"></script>
-	<script type="text/javascript" src="../global/js/jquery.easing-1.3.js"></script>
-	<script type="text/javascript" src="../global/js/modernizr.js"></script>
-
-
-
-    
-
-
-
-
-	<script type="text/javascript" src="../global/js/Televisa.js"></script>
-	<script type="text/javascript" src="../global/js/global.js"></script>
-    <script type="text/javascript" src="../global/js/jquery.corner.js"></script>
-    <script type="text/javascript" src="../global/js/jquery.placeholder.js"></script>
-    <script type="text/javascript" src="../global/js/jquery.jplayer.min.js"></script>
-    <script type="text/javascript" src="../global/js/jquery.mb.miniPlayer.js"></script>
-    <script type="text/javascript" src="../global/js/jplayer_request.js"></script>
-    <script type="text/javascript" src="../global/js/jquery.lightbox_me.js"></script>
-    <script type="text/javascript" src="../global/js/swipeupdown.js"></script>
-	<script type="text/javascript" src="../global/js/swipe2.js"></script>
-	  
-	<!-- <script type="text/javascript" src="js/wdg_altasbajas_result_01.js"></script> -->
-		       
-     
         <!-- <link rel="stylesheet" href="file.css" media="screen">
         <script type="text/javascript" src="file.js"></script> -->
-    
-</head>
-<body>
-<link rel="stylesheet" href="../str_pleca_01/css/str_pleca_01_mobile.css" media="screen">
-<link rel="stylesheet" href="../str_pleca_01/css/str_pleca_01_tablet.css" media="screen and (min-width: 624px">
-<link rel="stylesheet" href="../str_pleca_01/css/str_pleca_01.css" media="screen and (min-width: 960px">
 
-<div class="wdg_altasbajas_result_01" data-enhance="false" id="TIMwdg_altasbajas_result"> 
-  
-</div>
+    </head>
+    <body>
+        <link rel="stylesheet" href="../str_pleca_01/css/str_pleca_01_mobile.css" media="screen">
+        <link rel="stylesheet" href="../str_pleca_01/css/str_pleca_01_tablet.css" media="screen and (min-width: 624px">
+        <link rel="stylesheet" href="../str_pleca_01/css/str_pleca_01.css" media="screen and (min-width: 960px">
+
+        <div class="wdg_altasbajas_result_01" data-enhance="false" id="TIMwdg_altasbajas_result"> 
+
+        </div>
 
 
-    <script type="text/javascript">
-    $(function() {
-    	
-        $("#TIMwdg_altasbajas_result").wdgAltasBajas({
-        	'idtorneo':223
-        	//'idequipo':4228,
-        	//'idtorneo2':223
-        });
+        <script type="text/javascript">
+            $(function() {
 
-    });
+                $("#TIMwdg_altasbajas_result").wdgAltasBajas({
+                    'idtorneo': 223
+                            //'idequipo':4228,
+                            //'idtorneo2':223
+                });
 
-    </script>    
-    
-    
-   <script type="text/javascript" src="http://i2.esmas.com/deportes30/deportestv/js/FrontMainFunction.js"></script>
-    <script src="http://i2.esmas.com/deportes30/js/fut_mx_equipos.js"></script> 
-    <script type="text/javascript" src="http://i2.esmas.com/deportes30/deportestv/js/date.format.js"></script>    
-    <script src="http://i2.esmas.com/deportes30/deportestv/js/DtvConfig.js"></script>
-    <script type="text/javascript" src="http://i2.esmas.com/deportes30/deportestv/js/iniciaTime.js" ></script>
-    <script src="TIM_wdg_altasbajas.js"></script>
-    
+            });
 
-</body>
+        </script>    
+
+
+        <script type="text/javascript" src="http://i2.esmas.com/deportes30/deportestv/js/FrontMainFunction.js"></script>
+        <script src="http://i2.esmas.com/deportes30/js/fut_mx_equipos.js"></script> 
+        <script type="text/javascript" src="http://i2.esmas.com/deportes30/deportestv/js/date.format.js"></script>    
+        <script src="http://i2.esmas.com/deportes30/deportestv/js/DtvConfig.js"></script>
+        <script type="text/javascript" src="http://i2.esmas.com/deportes30/deportestv/js/iniciaTime.js" ></script>
+        <script src="TIM_wdg_altasbajas.js"></script>
+
+
+    </body>
 </html>
