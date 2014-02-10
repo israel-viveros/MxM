@@ -87,8 +87,6 @@
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<span style="display:none;" id="feedsAct" data-primero="" data-segundo=""></span>';
                 MaqueWdgAltas += '<ul class="deg">';
-                MaqueWdgAltas += '<li id="show-j"></li>';
-                MaqueWdgAltas += '<li id="hidde-j"></li>';
                 MaqueWdgAltas += '</ul>';
                 MaqueWdgAltas += '<div class="controls"> ';
                 MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
@@ -414,7 +412,7 @@
 
 
                 if (i === 0) {
-                    globalThis.find('.division span img').attr('src', data[i].tournament.icono);
+                    globalThis.find('.division img').attr('src', data[i].tournament.icono);
                     globalThis.find('.division h2').text(data[i].tournament.name);
                     globalThis.find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/' + String(data[i].tournament.name).replace(/ /g, "-").toLowerCase() + '/calendario/' + data[i].sef.tournamentid + '/');
                 }
@@ -453,7 +451,7 @@
                         golesVisit = '<div class="result textcolor-title2">' + golesVisit + ' (' + conjunto.visit.team.pen + ')</div>';
                     }
                     var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
-                    partidoHtml = '<div class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
+                    partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
                     partidoHtml += '<div class="date textcolor-title2">';
                     partidoHtml += '<span class="inactive">';
                     partidoHtml += '<span class="inactive">' + fechaEvento + '</span>'
@@ -474,7 +472,7 @@
                     partidoHtml += '<div class="icon_team">'
                     partidoHtml += imagenVisit
                     partidoHtml += '</div>'
-                    partidoHtml += "</div>"
+                    partidoHtml += "</li>"
 
 
 
@@ -500,8 +498,12 @@
                 (p < 7) ? visible += jornadasCalendarDTV.GlobalSort[p] : novisible += jornadasCalendarDTV.GlobalSort[p];
             }
             ;
-            $('#show-j').html(visible);
-            $('#hidde-j').html(novisible);
+            
+            // Merge visible and no visible Just for watching
+            var allContentVisible = visible + ' ' + novisible; 
+            $('.deg').html(allContentVisible);
+            //$('.show-j').html(visible);
+            //$('.show-j').html(novisible);
 
             $("#nro_jornadas").html(name_jor).children('li').bind('click', function(event) {
                 actualizar_jornada($(this).data('jornada'));
@@ -519,239 +521,6 @@
 
     }
 })(jQuery);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -806,8 +575,8 @@ jQuery(function($) {
         });
 
 
-        $list = $('.wdg_altasbajas_result_01 .deg li').size();
-        $altura_li = parseInt($('.wdg_altasbajas_result_01 .deg li').height());
+        $list = $('.wdg_altasbajas_result_01 .deg').size();
+        $altura_li = parseInt($('.wdg_altasbajas_result_01 .deg').height());
         $altura = ($altura_li * $list) + $list;
 
         var $parent = $('.wdg_altasbajas_result_01 ');
