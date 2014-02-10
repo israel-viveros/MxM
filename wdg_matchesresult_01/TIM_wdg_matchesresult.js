@@ -1,266 +1,435 @@
-;var wdg_matchresult = {
-	TickerMaster :(typeof TickerMaster === "undefined") ? 0 : TickerMaster,
-	TickerTournamen : (typeof TickerTournamen === "undefined") ? 0 : TickerTournamen,
-	timeUpdate : 10000,
+;(function(){
+	$.fn.wdgMatchResult = function(options){
 
-	DrawCuerpo : function(){
-			var cuerpoHTML = "";			
+		var setting = $.extend({
+			'tickermaster': 0,
+			'tickertournament': 0
+		}, options );
 
-			cuerpoHTML += '<div class="windows8">';
-			cuerpoHTML += '<div class="wBall" id="wBall_1"><div class="wInnerBall"></div></div>';
-			cuerpoHTML += '<div class="wBall" id="wBall_2"><div class="wInnerBall"></div></div>';
-			cuerpoHTML += '<div class="wBall" id="wBall_3"><div class="wInnerBall"></div></div>';
-			cuerpoHTML += '<div class="wBall" id="wBall_4"><div class="wInnerBall"></div></div>';
-			cuerpoHTML += '<div class="wBall" id="wBall_5"><div class="wInnerBall"></div></div>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_container">';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_left">';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_top">';
-			cuerpoHTML += '<a class="title" href="#">Resultados</a>';
-			cuerpoHTML += '<a class="subtitle" href="#">Minuto a Minuto</a>';
-			cuerpoHTML += '<a href=""><span class="wdg_matchesresult_nike"></span></a>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_bottom">';
-			cuerpoHTML += '<div class="wdg_matchesresult_important" id="FListTournaments">';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<ul id="ListTournaments"></ul>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_visible">';
-			cuerpoHTML += '<p><a class="wdg_matchesresult_show" href=""><span class="wdg_matchesresult_sprite uparrow"></span>Ocultar</a></p>';
-			cuerpoHTML += '<p><a class="wdg_matchesresult_hide" href=""><span class="wdg_matchesresult_sprite downarrow"></span>Ver Más</a></p>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_right">';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_navcontainer">';
-			cuerpoHTML += '<div class="wdg_matchesresult_navarrowleft">';
-			cuerpoHTML += '<a class="wdg_matchesresult_navleft" href="#left">';
-			cuerpoHTML += '<i class="tvsa-double-caret-left"></i>';
-			cuerpoHTML += '</a> ';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_nav">';
-			cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
-			cuerpoHTML += '<li class="selected">';
-			cuerpoHTML += '<a href="">';
-			cuerpoHTML += '<p>Fútbol</p>';
-			cuerpoHTML += '</a> ';
-			cuerpoHTML += '</li>';
-			cuerpoHTML += '</ul>';
-			cuerpoHTML += '<div class="linedown"></div>    ';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_navarrowright">';
-			cuerpoHTML += '<a class="wdg_matchesresult_navright" href="#right">';
-			cuerpoHTML += '<i class="tvsa-double-caret-right"></i>';
-			cuerpoHTML += '</a>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div id="left" class="wdg_matchesresult_01_mobileleft">';
-			cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
-			cuerpoHTML += '<i class="tvsa-caret-left"></i>';
-			cuerpoHTML += '<!-- <span class="wdg_matchesresult_leftmobile"></span> -->';
-			cuerpoHTML += '</a>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_components">';
-			cuerpoHTML += '<ul class="wdg_matchesresult_01_list" id="listNow"></ul>  ';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div id="right" class="wdg_matchesresult_01_mobileright">';
-			cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
-			cuerpoHTML += '<i class="tvsa-caret-right"></i>';
-			cuerpoHTML += '<!-- <span class="wdg_matchesresult_rightmobile"></span> -->';
-			cuerpoHTML += '</a>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '<div class="wdg_matchesresult_01_arrows">';
-			cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
-			cuerpoHTML += '<span class="tvsa-double-caret-left active"></span>';
-			cuerpoHTML += '</a>';
-			cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
-			cuerpoHTML += '<span class="tvsa-double-caret-right inactive"></span>  ';
-			cuerpoHTML += '</a>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '</div>';
-			cuerpoHTML += '</div>';
+		var Globalthis = this;
 
-			$("#parentWDG_matchresult_01").html(cuerpoHTML);
+		console.log(setting);
+	var wdg_matchresult = {
+	TickerMaster : setting.tickermaster,
+	TickerTournamen : setting.tickertournament,
+	timeUpdateA : new Array(),
+	globalTimer:"",
 
-					
-	},
+		DrawCuerpo : function(){
+				wdg_matchresult.horaServidor();
+				var cuerpoHTML = "";
+				cuerpoHTML += '<div class="windows8">';
+				cuerpoHTML += '<div class="wBall" id="wBall_1"><div class="wInnerBall"></div></div>';
+				cuerpoHTML += '<div class="wBall" id="wBall_2"><div class="wInnerBall"></div></div>';
+				cuerpoHTML += '<div class="wBall" id="wBall_3"><div class="wInnerBall"></div></div>';
+				cuerpoHTML += '<div class="wBall" id="wBall_4"><div class="wInnerBall"></div></div>';
+				cuerpoHTML += '<div class="wBall" id="wBall_5"><div class="wInnerBall"></div></div>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_container">';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_left">';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_top">';
+				cuerpoHTML += '<a class="title" href="#">Resultados</a>';
+				cuerpoHTML += '<a class="subtitle" href="#">Minuto a Minuto</a>';
+				cuerpoHTML += '<a href=""><span class="wdg_matchesresult_nike"></span></a>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_bottom">';
+				cuerpoHTML += '<div class="wdg_matchesresult_important" id="FListTournaments">';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<ul id="ListTournaments"></ul>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_visible">';
+				cuerpoHTML += '<p><a class="wdg_matchesresult_show" href=""><span class="wdg_matchesresult_sprite uparrow"></span>Ocultar</a></p>';
+				cuerpoHTML += '<p><a class="wdg_matchesresult_hide" href=""><span class="wdg_matchesresult_sprite downarrow"></span>Ver Más</a></p>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_right">';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_navcontainer">';
+				cuerpoHTML += '<div class="wdg_matchesresult_navarrowleft">';
+				cuerpoHTML += '<a class="wdg_matchesresult_navleft" href="#left">';
+				cuerpoHTML += '<i class="tvsa-double-caret-left"></i>';
+				cuerpoHTML += '</a> ';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_nav">';
+				cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
+				cuerpoHTML += '<li class="selected">';
+				cuerpoHTML += '<a href="">';
+				cuerpoHTML += '<p>Fútbol</p>';
+				cuerpoHTML += '</a> ';
+				cuerpoHTML += '</li>';
+				cuerpoHTML += '</ul>';
+				cuerpoHTML += '<div class="linedown"></div>    ';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_navarrowright">';
+				cuerpoHTML += '<a class="wdg_matchesresult_navright" href="#right">';
+				cuerpoHTML += '<i class="tvsa-double-caret-right"></i>';
+				cuerpoHTML += '</a>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div id="left" class="wdg_matchesresult_01_mobileleft">';
+				cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
+				cuerpoHTML += '<i class="tvsa-caret-left"></i>';
+				cuerpoHTML += '<!-- <span class="wdg_matchesresult_leftmobile"></span> -->';
+				cuerpoHTML += '</a>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_components">';
+				cuerpoHTML += '<ul class="wdg_matchesresult_01_list" id="listNow"></ul>  ';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div id="right" class="wdg_matchesresult_01_mobileright">';
+				cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
+				cuerpoHTML += '<i class="tvsa-caret-right"></i>';
+				cuerpoHTML += '<!-- <span class="wdg_matchesresult_rightmobile"></span> -->';
+				cuerpoHTML += '</a>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '<div class="wdg_matchesresult_01_arrows">';
+				cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
+				cuerpoHTML += '<span class="tvsa-double-caret-left active"></span>';
+				cuerpoHTML += '</a>';
+				cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
+				cuerpoHTML += '<span class="tvsa-double-caret-right inactive"></span>  ';
+				cuerpoHTML += '</a>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '</div>';
+				cuerpoHTML += '</div>';
+				Globalthis.html(cuerpoHTML);
+		}, // END DrawCuerpo
 
 
-
-	LoadMaster : function(idMaster){
-		$.ajax({
-			url: 'http://lab.israelviveros.com/deportes/wdg_matchesresult_01/pruebas/Ticker_'+TickerMaster+'.js',
-			type: 'GET',
-			jsonpCallback: 'masterticker',
-			dataType: 'jsonp',
-			cache:true
-		})
-		.done(function(data) {
-			DrawList="";
-			for (var i = 0; i < data.ticker.widgets.widgets.length; i++) {
-			(i===0)? $("#FListTournaments").html('<a class="featured onShowItem" data-url="'+data.ticker.widgets.widgets[i].urldata+'" href="#" >'+data.ticker.widgets.widgets[i].title+'</a>')  : DrawList += '<li><a href="#" data-url="'+data.ticker.widgets.widgets[i].urldata+'" ><p>'+data.ticker.widgets.widgets[i].title+'</p></a></li>';
-			
+		LoadMaster : function(idMaster){			
+			$.ajax({
+				url: 'http://lab.israelviveros.com/deportes/wdg_matchesresult_01/pruebas/Ticker_'+wdg_matchresult.TickerMaster+'.js',
+				type: 'GET',
+				jsonpCallback: 'masterticker',
+				dataType: 'jsonp',
+				cache:true
+			})
+			.done(function(data) {
+				DrawList="";
+				for (var i = 0; i < data.ticker.widgets.widgets.length; i++) {
+				(i===0)? $("#FListTournaments").html('<a class="featured onShowItem" data-url="'+data.ticker.widgets.widgets[i].urldata+'" href="#" >'+data.ticker.widgets.widgets[i].title+'</a>')  : DrawList += '<li><a href="#" data-url="'+data.ticker.widgets.widgets[i].urldata+'" ><p>'+data.ticker.widgets.widgets[i].title+'</p></a></li>';
 				
+					
+				};
+				$("#ListTournaments").html(DrawList);
+				$("#FListTournaments a, #ListTournaments a").bind('click', function(event) {
+					event.preventDefault();
+					$(".windows8").show('fast');
+					wdg_matchresult.LoadFirst($(this).data('url'));
+					$("#FListTournaments").parent().find('a').css('color', '#FFF').removeClass('onShowItem');
+					$(this).css('color', '#D6A256').addClass('onShowItem');
+				});	
+				wdg_matchresult.inicio();		
+			})
+			.fail(function() {
+				console.log("error");
+			});
+			
+			
+		},// END LoadMaster
+
+
+		LoadFirst: function(urlData,tipo){
+			console.log("function LoadFirst");
+			$.ajax({
+				url: urlData,
+				type: 'GET',
+				dataType: 'jsonp',
+				jsonpCallback:'wtdata',
+				cache: false			
+			})
+			.done(function(dataFirst) {
+				//console.log(dataFirst);
+				//wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
+				(tipo==="update") ? wdg_matchresult.updateGoles(dataFirst) : wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
+				try{
+					console.log("SETIMER...");
+					clearInterval(wdg_matchresult.globalTimer);				
+					wdg_matchresult.setTimer();	
+					wdg_matchresult.timeUpdateA.length = 0;
+				}catch(e){
+						console.log("ha ocurrido un error al poner el setimer"+e);
+				}
+			})
+			.fail(function() {
+				console.log("Error al cargar: "+urlData);
+			})
+		}, // END LoadFirst
+
+		DrawContentFirst: function(contenido,tipo){
+			//console.log(contenido);		
+
+			if(tipo === "only"){			
+				$("#FListTournaments").html('<a class="featured onShowItem" data-url="http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js" href="#" >'+contenido[0].EventTournamentName+'</a>');
+				//setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
+			}
+
+			var ItemView = "";		
+			for (var y = 0; y < contenido.length; y++) {
+				ItemView += '<li id="'+contenido[y].TimeStamp+'">';
+				ItemView += '<div class="wdg_match_01">';
+				ItemView += '<div class="wdg_match_01_time background-color1">';
+				ItemView += '<p>';
+				ItemView += '<a class="textcolor-title5" href="">'+contenido[y].periodabrev+' '+(isNaN(contenido[y].time) ? contenido[y].time+'"' : '')+'</a>';
+				ItemView += '</p>';
+				ItemView += '</div> ';
+				ItemView += '<div class="wdg_match_01_team winner">';
+				ItemView += '<div class="wdg_match_01_teamname">';
+				ItemView += '<p>                ';
+				ItemView += '<a href="">'+contenido[y].equipos.local.name.substring(0,18)+'</a>';
+				ItemView += '</p> ';
+				ItemView += '</div>';
+				ItemView += '<div class="wdg_match_01_teamscore">';
+				ItemView += '<p>                ';
+				ItemView += '<a href="">'+contenido[y].equipos.local.goals+'</a>';
+				ItemView += '</p>';
+				ItemView += '</div>';
+				ItemView += '</div>';
+				ItemView += '<div class="wdg_match_01_team loser">';
+				ItemView += '<div class="wdg_match_01_teamname">';
+				ItemView += '<p>                ';
+				ItemView += '<a href="">'+contenido[y].equipos.visit.name.substring(0,18)+'</a>';
+				ItemView += '</p>';
+				ItemView += '</div>';
+				ItemView += '<div class="wdg_match_01_teamscore">';
+				ItemView += '<p>';
+				ItemView += '<a href="">'+contenido[y].equipos.visit.goals+'</a>  ';
+				ItemView += '</p>';
+				ItemView += '</div>';
+				ItemView += '</div>';
+				ItemView += '<div class="wdg_match_01_link">';
+				ItemView += '<div class="wdg_match_01_extra">';
+				ItemView += '<p>';
+				ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].EventTournamentName.substring(0,15)+'<span class="textcolor-title4">'+contenido[y].txtLink.substring(0,14)+'</span></a>';			
+				ItemView += '</p>';
+				ItemView += '</div>';
+				ItemView += '<div class="wdg_match_01_icon">';			
+				ItemView += (contenido[y].MXvideo !="") ? '<a href="'+contenido[y].MXvideo+'"><span class="wdg_match_01_sprite video"></span></a>' : '' ;
+				ItemView += '</div>';
+				ItemView += '</div>';
+				ItemView += '</div>';
+				ItemView += '</li>';
+
+				(contenido[y].periodabrev.toLowerCase()!=="fin") ? (wdg_matchresult.DeterminaTiempoActualizacion(contenido[y].MatchDate,contenido[y].MatchHour)) : '';				
+
 			};
-			$("#ListTournaments").html(DrawList);
-			$("#FListTournaments a, #ListTournaments a").bind('click', function(event) {
-				event.preventDefault();
-				$(".windows8").show('fast');
-				wdg_matchresult.LoadFirst($(this).data('url'));
-				$("#FListTournaments").parent().find('a').css('color', '#FFF').removeClass('onShowItem');
-				$(this).css('color', '#D6A256').addClass('onShowItem');
-			});	
 
-			wdg_matchresult.inicio();		
-		})
-		.fail(function() {
-			console.log("error");
-		});
-		
-		
-	},
-	LoadFirst: function(urlData,tipo){
-		//console.log("recibo"+ urlData);
+			(contenido.length<=4) ? ($(".wdg_matchesresult_hide, <4.wdg_matchesresult_show").hide()) : '';
+			
+
+			objMasc = $("#listNow");
+			
+			if(tipo === "update"){			
+				objMasc.empty().html(ItemView);	
+			}else{
+				objMasc.fadeOut('fast', function() { objMasc.empty().html(ItemView) });
+				objMasc.fadeIn('slow',function(){
+					wdg_matchresult.resize();
+				
+			});
+			}
+			$(".windows8").hide();
+
+		}, // END DrawContentFirst
+
+		inicio : function(){		
+			wdg_matchresult.LoadFirst($("#FListTournaments a").eq(0).data("url"));
+			//setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
+		},
+
+		updateInfo: function(){			
+			$("#FListTournaments").parent().find('a').each(function(index, el) {
+				if($(this).hasClass('onShowItem')){
+				 wdg_matchresult.LoadFirst($(this).data("url"),"update");
+				}
+			});
+		},
+		updateGoles:function(data){
+			console.log(data);
+			var selectorTMP,NuevoGolV,ActGolV,NuevoGolL,ActGolL,tituloAct,tituloNue;
+			for (var o = 0; o < data.matches.match.length; o++) {
+				//console.log(data.matches.match[o])
+				selectorTMP = $("#"+data.matches.match[o].TimeStamp);					
+				ActGolL= String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text().trim());
+				ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text().trim());
+				NuevoGolL = String(data.matches.match[o].equipos.local.goals.trim());
+				NuevoGolV = String(data.matches.match[o].equipos.visit.goals.trim());
+				tituloAct = selectorTMP.find(".textcolor-title5").text();
+				tituloNue = String(data.matches.match[o].periodabrev.trim());
+
+				console.log("TITLE"+tituloAct+"<->"+tituloNue);
+				console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
+				console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
 
 
-		$.ajax({
-			url: urlData,
-			type: 'GET',
-			dataType: 'jsonp',
-			jsonpCallback:'wtdata',
-			cache: false			
-		})
-		.done(function(dataFirst) {
-			//console.log(dataFirst);
-			wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo)
-		})
-		.fail(function() {
-			console.log("Error al cargar: "+urlData);
-		})
-		
-		
-	},
-	DrawContentFirst: function(contenido,tipo){
-		//console.log(contenido);		
+				if(ActGolL !== NuevoGolL){					
+					selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({'display':'none','position':'relative'}).text(NuevoGolL).fadeIn('slow');
+				}
 
-		if(tipo === "only"){			
-			$("#FListTournaments").html('<a class="featured onShowItem" data-url="http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js" href="#" >'+contenido[0].EventTournamentName+'</a>');
-			setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
-		}
+				if(ActGolV !== NuevoGolV){
+					selectorTMP.find('.wdg_match_01_teamscore').eq(1).css({'display':'none','position':'relative'}).text(NuevoGolV).fadeIn('slow');
+				}
+				if(tituloNue!==tituloAct){
+					selectorTMP.find(".textcolor-title5").css({'display':'none','position':'relative'}).text(tituloNue).fadeIn('slow');
+				}
+				
 
-		var ItemView = "";		
-		for (var y = 0; y < contenido.length; y++) {
-			ItemView += '<li>';
-			ItemView += '<div class="wdg_match_01">';
-			ItemView += '<div class="wdg_match_01_time background-color1">';
-			ItemView += '<p>';
-			ItemView += '<a class="textcolor-title5" href="">'+contenido[y].periodabrev+' '+(isNaN(contenido[y].time) ? contenido[y].time+'"' : '')+'</a>';
-			ItemView += '</p>';
-			ItemView += '</div> ';
-			ItemView += '<div class="wdg_match_01_team winner">';
-			ItemView += '<div class="wdg_match_01_teamname">';
-			ItemView += '<p>                ';
-			ItemView += '<a href="">'+contenido[y].equipos.local.name.substring(0,18)+'</a>';
-			ItemView += '</p> ';
-			ItemView += '</div>';
-			ItemView += '<div class="wdg_match_01_teamscore">';
-			ItemView += '<p>                ';
-			ItemView += '<a href="">'+contenido[y].equipos.visit.goals+'</a>';
-			ItemView += '</p>';
-			ItemView += '</div>';
-			ItemView += '</div>';
-			ItemView += '<div class="wdg_match_01_team loser">';
-			ItemView += '<div class="wdg_match_01_teamname">';
-			ItemView += '<p>                ';
-			ItemView += '<a href="">'+contenido[y].equipos.visit.name.substring(0,18)+'</a>';
-			ItemView += '</p>';
-			ItemView += '</div>';
-			ItemView += '<div class="wdg_match_01_teamscore">';
-			ItemView += '<p>';
-			ItemView += '<a href="">'+contenido[y].equipos.visit.goals+'</a>  ';
-			ItemView += '</p>';
-			ItemView += '</div>';
-			ItemView += '</div>';
-			ItemView += '<div class="wdg_match_01_link">';
-			ItemView += '<div class="wdg_match_01_extra">';
-			ItemView += '<p>';
-			ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].EventTournamentName.substring(0,15)+'<span class="textcolor-title4">'+contenido[y].txtLink.substring(0,14)+'</span></a>';			
-			ItemView += '</p>';
-			ItemView += '</div>';
-			ItemView += '<div class="wdg_match_01_icon">';			
-			ItemView += (contenido[y].MXvideo !="") ? '<a href="'+contenido[y].MXvideo+'"><span class="wdg_match_01_sprite video"></span></a>' : '' ;
-			ItemView += '</div>';
-			ItemView += '</div>';
-			ItemView += '</div>';
-			ItemView += '</li>';
-		};
-		objMasc = $("#listNow");
-		
-		if(tipo === "update"){			
-			objMasc.empty().html(ItemView);	
-		}else{
-			objMasc.fadeOut('fast', function() { objMasc.empty().html(ItemView) });
-			objMasc.fadeIn('slow',function(){
-				if ($(window).width()>800) {
-					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','575px');
+
+
+			};
+		},
+		resize: function(){
+
+			if ($(window).width()>800) {
+					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','575px');
 				}
 				if ($(window).width()<624) {
 					var nuevoWidth =0;
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','150px');	
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li').each(function(index, el) {
-					nuevoWidth = $(this).outerWidth()+nuevoWidth;
+					nuevoWidth = $(this).outerWidth()+nuevoWidth+15;
 				});
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({'width': nuevoWidth+'px','height':'150px','overflow':'hidden'});
 				}
-			});
-			FunctionsNaat();
-		}
-		$(".windows8").hide();
-		
-		
+		},
 
+		horaServidor : function(){	
+				$.ajax({url: "http://mxm.televisadeportes.esmas.com/deportes/home/timetvjsonp.js",
+								async: false,
+								cache:false,
+								dataType: 'jsonp',
+								jsonpCallback: 'timetv',
+								success: function(data) {
+									var arr='';
+									var m=0;
+									var anio=0;
+									
+									horas = data.timetv;
+									arr=data.fechatv.replace(/_/gi,"-").split("-");
+									m= parseInt(arr[1])+1;
+									
+									if (String(m).length==1)
+									{
+										m='0'+m;
+									}
+									anio= parseInt(arr[2])+1900;
+									fechas=m+'-'+arr[0]+'-'+anio;	
+									fechas = fechas+' '+horas+':00';
+
+									wdg_matchresult.horaServidor.vari =  fechas;
+
+
+								}
+						});
+			},// End timeUpdate()
 		
-		
+		DeterminaTiempoActualizacion : function(dia,hora){
 
+				var FechaPartido = dia.substring(3,5)+'-'+dia.substring(0,2)+'-'+dia.substring(8,10)+ ' '+ hora.substring(0,5)+':00';
+									var a = new Date(FechaPartido);
+									var b = new Date(wdg_matchresult.horaServidor.vari);
+									//console.log(a);
+									//console.log(b);
 
-		
-		
+						      var msDateA = Date.UTC(a.getFullYear(), a.getMonth()+1, a.getDate());
+						      var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
 
-	},
+								if (parseFloat(msDateA) < parseFloat(msDateB)) {
+									//console.log("MENOR");
+								} else {
+									if (parseFloat(msDateA) == parseFloat(msDateB)) {
+										//console.log("IGUAL");										
+										var resta = parseInt(b.getHours()-a.getHours());
+											//cop
+											if (b.getHours() >= a.getHours()) {
+												console.log("ya empezo el partido");
+												//Ya empezo el partido, actualizar valores cada minuto										
+												wdg_matchresult.timeUpdateA.push(60000);
+											} else {
+												var h1= a.getHours();
+												var h2= b.getHours();
+												var m1= a.getMinutes();
+												var m2= b.getMinutes();
+												//Validar cuantos minutos faltan para el inicio del partido
+												var minutosrestantes = parseInt((((h1 - h2) * 60) + m1) - m2);
 
-	inicio : function(){		
-		wdg_matchresult.LoadFirst($("#FListTournaments a").eq(0).data("url"));
-		setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
-	},
+												if (minutosrestantes <= 15) {
+													//console.log("faltan menos de 15 min");
+													//Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
+													wdg_matchresult.timeUpdateA.push(60000);
 
-	updateInfo: function(){
-		$("#FListTournaments").parent().find('a').each(function(index, el) {
-			if($(this).hasClass('onShowItem')){
-			 wdg_matchresult.LoadFirst($(this).data("url"),"update");
+												} else {
+													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
+													//console.log("comparo-->"+minutosrestantes);
+													(minutosrestantes<=60) ? (wdg_matchresult.timeUpdateA.push(900000)) : '';
+												}
+											}
+											//cop
+											
+											
+											
+									} else {
+										if (parseFloat(msDateA) > parseFloat(msDateB)) {
+											//console.log("MAYOR");
+											
+										} else {
+											//console.log("Error no actualizo");
+											try{
+												wdg_matchresult.DeterminaTiempoActualizacion();
+											}catch(e){
+												//console.log("erro en actualizar catch"+e);
+											}
+										}
+									}
+								}
+								
+								console.log(wdg_matchresult.timeUpdateA.length);
+
+								
+					
+			},// End timeUpdate()
+
+			setTimer: function() {			
+				if (wdg_matchresult.timeUpdateA.length > 0) {
+					var tiempA = Math.min.apply(null, wdg_matchresult.timeUpdateA);
+					console.log("tiempo Actualizacion: " + tiempA);					
+					wdg_matchresult.globalTimer = setInterval(function() {
+						wdg_matchresult.updateInfo()
+					}, tiempA);
+				}
+
 			}
-		});
-	}
 	
-
-
-
-
-
 
 
 };
-	$.when(wdg_matchresult.DrawCuerpo()).done(function(){
-		(wdg_matchresult.TickerMaster>0) ? wdg_matchresult.LoadMaster(wdg_matchresult.TickerMaster) : '' ;
-		(wdg_matchresult.TickerTournamen>0) ? wdg_matchresult.LoadFirst('http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only') : '';
-		(typeof TickerMaster === "undefined" && typeof TickerTournamen === "undefined") ? $("#parentWDG_matchresult_01").remove() : '';
 
-		$(window).resize(function(event) {
-			FunctionsNaat();
-		});
+	$.when(wdg_matchresult.DrawCuerpo()).done(function(){
+		if(wdg_matchresult.TickerMaster!==0){
+			try {
+			  wdg_matchresult.LoadMaster(wdg_matchresult.TickerMaster)
+			} catch (e) {
+			  console.log("error en tickerMaster"+e);
+			}
+		}else if(wdg_matchresult.TickerTournamen!==0){
+			try{
+				//wdg_matchresult.LoadFirst('http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only');
+				wdg_matchresult.LoadFirst('http://lab.israelviveros.com/deportes/wdg_matchesresult_01/pruebas/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only');
+			}catch(e){
+				console.log("Error en TickerTorunament"+e);
+			}
+
+		}
+		(wdg_matchresult.TickerMaster === 0 && wdg_matchresult.TickerTournamen === 0) ? Globalthis.remove() : '';
 	});
-	
+
+	$(window).resize(function(event) {
+		wdg_matchresult.resize();
+	});
 
 		
 
+	}
+})(jQuery);
 
 
 
@@ -302,8 +471,64 @@
 
 
 
-function FunctionsNaat(){
-	console.log("funciones de NAAT");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ;jQuery(function($){ 
     (function(T, $) {
@@ -456,7 +681,7 @@ function FunctionsNaat(){
 				
             });
 						
-            $parent.parent().find('.wdg_matchesresult_01_mobileright a.wdg_matchesresult_right').click(function(e) {
+            $parent.parent().find('.wdg_matchesresult_01_mobileright a.wdg_matchesresult_right').unbind().click(function(e) {
                 e.preventDefault();
                 $parent.animate({
                     'scrollLeft': $parent.scrollLeft() + 222
@@ -487,13 +712,13 @@ function FunctionsNaat(){
 					  
             	});
 				/*Arrows Tablet*/
-				$parent.parent().find('.wdg_matchesresult_01_arrows a.wdg_matchesresult_left').click(function(e) {
+				$parent.parent().find('.wdg_matchesresult_01_arrows a.wdg_matchesresult_left').unbind().click(function(e) {
                 	e.preventDefault();
                	 	$parent.animate({
                    	 	'scrollLeft': $parent.scrollLeft() - 370
                 	}, 500);
             	});
-				$parent.parent().find('.wdg_matchesresult_01_arrows a.wdg_matchesresult_right').click(function(e) {
+				$parent.parent().find('.wdg_matchesresult_01_arrows a.wdg_matchesresult_right').unbind().click(function(e) {
                 	e.preventDefault();
                	 	$parent.animate({
                    	 	'scrollLeft': $parent.scrollLeft() + 370
@@ -505,12 +730,12 @@ function FunctionsNaat(){
 			if($(window).width()>=948){$_brinca = 888}
 			if($(window).width()>=624){$_brinca = 370}
 			if($(window).width()<624){$_brinca = 222}	
-                $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').unbind().bind('swipeleft',function(){
+                $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').bind('swipeleft',function(){
                         $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').animate({
                                 'scrollLeft': $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').scrollLeft() + $_brinca
                             }, 500);
                     });
-                $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').unbind().bind('swiperight',function(){
+                $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').bind('swiperight',function(){
                         $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').animate({
                                 'scrollLeft': $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').scrollLeft() - $_brinca
                             }, 500);
@@ -750,5 +975,3 @@ $(window).load(function(){
 
     }(Televisa, jQuery));
 });
-
-};

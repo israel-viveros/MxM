@@ -1,0 +1,125 @@
+@media screen and (min-width: 948px){
+    .ie7 .wdg_matchesresult_sprite{
+        text-indent: 0px;
+    }
+    .ie7 .wdg_matchesresult_sprite.uparrow{
+        margin-bottom: 4px;
+    }
+    .ie7 .wdg_matchesresult_sprite.downarrow{
+        margin-bottom: 4px;
+    }
+    .wdg_matchesresult_01{
+        width: 100%;
+        height: 221px;
+        padding-bottom: 0px;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container{
+        width: 940px;
+        margin: 0 auto;
+        height: 575px;
+        padding-left: 40px;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_left{
+        height: 575px;
+        width: 190px;
+        float: left;
+        display: block;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right{
+        height: 679px;
+        width: 750px;
+        float: left;
+        margin: 0px 0px;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li{
+        float: left;
+        margin-right: 15px;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav{
+		position:relative;
+        height: 35px;
+        width: 750px;
+        margin-bottom: 13px;
+        margin-top: 24px;
+    }
+
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components{
+        width: 746px;
+        height: 400px;
+        overflow: hidden;
+        float: none;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components .wdg_matchesresult_01_list{
+        height: 400px;
+    } 
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav ul li{
+        float: left;
+    }    
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav ul li.selected{
+        border-bottom: 2px solid #D6A256;
+
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav ul li.selected a{
+        color: #D6A256;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav ul li a{
+        color: #FFFFFF;
+        text-decoration: none;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav ul li a p{
+        border-right: 1px dotted #ffffff;
+        height: 13px;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-bottom: 10px;
+        font-size: 14px;
+        font-weight: bold;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer .wdg_matchesresult_01_nav ul li:nth-child(1) a p{
+        padding-left: 0px;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_arrows{
+		display:none;
+        margin-top: 0px;
+    }
+    .wdg_matchesresult_01 .wdg_matchesresult_01_bottom{
+        display: none;
+        height: 360px;
+    }
+	.wdg_matchesresult_01 .linedown{
+		top: 23px;
+		width: 100%;
+	}
+	.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible{
+        margin-top: 32%;
+    }
+	.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_navcontainer{
+		margin-bottom:17px;
+		height:55px;
+		overflow-x: hidden;
+		margin-top:8px;
+    }
+	.wdg_matchesresult_01 .box{
+		display:block;
+	}
+	
+	.wdg_matchesresult_01 .wdg_matchesresult_01_top a.title{
+		font-size:20px;
+		font-weight:bold;
+		color:#FFF!important;
+	}
+	
+	.wdg_matchesresult_01 .wdg_matchesresult_01_top a.subtitle{
+        display:block;
+        font-weight:bold;
+        font-style:italic;
+        color:#FFF;
+        font-size:15px;
+    }
+	.ie7 .wdg_matchesresult_01 .wdg_matchesresult_01_theme{
+		width:490px !important;
+	}
+	.ie8 .wdg_matchesresult_01 .wdg_matchesresult_01_theme{
+		width:490px !important;
+	}
+}

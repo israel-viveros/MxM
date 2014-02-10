@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_matchesresult_01/">
+    <!-- <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_matchesresult_01/"> -->
 
 	<title>Televisa -  wdg_matchesresult_01</title>
     
@@ -147,9 +147,9 @@
     
 </head>
 <body>
-<link rel="stylesheet" href="../wdg_match_01/css/wdg_match_01_mobile.css" media="screen">
-<link rel="stylesheet" href="../wdg_match_01/css/wdg_match_01_tablet.css" media="screen and (min-width: 39em)">
-<link rel="stylesheet" href="../wdg_match_01/css/wdg_match_01.css" media="screen and (min-width: 60em)">
+<link rel="stylesheet" href="css/wdg_match_01_mobile.css" media="screen">
+<link rel="stylesheet" href="css/wdg_match_01_tablet.css" media="screen and (min-width: 39em)">
+<link rel="stylesheet" href="css/wdg_match_01.css" media="screen and (min-width: 60em)">
 
 <div class="wdg_matchesresult_01" id="parentWDG_matchresult_01" data-enhance="false">
 
@@ -161,10 +161,15 @@
 
 <!-- <script type="text/javascript" src="js/wdg_matchesresult_01.js"></script>  -->
 	<script>
-    var TickerMaster = 1;
-    //var TickerTournamen = 40;
+    
+    	$(function() {
+    		$("#parentWDG_matchresult_01").wdgMatchResult({
+    			'tickermaster':1
+    			//'tickertournament':40
+    		});
+    	});
     </script>
-    <script src="http://localhost/Github/TelevisaDeportesMxm/MxM/wdg_matchesresult_01/TIM_wdg_matchesresult.js"></script>
+    <script src="TIM_wdg_matchesresult.js"></script>
 
 </body>
 </html>
