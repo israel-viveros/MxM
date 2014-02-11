@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_sport_result_01/">
+    <!-- <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_sport_result_01/"> -->
 	<title>Televisa -  wdg_sport_result_01</title>
     
     <meta charset="utf-8" />
@@ -83,10 +83,14 @@
 
 
 
-<script>
-    var idTorneo = 355;
-    var idTeam = 1266;
+<script>    
+$(function() {	
+	$("#TIMwdg_sport_result").WdgSportResult({
+		'idtorneo':355,
+		'idteam':1266
+	});
+});
 </script>
-<script src="http://localhost/Github/TelevisaDeportesMxm/MxM/wdg_sport_result_01/TIM_wdg_sport_result.js"></script>
+<script src="TIM_wdg_sport_result.js"></script>
 </body>
 </html>

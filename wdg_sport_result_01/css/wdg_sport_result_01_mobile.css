@@ -1,0 +1,200 @@
+@media screen {
+	
+	.wdg_sport_result_01{
+		margin-bottom: 0px;
+		padding: 9px 0 7px;
+	}
+	
+	.wdg_sport_result_01 .wrapper{
+		width: 100%;
+		margin:auto;
+		clear: both;
+		overflow: hidden;
+	}
+	
+	.wdg_sport_result_01 .match_title{
+		width: 100%;
+		border-bottom: 1px solid #dba5a6;
+		clear:both;
+		overflow: hidden;
+		
+	}
+	
+	.wdg_sport_result_01 .match_title .cup_name{
+		float:left;
+		overflow:hidden;
+		width: 100%;
+		padding-left: 20px;
+	}
+	
+	.wdg_sport_result_01 .match_title .realtedimg{
+		float:right;
+		overflow:hidden;
+		height:50px;
+		display:none;
+	}
+	
+	.wdg_sport_result_01 .match_title .cup_name .titulo{
+		font-size: 16px;
+		font-style:italic;
+		font-weight:normal;
+		margin-bottom: 14px;
+	}
+	
+	.wdg_sport_result_01 .match_title .cup_name .subtitulo{
+		font-size: 16px;
+		font-style:italic;
+		font-weight:normal;
+		display: none;
+	}
+	
+	
+	.wdg_sport_result_01 .live_time{
+		font-size: 14px;
+		font-style: italic;
+		font-weight: bold;
+		float: none;
+		position: relative;
+		margin: auto;
+		margin-top: -10px;
+		padding: 0 15px;
+		width: 130px;
+		text-align: center;
+	}
+	
+	.wdg_sport_result_01 .leftside{
+		float: none;
+		width:100%;
+		margin-top: 8px;
+		clear: both;
+		overflow:hidden;
+		padding: 0px 10px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team2{
+		display: none;
+	}
+	
+	.wdg_sport_result_01 .leftside .team2_m{
+		display: block;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1,
+	.wdg_sport_result_01 .dotted_separator,
+	.wdg_sport_result_01 .leftside .team2,
+	.wdg_sport_result_01 .leftside .team2_m,
+	.wdg_sport_result_01 .solid_separator
+	{
+		float: left;
+	}
+	
+	
+	
+	.wdg_sport_result_01 .dotted_separator,
+	.wdg_sport_result_01 .solid_separator{
+		width:1px;
+		height:50px;
+	}
+	
+	.wdg_sport_result_01 .dotted_separator{
+		border-right: 1px dashed #dba5a6;
+		margin-right: 25px;
+		width: 10px;
+		display: none;
+	}
+	
+	.wdg_sport_result_01 .solid_separator{
+		border-right: 1px solid #dba5a6;
+		display: none;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1{
+		border-bottom: 1px dashed #dba5a6;
+		margin-bottom:7px;
+		padding-bottom: 0px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1,
+	.wdg_sport_result_01 .leftside .team2,
+	.wdg_sport_result_01 .leftside .team2_m{
+		
+		width:100%;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .escudo,
+	.wdg_sport_result_01 .leftside .team2 .escudo,
+	.wdg_sport_result_01 .leftside .team2_m .escudo{
+		float:left;
+		width:50px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .escudo,
+	.wdg_sport_result_01 .leftside .team2_m .escudo{
+		margin-right: 10px;
+		margin-left: 14px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team2 .escudo{
+		margin-left: 10px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .equipo,
+	.wdg_sport_result_01 .leftside .team2 .equipo,
+	.wdg_sport_result_01 .leftside .team2_m .equipo{
+		float:left;
+		width:118px;
+		font-size:13px;
+		font-weight:bold;
+		color:#FFF;
+		margin-top:14px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team2 .equipo{
+		text-align: right;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .score,
+	.wdg_sport_result_01 .leftside .team2 .score,
+	.wdg_sport_result_01 .leftside .team2_m .score{
+		float:left;
+		width:25px;
+		font-size:36px;
+		color:#FFF;
+		text-align:center;
+		margin-top:0px;
+		margin-right: 12px;
+		font-weight:bold;
+		padding-left: 24px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .penales,
+	.wdg_sport_result_01 .leftside .team2 .penales,
+	.wdg_sport_result_01 .leftside .team2_m .penales{
+		color: #DEB476;
+		float: left;
+		font-size: 10px;
+		line-height: 15px;
+		margin-top: 13px;
+		text-align: center;
+		width: 40px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .penales .penal,
+	.wdg_sport_result_01 .leftside .team2 .penales .penal,
+	.wdg_sport_result_01 .leftside .team2_m .penales .penal{
+		
+		font-size:24px;
+		
+	}
+	
+	.wdg_sport_result_01 .leftside .match_info{
+		display: none;
+	}
+	
+	.wdg_sport_result_01 .date_venue{
+		display:none;
+	}
+	.wdg_sport_result_01 .live-container{
+		display: none;
+	}
+}
