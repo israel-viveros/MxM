@@ -1,10 +1,10 @@
-;
-(function() {
+;(function() {
     $.fn.wdgAltasBajas = function(options) {
         var settings = $.extend({
             'idtorneo': 0,
             'idequipo': 0,
-            'idtorneo2': 0
+            'idtorneo2': 0,
+            'title':''
         }, options);
 
         var globalThis = this;
@@ -54,10 +54,7 @@
             iniciar: function(fechaCalendar) {
 
                 MaqueWdgAltas = "";
-                MaqueWdgAltas += '<div class="str_pleca_01">';
-                MaqueWdgAltas += '<div class="str_pleca_01_title">';
-                MaqueWdgAltas += '<strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong>';
-                MaqueWdgAltas += '</div>';
+                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
                 MaqueWdgAltas += '<img src="" width="45" height="30">';
@@ -160,7 +157,7 @@
                             }
 
                             $('#name-jornada').html("<p>" + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name + '</p><span class="tvsa-caret-down"></span>');
-                            $('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
+                            //$('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
                             var urlfinalTmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js';
                             $.ajax({
                                 url: urlfinalTmp,
@@ -195,7 +192,7 @@
             },
             primeraJornada: function() {
                 if (jornadasCalendarDTV.numeroIdEquipo != 0 && jornadasCalendarDTV.numeroTorneoAct != 0) {
-                    console.log("ejecuto la primera ronda");
+                    //console.log("ejecuto la primera ronda");
                     urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.numeroTorneoAct + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
                     globalThis.find('.full-timetable').css("visibility", "hidden");
                     $.ajax({
@@ -209,13 +206,19 @@
                             $("#feedsAct").data("primero", urFinal);
                         },
                         fail: function() {
-                            console.log("Algo salio mal en 1");
-                            jornadasCalendarDTV.primeraJornada();
+                            //console.log("Algo salio mal en 1");
+                            try{
+                            	jornadasCalendarDTV.primeraJornada();
+                            }
+                            catch(e){
+                            	console.log(e);
+                            }
+                            
                         }
                     });
                     globalThis.children('.filterResultado').remove();
                 }
-                $("#title-jornada").text("Resultados");
+                $("#title-jornada").text(settings.title);
             },
             jornadasCalendarDTV: function(fechaCalendar) {
                 clearInterval(jornadasCalendarDTV.timerCalendar);
@@ -278,7 +281,7 @@
                 // segunda jornada     		
 
                 if (jornadasCalendarDTV.Jornada2 !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0) {
-                    console.log("ejecuto la segunda ronda");
+                    //console.log("ejecuto la segunda ronda");
                     urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.Jornada2 + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
                     $.ajax({
                         url: urFinal,
@@ -290,8 +293,12 @@
                             crear_jornada(data, 'jornada2');
                         },
                         fail: function() {
-                            console.log("Algo salio mal en 2");
-                            jornadasCalendarDTV.segundaJornada();
+                            //console.log("Algo salio mal en 2");
+                            try{
+                            	jornadasCalendarDTV.segundaJornada();
+                            }catch(e){
+                            	console.log(e);
+                            }
                         }
                     });
 
@@ -306,14 +313,14 @@
                 var segundoFeed = String($("#feedsAct").data("segundo"));
 
                 if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo == 0 && jornadasCalendarDTV.Jornada2 === 0) {
-                    console.log("actualizo listado...");
+                    //console.log("actualizo listado...");
                     jornadasCalendarDTV.procesoActualiza(primerFeed);
                 } else if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0 && jornadasCalendarDTV.Jornada2 === 0) {
-                    console.log("un solo equipo");
+                    //console.log("un solo equipo");
                     jornadasCalendarDTV.procesoActualiza(primerFeed);
 
                 } else if (jornadasCalendarDTV.Jornada2 !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0 && jornadasCalendarDTV.numeroTorneoAct !== 0) {
-                    console.log("un solo equipo 2 joarnadas");
+                    //console.log("un solo equipo 2 joarnadas");
                     $.when(jornadasCalendarDTV.procesoActualiza(primerFeed)).done(function() {
                         setTimeout(function() {
                             jornadasCalendarDTV.procesoActualiza(segundoFeed)
@@ -328,7 +335,7 @@
             },
             procesoActualiza: function(urlupdate) {
 
-                console.log("--->URL update: " + urlupdate);
+                //console.log("--->URL update: " + urlupdate);
                 var GolesActLocal, GolesActVisit, GolesNewLocal, GolesNewVisit;
                 $.ajax({
                     url: urlupdate,
@@ -480,10 +487,10 @@
 
 
                 if (jornada2 === "jornada2") {
-                    console.log("ES jornada 2");
+                    //console.log("ES jornada 2");
                     jornadasCalendarDTV.contenidoJornada2.push(partidoHtml)
                 } else {
-                    console.log("ES jornada 1");
+                    //console.log("ES jornada 1");
                     jornadasCalendarDTV.contenidoJornada.push(partidoHtml)
                 }
 
