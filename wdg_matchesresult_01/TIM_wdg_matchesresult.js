@@ -8,7 +8,7 @@
 
 		var Globalthis = this;
 
-		console.log(setting);
+		//console.log(setting);
 	var wdg_matchresult = {
 	TickerMaster : setting.tickermaster,
 	TickerTournamen : setting.tickertournament,
@@ -120,7 +120,7 @@
 				wdg_matchresult.inicio();		
 			})
 			.fail(function() {
-				console.log("error");
+				//console.log("error");
 			});
 			
 			
@@ -128,7 +128,7 @@
 
 
 		LoadFirst: function(urlData,tipo){
-			console.log("function LoadFirst");
+			//console.log("function LoadFirst");
 			$.ajax({
 				url: urlData,
 				type: 'GET',
@@ -141,7 +141,7 @@
 				//wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
 				(tipo==="update") ? wdg_matchresult.updateGoles(dataFirst) : wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
 				try{
-					console.log("SETIMER...");
+					//console.log("SETIMER...");
 					clearInterval(wdg_matchresult.globalTimer);				
 					wdg_matchresult.setTimer();	
 					wdg_matchresult.timeUpdateA.length = 0;
@@ -150,7 +150,7 @@
 				}
 			})
 			.fail(function() {
-				console.log("Error al cargar: "+urlData);
+				//console.log("Error al cargar: "+urlData);
 			})
 		}, // END LoadFirst
 
@@ -243,7 +243,7 @@
 			});
 		},
 		updateGoles:function(data){
-			console.log(data);
+			//console.log(data);
 			var selectorTMP,NuevoGolV,ActGolV,NuevoGolL,ActGolL,tituloAct,tituloNue;
 			for (var o = 0; o < data.matches.match.length; o++) {
 				//console.log(data.matches.match[o])
@@ -255,9 +255,9 @@
 				tituloAct = selectorTMP.find(".textcolor-title5").text();
 				tituloNue = String(data.matches.match[o].periodabrev.trim());
 
-				console.log("TITLE"+tituloAct+"<->"+tituloNue);
-				console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
-				console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
+				//console.log("TITLE"+tituloAct+"<->"+tituloNue);
+				//console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
+				//console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
 
 
 				if(ActGolL !== NuevoGolL){					
@@ -340,7 +340,7 @@
 										var resta = parseInt(b.getHours()-a.getHours());
 											//cop
 											if (b.getHours() >= a.getHours()) {
-												console.log("ya empezo el partido");
+												//console.log("ya empezo el partido");
 												//Ya empezo el partido, actualizar valores cada minuto										
 												wdg_matchresult.timeUpdateA.push(60000);
 											} else {
@@ -357,7 +357,7 @@
 													wdg_matchresult.timeUpdateA.push(60000);
 
 												} else {
-													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+													//console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
 													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
 													//console.log("comparo-->"+minutosrestantes);
 													(minutosrestantes<=60) ? (wdg_matchresult.timeUpdateA.push(900000)) : '';
@@ -382,7 +382,7 @@
 									}
 								}
 								
-								console.log(wdg_matchresult.timeUpdateA.length);
+								//console.log(wdg_matchresult.timeUpdateA.length);
 
 								
 					
@@ -391,7 +391,7 @@
 			setTimer: function() {			
 				if (wdg_matchresult.timeUpdateA.length > 0) {
 					var tiempA = Math.min.apply(null, wdg_matchresult.timeUpdateA);
-					console.log("tiempo Actualizacion: " + tiempA);					
+					//console.log("tiempo Actualizacion: " + tiempA);					
 					wdg_matchresult.globalTimer = setInterval(function() {
 						wdg_matchresult.updateInfo()
 					}, tiempA);
@@ -852,7 +852,7 @@
 					var large_tot = $(this).children().width();
 					var position = $parent.scrollLeft();
 					med = position + $(this).parent().width();
-					console.log('This es:'+$(this).attr('class')+' position: '+position);	
+					//console.log('This es:'+$(this).attr('class')+' position: '+position);	
 					if(position == 0)
 						{
 						$(this).siblings('.wdg_matchesresult_navarrowleft').children().children().css('color', '#6C0808');
@@ -886,7 +886,7 @@
 						{
 						$(this).siblings('.wdg_matchesresult_navarrowleft').children().children().css('color', '#D6A256');
 						}
-						console.log('position: '+position4+' largo: '+large_tot4); 
+						//console.log('position: '+position4+' largo: '+large_tot4); 
 						if(position4 >= large_tot4)
 						{
 						$(this).siblings('.wdg_matchesresult_navarrowright').children().children().css('color', '#6C0808');
