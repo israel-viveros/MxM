@@ -1,0 +1,127 @@
+@media screen and (min-width: 624px){
+	
+	.wdg_sport_result_01{
+		margin-bottom: 24px;
+		padding: 12px 0;
+	}
+	
+	.wdg_sport_result_01 .wrapper{
+		width: 624px;
+	}
+	
+	.wdg_sport_result_01 .live_time{
+		
+		margin-left: 230px;
+		float:left;
+		position:relative;
+	}
+	
+	.wdg_sport_result_01 .leftside{
+		margin-top: 7px;
+		margin-left:10px;
+		padding: 0px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team2{
+		display: block;
+	}
+	
+	.wdg_sport_result_01 .leftside .team2_m{
+		display: none;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1{
+		border-bottom: none;
+		margin-bottom:0px;
+		padding-bottom: 0px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1,
+	.wdg_sport_result_01 .leftside .team2{
+		width:270px;
+		padding-right: 15px;
+	}
+	.wdg_sport_result_01 .match_title .cup_name{
+		padding-left: 0;
+	}
+	.wdg_sport_result_01 .match_title .cup_name .titulo {
+		margin-bottom: 15px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .equipo,
+	.wdg_sport_result_01 .leftside .team2 .equipo{
+		
+		font-size:16px;
+		
+	}
+	
+	.wdg_sport_result_01 .dotted_separator{
+		width: 5px;
+		display: block;
+		margin-right: 29px;
+		margin-left: 11px;
+		margin-top: 6px;
+	}
+	
+	.wdg_sport_result_01 .match_title .cup_name .titulo{
+		font-size: 21px;
+	}
+	.wdg_sport_result_01 .icon-video{
+		float: left;
+		height: 32px;
+		border-bottom: 1px solid #fff;
+		margin: 5px 6px 5px 10px;
+		font-size: 22px;
+	}
+
+	.wdg_sport_result_01 .cup_name div{
+		float: left;
+	}
+	.wdg_sport_result_01 .live-container{
+		height: 43px;
+		width: 108px;
+		margin-right: 10px;
+		display: block;
+	}
+	.wdg_sport_result_01 .see-now{
+		font-size: 11px;
+		font-style: italic;
+		padding-top: 7px;
+	}	
+
+	.wdg_sport_result_01 .online{
+		line-height: 12px;
+		font-style: italic;
+	}
+	.wdg_sport_result_01 .leftside .team1 .score,
+	.wdg_sport_result_01 .leftside .team2 .score,
+	.wdg_sport_result_01 .leftside .team2_m .score{		
+		font-size:46px;	
+		padding-left: 0;
+	}
+	.wdg_sport_result_01 .leftside .team1 .equipo,
+	.wdg_sport_result_01 .leftside .team2 .equipo,
+	.wdg_sport_result_01 .leftside .team2_m .equipo{		
+		width:123px;
+	}
+	
+	.wdg_sport_result_01 .leftside .team1 .escudo, .wdg_sport_result_01 .leftside .team2_m .escudo{
+		margin-left: 4px;
+		padding-top: 8px;
+	}
+	.wdg_sport_result_01 .leftside .team1 .penales .penal, .wdg_sport_result_01 .leftside .team2 .penales .penal, .wdg_sport_result_01 .leftside .team2_m .penales .penal{
+		font-size: 32px;
+	}
+	.wdg_sport_result_01 .leftside .team1 .score, .wdg_sport_result_01 .leftside .team2 .score, .wdg_sport_result_01 .leftside .team2_m .score{
+		margin-right: 18px;
+	}
+	.wdg_sport_result_01 .leftside .team1 .penales, .wdg_sport_result_01 .leftside .team2 .penales, .wdg_sport_result_01 .leftside .team2_m .penales{
+		margin-top: 14px;
+	}
+	.wdg_sport_result_01 .team2 .score{
+		margin: 0 0px 0 13px !important;
+	}
+	.wdg_sport_result_01 .team2 .escudo{
+		padding-top: 8px;
+	}
+}

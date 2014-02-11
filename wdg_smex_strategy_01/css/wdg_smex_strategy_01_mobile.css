@@ -1,0 +1,123 @@
+/* only mobile */
+@media screen and (max-width: 623px) {
+    section.wdg_smex_strategy_01{display:none;}
+}
+/* all devices */
+@media screen {
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdown {
+		background-color: #D3D3D3;
+		box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.1) inset;
+		cursor: pointer;
+		float: left;
+		height: 30px;
+		width: 100%;
+		cursor: pointer;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdown .wdg_smex_strategy_01_dropdowncontent p {
+		color: #000;
+		display: inline-block;
+		float: left;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 33px;
+		margin-left: 20px;
+		width: 246px;
+	}
+	.wdg_smex_strategy_01 #dropdwon-right {
+		float: right;
+		margin-left: 0;
+		padding-bottom: 0;
+		padding-right: 7px;
+		position: relative;
+		width: 21px;
+		z-index: 1000;
+		line-height:32px;
+		height:32px;
+		text-align:center;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdown .wdg_smex_strategy_01_dropdowncontent span {
+		float: right;
+		margin-right: 9px;
+		margin-top: 10px;
+	}
+	.sprite.dropdown-white {
+		background-position: -188px -6px;
+		height: 7px;
+		width: 12px;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer {
+		clear: both;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer ul {
+		background-color: #F5F5F5;
+		cursor: pointer;
+		position: relative;
+		visibility: hidden;
+		z-index: 1000 !important;
+		font-size: 14px;
+		margin: 0;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer ul li {
+		background-color: rgba(235, 235, 235, 0.6);
+		border-bottom: 1px solid #D3D3D3;
+		box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1) inset;
+		height: 34px;
+		width: 100%;
+		float: left;
+		font-weight: bold;
+		margin: 0;
+		padding: 5px 0 5px 5px;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer ul li p {
+		font-style: italic;
+		font-weight: bold;
+		line-height: 34px;
+		margin-left: 20px;
+		text-align:left;
+	}
+	.wdg_smex_strategy_01 .titulo {
+		font-size: 19px;
+		border-bottom: #CCC 1px solid;
+		padding-bottom: 7px;
+		font-weight: normal;
+		text-align:left;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior {
+		border-bottom: 1px solid #CCCCCC;
+		clear: both;
+		height: 32px;
+		position: relative;
+		width: 100%;
+		margin-bottom: 26px;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior strong {
+		float: left;
+		font-size: 12px;
+		padding: 8px 0 4px 325px;
+		position: relative;
+		text-align:left;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdowncontent {text-align:left;}
+	.wdg_smex_strategy_01 .pleca_inferior .wdg_smex_strategy_01_dropdown {
+		float: right;
+		height: 32px;
+		position: relative;
+		width: 34%;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior .wdg_smex_strategy_01_dropdown .wdg_smex_strategy_01_dropdowncontent p {
+		width: 164px;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior .wdg_smex_strategy_01_listcontainer ul li {
+		width: 207px;
+	}
+	.wdg_smex_strategy_01 ul::-webkit-scrollbar-thumb {
+        background: #d3d3d3;
+        -webkit-border-radius: 1ex;
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+    .wdg_smex_strategy_01 ul::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+        background: #f5f5f5;
+    }
+}

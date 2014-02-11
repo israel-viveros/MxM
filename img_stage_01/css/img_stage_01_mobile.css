@@ -1,0 +1,71 @@
+@media screen {
+	.img_stage_01{
+		position:relative;
+		margin-bottom: 1px;
+	}
+	.img_stage_01 div.img_stage_01_image img {
+		width: 100%;
+		height: auto;
+	}
+	.img_stage_01 a.img_stage_01_whtbkg {
+		background-color: #FFFFFF;
+		bottom:5px;
+		display: block;
+		height: 66px;
+		left: 24px;
+		-ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=60)";
+		filter: alpha(opacity=60);
+		position: relative;
+		width: 96%;
+		background: rgba(255, 255, 255, 0.6);
+		position:absolute;
+	}
+	.img_stage_01 a p.img_stage_01_black {
+		display: block;
+		color: #000;
+		padding-left: 5%;
+		padding-top: 3%;
+		font-style: italic;
+		font-weight: bold;
+		font-size: 11px;
+		width: 90%;
+	 	*font-size: 12px;
+		font-size: 12px;
+	}
+	.img_stage_01 a p.img_stage_01_gray {
+		display: block;
+		padding-left: 5%;
+		font-style: italic;
+		color: #666666;
+		font-weight: bold;
+		font-size: 11px;
+		width: 85%;
+	 	*font-size: 12px;
+		font-size: 12px;
+	}
+	.img_stage_01 .img_stage_01_sprite.video-corner {
+		background-position: -131px -40px;
+		height: 43px;
+		width: 43px;
+	}
+	.img_stage_01 .img_stage_01_sprite {
+		display: inline;
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+	.img_stage_01 .img_stage_01_sprite {
+		background: url("../img/global-sprites.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+		display: block;
+		height: 10px;
+		overflow: hidden;
+		text-indent: -1000px;
+		width: 10px;
+	}
+}
+/*Dispositivos vista retina------*/
+@media only screen and (-webkit-min-device-pixel-ratio: 2) and (max-width: 623px),(min-resolution: 192dpi) and (max-width: 623px) {
+	.img_stage_01 a.img_stage_01_whtbkg {
+		bottom:4px;
+	}
+}

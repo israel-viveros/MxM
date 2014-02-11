@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-	<base href="http://54.243.192.45/na-at-deportes/trunk/wdg_smex_strategy_01/">
+	<!-- <base href="http://54.243.192.45/na-at-deportes/trunk/wdg_smex_strategy_01/"> -->
 	<title>Televisa -  wdg_smex_strategy_01</title>
     
     <meta charset="utf-8" />
@@ -76,12 +76,17 @@
 </section>
 
      <script>
- var IdEventoMxm = 388 ; //Torneo
- var IdEventoMxmtv = 1455 ; // Id match
+ 
+ $(function() {
+ 	$("#containerWdgMexStrategy").wdgStrategyMxM({
+ 		'ideventomxm': 388,
+ 		'ideventomxmtv': 1455,
+ 		'idclub': 1455
 
- var IdClub = 1455;
+ 		});
+ });
  </script>
 
- <script src="http://localhost/Github/TelevisaDeportesMxm/MxM/wdg_smex_strategy_01/TIMwdg_smex_strategy.js"></script>
+ <script src="http://localhost/Github/TelevisaDeportesMxm/MxM/wdg_smex_strategy_01/plugin/TIMwdg_smex_strategy.js"></script>
 </body>
 </html>
