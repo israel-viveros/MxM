@@ -218,7 +218,7 @@
 
 			};
 
-			(contenido.length<=4) ? ($(".wdg_matchesresult_hide, <4.wdg_matchesresult_show").hide()) : '';
+			(contenido.length<=4) ? ($(".wdg_matchesresult_hide, .wdg_matchesresult_show").hide()) : '';
 			
 
 			objMasc = $("#listNow");
