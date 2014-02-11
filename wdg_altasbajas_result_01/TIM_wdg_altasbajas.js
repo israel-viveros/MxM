@@ -630,9 +630,11 @@ jQuery(function($) {
             else {
                 $war1_altura = $(this).height()
             }
+            var $hijoAltura = $('.wdg_altasbajas_result_01 .deg').children('li').eq(0).outerHeight();
+            var $multi = $war1_position+1;
+            var $newAlt = $multi * $hijoAltura;
 
-
-            if ($war1_position >= $war1_altura) {
+            if ($newAlt >= $war1_altura) {
                 $(this).siblings('.degraded').css("visibility", "hidden");
                 //$(this).siblings('.controls').children('.next').children('.tvsa-caret-down').css('color','#000');
 
