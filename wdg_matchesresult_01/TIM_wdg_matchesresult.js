@@ -581,7 +581,7 @@
                     }
                 }
                 if( $(window).width() > 623 && $(window).width() <= 960){
-                    $round = Math.round($count/2);
+                    // $round = Math.round($count/2);
 					
 					// Se comentan estas lineas ya que modifican el ancho del ul del carrusel y descuadra en tablet
                     /*if( ($count / 2) > $round )
@@ -590,19 +590,19 @@
                         $m.find('ul').width( ($round * $unitary) - 152);
 					
                     $m.find('ul').height($unitaryH * 2);*/
-                    $m.height($unitaryH * 2);
+                    // $m.height($unitaryH * 2);
                     //$x.find('ul').width( $totalWidth + 20 );
-                    if ( visShow == 'hidden' ) {
-                        $('.wdg_matchesresult_01').animate({
-                            'height': 460
-                        }, 0);
-                    }
+                    // if ( visShow == 'hidden' ) {
+                    //     $('.wdg_matchesresult_01').animate({
+                    //         'height': 460
+                    //     }, 0);
+                    // }
                 }
                 if( $(window).width() < 624 ){    
-                    $round = Math.round($count);
-                    $m.find('ul').width( ($round * $unitary) - 6);
-                    $m.height($unitaryH + 28);
-                    $m.find('ul').height($unitaryH);
+                    // $round = Math.round($count);
+                    // $m.find('ul').width( ($round * $unitary) - 6);
+                    // $m.height($unitaryH + 28);
+                    // $m.find('ul').height($unitaryH);
                     /*if ( visShow == 'hidden' ) {
 
                     }*/
