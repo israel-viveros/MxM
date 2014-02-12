@@ -40,4 +40,10 @@
 	 .ie7 .wdg_altasbajas_result_01 .division{
 		 margin-bottom:0px;
 	 }
+         
+         .deg li figure { width: 60px; height:25px; display: block; float:left; margin-top:10px; padding:4px;}
+.deg li figure img { display:inline-block;width: 25px; height:25px; display: block; float:left; margin-right:2px;}
+.deg li figure figcaption { display:inline-block; width: 30px; height:25px; display: block; float:left; margin-right:2px;}
+.deg li .ligaResult { display:inline-block; width: 80px; height:55px; display: block; float:left;}
+.deg li .ligaResult .result { display:inline-block; width: 10px; height:15px !important; display: block; float:left;}
 }
