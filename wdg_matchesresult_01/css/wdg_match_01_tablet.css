@@ -114,7 +114,14 @@
         float: left;
 		margin-left:2px; 
     }
-    
-   
+    .wdg_matchesresult_contenedor{
+        overflow: scroll;
+        height: 99px;
+        overflow-x: hidden;
+      
+    }
+   .wdg_matchesresult_contenedor::-webkit-scrollbar { 
+    display: none !important; 
+    }
 
 }
