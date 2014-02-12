@@ -496,7 +496,7 @@
 		text-align: center;
 		color: black;
 		font-size: 13px;
-		padding: 8px 1px 8px 5px;
+		padding: 8px 1px 10px 5px;
 		float: left;
 		width: 78px;
 		font-weight: bold;
@@ -690,8 +690,8 @@
 		padding-left: 21px;
 	}
 	.wdg_altasbajas_result_01 .division h2.games{
-		font-size: 14px;
-		font-weight: bolder;
+		font-size: 16px;
+		font-weight: bold;
 		width: 120px;
 		margin-top: -2px;
 		float: right;
