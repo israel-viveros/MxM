@@ -122,6 +122,11 @@
     }
    .wdg_matchesresult_contenedor::-webkit-scrollbar { 
     display: none !important; 
+    }  
+    .wdg_matchesresult_contenedor{ 
+    -ms-overflow-style: none !important;
     }
-
+    .wdg_matchesresult_contenedor{ 
+        overflow: -moz-scrollbars-none !important; 
+    }
 }
