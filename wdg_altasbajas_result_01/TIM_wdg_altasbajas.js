@@ -3,14 +3,12 @@
         var settings = $.extend({
             'idtorneo': 0,
             'idequipo': 0,
-            'idtorneo2': 0,
-            'title':''
+            'idtorneo2': 0
         }, options);
 
         var globalThis = this;
         var name_jor = "";
         var oficial = 1;
-
 
         function regresaSiglas(abrev, nombre, numero) {
             nombre = (abrev != undefined && abrev != null && abrev != '' && abrev != 'null') ? abrev : nombre;
@@ -34,9 +32,6 @@
             return goles;
         }
 
-
-
-
         var jornadasCalendarDTV = {
             jornadaCalendarRoute: url_itd + folder_deportes + "home/jornada/",
             jornadaPresente: 0,
@@ -54,6 +49,10 @@
             iniciar: function(fechaCalendar) {
 
                 MaqueWdgAltas = "";
+                //MaqueWdgAltas += '<div class="str_pleca_01">';
+                //MaqueWdgAltas += '<div class="str_pleca_01_title">';
+                //MaqueWdgAltas += '<strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong>';
+                //MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
@@ -123,9 +122,6 @@
                         jornadasCalendarDTV.segundaJornada()
                     }, 1000);
                 });
-
-
-
 
                 if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo === 0) {
                     urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js';
@@ -207,13 +203,11 @@
                         },
                         fail: function() {
                             //console.log("Algo salio mal en 1");
-                            try{
-                            	jornadasCalendarDTV.primeraJornada();
-                            }
-                            catch(e){
-                            	console.log(e);
-                            }
-                            
+                            try { jornadasCalendarDTV.primeraJornada();
+							}
+							catch(e){
+								console.log(e);
+							}
                         }
                     });
                     globalThis.children('.filterResultado').remove();
@@ -294,15 +288,12 @@
                         },
                         fail: function() {
                             //console.log("Algo salio mal en 2");
-                            try{
-                            	jornadasCalendarDTV.segundaJornada();
-                            }catch(e){
-                            	console.log(e);
-                            }
+                            try{ jornadasCalendarDTV.segundaJornada();
+							}catch(e){
+								console.log(e);
+							}
                         }
                     });
-
-
                 }
 
 
@@ -460,32 +451,40 @@
                     var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
                     partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
                     partidoHtml += '<div class="date textcolor-title2">';
-                    partidoHtml += '<span class="inactive">';
-                    partidoHtml += '<span class="inactive">' + fechaEvento + '</span>'
-                    partidoHtml += '</span>'
-                    partidoHtml += '<span class="time">' + horaEvento + '</span>'
-                    partidoHtml += '</div>'
-                    partidoHtml += '<div class="icon_team">';
-                    partidoHtml += imagenLocal
-                    partidoHtml += '</div>'
-                    partidoHtml += '<div class="team">' + conjunto.local.abrev + '</div>'
-                    partidoHtml += '<div class="result textcolor-title2">' + golesLocal + '</div>'
-                    partidoHtml += '<div class="content_versus">'
-                    partidoHtml += '<div class="versus textcolor-title4">-</div>'
-                    partidoHtml += '<div class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</div>'
-                    partidoHtml += '</div>'
-                    partidoHtml += '<div class="result textcolor-title2">' + golesVisit + '</div>'
-                    partidoHtml += '<div class="team">' + conjunto.visit.abrev + '</div>'
-                    partidoHtml += '<div class="icon_team">'
-                    partidoHtml += imagenVisit
-                    partidoHtml += '</div>'
+                    partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
+                    partidoHtml += '<span class="time">' + horaEvento + '</span>';
+                    partidoHtml += '</div>';
+                    
+                    //Just a simple reduction and html5 incorporation to team's image-label 
+                    partidoHtml += '<figure>'+imagenLocal+'<figcaption>'+conjunto.local.abrev+'</figcaption></figure>';
+                    partidoHtml += '<div class="ligaResult"><span class="result textcolor-title2">'+golesLocal+'</span>';
+                    partidoHtml += '<div class="content_versus"> <span class="versus textcolor-title4">-</span>';
+                    partidoHtml += '<span class="versus_time textcolor-title4">'+ conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
+                    partidoHtml += '<span class="result textcolor-title2">'+golesVisit+'</span></div>';
+                    partidoHtml += '<figure><figcaption>'+conjunto.visit.abrev+'</figcaption>'+imagenVisit+'</figure>';
+                    
+                    
+                    //partidoHtml += '<div class="icon_team">';
+                    //partidoHtml += imagenLocal
+                    //partidoHtml += '</div>'
+                    //partidoHtml += '<div class="team">' +  + '</div>'     
+                    //partidoHtml += '<div class="result textcolor-title2">' + golesLocal + '</div>'
+                    //partidoHtml += '<div class="content_versus">'
+                    //partidoHtml += '<div class="versus textcolor-title4">-</div>'
+                    //partidoHtml += '<div class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</div>'
+                    //partidoHtml += '</div>'
+                    //partidoHtml += '<div class="result textcolor-title2">' + golesVisit + '</div>'
+                    //partidoHtml += '<div class="team">' + conjunto.visit.abrev + '</div>'
+                    //partidoHtml += '<div class="icon_team">'
+                    //partidoHtml += imagenVisit
+                    //partidoHtml += '</div>'
                     partidoHtml += "</li>"
 
 
 
                 }
 
-
+                    //wth
                 if (jornada2 === "jornada2") {
                     //console.log("ES jornada 2");
                     jornadasCalendarDTV.contenidoJornada2.push(partidoHtml)
@@ -637,11 +636,12 @@ jQuery(function($) {
             else {
                 $war1_altura = $(this).height()
             }
-            var $hijoAltura = $('.wdg_altasbajas_result_01 .deg').children('li').eq(0).outerHeight();
+			var $hijoAltura = $('.wdg_altasbajas_result_01 .deg').children('li').eq(0).outerHeight();
             var $multi = $war1_position+1;
             var $newAlt = $multi * $hijoAltura;
 
-            if ($newAlt >= $war1_altura) {
+
+            if ($war1_position >= $war1_altura) {
                 $(this).siblings('.degraded').css("visibility", "hidden");
                 //$(this).siblings('.controls').children('.next').children('.tvsa-caret-down').css('color','#000');
 

@@ -6,17 +6,14 @@
 			'idclub': 0
 		}, options);
 
-
-		var idTorenoValidate = setting.ideventomxm;
-		var idTeamValidate = setting.ideventomxmtv;
-		var idClubIdValidate = setting.idclub;
-		var urlFinalHeader = (idTorenoValidate!=0 && idTeamValidate!=0)? 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+idTeamValidate+'/previo_alineacion.js' : console.log("Falta Id de torno y partido");
-		var urlDropdown = (idTorenoValidate!=0 && idClubIdValidate!=0)? 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+idClubIdValidate+'/matchesclub.js' : console.log("Falta Id de torneo y/o club");
-
-
-
+		var GlobalThis = this;
 
 		var wdg_smex_strategy = {
+
+			
+			urlFinalHeader : 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+setting.ideventomxmtv+'/previo_alineacion.js',
+			urlDropdown : 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+ setting.idclub+'/matchesclub.js',
+
 
 			PintaCacha : function(tipo){
 				var ContenidoMaq ="";
@@ -42,14 +39,15 @@
 					ContenidoMaq += '</ul>';
 				}
 				ContenidoMaq += '<div class="field">';
+				ContenidoMaq += '<div id="LoadingCancha"><div id="fountainG_1" class="fountainG"></div><div id="fountainG_2" class="fountainG"></div><div id="fountainG_3" class="fountainG"></div><div id="fountainG_4" class="fountainG"></div><div id="fountainG_5" class="fountainG"></div><div id="fountainG_6" class="fountainG"></div><div id="fountainG_7" class="fountainG"></div><div id="fountainG_8" class="fountainG"></div></div>';
 				ContenidoMaq += '<img class="cancha" src="http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/cancha.png" alt="field" width="624" height="334"/>';
 				ContenidoMaq += '<span class="players">';		
 				ContenidoMaq += '</span>';
 				ContenidoMaq += '</div>';
 
-				$("#containerWdgMexStrategy").html(ContenidoMaq).css("display","none").fadeIn('slow');
+				GlobalThis.html(ContenidoMaq).css("display","none").fadeIn('slow');
 				
-				setTimeout(function(){wdg_smex_strategy.loadDropdown()},1000);
+				(setting.idclub!==0) ? setTimeout(function(){wdg_smex_strategy.loadDropdown()},1000) : '';
 				wdg_smex_strategy.FunInicio();
 
 				(tipo==="alineacionFinal") ? wdg_smex_strategy.botonesAlineacion() : '';
@@ -61,7 +59,7 @@
 				var ContDropdown ="";
 				
 					$.ajax({
-					 url: urlDropdown,
+					 url: wdg_smex_strategy.urlDropdown,
 				  dataType: 'jsonp',		  
 				jsonpCallback:'matches',
 				  cache: false,
@@ -79,7 +77,7 @@
 					
 				})
 				.fail(function() {
-					console.log("error al cargar DROPDOWN: "+urlDropdown);
+					console.log("error al cargar DROPDOWN: "+wdg_smex_strategy.urlDropdown);
 					
 					
 				})
@@ -92,9 +90,9 @@
 				//var url = '../wdg_smex_strategy_01/' + type + '.json'; // just an example using plain text files
 				
 				el.find('span.players').fadeOut('fast');
-				//console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+IDTemp+'/previo_alineacion.js');
+				//console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js');
 				$.ajax({
-				  url: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+idTorenoValidate+'/'+IDTemp+'/previo_alineacion.js',
+				  url: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js',
 				  dataType: 'jsonp',		  
 				jsonpCallback:'datagame',
 				  cache: false,
@@ -154,6 +152,7 @@
 					
 					};
 					el.find('span.players').html(miHTML).fadeIn('slow');
+					$("#LoadingCancha").hide('slow');
 
 					(tipo ==="actualizacion" ) ? '' : $(".wdg_smex_strategy_01_dropdowncontent p").text(data.week);
 		//Alineacion final
@@ -201,9 +200,9 @@
 
 				};
 				  }
-				}).done(function() {
-					// post update
-				});
+				}).fail(function() {
+					$("#LoadingCancha").hide();
+				})
 			},
 			
 			FunInicio : function(){
@@ -238,7 +237,7 @@
 					}
 					
 					// load the first ajax players
-					wdg_smex_strategy.loadAlineacion($parent, idTeamValidate);
+					wdg_smex_strategy.loadAlineacion($parent, setting.ideventomxmtv);
 				
 					var $parent = $('.wdg_smex_strategy_01');
 					var $dropdownAnchor = $parent.find('.wdg_smex_strategy_01_dropdown');
@@ -287,6 +286,7 @@
 						
 						dropdownItems2.unbind().bind('click', function(evt) {
 							evt.preventDefault();
+							$("#LoadingCancha").show();
 							console.log("clickeando");
 							padre.find('.wdg_smex_strategy_01_dropdowncontent p').html($(this).find('p').html());
 							
@@ -346,38 +346,41 @@
 			},
 			botonesAlineacion : function(){
 				var preview="";
-				$("#containerWdgMexStrategy .menu li").unbind().bind('click', function(event) {
+				GlobalThis.find('.menu li').unbind().bind('click', function(event) {
 					event.preventDefault();
-					$(this).parent('ul').find('li').each(function() {
-						$(this).removeClass('active');
-					});
-					$(this).addClass('active');
+					if(!$(this).hasClass('active')){
+						$("#LoadingCancha").show();
+						$(this).parent('ul').find('li').each(function() {
+							$(this).removeClass('active');
+						});
+						$(this).addClass('active');
 
-					preview = String($(this).children('a').data('query')).toLowerCase();
+						preview = String($(this).children('a').data('query')).toLowerCase();
 
-					switch(preview){
-						case 'inicial': wdg_smex_strategy.AlineacionInicial(); break;
-						case 'final': wdg_smex_strategy.AlineacionFinal(); break;
+						switch(preview){
+							case 'inicial': wdg_smex_strategy.AlineacionInicial(); break;
+							case 'final': wdg_smex_strategy.AlineacionFinal(); break;
+						}
 					}
 
 					
 				});
 			},
 			AlineacionInicial: function(){
-				console.log("Es la alinacion INICIAL");
-				wdg_smex_strategy.loadAlineacion($("#containerWdgMexStrategy"), idTeamValidate);
+				//console.log("Es la alinacion INICIAL");
+				wdg_smex_strategy.loadAlineacion(GlobalThis, setting.ideventomxmtv);
 			},
 			AlineacionFinal: function(){
-				wdg_smex_strategy.loadAlineacion($("#containerWdgMexStrategy"), idTeamValidate,'Alineacionfinal');
+				wdg_smex_strategy.loadAlineacion(GlobalThis, setting.ideventomxmtv,'Alineacionfinal');
 			}
 
 		};
 
-		if(idClubIdValidate !== 0) { 
+		if(setting.idclub !== 0) { 
 			wdg_smex_strategy.PintaCacha('dropdown'); 
 		}
 		else{
-			if (urlFinalHeader!="") {
+			if(setting.ideventomxm!==0 && setting.ideventomxmtv!==0){			
 				wdg_smex_strategy.PintaCacha('alineacionFinal');
 			};
 			

@@ -1,14 +1,14 @@
 @media screen{
-    .wdg_altasbajas_result_01{    	
-    	height: 100%;
+    .wdg_altasbajas_result_01{      
+        height: 100%;
         position: relative;
         width: 100%;
         overflow: hidden;
-		margin-bottom: 0px;
+        margin-bottom: 0px;
     }
-	.wdg_altasbajas_result_01 .time{
-		 font-size:17px;
-	 }
+    .wdg_altasbajas_result_01 .time{
+        font-size:17px;
+    }
     .wdg_altasbajas_result_01 > ul {
         height: 141px;
         display: block;
@@ -16,27 +16,27 @@
         position: relative;
         width: 110%;
         overflow-x: hidden;
-		margin-bottom: 18px;
+        margin-bottom: 18px;
     }
 
     .wdg_altasbajas_result_01 > ul li {
         display: block;
-		height: auto;
-		overflow: hidden;
+        height: auto;
+        overflow: hidden;
         position: relative;
-		border-top: 1px solid #CCCCCC;
+        border-top: 1px solid #CCCCCC;
     }
-    
+
     .wdg_altasbajas_result_01 > ul li div:first-child {        
         width: 84px;
-		height:47px;			
+        height:47px;            
     }
-	
-	.wdg_altasbajas_result_01 > ul li i{
-		position: absolute;
-		left: 59px;
-		color:#FFF;
-	}
+
+    .wdg_altasbajas_result_01 > ul li i{
+        position: absolute;
+        left: 59px;
+        color:#FFF;
+    }
 
     .wdg_altasbajas_result_01 ul li div:first-child span.date, 
     .wdg_altasbajas_result_01 ul li div:first-child span, 
@@ -121,12 +121,12 @@
     }
 
     .wdg_altasbajas_result_01 > ul li a:hover {
-      -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
-      -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
-      -ms-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
-      -o-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
-      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
-      background-color: #E6E6E6;
+        -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+        -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+        -ms-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+        -o-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+        box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+        background-color: #E6E6E6;
     }
     .wdg_altasbajas_result_01 > div {
         position: relative;
@@ -161,7 +161,7 @@
         display: block;
         height: 40px;
         line-height: 40px;                       
-		text-align: center;
+        text-align: center;
     }
 
     .wdg_altasbajas_result_01 > div .full-timetable span {
@@ -184,15 +184,15 @@
         margin: 2px 0 0 10px; 
     }
 
-	.wdg_altasbajas_result_01 .degraded{
-		background-repeat:repeat-x;
-		background-position:10px;
-		border-top:none;
-		display:block;			
-		position:absolute;		
-		bottom:58px;
-		width:100%;
-	}
+    .wdg_altasbajas_result_01 .degraded{
+        background-repeat:repeat-x;
+        background-position:10px;
+        border-top:none;
+        display:block;          
+        position:absolute;      
+        bottom:58px;
+        width:100%;
+    }
     /************************************************List box***************************************************+*/
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_012_listcontainer{
         clear: both;
@@ -204,14 +204,14 @@
         visibility: hidden;
         cursor: pointer;
     }
-    
+
     .wdg_altasbajas_result_01 .result_champion{
         display:none;
     }
     .wdg_altasbajas_result_01 .result_champion:nth-child(-n+9) {
         display:block;
     }
-    
+
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_012_listcontainer ul::-webkit-scrollbar-thumb {
         background: #d3d3d3;
         -webkit-border-radius: 1ex;
@@ -285,7 +285,7 @@
         margin-right: 12px;
         cursor: pointer;
     }
-        
+
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_dropdowncontent > span
     {
         float: right;
@@ -295,16 +295,16 @@
     }
 
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_dropdown {
-            clear: both;
-            width: 100%;
-            height: 100%;
-            background-color: #d3d3d3;
-            box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
-            cursor: pointer;
+        clear: both;
+        width: 100%;
+        height: 100%;
+        background-color: #d3d3d3;
+        box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
+        cursor: pointer;
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_listcontainer
     {
-            clear: both;
+        clear: both;
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_listcontainer ul
     {
@@ -322,19 +322,19 @@
         margin-top: 4px;
         /*margin-right: 3px;*/
         cursor: pointer;
-		height: 20px;
-		width: 20px;
-		color:#000;
+        height: 20px;
+        width: 20px;
+        color:#000;
     }
 
 
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_dropdown {
-            clear: both;
-            width: 100%;
-            height: 100%;
-            background-color: #E1E1E1;
-            box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
-            cursor: pointer;
+        clear: both;
+        width: 100%;
+        height: 100%;
+        background-color: #E1E1E1;
+        box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
+        cursor: pointer;
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_dropdowncontent > span
     {
@@ -346,15 +346,15 @@
 
 
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_012_dropdown {
-            clear: both;
-            width: 100%;
-            height: 100%;
-            
-            cursor: pointer;
+        clear: both;
+        width: 100%;
+        height: 100%;
+
+        cursor: pointer;
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_listcontainer
     {
-            clear: both;
+        clear: both;
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_listcontainer ul
     {
@@ -377,8 +377,8 @@
         float: left;
         padding-left: 15px;
         padding-top: 9px;
-		font-size:13px;
-		font-weight:bold;
+        font-size:13px;
+        font-weight:bold;
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_dropdowncontent > p
     {
@@ -439,7 +439,7 @@
     }
     .wdg_altasbajas_result_01 .carrera
     {
-        
+
         width: 34%;
         font-style: normal !important;
         font-weight: bold;
@@ -467,7 +467,7 @@
         width: 73%;
         position: relative;
         float: left;
-        height: 32px;  	
+        height: 32px;   
     }
     .wdg_altasbajas_result_01 .wdg_altasbajas_result_012_dropdowncontent
     {
@@ -481,26 +481,28 @@
         width: 100%;
         position: relative;
         height: auto;
+        display: inline-block;
         margin-bottom: 0;
-        margin-top: 24px;
+        margin-top: 10px;
+        margin-bottom: 10px !important; 
     }
     .wdg_altasbajas_result_01 .lineaResultado > span.title
     {
         position: relative;
-		text-align: center;
-		color: black;
-		font-size: 13px;
-		padding: 8px 1px 8px 5px;
-		float: left;
-		width: 78px;
-		font-weight: bold;
-		background-color: #f5f5f5;
-        
+        text-align: center;
+        color: black;
+        font-size: 13px;
+        padding: 8px 1px 8px 5px;
+        float: left;
+        width: 78px;
+        font-weight: bold;
+        background-color: #f5f5f5;
+
     }
     .wdg_altasbajas_result_01 .lineaResultado:first-child span.title
     {
         border-top: 1px solid #CCCCCC;
-		border-bottom: 1px solid #CCCCCC;
+        border-bottom: 1px solid #CCCCCC;
     }
 
     .wdg_altasbajas_result_01 .lineaResultado
@@ -510,227 +512,231 @@
         height: 33px;
         clear: both;
         border-bottom: 1px solid #CCC;
-		background-color: #E1E1E1;
+        background-color: #E1E1E1;
         box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
     }
     .wdg_altasbajas_result_01 .str_pleca_01
     {
         margin-bottom: 10px;
     }
-    
-    /*BEGIN: sprite*/    	
-     	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-	        background: url(../img/global-sprites.png) no-repeat 0 0;
-	        display:none;
-	        height: 10px;
-	        overflow: hidden;
-	        text-indent: -1584px;
-	        width: 10px;
-    	}
-	    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite{   	 
-			right: 0;
-			top: 0;
-			display: inline;	    
-	    }      
-	      .wdg_altasbajas_result_01  .wdg_altasbajas_result_01_sprite.video-corner {
-	        background-position: -131px -40px;
-	        height: 43px;
-	        width: 43px;
-	       	position: absolute;
-	    }
-	/*END: sprite*/
-	
-	/*BEGIN: */
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block{
-		width: 100%;
-		height: auto;
-		clear: both;
-		overflow: hidden;
-		background-clip: border-box;
-		background-color: #E7E7E7;
-		background-image: none;
-		background-origin: padding-box;
-		background-repeat: repeat;
-		background-size: auto auto;
-		text-decoration: none;
-		border-bottom: 1px solid #CCCCCC;
-	}
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date{
-		display: block;
-		width: 83px;
-		background: none repeat scroll 0 0 #f5f5f5;
-		font-size: 12px;
-		height: 52px;
-		float: left;
-		text-align: center;
-		line-height: 42px;
-		font-weight: bolder;
-		position: relative;
-		padding-right: 0px;
-	}
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date .inactive{
-		display: block;
-		height: 15px;
-		width: 91px !important;
-		font-size: 12px;
-		font-weight: normal;
-		margin-top: -3px;
-		text-align: center;
-		line-height: 42px;
-	}
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date .inactive span.inactive{
-		display: block;
-		height: 15px;
-		width: 91px !important;
-		font-size: 12px;
-		font-weight: normal;
-		margin-top: -3px;
-		text-align: center;
-		line-height: 42px;
-	}
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date span.activo{
-		width: 75px !important;
-		font-size: 16px;
-		margin-left: 2px;
-		text-align: center;
-		line-height: 42px;
-		font-weight: bolder;
-		padding-left: 5px;		
-	}
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .icon_team{
-		border-bottom: 0 none;
-		line-height: 35px;
-		padding-top: 14px;
-		width: 33px !important;
-		float: left;
-		text-align: center;
-		font-weight: bolder;
-		height: auto;
-	}
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .team{
-			font-size: 14px;
-			margin-top: 7px;
-			width: 33px !important;
-			float: left;
-			text-align: center;
-			line-height: 42px;
-			font-weight: bolder;
-			height: auto;
-		}
-		.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .result{
-			font-size: 18px;
-			margin-top: 7px;
-			width: 25px !important;
-			float: left;
-			text-align: center;
-			line-height: 42px;
-			font-weight: bolder;
-			height: auto;
-		}
-		.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus{
-			font-size: 10px;
-			font-weight: normal !important;
-			font-style: italic;
-			margin-top: 7px;
-			width: 25px !important;
-			padding-left: 0px;
-			float: left;
-			text-align: center;
-			line-height: 42px;
-			height: auto;
-		}
-		.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus div.versus{
-			display: block;
-			width: 28px;
-			height: 25px;
-			line-height: 35px;
-			font-weight: normal !important;
-			color: #948f8f !important;
-			float: left;
-			text-align: center;
-		}
-		.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus .versus_time{
-			width: 28px;
-			height: 15px;
-			line-height: 15px;
-			font-weight: normal !important;
-			color: #948f8f !important;
-			float: left;
-			text-align: center;
-		}
-	.wdg_altasbajas_result_01 .activo{
-			background-color:#B0B0B0;
-			box-shadow: -2px 0 10px rgba(18, 28, 26, 0.37) inset;
-			transition: all 0.2s ease-out 0s;
-			color:#FFF !important;
-	}
-	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block.activo{
-		background:#B2B2B2;
-	}
-	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block .content_versus div.versus.activo2,
-	.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus .versus_time.activo2,
-	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block div.result.activo2 {
-		color:#FFF !important;
-	}	
-	/*END:*/
-	.wdg_altasbajas_result_01 .division{
-		float: left;		
-		margin-top: 0;
-		margin-bottom: 10px;	
-	}
-	.wdg_altasbajas_result_01 .division span{
-		float: left;
-		padding-left: 21px;
-	}
-	.wdg_altasbajas_result_01 .division h2.games{
-		font-size: 14px;
-		font-weight: bolder;
-		width: 90px;
-		margin-top: -2px;
-		float: left;
+
+    /*BEGIN: sprite*/       
+    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
+        background: url(../img/global-sprites.png) no-repeat 0 0;
+        display:none;
+        height: 10px;
+        overflow: hidden;
+        text-indent: -1584px;
+        width: 10px;
+    }
+    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite{      
+        right: 0;
+        top: 0;
+        display: inline;        
+    }      
+    .wdg_altasbajas_result_01  .wdg_altasbajas_result_01_sprite.video-corner {
+        background-position: -131px -40px;
+        height: 43px;
+        width: 43px;
+        position: absolute;
+    }
+    /*END: sprite*/
+
+    /*BEGIN: */
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block{
+        width: 100%;
+        height: auto;
+        clear: both;
+        overflow: hidden;
+        background-clip: border-box;
+        background-color: #E7E7E7;
+        background-image: none;
+        background-origin: padding-box;
+        background-repeat: repeat;
+        background-size: auto auto;
+        text-decoration: none;
+        border-bottom: 1px solid #CCCCCC;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date{
+        display: block;
+        width: 83px;
+        background: none repeat scroll 0 0 #f5f5f5;
+        font-size: 12px;
+        height: 52px;
+        float: left;
+        text-align: center;
+        line-height: 42px;
+        font-weight: bolder;
+        position: relative;
+        padding-right: 0px;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date .inactive{
+        display: block;
+        height: 15px;
+        width: 91px !important;
+        font-size: 12px;
+        font-weight: normal;
+        margin-top: -3px;
+        text-align: center;
+        line-height: 42px;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date .inactive span.inactive{
+        display: block;
+        height: 15px;
+        width: 91px !important;
+        font-size: 12px;
+        font-weight: normal;
+        margin-top: -3px;
+        text-align: center;
+        line-height: 42px;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date span.activo{
+        width: 75px !important;
+        font-size: 16px;
+        margin-left: 2px;
+        text-align: center;
+        line-height: 42px;
+        font-weight: bolder;
+        padding-left: 5px;      
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .icon_team{
+        border-bottom: 0 none;
+        line-height: 35px;
+        padding-top: 14px;
+        width: 33px !important;
+        float: left;
+        text-align: center;
+        font-weight: bolder;
+        height: auto;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .team{
+        font-size: 14px;
+        margin-top: 7px;
+        width: 33px !important;
+        float: left;
+        text-align: center;
+        line-height: 42px;
+        font-weight: bolder;
+        height: auto;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .result{
+        font-size: 18px;
+        margin-top: 7px;
+        width: 25px !important;
+        float: left;
+        text-align: center;
+        
+        font-weight: bolder;
+        height: auto;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus{
+        font-size: 10px;
+        font-weight: normal !important;
+        font-style: italic;
+        margin-top: 20px;
+        width: 30px !important;
+        padding-left: 0px;
+        float: left;
+        text-align: center;
+        
+        height: 15px;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus div.versus{
+        display: block;
+        width: 28px;
+        height: 25px;
+        line-height: 35px;
+        font-weight: normal !important;
+        color: #948f8f !important;
+        float: left;
+        text-align: center;
+    }
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus .versus_time{
+        width: 28px;
+        height: 15px;
+        line-height: 15px;
+        font-weight: normal !important;
+        color: #948f8f !important;
+        float: left;
+        text-align: center;
+    }
+    .wdg_altasbajas_result_01 .activo{
+        background-color:#B0B0B0;
+        box-shadow: -2px 0 10px rgba(18, 28, 26, 0.37) inset;
+        transition: all 0.2s ease-out 0s;
+        color:#FFF !important;
+    }
+    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block.activo{
+        background:#B2B2B2;
+    }
+    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block .content_versus div.versus.activo2,
+    .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus .versus_time.activo2,
+    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block div.result.activo2 {
+        color:#FFF !important;
+    }   
+    /*END:*/
+    .wdg_altasbajas_result_01 .division{
+        float: left;        
+        margin-top: 0;
+        margin-bottom: 10px;    
+    }
+    .wdg_altasbajas_result_01 .division img{
+        float: left;
         padding-left: 21px;
-	}
-	
-	
-	
-	.wdg_altasbajas_result_01 .controls .bgactive{
-		background-color:#A70A0B;
-	}
-	
-	.wdg_altasbajas_result_01 .controls .bginactive{
-		background-color:#BF6163;
-	}
-	
-	.wdg_altasbajas_result_01 .controls .bgactive span{
-		color:#FFF;
-	}
-	
-	.wdg_altasbajas_result_01 .controls .bginactive span{
-		color:#DBA5A5;
-	}
-	
-	
-	
-	
-	
+    }
+    .wdg_altasbajas_result_01 .division h2.games{
+        font-size: 14px;
+        font-weight: bolder;
+        width: 90px;
+        margin-top: -2px;
+        float: left;
+        padding-left: 21px;
+    }
+
+
+
+    .wdg_altasbajas_result_01 .controls .bgactive{
+        background-color:#A70A0B;
+    }
+
+    .wdg_altasbajas_result_01 .controls .bginactive{
+        background-color:#BF6163;
+    }
+
+    .wdg_altasbajas_result_01 .controls .bgactive span{
+        color:#FFF;
+    }
+
+    .wdg_altasbajas_result_01 .controls .bginactive span{
+        color:#DBA5A5;
+    }
+
+
+.deg li figure { width: 60px; height:25px; display: block; float:left; margin-top:10px; padding:4px;}
+.deg li figure img { display:inline-block;width: 25px; height:25px; display: block; float:left; margin-right:2px;}
+.deg li figure figcaption { display:inline-block; width: 30px; height:25px; display: block; float:left; margin-right:2px;}
+.deg li .ligaResult { display:inline-block; width: 80px; height:55px; display: block; float:left;}
+.deg li .ligaResult .result { display:inline-block; width: 10px; height:15px !important; display: block; float:left;}
+
+
 }
 
 
 
 /*Style Retina*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
- 	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
+    .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
         background: url(../global/img/global-sprites@2x.png) no-repeat 0 0;
-		background-size:640px 224px;
-	}
+        background-size:640px 224px;
+    }
 }
 @-moz-document url-prefix() {
-	  		.wdg_altasbajas_result_01 > ul li{
-	    		height: auto;
-	  		}
+    .wdg_altasbajas_result_01 > ul li{
+        height: auto;
+    }
 }
 @-moz-document url-prefix() {
-	  		.wdg_altasbajas_result_01 > ul li.color a{
-	    		padding: 6px 27px;
-	  		}
+    .wdg_altasbajas_result_01 > ul li.color a{
+        padding: 6px 27px;
+    }
 }
