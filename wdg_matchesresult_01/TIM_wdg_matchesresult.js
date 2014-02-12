@@ -35,7 +35,7 @@
 				cuerpoHTML += '<div class="wdg_matchesresult_01_bottom">';
 				cuerpoHTML += '<div class="wdg_matchesresult_important" id="FListTournaments">';
 				cuerpoHTML += '</div>';
-				cuerpoHTML += '<ul id="ListTournaments"></ul>';
+				cuerpoHTML += '<div class="wdg_matchesresult_contenedor"><ul id="ListTournaments"></ul></div>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_visible">';
 				cuerpoHTML += '<p><a class="wdg_matchesresult_show" href=""><span class="wdg_matchesresult_sprite uparrow"></span>Ocultar</a></p>';
@@ -284,16 +284,24 @@
 		},
 		resize: function(){
 
-			if ($(window).width()>800) {
+			if ($(window).width()>=933) {
+				
 					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','575px');
 				}
-				if ($(window).width()<624) {
+				if($(window).width() < 933 && $(window).width() >= 609){
+					
+					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','269px');
+					$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').css('width','375px');
+					$('.wdg_matchesresult_01_arrows').css('display','none');
+				}
+				if ($(window).width()<609) {
+					
 					var nuevoWidth =0;
-				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','150px');	
+				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','118px');	
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li').each(function(index, el) {
-					nuevoWidth = $(this).outerWidth()+nuevoWidth+15;
+					nuevoWidth = $(this).outerWidth()+nuevoWidth;
 				});
-				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({'width': nuevoWidth+'px','height':'150px','overflow':'hidden'});
+				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({'width': nuevoWidth+'px','height':'118px','overflow':'hidden'});
 				}
 		},
 
@@ -571,7 +579,7 @@
                     $totalWidth += $(this).outerWidth(true);
                 });
 	
-                if( $(window).width() > 960  ){
+                if( $(window).width() >= 933  ){
                     $round = Math.round($count/3);
                     if( ($count / 3) > $round )
                         $m.find('ul').width(800);
@@ -586,7 +594,12 @@
                         }, 0);
                     }
                 }
-                if( $(window).width() > 623 && $(window).width() <= 960){
+                if($(window).width() < 933 && $(window).width() >= 609){
+                	if ( visShow == 'hidden' ) {
+                        $('.wdg_matchesresult_01').animate({
+                            'height': 460
+                        }, 0);
+                    }
                     // $round = Math.round($count/2);
 					
 					// Se comentan estas lineas ya que modifican el ancho del ul del carrusel y descuadra en tablet
@@ -604,7 +617,7 @@
                     //     }, 0);
                     // }
                 }
-                if( $(window).width() < 624 ){    
+                if( $(window).width() < 609 ){    
                     // $round = Math.round($count);
                     // $m.find('ul').width( ($round * $unitary) - 6);
                     // $m.height($unitaryH + 28);
@@ -733,9 +746,9 @@
 			
         });
         $(document).ready(function(){
-			if($(window).width()>=948){$_brinca = 888}
-			if($(window).width()>=624){$_brinca = 370}
-			if($(window).width()<624){$_brinca = 222}	
+			if($(window).width()>=933){$_brinca = 888}
+			if($(window).width()>=609){$_brinca = 370}
+			if($(window).width()<609){$_brinca = 222}	
                 $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').bind('swipeleft',function(){
                         $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').animate({
                                 'scrollLeft': $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').scrollLeft() + $_brinca
@@ -944,7 +957,7 @@
 
             if (T.getDeviceSize() === 'large') {
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','95%');
-				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','575px');
+				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','565px');
                 $closeElement.animate({
                     'height': 700
                 }, animationDelay);
@@ -973,9 +986,10 @@
             }
         });
 $(window).load(function(){
-			if($(window).width() >= 948){$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(800)}
-			if($(window).width() < 948 && $(window).width() >= 624){$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(1482)}
-			if($(window).width() < 624){$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(3546)}
+			if($(window).width() >= 933){$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(800)}
+			if($(window).width() < 933 && $(window).width() >= 609){$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(1482);
+		$('.wdg_matchesresult_01_arrows').css('display','none');}
+			if($(window).width() < 609){$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(3546)}
 });
 		
 
