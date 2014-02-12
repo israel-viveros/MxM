@@ -49,10 +49,11 @@
             iniciar: function(fechaCalendar) {
 
                 MaqueWdgAltas = "";
-                MaqueWdgAltas += '<div class="str_pleca_01">';
-                MaqueWdgAltas += '<div class="str_pleca_01_title">';
-                MaqueWdgAltas += '<strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong>';
-                MaqueWdgAltas += '</div>';
+                //MaqueWdgAltas += '<div class="str_pleca_01">';
+                //MaqueWdgAltas += '<div class="str_pleca_01_title">';
+                //MaqueWdgAltas += '<strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong>';
+                //MaqueWdgAltas += '</div>';
+                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
                 MaqueWdgAltas += '<img src="" width="45" height="30">';
