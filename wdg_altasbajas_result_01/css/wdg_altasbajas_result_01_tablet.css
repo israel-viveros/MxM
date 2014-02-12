@@ -1,4 +1,9 @@
 @media screen and (min-width: 624px){
+	
+	.background-color{
+		background: #3a9e2a !important;
+	}
+
 	.wdg_altasbajas_result_01{		
 		height: 100%;
 	    position: relative;
@@ -15,8 +20,8 @@
 		overflow: hidden;
 	}
 	 .wdg_altasbajas_result_01 > div .full-timetable {
-       	background:#d6a256;
-		box-shadow:none;       		 	
+       	background: none repeat scroll 0 0 #E6E6E6;
+		box-shadow: 0 0 7px #C0C0C0 inset;      		 	
 	 	height: 32px;
 	 	line-height:32px;
 	 	margin-left: 200px;
@@ -25,8 +30,8 @@
 	 }
 	 .wdg_altasbajas_result_01 > div .full-timetable span{
 	 	font-weight: bold;
-	 	font-style: italic;
-	 	color:#fff;	 	
+	 	font-style: normal;
+	 	color:#232323;	 	
 	 }
 	 .wdg_altasbajas_result_01 .lineaResultado > span.title{
 	 	width: 81px;
@@ -55,13 +60,10 @@
 		.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date{
 			padding-right: 4px;
 		}
+
+		.deg li figure { width: 60px; height:25px; display: block; float:left; margin-top:10px; padding:4px;}
+		.deg li figure img { display:inline-block;width: 25px; height:25px; display: block; float:left; margin-right:2px;}
+		.deg li figure figcaption { display:inline-block; width: 30px; height:25px; display: block; float:left; margin-right:2px;}
+		.deg li .ligaResult { display:inline-block; width: 80px; height:50px; display: block; float:left;}
+		.deg li .ligaResult .result { display:inline-block; width: 10px; height:15px !important; display: block; float:left;}
 }
-
-
-
-
-.deg li figure { width: 60px; height:25px; display: block; float:left; margin-top:10px; padding:4px;}
-.deg li figure img { display:inline-block;width: 25px; height:25px; display: block; float:left; margin-right:2px;}
-.deg li figure figcaption { display:inline-block; width: 30px; height:25px; display: block; float:left; margin-right:2px;}
-.deg li .ligaResult { display:inline-block; width: 80px; height:55px; display: block; float:left;}
-.deg li .ligaResult .result { display:inline-block; width: 10px; height:15px !important; display: block; float:left;}
