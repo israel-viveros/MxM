@@ -1,0 +1,205 @@
+@media screen {
+    .wdg_mxm_live_04{
+        width: 100%;
+        max-width: 624px;
+        overflow: hidden;
+        margin-bottom: 19px;
+    }
+    .wdg_mxm_live_04 .wdg_mxm_live_04_title{
+        font-size: 28px;
+        font-style: italic;
+        padding-left: 18px;
+        margin-bottom:8px;
+    }
+    .wdg_mxm_live_04 ul{        
+        height:auto;
+        overflow: hidden;
+        width: 100%;
+    }
+    .wdg_mxm_live_04 ul li{
+        padding: 11px 0;
+        border-bottom: 1px #ccc solid;
+        clear: both;
+        overflow: hidden;
+        margin-right: 10px;
+    }
+    	 
+    .wdg_mxm_live_04 ul li .time{
+        float: left;
+        margin-left: 8px;
+        font-weight: bold;
+    }
+    .wdg_mxm_live_04 ul li .icon-time{
+        margin-left: 13px;
+        margin-right: 5px;
+        float: left;
+    }
+    .wdg_mxm_live_04 ul li .icon-interactive{
+        float: right;
+        cursor: pointer;
+		margin-right:15px;
+    }
+    .wdg_mxm_live_04 ul li .icon-interactive2{
+        border-right: 0;
+        padding-right: 10px;
+        margin-left: 0;
+        float: right !important;
+        cursor: pointer;
+    }
+    .wdg_mxm_live_04 ul li .chronic {
+        border-left: 1px solid #CCCCCC;
+        float: left;
+        font-size: 12px;
+        margin-left: 5px;
+        padding-left: 8px;
+        width: 63%;
+		min-height:25px;
+    }
+    .wdg_mxm_live_04 ul li .chronic .textcolor-title2{
+        font-size: 14px;
+        float: left;
+        width: 100%;
+		font-style:italic;
+    }
+    .wdg_mxm_live_04 ul li .chronic .textcolor-title4{
+        font-size: 13px;
+    }
+    .wdg_mxm_live_04 ul li .tvsa-videocamera:hover,
+    .wdg_mxm_live_04 ul li .tvsa-camera:hover{
+        color: #A70A0B;
+    }
+    .ie7 .wdg_mxm_live_04 ul li .tvsa-error{
+        display: none;
+        color: #A70A0B;
+    }
+    .wdg_mxm_live_04 ul li .not-displayed{
+        display: none;
+    }
+    .wdg_mxm_live_04 .img_stage_01{
+        margin-bottom: 5px;
+        margin-top: 35px;
+        display: none;
+		height: auto;
+    }
+    .wdg_mxm_live_04 .vid_player_01{
+        margin-bottom: 5px;
+        margin-top: 52px;
+        display: none;
+    }
+
+    .wdg_mxm_live_04 .arrow_buttons{
+        border-top: 1px solid #ccc;
+        margin-top: 0px;
+    }
+    .wdg_mxm_live_04 a.next {
+        background-color: #A41D21;
+    }
+
+    .wdg_mxm_live_04 > div .prev, 
+    .wdg_mxm_live_04 > div .next {
+        background: none repeat scroll 0 0 #AAAAAA;
+        display: none;
+        height: 28px;
+        left: 0;
+        float: left;
+        top: 0;
+        width: 28px;
+    }
+    .wdg_mxm_live_04 > div .next {
+        left: 28px;
+        margin-left: 1px;
+    }
+
+    .wdg_mxm_live_04 > div .full-timetable {
+        background: none repeat scroll 0 0 #E6E6E6;
+        box-shadow: 0 0 7px #C0C0C0 inset;
+        display: none;
+        height: 28px;
+        line-height: 28px;
+        margin-left: 83px;
+        padding-left: 23px;
+    }
+
+    .wdg_mxm_live_04 > div .full-timetable span {
+        color: #000000;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .wdg_mxm_live_04 > div .full-timetable {
+        line-height: 28px;
+    }
+
+    .wdg_mxm_live_04 a.prev, 
+    .wdg_mxm_live_04 a.next {
+        background-color: #A41D21;
+    }
+    .wdg_mxm_live_04 > div .tvsa-caret-up{
+        margin: 2px 0 0 10px; 
+        color: #fff
+    }
+    .wdg_mxm_live_04 > div .tvsa-caret-down{
+        margin: 2px 0 0 10px; 
+        color: #fff
+    }
+    .wdg_mxm_live_04 .degradado{
+        border-top:none;
+        display:none;
+        position:absolute;
+        top:805px;
+        width:100%;
+        height:12px;
+        background-image:url(http://lab.israelviveros.com/deportes/wdg_mxm_live_02/dotted-horizontal.png);
+        background-repeat:repeat-x;
+        background-position:10px;
+    }
+    .wdg_mxm_live_04 .wdg_mxm_live_04_verMas{
+        background-color: #CCCCCC;
+        display: block;
+        font-size: 12px;
+        line-height: 38px;
+        text-align: center;
+        cursor: pointer;
+        margin:0px 0 0px 0;
+    }
+	.wdg_mxm_live_04 .see_less{
+		display:none;
+		width: 100%;
+        background-color: #CCC;
+        font-size: 12px;
+        text-align: center;
+        line-height: 40px;
+        cursor: pointer;
+	}
+    
+    .wdg_mxm_live_04 .wdg_mxm_live_04_status .wdg_mxm_live_04_list li .vid_player_01{
+    	height: auto;
+    	margin-top: 44px;
+    }
+    .wdg_mxm_live_04 .dotted-right{
+        background: none!important;
+    }
+    .wdg_mxm_live_04 .wdg_mxm_live_04_list .vid_player_01 .vid_player_01_image .theaterContainer{
+    	margin: 0px !important; 
+    	display:none;
+    }
+    .wdg_mxm_live_04 .wdg_mxm_live_04_list .vid_player_01 .vid_player_01_image .theaterContainer .theaterContainerVideo{
+    	float:left;	
+    }
+    .wdg_mxm_live_04 .wdg_mxm_live_04_list .vid_player_01 .vid_player_01_image .theaterContainer .theaterContainerVideo .videoLink{
+    	border: 0pt none; 
+    	display:none;
+    	padding: 0pt; 
+    	position: absolute; 
+    	z-index: 10001; 
+    }    
+    .wdg_mxm_live_04 .wdg_mxm_live_04_list .vid_player_01 .vid_player_01_image .theaterContainer .theaterContainerVideo .contenedor{
+    	margin:0px !important;
+    }
+    .wdg_mxm_live_04 .wdg_mxm_live_04_list .vid_player_01 .vid_player_01_image .companionBanner{
+    	display:none;
+    }
+	.wdg_avgfield_02 .wdg_avgfield_02_row:first-child .wdg_avgfield_02_teams .dotted-right{
+		height: 22px;
+	}
+}
