@@ -139,7 +139,7 @@
         background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/flechas-cancha.png) -55px 100%;
     }
     section.wdg_smex_strategy_01 .grid4 .arrow {
-        background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/img/flechas-cancha.png) 0 100%;
+        background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/img/flechas-cancha.png) 0 100%!important;
         left:135px;
     }
     section.wdg_smex_strategy_01 .grid3 .arrow {
