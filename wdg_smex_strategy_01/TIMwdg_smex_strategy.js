@@ -11,8 +11,9 @@
 		var wdg_smex_strategy = {
 
 			
-			urlFinalHeader : 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+setting.ideventomxmtv+'/previo_alineacion.js',
+			urlFinalAlienacion : 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+setting.ideventomxmtv+'/previo_alineacion.js',
 			urlDropdown : 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+ setting.idclub+'/matchesclub.js',
+			urlmxmheader : 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+ setting.ideventomxmtv+'/mxm_header.js',
 
 
 			PintaCacha : function(tipo){
@@ -51,6 +52,9 @@
 				wdg_smex_strategy.FunInicio();
 
 				(tipo==="alineacionFinal") ? wdg_smex_strategy.botonesAlineacion() : '';
+
+
+				(setting.ideventomxm!==0 && setting.ideventomxmtv!==0 && setting.idclub===0) ? wdg_smex_strategy.header() : '';
 				
 			},
 
@@ -92,7 +96,7 @@
 				el.find('span.players').fadeOut('fast');
 				//console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js');
 				$.ajax({
-				  url: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js',
+				  url: wdg_smex_strategy.urlFinalAlienacion,
 				  dataType: 'jsonp',		  
 				jsonpCallback:'datagame',
 				  cache: false,
@@ -193,6 +197,7 @@
 							$("span[data-guid="+arrspl[k]+"]").remove();
 						};
 						el.find('span.players').append(aliFinal).fadeIn('slow');
+						
 					}
 		// Alineacion Final			
 				
@@ -348,6 +353,7 @@
 				var preview="";
 				GlobalThis.find('.menu li').unbind().bind('click', function(event) {
 					event.preventDefault();
+					console.log("clicked");
 					if(!$(this).hasClass('active')){
 						$("#LoadingCancha").show();
 						$(this).parent('ul').find('li').each(function() {
@@ -372,7 +378,210 @@
 			},
 			AlineacionFinal: function(){
 				wdg_smex_strategy.loadAlineacion(GlobalThis, setting.ideventomxmtv,'Alineacionfinal');
-			}
+			},
+
+			header: function(){
+				console.log("EXECUTE HEADER");
+				$.ajax({
+					url: wdg_smex_strategy.urlmxmheader,
+					jsonpCallback: 'mxmheader',
+					type: 'GET',
+					dataType: 'jsonp'
+				})
+				.done(function(data) {					
+					wdg_smex_strategy.timeUpdate(data.fechaPartido,data.horaPartido);
+				})
+				.fail(function() {
+					console.log("Error al cargar el header "+ wdg_smex_strategy.urlmxmheader);
+				})
+				
+				
+
+
+
+
+			},
+
+			timeUpdate : function(dia,hora){
+				var tiempoActualizacion = 0;
+				var FechaPartido = dia.substring(3,5)+'-'+dia.substring(0,2)+'-'+dia.substring(8,10)+ ' '+ hora.substring(0,5)+':00';
+				$.ajax({url: "http://mxm.televisadeportes.esmas.com/deportes/home/timetvjsonp.js",
+								async: false,
+								cache:false,
+								dataType: 'jsonp',
+								jsonpCallback: 'timetv',
+								success: function(data) {
+									var arr='';
+									var m=0;
+									var anio=0;
+									
+									horas = data.timetv;
+									arr=data.fechatv.replace(/_/gi,"-").split("-");
+									m= parseInt(arr[1])+1;
+									
+									if (String(m).length==1)
+									{
+										m='0'+m;
+									}
+									anio= parseInt(arr[2])+1900;
+									fechas=m+'-'+arr[0]+'-'+anio;	
+									fechas = fechas+' '+horas+':00';
+
+									var a = new Date(FechaPartido);
+									var b = new Date(fechas);
+
+						      var msDateA = Date.UTC(a.getFullYear(), a.getMonth()+1, a.getDate());
+						      var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
+
+								if (parseFloat(msDateA) < parseFloat(msDateB)) {
+									console.log("MENOR");
+								} else {
+									if (parseFloat(msDateA) == parseFloat(msDateB)) {
+										console.log("IGUAL");
+										tiempoActualizacion = 60000;
+										var resta = parseInt(b.getHours()-a.getHours());
+											//cop
+											if (b.getHours() >= a.getHours()) {
+												console.log("ya empezo el partido");
+												//Ya empezo el partido, actualizar valores cada minuto										
+												tiempoActualizacion = 60000;
+											} else {
+												var h1= a.getHours();
+												var h2= b.getHours();
+												var m1= a.getMinutes();
+												var m2= b.getMinutes();
+												//Validar cuantos minutos faltan para el inicio del partido
+												var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
+
+												if (minutosrestantes <= 15) {
+													console.log("faltan menos de 15 min");
+													//Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
+													tiempoActualizacion = 60000;
+
+												} else {
+													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
+													
+													(minutosrestantes<60) ? tiempoActualizacion = 900000 : '';											
+												}
+											}
+											//cop
+											console.log(tiempoActualizacion)
+											setInterval(function(){wdg_smex_strategy.updatePlayers()},tiempoActualizacion);
+											//setInterval(function(){wdg_smex_strategy.updatePlayers()},15000);
+											
+									} else {
+										if (parseFloat(msDateA) > parseFloat(msDateB)) {
+											console.log("MAYOR");
+											
+										} else {
+											console.log("Error no actualizo");
+										}
+									}
+								}
+
+								}
+						});
+			},// End timeUpdate()
+
+			updatePlayers : function(){				
+				var itemActual,itemleft,itemtop,NuevosJugadores="";
+
+				$.ajax({
+					url: wdg_smex_strategy.urlFinalAlienacion,
+					type: 'GET',
+					dataType: 'jsonp',
+					jsonpCallback : 'datagame'					
+				})
+				.done(function(data) {					
+					
+					var equipos = new Array("lineuplocal","lineUpVisit");
+					var actionsPlayer;
+					var newTop, newLeft,vc;					
+
+					for (var z = 0; z < equipos.length; z++) {
+						var equipoString = String(equipos[z]);
+						
+						for (var i = 0; i < data[equipoString].substitutes.length; i++) {
+							actionsPlayer = data[equipoString].substitutes[i].actions;
+								if (typeof actionsPlayer !=="undefined") {
+									for (var x = 0; x < actionsPlayer.length; x++) {										
+										if (actionsPlayer[x].type.toLowerCase() === "entraaljuego") {
+											itemActual 	= $("span[data-guid="+actionsPlayer[x].playeridchange+"]");	
+
+											if(itemActual.length){
+												itemtop = itemActual.css('top');
+												itemleft = itemActual.css('left');
+
+												var arrow = '';
+												var actions = '',icon='';
+												positionx = parseInt(itemleft);
+												positiony = parseInt(itemtop);
+												if (positionx <= 290 && positiony <= 140) arrow = 'grid1';
+												else if (positionx <= 290 && positiony> 140) arrow = 'grid3';
+												else if (positionx > 290 && positiony <= 140) arrow = 'grid2';
+												else arrow = 'grid4';
+
+												if ( typeof data[equipoString].substitutes[i].actions !== "undefined"){
+													actions += '<em>acciones</em><span class="actions">';
+													for (var a=0;a<data[equipoString].substitutes[i].actions.length;a++) {
+														switch(data[equipoString].substitutes[i].actions[a].type){
+															case 'golVisitante': icon = 'tvsa-mxm-goal'; break;
+															case 'amonestacion': icon = 'tvsa-mxm-owngoal'; break;
+															case 'saleDelJuego': icon = 'tvsa-mxm-offside'; break;							
+															case 'entraAlJuego': icon = 'tvsa-mxm-goal'; break;
+															case 'expulsion': icon = 'tvsa-mxm-redcard'; break;
+															default: icon = ''; break;
+														}
+														actions += '<i class="'+icon+'"></i>'+data[equipoString].substitutes[i].actions[a].minute+'\'';
+													}
+													actions +='</span>';
+												}
+
+												vc = (equipos[z] === "lineuplocal" ) ? 'local' : 'visit' ;
+
+												NuevosJugadores += '<span data-guid="'+data[equipoString].substitutes[i].guid+'" class="player '+vc+' '+arrow+'" style="left:'+itemleft+';top:'+itemtop+';display:none">'+
+												'<a href="#" title="'+data[equipoString].substitutes[i].name+' '+data[equipoString].substitutes[i].name+'">'+
+													'<span class="number textcolor-title2">'+data[equipoString].substitutes[i].number+'</span>'+
+													'<span class="tooltip">'+
+														'<img class="playerfoto" src="'+data[equipoString].substitutes[i].image+'" alt="'+data[equipoString].substitutes[i].name+'" width="51" height="38" />'+
+														'<span class="arrow"></span>'+
+														'<span class="name">'+data[equipoString].substitutes[i].name+' '+data[equipoString].substitutes[i].nickName+'</span>'+
+														'<span class="position textcolor-title2">'+data[equipoString].substitutes[i].position+'</span>'+actions+							
+													'</span>'+
+												'</a>'+
+											'</span>';
+
+												itemActual.fadeOut('fast',function(){ $(this).remove()});
+												
+
+											}
+											
+
+										}
+									};
+								};
+							
+							
+						};
+
+
+
+					};// equipos array
+
+					GlobalThis.find(".players").append(NuevosJugadores).children().fadeIn('slow');
+
+
+
+				})
+				.fail(function() {
+					console.log("error update jugadores");
+					
+
+				})
+				
+
+			}//updatePlayers
 
 		};
 
