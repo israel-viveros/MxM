@@ -301,7 +301,7 @@
 					var nuevoWidth =0;
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','118px');	
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li').each(function(index, el) {
-					nuevoWidth = $(this).outerWidth()+nuevoWidth;
+					nuevoWidth = $(this).outerWidth()+nuevoWidth+15;
 				});
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({'width': nuevoWidth+'px','height':'118px','overflow':'hidden'});
 				}
