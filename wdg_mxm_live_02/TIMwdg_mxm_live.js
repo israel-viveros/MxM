@@ -2,7 +2,7 @@
 	$.fn.wdgLiveMxM = function(options){
 		var setting = $.extend({
 			'idmxm': 0,
-			'idmxmtv': 0
+			'idmxmtv': 0			
 		}, options);
 
 
@@ -12,7 +12,29 @@
 			urlfeed : 'http://lab.israelviveros.com/deportes/wdg_mxm_live_02/'+setting.idmxm+'/'+setting.idmxmtv+'/mxm.jsonp',
 			feedCallback: 'mxmSorteo',
 			urlfeedHeader: 'http://lab.israelviveros.com/deportes/wdg_mxm_live_02/'+setting.idmxm+'/'+setting.idmxmtv+'/mxm_header.js',
-			feedCallbackHeader : 'mxmheader',			
+			feedCallbackHeader : 'mxmheader',	
+
+			parentMaquetado : function(){
+
+			
+			
+				var maquetadoP = "";				
+				maquetadoP += '<div class="scroll">';
+				maquetadoP += '<div class="wdg_mxm_live_02_status">';
+				maquetadoP += '<div class="windows8" id="loadingMxmLive">';
+				maquetadoP += '<div class="wBall" id="wBall_1"><div class="wInnerBall"></div></div>';
+				maquetadoP += '<div class="wBall" id="wBall_2"><div class="wInnerBall"></div></div>';
+				maquetadoP += '<div class="wBall" id="wBall_3"><div class="wInnerBall"></div></div>';
+				maquetadoP += '<div class="wBall" id="wBall_4"><div class="wInnerBall"></div></div>';
+				maquetadoP += '<div class="wBall" id="wBall_5"><div class="wInnerBall"></div></div>';
+				maquetadoP += '</div>';
+				maquetadoP += '<ul class="wdg_mxm_live_02_list" id="pintaCont">';
+				maquetadoP += '</ul>';
+				maquetadoP += '</div>; '
+				maquetadoP += '</div>';
+				GlobalThis.html(maquetadoP);
+
+			},
 
 			loadMaster: function(){
 				var Maquetado="";
@@ -40,9 +62,26 @@
 						};
 
 
+
+
+
 						Maquetado += '<li data-guid="'+guuid+'">';
-						Maquetado += '<div class="time_icon">';						
-						Maquetado += (data.action[i].titulo.indexOf('@') !== -1) ?'<div class="icon-time twitter"><i class="tvsa-twitter"></i></div>' : '<div class="textcolor-title2 time">'+data.action[i].minute+'</div>';
+
+						//<div class="textcolor-title6 time">92\'</div><div class="icon-time"> <i class="tvsa-mxm-gameend"></i> </div>
+						Maquetado += '<div class="time_icon">';
+
+					
+							if(data.action[i].titulo.indexOf('@') !== -1) {	
+							Maquetado += '<div class="icon-time twitter"><i class="tvsa-twitter"></i></div>';
+							}else{
+								Maquetado += '<div class="textcolor-title2 time">'+data.action[i].minute+'</div>';
+							}
+						
+
+
+						
+
+
 						Maquetado += '</div>';
 						Maquetado += '<div class="chronic">'+tituloTw;						
 						Maquetado += '<div class="chronic_description">'+data.action[i].description.replace(/'/g,"&#39;")+'</div>';						
@@ -90,7 +129,7 @@
 
 					};
 					$("#loadingMxmLive").hide('slow');
-					GlobalThis.css({'display':'none'}).html(Maquetado).fadeIn('slow');
+					GlobalThis.find("#pintaCont").css({'display':'none'}).html(Maquetado).fadeIn('slow');
 					wdgMxmLive.inicio();
 					wdgMxmLive.header();
 					// SI TENGO ACCESO A LA FECHA Y HORA AQUI INICIALIZO
@@ -108,7 +147,7 @@
 
 			inicio : function(){
 
-				$('.wdg_mxm_live_02 .tvsa-camera').live('click',function(event){
+				GlobalThis.find('.tvsa-camera').live('click',function(event){
 					event.preventDefault();
 					var parentContainer = $(this).parent().siblings('.img_stage_01');
 					if(!$(this).hasClass('active')){
@@ -124,7 +163,7 @@
 
 				});
 			    
-			    $('.wdg_mxm_live_02 .tvsa-videocamera').live('click',function(event){ 
+			    GlobalThis.find('.tvsa-videocamera').live('click',function(event){ 
 			    	event.preventDefault();
 			    	var parentContainer = $(this).parent().siblings('.vid_player_01.not_here.mantener');
 			    	var iframeChild,heightac;
@@ -292,7 +331,7 @@
 						Maquetado += '<div class="time_icon">';						
 						Maquetado += (data.action[i].titulo.indexOf('@') !== -1) ?'<div class="icon-time twitter"><i class="tvsa-twitter"></i></div>' : '<div class="textcolor-title2 time">'+data.action[i].minute+'</div>';
 						Maquetado += '</div>';
-						Maquetado += '<div class="chronic">'+tituloTw;						
+						Maquetado += '<div class="chronic">'+tituloTw;
 						Maquetado += '<div class="chronic_description">'+data.action[i].description.replace(/'/g,"&#39;")+'</div>';						
 						Maquetado += (data.action[i].URL!=="") ? '<div class="wdg_mxm_live_02_verMas"><a class="textcolor-title1 ui-link" href="'+data.action[i].URL+'">Ver Más</a></div>' : '';
 						Maquetado += '</div>';
@@ -335,7 +374,7 @@
 						Maquetado += '</li>';
 						};
 
-						GlobalThis.prepend(Maquetado);
+						GlobalThis.find("#pintaCont").prepend(Maquetado);
 
 						$("[data-guid="+guuid+"]").slideDown('slow');
 
@@ -360,7 +399,12 @@
 
 
 
-		(setting.idmxm!==0 && setting.idmxmtv!==0)? wdgMxmLive.loadMaster() : '';
+		if(setting.idmxm!==0 && setting.idmxmtv!==0){
+			$.when(wdgMxmLive.parentMaquetado()).done(function() {
+				wdgMxmLive.loadMaster()
+			});
+		}
+		
 
 	}
 })(jQuery);

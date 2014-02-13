@@ -18,7 +18,7 @@
     }
 	.wdg_mxm_live_02 ul li:last-child{
 		border-bottom: none;
-		background: url(../img/dotted-horizontal.png) repeat-x bottom;
+		background: url(http://lab.israelviveros.com/deportes/wdg_mxm_live_02/dotted-horizontal.png) repeat-x bottom;
 	}
     .wdg_mxm_live_02 ul li:first-of-type{
         padding: 0px 0px 11px !important;
