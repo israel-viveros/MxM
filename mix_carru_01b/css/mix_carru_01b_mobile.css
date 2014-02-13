@@ -1,0 +1,345 @@
+@media screen{  
+    .mix_carru_01b{
+        margin-bottom:10px;
+    }
+    .mix_carru_01b.type2b2_02 > div.first-child div div {
+        font-size: 16px;
+    }
+    .mix_carru_01b .type2b2_02 .articleMobile {
+        height: auto;
+        background-color: red;
+        padding: 0;
+        border-top: 1px solid #ccc;
+        overflow: hidden;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 {
+        padding: 0;
+        color: #000;
+        position: relative;
+        overflow: hidden;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 p {
+        display: none;
+    } 
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 div {
+        font-size: 12px;
+        font-style: italic;
+        margin-bottom:0px;
+    }
+    
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02 {
+        position:relative;
+        height: auto;
+        margin:-28px 0 0 24px;
+        padding:24px 36px 24px 36px;
+        overflow: hidden;
+        background-color: #fff;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02 div {
+        padding-left: 0;
+        height: auto;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02:before,
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02:after {
+        content: "";
+        display: table;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02:after {
+        clear: both;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02 {
+        zoom: 1;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02 > ul:first-child {
+        float: right;
+        width: 100%;
+        display: block;
+        margin-right: 8px;
+        margin-bottom: 8px;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02 > ul:first-child li {
+        height: 10px;
+        width: 10px;
+        float: right;
+        background-color: #ccc;
+        margin: 2px;
+    }
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 > .galleryCaption_02 > ul:first-child .selected {
+        background-color: #666;
+    }
+    .mix_carru_01b .type2b2_02 .articleMobile {
+        height: auto;
+        padding: 0;
+        border-top: 1px solid #ccc;
+        overflow: hidden;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList {
+        width: 100%;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li {
+        background-color: #eee;
+        height: auto;
+        padding: 0;
+        border-top: 1px solid #ccc;
+        overflow: hidden;
+        position: relative;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li img {
+        display: none;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a {
+        width: 96.8%;
+        text-decoration: none;
+        color: #666;
+        display: block;
+        font-size: 13px;
+        margin: 13px 0;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a:before,
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a:after {
+        content: "";
+        display: table;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a:after {
+        clear: both;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a {
+        zoom: 1;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a p,
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a h4 {
+        width: 70%;
+        padding-left: 16px;
+        line-height: 24px;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a span.icon {
+        background: url(img/mobile-arrow-sprites.png) no-repeat 0 0;
+        background-size: 10px 14px;
+        height: 32px;
+        width: 35px;
+        position: absolute;
+        top: 50%;
+        margin-top: -8px;
+        right: 8px;
+    }
+    .mix_carru_01b .type2b2_02 .articlesThumbList li a div {
+        display: none;
+    }
+    .mix_carru_01b .title {
+        position: relative;
+    }
+    .mix_carru_01b .title h3 {
+        background-color: #0079c2;
+    }
+
+    .mix_carru_01b .title h3 a {
+        background-image: none;
+    }
+    .mix_carru_01b .title h1 a {
+        background: none;
+    }
+    .mix_carru_01b .title h1 a .icon {
+        background: transparent url(img/verticalhero/mobile-arrow-sprites.png) no-repeat 0 0;
+        background-size: 10px 14px;
+        height: 70%;
+        width: 19px;
+        float: right;
+        margin-top: 2px;
+        margin-right: 2px;
+    }
+    .mix_carru_01b .title ul {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: 56px;
+        height: 32px;
+        padding-left: 13px;
+    }
+    .mix_carru_01b .title ul > li {
+        float: left;
+        width: 16px;
+        height: 8px;
+        font-size: 21px;
+        margin: 10px 0 0;
+    }
+    .mix_carru_01b .title ul > li a {
+        width: 15px;
+        height: 9px;
+        padding: 0;
+        color: transparent;
+    }
+    .mix_carru_01b .title ul > li:first-child a {
+        background: url(img/verticalhero/arrow-sprites.png) no-repeat 6px 0
+    }
+    .mix_carru_01b .title ul > li:last-child {
+        border-left: 1px dotted #666;
+        padding-left: 10px;
+    }
+    .mix_carru_01b .title ul > li:last-child a {
+        background: url(img/verticalhero/arrow-sprites.png) no-repeat -15px 0;
+    }
+    .mix_carru_01b.showArrows .title h1 {
+        width: 50%;
+    }
+    .mix_carru_01b.showArrows .title h1 a .icon {
+        display: none;
+    }
+    .mix_carru_01b.showArrows .title ul {
+        display: block;
+    }
+    .mix_carru_01b .type2b2_02 .galleryImages_02 {
+        width:100%;
+        overflow:hidden;
+    }
+    .mix_carru_01b .type2b2_02 .galleryImages_02 span.corner{
+        visibility: hidden;
+    }
+    .mix_carru_01b .type2b2_02 .galleryImages_02 > ul {
+        display: block;
+        position:relative;
+    }
+    .mix_carru_01b .type2b2_02 .galleryImages_02 > ul > li {
+        float: left;
+        overflow: hidden;
+    }
+    .mix_carru_01b .type2b2_02 .galleryImages_02 > ul > li:last-child {
+        margin-right: 0px;
+    }
+    
+    .mix_carru_01b .galleryImages_02 ul {
+        width:10000px;
+    }
+    
+    .mix_carru_01b .articleBigModule_02 img {
+        width: 100%;
+        height: auto;
+    }
+    .mix_carru_01b .articleBigModule_02 .galleryCaption_02 {
+        background-color: white;
+        position: relative;
+    }
+    .mix_carru_01b .articleBigModule_02 .galleryCaption_02 > h3 {
+        font-style: italic;
+    }
+    .mix_carru_01b .articleBigModule_02 div a,
+    .mix_carru_01b .articleBigModule_02 h4 a {
+        color: inherit;
+        text-decoration: none;
+    }
+    .mix_carru_01b .articleBigModule_02 div a:hover,
+    .mix_carru_01b .articleBigModule_02 h4 a:hover {
+        text-decoration: none;
+    }
+    .mix_carru_01b > .type2a .articleMedium {
+        height: auto;
+        border-top: 1px solid #ccc;
+    }
+    .mix_carru_01b > .type2a .articleMedium div:last-child {
+        height: auto;
+        background-color: #fff;
+        padding: 22px;
+        position: relative;
+        width: 100%;
+    }
+    .mix_carru_01b > .type2a .articleMedium img {
+        display: none;
+    }
+    .mix_carru_01b > .type2a .articleMedium a {
+        width: 96.8%;
+        text-decoration: none;
+        color: #666;
+        display: inline;
+        font-size: 13px;
+    }
+    .mix_carru_01b > .type2a .articleMedium a h4 {
+        width: 70%;
+        float: left;
+        padding: 0 16px;
+        font-size: 16px;
+    }
+    .mix_carru_01b > .type2a .articleMedium a p:first-child {
+        font-size: 13px;
+        font-style: italic;
+        display: block;
+    }
+    .mix_carru_01b > .type2a .articleMedium a span.icon {
+        background: url(img/verticalhero/mobile-arrow-sprites.png) no-repeat 0 0;
+        background-size: 10px 14px;
+        height: 32px;
+        width: 45px;
+        position: absolute;
+        top: 43px;
+        right: 58px;
+    }
+    .mix_carru_01b .galleryCaption_02 .bullets_02{
+        display: block;
+        position:absolute;
+        top:6px;
+        right:0px;
+        margin:0;
+    }
+    .mix_carru_01b .galleryCaption_02 .bullets_02 ul{
+        width: 110px;
+        float: right;
+        margin-top:0px;
+        display: block;
+    }
+    .mix_carru_01b .galleryCaption_02 .bullets_02 ul li{
+        width:12px;
+        height: 12px;
+        background-color:#CCC;
+        margin-left: 5px;
+        float:left;
+    }
+    .mix_carru_01b .galleryCaption_02 .bullets_02 ul li.selected{
+        background-color:#09C;
+    }
+    .mix_carru_01b span.corner {
+        position:absolute;
+        top:0;
+        right:-1px;
+        height:40px;
+        width:40px;
+        background: url(img/global-sprites.png) no-repeat;
+    }
+    
+    .mix_carru_01b span.corner.photo {
+        background-position: -85px -40px !important;
+    }
+    .mix_carru_01b span.corner.video {
+        background-position: -132px -40px !important;
+        height: 43px;
+        width: 43px;
+    }
+
+    .mix_carru_01b .swipe {
+        overflow: hidden;
+        visibility: visible;
+        position: relative;
+    } 
+    .mix_carru_01b .swipe-wrap {
+        overflow: hidden;
+        position: relative;
+        width: 624px;
+    }
+
+    .mix_carru_01b .swipe-wrap  li {
+        position: relative;
+        display: inline-block!important;
+    } 
+
+    .mix_carru_01b .galleryCaption_02 .caption{
+        font-style: normal;
+        font-size: 18px;
+        margin-bottom: 9px;
+    }
+	
+	.mix_carru_01b #mix_carru_01_svg{
+		display: none;
+	}
+}
+@media screen and (max-width: 623px) {
+    .mix_carru_01b .type2b2_02 .articleBigModule_02 .galleryThumbs {
+        display:none;
+    }
+}

@@ -1,0 +1,21 @@
+@media screen and (min-width: 948px){ 
+    .mix_carru_01b .type2b2_02 .galleryImages_02 span.corner{
+        visibility: visible;
+    }
+	
+	.ie7 .mix_carru_01b .articleBigModule_02  ul.galleryThumbs{
+		height:130px;
+		overflow: hidden;
+	}
+	
+	.ie7 .mix_carru_01b .articleBigModule_02  ul.galleryThumbs li{
+		display: inline;
+		margin-left: 2px;
+		margin-bottom: 2px;
+	}	
+    .ie8 .mix_carru_01b .articleBigModule_02  ul.galleryThumbs,
+    .ie9 .mix_carru_01b .articleBigModule_02  ul.galleryThumbs,
+    .ie10 .mix_carru_01b .articleBigModule_02 ul.galleryThumbs {
+        height: 130px;
+    } 
+}
