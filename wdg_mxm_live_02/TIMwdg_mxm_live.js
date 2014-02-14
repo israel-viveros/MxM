@@ -209,7 +209,7 @@
 					var Maquetado = '';
 					var TotalItemNow = GlobalThis.find("#pintaCont").children('li').size();
 					var TotalItemNew = data.action.length;
-					console.log(TotalItemNew+"<-->"+TotalItemNow);
+					//console.log(TotalItemNew+"<-->"+TotalItemNow);
 					if (TotalItemNew>TotalItemNow) {
 						//console.log("ACTUALIZO por que hay nuevos Items");
 						var ItemsNuevos = TotalItemNew-TotalItemNow;
@@ -280,7 +280,7 @@
 
 
 					}else{
-						console.log("NO ACTUALIZO por que hay NO nuevos Items");
+						//console.log("NO ACTUALIZO por que hay NO nuevos Items");
 					}
 					
 				})
