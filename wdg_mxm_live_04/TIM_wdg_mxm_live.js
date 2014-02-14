@@ -58,14 +58,29 @@
 							case "empiezasegundotiempo": icono = "gameend"; break;
 							case "golvisitante": icono = "goal"; break;
 							case "amonestacion": icono = "yellowcard"; break;
+							case "twitter": icono = "twitter"; break;
+
 						}
 						
 						item += '<li data-id="'+guuid+'" style="display:none">';
-						item += '<div class="time-icon">';
+						item += (icono ==="twitter") ? '<div class="time-icon twitter">' :  '<div class="time-icon">';
 						item += '<div class="textcolor-title6 time">'+data.actionsMXM[i].minute+'\'</div>';
-						item += '<div class="icon-time"><i class="tvsa-mxm-'+icono+'"></i></div>';
+						if(icono ==="twitter"){	
+							item += '<div class="icon-time"><i class="tvsa-twitter"></i></div>';	
+						}else{
+							item += '<div class="icon-time"><i class="tvsa-mxm-'+icono+'"></i></div>';
+						}
 						item += '</div>';
-						item += '<div class="chronic">'+data.actionsMXM[i].description+'</div>';
+						item += (icono !=="twitter") ? '<div class="chronic">'+data.actionsMXM[i].description+'</div>' : '';
+
+						if(icono === "twitter"){
+							var comaA = data.actionsMXM[i].description.replace(",","|")
+							var coma = comaA.split("|");
+							var usertw = coma[0].split("@");
+							item += '<div class="chronic">';
+          					item += '<p class="textcolor-title2">'+usertw[0]+'<span class="textcolor-title4">@'+usertw[1]+'</span></p>';
+          					item += '<p>'+coma[1]+'</p></div>';
+						}
 												
 						
 						if ( typeof data.actionsMXM[i].datarelated!=="undefined") {
@@ -138,7 +153,6 @@
 			funciones: function(){
 
 				globalThis.find('.tvsa-camera').live('click',function(event){
-					console.log("dando click camera");
 					event.preventDefault();
 					var parentContainer = $(this).parent().siblings('.img_stage_01');
 					if(!$(this).hasClass('active')){
@@ -154,8 +168,7 @@
 
 				});
 
-				globalThis.find('.tvsa-videocamera').live('click',function(event){ 
-					console.log("dando click video");
+				globalThis.find('.tvsa-videocamera').live('click',function(event){
 			    	event.preventDefault();
 			    	var parentContainer = $(this).parent().siblings('.vid_player_01.not_here');
 			    	var iframeChild,heightac;
@@ -234,15 +247,15 @@
 						      var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
 
 								if (parseFloat(msDateA) < parseFloat(msDateB)) {
-									console.log("MENOR");
+									//console.log("MENOR");
 								} else {
 									if (parseFloat(msDateA) == parseFloat(msDateB)) {
-										console.log("IGUAL");
+										//console.log("IGUAL");
 										tiempoActualizacion = 60000;
 										var resta = parseInt(b.getHours()-a.getHours());
 											//cop
 											if (b.getHours() >= a.getHours()) {
-												console.log("ya empezo el partido");
+												//console.log("ya empezo el partido");
 												//Ya empezo el partido, actualizar valores cada minuto										
 												tiempoActualizacion = 60000;
 											} else {
@@ -254,27 +267,27 @@
 												var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
 
 												if (minutosrestantes <= 15) {
-													console.log("faltan menos de 15 min");
+													//console.log("faltan menos de 15 min");
 													//Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
 													tiempoActualizacion = 60000;
 
 												} else {
-													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+													//console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
 													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
 													
 													(minutosrestantes<60) ? tiempoActualizacion = 900000 : '';											
 												}
 											}
 											//cop
-											console.log(tiempoActualizacion)
-											//setInterval(function(){wdgLiveObj.updateMxm()},tiempoActualizacion);
-											setInterval(function(){wdgLiveObj.updateMxm()},10000);
+											//console.log(tiempoActualizacion)
+											setInterval(function(){wdgLiveObj.updateMxm()},tiempoActualizacion);
+											//setInterval(function(){wdgLiveObj.updateMxm()},10000);
 									} else {
 										if (parseFloat(msDateA) > parseFloat(msDateB)) {
-											console.log("MAYOR");
+											//console.log("MAYOR");
 											
 										} else {
-											console.log("Error no actualizo");
+											//console.log("Error no actualizo");
 										}
 									}
 								}
@@ -295,13 +308,13 @@
 					var guuid = Math.floor((1 + Math.random()) * 0x10000).toString(16);
 					var TotalItemNow = globalThis.find("#pintaAcciones").children('li').size();
 					var totalitemNew = data.actionsMXM.length;
-					console.log(totalitemNew+">"+TotalItemNow);
+					//console.log(totalitemNew+">"+TotalItemNow);
 					if(totalitemNew>TotalItemNow){
 						//actualizo
 						var ItemsNuevos = totalitemNew-TotalItemNow;
 
 						for (var i = 0; i < ItemsNuevos; i++) {
-							console.log(data.actionsMXM[i]);
+							//console.log(data.actionsMXM[i]);
 
 
 							var video="",galeria="";
@@ -319,14 +332,29 @@
 							case "empiezasegundotiempo": icono = "gameend"; break;
 							case "golvisitante": icono = "goal"; break;
 							case "amonestacion": icono = "yellowcard"; break;
+							case "twitter": icono = "twitter"; break;
 						}
 						
 						item += '<li data-id="'+guuid+'" style="display:none">';
-						item += '<div class="time-icon">';
+						item += (icono ==="twitter") ? '<div class="time-icon twitter">' :  '<div class="time-icon">';
 						item += '<div class="textcolor-title6 time">'+data.actionsMXM[i].minute+'\'</div>';
-						item += '<div class="icon-time"><i class="tvsa-mxm-'+icono+'"></i></div>';
+						if(icono ==="twitter"){							
+							item += '<div class="icon-time"><i class="tvsa-'+icono+'"></i></div>';	
+						}else{
+							item += '<div class="icon-time"><i class="tvsa-mxm-'+icono+'"></i></div>';
+						}
+						
 						item += '</div>';
-						item += '<div class="chronic">'+data.actionsMXM[i].description+'</div>';
+						item += (icono !=="twitter") ? '<div class="chronic">'+data.actionsMXM[i].description+'</div>' : '';
+
+						if(icono === "twitter"){
+							var comaA = data.actionsMXM[i].description.replace(",","|")
+							var coma = comaA.split("|");
+							var usertw = coma[0].split("@");
+							item += '<div class="chronic">';
+          					item += '<p class="textcolor-title2">'+usertw[0]+'<span class="textcolor-title4">@'+usertw[1]+'</span></p>';
+          					item += '<p>'+coma[1]+'</p></div>';
+						}
 												
 						
 						if ( typeof data.actionsMXM[i].datarelated!=="undefined") {
