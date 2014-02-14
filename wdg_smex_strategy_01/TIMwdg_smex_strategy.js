@@ -59,7 +59,7 @@
 			},
 
 			loadDropdown : function(){
-				console.log("execute loaddropdown function");
+				//console.log("execute loaddropdown function");
 				var ContDropdown ="";
 				
 					$.ajax({
@@ -68,8 +68,7 @@
 				jsonpCallback:'matches',
 				  cache: false,
 				})
-				.done(function(data) {	
-				console.log(data);
+				.done(function(data) {					
 					ContDropdown += '<ul class="wdg_smex_strategy_01_dropdownlist">';			
 					for (var r = 0; r < data.Team.length; r++) {
 					ContDropdown += '<li><p data-field="'+data.Team[r].matchid+'">'+data.Team[r].week+'</p></li>';
@@ -107,8 +106,7 @@
 				  dataType: 'jsonp',		  
 				jsonpCallback:'datagame',
 				  cache: false,
-				  success: function(data) {
-				  	console.log(data);		  	
+				  success: function(data) {				  	
 					var miHTML = '', aliFinal = '',ArregloHidden="";
 					var equipo = new Array();
 					var positiony, positionx,vc,equipoString;			
@@ -117,7 +115,6 @@
 					equipo[1]= "lineUpVisit";
 					
 					for (var t = 0; t < equipo.length; t++) {
-						console.log(equipo[t])
 					equipoString = String(equipo[t]);
 					//console.log(data[equipoString]);
 
@@ -171,7 +168,7 @@
 		//Alineacion final
 					if(tipo==="Alineacionfinal"){
 										
-						console.log("calcula la alineacion final");
+						//console.log("calcula la alineacion final");
 						for (var d = 0; d < data[equipoString].substitutes.length; d++) {
 							//console.log(data[equipoString].substitutes[d].nickName);
 							if(typeof data[equipoString].substitutes[d].actions !== "undefined"){
@@ -200,7 +197,7 @@
 								};
 							}
 						};
-						console.log("Arreglo Hidden");
+						
 						var arrspl = ArregloHidden.split(",");
 						for (var k = 0; k < arrspl.length; k++) {					
 							$("span[data-guid="+arrspl[k]+"]").remove();
@@ -305,7 +302,6 @@
 						dropdownItems2.unbind().bind('click', function(evt) {
 							evt.preventDefault();
 							$("#LoadingCancha").show();
-							console.log("clickeando");
 							padre.find('.wdg_smex_strategy_01_dropdowncontent p').html($(this).find('p').html());
 							
 							
@@ -370,7 +366,6 @@
 				var preview="";
 				GlobalThis.find('.menu li').unbind().bind('click', function(event) {
 					event.preventDefault();
-					console.log("clicked");
 					if(!$(this).hasClass('active')){
 						$("#LoadingCancha").show();
 						$(this).parent('ul').find('li').each(function() {
@@ -398,7 +393,6 @@
 			},
 
 			header: function(){
-				console.log("EXECUTE HEADER");
 				$.ajax({
 					url: wdg_smex_strategy.urlmxmheader,
 					jsonpCallback: 'mxmheader',
@@ -451,15 +445,15 @@
 						      var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
 
 								if (parseFloat(msDateA) < parseFloat(msDateB)) {
-									console.log("MENOR");
+									//console.log("MENOR");
 								} else {
 									if (parseFloat(msDateA) == parseFloat(msDateB)) {
-										console.log("IGUAL");
+										//console.log("IGUAL");
 										tiempoActualizacion = 60000;
 										var resta = parseInt(b.getHours()-a.getHours());
 											//cop
 											if (b.getHours() >= a.getHours()) {
-												console.log("ya empezo el partido");
+												//console.log("ya empezo el partido");
 												//Ya empezo el partido, actualizar valores cada minuto										
 												tiempoActualizacion = 60000;
 											} else {
@@ -471,28 +465,28 @@
 												var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
 
 												if (minutosrestantes <= 15) {
-													console.log("faltan menos de 15 min");
+													//console.log("faltan menos de 15 min");
 													//Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
 													tiempoActualizacion = 60000;
 
 												} else {
-													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+													//console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
 													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
 													
 													(minutosrestantes<60) ? tiempoActualizacion = 900000 : '';											
 												}
 											}
 											//cop
-											console.log(tiempoActualizacion)
+											//console.log(tiempoActualizacion)
 											setInterval(function(){wdg_smex_strategy.updatePlayers()},tiempoActualizacion);
 											//setInterval(function(){wdg_smex_strategy.updatePlayers()},15000);
 											
 									} else {
 										if (parseFloat(msDateA) > parseFloat(msDateB)) {
-											console.log("MAYOR");
+											//console.log("MAYOR");
 											
 										} else {
-											console.log("Error no actualizo");
+											//console.log("Error no actualizo");
 										}
 									}
 								}
