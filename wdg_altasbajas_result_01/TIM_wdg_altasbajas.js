@@ -641,7 +641,7 @@ jQuery(function($) {
             var $newAlt = $multi * $hijoAltura;
 
 
-            if ($war1_position >= $war1_altura) {
+            if ($newAlt >= $war1_altura) {
                 $(this).siblings('.degraded').css("visibility", "hidden");
                 //$(this).siblings('.controls').children('.next').children('.tvsa-caret-down').css('color','#000');
 
