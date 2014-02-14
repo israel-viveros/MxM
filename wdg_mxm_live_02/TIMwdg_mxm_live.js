@@ -1,18 +1,18 @@
 ;(function(){
 	$.fn.wdgLiveMxM = function(options){
 		var setting = $.extend({
-			'idmxm': 0,
-			'idmxmtv': 0			
+			'idevento': 0,
+			'actualizacion' : 0
 		}, options);
 
 
 		var GlobalThis = this;
 
 		var wdgMxmLive = {
-			urlfeed : 'http://lab.israelviveros.com/deportes/wdg_mxm_live_02/'+setting.idmxm+'/'+setting.idmxmtv+'/mxm.jsonp',
+			urlfeed : 'http://lab.israelviveros.com/deportes/wdg_mxm_live_02/155/'+setting.idevento+'/mxm.jsonp',
 			feedCallback: 'mxmSorteo',
-			urlfeedHeader: 'http://lab.israelviveros.com/deportes/wdg_mxm_live_02/'+setting.idmxm+'/'+setting.idmxmtv+'/mxm_header.js',
-			feedCallbackHeader : 'mxmheader',	
+			timeupdate : (setting.actualizacion!==0) ? parseInt(setting.actualizacion) : 60000,
+			
 
 			parentMaquetado : function(){
 
@@ -30,7 +30,7 @@
 				maquetadoP += '</div>';
 				maquetadoP += '<ul class="wdg_mxm_live_02_list" id="pintaCont">';
 				maquetadoP += '</ul>';
-				maquetadoP += '</div>; '
+				maquetadoP += '</div>';
 				maquetadoP += '</div>';
 				GlobalThis.html(maquetadoP);
 
@@ -131,9 +131,8 @@
 					$("#loadingMxmLive").hide('slow');
 					GlobalThis.find("#pintaCont").css({'display':'none'}).html(Maquetado).fadeIn('slow');
 					wdgMxmLive.inicio();
-					wdgMxmLive.header();
-					// SI TENGO ACCESO A LA FECHA Y HORA AQUI INICIALIZO
-					//wdgMxmLive.timeUpdate();
+					
+					
 				})
 				.fail(function() {
 					console.log("Error al cargar"+wdgMxmLive.urlfeed);
@@ -189,113 +188,13 @@
 			    	}
 					
 				}); 
+				
+				
+				setInterval(function() { wdgMxmLive.updateInfo() }, wdgMxmLive.timeupdate);
 
 
 			}, //inicio
 
-			header: function(){
-				$.ajax({
-					url: wdgMxmLive.urlfeedHeader,
-					jsonpCallback: wdgMxmLive.feedCallbackHeader,
-					type: 'GET',
-					dataType: 'jsonp'
-				})
-				.done(function(data) {					
-					wdgMxmLive.timeUpdate(data.fechaPartido,data.horaPartido);
-				})
-				.fail(function() {
-					console.log("Error al cargar el header "+ wdgMxmLive.urlfeedHeader);
-				})
-				
-				
-
-
-
-
-			},
-			
-
-
-			timeUpdate : function(dia,hora){
-				var tiempoActualizacion = 0;
-				var FechaPartido = dia.substring(3,5)+'-'+dia.substring(0,2)+'-'+dia.substring(8,10)+ ' '+ hora.substring(0,5)+':00';
-				$.ajax({url: "http://mxm.televisadeportes.esmas.com/deportes/home/timetvjsonp.js",
-								async: false,
-								cache:false,
-								dataType: 'jsonp',
-								jsonpCallback: 'timetv',
-								success: function(data) {
-									var arr='';
-									var m=0;
-									var anio=0;
-									
-									horas = data.timetv;
-									arr=data.fechatv.replace(/_/gi,"-").split("-");
-									m= parseInt(arr[1])+1;
-									
-									if (String(m).length==1)
-									{
-										m='0'+m;
-									}
-									anio= parseInt(arr[2])+1900;
-									fechas=m+'-'+arr[0]+'-'+anio;	
-									fechas = fechas+' '+horas+':00';
-
-									var a = new Date(FechaPartido);
-									var b = new Date(fechas);
-
-						      var msDateA = Date.UTC(a.getFullYear(), a.getMonth()+1, a.getDate());
-						      var msDateB = Date.UTC(b.getFullYear(), b.getMonth()+1, b.getDate());
-
-								if (parseFloat(msDateA) < parseFloat(msDateB)) {
-									console.log("MENOR");
-								} else {
-									if (parseFloat(msDateA) == parseFloat(msDateB)) {
-										console.log("IGUAL");
-										tiempoActualizacion = 60000;
-										var resta = parseInt(b.getHours()-a.getHours());
-											//cop
-											if (b.getHours() >= a.getHours()) {
-												console.log("ya empezo el partido");
-												//Ya empezo el partido, actualizar valores cada minuto										
-												tiempoActualizacion = 60000;
-											} else {
-												var h1= a.getHours();
-												var h2= b.getHours();
-												var m1= a.getMinutes();
-												var m2= b.getMinutes();
-												//Validar cuantos minutos faltan para el inicio del partido
-												var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
-
-												if (minutosrestantes <= 15) {
-													console.log("faltan menos de 15 min");
-													//Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
-													tiempoActualizacion = 60000;
-
-												} else {
-													console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
-													//Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
-													
-													(minutosrestantes<60) ? tiempoActualizacion = 900000 : '';											
-												}
-											}
-											//cop
-											console.log(tiempoActualizacion)
-											//setInterval(function(){wdgMxmLive.updateInfo()},tiempoActualizacion);
-											setInterval(function(){wdgMxmLive.updateInfo()},10000);
-									} else {
-										if (parseFloat(msDateA) > parseFloat(msDateB)) {
-											console.log("MAYOR");
-											
-										} else {
-											console.log("Error no actualizo");
-										}
-									}
-								}
-
-								}
-						});
-			},// End timeUpdate()
 
 			updateInfo : function(){
 				$.ajax({
@@ -308,7 +207,7 @@
 				.done(function(data) {
 					var guuid = Math.floor((1 + Math.random()) * 0x10000).toString(16);
 					var Maquetado = '';
-					var TotalItemNow = GlobalThis.children('li').size();
+					var TotalItemNow = GlobalThis.find("#pintaCont").children('li').size();
 					var TotalItemNew = data.action.length;
 					console.log(TotalItemNew+"<-->"+TotalItemNow);
 					if (TotalItemNew>TotalItemNow) {
@@ -399,7 +298,7 @@
 
 
 
-		if(setting.idmxm!==0 && setting.idmxmtv!==0){
+		if(setting.idevento!==0){
 			$.when(wdgMxmLive.parentMaquetado()).done(function() {
 				wdgMxmLive.loadMaster()
 			});
