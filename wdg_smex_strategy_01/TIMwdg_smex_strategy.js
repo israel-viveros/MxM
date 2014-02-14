@@ -117,6 +117,7 @@
 					for (var i = 0; i < data[equipoString].team.length; i++) {			
 						/* arrow styles based on px values */
 						var arrow = '';
+						var toolact = ''; 
 						var actions = '',icon='';
 						positionx = parseInt(data[equipoString].team[i].posx);
 						positiony = parseInt(data[equipoString].team[i].posy);
@@ -140,12 +141,13 @@
 							}
 							actions +='</span>';
 						}
+						if(actions == ''){ toolact += 'noactions'; }
 						if(parseInt(data[equipoString].team[i].team) === 1) { vc = "local"} else{ vc = "visit"}
 
 						miHTML += '<span data-guid="'+data[equipoString].team[i].guid+'" class="player '+vc+' '+arrow+'" style="left:'+data[equipoString].team[i].posx+'px;top:'+positiony+'px;">'+
 							'<a href="#" title="'+data[equipoString].team[i].name+' '+data[equipoString].team[i].name+'">'+
 								'<span class="number textcolor-title2">'+data[equipoString].team[i].number+'</span>'+
-								'<span class="tooltip">'+
+								'<span class="tooltip '+toolact+'">'+
 									'<img class="playerfoto" src="'+data[equipoString].team[i].image+'" alt="'+data[equipoString].team[i].name+'" width="51" height="38" />'+
 									'<span class="arrow"></span>'+
 									'<span class="name">'+data[equipoString].team[i].name+' '+data[equipoString].team[i].nickName+'</span>'+
@@ -326,6 +328,10 @@
 				$('section.wdg_smex_strategy_01 .player a').live('mouseenter',function(event){
 					event.preventDefault();
 						$(this).children('.tooltip').css('display','block');
+						$(".grid3 .noactions").css("top","-90px");
+						$(".grid4 .noactions").css("top","-90px");
+
+
 				});
 				$('section.wdg_smex_strategy_01 .player a').live('mouseleave',function(event){
 					event.preventDefault();
@@ -514,6 +520,7 @@
 												itemleft = itemActual.css('left');
 
 												var arrow = '';
+												var toolact = '';
 												var actions = '',icon='';
 												positionx = parseInt(itemleft);
 												positiony = parseInt(itemtop);
@@ -536,14 +543,15 @@
 														actions += '<i class="'+icon+'"></i>'+data[equipoString].substitutes[i].actions[a].minute+'\'';
 													}
 													actions +='</span>';
-												}
+												} 
+												if(actions == ''){ toolact += 'noactions'; }
 
 												vc = (equipos[z] === "lineuplocal" ) ? 'local' : 'visit' ;
 
 												NuevosJugadores += '<span data-guid="'+data[equipoString].substitutes[i].guid+'" class="player '+vc+' '+arrow+'" style="left:'+itemleft+';top:'+itemtop+';display:none">'+
 												'<a href="#" title="'+data[equipoString].substitutes[i].name+' '+data[equipoString].substitutes[i].name+'">'+
 													'<span class="number textcolor-title2">'+data[equipoString].substitutes[i].number+'</span>'+
-													'<span class="tooltip">'+
+													'<span class="tooltip '+toolact+'">'+
 														'<img class="playerfoto" src="'+data[equipoString].substitutes[i].image+'" alt="'+data[equipoString].substitutes[i].name+'" width="51" height="38" />'+
 														'<span class="arrow"></span>'+
 														'<span class="name">'+data[equipoString].substitutes[i].name+' '+data[equipoString].substitutes[i].nickName+'</span>'+
