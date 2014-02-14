@@ -112,10 +112,13 @@
 				$("#ListTournaments").html(DrawList);
 				$("#FListTournaments a, #ListTournaments a").bind('click', function(event) {
 					event.preventDefault();
-					$(".windows8").show('fast');
-					wdg_matchresult.LoadFirst($(this).data('url'));
-					$("#FListTournaments").parent().find('a').css('color', '#FFF').removeClass('onShowItem');
-					$(this).css('color', '#D6A256').addClass('onShowItem');
+					if(!$(this).hasClass('onShowItem')){
+						$(".windows8").show('fast');
+						wdg_matchresult.LoadFirst($(this).data('url'));
+						$("#FListTournaments").parent().find('a').css('color', '#FFF').removeClass('onShowItem');
+						$(this).css('color', '#D6A256').addClass('onShowItem');
+					}
+					
 				});	
 				wdg_matchresult.inicio();		
 			})

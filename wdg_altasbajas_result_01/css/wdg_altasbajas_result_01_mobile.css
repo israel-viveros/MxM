@@ -527,7 +527,7 @@
     
     /*BEGIN: sprite*/    	
      	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-	        background: url(../img/global-sprites.png) no-repeat 0 0;
+	        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/global-sprites.png) no-repeat 0 0;
 	        display:none;
 	        height: 10px;
 	        overflow: hidden;
@@ -740,7 +740,7 @@ background-color: #3a9e2a !important;
 /*Style Retina*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
  	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-        background: url(../global/img/global-sprites@2x.png) no-repeat 0 0;
+        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/global-sprites@2x.png) no-repeat 0 0;
 		background-size:640px 224px;
 	}
 }

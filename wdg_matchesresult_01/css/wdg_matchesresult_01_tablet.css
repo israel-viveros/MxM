@@ -106,7 +106,7 @@
     }
 
     .wdg_matchesresult_01 .wdg_matchesresult_lefticon{
-        background: url(../img/home_arrow_l.png) no-repeat 0 0;
+        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/home_arrow_l.png) no-repeat 0 0;
         display: inline-block;
         width: 11px;
         height: 10px;
@@ -115,7 +115,7 @@
         margin-right: 5px;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_righticon{
-        background: url(../img/home_arrow_r.png) no-repeat 0 0;
+        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/home_arrow_r.png) no-repeat 0 0;
         display: inline-block;
         width: 11px;
         height: 10px;
@@ -133,7 +133,7 @@
         display: none;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_top .wdg_matchesresult_nike{
-        background: url(../img/nikelogo.png) no-repeat 0 0;
+        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/nikelogo.png) no-repeat 0 0;
         width: 37px;
         height: 26px;
         display: inline-block;
