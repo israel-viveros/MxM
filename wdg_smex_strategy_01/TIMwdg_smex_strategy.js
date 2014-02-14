@@ -78,6 +78,13 @@
 					ContDropdown += '</ul>';
 
 					$(".wdg_smex_strategy_01_listcontainer").html(ContDropdown);
+
+					var ultimoId= 	$(".wdg_smex_strategy_01_dropdownlist li").eq(0).find('p').data("field");
+
+					wdg_smex_strategy.loadAlineacion(GlobalThis, ultimoId);
+					
+					
+
 					
 				})
 				.fail(function() {
@@ -94,9 +101,9 @@
 				//var url = '../wdg_smex_strategy_01/' + type + '.json'; // just an example using plain text files
 				
 				el.find('span.players').fadeOut('fast');
-				//console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js');
+				//console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js');				
 				$.ajax({
-				  url: wdg_smex_strategy.urlFinalAlienacion,
+				  url: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js',
 				  dataType: 'jsonp',		  
 				jsonpCallback:'datagame',
 				  cache: false,
@@ -244,7 +251,11 @@
 					}
 					
 					// load the first ajax players
-					wdg_smex_strategy.loadAlineacion($parent, setting.ideventomxmtv);
+					//wdg_smex_strategy.loadAlineacion($parent, setting.ideventomxmtv);
+
+					if(setting.ideventomxm!==0 && setting.ideventomxmtv !==0){
+						wdg_smex_strategy.loadAlineacion($parent, setting.ideventomxmtv);
+					};
 				
 					var $parent = $('.wdg_smex_strategy_01');
 					var $dropdownAnchor = $parent.find('.wdg_smex_strategy_01_dropdown');
@@ -593,8 +604,8 @@
 
 		};
 
-		if(setting.idclub !== 0) { 
-			wdg_smex_strategy.PintaCacha('dropdown'); 
+		if(setting.idclub !== 0 && setting.idclub!==0) { 
+			wdg_smex_strategy.PintaCacha('dropdown');			
 		}
 		else{
 			if(setting.ideventomxm!==0 && setting.ideventomxmtv!==0){			
