@@ -172,6 +172,23 @@
 						for (var d = 0; d < data[equipoString].substitutes.length; d++) {
 							//console.log(data[equipoString].substitutes[d].nickName);
 							if(typeof data[equipoString].substitutes[d].actions !== "undefined"){
+								if ( typeof data[equipoString].team[d].actions !== "undefined"){
+							var actions2="";
+							actions2 += '<em>acciones</em><span class="actions">';
+							for (var a=0;a<data[equipoString].team[d].actions.length;a++) {
+								switch(data[equipoString].team[d].actions[a].type){
+									case 'golVisitante': icon = 'tvsa-mxm-goal'; break;
+									case 'amonestacion': icon = 'tvsa-mxm-owngoal'; break;
+									case 'saleDelJuego': icon = 'tvsa-mxm-offside'; break;							
+									case 'entraAlJuego': icon = 'tvsa-mxm-goal'; break;
+									case 'expulsion': icon = 'tvsa-mxm-redcard'; break;
+									default: icon = ''; break;
+								}
+								actions2 += '<i class="'+icon+'"></i>'+data[equipoString].team[d].actions[a].minute+'\'';
+							}
+							actions2 +='</span>';
+						}
+						if(actions2 === ''){ toolact += 'noactions'; }
 								if(parseInt(data[equipoString].substitutes[d].team) === 1) { vc = "local"} else{ vc = "visit"}
 								for (var f = 0; f < data[equipoString].substitutes[d].actions.length; f++) {
 									//console.log(data[equipoString].substitutes[d].actions[f]);
@@ -179,15 +196,18 @@
 										//console.log(data[equipoString].substitutes[d].nickName);
 										//console.log(data[equipoString].substitutes[d].actions[f].playeridchange);								
 										ArregloHidden += String(data[equipoString].substitutes[d].actions[f].playeridchange)+',';
+										var itemT = $("span[data-guid="+data[equipoString].substitutes[d].actions[f].playeridchange+"]");
+										var nuevox= itemT.css("top");
+										var nuevoy= itemT.css("left");
 
-										aliFinal += '<span data-guid="'+data[equipoString].substitutes[d].guid+'" class="player '+vc+' '+arrow+'" style="left:'+data[equipoString].substitutes[d].posx+'px;top:'+positiony+'px;">'+
+										aliFinal += '<span data-guid="'+data[equipoString].substitutes[d].guid+'" class="player '+vc+' '+arrow+'" style="left:'+nuevoy+';top:'+nuevox+'">'+
 											'<a href="#" title="'+data[equipoString].substitutes[d].name+' '+data[equipoString].substitutes[d].name+'">'+
 												'<span class="number textcolor-title2">'+data[equipoString].substitutes[d].number+'</span>'+
 												'<span class="tooltip">'+
 													'<img class="playerfoto" src="'+data[equipoString].substitutes[d].image+'" alt="'+data[equipoString].substitutes[d].name+'" width="51" height="38" />'+
 													'<span class="arrow"></span>'+
 													'<span class="name">'+data[equipoString].substitutes[d].name+' '+data[equipoString].substitutes[d].nickName+'</span>'+
-													'<span class="position textcolor-title2">'+data[equipoString].substitutes[d].position+'</span>'+							
+													'<span class="position textcolor-title2">'+data[equipoString].substitutes[d].position+'</span>'+actions2+
 												'</span>'+
 											'</a>'+
 										'</span>';
@@ -207,7 +227,8 @@
 					}
 		// Alineacion Final			
 				
-
+					$(".grid3 .noactions").css("top","-90px");
+					$(".grid4 .noactions").css("top","-90px");
 
 				};
 				  }
@@ -335,10 +356,6 @@
 				$('section.wdg_smex_strategy_01 .player a').live('mouseenter',function(event){
 					event.preventDefault();
 						$(this).children('.tooltip').css('display','block');
-						$(".grid3 .noactions").css("top","-90px");
-						$(".grid4 .noactions").css("top","-90px");
-
-
 				});
 				$('section.wdg_smex_strategy_01 .player a').live('mouseleave',function(event){
 					event.preventDefault();
