@@ -252,7 +252,7 @@
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
                                 }
                             }
-                            $('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
+                            //$('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
                             var urltmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js';
                             $.ajax({
                                 url: urltmp,
