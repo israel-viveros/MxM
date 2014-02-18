@@ -146,7 +146,7 @@
 							actions +='</span>';
 						}
 						if(actions == ''){ toolact += 'noactions'; }
-						if(parseInt(data[equipoString].team[i].team) === 1) { vc = "local"} else{ vc = "visit"}
+						if(equipoString=== "lineuplocal") { vc = "local"} else{ vc = "visit"}
 
 						miHTML += '<span data-guid="'+data[equipoString].team[i].guid+'" class="player '+vc+' '+arrow+'" style="left:'+data[equipoString].team[i].posx+'px;top:'+positiony+'px;">'+
 							'<a href="#" title="'+data[equipoString].team[i].name+' '+data[equipoString].team[i].name+'">'+
@@ -189,7 +189,7 @@
 							actions2 +='</span>';
 						}
 						if(actions2 === ''){ toolact += 'noactions'; }
-								if(parseInt(data[equipoString].substitutes[d].team) === 1) { vc = "local"} else{ vc = "visit"}
+								if(equipoString=== "lineuplocal") { vc = "local"} else{ vc = "visit"}
 								for (var f = 0; f < data[equipoString].substitutes[d].actions.length; f++) {
 									//console.log(data[equipoString].substitutes[d].actions[f]);
 									if(data[equipoString].substitutes[d].actions[f].type === "entraAlJuego" ){
