@@ -3,7 +3,8 @@
 
 		var setting = $.extend({
 			'tickermaster': 0,
-			'tickertournament': 0
+			'tickertournament': 0,
+			'link': ''
 		}, options );
 
 		var Globalthis = this;
@@ -88,7 +89,7 @@
 				cuerpoHTML += '<span class="tvsa-double-caret-right inactive"></span>  ';
 				cuerpoHTML += '</a>';
 				cuerpoHTML += '</div>';
-				cuerpoHTML += '<a href=""><span class="wdg_matchesresult_todos">Ver Todos</span></a>';
+				cuerpoHTML += (setting.link!=="") ? '<a href="'+setting.link+'"><span class="wdg_matchesresult_todos">Ver Todos</span></a>': '';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '</div>';
 				Globalthis.html(cuerpoHTML);
