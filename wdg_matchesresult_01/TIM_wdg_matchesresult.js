@@ -88,6 +88,7 @@
 				cuerpoHTML += '<span class="tvsa-double-caret-right inactive"></span>  ';
 				cuerpoHTML += '</a>';
 				cuerpoHTML += '</div>';
+				cuerpoHTML += '<a href=""><span class="wdg_matchesresult_todos">Ver Todos</span></a>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '</div>';
 				Globalthis.html(cuerpoHTML);
@@ -167,58 +168,59 @@
 
 			var ItemView = "";		
 			for (var y = 0; y < contenido.length; y++) {
-				var numSplit = 7;
-				ItemView += '<li id="'+contenido[y].TimeStamp+'">';
-				ItemView += '<div class="wdg_match_01">';
-				ItemView += '<div class="wdg_match_01_time background-color1">';
-				ItemView += '<p>';
-				ItemView += '<a class="textcolor-title5">'+contenido[y].periodabrev+' '+(isNaN(contenido[y].time) ? contenido[y].time+'"' : '')+'</a>';
-				ItemView += '</p>';
-				ItemView += '</div> ';
-				ItemView += '<div class="wdg_match_01_team winner">';
-				ItemView += '<div class="wdg_match_01_teamname">';
-				ItemView += '<p>                ';
-				ItemView += '<a>'+contenido[y].equipos.local.name.substring(0,18)+'</a>';
-				ItemView += '</p> ';
-				ItemView += '</div>';
-				ItemView += '<div class="wdg_match_01_teamscore">';
-				ItemView += '<p>                ';
-				ItemView += '<a>'+contenido[y].equipos.local.goals+'</a>';
-				ItemView += '</p>';
-				ItemView += '</div>';
-				ItemView += '</div>';
-				ItemView += '<div class="wdg_match_01_team loser">';
-				ItemView += '<div class="wdg_match_01_teamname">';
-				ItemView += '<p>                ';
-				ItemView += '<a>'+contenido[y].equipos.visit.name.substring(0,18)+'</a>';
-				ItemView += '</p>';
-				ItemView += '</div>';
-				ItemView += '<div class="wdg_match_01_teamscore">';
-				ItemView += '<p>';
-				ItemView += '<a>'+contenido[y].equipos.visit.goals+'</a>  ';
-				ItemView += '</p>';
-				ItemView += '</div>';
-				ItemView += '</div>';
-				ItemView += '<div class="wdg_match_01_link">';
-				ItemView += '<div class="wdg_match_01_extra">';
-				ItemView += '<p>';
-					for (var m = 0; m < posibles.length; m++) {
-						if (contenido[y].txtLink.indexOf(posibles[m]) != -1) {
-							numSplit = 14;
-						}
-					};
-				ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].EventTournamentName.substring(0,15)+'<span class="textcolor-title4">'+contenido[y].txtLink.substring(0,numSplit)+'</span></a>';			
-				ItemView += '</p>';
-				ItemView += '</div>';
-				ItemView += '<div class="wdg_match_01_icon">';			
-				ItemView += (contenido[y].MXvideo !="") ? '<a href="'+contenido[y].MXvideo+'"><span class="wdg_match_01_sprite video"></span></a>' : '' ;
-				ItemView += '</div>';
-				ItemView += '</div>';
-				ItemView += '</div>';
-				ItemView += '</li>';
+				if(y<16){
+					var numSplit = 7;
+					ItemView += '<li id="'+contenido[y].TimeStamp+'">';
+					ItemView += '<div class="wdg_match_01">';
+					ItemView += '<div class="wdg_match_01_time background-color1">';
+					ItemView += '<p>';
+					ItemView += '<a class="textcolor-title5">'+contenido[y].periodabrev+' '+(isNaN(contenido[y].time) ? contenido[y].time+'"' : '')+'</a>';
+					ItemView += '</p>';
+					ItemView += '</div> ';
+					ItemView += '<div class="wdg_match_01_team winner">';
+					ItemView += '<div class="wdg_match_01_teamname">';
+					ItemView += '<p>                ';
+					ItemView += '<a>'+contenido[y].equipos.local.name.substring(0,18)+'</a>';
+					ItemView += '</p> ';
+					ItemView += '</div>';
+					ItemView += '<div class="wdg_match_01_teamscore">';
+					ItemView += '<p>                ';
+					ItemView += '<a>'+contenido[y].equipos.local.goals+'</a>';
+					ItemView += '</p>';
+					ItemView += '</div>';
+					ItemView += '</div>';
+					ItemView += '<div class="wdg_match_01_team loser">';
+					ItemView += '<div class="wdg_match_01_teamname">';
+					ItemView += '<p>                ';
+					ItemView += '<a>'+contenido[y].equipos.visit.name.substring(0,18)+'</a>';
+					ItemView += '</p>';
+					ItemView += '</div>';
+					ItemView += '<div class="wdg_match_01_teamscore">';
+					ItemView += '<p>';
+					ItemView += '<a>'+contenido[y].equipos.visit.goals+'</a>  ';
+					ItemView += '</p>';
+					ItemView += '</div>';
+					ItemView += '</div>';
+					ItemView += '<div class="wdg_match_01_link">';
+					ItemView += '<div class="wdg_match_01_extra">';
+					ItemView += '<p>';
+						for (var m = 0; m < posibles.length; m++) {
+							if (contenido[y].txtLink.indexOf(posibles[m]) != -1) {
+								numSplit = 14;
+							}
+						};
+					ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].EventTournamentName.substring(0,15)+'<span class="textcolor-title4">'+contenido[y].txtLink.substring(0,numSplit)+'</span></a>';			
+					ItemView += '</p>';
+					ItemView += '</div>';
+					ItemView += '<div class="wdg_match_01_icon">';			
+					ItemView += (contenido[y].MXvideo !="") ? '<a href="'+contenido[y].MXvideo+'"><span class="wdg_match_01_sprite video"></span></a>' : '' ;
+					ItemView += '</div>';
+					ItemView += '</div>';
+					ItemView += '</div>';
+					ItemView += '</li>';
 
 				(contenido[y].periodabrev.toLowerCase()!=="fin") ? (wdg_matchresult.DeterminaTiempoActualizacion(contenido[y].MatchDate,contenido[y].MatchHour)) : '';				
-
+				}
 			};
 
 			(contenido.length<=4) ? ($(".wdg_matchesresult_hide, .wdg_matchesresult_show").hide()) : '';
@@ -288,19 +290,19 @@
 		resize: function(){
 
 			if ($(window).width()>=933) {
-				
+					$(".wdg_matchesresult_todos").show();
 					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','575px');
 					$('.wdg_matchesresult_contenedor').css('overflow','visible');
 				}
 				if($(window).width() < 933 && $(window).width() >= 609){
-					
+					$(".wdg_matchesresult_todos").hide();
 					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','269px');
 					$('.wdg_matchesresult_01 .wdg_matchesresult_01_list').css('width','748px');
 					$('.wdg_matchesresult_01_arrows').css('display','none');
 					$('.wdg_matchesresult_contenedor').css('overflow','scroll');
 				}
 				if ($(window).width()<609) {
-					
+					$(".wdg_matchesresult_todos").hide();
 					var nuevoWidth =0;
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','118px');	
 				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li').each(function(index, el) {
