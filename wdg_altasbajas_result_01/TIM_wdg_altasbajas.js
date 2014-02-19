@@ -3,7 +3,8 @@
         var settings = $.extend({
             'idtorneo': 0,
             'idequipo': 0,
-            'idtorneo2': 0
+            'idtorneo2': 0,
+            'tema':'deportes'
         }, options);
 
         var globalThis = this;
@@ -84,17 +85,20 @@
                 MaqueWdgAltas += '<span style="display:none;" id="feedsAct" data-primero="" data-segundo=""></span>';
                 MaqueWdgAltas += '<ul class="deg">';
                 MaqueWdgAltas += '</ul>';
-                MaqueWdgAltas += '<div class="controls"> ';
-                MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
-                MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
-                MaqueWdgAltas += '</a>';
-                MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
-                MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
-                MaqueWdgAltas += '</a>';
-                MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
-                MaqueWdgAltas += '<span>Ver todos</span> ';
-                MaqueWdgAltas += '</a>';
-                MaqueWdgAltas += '</div>';
+                if(settings.tema!="mundial"){
+	                MaqueWdgAltas += '<div class="controls"> ';
+	                MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
+	                MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
+	                MaqueWdgAltas += '</a>';
+	                MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
+	                MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
+	                MaqueWdgAltas += '</a>';
+	                MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
+	                MaqueWdgAltas += '<span>Ver todos</span> ';
+	                MaqueWdgAltas += '</a>';
+	                MaqueWdgAltas += '</div>';
+            	}
+
                 MaqueWdgAltas += '<div class="degraded"></div>';
 
                 globalThis.html(MaqueWdgAltas);
@@ -405,8 +409,17 @@
             var padres = new Array();
             var cuentaNodos = 0;
             var hojaContenido = 0;
+            var valorFor = 0;
 
-            for (var i = 0; i < data.length; i++) {
+            if (settings.tema==="mundial") {
+            	valorFor = (data.length>=8) ? 8 : data.length ;
+            }else{
+            	valorFor = data.length;
+            }
+
+
+
+            for (var i = 0; i < valorFor; i++) {
 
 
                 if (i === 0) {
