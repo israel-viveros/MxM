@@ -934,7 +934,7 @@
             $hide = $closeElement.find('.wdg_matchesresult_show');
             var visShow = $show.css('visibility');
 			 if (T.getDeviceSize() === 'large') {
-			 $('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','32%');
+			 //$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','32%');
 			 }
             $closeElement.animate({
                 'height': 218
@@ -964,13 +964,33 @@
             var $closeElement = $(this).closest('.wdg_matchesresult_01');
             $show = $closeElement.find('.wdg_matchesresult_hide');
             $hide = $closeElement.find('.wdg_matchesresult_show');
-            var visHide = $hide.css('visibility'); 
+            var visHide = $hide.css('visibility');
+            var heightModulo = 0, porce =0, heightModuloc=0;
+            var numeroItems = parseInt($("#listNow li").size());
+            var listaItems = parseInt($("#ListTournaments li").size());            
+            
+			if (numeroItems <= 4) {
+				heightModulo = 221;
+				if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}else if(listaItems<8 && listaItems>=1){heightModulo=366}
+			} else if (numeroItems > 4 && numeroItems <= 8) {
+				heightModulo = 366;			
+				if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}
+			} else if (numeroItems > 8 && numeroItems <= 12) {
+				heightModulo = 515;
+				if(listaItems>11){heightModulo=700}
+			} else if (numeroItems > 12) {
+				heightModulo = 700;				
+			} 
+			
 
             if (T.getDeviceSize() === 'large') {
-				$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','95%');
-				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css('height','565px');
+            	$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css({'margin-top':'10%','position':'absolute','bottom':'10px'});
+
+				
+				//$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','95%');
+				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container , .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height',heightModulo+'px');
                 $closeElement.animate({
-                    'height': 700
+                    'height': heightModulo
                 }, animationDelay);
             }
             if (T.getDeviceSize() === 'medium') {
