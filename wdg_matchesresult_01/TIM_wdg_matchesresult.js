@@ -4,7 +4,8 @@
 		var setting = $.extend({
 			'tickermaster': 0,
 			'tickertournament': 0,
-			'link': ''
+			'link': '',
+			'tema':'deportes'
 		}, options );
 
 		var Globalthis = this;
@@ -40,7 +41,7 @@
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_visible">';
 				cuerpoHTML += '<p><a class="wdg_matchesresult_show" href=""><span class="wdg_matchesresult_sprite uparrow"></span>Ocultar</a></p>';
-				cuerpoHTML += '<p><a class="wdg_matchesresult_hide" href=""><span class="wdg_matchesresult_sprite downarrow"></span>Ver Más</a></p>';
+				cuerpoHTML += '<p><a class="wdg_matchesresult_hide" href=""><span class="wdg_matchesresult_sprite downarrow"></span>Ver M&aacute;s</a></p>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_01_right">';
@@ -968,7 +969,7 @@
             var heightModulo = 0, porce =0, heightModuloc=0;
             var numeroItems = parseInt($("#listNow li").size());
             var listaItems = parseInt($("#ListTournaments li").size());            
-            
+			if(listaItems<1){$("#FListTournaments").hide()}
 			if (numeroItems <= 4) {
 				heightModulo = 221;
 				if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}else if(listaItems<8 && listaItems>=1){heightModulo=366}
