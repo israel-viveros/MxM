@@ -4,7 +4,8 @@
             'idtorneo': 0,
             'idequipo': 0,
             'idtorneo2': 0,
-            'tema':'deportes'
+            'tema':'deportes',
+            'txtdropdown':'Jornada'
         }, options);
 
         var globalThis = this;
@@ -48,21 +49,17 @@
             callbackListado: 'jornadalistado',
             timeRecarga: 60000,
             iniciar: function(fechaCalendar) {
-
-                MaqueWdgAltas = "";
-                //MaqueWdgAltas += '<div class="str_pleca_01">';
-                //MaqueWdgAltas += '<div class="str_pleca_01_title">';
-                //MaqueWdgAltas += '<strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong>';
-                //MaqueWdgAltas += '</div>';
-                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color1"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
+            	var num = (settings.tema!=="mundial")? '1' : '';
+                MaqueWdgAltas = "";                
+                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color'+num+'"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
-                MaqueWdgAltas += '<img src="" width="45" height="30">';
+                MaqueWdgAltas += (settings.tema!=="mundial") ? '<img src="" width="45" height="30">' : '';
                 MaqueWdgAltas += '<h2 class="games"></h2>';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="filterResultado">';
                 MaqueWdgAltas += '<div class="lineaResultado result2">';
-                MaqueWdgAltas += '<span class="title">Jornada</span>';
+                MaqueWdgAltas += '<span class="title">'+settings.txtdropdown+'</span>';
                 MaqueWdgAltas += '<div class="filter">';
                 MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdown drop2">';
                 MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdowncontent contentF2" id="name-jornada">';
