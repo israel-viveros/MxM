@@ -78,7 +78,7 @@
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_01_components">';
 				cuerpoHTML += '<ul class="wdg_matchesresult_01_list" id="listNow"></ul>';
-				cuerpoHTML += (setting.link!=="") ? '<a href="'+setting.link+'" class="viewmore"><span class="wdg_matchesresult_vertodos">Ver Todos</span></a>': '';
+				cuerpoHTML += (setting.link!=="") ? '<a href="'+setting.link+'" target="_blank" class="viewmore"><span class="wdg_matchesresult_vertodos">Ver Todos</span></a>': '';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div id="right" class="wdg_matchesresult_01_mobileright">';
 				cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
