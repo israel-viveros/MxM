@@ -124,7 +124,14 @@
 					if(!$(this).hasClass('onShowItem')){
 						$(".windows8").show('fast');
 						wdg_matchresult.LoadFirst($(this).data('url'));
-						$("#FListTournaments").parent().find('a').css('color', '#FFF').removeClass('onShowItem');
+						var cc;
+						if(setting.tema==="mundial"){
+							cc="#8f8f8f";
+						}else{
+							cc = "#FFFFFF";
+						}
+
+						$("#FListTournaments").parent().find('a').css('color', cc).removeClass('onShowItem');
 						$(this).css('color', '#D6A256').addClass('onShowItem');
 					}
 					
