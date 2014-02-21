@@ -1,6 +1,5 @@
 ;(function(){
 	$.fn.wdgMatchResult = function(options){
-
 		var setting = $.extend({
 			'tickermaster': 0,
 			'tickertournament': 0,
@@ -45,41 +44,46 @@
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_01_right">';
-				cuerpoHTML += '<div class="wdg_matchesresult_01_navcontainer">';
-				cuerpoHTML += '<div class="wdg_matchesresult_navarrowleft">';
-				cuerpoHTML += '<a class="wdg_matchesresult_navleft" href="#left">';
-				cuerpoHTML += '<i class="tvsa-double-caret-left"></i>';
-				cuerpoHTML += '</a> ';
-				cuerpoHTML += '</div>';
-				cuerpoHTML += '<div class="wdg_matchesresult_01_nav">';
-				cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
-				cuerpoHTML += '<li class="selected">';
-				cuerpoHTML += '<a href="">';
-				cuerpoHTML += '<p>Fútbol</p>';
-				cuerpoHTML += '</a> ';
-				cuerpoHTML += '</li>';
-				cuerpoHTML += '</ul>';
-				cuerpoHTML += '<div class="linedown"></div>    ';
-				cuerpoHTML += '</div>';
-				cuerpoHTML += '<div class="wdg_matchesresult_navarrowright">';
-				cuerpoHTML += '<a class="wdg_matchesresult_navright" href="#right">';
-				cuerpoHTML += '<i class="tvsa-double-caret-right"></i>';
-				cuerpoHTML += '</a>';
-				cuerpoHTML += '</div>';
-				cuerpoHTML += '</div>';
+
+				if(setting.tema!=="mundial"){
+					cuerpoHTML += '<div class="wdg_matchesresult_01_navcontainer">';
+					cuerpoHTML += '<div class="wdg_matchesresult_navarrowleft">';
+					cuerpoHTML += '<a class="wdg_matchesresult_navleft" href="#left">';
+					cuerpoHTML += '<i class="tvsa-double-caret-left"></i>';
+					cuerpoHTML += '</a> ';
+					cuerpoHTML += '</div>';
+					cuerpoHTML += '<div class="wdg_matchesresult_01_nav">';
+					cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
+					cuerpoHTML += '<li class="selected">';
+					cuerpoHTML += '<a href="">';
+					cuerpoHTML += '<p>Fútbol</p>';
+					cuerpoHTML += '</a> ';
+					cuerpoHTML += '</li>';
+					cuerpoHTML += '</ul>';
+					cuerpoHTML += '<div class="linedown"></div>    ';
+					cuerpoHTML += '</div>';
+					cuerpoHTML += '<div class="wdg_matchesresult_navarrowright">';
+					cuerpoHTML += '<a class="wdg_matchesresult_navright" href="#right">';
+					cuerpoHTML += '<i class="tvsa-double-caret-right"></i>';
+					cuerpoHTML += '</a>';
+					cuerpoHTML += '</div>';
+					cuerpoHTML += '</div>';
+				}
+
 				cuerpoHTML += '<div id="left" class="wdg_matchesresult_01_mobileleft">';
 				cuerpoHTML += '<a class="wdg_matchesresult_left" href="#left">';
 				cuerpoHTML += '<i class="tvsa-caret-left"></i>';
-				cuerpoHTML += '<!-- <span class="wdg_matchesresult_leftmobile"></span> -->';
+				//cuerpoHTML += '<!-- <span class="wdg_matchesresult_leftmobile"></span> -->';
 				cuerpoHTML += '</a>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_01_components">';
-				cuerpoHTML += '<ul class="wdg_matchesresult_01_list" id="listNow"></ul>  ';
+				cuerpoHTML += '<ul class="wdg_matchesresult_01_list" id="listNow"></ul>';
+				cuerpoHTML += (setting.link!=="") ? '<a href="'+setting.link+'" class="viewmore"><span class="wdg_matchesresult_vertodos">Ver Todos</span></a>': '';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div id="right" class="wdg_matchesresult_01_mobileright">';
 				cuerpoHTML += '<a class="wdg_matchesresult_right" href="#right">';
 				cuerpoHTML += '<i class="tvsa-caret-right"></i>';
-				cuerpoHTML += '<!-- <span class="wdg_matchesresult_rightmobile"></span> -->';
+				//cuerpoHTML += '<!-- <span class="wdg_matchesresult_rightmobile"></span> -->';
 				cuerpoHTML += '</a>';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '<div class="wdg_matchesresult_01_arrows">';
@@ -90,10 +94,12 @@
 				cuerpoHTML += '<span class="tvsa-double-caret-right inactive"></span>  ';
 				cuerpoHTML += '</a>';
 				cuerpoHTML += '</div>';
-				cuerpoHTML += (setting.link!=="") ? '<a href="'+setting.link+'"><span class="wdg_matchesresult_todos">Ver Todos</span></a>': '';
+				//cuerpoHTML += (setting.link!=="") ? '<a href="'+setting.link+'"><span class="wdg_matchesresult_vertodos">Ver Todos</span></a>': '';
 				cuerpoHTML += '</div>';
 				cuerpoHTML += '</div>';
 				Globalthis.html(cuerpoHTML);
+				
+				if(setting.tema==="mundial") { Globalthis.attr("data-tema","mundial"); }
 		}, // END DrawCuerpo
 
 
@@ -202,7 +208,7 @@
 					ItemView += '<a>'+contenido[y].equipos.visit.goals+'</a>  ';
 					ItemView += '</p>';
 					ItemView += '</div>';
-					ItemView += '</div>';
+					ItemView += '</div><div class="shadow"></div>';
 					ItemView += '<div class="wdg_match_01_link">';
 					ItemView += '<div class="wdg_match_01_extra">';
 					ItemView += '<p>';
@@ -211,9 +217,17 @@
 								numSplit = 14;
 							}
 						};
-					ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].EventTournamentName.substring(0,15)+'<span class="textcolor-title4">'+contenido[y].txtLink.substring(0,numSplit)+'</span></a>';			
+
+					
+					if(setting.tema==="mundial"){
+						ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].txtLink.substring(0,numSplit)+'</a>';						
+					}else{
+						ItemView += '<a class="textcolor-title1" href="'+contenido[y].Website+'">'+contenido[y].EventTournamentName.substring(0,15);
+						ItemView += '<span class="textcolor-title4">'+contenido[y].txtLink.substring(0,numSplit)+'</span></a>';
+					}
 					ItemView += '</p>';
 					ItemView += '</div>';
+					if(setting.tema==="mundial") { ItemView += '<div class="wdg_match_01_extra2"></div>';}
 					ItemView += '<div class="wdg_match_01_icon">';			
 					ItemView += (contenido[y].MXvideo !="") ? '<a href="'+contenido[y].MXvideo+'"><span class="wdg_match_01_sprite video"></span></a>' : '' ;
 					ItemView += '</div>';
@@ -244,7 +258,8 @@
 		}, // END DrawContentFirst
 
 		inicio : function(){		
-			wdg_matchresult.LoadFirst($("#FListTournaments a").eq(0).data("url"));
+			wdg_matchresult.LoadFirst($("#FListTournaments a").eq(0).data("url"));			
+			
 			//setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
 		},
 
@@ -293,7 +308,7 @@
 
 			if ($(window).width()>=933) {
 					$(".wdg_matchesresult_todos").show();
-					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','575px');
+					$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height','100%');
 					$('.wdg_matchesresult_contenedor').css('overflow','visible');
 				}
 				if($(window).width() < 933 && $(window).width() >= 609){
@@ -937,8 +952,12 @@
 			 if (T.getDeviceSize() === 'large') {
 			 //$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','32%');
 			 }
+			 var heich = 218;
+			 if($(".wdg_matchesresult_01").data("tema") ==="mundial"){
+			 	heich=168;
+			 }
             $closeElement.animate({
-                'height': 218
+                'height': heich
             }, animationDelay);
             $(this).closest('.wdg_matchesresult_01_left').find('.wdg_matchesresult_01_bottom').hide();
             if ( visShow == 'hidden' ) {
@@ -970,26 +989,46 @@
             var numeroItems = parseInt($("#listNow li").size());
             var listaItems = parseInt($("#ListTournaments li").size());            
 			if(listaItems<1){$("#FListTournaments").hide()}
-			if (numeroItems <= 4) {
-				heightModulo = 221;
-				if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}else if(listaItems<8 && listaItems>=1){heightModulo=366}
-			} else if (numeroItems > 4 && numeroItems <= 8) {
-				heightModulo = 366;			
-				if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}
-			} else if (numeroItems > 8 && numeroItems <= 12) {
-				heightModulo = 515;
-				if(listaItems>11){heightModulo=700}
-			} else if (numeroItems > 12) {
-				heightModulo = 700;				
-			} 
-			
+
+				/*if($(".wdg_matchesresult_01").data("tema") ==="mundial"){
+					$(".wdg_matchesresult_01_components").css("height","100%");
+					if (numeroItems <= 4) {
+						heightModulo = 171;
+						if(listaItems>11){heightModulo=650} else if(listaItems<=11 && listaItems>=8) {heightModulo=465}else if(listaItems<8 && listaItems>=1){heightModulo=315}
+					} else if (numeroItems > 4 && numeroItems <= 8) {
+						heightModulo = 315;			
+						if(listaItems>11){heightModulo=650} else if(listaItems<=11 && listaItems>=8) {heightModulo=465}
+					} else if (numeroItems > 8 && numeroItems <= 12) {
+						heightModulo = 465;
+						if(listaItems>11){heightModulo=650}
+					} else if (numeroItems > 12) {
+						heightModulo = 650;				
+					} 
+				}else{*/
+
+
+					if (numeroItems <= 4) {
+						heightModulo = 221;
+						if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}else if(listaItems<8 && listaItems>=1){heightModulo=366}
+					} else if (numeroItems > 4 && numeroItems <= 8) {
+						heightModulo = 366;			
+						if(listaItems>11){heightModulo=700} else if(listaItems<=11 && listaItems>=8) {heightModulo=515}
+					} else if (numeroItems > 8 && numeroItems <= 12) {
+						heightModulo = 515;
+						if(listaItems>11){heightModulo=700}
+					} else if (numeroItems > 12) {
+						heightModulo = 700;				
+					} 
+			//	}// tema mundial
+					
 
             if (T.getDeviceSize() === 'large') {
             	$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css({'margin-top':'10%','position':'absolute','bottom':'10px'});
 
 				
 				//$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','95%');
-				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container , .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height',heightModulo+'px');
+				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container , .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height',heightModulo+'px');
+				$('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right').css('height',heightModulo-30+'px');
                 $closeElement.animate({
                     'height': heightModulo
                 }, animationDelay);
