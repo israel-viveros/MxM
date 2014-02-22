@@ -98,7 +98,7 @@
 
                 MaqueWdgAltas += '<div class="degraded"></div>';
 
-                globalThis.html(MaqueWdgAltas);
+                globalThis.css("display","none").html(MaqueWdgAltas);
 
 
                 clearInterval(jornadasCalendarDTV.timerCalendar);
@@ -183,7 +183,7 @@
 
 
 
-
+                globalThis.fadeIn(1000);
 
 
             },
@@ -530,7 +530,7 @@
 
 
             (jornadasCalendarDTV.GlobalSort.length > 7) ? $(".controls").css("display", "block") : $(".controls").css("display", "none");
-            $("#circleGLoading").fadeOut("fast")
+            $("#circleGLoading").fadeOut("fast");
 
         }
 
