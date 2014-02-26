@@ -146,11 +146,11 @@
                                 var startDate = new Date(valorj.enddate)
                                 name_jor += '<li data-jornada="' + startDate.format('yyyy/mm/dd') + '"><p>' + valorj.name + '</p></li>'
 
-                                if (tiempoActual <= valorj.startstamp) {
+                               /* if (tiempoActual <= valorj.startstamp) {
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
                                 } else if (tiempoActual <= valorj.endstamp) {
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
-                                }
+                                }*/
                             }
 
                             $('#name-jornada').html("<p>" + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name + '</p><span class="tvsa-caret-down"></span>');
