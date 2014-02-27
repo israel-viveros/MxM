@@ -1,11 +1,12 @@
-;(function() {
+;
+(function() {
     $.fn.wdgAltasBajas = function(options) {
         var settings = $.extend({
             'idtorneo': 0,
             'idequipo': 0,
             'idtorneo2': 0,
-            'tema':'deportes',
-            'txtdropdown':'Jornada'
+            'tema': 'deportes',
+            'txtdropdown': 'Jornada'
         }, options);
 
         var globalThis = this;
@@ -49,17 +50,17 @@
             callbackListado: 'jornadalistado',
             timeRecarga: 60000,
             iniciar: function(fechaCalendar) {
-            	var num = (settings.tema!=="mundial")? '1' : '';
-                MaqueWdgAltas = "";                
-                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color'+num+'"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
+                var num = (settings.tema !== "mundial") ? '1' : '';
+                MaqueWdgAltas = "";
+                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><strong class="str_pleca_01_title background-color' + num + '"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></strong></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
-                MaqueWdgAltas += (settings.tema!=="mundial") ? '<img src="" width="45" height="30">' : '';
+                MaqueWdgAltas += (settings.tema !== "mundial") ? '<img src="" width="45" height="30">' : '';
                 MaqueWdgAltas += '<h2 class="games"></h2>';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="filterResultado">';
                 MaqueWdgAltas += '<div class="lineaResultado result2">';
-                MaqueWdgAltas += '<span class="title">'+settings.txtdropdown+'</span>';
+                MaqueWdgAltas += '<span class="title">' + settings.txtdropdown + '</span>';
                 MaqueWdgAltas += '<div class="filter">';
                 MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdown drop2">';
                 MaqueWdgAltas += '<div class="wdg_altasbajas_result_012_dropdowncontent contentF2" id="name-jornada">';
@@ -82,23 +83,23 @@
                 MaqueWdgAltas += '<span style="display:none;" id="feedsAct" data-primero="" data-segundo=""></span>';
                 MaqueWdgAltas += '<ul class="deg">';
                 MaqueWdgAltas += '</ul>';
-                if(settings.tema!="mundial"){
-	                MaqueWdgAltas += '<div class="controls"> ';
-	                MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
-	                MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
-	                MaqueWdgAltas += '</a>';
-	                MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
-	                MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
-	                MaqueWdgAltas += '</a>';
-	                MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
-	                MaqueWdgAltas += '<span>Ver todos</span> ';
-	                MaqueWdgAltas += '</a>';
-	                MaqueWdgAltas += '</div>';
-            	}
+                if (settings.tema != "mundial") {
+                    MaqueWdgAltas += '<div class="controls"> ';
+                    MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
+                    MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
+                    MaqueWdgAltas += '</a>';
+                    MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
+                    MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
+                    MaqueWdgAltas += '</a>';
+                    MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
+                    MaqueWdgAltas += '<span>Ver todos</span> ';
+                    MaqueWdgAltas += '</a>';
+                    MaqueWdgAltas += '</div>';
+                }
 
                 MaqueWdgAltas += '<div class="degraded"></div>';
 
-                globalThis.css("display","none").html(MaqueWdgAltas);
+                globalThis.css("display", "none").html(MaqueWdgAltas);
 
 
                 clearInterval(jornadasCalendarDTV.timerCalendar);
@@ -110,9 +111,9 @@
                 jornadasCalendarDTV.fechaInicio = new Date(fechaCalendar);
                 jornadasCalendarDTV.fechaAct = fechaCalendar;
                 jornadasCalendarDTV.numeroTorneoAct = settings.idtorneo,
-                        jornadasCalendarDTV.numeroIdEquipo = settings.idequipo,
-                        jornadasCalendarDTV.Jornada2 = settings.idtorneo2,
-                        urFinal = "";
+                jornadasCalendarDTV.numeroIdEquipo = settings.idequipo,
+                jornadasCalendarDTV.Jornada2 = settings.idtorneo2,
+                urFinal = "";
 
                 var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
                 var tiempoActual = fechaDiaActual.getTime() / 1000;
@@ -146,7 +147,7 @@
                                 var startDate = new Date(valorj.enddate)
                                 name_jor += '<li data-jornada="' + startDate.format('yyyy/mm/dd') + '"><p>' + valorj.name + '</p></li>'
 
-                               /* if (tiempoActual <= valorj.startstamp) {
+                                /* if (tiempoActual <= valorj.startstamp) {
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
                                 } else if (tiempoActual <= valorj.endstamp) {
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
@@ -204,11 +205,11 @@
                         },
                         fail: function() {
                             //console.log("Algo salio mal en 1");
-                            try { jornadasCalendarDTV.primeraJornada();
-							}
-							catch(e){
-								console.log(e);
-							}
+                            try {
+                                jornadasCalendarDTV.primeraJornada();
+                            } catch (e) {
+                                console.log(e);
+                            }
                         }
                     });
                     globalThis.children('.filterResultado').remove();
@@ -222,7 +223,7 @@
                 }), jornadasCalendarDTV.timeRecarga);
 
                 jornadasCalendarDTV.fechaAct = fechaCalendar;
-//        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
+                //        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
 
                 var fechaDiaActual = new Date(jornadasCalendarDTV.fechaAct);
                 var tiempoActual = fechaDiaActual.getTime() / 1000;
@@ -289,10 +290,11 @@
                         },
                         fail: function() {
                             //console.log("Algo salio mal en 2");
-                            try{ jornadasCalendarDTV.segundaJornada();
-							}catch(e){
-								console.log(e);
-							}
+                            try {
+                                jornadasCalendarDTV.segundaJornada();
+                            } catch (e) {
+                                console.log(e);
+                            }
                         }
                     });
                 }
@@ -344,8 +346,7 @@
 
                             (GolesActLocal !== GolesNewLocal) ? ($("." + data[z].fechastamp).children('.result').eq(0).text(GolesActLocal)) : '';
                             (GolesActVisit !== GolesNewVisit) ? ($("." + data[z].fechastamp).children('.result').eq(1).text(GolesActVisit)) : '';
-                        }
-                        ;
+                        };
 
 
                     },
@@ -357,7 +358,7 @@
 
 
 
-            }// End procesoActualiza
+            } // End procesoActualiza
 
 
 
@@ -408,10 +409,10 @@
             var hojaContenido = 0;
             var valorFor = 0;
 
-            if (settings.tema==="mundial") {
-            	valorFor = (data.length>=8) ? 8 : data.length ;
-            }else{
-            	valorFor = data.length;
+            if (settings.tema === "mundial") {
+                valorFor = (data.length >= 8) ? 8 : data.length;
+            } else {
+                valorFor = data.length;
             }
 
 
@@ -461,19 +462,24 @@
                     var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
                     partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
                     partidoHtml += '<div class="date textcolor-title2">';
-                    partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
-                    partidoHtml += '<span class="time">' + horaEvento + '</span>';
+                    if (settings.tema === "resultadosmundial") {
+                        partidoHtml += '<span class="time">' + fechaEvento + '</span>';
+                    } else {
+                        partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
+                        partidoHtml += '<span class="time">' + horaEvento + '</span>';
+                    }
+
                     partidoHtml += '</div>';
-                    
+
                     //Just a simple reduction and html5 incorporation to team's image-label 
-                    partidoHtml += '<figure>'+imagenLocal+'<figcaption>'+conjunto.local.abrev+'</figcaption></figure>';
-                    partidoHtml += '<div class="ligaResult"><span class="result textcolor-title2">'+golesLocal+'</span>';
+                    partidoHtml += '<figure>' + imagenLocal + '<figcaption>' + conjunto.local.abrev + '</figcaption></figure>';
+                    partidoHtml += '<div class="ligaResult"><span class="result textcolor-title2">' + golesLocal + '</span>';
                     partidoHtml += '<div class="content_versus"> <span class="versus textcolor-title4">-</span>';
-                    partidoHtml += '<span class="versus_time textcolor-title4">'+ conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
-                    partidoHtml += '<span class="result textcolor-title2">'+golesVisit+'</span></div>';
-                    partidoHtml += '<figure><figcaption>'+conjunto.visit.abrev+'</figcaption>'+imagenVisit+'</figure>';
-                    
-                    
+                    partidoHtml += '<span class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
+                    partidoHtml += '<span class="result textcolor-title2">' + golesVisit + '</span></div>';
+                    partidoHtml += '<figure><figcaption>' + conjunto.visit.abrev + '</figcaption>' + imagenVisit + '</figure>';
+
+
                     //partidoHtml += '<div class="icon_team">';
                     //partidoHtml += imagenLocal
                     //partidoHtml += '</div>'
@@ -494,7 +500,7 @@
 
                 }
 
-                    //wth
+                //wth
                 if (jornada2 === "jornada2") {
                     //console.log("ES jornada 2");
                     jornadasCalendarDTV.contenidoJornada2.push(partidoHtml)
@@ -509,14 +515,14 @@
             jornadasCalendarDTV.Global = jornadasCalendarDTV.contenidoJornada.concat(jornadasCalendarDTV.contenidoJornada2);
             jornadasCalendarDTV.GlobalSort = jornadasCalendarDTV.Global.sort();
 
-            var visible = "", novisible = "";
+            var visible = "",
+                novisible = "";
             for (var p = 0; p < jornadasCalendarDTV.GlobalSort.length; p++) {
                 (p < 7) ? visible += jornadasCalendarDTV.GlobalSort[p] : novisible += jornadasCalendarDTV.GlobalSort[p];
-            }
-            ;
-            
+            };
+
             // Merge visible and no visible Just for watching
-            var allContentVisible = visible + ' ' + novisible; 
+            var allContentVisible = visible + ' ' + novisible;
             $('.deg').html(allContentVisible);
             //$('.show-j').html(visible);
             //$('.show-j').html(novisible);
@@ -547,8 +553,7 @@ jQuery(function($) {
         var altWdgResult01 = 0;
         if ($(window).width() < 978 && $(window).width() > 624) {
             altWdgResult01 = 568;
-        }
-        else {
+        } else {
             altWdgResult01 = 163;
         }
 
@@ -566,12 +571,11 @@ jQuery(function($) {
 
         $('.wdg_altasbajas_result_01').each(function(ix, element) {
             var $this = $(this),
-                    Pointer = {
-                        UP: (T.getIsTouchDevice()) ? 'touchend' : 'mouseup',
-                        DOWN: (T.getIsTouchDevice()) ? 'touchstart' : 'mousedown'
-                    },
-            $theUl = $this.find('>ul')
-                    ;
+                Pointer = {
+                    UP: (T.getIsTouchDevice()) ? 'touchend' : 'mouseup',
+                    DOWN: (T.getIsTouchDevice()) ? 'touchstart' : 'mousedown'
+                },
+                $theUl = $this.find('>ul');
 
             $this.find('a.prev, a.next, .deportes-prev, .deportes-next').click(function(event) {
                 event.preventDefault();
@@ -642,12 +646,11 @@ jQuery(function($) {
             }
             if ($.browser.msie) {
                 $war1_altura = 470;
-            }
-            else {
+            } else {
                 $war1_altura = $(this).height()
             }
-			var $hijoAltura = $('.wdg_altasbajas_result_01 .deg').children('li').eq(0).outerHeight();
-            var $multi = $war1_position+1;
+            var $hijoAltura = $('.wdg_altasbajas_result_01 .deg').children('li').eq(0).outerHeight();
+            var $multi = $war1_position + 1;
             var $newAlt = $multi * $hijoAltura;
 
 
@@ -669,8 +672,7 @@ jQuery(function($) {
                 //$(this).siblings('.controls').children('.prev').children('.tvsa-caret-up').css('color','#000');
                 $(this).siblings('.controls').children().children('.tvsa-caret-up').parent().removeClass('bgactive');
                 $(this).siblings('.controls').children().children('.tvsa-caret-up').parent().addClass('bginactive');
-            }
-            else {
+            } else {
                 //$(this).siblings('.controls').children('.prev').children('.tvsa-caret-up').css('color','#FFF');
                 $(this).siblings('.controls').children().children('.tvsa-caret-up').parent().removeClass('bginactive');
                 $(this).siblings('.controls').children().children('.tvsa-caret-up').parent().addClass('bgactive');
