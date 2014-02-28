@@ -36,7 +36,7 @@
         }
 
         var jornadasCalendarDTV = {
-            jornadaCalendarRoute: url_itd + folder_deportes + "home/jornada/",
+            jornadaCalendarRoute: "http://mxm.televisadeportes.esmas.com/deportes/home/jornada/",
             jornadaPresente: 0,
             fechaInicio: '',
             contenidoCentral: '',
@@ -191,7 +191,7 @@
             primeraJornada: function() {
                 if (jornadasCalendarDTV.numeroIdEquipo != 0 && jornadasCalendarDTV.numeroTorneoAct != 0) {
                     //console.log("ejecuto la primera ronda");
-                    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.numeroTorneoAct + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
+                    urFinal = "http://mxm.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.numeroTorneoAct + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
                     globalThis.find('.full-timetable').css("visibility", "hidden");
                     $.ajax({
                         url: urFinal,
@@ -278,7 +278,7 @@
 
                 if (jornadasCalendarDTV.Jornada2 !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0) {
                     //console.log("ejecuto la segunda ronda");
-                    urFinal = "http://interacciontd.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.Jornada2 + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
+                    urFinal = "http://mxm.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.Jornada2 + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
                     $.ajax({
                         url: urFinal,
                         jsonpCallback: jornadasCalendarDTV.callbackJornada,
