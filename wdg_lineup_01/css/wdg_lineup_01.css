@@ -1,0 +1,88 @@
+@media screen and (min-width: 948px){
+.wdg_lineup_01
+	{
+		/*width:947px;*/
+		width:946px;
+		position:relative;
+		height:auto;
+		overflow:hidden;
+		
+	}
+	.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_info_alineado
+	{
+		width:397px !important;
+	}
+	.wdg_lineup_01 .jornada
+	{
+		width:175px !important;
+		float:left;
+	}
+	.wdg_lineup_01 .lineaBajoTransform
+	{
+		border-bottom:1px solid #CCC !important;
+		border-top:1px solid #CCC !important;
+	}
+	.wdg_lineup_01 .alineacion_partido .equipo_partido
+	{
+		width:473px;
+		padding-left:0px;
+	}
+	/*.wdg_lineup_01 .alineacion_partido .separadoderecha{
+		width:483px !important;
+	}*/
+	.wdg_lineup_01 .simbologia .tabla_simbologia > .icon_simbologia
+	{
+		margin-left:38px;
+		width:29%;
+	}
+	.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_alineacion_partido .player_alineado h2
+	{
+		margin-right:18px;
+	}
+	.wdg_lineup_01 .wdg_lineup_01_dropdown,
+	.wdg_lineup_01 .wdg_lineup_012_dropdown {
+        width: 176px;
+	}
+	.wdg_lineup_01 .alineacion_partido .equipo_partido .type1
+	{
+		border-right:none;
+	}
+	
+	
+	
+	
+	
+	
+	.ie7 .wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido{
+		height: 33px;
+	}
+	.ie7 .wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_alineacion_partido .player_alineado{
+		height: 30px;
+	}
+	
+	.ie8 .wdg_lineup_01 .dotted-bottom-right,
+	.ie7 .wdg_lineup_01 .dotted-bottom-right{
+		 background:url("http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/dotted-horizontal.png") repeat-x bottom;
+		 border-right: 1px dotted #999;
+	}
+	
+	.ie8 .wdg_lineup_01 .dotted-right,
+	.ie7 .wdg_lineup_01 .dotted-right{
+		 border-right: 1px dotted #999;
+		 background: none !important;
+	}
+	
+	.ie8 .wdg_lineup_01 .dotted-bottom,
+	.ie7 .wdg_lineup_01 .dotted-bottom{
+		 background: url("http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/dotted-horizontal.png") repeat-x bottom !important;
+	}
+	
+	.ie7 .wdg_lineup_01 h4.one{
+		border-top: solid 1px #CCC;
+	}
+	
+	.ie7 .wdg_lineup_01 h4.one span{
+		background: #f5f5f5;
+		margin-top: -10px;
+	}
+}

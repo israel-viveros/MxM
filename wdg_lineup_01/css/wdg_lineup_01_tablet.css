@@ -1,0 +1,17 @@
+
+@media screen and (min-width: 624px){
+	.wdg_lineup_01
+	{
+		display:block;
+		margin-bottom:36px;
+	}
+	
+	.wdg_lineup_01 .str_pleca_01 h3{
+		width:300px;
+		max-width: none;
+	}
+	.wdg_lineup_01 .dotted-bottom-right{
+		 background:url("http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/dotted-horizontal.png") repeat-x bottom,url("http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/dotted-vertical.png") repeat-y right;
+	}
+	
+}

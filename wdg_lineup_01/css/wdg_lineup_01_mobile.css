@@ -1,0 +1,439 @@
+@media screen{
+
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido .grisPequeno
+					{
+						font-size:8px;
+						color: #666666;
+						padding: 0 11px;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido .rojo
+					{
+						margin-left:6px;
+						color: #D9A961;
+						margin-right:5px;
+						font-size:16px;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido img
+					{
+						float:left;
+						margin:6px 4px;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido i
+					{
+						float:left;
+						margin-right:4px;
+						margin-top:3px;
+                                                margin-left: 10px;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido  h2
+					{
+						padding-top:5px;
+						text-transform:uppercase;
+						font-size:12px;
+						float:left;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido .jornada
+					{
+						width:100%;
+						height:33px;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido .equipos
+					{
+						width:218px;
+                        padding-left:25px;
+						height:auto;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .simbolo2
+					{
+						width:54px;
+						height:auto;
+						float:left;
+						font-weight:bold;
+						text-align:center;
+						padding-top:0px;
+						color: #D6A256;						
+						padding-bottom:3px;
+						font-size:18px;
+					}
+					.wdg_lineup_01 .alineacion_partido .equipo_partido .simbolo
+					{
+						width:54px;
+						border-right:1px solid #CCC;
+						height:auto;
+						float:left;
+						font-weight:bold;
+						color: #A41D21;
+						margin:5px 0;
+						text-align:center;
+						font-size:18px;
+					}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido > div
+				{
+					
+					float:left;
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_info_alineado
+				{
+					padding-left:12px;
+					width:237px;
+					position:relative;
+					float:right;
+					padding-right: 7px;
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_alineacion_partido .player_alineado h2
+				{
+					font-size:11px;
+					font-weight:normal;
+					position:relative;
+					padding-bottom: 5px;
+					padding-top: 5px;
+					margin-left:4px;
+					margin-right:1px;
+					float:right;
+					color: #999;
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido h1
+				{
+					font-size:12px;
+					position:relative;
+					margin-left:2px;
+					padding-bottom: 5px;
+					padding-top: 4px;
+					float:left;
+				}
+				.wdg_lineup_01 .encabezado_alineacion_partido h3
+				{
+					width:auto;
+					padding-left:48px;
+					padding-top:10px;
+					font-style: italic;
+					font-weight:normal !important;
+					padding-bottom:6px;
+					float:left;
+					font-size:18px;
+				}
+				.wdg_lineup_01 .banca  
+				{
+					border-bottom:0px !important;;
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_alineacion_partido .player_alineado i
+				{
+					float:right;
+					position:relative;
+					margin-top:3px;
+					
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_alineacion_partido .player_alineado
+				{
+					width:100%;
+					height:auto;
+					padding-bottom:10px;
+					position:relative;
+					padding-top:10px;
+				}
+				
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .jugador_alineacion_partido
+				{
+					width:100%;
+					text-align:center;
+					height:auto;
+					position:relative;
+					float:left;
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido
+				{
+					width:100%;
+					text-align:center;
+					height:auto;
+					position:relative;
+					float:left;
+				}
+				.wdg_lineup_01 .alineacion_partido .equipo_partido .type1
+				{
+				}
+				.wdg_lineup_01 .alineacion_partido   .separadoizquierda
+				{
+					padding-right:0px;
+				}
+				.wdg_lineup_01 .alineacion_partido   .separadoizquierda_encabezado
+				{
+					border-right:0px;
+				}
+				.wdg_lineup_01 .alineacion_partido   .separadoderecha
+				{
+					padding-left:0px;
+				}
+			.wdg_lineup_01 .alineacion_partido .equipo_partido .dt_alineacion_partido
+			{
+				width:100%;
+				height:auto;
+				position:relative;
+				padding-top:8px;
+				
+				float:left;
+				
+				
+			}			
+			.wdg_lineup_01 .alineacion_partido .equipo_partido
+			{
+				width:311px;
+				height:auto;
+				position:relative;
+				float:left;
+			}
+		.wdg_lineup_01 .centradoPartido
+		{
+			width:auto;
+			height:auto;
+			margin:0px auto;
+		}
+		.wdg_lineup_01 .alineacion_partido
+		{
+			width:100%;
+			height:auto;
+			position:relative;
+			padding-bottom:4px;
+		}
+		.wdg_lineup_01 .simbologia .icon_simbologia img
+		{
+			position:relative;
+			float:left;
+			margin-left:22px;
+		}
+		.wdg_lineup_01 .simbologia .icon_simbologia i
+		{
+			position:relative;
+			float:left;
+			margin-left:22px;
+		}
+		.wdg_lineup_01 .simbologia .icon_simbologia h3
+		{
+			position:relative;
+			float:left;
+			padding-top:4px;
+			color:#A8A8A8;
+			font-weight:normal;
+			margin-left:22px;
+			font-size:12px;
+		}
+		.wdg_lineup_01 .simbologia .tabla_simbologia > .icon_simbologia
+		{
+			padding-top:12px;
+			padding-bottom:10px;
+			margin-left:0px;
+			float:left;
+			width:33%;
+		}
+		.wdg_lineup_01 .simbologia .tabla_simbologia
+		{
+			width:100%;
+			height:auto;
+			float:left;
+			border-bottom:1px solid #CCC;
+			position:relative;
+			padding-bottom:9px;
+		}
+		.wdg_lineup_01 h4 {
+			position: relative;
+			margin-top: 20px;
+		  }
+		  
+		.wdg_lineup_01 h4.one {
+			margin-top: 0;
+		  }
+		  
+		.wdg_lineup_01 h4.one:before {
+			content: "";
+			display: block;
+			border-top: solid 1px #CCC;
+			width: 100%;
+			height: 1px;
+			position: absolute;
+			top: 50%;
+			z-index: 1;
+		  }
+		  
+		.wdg_lineup_01 h4.one span {
+			background: #f5f5f5;
+			padding: 0 20px;
+			position: relative;
+			z-index: 5;
+			font-style:italic;
+			font-weight:normal;
+		  }
+		.wdg_lineup_01 .simbologia .title_simbologia
+		{
+			width:100%;
+			height:12px;
+			position:relative;
+			color:#A8A8A8;
+			font-size:14px;
+			font-weight:normal;
+			background-color: #F5F5F5 !important;
+			z-index:10000 !important;
+			text-align:center;
+
+		}
+	.wdg_lineup_01 .simbologia
+	{
+		width:auto;
+		position:relative;
+		height:auto;
+	}
+	.wdg_lineup_01 .line_left
+	{
+		border-right:1px dashed #CCC;
+	}
+	.wdg_lineup_01 .lineaBajo
+	{
+		border-bottom:1px solid #CCC;
+	}
+	.wdg_lineup_01 .lineaBajoTransform
+	{
+		border-bottom:0px;
+		border-top:1px solid #CCC;
+	}
+	.wdg_lineup_01
+	{
+		
+		width:624px;
+		position:relative;
+		height:auto;
+		
+	}
+	.wdg_lineup_01 .wdg_lineup_01_dropdown {
+        clear: both;
+    	width: 95%;
+        height: 100%;
+		float:left;
+        background-color: #E3E3E3;
+        box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
+        cursor: pointer;
+    }
+    .wdg_lineup_01 .wdg_lineup_01_dropdown .wdg_lineup_01_dropdowncontent p {
+        line-height: 34px;
+        font-size: 14px;
+		color:#333;
+        font-weight: bold;
+        float: left;
+        width: 70%;
+        display: inline-block;
+        height: 30px;
+		text-align: left;
+		padding-left: 21px;
+    }
+    .wdg_lineup_01 .wdg_lineup_01_dropdown .wdg_lineup_01_dropdowncontent span {
+        margin-top: 13px;
+        margin-right: 15px;
+        opacity: 0.5;
+        float: right;
+    }
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer{
+        clear: both;
+    }
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer ul{
+        background-color: #f5f5f5;
+        z-index: 1000 !important;
+        position: relative;
+        visibility: hidden;
+        cursor: pointer;
+    }
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer ul::-webkit-scrollbar-thumb {
+        background: #d3d3d3;
+        -webkit-border-radius: 1ex;
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer ul::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+        background: #f5f5f5;
+    }
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer ul li{
+        width: 100%;
+        height: 34px;
+        background-color: rgba(235,235,235,0.6);
+        border-bottom: 1px solid #d3d3d3;
+        box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.1);
+    
+    }  
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer ul li:hover{
+        background-color: rgba(235,235,235,0.9);  
+    }
+    .wdg_lineup_01 .wdg_lineup_01_listcontainer ul li p{
+        margin-left: 20px;
+        line-height: 34px;
+        font-style: italic;
+        font-weight: bold;
+    }
+	.wdg_lineup_01 .wdg_lineup_012_dropdown {
+        clear: both;
+        width: 95%;
+        height: 100%;
+        background-color: #E3E3E3;
+        box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
+        cursor: pointer;
+		float:right;
+    }
+
+    .wdg_lineup_01 .wdg_lineup_012_dropdown .wdg_lineup_012_dropdowncontent p {
+        line-height: 34px;
+        font-size: 14px;
+		color:#333;
+        font-weight: bold;
+        float: left;
+        width: 70%;
+        display: inline-block;
+        height: 30px;
+		text-align: left;
+		padding-left: 21px;
+    }
+    .wdg_lineup_01 .wdg_lineup_012_dropdown .wdg_lineup_012_dropdowncontent span {
+        margin-top: 13px;
+        margin-right: 15px;
+        opacity: 0.5;
+        float: right;
+    }
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer{
+        clear: both;
+    }
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer ul{
+        background-color: #f5f5f5;
+        z-index: 1000 !important;
+        position: relative;
+        visibility: hidden;
+        cursor: pointer;
+
+    }
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer ul::-webkit-scrollbar-thumb {
+        background: #d3d3d3;
+        -webkit-border-radius: 1ex;
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer ul::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+        background: #f5f5f5;
+    }
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer ul li{
+        width: 100%;
+        height: 34px;
+        background-color: rgba(235,235,235,0.6);
+        border-bottom: 1px solid #d3d3d3;
+        box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.1);
+    }  
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer ul li:hover{
+        background-color: rgba(235,235,235,0.9);  
+    }
+    .wdg_lineup_01 .wdg_lineup_012_listcontainer ul li p{
+        margin-left: 20px;
+        line-height: 34px;
+        font-style: italic;
+        font-weight: bold;
+    }
+    .wdg_lineup_01
+	{
+		display:none;
+		margin-bottom:24px;
+	}
+}
+
