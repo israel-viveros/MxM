@@ -35,13 +35,7 @@
                 maquetado += '<div class="encabezado_alineacion_partido dotted-right" style="z-index: 950;">';
                 maquetado += '<div class="simbolo" style="z-index: 940;">#</div>';
                 maquetado += '<div class="equipos" style="z-index: 930;">					';
-                maquetado += '<img src="http://lorempixel.com/20/20/">';
-                maquetado += '<h2>Leo';
-                maquetado += '<span class="rojo">1</span>';
-                maquetado += '<span class="grisPequeno">vs</span>';
-                maquetado += '<span class="rojo">10</span>ame</h2>';
-                maquetado += '<img src="http://lorempixel.com/20/20/">';
-                maquetado += '<div style="clear: both; z-index: 920;"></div>';
+                maquetado += '<img src="http://lorempixel.com/20/20/"><h2>Leo<span class="rojo">1</span><span class="grisPequeno">vs</span><span class="rojo">10</span>ame</h2><img src="http://lorempixel.com/20/20/"><div style="clear: both; z-index: 920;"></div>';
                 maquetado += '</div>';
                 maquetado += '<div class="jornada" style="z-index: 910;">';
                 maquetado += '<div class="wdg_lineup_01_dropdown drop1" style="z-index: 900;">';
@@ -175,15 +169,62 @@
 
                 maquetado += '</div>';
                 maquetado += '<div class="tabla_simbologia" style="z-index: 30;">';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 20;"><i class="tvsa-mxm-yellowcard "> </i><h3 class="">Amonestacion</h3></div>';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 10;"><i class=" tvsa-mxm-redcard "> </i><h3 class="">Expulciones</h3></div>';
-                maquetado += '<div class="icon_simbologia" style="z-index: 0;"><i class="tvsa-videocamera"> </i><h3 class="">Convocatoria a Seleccion</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 20;"><i class="tvsa-mxm-yellowcard "> </i><h3 class="">Amonestación</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 10;"><i class="tvsa-mxm-owngoal "> </i><h3 class="">Autogol</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: 0;"><i class="tvsa-mxm-comment"> </i><h3 class="">Convocatoria a Comentario</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -10;"></div>';
                 maquetado += '</div>			';
                 maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-videocamera"> </i><h3 class="">Baja de equipo</h3></div>';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-videocamera"> </i><h3 class="">En duda</h3></div>';
-                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-videocamera"> </i><h3 class="">Lesionado</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-statisticdata"> </i><h3 class="">Dato estadístico</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-offside"> </i><h3 class="">Desde afuera del área</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-"> </i><h3 class="">El partido ha sido suspendido</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-startsecondhalf"> </i><h3 class="">Empieza segundo tiempo</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-penalties"> </i><h3 class="">Empiezan penales</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-redcard"> </i><h3 class="">Expulsión</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-out"> </i><h3 class="">Falla el penal</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Finaliza el partido</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-offside"> </i><h3 class="">Fuera de lugar</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-goal"> </i><h3 class="">Gol</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-startsecondhalf"> </i><h3 class="">Inicia el segundo tiempo</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-startextrafirsthalf"> </i><h3 class="">Inicia primer tiempo extra</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-startextrasecondhalf"> </i><h3 class="">Inicia segundo tiempo extra</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class=" tvsa-mxm-out"> </i><h3 class="">Pasa por afuera</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-crossbar"> </i><h3 class="">Pega en el poste</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-penaltykick"> </i><h3 class="">Penal</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-secondyellowcard"> </i><h3 class="">Segunda amonestación</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Termina primer tiempo</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Termina primer tiempo extra</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Termina segundo tiempo</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Termina segundo tiempo extra</h3></div>';
+                maquetado += '<div style="clear: both; z-index: -60;"></div>';
+                maquetado += '</div>';
+
+                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-videocamera"> </i><h3 class="">Terminan penales</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
                 maquetado += '</div>';
 
@@ -202,7 +243,7 @@
 
 
 
-                $.when(wdgLineUpOb.loadDatacomplete(settings.idPartido)).done(function() {
+                $.when(wdgLineUpOb.loadDatacomplete(settings.idPartido, "completo")).done(function() {
                     wdgLineUpOb.funcionesNaat();
                 });
 
@@ -232,7 +273,7 @@
                     })
 
             },
-            loadDatacomplete: function(idMatch) {
+            loadDatacomplete: function(idMatch, tipo) {
                 function giveActions(array) {
                     var acteaml = "",
                         clase = "";
@@ -269,6 +310,10 @@
                     return acteaml;
                 }
 
+                $("#equipoLocalTIM,#equipoVistTIM,#bancaLocalTIM,#bancaVisitTIM,#ausentesLocal,#ausentesVisit").fadeOut('fast', function() {
+                    // $(this).empty;
+                });
+
                 var urlFeed = 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + idMatch + '/match_lineup.js';
                 var DtLocal = "",
                     bancalocal = "",
@@ -298,7 +343,9 @@
                             tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineuplocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineuplocal.team[k].longName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
                         };
                         tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineuplocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
-                        $("#equipoLocalTIM").html(tmpTeam);
+                        $("#equipoLocalTIM").fadeIn('slow', function() {
+                            $(this).html(tmpTeam);
+                        });
 
 
                         //equipo visitante
@@ -314,7 +361,9 @@
                             tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineUpVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineUpVisit.team[j].longName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>	</div><div style="clear: both; z-index: 570;"></div></div>';
                         };
                         tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineUpVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
-                        $("#equipoVistTIM").html(tmpTeamV);
+                        $("#equipoVistTIM").fadeIn('slow', function() {
+                            $(this).html(tmpTeamV);
+                        });
 
                         // banca local
                         var ActBL = "";
@@ -325,7 +374,9 @@
                             }
                             bancalocal += '<div class="jugador_alineacion_partido" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineuplocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineuplocal.substitutes[l].longName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>	</div><div style="clear: both; z-index: 630;"></div></div>';
                         };
-                        $("#bancaLocalTIM").html(bancalocal);
+                        $("#bancaLocalTIM").fadeIn('slow', function() {
+                            $(this).html(bancalocal);
+                        });
 
                         //banca visitante
                         var ActBV = "";
@@ -336,7 +387,9 @@
                             }
                             bancaVisit += '<div class="player_alineado dotted-bottom " style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineUpVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineUpVisit.substitutes[m].longName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
                         };
-                        $("#bancaVisitTIM").html(bancaVisit);
+                        $("#bancaVisitTIM").fadeIn('slow', function() {
+                            $(this).html(bancaVisit);
+                        });
 
 
                         if (typeof data.lineuplocal.ausentes !== "undefined") {
@@ -346,7 +399,9 @@
                         } else {
                             ausenLocal = '<div class="player_alineado" style="z-index: 430;"><div class="simbolo2 dotted-right" style="z-index: 420;"></div><div class="jugador_info_alineado" style="z-index: 410;"><h1></h1></div><div style="clear: both; z-index: 400;"></div></div>';
                         }
-                        $("#ausentesLocal").empty().html(ausenLocal);
+                        $("#ausentesLocal").fadeIn('slow', function() {
+                            $(this).html(ausenLocal);
+                        });
 
                         if (typeof data.lineUpVisit.ausentes !== "undefined") {
                             var ActAL = "";
@@ -356,7 +411,9 @@
                         } else {
                             ausenVisit = '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;"></div><div class="jugador_info_alineado" style="z-index: 330;"><h1></h1></div><div style="clear: both; z-index: 320;"></div>	</div><div style="clear: both; z-index: 310;"></div>			</div>';
                         }
-                        $("#ausentesVisit").html(ausenVisit);
+                        $("#ausentesVisit").fadeIn('slow', function() {
+                            $(this).html(ausenVisit);
+                        });
 
                         if (typeof data.lineUpVisit.ausentes !== "undefined" && typeof data.lineuplocal.ausentes !== "undefined") {
                             $("#ausentesLocal").parent('.alineacion_partido').remove();
@@ -375,7 +432,6 @@
             },
 
             funcionesNaat: function() {
-                console.log("haciendo funciones de NAT")
                 var zIndexNumber = 1000;
                 $('.wdg_lineup_01 div').each(function() {
                     $(this).css('zIndex', zIndexNumber);
