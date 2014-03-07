@@ -236,12 +236,13 @@
                 MaqMenu += '<div class="nav_smnu_sports_01_bar">';
                 MaqMenu += '<ul>';
                 MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + data.previo + '">Previo</a></li>' : '';
-                MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" title="Alineacion">Alineación</a></li>' : '';
+                MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
                 MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "") ? '<li class="hide1 ratingMenuTim"><a href="' + data.rating + '" title="Rating">Rating</a></li>' : '';
                 MaqMenu += (typeof data.mxm !== 'undefined' && data.mxm !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 mxmMenuTim"><a href="' + data.mxm + '" title="MxM">MxM</a></li>' : '';
                 MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "") ? '<li class="hide2 pizarraMenuTim"><a href="' + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
-                MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" title="Cronica">Cronica</a></li>' : '';
+                MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video">Video</a></li>' : '';
+                MaqMenu += (parseInt(settings.idtorneo) === 359) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul>';
                 MaqMenu += '</div>';
                 MaqMenu += '</div>';
@@ -261,6 +262,7 @@
                 (/pizarra/.test(urlAc)) ? $(".pizarraMenuTim").addClass('current') : '';
                 (/cronica/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
                 (/video/.test(urlAc)) ? $(".videoMenuTim").addClass('current') : '';
+                (/interaccion/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
             } // ENd drawMenu()
 
         }; // end wdf_sportResult object
