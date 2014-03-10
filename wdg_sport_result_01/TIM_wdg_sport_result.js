@@ -8,7 +8,7 @@
         var GlobalThis = this;
 
         var wdf_sportResult = {
-            urlFinalHeader: 'http://lab.israelviveros.com/deportes/wdg_sport_result_01/' + settings.idtorneo + '/' + settings.idteam + '/mxm_header.js',
+            urlFinalHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idtorneo + '/' + settings.idteam + '/match_header.js',
             jsonpcallback: 'mxmheader',
             IdPestanasMenu: $("#TIMnav_smnu_sports"),
 
@@ -36,7 +36,7 @@
                 MaquetadoHEader += '<div class="wrapper">';
                 MaquetadoHEader += '<div class="match_title">';
                 MaquetadoHEader += '<div class="cup_name">';
-                MaquetadoHEader += (data.transimisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2" onclick="javascript:window.open(\'' + data.transimisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
+                MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
                 MaquetadoHEader += '<div class="subtitulo textcolor-title2">' + data.jornada.nombre + '</div>';
                 MaquetadoHEader += '</div>';
@@ -54,7 +54,7 @@
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="dotted_separator"></div>';
                 MaquetadoHEader += '<div class="team2">';
-                MaquetadoHEader += (data.equipoVisitante.penales === "") ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
+                MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES2</div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
                 MaquetadoHEader += '<div class="equipo">' + data.equipoVisitante.nombre + '</div>';
                 MaquetadoHEader += '<div class="escudo"><img src="' + data.equipoVisitante.logo + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '"></div>';
@@ -68,12 +68,14 @@
                 MaquetadoHEader += '<div class="solid_separator"></div>';
                 MaquetadoHEader += '<div class="match_info">';
                 MaquetadoHEader += (typeof data.partidoIda !== "undefined") ? '<div class="ida">Partido ida: <span class="blanco">' + data.partidoIda.local + ' ' + data.partidoIda.golesLocal + ' - ' + data.partidoIda.golesVisitante + ' ' + data.partidoIda.visitante + '</span></div>' : '';
-                MaquetadoHEader += '<div class="scoreglobal">Global: <span class="blanco">' + data.equipoLocal.nombre + ' <span id="globalLoc">' + data.equipoLocal.golesGlobal + '</span> - <span id="globalVi">' + data.equipoVisitante.golesGlobal + '</span> ' + data.equipoVisitante.nombre + '</span></div>';
+                if (parseInt(data.equipoLocal.golesGlobal) !== 0 || parseInt(data.equipoVisitante.golesGlobal) !== 0) {
+                    MaquetadoHEader += '<div class="scoreglobal">Global: <span class="blanco">' + data.equipoLocal.nombre + ' <span id="globalLoc">' + data.equipoLocal.golesGlobal + '</span> - <span id="globalVi">' + data.equipoVisitante.golesGlobal + '</span> ' + data.equipoVisitante.nombre + '</span></div>';
+                };
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="date_venue">';
                 MaquetadoHEader += '<div class="when">' + data.fechaPartidoLetra.replace(/-/g, " ") + ' ' + data.horaPartido + '</div>';
-                MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">' + data.estadio.nombre + ' ' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
+                MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">Estadio ' + data.estadio.nombre + ', ' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
                 MaquetadoHEader += (typeof data.datocurioso !== "undefined") ? '<div class="info">' + data.datocurioso + '</div>' : '';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '</div>';
@@ -141,6 +143,7 @@
 
 
             timeUpdate: function(dia, hora) {
+                var tagVivo = $("#TIMVivoHeader");
                 var tiempoActualizacion = 0;
                 var FechaPartido = dia.substring(3, 5) + '-' + dia.substring(0, 2) + '-' + dia.substring(8, 10) + ' ' + hora.substring(0, 5) + ':00';
                 $.ajax({
@@ -195,12 +198,17 @@
                                         //console.log("faltan menos de 15 min");
                                         //Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
                                         tiempoActualizacion = 60000;
+                                        if (tagVivo.length) {
+                                            tagVivo.removeClass('hidden');
+                                        }
 
                                     } else {
                                         //console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
                                         //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
-
                                         (minutosrestantes > 60) ? tiempoActualizacion = 900000 : '';
+                                        if (tagVivo.length) {
+                                            tagVivo.removeClass('hidden');
+                                        }
                                     }
                                 }
                                 //cop
