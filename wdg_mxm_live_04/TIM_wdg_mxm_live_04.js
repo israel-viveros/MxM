@@ -12,10 +12,9 @@
 
 
         var wdgLiveObj = {
-
-            urlFinal: 'http://lab.israelviveros.com/deportes/wdg_mxm_live_04/' + settings.idjornada + '/' + settings.idmatch + '/mxm_contenido.js',
+            urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
             callback: 'datamxmvivo',
-            urlfeedHeader: 'http://lab.israelviveros.com/deportes/wdg_mxm_live_04/' + settings.idjornada + '/' + settings.idmatch + '/mxm_header.js',
+            urlfeedHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_header.js',
             feedCallbackHeader: 'mxmheader',
 
             inicio: function() {
@@ -47,46 +46,94 @@
                         for (var i = 0; i < data.actionsMXM.length; i++) {
                             var video = "",
                                 galeria = "";
-
+                            console.log(data.actionsMXM[i].type.toLowerCase());
                             switch (data.actionsMXM[i].type.toLowerCase()) {
-                                case "fueradelarea":
-                                    icono = "";
+                                case "amonestacion":
+                                    icono = "mxm-yellowcard";
                                     break;
-                                case "centroalarea":
-                                    icono = "";
-                                    break;
-                                case "tirodeesquina":
-                                    icono = "";
-                                    break;
-                                case "disparoagol":
-                                    icono = "";
-                                    break;
-                                case "atajada":
-                                    icono = "block";
+                                case "autogol":
+                                    icono = "mxm-owngoal";
                                     break;
                                 case "comentario":
-                                    icono = "";
+                                    icono = "mxm-comment";
                                     break;
-                                case "gollocal":
-                                    icono = "goal";
+                                case "datoestadistico":
+                                    icono = "mxm-statisticdata";
                                     break;
-                                case "saledeljuego":
-                                    icono = "";
+                                case "desdeafueradelarea":
+                                    icono = "mxm-offside";
                                     break;
-                                case "entraaljuego":
+                                case "elpartidohasidosuspendido":
                                     icono = "";
                                     break;
                                 case "empiezasegundotiempo":
-                                    icono = "gameend";
+                                    icono = "mxm-startsecondhalf";
                                     break;
-                                case "golvisitante":
-                                    icono = "goal";
+                                case "empiezanpenales":
+                                    icono = "mxm-penalties";
                                     break;
-                                case "amonestacion":
-                                    icono = "yellowcard";
+                                case "expulsion":
+                                    icono = "mxm-redcard";
+                                    break;
+                                case "fallaelpenal":
+                                    icono = "mxm-out";
+                                    break;
+                                case "finalizaelpartido":
+                                    icono = "mxm-gameend";
+                                    break;
+                                case "fueradelugar":
+                                    icono = "mxm-offside";
                                     break;
                                 case "twitter":
                                     icono = "twitter";
+                                    break;
+                                case "gol":
+                                    icono = "mxm-goal";
+                                    break;
+                                case "iniciaelsegundotiempo":
+                                    icono = "mxm-startsecondhalf";
+                                    break;
+                                case "iniciaprimertiempoextra":
+                                    icono = "mxm-startextrafirsthalf";
+                                    break;
+                                case "iniciasegundotiempoextra":
+                                    icono = "mxm-startextrasecondhalf";
+                                    break;
+                                case "pasaporafuera":
+                                    icono = "mxm-out";
+                                    break;
+                                case "pegaenelposte":
+                                    icono = "mxm-crossbar";
+                                    break;
+                                case "penal":
+                                    icono = "mxm-penaltykick";
+                                    break;
+                                case "segundaamonestacion":
+                                    icono = "mxm-secondyellowcard";
+                                    break;
+                                case "terminaprimertiempo":
+                                    icono = "mxm-gameend";
+                                    break;
+                                case "terminaprimertiempoextra":
+                                    icono = "mxm-gameend";
+                                    break;
+                                case "terminasegundotiempo":
+                                    icono = "mxm-gameend";
+                                    break;
+                                case "terminasegundotiempoextra":
+                                    icono = "mxm-gameend";
+                                    break;
+                                case "falta":
+                                    icono = "mxm-foul";
+                                    break;
+                                case "tirodeesquina":
+                                    icono = "mxm-cornerkick";
+                                    break;
+                                case "entraaljuego":
+                                    icono = "mxm-playerin";
+                                    break;
+                                default:
+                                    icono = "";
                                     break;
 
                             }
@@ -97,7 +144,7 @@
                             if (icono === "twitter") {
                                 item += '<div class="icon-time"><i class="tvsa-twitter"></i></div>';
                             } else {
-                                item += '<div class="icon-time"><i class="tvsa-mxm-' + icono + '"></i></div>';
+                                item += '<div class="icon-time"><i class="tvsa-' + icono + '"></i></div>';
                             }
                             item += '</div>';
                             item += (icono !== "twitter") ? '<div class="chronic">' + data.actionsMXM[i].description + '</div>' : '';
