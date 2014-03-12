@@ -304,7 +304,7 @@
 
 
                         }
-                        //console.log(data.lineUpVisit.team[j].actions[q]);
+                        //console.log(data.lineupVisit.team[j].actions[q]);
                         acteaml += '<h2>' + array[q].minute + '\'</h2><i class="tvsa-' + clase + '"> </i>';
                     };
                     return acteaml;
@@ -314,7 +314,7 @@
                     // $(this).empty;
                 });
 
-                var urlFeed = 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + idMatch + '/match_lineup.js';
+                var urlFeed = 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idTorneo + '/' + idMatch + '/match_lineup.js';
                 var DtLocal = "",
                     bancalocal = "",
                     bancaVisit = "",
@@ -335,14 +335,14 @@
                         $("#nameJAVisit").html(data.week);
 
                         var ActL = "";
-                        for (var k = 0; k < data.lineuplocal.team.length; k++) {
-                            //console.log(data.lineuplocal.team[k]);
-                            if (typeof data.lineuplocal.team[k].actions !== "undefined") {
-                                ActL = giveActions(data.lineuplocal.team[k].actions);
+                        for (var k = 0; k < data.lineupLocal.team.length; k++) {
+                            //console.log(data.lineupLocal.team[k]);
+                            if (typeof data.lineupLocal.team[k].actions !== "undefined") {
+                                ActL = giveActions(data.lineupLocal.team[k].actions);
                             }
-                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineuplocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineuplocal.team[k].longName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
+                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].longName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
                         };
-                        tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineuplocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
+                        tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
                         $("#equipoLocalTIM").fadeIn('slow', function() {
                             $(this).html(tmpTeam);
                         });
@@ -350,29 +350,29 @@
 
                         //equipo visitante
                         var ActV = "";
-                        for (var j = 0; j < data.lineUpVisit.team.length; j++) {
+                        for (var j = 0; j < data.lineupVisit.team.length; j++) {
                             acteaml = "";
-                            //console.log(data.lineUpVisit.team[j]);
-                            //console.log(typeof data.lineUpVisit.team[j].actions);
-                            if (typeof data.lineUpVisit.team[j].actions !== "undefined") {
-                                ActV = giveActions(data.lineUpVisit.team[j].actions);
+                            //console.log(data.lineupVisit.team[j]);
+                            //console.log(typeof data.lineupVisit.team[j].actions);
+                            if (typeof data.lineupVisit.team[j].actions !== "undefined") {
+                                ActV = giveActions(data.lineupVisit.team[j].actions);
                             }
 
-                            tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineUpVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineUpVisit.team[j].longName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>	</div><div style="clear: both; z-index: 570;"></div></div>';
+                            tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].longName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>	</div><div style="clear: both; z-index: 570;"></div></div>';
                         };
-                        tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineUpVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
+                        tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineupVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
                         $("#equipoVistTIM").fadeIn('slow', function() {
                             $(this).html(tmpTeamV);
                         });
 
                         // banca local
                         var ActBL = "";
-                        for (var l = 0; l < data.lineuplocal.substitutes.length; l++) {
-                            //console.log(data.lineUpVisit.substitutes[l])
-                            if (typeof data.lineuplocal.substitutes[l].actions !== "undefined") {
-                                ActBL = giveActions(data.lineuplocal.substitutes[l].actions);
+                        for (var l = 0; l < data.lineupLocal.substitutes.length; l++) {
+                            //console.log(data.lineupVisit.substitutes[l])
+                            if (typeof data.lineupLocal.substitutes[l].actions !== "undefined") {
+                                ActBL = giveActions(data.lineupLocal.substitutes[l].actions);
                             }
-                            bancalocal += '<div class="jugador_alineacion_partido" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineuplocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineuplocal.substitutes[l].longName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>	</div><div style="clear: both; z-index: 630;"></div></div>';
+                            bancalocal += '<div class="jugador_alineacion_partido" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].longName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>	</div><div style="clear: both; z-index: 630;"></div></div>';
                         };
                         $("#bancaLocalTIM").fadeIn('slow', function() {
                             $(this).html(bancalocal);
@@ -380,21 +380,21 @@
 
                         //banca visitante
                         var ActBV = "";
-                        for (var m = 0; m < data.lineUpVisit.substitutes.length; m++) {
-                            // console.log(data.lineUpVisit.substitutes[m]);
-                            if (typeof data.lineUpVisit.substitutes[m].actions !== "undefined") {
-                                ActBV = giveActions(data.lineUpVisit.substitutes[m].actions);
+                        for (var m = 0; m < data.lineupVisit.substitutes.length; m++) {
+                            // console.log(data.lineupVisit.substitutes[m]);
+                            if (typeof data.lineupVisit.substitutes[m].actions !== "undefined") {
+                                ActBV = giveActions(data.lineupVisit.substitutes[m].actions);
                             }
-                            bancaVisit += '<div class="player_alineado dotted-bottom " style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineUpVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineUpVisit.substitutes[m].longName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
+                            bancaVisit += '<div class="player_alineado dotted-bottom " style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineupVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineupVisit.substitutes[m].longName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
                         };
                         $("#bancaVisitTIM").fadeIn('slow', function() {
                             $(this).html(bancaVisit);
                         });
 
 
-                        if (typeof data.lineuplocal.ausentes !== "undefined") {
-                            for (var n = 0; n < data.lineUpVisit.ausentes.length; n++) {
-                                ausenLocal += '<div class="player_alineado" style="z-index: 430;"><div class="simbolo2 dotted-right" style="z-index: 420;">' + data.lineUpVisit.ausentes[n].number + '</div><div class="jugador_info_alineado" style="z-index: 410;"><h1>' + data.lineUpVisit.ausentes[n].longName + '</h1><h2>&nbsp;</h2><i class="tvsa-videocamera"> </i></div><div style="clear: both; z-index: 400;"></div></div>';
+                    if (typeof data.lineupLocal.ausentes !== "undefined") {
+                            for (var n = 0; n < data.lineupLocal.ausentes.length; n++) {
+                                ausenLocal += '<div class="player_alineado" style="z-index: 430;"><div class="simbolo2 dotted-right" style="z-index: 420;">' + data.lineupLocal.ausentes[n].number + '</div><div class="jugador_info_alineado" style="z-index: 410;"><h1>' + data.lineupLocal.ausentes[n].longName + '</h1><h2>&nbsp;</h2><i class="tvsa-videocamera"> </i></div><div style="clear: both; z-index: 400;"></div></div>';
                             };
                         } else {
                             ausenLocal = '<div class="player_alineado" style="z-index: 430;"><div class="simbolo2 dotted-right" style="z-index: 420;"></div><div class="jugador_info_alineado" style="z-index: 410;"><h1></h1></div><div style="clear: both; z-index: 400;"></div></div>';
@@ -403,10 +403,10 @@
                             $(this).html(ausenLocal);
                         });
 
-                        if (typeof data.lineUpVisit.ausentes !== "undefined") {
+                        if (typeof data.lineupVisit.ausentes !== "undefined") {
                             var ActAL = "";
-                            for (var o = 0; o < data.lineUpVisit.ausentes.length; o++) {
-                                ausenVisit += '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;">' + data.lineUpVisit.ausentes[o].number + '</div><div class="jugador_info_alineado" style="z-index: 330;"><h1>' + data.lineUpVisit.ausentes[o].longName + '</h1>' + ActAL + '</div><div style="clear: both; z-index: 320;"></div></div><div style="clear: both; z-index: 310;"></div></div>';
+                            for (var o = 0; o < data.lineupVisit.ausentes.length; o++) {
+                                ausenVisit += '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;">' + data.lineupVisit.ausentes[o].number + '</div><div class="jugador_info_alineado" style="z-index: 330;"><h1>' + data.lineupVisit.ausentes[o].longName + '</h1>' + ActAL + '</div><div style="clear: both; z-index: 320;"></div></div><div style="clear: both; z-index: 310;"></div></div>';
                             };
                         } else {
                             ausenVisit = '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;"></div><div class="jugador_info_alineado" style="z-index: 330;"><h1></h1></div><div style="clear: both; z-index: 320;"></div>	</div><div style="clear: both; z-index: 310;"></div>			</div>';
@@ -415,7 +415,7 @@
                             $(this).html(ausenVisit);
                         });
 
-                        if (typeof data.lineUpVisit.ausentes !== "undefined" && typeof data.lineuplocal.ausentes !== "undefined") {
+                        if (typeof data.lineupVisit.ausentes !== "undefined" && typeof data.lineupLocal.ausentes !== "undefined") {
                             $("#ausentesLocal").parent('.alineacion_partido').remove();
                         }
 
