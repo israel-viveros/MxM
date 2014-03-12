@@ -340,7 +340,7 @@
                             if (typeof data.lineupLocal.team[k].actions !== "undefined") {
                                 ActL = giveActions(data.lineupLocal.team[k].actions);
                             }
-                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].longName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
+                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
                         };
                         tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
                         $("#equipoLocalTIM").fadeIn('slow', function() {
@@ -392,7 +392,7 @@
                         });
 
 
-                    if (typeof data.lineupLocal.ausentes !== "undefined") {
+                        if (typeof data.lineupLocal.ausentes !== "undefined") {
                             for (var n = 0; n < data.lineupLocal.ausentes.length; n++) {
                                 ausenLocal += '<div class="player_alineado" style="z-index: 430;"><div class="simbolo2 dotted-right" style="z-index: 420;">' + data.lineupLocal.ausentes[n].number + '</div><div class="jugador_info_alineado" style="z-index: 410;"><h1>' + data.lineupLocal.ausentes[n].longName + '</h1><h2>&nbsp;</h2><i class="tvsa-videocamera"> </i></div><div style="clear: both; z-index: 400;"></div></div>';
                             };
