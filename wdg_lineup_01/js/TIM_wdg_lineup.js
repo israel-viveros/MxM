@@ -342,7 +342,9 @@
                             }
                             tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
                         };
-                        tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
+                        if (typeof data.lineupLocal.coach !== "undefined") {
+                            tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
+                        }
                         $("#equipoLocalTIM").fadeIn('slow', function() {
                             $(this).html(tmpTeam);
                         });
@@ -360,7 +362,9 @@
 
                             tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].longName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>	</div><div style="clear: both; z-index: 570;"></div></div>';
                         };
-                        tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineupVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
+                        if (typeof data.lineupVisit.coach !== "undefined") {
+                            tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineupVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
+                        }
                         $("#equipoVistTIM").fadeIn('slow', function() {
                             $(this).html(tmpTeamV);
                         });
