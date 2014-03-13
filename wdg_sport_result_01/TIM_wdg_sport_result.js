@@ -2,7 +2,8 @@
     $.fn.WdgSportResult = function(options) {
         var settings = $.extend({
             'idtorneo': 0,
-            'idteam': 0
+            'idteam': 0,
+            'tema': 'deportes'
         }, options);
 
         var GlobalThis = this;
@@ -46,6 +47,7 @@
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1">' + data.tiempo.replace(/'/g, "\'") + '</div>';
                 MaquetadoHEader += '<div class="leftside">';
+                MaquetadoHEader += (settings.tema == 'mundial') ? '<div class="padre">' : '';
                 MaquetadoHEader += '<div class="team1">';
                 MaquetadoHEader += '<div class="escudo"><img src="' + data.equipoLocal.logo + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48"></div>';
                 MaquetadoHEader += '<div class="equipo">' + data.equipoLocal.nombre + '</div>';
@@ -65,7 +67,7 @@
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
                 MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
                 MaquetadoHEader += '</div>';
-                MaquetadoHEader += '<div class="solid_separator"></div>';
+                MaquetadoHEader += (settings.tema !== 'mundial') ? '<div class="solid_separator"></div>' : '';
                 MaquetadoHEader += '<div class="match_info">';
                 MaquetadoHEader += (typeof data.partidoIda !== "undefined") ? '<div class="ida">Partido ida: <span class="blanco">' + data.partidoIda.local + ' ' + data.partidoIda.golesLocal + ' - ' + data.partidoIda.golesVisitante + ' ' + data.partidoIda.visitante + '</span></div>' : '';
                 if (parseInt(data.equipoLocal.golesGlobal) !== 0 || parseInt(data.equipoVisitante.golesGlobal) !== 0) {
@@ -73,6 +75,9 @@
                 };
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '</div>';
+
+                MaquetadoHEader += (settings.tema === 'mundial') ? '<div class="solid_separator"></div></div>' : '';
+
                 MaquetadoHEader += '<div class="date_venue">';
                 MaquetadoHEader += '<div class="when">' + data.fechaPartidoLetra.replace(/-/g, " ") + ' ' + data.horaPartido + '</div>';
                 MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">Estadio ' + data.estadio.nombre + ', ' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
