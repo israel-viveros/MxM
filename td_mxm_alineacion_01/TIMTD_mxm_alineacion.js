@@ -4,10 +4,15 @@
         var setting = $.extend({
             'ideventomxm': 0,
             'ideventomxmtv': 0,
-            'idclub': 0
+            'idclub': 0,
+            'GolesAnotados': true,
+            'Penales': true,
+            'Amonestados': true,
+            'Promedio': true
         }, options);
 
         var GlobalThis = this;
+
 
         var wdg_smex_strategy = {
 
@@ -15,6 +20,7 @@
             urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
             urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
             urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
+            tagPromedio: $("#AlineacionPromedioTIM"),
 
 
             PintaCacha: function(tipo) {
@@ -99,6 +105,7 @@
 
             },
             loadAlineacion: function(el, IDTemp, tipo) {
+                var promedio = new Array();
                 // var url = 'http://mxm.televisadeportes.esmas.com/futbol/data/284/20839/previo_alineacion.js?185';
                 //var url = '../wdg_smex_strategy_01/' + type + '.json'; // just an example using plain text files
 
@@ -110,6 +117,7 @@
                     jsonpCallback: 'datagame',
                     cache: false,
                     success: function(data) {
+                        console.log(data);
                         var miHTML = '',
                             aliFinal = '',
                             ArregloHidden = new Array();
@@ -122,6 +130,8 @@
                         for (var t = 0; t < equipo.length; t++) {
                             equipoString = String(equipo[t]);
                             //console.log(data[equipoString]);
+
+                            promedio.push(data[equipoString].average);
 
                             for (var i = 0; i < data[equipoString].team.length; i++) {
                                 /* arrow styles based on px values */
@@ -269,7 +279,7 @@
                                 };
 
 
-                                console.log(ArregloHidden);
+
                                 for (var k = 0; k < ArregloHidden.length; k++) {
                                     $("span[data-guid=" + ArregloHidden[k] + "]").remove();
                                 };
@@ -281,11 +291,21 @@
                             $(".grid3 .noactions").css("top", "-90px");
                             $(".grid4 .noactions").css("top", "-90px");
 
+
                         };
+
+                        if (setting.Promedio === true) {
+                            wdg_smex_strategy.promedioCancha(promedio)
+                        }
+
+
+
                     }
                 }).fail(function() {
                     $("#LoadingCancha").hide();
                 })
+
+
             },
 
             FunInicio: function() {
@@ -690,7 +710,76 @@
                     })
 
 
-            } //updatePlayers
+            }, //updatePlayers
+
+            promedioCancha: function(data) {
+                var maquetado = "";
+
+                maquetado += '<div class="wdg_avgfield_01">';
+                maquetado += '<div class="str_pleca_01 collapsable">';
+                maquetado += '<div class="str_pleca_01_title">';
+                maquetado += '<h3 class="background-color-pleca1"><a href="#" title="Link Description" class="textcolor-title3">Promedio en cancha</a></h3></div>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_content">';
+                maquetado += '<div class="wdg_avgfield_01_row">';
+                maquetado += '<div class="wdg_avgfield_01_title">';
+                maquetado += '<a class="wdg_avgfield_01_red textcolor-title1" href="">EVENTOS</a>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_teams">';
+                maquetado += '<div class="wdg_avgfield_01_teama">';
+                maquetado += '<div class="element">';
+                maquetado += '<img src="http://placehold.it/30x30" alt="">';
+                maquetado += '</div>              ';
+                maquetado += '</div>';
+                maquetado += '<div class="dotted-right"></div>';
+                maquetado += '<div class="wdg_avgfield_01_teamb">';
+                maquetado += '<img src="http://placehold.it/30x30" alt="">';
+                maquetado += '</div>';
+                maquetado += '</div>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_row">';
+                maquetado += '<div class="wdg_avgfield_01_title">';
+                maquetado += '<a href="">Edad</a>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_teams box-gray">';
+                maquetado += '<div class="wdg_avgfield_01_teama">';
+                maquetado += '<div class="element textcolor-title2">' + data[0].Edad + '</div>';
+                maquetado += '</div>';
+                maquetado += '<div class="dotted-right"></div>';
+                maquetado += '<div class="wdg_avgfield_01_teamb textcolor-title2">' + data[1].Edad + '</div>';
+                maquetado += '</div>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_row">';
+                maquetado += '<div class="wdg_avgfield_01_title">';
+                maquetado += '<a href="">Estatura</a>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_teams box-gray">';
+                maquetado += '<div class="wdg_avgfield_01_teama">';
+                maquetado += '<div class="element textcolor-title2">' + data[0].Estatura + '</div>';
+                maquetado += '</div>';
+                maquetado += '<div class="dotted-right"></div>';
+                maquetado += '<div class="wdg_avgfield_01_teamb textcolor-title2">' + data[1].Estatura + '</div>';
+                maquetado += '</div>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_row">';
+                maquetado += '<div class="wdg_avgfield_01_title">';
+                maquetado += '<a href="">Peso</a>';
+                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_teams box-gray">';
+                maquetado += '<div class="wdg_avgfield_01_teama">';
+                maquetado += '<div class="element textcolor-title2">' + data[0].Peso + '</div>';
+                maquetado += '</div>';
+                maquetado += '<div class="dotted-right"></div>';
+                maquetado += '<div class="wdg_avgfield_01_teamb textcolor-title2">' + data[1].Peso + '</div> ';
+                maquetado += '</div>';
+                maquetado += '</div>';
+                maquetado += '</div>';
+                maquetado += '</div>';
+
+                wdg_smex_strategy.tagPromedio.html(maquetado);
+
+
+            } // promedio Cancha
 
         };
 
