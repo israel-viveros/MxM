@@ -46,7 +46,7 @@
                         for (var i = 0; i < data.actionsMXM.length; i++) {
                             var video = "",
                                 galeria = "";
-                            console.log(data.actionsMXM[i].type.toLowerCase());
+                        //console.log(data.actionsMXM[i].type.toLowerCase());
                             switch (data.actionsMXM[i].type.toLowerCase()) {
                                 case "amonestacion":
                                     icono = "mxm-yellowcard";
