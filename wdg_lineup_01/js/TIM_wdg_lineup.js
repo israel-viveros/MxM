@@ -165,17 +165,17 @@
                 maquetado += '<div class="simbologia" style="z-index: 50;">';
                 maquetado += '<div class="title_simbologia" style="z-index: 40;">';
 
-                maquetado += '<h4 class="one"><span>simbologia</span></h4>';
+                maquetado += '<h4 class="one"><span>Simbolog\u00EDa</span></h4>';
 
                 maquetado += '</div>';
                 maquetado += '<div class="tabla_simbologia" style="z-index: 30;">';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 20;"><i class="tvsa-mxm-yellowcard "> </i><h3 class="">Amonestación</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 20;"><i class="tvsa-mxm-yellowcard "> </i><h3 class="">Amonestaci\u00F3n</h3></div>';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 10;"><i class="tvsa-mxm-owngoal "> </i><h3 class="">Autogol</h3></div>';
                 maquetado += '<div class="icon_simbologia" style="z-index: 0;"><i class="tvsa-mxm-comment"> </i><h3 class="">Convocatoria a Comentario</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -10;"></div>';
                 maquetado += '</div>			';
                 maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-statisticdata"> </i><h3 class="">Dato estadístico</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-statisticdata"> </i><h3 class="">Dato estad\u00EDstico</h3></div>';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-offside"> </i><h3 class="">Desde afuera del área</h3></div>';
                 maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-"> </i><h3 class="">El partido ha sido suspendido</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
@@ -211,7 +211,7 @@
 
                 maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-penaltykick"> </i><h3 class="">Penal</h3></div>';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-secondyellowcard"> </i><h3 class="">Segunda amonestación</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-secondyellowcard"> </i><h3 class="">Segunda amonestaci\u00F3n</h3></div>';
                 maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Termina primer tiempo</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
                 maquetado += '</div>';
