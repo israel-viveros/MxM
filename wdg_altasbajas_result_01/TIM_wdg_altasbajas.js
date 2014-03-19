@@ -462,12 +462,9 @@
                     var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
                     partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
                     partidoHtml += '<div class="date textcolor-title2">';
-                    if (settings.tema === "resultadosmundial") {
-                        partidoHtml += '<span class="time">' + fechaEvento + '</span>';
-                    } else {
-                        partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
-                        partidoHtml += '<span class="time">' + horaEvento + '</span>';
-                    }
+
+                    partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
+                    partidoHtml += '<span class="time">' + horaEvento + '</span>';
 
                     partidoHtml += '</div>';
 
