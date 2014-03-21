@@ -147,7 +147,7 @@
                                 item += '<div class="icon-time"><i class="tvsa-' + icono + '"></i></div>';
                             }
                             item += '</div>';
-                            item += (icono !== "twitter") ? '<div class="chronic">' + data.actionsMXM[i].description + '</div>' : '';
+                            item += (icono !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
 
                             if (icono === "twitter") {
                                 var comaA = data.actionsMXM[i].description.replace(",", "|")
@@ -457,7 +457,7 @@
                                 }
 
                                 item += '</div>';
-                                item += (icono !== "twitter") ? '<div class="chronic">' + data.actionsMXM[i].description + '</div>' : '';
+                            item += (icono !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
 
                                 if (icono === "twitter") {
                                     var comaA = data.actionsMXM[i].description.replace(",", "|")
