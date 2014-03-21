@@ -428,7 +428,7 @@
 
                 if ($("#datosTIMHeader").length) {
                     clearInterval(wdgLineUpOb.intervaloVe);
-                    var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>ame</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
+                    var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>' + $("#visitAbrevTIM").text() + '</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
                     $("#localLineupRTIM, #visitLineupRTIM").html(Local);
 
                 } else {
