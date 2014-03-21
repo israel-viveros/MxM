@@ -108,9 +108,9 @@
 
             LoadMaster: function(idMaster) {
                 $.ajax({
-                    url: 'http://lab.israelviveros.com/deportes/wdg_matchesresult_01/pruebas/Ticker_' + wdg_matchresult.TickerMaster + '.js',
+                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/tickers/Ticker_' + wdg_matchresult.TickerMaster + '.js',
                     type: 'GET',
-                    jsonpCallback: 'masterticker',
+                    jsonpCallback: 'mainwtdata',
                     dataType: 'jsonp',
                     cache: true
                 })
@@ -155,7 +155,7 @@
                     url: urlData,
                     type: 'GET',
                     dataType: 'jsonp',
-                    jsonpCallback: 'wtdata',
+                    jsonpCallback: 'wdata',
                     cache: false
                 })
                     .done(function(dataFirst) {
@@ -163,7 +163,7 @@
                         //wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
                         (tipo === "update") ? wdg_matchresult.updateGoles(dataFirst) : wdg_matchresult.DrawContentFirst(dataFirst.matches.match, tipo);
                         try {
-                            //console.log("SETIMER...");
+                        //console.log("SETIMER...");
                             clearInterval(wdg_matchresult.globalTimer);
                             wdg_matchresult.setTimer();
                             wdg_matchresult.timeUpdateA.length = 0;
@@ -477,8 +477,7 @@
                 }
             } else if (wdg_matchresult.TickerTournamen !== 0) {
                 try {
-                    //wdg_matchresult.LoadFirst('http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_'+wdg_matchresult.TickerTournamen+'jsonp.js','only');
-                    wdg_matchresult.LoadFirst('http://lab.israelviveros.com/deportes/wdg_matchesresult_01/pruebas/TickerFutbol_' + wdg_matchresult.TickerTournamen + 'jsonp.js', 'only');
+                    wdg_matchresult.LoadFirst('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/tickers/TickerFutbol_' + wdg_matchresult.TickerTournamen + '.js', 'only');
                 } catch (e) {
                     console.log("Error en TickerTorunament" + e);
                 }
