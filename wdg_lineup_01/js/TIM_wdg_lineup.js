@@ -17,13 +17,11 @@
             inicio: function() {
                 var maquetado = "";
 
-
                 maquetado += '<div class="wdg_lineup_01">';
-
                 maquetado += '<div class="str_pleca_01">';
                 maquetado += '<div class="str_pleca_01_title">';
                 maquetado += '<h3 class="background-color-pleca1">';
-                maquetado += '<a href="http://www.televisa.com" title="Link Description" class="textcolor-title3">';
+                maquetado += '<a title="Alineacion" class="textcolor-title3">';
                 maquetado += 'Alineacion';
                 maquetado += '<span class="str_pleca_01_arrowa selected"></span>';
                 maquetado += '<span class="str_pleca_01_arrowb"></span>';
@@ -34,8 +32,7 @@
                 maquetado += '<div class="equipo_partido separadoizquierda_encabezado" style="z-index: 960;">';
                 maquetado += '<div class="encabezado_alineacion_partido dotted-right" style="z-index: 950;">';
                 maquetado += '<div class="simbolo" style="z-index: 940;">#</div>';
-                maquetado += '<div class="equipos" style="z-index: 930;">					';
-                maquetado += '<img src="http://lorempixel.com/20/20/"><h2>Leo<span class="rojo">1</span><span class="grisPequeno">vs</span><span class="rojo">10</span>ame</h2><img src="http://lorempixel.com/20/20/"><div style="clear: both; z-index: 920;"></div>';
+                maquetado += '<div class="equipos" id="localLineupRTIM" style="z-index: 930;">';
                 maquetado += '</div>';
                 maquetado += '<div class="jornada" style="z-index: 910;">';
                 maquetado += '<div class="wdg_lineup_01_dropdown drop1" style="z-index: 900;">';
@@ -55,15 +52,7 @@
                 maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 860;" >';
                 maquetado += '<div class="encabezado_alineacion_partido" style="z-index: 850;">';
                 maquetado += '<div class="simbolo" style="z-index: 840;">#</div>';
-                maquetado += '<div class="equipos" style="z-index: 830;">					';
-                maquetado += '<img src="http://lorempixel.com/20/20/">';
-                maquetado += '<h2>Leo';
-                maquetado += '<span class="rojo">1</span>';
-                maquetado += '<span class="grisPequeno">vs</span>';
-                maquetado += '<span class="rojo">10</span>Ame</h2>';
-                maquetado += '<img src="http://lorempixel.com/20/20/">';
-                maquetado += '<div style="clear: both; z-index: 820;"></div>					';
-
+                maquetado += '<div class="equipos" id="visitLineupRTIM" style="z-index: 830;">';
                 maquetado += '</div>';
                 maquetado += '<div class="jornada" style="z-index: 810;">';
                 maquetado += '<div class="wdg_lineup_012_dropdown drop2" style="z-index: 800;">';
@@ -247,7 +236,7 @@
                     wdgLineUpOb.funcionesNaat();
                 });
 
-
+                wdgLineUpOb.infoequipo();
 
 
             },
@@ -435,6 +424,20 @@
 
             },
 
+            infoequipo: function() {
+
+                if ($("#datosTIMHeader").length) {
+                    clearInterval(wdgLineUpOb.intervaloVe);
+                    var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>ame</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
+                    $("#localLineupRTIM, #visitLineupRTIM").html(Local);
+
+                } else {
+                    wdgLineUpOb.intervaloVe = setInterval(function() {
+                        wdgLineUpOb.infoequipo();
+                    }, 1000);
+                }
+            },
+
             funcionesNaat: function() {
                 var zIndexNumber = 1000;
                 $('.wdg_lineup_01 div').each(function() {
@@ -569,6 +572,7 @@
             }
 
         };
+
 
         wdgLineUpOb.inicio();
 

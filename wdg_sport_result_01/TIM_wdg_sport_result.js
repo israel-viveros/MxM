@@ -33,9 +33,11 @@
 
 
             drawHeader: function(data) {
+                //console.log(data);
                 var MaquetadoHEader = "";
                 MaquetadoHEader += '<div class="wrapper">';
                 MaquetadoHEader += '<div class="match_title">';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
@@ -248,14 +250,14 @@
                 MaqMenu += '<div class="container">';
                 MaqMenu += '<div class="nav_smnu_sports_01_bar">';
                 MaqMenu += '<ul>';
-                MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + data.previo + '">Previo</a></li>' : '';
-                MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
+                MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + data.previo + '" target="_parent">Previo</a></li>' : '';
+                MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" target="_parent" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
                 MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "") ? '<li class="hide1 ratingMenuTim"><a href="' + data.rating + '" title="Rating">Rating</a></li>' : '';
-                MaqMenu += (typeof data.mxm !== 'undefined' && data.mxm !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 mxmMenuTim"><a href="' + data.mxm + '" title="MxM">MxM</a></li>' : '';
+                MaqMenu += (typeof data.mxm !== 'undefined' && data.mxm !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 mxmMenuTim"><a href="' + data.mxm + '" target="_parent" title="MxM">MxM</a></li>' : '';
                 MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "") ? '<li class="hide2 pizarraMenuTim"><a href="' + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
-                MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
-                MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video">Video</a></li>' : '';
-                MaqMenu += (parseInt(settings.idtorneo) === 359) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD">Interacci\u00F3n TD</a></li>' : '';
+                MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
+                MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
+                MaqMenu += (parseInt(settings.idtorneo) === 359) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul>';
                 MaqMenu += '</div>';
                 MaqMenu += '</div>';
@@ -275,7 +277,7 @@
                 (/pizarra/.test(urlAc)) ? $(".pizarraMenuTim").addClass('current') : '';
                 (/cronica/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
                 (/video/.test(urlAc)) ? $(".videoMenuTim").addClass('current') : '';
-                (/interaccion/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
+                (/interacciontd/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
             } // ENd drawMenu()
 
         }; // end wdf_sportResult object
