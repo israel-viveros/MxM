@@ -23,6 +23,7 @@
             tagPromedio: $("#AlineacionPromedioTIM"),
             tagExpulsion: $("#ExpulsionTIM"),
             tagAlineacionList: $("#TIMAlineacionList"),
+            tagAlineacionGoles: $("#TIMAlineacionGoles"),
 
 
             PintaCacha: function(tipo) {
@@ -860,288 +861,230 @@
             }, // Modexpulsados
 
             MuestraAlineacion: function(data) {
-                console.log(data);
+                var golesLocal = (typeof(data.goalsLocal) !== "undefined") ? data.goalsLocal : '';
+                var golesVisit = (typeof(data.goalsVisit) !== "undefined") ? data.goalsVisit : '';
+
+                wdg_smex_strategy.GolesAnotados(golesLocal, golesVisit, data.lineupLocal.name, data.lineupVisit.name);
+
+
                 var maquetado = "",
-                    local = '<tr><td class="line4"></td></tr>',
-                    visit = '<tr><td class="line4"></td></tr>';
+                    local = '',
+                    visit = '',
+                    visitSub = '',
+                    localSub = '';
+
+                function givemeName(parametro) {
+                    var tmp = parametro;
+                    var tmp2 = tmp.split(":");
+                    return tmp2[1];
+                }
 
 
                 for (var i = 0; i < data.lineupLocal.team.length; i++) {
-                    local += '<tr class="alignPlayer" data-guid="' + data.lineupLocal.team[i].number + '">';
-                    local += '<td class="player_number br_dotted dotted-right" title="' + data.lineupLocal.team[i].number + '">' + data.lineupLocal.team[i].number + '</td>';
-                    local += '<td title="nombre del jugador"><p class="player_name">' + data.lineupLocal.team[i].longName + '</p></td>';
-                    local += '<td class="events" title="' + data.lineupLocal.team[i].longName + '">';
-                    local += '<div class="superior">';
+                    local += '<div class="player_td dotted-bottom" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
+                    local += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.team[i].number + '</p></div>';
+                    local += '<div class="dotted-left container_card">';
+                    local += '<div class="player_name"><p>' + data.lineupLocal.team[i].longName + '</p></div>';
+                    local += '<div class="players_icons">';
+                    local += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
                     local += '</div>';
-                    local += '<div class="inferior">';
                     local += '</div>';
-                    local += '</td>';
-                    local += '</tr>';
-                    local += '<tr>';
-                    local += '<td colspan="6" class="line2 dotted-bottom"></td>';
-                    local += '</tr>';
+                    local += '</div>';
+
+
                 };
-                local += '<tr>';
-                local += '<td colspan="6" class="line4"></td>';
-                local += '</tr>';
-                local += '<tr class="alignPlayer">';
-                local += '<td class="player_number br_dotted dotted-right textcolor-title1" title="numero del jugador">DT</td>';
-                local += '<td class="player_name" title="nombre del jugador">Paolo di Canio</td>';
-                local += '<td class="events" title="eventos del jugador en este partido">';
-                local += '<div class="superior">';
-                local += '</div>';
-                local += '<div class="inferior"></div> ';
-                local += '</td>';
-                local += '</tr>';
-                local += '<tr>';
-                local += '<td colspan="6" class="line5"></td>';
-                local += '</tr>';
+
+                if (typeof(data.lineupLocal.coach) !== "undefined") {
+                    local += '<div class="player_td">';
+                    local += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
+                    local += '<div class="dotted-left container_card">';
+                    local += '<div class="player_name"><p>' + data.lineupLocal.coach.longName + '</p></div>';
+                    local += '<div class="players_icons">';
+                    //local += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
+                    local += '</div></div></div>';
+                }
+
+
 
 
                 for (var j = 0; j < data.lineupVisit.team.length; j++) {
-                    visit += '<tr class="alignPlayer" data-guid="' + data.lineupVisit.team[j].number + '">';
-                    visit += '<td class="player_number br_dotted dotted-right" title="' + data.lineupVisit.team[j].number + '">' + data.lineupVisit.team[j].number + '</td>';
-                    visit += '<td title="nombre del jugador"><p class="player_name">' + data.lineupVisit.team[j].longName + '</p></td>';
-                    visit += '<td class="events" title="' + data.lineupVisit.team[j].longName + '">';
-                    visit += '<div class="superior">';
+                    visit += '<div class="player_td dotted-bottom" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
+                    visit += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.team[j].number + '</p></div>';
+                    visit += '<div class="dotted-left container_card">';
+                    visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].longName + '</p></div>';
+                    visit += '<div class="players_icons">';
+                    visit += '<i class="tvsa-mxm-yellowcard"></i><span>12\'</span>';
                     visit += '</div>';
-                    visit += '<div class="inferior">';
                     visit += '</div>';
-                    visit += '</td>';
-                    visit += '</tr>';
-                    visit += '<tr>';
-                    visit += '<td colspan="6" class="line2 dotted-bottom"></td>';
-                    visit += '</tr>';
+                    visit += '</div>';
                 };
-                visit += '<tr>';
-                visit += '<td colspan="6" class="line4"></td>';
-                visit += '</tr>';
-                visit += '<tr class="alignPlayer">';
-                visit += '<td class="player_number br_dotted dotted-right textcolor-title1" title="numero del jugador">DT</td>';
-                visit += '<td class="player_name" title="nombre del jugador">Paolo di Canio</td>';
-                visit += '<td class="events" title="eventos del jugador en este partido">';
-                visit += '<div class="superior">';
-                visit += '</div>';
-                visit += '<div class="inferior"></div> ';
-                visit += '</td>';
-                visit += '</tr>';
-                visit += '<tr>';
-                visit += '<td colspan="6" class="line5"></td>';
-                visit += '</tr>';
+                if (typeof(data.lineupVisit.coach) !== "undefined") {
+                    visit += '<div class="player_td">';
+                    visit += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
+                    visit += '<div class="dotted-left">';
+                    visit += '<div class="player_name"><p>' + data.lineupVisit.coach.longName + '</p></div>';
+                    visit += '<div class="players_icons">';
+                    //visit += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
+                    visit += '</div></div></div>';
+                }
 
 
-                maquetado += '<div class="wdg_team_align_01" data-enhance="false">    ';
+                for (var p = 0; p < data.lineupLocal.substitutes.length; p++) {
+
+                    localSub += '<div class="player_td dotted-bottom" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
+                    localSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.substitutes[p].number + '</p></div>';
+                    localSub += '<div class="dotted-left container_card">';
+                    localSub += '<div class="player_name"><p>' + data.lineupLocal.substitutes[p].longName + '</p></div>';
+                    localSub += '<div class="players_icons">';
+                    localSub += '<i class="tvsa-mxm-yellowcard"></i><span>12\'</span>';
+                    localSub += '</div></div></div>';
+                };
+
+                for (var o = 0; o < data.lineupVisit.substitutes.length; o++) {
+
+                    visitSub += '<div class="player_td dotted-bottom" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
+                    visitSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.substitutes[o].number + '</p></div>';
+                    visitSub += '<div class="dotted-left container_card">';
+                    visitSub += '<div class="player_name"><p>' + data.lineupVisit.substitutes[o].longName + '</p></div>';
+                    visitSub += '<div class="players_icons">';
+                    visitSub += '<i class="tvsa-mxm-yellowcard"></i><span>12\'</span>';
+                    visitSub += '</div></div></div>';
+                };
+
+
+
+                maquetado += '<div class="wdg_team_align_01" data-enhance="false">';
 
                 maquetado += '<div class="container">';
-                maquetado += '<div class="teams_name">';
-                maquetado += '<div class="current team1_name"><img src="http://placehold.it/29x32" alt="Image Description"><span class="equipo"></span></div>';
-                maquetado += '<div class="art_latestnews_01_arrow"></div>';
-                maquetado += '<div class="team2_name"><img src="http://placehold.it/29x32" alt="Image Description"><span class="equipo"></span></div>';
-                maquetado += '<div class="art_latestnews_01_arrow"></div>';
+                maquetado += '<div class="first_team ">';
+                maquetado += '<div class="title">';
+                maquetado += '<div class="escudo"><img src="http://placehold.it/32x32" alt="Image Description"></div>';
+                maquetado += '<div class="team"><p>Monterrey</p><p></p></div>';
                 maquetado += '</div>';
 
-                maquetado += '<div class="first_team">';
-                maquetado += '<table class="principal">';
-                maquetado += '<tbody><tr>';
-                maquetado += '<td class="logo"><img src="http://placehold.it/29x32" alt="Image Description"><span class="equipo">Monterrey</span></td>';
-                maquetado += '<td class="vacio"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td class="line1"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="3">';
+                maquetado += '<div class="player_table dotted-right">';
 
-                maquetado += '<table class="widget_player_stats floatleft">';
-                maquetado += '<tbody id="playersTIMLocal">';
+
+
                 maquetado += local;
 
-
-
-                maquetado += '<tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted" title="numero del jugador"></td>';
-                maquetado += '<td title="nombre del jugador"><p class="textcolor-title1 subtitle_align">Banca</p></td>';
-                maquetado += '<td class="events" title="eventos del jugador en este partido">';
-                maquetado += '<div class="superior">';
                 maquetado += '</div>';
-                maquetado += '<div class="inferior">';
-                maquetado += '</div> ';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line5"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted dotted-right" title="numero del jugador">10</td>';
-                maquetado += '<td title="nombre del jugador"><p class="player_name">Cuathemoc Blanco</p></td>';
-                maquetado += '<td class="events" title="eventos del jugador en este partido">';
-                maquetado += '<div class="superior">';
-                maquetado += '<span class="grupo"><i class="tvsa-mxm-yellowcard"></i>17"</span>';
+                maquetado += '</div>  ';
+
+                maquetado += '<div class="second_team aling">';
+                maquetado += '<div class="title">';
+                maquetado += '<div><img src="http://placehold.it/32x32" alt="Image Description"></div>';
+                maquetado += '<div class="team"><p>Monterrey</p></div>';
                 maquetado += '</div>';
-                maquetado += '<div class="inferior">';
-                maquetado += '</div> ';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line2 dotted-bottom"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line4"></td>';
-                maquetado += '</tr>';
+
+                maquetado += '<div class="player_table">';
+                maquetado += visit;
 
 
-
-                maquetado += '<tr class="align_arbitros">';
-                maquetado += '<td class="player_number" title="numero del jugador"></td>';
-                maquetado += '<td title="nombre del jugador"><p class="textcolor-title1 subtitle_align">Arbitros</p></td>';
-                maquetado += '<td class="events" title="eventos del jugador en este partido">';
-                maquetado += '<div class="superior">';
                 maquetado += '</div>';
-                maquetado += '<div class="inferior">';
-                maquetado += '</div> ';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line5"></td>';
-                maquetado += '</tr>';
+                maquetado += '</div>  ';
 
-                maquetado += '<tr class="align_arbitros alignPlayer">';
-                maquetado += '<td colspan="3">';
-                maquetado += '<table class="tableAlignArbitros">';
-                maquetado += '<tbody><tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted dotted-right" title="numero del jugador">CENTRAL</td>';
-                maquetado += '<td colspan="2" title="nombre del jugador"><p class="player_name">Cuathemoc Blanco</p></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line2 dotted-bottom"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line4"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted dotted-right" title="numero del jugador">CUARTO</td>';
-                maquetado += '<td colspan="2" title="nombre del jugador"><p class="player_name">Cuathemoc Blanco</p></td>';
-                maquetado += '</tr>';
 
-                maquetado += '</tbody></table>';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '</tbody></table>';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '</tbody></table>';
+                maquetado += '<div class="table_title"><p class="textcolor-title1">Banca</p></div>';
+                maquetado += '<div class="first_team ">';
+                maquetado += '<div class="player_table dotted-right">';
+                maquetado += localSub;
                 maquetado += '</div>';
+                maquetado += '</div>  ';
 
 
                 maquetado += '<div class="second_team aling">';
-                maquetado += '<table class="principal">';
-                maquetado += '<tbody><tr>';
-                maquetado += '<td class="logo"><img src="http://placehold.it/29x32" alt="Image Description"><span class="equipo">Monterrey</span></td>';
-                maquetado += '<td class="vacio"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td class="line1"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="3">';
+                maquetado += '<div class="player_table">';
+                maquetado += visitSub;
 
-
-                maquetado += '<table class="widget_player_stats">';
-                maquetado += '<tbody id="VisitTIMAlineacion">' + visit;
-
-
-
-
-
-
-                maquetado += '<tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted" title="numero del jugador"></td>';
-                maquetado += '<td title="nombre del jugador"><p class="textcolor-title1 subtitle_align">Banca</p></td>';
-                maquetado += '<td class="events" title="eventos del jugador en este partido">';
-                maquetado += '<div class="superior">';
                 maquetado += '</div>';
-                maquetado += '<div class="inferior">';
+                maquetado += '</div>  ';
+
+                maquetado += '<div class="table_title"><p class="textcolor-title1">Arbitros</p></div>';
+
+                if (typeof(data.referees) !== "undefined") {
+                    maquetado += '<div class="referee">';
+                    maquetado += '<div class="dotted-right">';
+                    if (typeof(data.referees.central) !== "undefined") {
+                        maquetado += '<div class="referee-left dotted-bottom">';
+                        maquetado += '<div class="referee_title"><p class="textcolor-title2">Central</p></div>';
+                        maquetado += '<div class="dotted-left"><p>' + givemeName(data.referees.central) + '</p></div>';
+                        maquetado += '</div>';
+                    }
+                    if (typeof(data.referees.assistant1) !== "undefined") {
+                        maquetado += '<div class="referee-left">';
+                        maquetado += '<div class="referee_title"><p class="textcolor-title2">Asistente 1</p></div>';
+                        maquetado += '<div class="dotted-left"><p>' + givemeName(data.referees.assistant1) + '</p></div>';
+                        maquetado += '</div>';
+                        maquetado += '</div>';
+                    }
+                    if (typeof(data.referees.assistant2) !== "undefined") {
+                        maquetado += '<div class="dotted-none">';
+                        maquetado += '<div class="referee-left dotted-bottom">';
+                        maquetado += '<div class="referee_title"><p class="textcolor-title2">Asistente 2</p></div>';
+                        maquetado += '<div class="dotted-left"><p>' + givemeName(data.referees.assistant2) + '</p></div>';
+                        maquetado += '</div>';
+                    }
+                    if (typeof(data.referees.fourth) !== "undefined") {
+
+                        maquetado += '<div class="referee-left">';
+                        maquetado += '<div class="referee_title"><p class="textcolor-title2">Cuarto</p></div>';
+                        maquetado += '<div class="dotted-left"><p>' + givemeName(data.referees.fourth) + '</p></div>';
+                        maquetado += '</div>';
+                        maquetado += '</div>';
+                        maquetado += '</div>';
+                    }
+                }
+
+
                 maquetado += '</div>';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line5"></td>';
-                maquetado += '</tr>';
-
-
-
-                maquetado += '<tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted dotted-right" title="numero del jugador">10</td>';
-                maquetado += '<td title="nombre del jugador"><p class="player_name">Cuathemoc Blanco</p></td>';
-                maquetado += '<td class="events" title="eventos del jugador en este partido">';
-                maquetado += '<div class="superior">';
-                maquetado += '</div>';
-                maquetado += '<div class="inferior">';
-                maquetado += '</div> ';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line2 dotted-bottom"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line4"></td>';
-                maquetado += '</tr>';
-
-
-                maquetado += '<tr class="align_arbitros">';
-                maquetado += '<td class="player_number" title="numero del jugador"></td>';
-                maquetado += '<td title="nombre del jugador"><p class="textcolor-title1 subtitle_align">Ãrbitros</p></td>';
-                maquetado += '<td class="events" title="eventos del jugador en este partido">';
-                maquetado += '<div class="superior">';
-                maquetado += '</div>';
-                maquetado += '<div class="inferior">';
-                maquetado += '</div> ';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line5"></td>';
-                maquetado += '</tr>';
-
-                maquetado += '<tr class="align_arbitros alignPlayer">';
-                maquetado += '<td colspan="3">';
-                maquetado += '<table class="tableAlignArbitros">                                      ';
-                maquetado += '<tbody><tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted dotted-right" title="numero del jugador">CENTRAL</td>';
-                maquetado += '<td colspan="2" title="nombre del jugador"><p class="player_name">Cuathemoc Blanco</p></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line2 dotted-bottom"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr>';
-                maquetado += '<td colspan="6" class="line4"></td>';
-                maquetado += '</tr>';
-                maquetado += '<tr class="alignPlayer">';
-                maquetado += '<td class="player_number br_dotted dotted-right" title="numero del jugador">CUARTO</td>';
-                maquetado += '<td colspan="2" title="nombre del jugador"><p class="player_name">Cuathemoc Blanco</p></td>';
-                maquetado += '</tr>';
-
-                maquetado += '</tbody></table>';
-                maquetado += '</td>';
-                maquetado += '</tr>';
-                maquetado += '</tbody></table>';
-                maquetado += '</td>';
-                maquetado += '</tr>               ';
-                maquetado += '</tbody></table>';
-                maquetado += '</div>';
-
-                maquetado += '<div class="separadorAlignPrincipal dotted-right"></div>';
-                maquetado += '<div class="separadorAlignBanca dotted-right"></div>';
-                maquetado += '<div class="separadorAlignArbitro dotted-right"></div>';
-                maquetado += '<div class="separadorAlignBancaTop"></div>';
-                maquetado += '<div class="separadorAlignBancaBottom"></div>';
-                maquetado += '<div class="separadorAlignArbitroTop"></div>';
-                maquetado += '<div class="separadorAlignArbitroBottom"></div>';
-                maquetado += '</div>';
-
-                maquetado += '<div class="degraded"></div>';
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionList.html(maquetado);
+            },
+
+            GolesAnotados: function(local, visit, namelocal, namevisit) {
+                var maquetado = "",
+                    localM = "",
+                    visitM = "";
+                console.log(local);
+                console.log(visit);
+                if (local !== '') {
+                    for (var i = 0; i < local.length; i++) {
+                        console.log(local[i]);
+                        localM += '<div class="block_container">';
+                        localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
+                        localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
+                        localM += '<p class="grado textcolor-title4">' + local[i].minute + ' \' ';
+                        localM += '<span class="textcolor-title2">' + local[i].formaGol + '</span>';
+                        localM += '</p>';
+                        localM += '</div>';
+                        localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div>';
+                        localM += '</div>';
+                    };
+                }
+                if (visit !== '') {
+                    for (var l = 0; l < visit.length; l++) {
+                        visitM += '<div class="block_container">';
+                        visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
+                        visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
+                        visitM += '<p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
+                        visitM += '<span class="textcolor-title2">Tiro Libre</span>';
+                        visitM += '</p>';
+                        visitM += '</div>';
+                        visitM += '<div class="dotted-left marcador dotted-left"><p>' + local[l].current_score + '</p></div>';
+                        visitM += '</div>';
+                    };
+                }
+                maquetado += '<div class="convocados">';
+                maquetado += localM;
+                maquetado += visitM;
+                maquetado += '</div>';
+
+                wdg_smex_strategy.tagAlineacionGoles.html(maquetado);
+
+
+
             }
 
         };
@@ -1154,6 +1097,7 @@
             };
 
         }
+
 
 
 
