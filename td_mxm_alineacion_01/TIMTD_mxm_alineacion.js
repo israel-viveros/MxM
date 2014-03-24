@@ -24,6 +24,7 @@
             tagExpulsion: $("#ExpulsionTIM"),
             tagAlineacionList: $("#TIMAlineacionList"),
             tagAlineacionGoles: $("#TIMAlineacionGoles"),
+            tagwdgPenales: $("#TIMWdgPenales"),
 
 
             PintaCacha: function(tipo) {
@@ -739,12 +740,12 @@
                 maquetado += '<div class="wdg_avgfield_01_teams">';
                 maquetado += '<div class="wdg_avgfield_01_teama">';
                 maquetado += '<div class="element">';
-                maquetado += '<img src="http://placehold.it/30x30" alt="">';
+                maquetado += '<img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal">';
                 maquetado += '</div>              ';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
                 maquetado += '<div class="wdg_avgfield_01_teamb">';
-                maquetado += '<img src="http://placehold.it/30x30" alt="">';
+                maquetado += '<img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit">';
                 maquetado += '</div>';
                 maquetado += '</div>';
                 maquetado += '</div>';
@@ -808,8 +809,8 @@
                 maquetado += '<div class="convocados">';
                 maquetado += '<div class="head">';
                 maquetado += '<div class="textcolor-title1 player">JUGADOR</div>';
-                maquetado += '<div class="icon-team1"><img alt="" src="http://placehold.it/25x30"></div>';
-                maquetado += '<div class="icon-team2 dotted-left"><img alt="" src="http://placehold.it/25x30"></div>';
+                maquetado += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
+                maquetado += '<div class="icon-team2 dotted-left"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
                 maquetado += '</div>';
 
                 if (local.length !== 0) {
@@ -863,9 +864,15 @@
             MuestraAlineacion: function(data) {
                 var golesLocal = (typeof(data.goalsLocal) !== "undefined") ? data.goalsLocal : '';
                 var golesVisit = (typeof(data.goalsVisit) !== "undefined") ? data.goalsVisit : '';
+                var ActL = "",
+                    ActV = "";
 
                 wdg_smex_strategy.GolesAnotados(golesLocal, golesVisit, data.lineupLocal.name, data.lineupVisit.name);
 
+
+                if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
+                    wdg_smex_strategy.wdgPenales(data.PenaltiesLocal, data.PenaltiesVisit, data.lineupLocal.name, data.lineupVisit.name);
+                }
 
                 var maquetado = "",
                     local = '',
@@ -879,14 +886,52 @@
                     return tmp2[1];
                 }
 
+                function giveActions(array) {
+                    var acteaml = "",
+                        clase = "";
+                    for (var q = 0; q < array.length; q++) {
+                        //console.log(array[q].type)
+                        switch (array[q].type.toLowerCase()) {
+                            case "golvisitante":
+                                clase = "mxm-goal"
+                                break;
+                            case "gollocal":
+                                clase = "mxm-goal"
+                                break;
+                            case "saledeljuego":
+                                clase = "mxm-playerout"
+                                break;
+                            case "amonestacion":
+                                clase = "mxm-yellowcard"
+                                break;
+                            case "expulsion":
+                                clase = "mxm-redcard"
+                                break;
+                            case "penalfalladoserie":
+                                clase = "mxm-penaltykick"
+                                break;
+                            case "entraaljuego":
+                                clase = "mxm-playerin"
+                                break;
+                        }
+                        acteaml += '<i class="tvsa-' + clase + '"></i><span>' + array[q].minute + '\'</span>';
+                    };
+                    return acteaml;
+                }
+
 
                 for (var i = 0; i < data.lineupLocal.team.length; i++) {
+                    ActL = "";
+                    if (typeof(data.lineupLocal.team[i].actions) === "object") {
+                        ActL = giveActions(data.lineupLocal.team[i].actions);
+                    };
+
                     local += '<div class="player_td dotted-bottom" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
                     local += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.team[i].number + '</p></div>';
                     local += '<div class="dotted-left container_card">';
                     local += '<div class="player_name"><p>' + data.lineupLocal.team[i].longName + '</p></div>';
                     local += '<div class="players_icons">';
-                    local += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
+                    local += ActL;
                     local += '</div>';
                     local += '</div>';
                     local += '</div>';
@@ -908,12 +953,16 @@
 
 
                 for (var j = 0; j < data.lineupVisit.team.length; j++) {
+                    ActV = "";
+                    if (typeof(data.lineupVisit.team[j].actions) === "object") {
+                        ActV = giveActions(data.lineupVisit.team[j].actions);
+                    };
                     visit += '<div class="player_td dotted-bottom" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
                     visit += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.team[j].number + '</p></div>';
                     visit += '<div class="dotted-left container_card">';
                     visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].longName + '</p></div>';
                     visit += '<div class="players_icons">';
-                    visit += '<i class="tvsa-mxm-yellowcard"></i><span>12\'</span>';
+                    visit += ActV;
                     visit += '</div>';
                     visit += '</div>';
                     visit += '</div>';
@@ -930,24 +979,32 @@
 
 
                 for (var p = 0; p < data.lineupLocal.substitutes.length; p++) {
+                    var ActLB = "";
+                    if (typeof(data.lineupLocal.substitutes[p].idjugador.actions) === "object") {
+                        ActLB = giveActions(data.lineupLocal.substitutes[p].idjugador.actions);
+                    }
 
                     localSub += '<div class="player_td dotted-bottom" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
                     localSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.substitutes[p].number + '</p></div>';
                     localSub += '<div class="dotted-left container_card">';
                     localSub += '<div class="player_name"><p>' + data.lineupLocal.substitutes[p].longName + '</p></div>';
                     localSub += '<div class="players_icons">';
-                    localSub += '<i class="tvsa-mxm-yellowcard"></i><span>12\'</span>';
+                    localSub += ActLB;
                     localSub += '</div></div></div>';
                 };
 
                 for (var o = 0; o < data.lineupVisit.substitutes.length; o++) {
+                    var ActVB = "";
+                    if (typeof(data.lineupVisit.substitutes[o].actions) === "object") {
+                        ActVB = giveActions(data.lineupVisit.substitutes[o].actions);
+                    }
 
                     visitSub += '<div class="player_td dotted-bottom" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
                     visitSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.substitutes[o].number + '</p></div>';
                     visitSub += '<div class="dotted-left container_card">';
                     visitSub += '<div class="player_name"><p>' + data.lineupVisit.substitutes[o].longName + '</p></div>';
                     visitSub += '<div class="players_icons">';
-                    visitSub += '<i class="tvsa-mxm-yellowcard"></i><span>12\'</span>';
+                    visitSub += ActVB;
                     visitSub += '</div></div></div>';
                 };
 
@@ -958,8 +1015,8 @@
                 maquetado += '<div class="container">';
                 maquetado += '<div class="first_team ">';
                 maquetado += '<div class="title">';
-                maquetado += '<div class="escudo"><img src="http://placehold.it/32x32" alt="Image Description"></div>';
-                maquetado += '<div class="team"><p>Monterrey</p><p></p></div>';
+                maquetado += '<div class="escudo"><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
+                maquetado += '<div class="team"><p>' + data.lineupLocal.name + '</p><p></p></div>';
                 maquetado += '</div>';
 
                 maquetado += '<div class="player_table dotted-right">';
@@ -973,8 +1030,8 @@
 
                 maquetado += '<div class="second_team aling">';
                 maquetado += '<div class="title">';
-                maquetado += '<div><img src="http://placehold.it/32x32" alt="Image Description"></div>';
-                maquetado += '<div class="team"><p>Monterrey</p></div>';
+                maquetado += '<div><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
+                maquetado += '<div class="team"><p>' + data.lineupVisit.name + '</p></div>';
                 maquetado += '</div>';
 
                 maquetado += '<div class="player_table">';
@@ -1041,17 +1098,22 @@
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionList.html(maquetado);
+                try {
+                    wdg_smex_strategy.finalesNaat();
+                    wdg_smex_strategy.listenerInfo();
+                } catch (e) {
+                    console.log(e)
+                }
             },
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
                 var maquetado = "",
                     localM = "",
                     visitM = "";
-                console.log(local);
-                console.log(visit);
+                //console.log(local);
+                //console.log(visit);
                 if (local !== '') {
                     for (var i = 0; i < local.length; i++) {
-                        console.log(local[i]);
                         localM += '<div class="block_container">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                         localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
@@ -1084,6 +1146,142 @@
                 wdg_smex_strategy.tagAlineacionGoles.html(maquetado);
 
 
+
+            },
+            wdgPenales: function(local, visit, nombreLocal, nombrevisit) {
+                var maquetado = "",
+                    content = "";
+
+                for (var i = 0; i < local.length; i++) {
+                    content += '<div class="block_container dotted-bottom">';
+                    content += '<div class="jugador"><p>' + local[i].longName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
+                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
+                    content += '</div>';
+                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                    content += '</div>';
+                };
+                for (var j = 0; j < visit.length; j++) {
+                    content += '<div class="block_container dotted-bottom">';
+                    content += '<div class="jugador"><p>' + visit[j].longName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
+                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
+                    content += '</div>';
+                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                    content += '</div>';
+                };
+
+
+                maquetado += '<div class="wdg_mxm_penalties_01">';
+                maquetado += '<div class="titulo textcolor-title1">Penales</div>';
+                maquetado += '<div class="convocados">';
+                maquetado += content;
+                maquetado += '</div>';
+                maquetado += '</div>';
+                wdg_smex_strategy.tagwdgPenales.html(maquetado);
+
+            },
+
+            listenerInfo: function() {
+                console.log("listener...");
+
+                if ($("#datosTIMHeader").length) {
+                    clearInterval(wdg_smex_strategy.intervaloVe);
+                    var imgLocal = $("#localImgTIM").text();
+                    var imgVisit = $("#visitImgTIM").text();
+                    $(".TIMimgLocal").attr('src', imgLocal);
+                    $(".TIMimgVisit").attr('src', imgVisit);
+
+
+                } else {
+                    wdg_smex_strategy.intervaloVe = setInterval(function() {
+                        wdg_smex_strategy.listenerInfo();
+                    }, 3000);
+                }
+
+            },
+
+            finalesNaat: function() {
+                //player_table 
+                //
+                $(".wdg_team_align_01 .second_team  .player_table").find(".player_td").each(function(index) {
+                    var contador = index + 1;
+                    if ($(this).height() > $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height())
+                        $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                    else
+                        $(this).height($(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height())
+                });
+                (function($, T) {
+
+                    var altura = $('.wdg_team_align_01 .principal').height();
+                    altura = altura - 71;
+                    //alert("Verifica alto: " + altura);
+                    /*Asigno altura dinÃ¡mica separador*/
+                    //$('.wdg_team_align_01 .separador').css('height',altura);
+                    $firstTeam = $('.wdg_team_align_01 .first_team .logo span').text();
+                    $secondTeam = $('.wdg_team_align_01 .second_team .logo span').text();
+
+                    $('.wdg_team_align_01 .team1_name span').text($firstTeam);
+                    $('.wdg_team_align_01 .team2_name span').text($secondTeam);
+
+                    $firstImg = $('.wdg_team_align_01 .first_team .logo img').attr('src');
+                    $secondImg = $('.wdg_team_align_01 .second_team .logo img').attr('src');
+
+                    $('.wdg_team_align_01 .team1_name img').attr('src', $firstImg);
+                    $('.wdg_team_align_01 .team2_name img').attr('src', $secondImg);
+
+                    $('.wdg_team_align_01 .team1_name').on('click', function() {
+                        $('.wdg_team_align_01 .second_team').hide();
+                        $('.wdg_team_align_01 .first_team').show();
+                        $(this).addClass('current');
+                        $(this).siblings('div').removeClass('current');
+                        $('.wdg_team_align_01 .art_latestnews_01_arrow').css('left', '24%');
+                    });
+                    $('.wdg_team_align_01 .team2_name').on('click', function() {
+                        $('.wdg_team_align_01 .second_team').show();
+                        $('.wdg_team_align_01 .first_team').hide();
+                        $(this).addClass('current');
+                        $(this).siblings('div').removeClass('current');
+                        $('.wdg_team_align_01 .art_latestnews_01_arrow').css('left', '74%');
+                    });
+
+                    var firstTeamArray = $(".first_team table .widget_player_stats tr");
+                    for (i = 0; i < firstTeamArray.length; i++) {
+                        $(firstTeamArray[i]).height();
+                    };
+
+                    var secondTeamArray = $(".second_team table .widget_player_stats tr");
+                    for (i = 0; i < secondTeamArray.length; i++) {
+                        $(secondTeamArray[i]).height();
+                    }
+
+                    for (j = 0; j < 27; j++) {
+                        firstItem = $(firstTeamArray[j]).height();
+                        secondItem = $(secondTeamArray[j]).height();
+
+                        //console.log(firstItem + ' = ' + secondItem);
+                        if (firstItem > secondItem) {
+                            $(secondTeamArray[j]).css('height', firstItem);
+                        } else if (firstItem > secondItem) {
+                            $(firstTeamArray[j]).css('height', firstItem);
+                        }
+                    }
+                    $(window).resize(function() {
+                        if ($(window).width() > 624) {
+                            $('.wdg_team_align_01 .second_team').show();
+                            $('.wdg_team_align_01 .first_team').show();
+                        } else {
+                            $('.wdg_team_align_01 .second_team').hide();
+                        }
+                        for (j = 0; j < 27; j++) {
+                            firstItem = $(firstTeamArray[j]).height();
+                            secondItem = $(secondTeamArray[j]).height();
+                            if (firstItem > secondItem) {
+                                $(secondTeamArray[j]).height(firstItem);
+                            } else if (firstItem < secondItem) {
+                                $(firstTeamArray[j]).height(secondItem);
+                            }
+                        }
+                    });
+                }(jQuery, Televisa));
 
             }
 
