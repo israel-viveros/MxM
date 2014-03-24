@@ -1,3 +1,4 @@
+;
 (function() {
     $.fn.WdgSportResult = function(options) {
         var settings = $.extend({
@@ -10,7 +11,6 @@
 
         var wdf_sportResult = {
             urlFinalHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idtorneo + '/' + settings.idteam + '/match_header.js',
-            jsonpcallback: 'mxmheader',
             IdPestanasMenu: $("#TIMnav_smnu_sports"),
 
             loadInfo: function(tipo) {
@@ -18,14 +18,16 @@
                     url: wdf_sportResult.urlFinalHeader,
                     type: 'GET',
                     dataType: 'jsonp',
-                    jsonpCallback: wdf_sportResult.jsonpcallback,
-                    cache: false
+                    jsonpCallback: 'mxmheader',
+                    cache: false,
+                    async: false
                 })
                     .done(function(data) {
                         (tipo === "update") ? wdf_sportResult.updateGoles(data) : wdf_sportResult.drawHeader(data);
                     })
-                    .fail(function() {
-                        console.log("---->Error al cargar: " + wdf_sportResult.urlFinalHeader);
+                    .fail(function(jqXHR) {
+                        console.log("Error al cargar: " + wdf_sportResult.urlFinalHeader);
+                        console.log(jqXHR);
                         GlobalThis.remove();
                     })
 
@@ -252,12 +254,12 @@
                 MaqMenu += '<ul>';
                 MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + data.previo + '" target="_parent">Previo</a></li>' : '';
                 MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" target="_parent" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
-                MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "") ? '<li class="hide1 ratingMenuTim"><a href="' + data.rating + '" title="Rating">Rating</a></li>' : '';
+                MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "" && settings.tema !== "mundial") ? '<li class="hide1 ratingMenuTim"><a href="' + data.rating + '" title="Rating">Rating</a></li>' : '';
                 MaqMenu += (typeof data.mxm !== 'undefined' && data.mxm !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 mxmMenuTim"><a href="' + data.mxm + '" target="_parent" title="MxM">MxM</a></li>' : '';
-                MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "") ? '<li class="hide2 pizarraMenuTim"><a href="' + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
+                MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "" && settings.tema !== "mundial") ? '<li class="hide2 pizarraMenuTim"><a href="' + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
                 MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
-                MaqMenu += (parseInt(settings.idtorneo) === 359) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
+                MaqMenu += (settings.tema === "mundial") ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul>';
                 MaqMenu += '</div>';
                 MaqMenu += '</div>';
