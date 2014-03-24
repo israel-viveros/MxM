@@ -1100,7 +1100,9 @@
                 wdg_smex_strategy.tagAlineacionList.html(maquetado);
                 try {
                     wdg_smex_strategy.finalesNaat();
-                    wdg_smex_strategy.listenerInfo();
+                    wdg_smex_strategy.intervaloVe = setInterval(function() {
+                        wdg_smex_strategy.listenerInfo();
+                    }, 3000);
                 } catch (e) {
                     console.log(e)
                 }
@@ -1191,10 +1193,6 @@
                     $(".TIMimgVisit").attr('src', imgVisit);
 
 
-                } else {
-                    wdg_smex_strategy.intervaloVe = setInterval(function() {
-                        wdg_smex_strategy.listenerInfo();
-                    }, 3000);
                 }
 
             },
