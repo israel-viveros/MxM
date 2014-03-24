@@ -28,7 +28,7 @@
                     .fail(function(jqXHR) {
                         console.log("Error al cargar: " + wdf_sportResult.urlFinalHeader);
                         console.log(jqXHR);
-                        GlobalThis.remove();
+                        GlobalThis.hide();
                     })
 
             }, // loadInfo END
@@ -90,13 +90,17 @@
                 MaquetadoHEader += '</div>';
 
 
-                GlobalThis.css('display', 'none').html(MaquetadoHEader).slideDown('slow');
+                GlobalThis.css('display', 'none').html(MaquetadoHEader).slideDown('slow', function() {
+                    $(this).css({
+                        'display': 'block'
+                    });
+                });;
                 if (data.tiempo.toLowerCase() != "final") {
                     wdf_sportResult.timeUpdate(data.fechaPartido, data.horaPartido);
                 }
 
 
-                (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : wdf_sportResult.IdPestanasMenu.remove();
+                (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : wdf_sportResult.IdPestanasMenu.hide();
 
             }, // End drawHeader
 

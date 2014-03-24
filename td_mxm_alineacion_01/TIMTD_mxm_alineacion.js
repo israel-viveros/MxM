@@ -52,7 +52,7 @@
                 }
                 ContenidoMaq += '<div class="field">';
                 ContenidoMaq += '<div id="LoadingCancha"><div id="fountainG_1" class="fountainG"></div><div id="fountainG_2" class="fountainG"></div><div id="fountainG_3" class="fountainG"></div><div id="fountainG_4" class="fountainG"></div><div id="fountainG_5" class="fountainG"></div><div id="fountainG_6" class="fountainG"></div><div id="fountainG_7" class="fountainG"></div><div id="fountainG_8" class="fountainG"></div></div>';
-                ContenidoMaq += '<img class="cancha" src="http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/cancha.png" alt="field" width="624" height="334"/>';
+                ContenidoMaq += '<img class="cancha" src="http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/cancha.png" alt="field" width="624" height="334"/>';
                 ContenidoMaq += '<span class="players">';
                 ContenidoMaq += '</span>';
                 ContenidoMaq += '</div>';
@@ -321,6 +321,15 @@
             },
 
             FunInicio: function() {
+
+                try {
+                    wdg_smex_strategy.finalesNaat();
+                    wdg_smex_strategy.intervaloVe = setInterval(function() {
+                        wdg_smex_strategy.listenerInfo();
+                    }, 3000);
+                } catch (e) {
+                    console.log(e)
+                }
 
                 $('section.wdg_smex_strategy_01').each(function() {
                     /* Show Retina Version */
@@ -1098,14 +1107,6 @@
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionList.html(maquetado);
-                try {
-                    wdg_smex_strategy.finalesNaat();
-                    wdg_smex_strategy.intervaloVe = setInterval(function() {
-                        wdg_smex_strategy.listenerInfo();
-                    }, 3000);
-                } catch (e) {
-                    console.log(e)
-                }
             },
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
