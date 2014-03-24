@@ -320,8 +320,11 @@
                         var tmpTeam = "",
                             tmpTeamV = "";
                         // console.log(data);
-                        $("#nameJALocal").html(data.week);
-                        $("#nameJAVisit").html(data.week);
+                        if (tipo !== "drop") {
+                            $("#nameJALocal").html(data.week);
+                            $("#nameJAVisit").html(data.week);
+                        }
+
 
                         var ActL = "";
                         for (var k = 0; k < data.lineupLocal.team.length; k++) {
@@ -483,7 +486,7 @@
 
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idM = $(this).data("matchid");
-                        wdgLineUpOb.loadDatacomplete(idM);
+                        wdgLineUpOb.loadDatacomplete(idM, 'drop');
                         $("#nameJALocal").text($(this).text());
                     });
                 });
@@ -544,8 +547,9 @@
                     }
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idM = $(this).data("matchid");
-                        wdgLineUpOb.loadDatacomplete(idM);
-                        $("#nameJAVisit").text($(this).text());
+                        wdgLineUpOb.loadDatacomplete(idM, 'drop');
+                        var valorn = String($(this).text());
+                        $("#nameJAVisit").text(valorn);
                     });
                 });
 
