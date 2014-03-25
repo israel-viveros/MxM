@@ -37,17 +37,14 @@
             drawHeader: function(data) {
                 //console.log(data);
                 var MaquetadoHEader = "";
-                MaquetadoHEader += '<div class="wrapper">';
-                MaquetadoHEader += '<div class="match_title">';
+                MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
                 MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
                 MaquetadoHEader += '<div class="subtitulo textcolor-title2">' + data.jornada.nombre + '</div>';
                 MaquetadoHEader += '</div>';
-                MaquetadoHEader += '<div class="realtedimg">';
-                MaquetadoHEader += '<img src="http://placehold.it/300x50" alt="">';
-                MaquetadoHEader += '</div>';
+                MaquetadoHEader += '<div class="realtedimg"><img src="http://placehold.it/300x50" alt=""></div>';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1">' + data.tiempo.replace(/'/g, "\'") + '</div>';
                 MaquetadoHEader += '<div class="leftside">';
@@ -248,14 +245,9 @@
                 var MaqMenu = "";
                 MaqMenu += '<div class="navarrowleft">';
                 MaqMenu += '<a class="wdg_matchesresult_navleft" href="#left"> ';
-                MaqMenu += '<span class="navlefticon">';
-                MaqMenu += '<i class="tvsa-double-caret-left inactive"></i>';
-                MaqMenu += '</span>';
-                MaqMenu += '</a>';
-                MaqMenu += '</div>';
+                MaqMenu += '<span class="navlefticon"><i class="tvsa-double-caret-left inactive"></i></span></a></div>';
                 MaqMenu += '<div class="container">';
-                MaqMenu += '<div class="nav_smnu_sports_01_bar">';
-                MaqMenu += '<ul>';
+                MaqMenu += '<div class="nav_smnu_sports_01_bar"><ul>';
                 MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + data.previo + '" target="_parent">Previo</a></li>' : '';
                 MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" target="_parent" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
                 MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "" && settings.tema !== "mundial") ? '<li class="hide1 ratingMenuTim"><a href="' + data.rating + '" title="Rating">Rating</a></li>' : '';
@@ -264,14 +256,9 @@
                 MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
                 MaqMenu += (settings.tema === "mundial") ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
-                MaqMenu += '</ul>';
-                MaqMenu += '</div>';
-                MaqMenu += '</div>';
-                MaqMenu += '<div class="navarrowright">';
-                MaqMenu += '<a class="wdg_matchesresult_navright" href="#right">';
-                MaqMenu += '<span class="navrighticon"><i class="tvsa-double-caret-right active"></i></span>';
-                MaqMenu += '</a>';
-                MaqMenu += '</div>';
+                MaqMenu += '</ul></div></div>';
+                MaqMenu += '<div class="navarrowright"><a class="wdg_matchesresult_navright" href="#right">';
+                MaqMenu += '<span class="navrighticon"><i class="tvsa-double-caret-right active"></i></span></a></div>';
 
                 wdf_sportResult.IdPestanasMenu.html(MaqMenu).show();
 
