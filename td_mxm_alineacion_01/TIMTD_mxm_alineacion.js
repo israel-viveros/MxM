@@ -756,58 +756,41 @@
                 maquetado += '<div class="wdg_avgfield_01_content">';
                 maquetado += '<div class="wdg_avgfield_01_row">';
                 maquetado += '<div class="wdg_avgfield_01_title">';
-                maquetado += '<a class="wdg_avgfield_01_red textcolor-title1" href="">EVENTOS</a>';
-                maquetado += '</div>';
+                maquetado += '<a class="wdg_avgfield_01_red textcolor-title1" href="">EVENTOS</a></div>';
                 maquetado += '<div class="wdg_avgfield_01_teams">';
                 maquetado += '<div class="wdg_avgfield_01_teama">';
-                maquetado += '<div class="element">';
-                maquetado += '<img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal">';
-                maquetado += '</div>              ';
+                maquetado += '<div class="element"><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
-                maquetado += '<div class="wdg_avgfield_01_teamb">';
-                maquetado += '<img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit">';
-                maquetado += '</div>';
-                maquetado += '</div>';
-                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_teamb"><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
+                maquetado += '</div></div>';
                 maquetado += '<div class="wdg_avgfield_01_row">';
-                maquetado += '<div class="wdg_avgfield_01_title">';
-                maquetado += '<a href="">Edad</a>';
-                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_title"><a href="">Edad</a></div>';
                 maquetado += '<div class="wdg_avgfield_01_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_01_teama">';
                 maquetado += '<div class="element textcolor-title2">' + data[0].Edad + '</div>';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
                 maquetado += '<div class="wdg_avgfield_01_teamb textcolor-title2">' + data[1].Edad + '</div>';
-                maquetado += '</div>';
-                maquetado += '</div>';
+                maquetado += '</div></div>';
                 maquetado += '<div class="wdg_avgfield_01_row">';
-                maquetado += '<div class="wdg_avgfield_01_title">';
-                maquetado += '<a href="">Estatura</a>';
-                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_title"><a href="">Estatura</a></div>';
                 maquetado += '<div class="wdg_avgfield_01_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_01_teama">';
                 maquetado += '<div class="element textcolor-title2">' + data[0].Estatura + '</div>';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
                 maquetado += '<div class="wdg_avgfield_01_teamb textcolor-title2">' + data[1].Estatura + '</div>';
-                maquetado += '</div>';
-                maquetado += '</div>';
+                maquetado += '</div></div>';
                 maquetado += '<div class="wdg_avgfield_01_row">';
-                maquetado += '<div class="wdg_avgfield_01_title">';
-                maquetado += '<a href="">Peso</a>';
-                maquetado += '</div>';
+                maquetado += '<div class="wdg_avgfield_01_title"><a href="">Peso</a></div>';
                 maquetado += '<div class="wdg_avgfield_01_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_01_teama">';
                 maquetado += '<div class="element textcolor-title2">' + data[0].Peso + '</div>';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
                 maquetado += '<div class="wdg_avgfield_01_teamb textcolor-title2">' + data[1].Peso + '</div> ';
-                maquetado += '</div>';
-                maquetado += '</div>';
-                maquetado += '</div>';
-                maquetado += '</div>';
+                maquetado += '</div></div></div></div>';
 
                 wdg_smex_strategy.tagPromedio.html(maquetado);
 
@@ -819,14 +802,7 @@
                 maquetado += '<div class="str_pleca_01 collapsable">';
                 maquetado += '<div class="str_pleca_01_title">';
                 maquetado += '<h3 class="background-color-pleca1">';
-                maquetado += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">';
-                maquetado += 'Amonestados';
-                maquetado += '</a>';
-                maquetado += '</h3>';
-                maquetado += '</div>';
-                maquetado += '</div>';
-
-
+                maquetado += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
                 maquetado += '<div class="convocados">';
                 maquetado += '<div class="head">';
                 maquetado += '<div class="textcolor-title1 player">JUGADOR</div>';
@@ -835,9 +811,6 @@
                 maquetado += '</div>';
 
                 if (local.length !== 0) {
-
-
-
                     for (var i = 0; i < local.length; i++) {
                         var minuto = 0;
                         for (var z = 0; z < local[i].actions.length; z++) {
@@ -845,17 +818,15 @@
                                 minuto = z;
                             }
                         };
-                        maquetado += '<div class="bodyt dotted-bottom">';
+                        maquetado += '<div class="bodyt dotted-bottom" data-guid="' + local[i].idjugador + '">';
                         maquetado += '<div class="textcolor-title1">' + local[i].number + '</div>';
                         maquetado += '<div class="dotted-left name"><p>' + local[i].longName + '</p></div>';
                         maquetado += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
-                        maquetado += '<div class="textcolor-title4 dotted-left">&nbsp;</div>';
-                        maquetado += '</div>';
+                        maquetado += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
                     };
 
                 }
                 if (visit.length !== 0) {
-
                     for (var k = 0; k < visit.length; k++) {
                         var minuto = 0;
                         for (var y = 0; y < visit[k].actions.length; y++) {
@@ -863,12 +834,11 @@
                                 minuto = y;
                             }
                         };
-                        maquetado += '<div class="bodyt dotted-bottom">';
+                        maquetado += '<div class="bodyt dotted-bottom" data-guid="' + visit[k].idjugador + '">';
                         maquetado += '<div class="textcolor-title2">' + visit[k].number + '</div>';
                         maquetado += '<div class="dotted-left name"><p>' + visit[k].longName + '</p></div>';
                         maquetado += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
-                        maquetado += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
-                        maquetado += '</div>';
+                        maquetado += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
                     };
 
                 }
@@ -953,9 +923,7 @@
                     local += '<div class="player_name"><p>' + data.lineupLocal.team[i].longName + '</p></div>';
                     local += '<div class="players_icons">';
                     local += ActL;
-                    local += '</div>';
-                    local += '</div>';
-                    local += '</div>';
+                    local += '</div></div></div>';
 
 
                 };
@@ -984,9 +952,7 @@
                     visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].longName + '</p></div>';
                     visit += '<div class="players_icons">';
                     visit += ActV;
-                    visit += '</div>';
-                    visit += '</div>';
-                    visit += '</div>';
+                    visit += '</div></div></div>';
                 };
                 if (typeof(data.lineupVisit.coach) !== "undefined") {
                     visit += '<div class="player_td">';
@@ -1039,44 +1005,26 @@
                 maquetado += '<div class="escudo"><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
                 maquetado += '<div class="team"><p>' + data.lineupLocal.name + '</p><p></p></div>';
                 maquetado += '</div>';
-
                 maquetado += '<div class="player_table dotted-right">';
-
-
-
                 maquetado += local;
-
-                maquetado += '</div>';
-                maquetado += '</div>  ';
-
+                maquetado += '</div></div>';
                 maquetado += '<div class="second_team aling">';
                 maquetado += '<div class="title">';
                 maquetado += '<div><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
                 maquetado += '<div class="team"><p>' + data.lineupVisit.name + '</p></div>';
                 maquetado += '</div>';
-
                 maquetado += '<div class="player_table">';
                 maquetado += visit;
-
-
-                maquetado += '</div>';
-                maquetado += '</div>  ';
-
-
+                maquetado += '</div></div>';
                 maquetado += '<div class="table_title"><p class="textcolor-title1">Banca</p></div>';
                 maquetado += '<div class="first_team ">';
                 maquetado += '<div class="player_table dotted-right">';
                 maquetado += localSub;
-                maquetado += '</div>';
-                maquetado += '</div>  ';
-
-
+                maquetado += '</div></div>';
                 maquetado += '<div class="second_team aling">';
                 maquetado += '<div class="player_table">';
                 maquetado += visitSub;
-
-                maquetado += '</div>';
-                maquetado += '</div>  ';
+                maquetado += '</div></div>';
 
                 maquetado += '<div class="table_title"><p class="textcolor-title1">Arbitros</p></div>';
 
@@ -1104,14 +1052,12 @@
                         maquetado += '</div>';
                     }
                     if (typeof(data.referees.fourth) !== "undefined") {
-
                         maquetado += '<div class="referee-left">';
                         maquetado += '<div class="referee_title"><p class="textcolor-title2">Cuarto</p></div>';
                         maquetado += '<div class="dotted-left"><p>' + givemeName(data.referees.fourth) + '</p></div>';
                         maquetado += '</div>';
-                        maquetado += '</div>';
-                        maquetado += '</div>';
                     }
+                    maquetado += '</div></div>';
                 }
 
 
@@ -1173,16 +1119,14 @@
                 for (var i = 0; i < local.length; i++) {
                     content += '<div class="block_container dotted-bottom">';
                     content += '<div class="jugador"><p>' + local[i].longName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
-                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
-                    content += '</div>';
+                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
                     content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
                     content += '</div>';
                 };
                 for (var j = 0; j < visit.length; j++) {
                     content += '<div class="block_container dotted-bottom">';
                     content += '<div class="jugador"><p>' + visit[j].longName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
-                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
-                    content += '</div>';
+                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
                     content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
                     content += '</div>';
                 };
@@ -1192,8 +1136,7 @@
                 maquetado += '<div class="titulo textcolor-title1">Penales</div>';
                 maquetado += '<div class="convocados">';
                 maquetado += content;
-                maquetado += '</div>';
-                maquetado += '</div>';
+                maquetado += '</div></div>';
                 wdg_smex_strategy.tagwdgPenales.html(maquetado);
 
             },
