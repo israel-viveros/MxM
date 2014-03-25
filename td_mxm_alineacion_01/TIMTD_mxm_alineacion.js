@@ -310,6 +310,16 @@
                         //Modulo expulsados
                         wdg_smex_strategy.Modexpulsados(expulsadosLocal, expulsadosVisit);
 
+                        if ($("#datosTIMHeader").length) {
+                            clearInterval(wdg_smex_strategy.intervaloVe);
+                            var imgLocal = $("#localImgTIM").text();
+                            var imgVisit = $("#visitImgTIM").text();
+                            $(".TIMimgLocal").attr('src', imgLocal);
+                            $(".TIMimgVisit").attr('src', imgVisit);
+
+
+                        }
+
 
 
                     }
@@ -497,7 +507,9 @@
                     }
 
 
+
                 });
+
             },
             AlineacionInicial: function() {
                 //console.log("Es la alinacion INICIAL");
@@ -1147,6 +1159,9 @@
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionGoles.html(maquetado);
+                if (local === '' && visit === '') {
+                    wdg_smex_strategy.tagAlineacionGoles.hide();
+                }
 
 
 
