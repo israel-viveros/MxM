@@ -47,7 +47,7 @@
 
                 maquetado += '</div>';
                 maquetado += '<div style="clear: both; z-index: 870;"></div>';
-                maquetado += '</div>			';
+                maquetado += '</div>            ';
                 maquetado += '</div>';
                 maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 860;" >';
                 maquetado += '<div class="encabezado_alineacion_partido" style="z-index: 850;">';
@@ -64,7 +64,7 @@
                 maquetado += '<ul class="wdg_lineup_012_dropdownlist" id="TIMPAVisit"></ul>  ';
                 maquetado += '</div></div></div>';
                 maquetado += '<div style="clear: both; z-index: 770;"></div>';
-                maquetado += '</div>			';
+                maquetado += '</div>            ';
                 maquetado += '</div>';
                 maquetado += '<div style="clear: both; z-index: 760;"></div>';
                 maquetado += '</div>';
@@ -91,40 +91,29 @@
 
 
                 maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 420;"></div>	';
+                maquetado += '<div style="clear: both; z-index: 420;"></div>';
                 maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 410;"></div>			';
+                maquetado += '<div style="clear: both; z-index: 410;"></div>';
                 maquetado += '</div>';
                 maquetado += '<div style="clear: both; z-index: 400;"></div>';
-                maquetado += '</div>		';
+                maquetado += '</div>        ';
                 maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 390;" >';
 
                 maquetado += '<div class="jugador_alineacion_partido" style="z-index: 380;" id="bancaVisitTIM">';
 
 
-                maquetado += '<div class="player_alineado dotted-bottom " style="z-index: 370;">';
-                maquetado += '<div class="simbolo2 dotted-right" style="z-index: 360;">10</div>';
-                maquetado += '<div class="jugador_info_alineado" style="z-index: 350;">';
-                maquetado += '<h1>Cuauhtemoc Blanco</h1>';
 
-                maquetado += '<h2>96\'</h2>';
-                maquetado += '<i class="tvsa-videocamera"> </i>					';
-                maquetado += '<h2>96\'</h2>';
-                maquetado += '<i class="tvsa-videocamera"> </i>					';
-                maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 340;"></div>	';
-                maquetado += '</div>';
                 maquetado += '<div class="player_alineado banca" style="z-index: 330;">';
                 maquetado += '<div class="simbolo2 dotted-right" style="z-index: 320;">000</div>';
                 maquetado += '<div class="jugador_info_alineado " style="z-index: 310;">';
 
                 maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 300;"></div>	';
+                maquetado += '<div style="clear: both; z-index: 300;"></div>';
                 maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 290;"></div>			';
+                maquetado += '<div style="clear: both; z-index: 290;"></div>';
                 maquetado += '</div>';
                 maquetado += '<div style="clear: both; z-index: 280;"></div>';
-                maquetado += '</div>		';
+                maquetado += '</div>        ';
 
 
                 maquetado += '<div style="clear: both; z-index: 270;"></div>';
@@ -143,7 +132,7 @@
                 maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 150;" id="ausentesVisit">';
 
 
-                maquetado += '</div>		';
+                maquetado += '</div>        ';
 
 
                 maquetado += '<div style="clear: both; z-index: 70;"></div>';
@@ -162,10 +151,10 @@
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: 10;"><i class="tvsa-mxm-owngoal "> </i><h3 class="">Autogol</h3></div>';
                 maquetado += '<div class="icon_simbologia" style="z-index: 0;"><i class="tvsa-mxm-comment"> </i><h3 class="">Convocatoria a Comentario</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -10;"></div>';
-                maquetado += '</div>			';
+                maquetado += '</div>            ';
                 maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-statisticdata"> </i><h3 class="">Dato estad\u00EDstico</h3></div>';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-offside"> </i><h3 class="">Desde afuera del área</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-offside"> </i><h3 class="">Desde afuera del \u00E1rea</h3></div>';
                 maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-"> </i><h3 class="">El partido ha sido suspendido</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
                 maquetado += '</div>';
@@ -173,7 +162,7 @@
                 maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-startsecondhalf"> </i><h3 class="">Empieza segundo tiempo</h3></div>';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-penalties"> </i><h3 class="">Empiezan penales</h3></div>';
-                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-redcard"> </i><h3 class="">Expulsión</h3></div>';
+                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-mxm-redcard"> </i><h3 class="">Expulsi\u00F3n</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
                 maquetado += '</div>';
 
@@ -224,6 +213,7 @@
 
                 globalthis.html(maquetado);
 
+
                 (settings.idEquipo !== 0) ? wdgLineUpOb.loadDrops(wdgLineUpOb.feedDropLocal, TIMPALocal) : '';
 
                 (settings.idEquipo2 !== 0) ? setTimeout(function() {
@@ -237,7 +227,6 @@
                 });
 
                 wdgLineUpOb.infoequipo();
-
 
             },
             loadDrops: function(feed, ID) {
@@ -332,7 +321,7 @@
                             if (typeof data.lineupLocal.team[k].actions !== "undefined") {
                                 ActL = giveActions(data.lineupLocal.team[k].actions);
                             }
-                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>	</div><div style="clear: both; z-index: 690;"></div></div>';
+                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>';
                         };
                         if (typeof data.lineupLocal.coach !== "undefined") {
                             tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
@@ -352,7 +341,7 @@
                                 ActV = giveActions(data.lineupVisit.team[j].actions);
                             }
 
-                            tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].longName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>	</div><div style="clear: both; z-index: 570;"></div></div>';
+                            tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].longName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>  </div><div style="clear: both; z-index: 570;"></div></div>';
                         };
                         if (typeof data.lineupVisit.coach !== "undefined") {
                             tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineupVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
@@ -368,7 +357,7 @@
                             if (typeof data.lineupLocal.substitutes[l].actions !== "undefined") {
                                 ActBL = giveActions(data.lineupLocal.substitutes[l].actions);
                             }
-                            bancalocal += '<div class="jugador_alineacion_partido" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].longName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>	</div><div style="clear: both; z-index: 630;"></div></div>';
+                            bancalocal += '<div class="jugador_alineacion_partido" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].longName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>    </div><div style="clear: both; z-index: 630;"></div></div>';
                         };
                         $("#bancaLocalTIM").fadeIn('slow', function() {
                             $(this).html(bancalocal);
@@ -405,7 +394,7 @@
                                 ausenVisit += '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;">' + data.lineupVisit.ausentes[o].number + '</div><div class="jugador_info_alineado" style="z-index: 330;"><h1>' + data.lineupVisit.ausentes[o].longName + '</h1>' + ActAL + '</div><div style="clear: both; z-index: 320;"></div></div><div style="clear: both; z-index: 310;"></div></div>';
                             };
                         } else {
-                            ausenVisit = '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;"></div><div class="jugador_info_alineado" style="z-index: 330;"><h1></h1></div><div style="clear: both; z-index: 320;"></div>	</div><div style="clear: both; z-index: 310;"></div>			</div>';
+                            ausenVisit = '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;"></div><div class="jugador_info_alineado" style="z-index: 330;"><h1></h1></div><div style="clear: both; z-index: 320;"></div>    </div><div style="clear: both; z-index: 310;"></div>            </div>';
                         }
                         $("#ausentesVisit").fadeIn('slow', function() {
                             $(this).html(ausenVisit);
