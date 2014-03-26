@@ -32,14 +32,12 @@
                 maquetado += '<div class="equipo_partido separadoizquierda_encabezado" style="z-index: 960;">';
                 maquetado += '<div class="encabezado_alineacion_partido dotted-right" style="z-index: 950;">';
                 maquetado += '<div class="simbolo" style="z-index: 940;">#</div>';
-                maquetado += '<div class="equipos" id="localLineupRTIM" style="z-index: 930;">';
-                maquetado += '</div>';
+                maquetado += '<div class="equipos" id="localLineupRTIM" style="z-index: 930;"></div>';
                 maquetado += '<div class="jornada" style="z-index: 910;">';
                 maquetado += '<div class="wdg_lineup_01_dropdown drop1" style="z-index: 900;">';
                 maquetado += '<div class="wdg_lineup_01_dropdowncontent" style="z-index: 890;">';
                 maquetado += '<p id="nameJALocal"></p>';
-                maquetado += '<span class="sprite dropdown-gray"></span>';
-                maquetado += '</div>';
+                maquetado += '<span class="sprite dropdown-gray"></span></div>';
                 maquetado += '<div class="wdg_lineup_01_listcontainer" style="z-index: 880;">';
                 maquetado += '<ul class="wdg_lineup_01_dropdownlist" id="TIMPALocal"></ul>  ';
                 maquetado += '</div>';
@@ -91,12 +89,9 @@
 
 
                 maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 420;"></div>';
-                maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 410;"></div>';
-                maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 400;"></div>';
-                maquetado += '</div>        ';
+                maquetado += '<div style="clear: both; z-index: 420;"></div></div>';
+                maquetado += '<div style="clear: both; z-index: 410;"></div></div>';
+                maquetado += '<div style="clear: both; z-index: 400;"></div></div>        ';
                 maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 390;" >';
 
                 maquetado += '<div class="jugador_alineacion_partido" style="z-index: 380;" id="bancaVisitTIM">';
@@ -105,21 +100,16 @@
 
                 maquetado += '<div class="player_alineado banca" style="z-index: 330;">';
                 maquetado += '<div class="simbolo2 dotted-right" style="z-index: 320;">000</div>';
-                maquetado += '<div class="jugador_info_alineado " style="z-index: 310;">';
-
-                maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 300;"></div>';
-                maquetado += '</div>';
+                maquetado += '<div class="jugador_info_alineado " style="z-index: 310;"></div>';
+                maquetado += '<div style="clear: both; z-index: 300;"></div></div>';
                 maquetado += '<div style="clear: both; z-index: 290;"></div>';
-                maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: 280;"></div>';
-                maquetado += '</div>        ';
+                maquetado += '</div><div style="clear: both; z-index: 280;"></div></div>        ';
 
 
                 maquetado += '<div style="clear: both; z-index: 270;"></div>';
                 maquetado += '</div>';
 
-                maquetado += '<div class="alineacion_partido" style="z-index: 260;">';
+                maquetado += '<div class="alineacion_partido" style="z-index: 260;" id="ausenciasconta">';
                 maquetado += '<div class="encabezado_alineacion_partido lineaBajo" style="z-index: 250;">';
                 maquetado += '<h3 class="head_component">Ausencias</h3>';
                 maquetado += '<div style="clear: both; z-index: 240;"></div>';
@@ -129,10 +119,7 @@
 
 
                 maquetado += '</div>';
-                maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 150;" id="ausentesVisit">';
-
-
-                maquetado += '</div>        ';
+                maquetado += '<div class="equipo_partido separadoderecha" style="z-index: 150;" id="ausentesVisit"></div>';
 
 
                 maquetado += '<div style="clear: both; z-index: 70;"></div>';
@@ -155,7 +142,7 @@
                 maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-statisticdata"> </i><h3 class="">Dato estad\u00EDstico</h3></div>';
                 maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -40;"><i class="tvsa-mxm-offside"> </i><h3 class="">Desde afuera del \u00E1rea</h3></div>';
-                maquetado += '<div class="icon_simbologia" style="z-index: -50;"><i class="tvsa-"> </i><h3 class="">El partido ha sido suspendido</h3></div>';
+                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-mxm-gameend"> </i><h3 class="">Terminan penales</h3></div>';
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
                 maquetado += '</div>';
 
@@ -201,14 +188,7 @@
                 maquetado += '<div style="clear: both; z-index: -60;"></div>';
                 maquetado += '</div>';
 
-                maquetado += '<div class="tabla_simbologia" style="z-index: -20;">';
-                maquetado += '<div class="icon_simbologia dotted-right" style="z-index: -30;"><i class="tvsa-videocamera"> </i><h3 class="">Terminan penales</h3></div>';
-                maquetado += '<div style="clear: both; z-index: -60;"></div>';
-                maquetado += '</div>';
-
-                maquetado += '<div style="clear: both; z-index: -70;"></div>';
-                maquetado += '</div>';
-                maquetado += '<div style="clear: both; z-index: -80;"></div>';
+                maquetado += '<div style="clear: both; z-index: -70;"></div></div>';
                 maquetado += '</div><div style="clear: both; z-index: -90;"></div>';
 
                 globalthis.html(maquetado);
@@ -226,7 +206,9 @@
                     wdgLineUpOb.funcionesNaat();
                 });
 
-                wdgLineUpOb.infoequipo();
+                wdgLineUpOb.intervaloVe = setInterval(function() {
+                    wdgLineUpOb.infoequipo();
+                }, 3000);
 
             },
             loadDrops: function(feed, ID) {
@@ -307,7 +289,9 @@
                 })
                     .done(function(data) {
                         var tmpTeam = "",
-                            tmpTeamV = "";
+                            tmpTeamV = "",
+                            flagAusenVisit = 0,
+                            flagAusenLocal = 0;
                         // console.log(data);
                         if (tipo !== "drop") {
                             $("#nameJALocal").html(data.week);
@@ -383,6 +367,7 @@
                             };
                         } else {
                             ausenLocal = '<div class="player_alineado" style="z-index: 430;"><div class="simbolo2 dotted-right" style="z-index: 420;"></div><div class="jugador_info_alineado" style="z-index: 410;"><h1></h1></div><div style="clear: both; z-index: 400;"></div></div>';
+                            flagAusenLocal = 1;
                         }
                         $("#ausentesLocal").fadeIn('slow', function() {
                             $(this).html(ausenLocal);
@@ -395,6 +380,7 @@
                             };
                         } else {
                             ausenVisit = '<div class="jugador_alineacion_partido" style="z-index: 360;"><div class="player_alineado dotted-bottom banca" style="z-index: 350;"><div class="simbolo2 dotted-right" style="z-index: 340;"></div><div class="jugador_info_alineado" style="z-index: 330;"><h1></h1></div><div style="clear: both; z-index: 320;"></div>    </div><div style="clear: both; z-index: 310;"></div>            </div>';
+                            flagAusenVisit = 1;
                         }
                         $("#ausentesVisit").fadeIn('slow', function() {
                             $(this).html(ausenVisit);
@@ -404,6 +390,11 @@
                             $("#ausentesLocal").parent('.alineacion_partido').remove();
                         }
 
+                        console.log(flagAusenVisit);
+                        console.log(flagAusenLocal);
+                        if (flagAusenVisit === 1 && flagAusenLocal === 1) {
+                            $("#ausenciasconta").hide('fast');
+                        }
 
 
                     })
@@ -417,16 +408,12 @@
             },
 
             infoequipo: function() {
-
+                console.log("actualizando..");
                 if ($("#datosTIMHeader").length) {
                     clearInterval(wdgLineUpOb.intervaloVe);
                     var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>' + $("#visitAbrevTIM").text() + '</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
                     $("#localLineupRTIM, #visitLineupRTIM").html(Local);
 
-                } else {
-                    wdgLineUpOb.intervaloVe = setInterval(function() {
-                        wdgLineUpOb.infoequipo();
-                    }, 1000);
                 }
             },
 
