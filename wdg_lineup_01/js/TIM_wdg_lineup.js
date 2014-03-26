@@ -193,6 +193,16 @@
 
                 globalthis.html(maquetado);
 
+                if ($("#viewmoreTIM").length) {
+                    $("#viewmoreTIM").click(function(event) {
+                        event.preventDefault();
+                        $(this).hide();
+                        $(".simbologia").animate({
+                            'height': '452px'
+                        }, 200);
+                    });
+                }
+
 
                 (settings.idEquipo !== 0) ? wdgLineUpOb.loadDrops(wdgLineUpOb.feedDropLocal, TIMPALocal) : '';
 
@@ -390,8 +400,7 @@
                             $("#ausentesLocal").parent('.alineacion_partido').remove();
                         }
 
-                        console.log(flagAusenVisit);
-                        console.log(flagAusenLocal);
+
                         if (flagAusenVisit === 1 && flagAusenLocal === 1) {
                             $("#ausenciasconta").hide('fast');
                         }
@@ -408,7 +417,6 @@
             },
 
             infoequipo: function() {
-                console.log("actualizando..");
                 if ($("#datosTIMHeader").length) {
                     clearInterval(wdgLineUpOb.intervaloVe);
                     var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>' + $("#visitAbrevTIM").text() + '</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
