@@ -501,7 +501,10 @@
                                 wdg_smex_strategy.AlineacionInicial();
                                 break;
                             case 'final':
-                                wdg_smex_strategy.AlineacionFinal();
+                                $.when(wdg_smex_strategy.AlineacionFinal()).done(function() {
+                                    wdg_smex_strategy.updatePlayers();
+                                });
+
                                 break;
                         }
                     }
@@ -605,9 +608,11 @@
                                 }
                                 //cop
                                 //console.log(tiempoActualizacion)
-                                setInterval(function() {
-                                    wdg_smex_strategy.updatePlayers()
-                                }, tiempoActualizacion);
+                                if (tiempoActualizacion !== 0) {
+                                    setInterval(function() {
+                                        wdg_smex_strategy.updatePlayers()
+                                    }, tiempoActualizacion);
+                                }
                                 //setInterval(function(){wdg_smex_strategy.updatePlayers()},15000);
 
                             } else {
@@ -631,10 +636,10 @@
                     url: wdg_smex_strategy.urlFinalAlienacion,
                     type: 'GET',
                     dataType: 'jsonp',
-                    jsonpCallback: 'datagame'
+                    jsonpCallback: 'datagame',
+                    cache: false
                 })
                     .done(function(data) {
-
                         var equipos = new Array("lineupLocal", "lineupVisit");
                         var actionsPlayer;
                         var newTop, newLeft, vc;
@@ -647,7 +652,26 @@
                                 if (typeof actionsPlayer !== "undefined") {
                                     for (var x = 0; x < actionsPlayer.length; x++) {
                                         if (actionsPlayer[x].type.toLowerCase() === "entraaljuego") {
+
+
+
+
+                                            if ($("div[data-guid=" + data[equipoString].substitutes[i].idjugador + "] ").hasClass('EqLTIM')) {
+                                                $("div[data-guid=" + data[equipoString].substitutes[i].idjugador + "] ").prependTo('#jugadoreslocalTIM');
+                                            } else {
+                                                $("div[data-guid=" + data[equipoString].substitutes[i].idjugador + "]").prependTo('#jugadoresvisitTIM');
+                                            }
+
+
                                             itemActual = $("span[data-guid=" + actionsPlayer[x].playeridchange + "]");
+                                            //console.log(itemActual)
+
+                                            if ($("div[data-guid=" + actionsPlayer[x].playeridchange + "]").hasClass('EqLTIM')) {
+                                                $("div[data-guid=" + actionsPlayer[x].playeridchange + "]").prependTo("#localbancaTIM");
+                                            } else {
+                                                $("div[data-guid=" + actionsPlayer[x].playeridchange + "]").prependTo("#visitbandaTIM");
+
+                                            }
 
                                             if (itemActual.length) {
                                                 itemtop = itemActual.css('top');
@@ -700,7 +724,7 @@
 
                                                 vc = (equipos[z] === "lineupLocal") ? 'local' : 'visit';
 
-                                                NuevosJugadores += '<span data-guid="' + data[equipoString].substitutes[i].guid + '" class="player ' + vc + ' ' + arrow + '" style="left:' + itemleft + ';top:' + itemtop + ';display:none">' +
+                                                NuevosJugadores += '<span data-guid="' + data[equipoString].substitutes[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + itemleft + ';top:' + itemtop + ';display:none">' +
                                                     '<a href="#" title="' + data[equipoString].substitutes[i].name + ' ' + data[equipoString].substitutes[i].name + '">' +
                                                     '<span class="number textcolor-title2">' + data[equipoString].substitutes[i].number + '</span>' +
                                                     '<span class="tooltip ' + toolact + '">' +
@@ -713,8 +737,9 @@
                                                     '</span>';
 
                                                 itemActual.fadeOut('fast', function() {
-                                                    $(this).remove()
+                                                    $(this).remove();
                                                 });
+
 
 
                                             }
@@ -731,8 +756,23 @@
 
                         }; // equipos array
 
-                        GlobalThis.find(".players").append(NuevosJugadores).children().fadeIn('slow');
+                        GlobalThis.find(".players").append(NuevosJugadores).children().fadeIn('slow', function() {
+                            $(this).css("display", "block");
+                        });
 
+                        // update goles 
+                        var golesLocal = (typeof(data.goalsLocal) !== "undefined") ? data.goalsLocal : '';
+                        var golesVisit = (typeof(data.goalsVisit) !== "undefined") ? data.goalsVisit : '';
+                        wdg_smex_strategy.updateGolesAnotados(golesLocal, golesVisit, data.lineupLocal.name, data.lineupVisit.name);
+
+                        //update amonestados
+                        var localexp = (typeof(data.lineupLocal.penalization) !== "undefined") ? data.lineupLocal.penalization : '';
+                        var visitexo = (typeof(data.lineupVisit.penalization) !== "undefined") ? data.lineupVisit.penalization : '';
+                        wdg_smex_strategy.ModexpulsadosUpdate(localexp, visitexo);
+
+                        if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
+                            wdg_smex_strategy.wdgPenales(data.PenaltiesLocal, data.PenaltiesVisit, data.lineupLocal.name, data.lineupVisit.name);
+                        }
 
 
                     })
@@ -798,18 +838,10 @@
             }, // promedio Cancha
 
             Modexpulsados: function(local, visit) {
-                var maquetado = '<div class = "wdg_mxm_plcards_01" >';
-                maquetado += '<div class="str_pleca_01 collapsable">';
-                maquetado += '<div class="str_pleca_01_title">';
-                maquetado += '<h3 class="background-color-pleca1">';
-                maquetado += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
-                maquetado += '<div class="convocados">';
-                maquetado += '<div class="head">';
-                maquetado += '<div class="textcolor-title1 player">JUGADOR</div>';
-                maquetado += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
-                maquetado += '<div class="icon-team2 dotted-left"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
-                maquetado += '</div>';
-
+                var arrayGlobal = new Array(),
+                    itemshtml = "",
+                    localm = "",
+                    visitm = "";
                 if (local.length !== 0) {
                     for (var i = 0; i < local.length; i++) {
                         var minuto = 0;
@@ -818,11 +850,13 @@
                                 minuto = z;
                             }
                         };
-                        maquetado += '<div class="bodyt dotted-bottom" data-guid="' + local[i].idjugador + '">';
-                        maquetado += '<div class="textcolor-title1">' + local[i].number + '</div>';
-                        maquetado += '<div class="dotted-left name"><p>' + local[i].longName + '</p></div>';
-                        maquetado += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
-                        maquetado += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
+                        localm = "";
+                        localm += '<div class="' + local[i].actions[minuto].minute + ' bodyt dotted-bottom">';
+                        localm += '<div class="textcolor-title1">' + local[i].number + '</div>';
+                        localm += '<div class="dotted-left name"><p>' + local[i].longName + '</p></div>';
+                        localm += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
+                        localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
+                        arrayGlobal.push(localm);
                     };
 
                 }
@@ -834,23 +868,87 @@
                                 minuto = y;
                             }
                         };
-                        maquetado += '<div class="bodyt dotted-bottom" data-guid="' + visit[k].idjugador + '">';
-                        maquetado += '<div class="textcolor-title2">' + visit[k].number + '</div>';
-                        maquetado += '<div class="dotted-left name"><p>' + visit[k].longName + '</p></div>';
-                        maquetado += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
-                        maquetado += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
+                        visitm = "";
+                        visitm += '<div class="' + visit[k].actions[minuto].minute + ' bodyt dotted-bottom">';
+                        visitm += '<div class="textcolor-title2">' + visit[k].number + '</div>';
+                        visitm += '<div class="dotted-left name"><p>' + visit[k].longName + '</p></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
+                        arrayGlobal.push(visitm);
                     };
 
                 }
-
-
+                for (var x = 0; x < arrayGlobal.sort().length; x++) {
+                    itemshtml += arrayGlobal.sort()[x];
+                };
+                var maquetado = '<div class = "wdg_mxm_plcards_01" >';
+                maquetado += '<div class="str_pleca_01 collapsable">';
+                maquetado += '<div class="str_pleca_01_title">';
+                maquetado += '<h3 class="background-color-pleca1">';
+                maquetado += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
+                maquetado += '<div class="convocados"><div class="head">';
+                maquetado += '<div class="textcolor-title1 player">JUGADOR</div>';
+                maquetado += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
+                maquetado += '<div class="icon-team2 dotted-left"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
+                maquetado += '</div>' + itemshtml;
                 maquetado += '</div></div></div>';
 
                 wdg_smex_strategy.tagExpulsion.html(maquetado);
-
-
-
             }, // Modexpulsados
+
+            ModexpulsadosUpdate: function(local, visit) {
+                var arrayGlobal = new Array(),
+                    localm = "",
+                    visitm = "",
+                    finalHTML = "";
+                var itemfeed = local.length + visit.length;
+                var actualitems = wdg_smex_strategy.tagExpulsion.find(".bodyt").size();
+
+                if (itemfeed > actualitems) {
+                    if (local.length !== 0) {
+                        for (var i = 0; i < local.length; i++) {
+                            var minuto = 0;
+                            for (var z = 0; z < local[i].actions.length; z++) {
+                                if (local[i].actions[z].type === "amonestacion") {
+                                    minuto = z;
+                                }
+                            };
+                            localm = "";
+                            localm += '<div class="' + local[i].actions[minuto].minute + ' bodyt dotted-bottom">';
+                            localm += '<div class="textcolor-title1">' + local[i].number + '</div>';
+                            localm += '<div class="dotted-left name"><p>' + local[i].longName + '</p></div>';
+                            localm += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
+                            localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
+                            arrayGlobal.push(localm);
+                        };
+
+                    }
+                    if (visit.length !== 0) {
+                        for (var k = 0; k < visit.length; k++) {
+                            var minuto = 0;
+                            for (var y = 0; y < visit[k].actions.length; y++) {
+                                if (visit[k].actions[y].type === "amonestacion") {
+                                    minuto = y;
+                                }
+                            };
+                            visitm = "";
+                            visitm += '<div class="' + visit[k].actions[minuto].minute + ' bodyt dotted-bottom">';
+                            visitm += '<div class="textcolor-title2">' + visit[k].number + '</div>';
+                            visitm += '<div class="dotted-left name"><p>' + visit[k].longName + '</p></div>';
+                            visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
+                            visitm += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
+                            arrayGlobal.push(visitm);
+                        };
+
+                    }
+                    for (var x = actualitems; x < arrayGlobal.sort().length; x++) {
+                        finalHTML += arrayGlobal.sort()[x];
+                    };
+
+                    wdg_smex_strategy.tagExpulsion.find(".convocados").append(finalHTML);
+
+                }
+            },
 
             MuestraAlineacion: function(data) {
                 var golesLocal = (typeof(data.goalsLocal) !== "undefined") ? data.goalsLocal : '';
@@ -917,7 +1015,7 @@
                         ActL = giveActions(data.lineupLocal.team[i].actions);
                     };
 
-                    local += '<div class="player_td dotted-bottom" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
+                    local += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
                     local += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.team[i].number + '</p></div>';
                     local += '<div class="dotted-left container_card">';
                     local += '<div class="player_name"><p>' + data.lineupLocal.team[i].longName + '</p></div>';
@@ -946,7 +1044,7 @@
                     if (typeof(data.lineupVisit.team[j].actions) === "object") {
                         ActV = giveActions(data.lineupVisit.team[j].actions);
                     };
-                    visit += '<div class="player_td dotted-bottom" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
+                    visit += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
                     visit += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.team[j].number + '</p></div>';
                     visit += '<div class="dotted-left container_card">';
                     visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].longName + '</p></div>';
@@ -971,7 +1069,7 @@
                         ActLB = giveActions(data.lineupLocal.substitutes[p].idjugador.actions);
                     }
 
-                    localSub += '<div class="player_td dotted-bottom" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
+                    localSub += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
                     localSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.substitutes[p].number + '</p></div>';
                     localSub += '<div class="dotted-left container_card">';
                     localSub += '<div class="player_name"><p>' + data.lineupLocal.substitutes[p].longName + '</p></div>';
@@ -986,7 +1084,7 @@
                         ActVB = giveActions(data.lineupVisit.substitutes[o].actions);
                     }
 
-                    visitSub += '<div class="player_td dotted-bottom" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
+                    visitSub += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
                     visitSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.substitutes[o].number + '</p></div>';
                     visitSub += '<div class="dotted-left container_card">';
                     visitSub += '<div class="player_name"><p>' + data.lineupVisit.substitutes[o].longName + '</p></div>';
@@ -1005,7 +1103,7 @@
                 maquetado += '<div class="escudo"><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
                 maquetado += '<div class="team"><p>' + data.lineupLocal.name + '</p><p></p></div>';
                 maquetado += '</div>';
-                maquetado += '<div class="player_table dotted-right">';
+                maquetado += '<div class="player_table dotted-right" id="jugadoreslocalTIM">';
                 maquetado += local;
                 maquetado += '</div></div>';
                 maquetado += '<div class="second_team aling">';
@@ -1013,16 +1111,16 @@
                 maquetado += '<div><img src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
                 maquetado += '<div class="team"><p>' + data.lineupVisit.name + '</p></div>';
                 maquetado += '</div>';
-                maquetado += '<div class="player_table">';
+                maquetado += '<div class="player_table" id="jugadoresvisitTIM">';
                 maquetado += visit;
                 maquetado += '</div></div>';
                 maquetado += '<div class="table_title"><p class="textcolor-title1">Banca</p></div>';
                 maquetado += '<div class="first_team ">';
-                maquetado += '<div class="player_table dotted-right">';
+                maquetado += '<div class="player_table dotted-right" id="localbancaTIM">';
                 maquetado += localSub;
                 maquetado += '</div></div>';
                 maquetado += '<div class="second_team aling">';
-                maquetado += '<div class="player_table">';
+                maquetado += '<div class="player_table" id="visitbandaTIM">';
                 maquetado += visitSub;
                 maquetado += '</div></div>';
 
@@ -1069,39 +1167,38 @@
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
                 var maquetado = "",
-                    localM = "",
-                    visitM = "";
-                //console.log(local);
-                //console.log(visit);
+                    localM,
+                    visitM, finalM = "",
+                    arrayGlobal = new Array();
                 if (local !== '') {
                     for (var i = 0; i < local.length; i++) {
-                        localM += '<div class="block_container">';
+                        localM = "";
+                        localM += '<div class="' + local[i].minute + ' block_container localTIMGol">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
-                        localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
-                        localM += '<p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                        localM += '<span class="textcolor-title2">' + local[i].formaGol + '</span>';
-                        localM += '</p>';
-                        localM += '</div>';
-                        localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div>';
-                        localM += '</div>';
+                        localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
+                        localM += '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>';
+                        localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
+                        arrayGlobal.push(localM);
                     };
                 }
                 if (visit !== '') {
                     for (var l = 0; l < visit.length; l++) {
-                        visitM += '<div class="block_container">';
+                        visitM = "";
+                        visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol">';
                         visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
-                        visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i>';
-                        visitM += '<p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                        visitM += '<span class="textcolor-title2">Tiro Libre</span>';
-                        visitM += '</p>';
-                        visitM += '</div>';
-                        visitM += '<div class="dotted-left marcador dotted-left"><p>' + local[l].current_score + '</p></div>';
-                        visitM += '</div>';
+                        visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
+                        visitM += '<span class="textcolor-title2">Tiro Libre</span></p></div>';
+                        visitM += '<div class="dotted-left marcador dotted-left"><p>' + local[l].current_score + '</p></div></div>';
+                        arrayGlobal.push(visitM);
                     };
                 }
+
+                for (var d = 0; d < arrayGlobal.sort().length; d++) {
+                    finalM += arrayGlobal.sort()[d];
+                };
+
                 maquetado += '<div class="convocados">';
-                maquetado += localM;
-                maquetado += visitM;
+                maquetado += finalM;
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionGoles.html(maquetado);
@@ -1112,10 +1209,47 @@
 
 
             },
+            updateGolesAnotados: function(local, visit, namelocal, namevisit) {
+                var arrayGlobal = new Array(),
+                    nuevoFinal = "";
+                var actualNow = parseInt(local.length) + parseInt(visit.length);
+                var actualGoles = parseInt(wdg_smex_strategy.tagAlineacionGoles.find('.block_container').size());
+                if (actualNow > actualGoles) {
+                    if (local !== '') {
+                        for (var i = 0; i < local.length; i++) {
+                            localM = "";
+                            localM += '<div class="' + local[i].minute + ' block_container localTIMGol">';
+                            localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
+                            localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
+                            localM += '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>';
+                            localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
+                            arrayGlobal.push(localM);
+                        };
+                    }
+                    if (visit !== '') {
+                        for (var l = 0; l < visit.length; l++) {
+                            visitM = "";
+                            visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol">';
+                            visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
+                            visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
+                            visitM += '<span class="textcolor-title2">Tiro Libre</span></p></div>';
+                            visitM += '<div class="dotted-left marcador dotted-left"><p>' + local[l].current_score + '</p></div></div>';
+                            arrayGlobal.push(visitM);
+                        };
+                    }
+
+                    for (var z = actualGoles; z < arrayGlobal.sort().length; z++) {
+                        nuevoFinal += arrayGlobal.sort()[z];
+                    };
+
+                    wdg_smex_strategy.tagAlineacionGoles.find(".convocados").append(nuevoFinal);
+
+                }
+
+            },
             wdgPenales: function(local, visit, nombreLocal, nombrevisit) {
                 var maquetado = "",
                     content = "";
-
                 for (var i = 0; i < local.length; i++) {
                     content += '<div class="block_container dotted-bottom">';
                     content += '<div class="jugador"><p>' + local[i].longName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
@@ -1142,8 +1276,6 @@
             },
 
             listenerInfo: function() {
-                console.log("listener...");
-
                 if ($("#datosTIMHeader").length) {
                     clearInterval(wdg_smex_strategy.intervaloVe);
                     var imgLocal = $("#localImgTIM").text();
