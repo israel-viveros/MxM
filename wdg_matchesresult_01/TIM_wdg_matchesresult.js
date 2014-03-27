@@ -5,7 +5,8 @@
             'tickermaster': 0,
             'tickertournament': 0,
             'link': '',
-            'tema': 'deportes'
+            'tema': 'deportes',
+            'country_code': ''
         }, options);
 
         var Globalthis = this;
@@ -163,7 +164,7 @@
                         //wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
                         (tipo === "update") ? wdg_matchresult.updateGoles(dataFirst) : wdg_matchresult.DrawContentFirst(dataFirst.matches.match, tipo);
                         try {
-                        //console.log("SETIMER...");
+                            //console.log("SETIMER...");
                             clearInterval(wdg_matchresult.globalTimer);
                             wdg_matchresult.setTimer();
                             wdg_matchresult.timeUpdateA.length = 0;
@@ -241,6 +242,11 @@
                             ItemView += '<div class="wdg_match_01_extra2"></div>';
                         }
                         ItemView += '<div class="wdg_match_01_icon">';
+                        if (setting.country_code == 'USA') {
+                            ItemView += (contenido[y].USAvideo != "") ? '<a href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                        } else if (setting.country_code == 'MEX') {
+                            ItemView += (contenido[y].MXvideo != "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                        }
                         ItemView += (contenido[y].MXvideo != "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         ItemView += '</div>';
                         ItemView += '</div>';
