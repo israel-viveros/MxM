@@ -46,7 +46,7 @@
                         for (var i = 0; i < data.actionsMXM.length; i++) {
                             var video = "",
                                 galeria = "";
-                        //console.log(data.actionsMXM[i].type.toLowerCase());
+                            //console.log(data.actionsMXM[i].type.toLowerCase());
                             switch (data.actionsMXM[i].type.toLowerCase()) {
                                 case "amonestacion":
                                     icono = "mxm-yellowcard";
@@ -457,7 +457,7 @@
                                 }
 
                                 item += '</div>';
-                            item += (icono !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
+                                item += (icono !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
 
                                 if (icono === "twitter") {
                                     var comaA = data.actionsMXM[i].description.replace(",", "|")
