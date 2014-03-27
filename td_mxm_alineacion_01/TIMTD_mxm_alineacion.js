@@ -57,7 +57,9 @@
                 ContenidoMaq += '</span>';
                 ContenidoMaq += '</div>';
 
-                GlobalThis.html(ContenidoMaq).css("display", "none").fadeIn('slow');
+                GlobalThis.html(ContenidoMaq).css("display", "none").fadeIn('slow', function() {
+                    $(this).css("display", "block");
+                });;
 
                 (setting.idclub !== 0) ? setTimeout(function() {
                     wdg_smex_strategy.loadDropdown()
@@ -204,7 +206,9 @@
                                     '</span>';
 
                             };
-                            el.find('span.players').html(miHTML).fadeIn('slow');
+                            el.find('span.players').html(miHTML).fadeIn('slow', function() {
+                                $(this).css("display", "block");
+                            });;
                             $("#LoadingCancha").hide('slow');
 
                             (tipo === "actualizacion") ? '' : $(".wdg_smex_strategy_01_dropdowncontent p").text(data.week);
@@ -289,7 +293,9 @@
                                 for (var k = 0; k < ArregloHidden.length; k++) {
                                     $("span[data-guid=" + ArregloHidden[k] + "]").remove();
                                 };
-                                el.find('span.players').append(aliFinal).fadeIn('slow');
+                                el.find('span.players').append(aliFinal).fadeIn('slow', function() {
+                                    $(this).css("display", "block");
+                                });
 
                             }
                             // Alineacion Final         
