@@ -13,7 +13,8 @@
 
 
             urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
-            urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
+            //urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
+            urlDropdown: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/clubes/' + setting.idclub + '/matchesclub.js',
             urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
 
 
@@ -42,12 +43,14 @@
                 }
                 ContenidoMaq += '<div class="field">';
                 ContenidoMaq += '<div id="LoadingCancha"><div id="fountainG_1" class="fountainG"></div><div id="fountainG_2" class="fountainG"></div><div id="fountainG_3" class="fountainG"></div><div id="fountainG_4" class="fountainG"></div><div id="fountainG_5" class="fountainG"></div><div id="fountainG_6" class="fountainG"></div><div id="fountainG_7" class="fountainG"></div><div id="fountainG_8" class="fountainG"></div></div>';
-                ContenidoMaq += '<img class="cancha" src="http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/cancha.png" alt="field" width="624" height="334"/>';
+                ContenidoMaq += '<img class="cancha" src="http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/cancha.png" alt="field" width="624" height="334"/>';
                 ContenidoMaq += '<span class="players">';
                 ContenidoMaq += '</span>';
                 ContenidoMaq += '</div>';
 
-                GlobalThis.html(ContenidoMaq).css("display", "none").fadeIn('slow');
+                GlobalThis.html(ContenidoMaq).css("display", "none").fadeIn('slow', function() {
+                    $(this).css("display", "block");
+                });;
 
                 (setting.idclub !== 0) ? setTimeout(function() {
                     wdg_smex_strategy.loadDropdown()
@@ -105,7 +108,8 @@
                 el.find('span.players').fadeOut('fast');
                 //console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js');				
                 $.ajax({
-                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
+                    //url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
+                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/24911/match_lineup.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'datagame',
                     cache: false,
