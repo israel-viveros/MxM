@@ -411,6 +411,7 @@
 
 
             valorFor = data.length;
+            valorFor = 3;
 
             for (var i = 0; i < valorFor; i++) {
 
@@ -509,7 +510,7 @@
             if (valorFor < 9) {
                 var faltantes = parseInt(9 - valorFor);
                 for (var w = 0; w < faltantes; w++) {
-                    jornadasCalendarDTV.contenidoJornada.push('<li class="vacio wdg_altasbajas_result_01_block" data-link="" style="cursor: pointer;"><div class="date textcolor-title2"></div><figure></figure><div class="ligaResult"></div><figure></figure></li>');
+                    jornadasCalendarDTV.contenidoJornada.push('<li class="vacio wdg_altasbajas_result_01_block"><div class="date textcolor-title2"></div><figure></figure><div class="ligaResult"></div><figure></figure></li>');
                 };
             }
 
@@ -531,7 +532,7 @@
             $("#nro_jornadas").html(name_jor).children('li').bind('click', function(event) {
                 actualizar_jornada($(this).data('jornada'));
             });
-            $(".wdg_altasbajas_result_01_block").css("cursor", "pointer").bind('click', function(event) {
+            $(".wdg_altasbajas_result_01_block[data-link]").not($("[data-link='']")).css("cursor", "pointer").bind('click', function(event) {
                 window.location.assign($(this).data("link"));
             });
 
