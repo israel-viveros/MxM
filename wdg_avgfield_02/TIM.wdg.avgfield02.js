@@ -37,15 +37,49 @@
                     cache: false
                 })
                     .done(function(data) {
-                        console.log("sucess data");
-                        //wdgavgfieldObj.pintar(data);
+                        wdgavgfieldObj.updateData(data);
                     })
                     .fail(function() {
                         console.log("error al cargar el feed de summary actions");
                     })
             },
-            pintar: function(data) {
+            updateData: function(data) {
                 console.log(data);
+                var LocalAmarilla = $("#LocalamarillasTIM").text(),
+                    LocalRoja = $("#rojasLocalTIM").text(),
+                    LocalEsquina = $("#esquinaLocalTIM").text(),
+                    LocalGol = $("#tiroslocalTIM").text(),
+                    VisitAmarilla = $("#VisitAmarillasTIM").text(),
+                    VisitRoja = $("#rojasVisitTIM").text(),
+                    VisitEsquina = $("#esquinavisitTIM").text(),
+                    VisitGol = $("#tirosvisitLocal").text(),
+
+                    feedlocalamarilla = data.acciones.local.tarjeta_amarilla,
+                    feedlocalroja = data.acciones.local.tarjeta_roja,
+                    feedlocalesquina = data.acciones.local.tiros_esquina,
+                    feedlocalgol = data.acciones.local.tiros_gol,
+
+                    feedvisitamarilla = data.acciones.visitant.tarjeta_amarilla
+                    feedvisitroja = data.acciones.visitant.tarjeta_roja,
+                    feedvisitesquina = data.acciones.visitant.tiros_esquina,
+                    feedvisitgol = data.acciones.visitant.tiros_gol;
+
+
+                (LocalAmarilla !== feedlocalamarilla) ? $("#LocalamarillasTIM").text(feedlocalamarilla) : '';
+                (LocalRoja !== feedlocalroja) ? $("#rojasLocalTIM").text(feedlocalroja) : '';
+                (LocalEsquina !== feedlocalesquina) ? $("#esquinaLocalTIM").text(feedlocalesquina) : '';
+                (feedlocalgol !== feedlocalgol) ? $("#tiroslocalTIM").text(feedlocalgol) : '';
+
+                (VisitAmarilla !== feedvisitamarilla) ? $("#LocalamarillasTIM").text(feedvisitamarilla) : '';
+                (VisitRoja !== feedvisitroja) ? $("#LocalamarillasTIM").text(feedvisitroja) : '';
+                (VisitEsquina !== feedvisitesquina) ? $("#LocalamarillasTIM").text(feedvisitesquina) : '';
+                (VisitGol !== feedvisitgol) ? $("#LocalamarillasTIM").text(feedvisitgol) : '';
+
+
+
+
+            },
+            pintar: function(data) {
 
                 maquetado = '<div class="wdg_avgfield_02" style="display:none;">';
                 maquetado += '<div class="str_pleca_01 collapsable">';
@@ -76,11 +110,11 @@
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_02_teama">';
-                maquetado += (typeof(data.acciones.local.tarjeta_amarilla) !== "undefined") ? '<div class="element textcolor-title2">' + data.acciones.local.tarjeta_amarilla + '</div>' : '';
+                maquetado += (typeof(data.acciones.local.tarjeta_amarilla) !== "undefined") ? '<div class="element textcolor-title2" id="LocalamarillasTIM">' + data.acciones.local.tarjeta_amarilla + '</div>' : '';
 
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
-                maquetado += (typeof(data.acciones.visitant.tarjeta_amarilla) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2">' + data.acciones.visitant.tarjeta_amarilla + '</div>' : '';
+                maquetado += (typeof(data.acciones.visitant.tarjeta_amarilla) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2" id="VisitAmarillasTIM">' + data.acciones.visitant.tarjeta_amarilla + '</div>' : '';
                 maquetado += '</div>';
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_row">';
@@ -89,10 +123,10 @@
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_02_teama">';
-                maquetado += (typeof(data.acciones.local.tarjeta_roja) !== "undefined") ? '<div class="element textcolor-title2">' + data.acciones.local.tarjeta_roja + '</div>' : '';
+                maquetado += (typeof(data.acciones.local.tarjeta_roja) !== "undefined") ? '<div class="element textcolor-title2" id="rojasLocalTIM">' + data.acciones.local.tarjeta_roja + '</div>' : '';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
-                maquetado += (typeof(data.acciones.visitant.tarjeta_roja) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2">' + data.acciones.visitant.tarjeta_roja + '</div>' : '';
+                maquetado += (typeof(data.acciones.visitant.tarjeta_roja) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2" id="rojasVisitTIM">' + data.acciones.visitant.tarjeta_roja + '</div>' : '';
                 maquetado += '</div>';
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_row">';
@@ -101,10 +135,10 @@
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_02_teama">';
-                maquetado += (typeof(data.acciones.local.tiros_esquina) !== "undefined") ? '<div class="element textcolor-title2">' + data.acciones.local.tiros_esquina + '</div>' : '';
+                maquetado += (typeof(data.acciones.local.tiros_esquina) !== "undefined") ? '<div class="element textcolor-title2" id="esquinaLocalTIM">' + data.acciones.local.tiros_esquina + '</div>' : '';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
-                maquetado += (typeof(data.acciones.visitant.tiros_esquina) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2">' + data.acciones.visitant.tiros_esquina + '</div> ' : '';
+                maquetado += (typeof(data.acciones.visitant.tiros_esquina) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2" id="esquinavisitTIM">' + data.acciones.visitant.tiros_esquina + '</div> ' : '';
                 maquetado += '</div>';
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_row">';
@@ -113,10 +147,10 @@
                 maquetado += '</div>';
                 maquetado += '<div class="wdg_avgfield_02_teams box-gray">';
                 maquetado += '<div class="wdg_avgfield_02_teama">';
-                maquetado += (typeof(data.acciones.local.tiros_gol) !== "undefined") ? '<div class="element textcolor-title2">' + data.acciones.local.tiros_gol + '</div>' : '';
+                maquetado += (typeof(data.acciones.local.tiros_gol) !== "undefined") ? '<div class="element textcolor-title2" id="tiroslocalTIM">' + data.acciones.local.tiros_gol + '</div>' : '';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
-                maquetado += (typeof(data.acciones.visitant.tiros_gol) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2">' + data.acciones.visitant.tiros_gol + '</div> ' : '';
+                maquetado += (typeof(data.acciones.visitant.tiros_gol) !== "undefined") ? '<div class="wdg_avgfield_02_teamb textcolor-title2" id="tirosvisitLocal">' + data.acciones.visitant.tiros_gol + '</div> ' : '';
                 maquetado += '</div>';
                 maquetado += '</div>';
 
@@ -144,12 +178,6 @@
                     .fail(function() {
                         console.log("Error al cargar el header " + wdgavgfieldObj.urlmxmheader);
                     })
-
-
-
-
-
-
             },
 
             timeUpdate: function(dia, hora) {
@@ -184,7 +212,7 @@
                         var msDateB = Date.UTC(b.getFullYear(), b.getMonth() + 1, b.getDate());
 
                         if (parseFloat(msDateA) < parseFloat(msDateB)) {
-                            console.log("MENOR");
+                            // console.log("MENOR");
                         } else {
                             if (parseFloat(msDateA) == parseFloat(msDateB)) {
                                 //console.log("IGUAL");
@@ -217,24 +245,22 @@
                                 }
                                 //cop
                                 //console.log(tiempoActualizacion)
-                                if (tiempoActualizacion !== 0) {
-                                    setInterval(function() {
-                                        wdgavgfieldObj.update()
-                                    }, tiempoActualizacion);
-                                }
+
                                 //setInterval(function(){wdg_smex_strategy.updatePlayers()},15000);
 
                             } else {
                                 if (parseFloat(msDateA) > parseFloat(msDateB)) {
-                                    console.log("MAYOR");
+                                    // console.log("MAYOR");
                                 } else {
                                     //console.log("Error no actualizo");
                                 }
                             }
                         }
-                        setInterval(function() {
-                            wdgavgfieldObj.update()
-                        }, 6000);
+                        if (tiempoActualizacion !== 0) {
+                            setInterval(function() {
+                                wdgavgfieldObj.update()
+                            }, tiempoActualizacion);
+                        }
                     }
                 });
             }, // End timeUpdate()
