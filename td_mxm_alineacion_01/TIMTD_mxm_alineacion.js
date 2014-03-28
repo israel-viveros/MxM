@@ -194,12 +194,12 @@
                                 }
                                 imageJugador = (data[equipoString].team[i].image !== "") ? data[equipoString].team[i].image : 'http://i2.esmas.com/img/spacer.gif';
                                 miHTML += '<span data-guid="' + data[equipoString].team[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + positionx + 'px;top:' + positiony + 'px;">' +
-                                    '<a href="#" title="' + data[equipoString].team[i].name + ' ' + data[equipoString].team[i].name + '">' +
+                                    '<a href="#" title="' + data[equipoString].team[i].nickName + ' ' + data[equipoString].team[i].nickName + '">' +
                                     '<span class="number textcolor-title2">' + data[equipoString].team[i].number + '</span>' +
                                     '<span class="tooltip ' + toolact + '">' +
-                                    '<img class="playerfoto" src="' + imageJugador + '" alt="' + data[equipoString].team[i].name + '" width="51" height="38" />' +
+                                    '<img class="playerfoto" src="' + imageJugador + '" alt="' + data[equipoString].team[i].nickName + '" width="51" height="38" />' +
                                     '<span class="arrow"></span>' +
-                                    '<span class="name">' + data[equipoString].team[i].name + ' ' + data[equipoString].team[i].nickName + '</span>' +
+                                    '<span class="name">' + data[equipoString].team[i].nickName + ' ' + data[equipoString].team[i].nickName + '</span>' +
                                     '<span class="position textcolor-title2">' + data[equipoString].team[i].position + '</span>' + actions +
                                     '</span>' +
                                     '</a>' +
@@ -271,12 +271,12 @@
                                                 nuevoy = (typeof nuevoy === "undefined") ? 0 : nuevoy;
 
                                                 aliFinal += '<span data-guid="' + data[equipoString].substitutes[d].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + nuevoy + ';top:' + nuevox + '">' +
-                                                    '<a href="#" title="' + data[equipoString].substitutes[d].name + ' ' + data[equipoString].substitutes[d].name + '">' +
+                                                    '<a href="#" title="' + data[equipoString].substitutes[d].nickName + ' ' + data[equipoString].substitutes[d].nickName + '">' +
                                                     '<span class="number textcolor-title2">' + data[equipoString].substitutes[d].number + '</span>' +
                                                     '<span class="tooltip">' +
-                                                    '<img class="playerfoto" src="' + data[equipoString].substitutes[d].image + '" alt="' + data[equipoString].substitutes[d].name + '" width="51" height="38" />' +
+                                                    '<img class="playerfoto" src="' + data[equipoString].substitutes[d].image + '" alt="' + data[equipoString].substitutes[d].nickName + '" width="51" height="38" />' +
                                                     '<span class="arrow"></span>' +
-                                                    '<span class="name">' + data[equipoString].substitutes[d].name + ' ' + data[equipoString].substitutes[d].nickName + '</span>' +
+                                                    '<span class="name">' + data[equipoString].substitutes[d].nickName + ' ' + data[equipoString].substitutes[d].nickName + '</span>' +
                                                     '<span class="position textcolor-title2">' + data[equipoString].substitutes[d].position + '</span>' + actions2 +
                                                     '</span>' +
                                                     '</a>' +
@@ -731,12 +731,12 @@
                                                 vc = (equipos[z] === "lineupLocal") ? 'local' : 'visit';
 
                                                 NuevosJugadores += '<span data-guid="' + data[equipoString].substitutes[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + itemleft + ';top:' + itemtop + ';display:none">' +
-                                                    '<a href="#" title="' + data[equipoString].substitutes[i].name + ' ' + data[equipoString].substitutes[i].name + '">' +
+                                                    '<a href="#" title="' + data[equipoString].substitutes[i].nickName + ' ' + data[equipoString].substitutes[i].nickName + '">' +
                                                     '<span class="number textcolor-title2">' + data[equipoString].substitutes[i].number + '</span>' +
                                                     '<span class="tooltip ' + toolact + '">' +
-                                                    '<img class="playerfoto" src="' + data[equipoString].substitutes[i].image + '" alt="' + data[equipoString].substitutes[i].name + '" width="51" height="38" />' +
+                                                    '<img class="playerfoto" src="' + data[equipoString].substitutes[i].image + '" alt="' + data[equipoString].substitutes[i].nickName + '" width="51" height="38" />' +
                                                     '<span class="arrow"></span>' +
-                                                    '<span class="name">' + data[equipoString].substitutes[i].name + ' ' + data[equipoString].substitutes[i].nickName + '</span>' +
+                                                    '<span class="name">' + data[equipoString].substitutes[i].nickName + ' ' + data[equipoString].substitutes[i].nickName + '</span>' +
                                                     '<span class="position textcolor-title2">' + data[equipoString].substitutes[i].position + '</span>' + actions +
                                                     '</span>' +
                                                     '</a>' +
@@ -859,7 +859,7 @@
                         localm = "";
                         localm += '<div class="' + local[i].actions[minuto].minute + ' bodyt dotted-bottom">';
                         localm += '<div class="textcolor-title1">' + local[i].number + '</div>';
-                        localm += '<div class="dotted-left name"><p>' + local[i].longName + '</p></div>';
+                        localm += '<div class="dotted-left name"><p>' + local[i].nickName + '</p></div>';
                         localm += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
                         localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
                         arrayGlobal.push(localm);
@@ -877,7 +877,7 @@
                         visitm = "";
                         visitm += '<div class="' + visit[k].actions[minuto].minute + ' bodyt dotted-bottom">';
                         visitm += '<div class="textcolor-title2">' + visit[k].number + '</div>';
-                        visitm += '<div class="dotted-left name"><p>' + visit[k].longName + '</p></div>';
+                        visitm += '<div class="dotted-left name"><p>' + visit[k].nickName + '</p></div>';
                         visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
                         visitm += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
                         arrayGlobal.push(visitm);
@@ -922,7 +922,7 @@
                             localm = "";
                             localm += '<div class="' + local[i].actions[minuto].minute + ' bodyt dotted-bottom">';
                             localm += '<div class="textcolor-title1">' + local[i].number + '</div>';
-                            localm += '<div class="dotted-left name"><p>' + local[i].longName + '</p></div>';
+                            localm += '<div class="dotted-left name"><p>' + local[i].nickName + '</p></div>';
                             localm += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
                             localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
                             arrayGlobal.push(localm);
@@ -940,7 +940,7 @@
                             visitm = "";
                             visitm += '<div class="' + visit[k].actions[minuto].minute + ' bodyt dotted-bottom">';
                             visitm += '<div class="textcolor-title2">' + visit[k].number + '</div>';
-                            visitm += '<div class="dotted-left name"><p>' + visit[k].longName + '</p></div>';
+                            visitm += '<div class="dotted-left name"><p>' + visit[k].nickName + '</p></div>';
                             visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
                             visitm += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
                             arrayGlobal.push(visitm);
@@ -1024,7 +1024,7 @@
                     local += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
                     local += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.team[i].number + '</p></div>';
                     local += '<div class="dotted-left container_card">';
-                    local += '<div class="player_name"><p>' + data.lineupLocal.team[i].longName + '</p></div>';
+                    local += '<div class="player_name"><p>' + data.lineupLocal.team[i].nickName + '</p></div>';
                     local += '<div class="players_icons">';
                     local += ActL;
                     local += '</div></div></div>';
@@ -1036,7 +1036,7 @@
                     local += '<div class="player_td">';
                     local += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
                     local += '<div class="dotted-left container_card">';
-                    local += '<div class="player_name"><p>' + data.lineupLocal.coach.longName + '</p></div>';
+                    local += '<div class="player_name"><p>' + data.lineupLocal.coach.nickName + '</p></div>';
                     local += '<div class="players_icons">';
                     //local += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
                     local += '</div></div></div>';
@@ -1053,7 +1053,7 @@
                     visit += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
                     visit += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.team[j].number + '</p></div>';
                     visit += '<div class="dotted-left container_card">';
-                    visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].longName + '</p></div>';
+                    visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].nickName + '</p></div>';
                     visit += '<div class="players_icons">';
                     visit += ActV;
                     visit += '</div></div></div>';
@@ -1062,7 +1062,7 @@
                     visit += '<div class="player_td">';
                     visit += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
                     visit += '<div class="dotted-left">';
-                    visit += '<div class="player_name"><p>' + data.lineupVisit.coach.longName + '</p></div>';
+                    visit += '<div class="player_name"><p>' + data.lineupVisit.coach.nickName + '</p></div>';
                     visit += '<div class="players_icons">';
                     //visit += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
                     visit += '</div></div></div>';
@@ -1078,7 +1078,7 @@
                     localSub += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
                     localSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.substitutes[p].number + '</p></div>';
                     localSub += '<div class="dotted-left container_card">';
-                    localSub += '<div class="player_name"><p>' + data.lineupLocal.substitutes[p].longName + '</p></div>';
+                    localSub += '<div class="player_name"><p>' + data.lineupLocal.substitutes[p].nickName + '</p></div>';
                     localSub += '<div class="players_icons">';
                     localSub += ActLB;
                     localSub += '</div></div></div>';
@@ -1093,7 +1093,7 @@
                     visitSub += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
                     visitSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.substitutes[o].number + '</p></div>';
                     visitSub += '<div class="dotted-left container_card">';
-                    visitSub += '<div class="player_name"><p>' + data.lineupVisit.substitutes[o].longName + '</p></div>';
+                    visitSub += '<div class="player_name"><p>' + data.lineupVisit.substitutes[o].nickName + '</p></div>';
                     visitSub += '<div class="players_icons">';
                     visitSub += ActVB;
                     visitSub += '</div></div></div>';
@@ -1258,14 +1258,14 @@
                     content = "";
                 for (var i = 0; i < local.length; i++) {
                     content += '<div class="block_container dotted-bottom">';
-                    content += '<div class="jugador"><p>' + local[i].longName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
+                    content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
                     content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
                     content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
                     content += '</div>';
                 };
                 for (var j = 0; j < visit.length; j++) {
                     content += '<div class="block_container dotted-bottom">';
-                    content += '<div class="jugador"><p>' + visit[j].longName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
+                    content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
                     content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
                     content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
                     content += '</div>';
