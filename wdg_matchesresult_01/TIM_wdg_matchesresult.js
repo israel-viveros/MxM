@@ -247,7 +247,6 @@
                         } else if (setting.country_code == 'MEX') {
                             ItemView += (contenido[y].MXvideo != "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         }
-                        ItemView += (contenido[y].MXvideo != "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         ItemView += '</div>';
                         ItemView += '</div>';
                         ItemView += '</div>';
