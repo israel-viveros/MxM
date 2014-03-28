@@ -46,7 +46,7 @@
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="realtedimg"><img src="http://placehold.it/300x50" alt=""></div>';
                 MaquetadoHEader += '</div>';
-                MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1">' + data.tiempo.replace(/'/g, "\'") + '</div>';
+                MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1"><span>' + data.tiempo.replace(/'/g, "\'") + '</span></div>';
                 MaquetadoHEader += '<div class="leftside">';
                 MaquetadoHEader += (settings.tema == 'mundial') ? '<div class="padre">' : '';
                 MaquetadoHEader += '<div class="team1">';
@@ -81,7 +81,7 @@
 
                 MaquetadoHEader += '<div class="date_venue">';
                 MaquetadoHEader += '<div class="when">' + data.fechaPartidoLetra.replace(/-/g, " ") + ' ' + data.horaPartido + '</div>';
-                MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">Estadio ' + data.estadio.nombre + ', ' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
+                MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">Estadio ' + data.estadio.nombre + '<br>' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
                 MaquetadoHEader += (typeof data.datocurioso !== "undefined") ? '<div class="info">' + data.datocurioso + '</div>' : '';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '</div>';
