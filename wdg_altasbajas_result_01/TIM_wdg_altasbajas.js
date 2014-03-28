@@ -409,13 +409,8 @@
             var hojaContenido = 0;
             var valorFor = 0;
 
-            if (settings.tema === "mundial") {
-                valorFor = (data.length >= 8) ? 8 : data.length;
-            } else {
-                valorFor = data.length;
-            }
 
-
+            valorFor = data.length;
 
             for (var i = 0; i < valorFor; i++) {
 
@@ -497,6 +492,7 @@
 
                 }
 
+
                 //wth
                 if (jornada2 === "jornada2") {
                     //console.log("ES jornada 2");
@@ -507,6 +503,14 @@
                 }
 
 
+            }
+
+
+            if (valorFor < 9) {
+                var faltantes = parseInt(9 - valorFor);
+                for (var w = 0; w < faltantes; w++) {
+                    jornadasCalendarDTV.contenidoJornada.push('<li class="vacio wdg_altasbajas_result_01_block" data-link="" style="cursor: pointer;"><div class="date textcolor-title2"></div><figure></figure><div class="ligaResult"></div><figure></figure></li>');
+                };
             }
 
             jornadasCalendarDTV.Global = jornadasCalendarDTV.contenidoJornada.concat(jornadasCalendarDTV.contenidoJornada2);
