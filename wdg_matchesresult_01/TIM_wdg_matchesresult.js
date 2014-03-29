@@ -548,12 +548,12 @@ jQuery(function($) {
                         $m.find('ul').width(800);
                     else
                         $m.find('ul').width(800);
-                    $m.find('ul').height(575);
-                    $m.height(575);
+                    $m.find('ul').height(600);
+                    $m.height(600);
                     $x.find('ul').width(800);
                     if (visShow == 'hidden') {
                         $('.wdg_matchesresult_01').animate({
-                            'height': 700
+                            'height': 665
                         }, 0);
                     }
                 }
@@ -921,7 +921,7 @@ jQuery(function($) {
             if (numeroItems <= 4) {
                 heightModulo = 221;
                 if (listaItems > 11) {
-                    heightModulo = 700
+                    heightModulo = 665
                 } else if (listaItems <= 11 && listaItems >= 8) {
                     heightModulo = 515
                 } else if (listaItems < 8 && listaItems >= 1) {
@@ -930,17 +930,17 @@ jQuery(function($) {
             } else if (numeroItems > 4 && numeroItems <= 8) {
                 heightModulo = 366;
                 if (listaItems > 11) {
-                    heightModulo = 700
+                    heightModulo = 665
                 } else if (listaItems <= 11 && listaItems >= 8) {
                     heightModulo = 515
                 }
             } else if (numeroItems > 8 && numeroItems <= 12) {
                 heightModulo = 515;
                 if (listaItems > 11) {
-                    heightModulo = 700
+                    heightModulo = 665
                 }
             } else if (numeroItems > 12) {
-                heightModulo = 700;
+                heightModulo = 665;
             }
             //	}// tema mundial
 
