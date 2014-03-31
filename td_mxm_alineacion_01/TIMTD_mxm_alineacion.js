@@ -965,9 +965,79 @@
                 wdg_smex_strategy.GolesAnotados(golesLocal, golesVisit, data.lineupLocal.name, data.lineupVisit.name);
 
 
-                if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
+                /*if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
                     wdg_smex_strategy.wdgPenales(data.PenaltiesLocal, data.PenaltiesVisit, data.lineupLocal.name, data.lineupVisit.name);
-                }
+                }*/
+                var localp = [{
+                    longName: 'Diego Martan Forla¡n Corazo',
+                    name: 'D. Forlan',
+                    nickName: 'Diego Forlan',
+                    number: 10,
+                    url: '/futbol/jugadores/diegomartinforlan/1016',
+                    type: 'penalAnotadoSerie'
+                }, {
+                    longName: 'Mauricio Bernardo Victorino Dansilio',
+                    name: 'M. Victorino',
+                    nickName: 'Mauricio Victorino',
+                    number: 6,
+                    url: '/futbol/jugadores/mauricio-bernardo-victorino/2002',
+                    type: 'penalAnotadoSerie'
+                }, {
+                    longName: 'Andras Scotti Ponce de Leon',
+                    name: 'A. Scotti',
+                    nickName: 'Andrao Scotti ',
+                    number: 19,
+                    url: '/futbol/jugadores/andres-scotti/2789',
+                    type: 'penalAnotadoSerie'
+                }, {
+                    longName: 'Victorio Maximiliano Pereira Paez',
+                    name: 'M. Pereira',
+                    nickName: 'Maximiliano Pereira',
+                    number: 16,
+                    url: '/futbol/jugadores/maximiliano-pereira/4786',
+                    type: 'penalFalladoSerie'
+                }, {
+                    longName: 'Washington Sebastian Abreu Gallo',
+                    name: 'S. Abreu',
+                    nickName: 'Sebastian Abreu',
+                    number: 13,
+                    url: '/futbol/jugadores/washington-sebastian-abreu/474',
+                    type: 'penalAnotadoSerie'
+                }];
+                var visitp = [{
+                    longName: 'Asamoah Gyan ',
+                    name: 'A. Gyan',
+                    nickName: 'Asamoah Gyan',
+                    number: 3,
+                    url: '/futbol/jugadores/asamoah-gyan/1572',
+                    type: 'penalAnotadoSerie'
+                }, {
+                    longName: 'Stephen Leroy Appiah ',
+                    name: 'S. Appiah',
+                    nickName: 'Stephen Appiah',
+                    number: 10,
+                    url: '/futbol/jugadores/stephen-leroy-appiah/1566',
+                    type: 'penalAnotadoSerie'
+                }, {
+                    longName: 'John Mensah ',
+                    name: 'J. Mensah',
+                    nickName: 'John Mensah',
+                    number: 5,
+                    url: '/futbol/jugadores/john-mensah/1559',
+                    type: 'penalFalladoSerie'
+                }, {
+                    longName: 'Dominic Adiyiah ',
+                    name: 'D. Adiyiah',
+                    nickName: 'Dominic Adiyiah',
+                    number: 18,
+                    url: '/futbol/jugadores/dominic-adiyiah/11587',
+                    type: 'penalFalladoSerie'
+                }];
+
+                wdg_smex_strategy.wdgPenales(localp, visitp, data.lineupLocal.name, data.lineupVisit.name);
+
+
+
 
                 var maquetado = "",
                     local = '',
@@ -1036,7 +1106,7 @@
                     local += '<div class="player_td">';
                     local += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
                     local += '<div class="dotted-left container_card">';
-                    local += '<div class="player_name"><p>' + data.lineupLocal.coach.nickName + '</p></div>';
+                    local += '<div class="player_name"><p>' + data.lineupLocal.coach.longName + '</p></div>';
                     local += '<div class="players_icons">';
                     //local += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
                     local += '</div></div></div>';
@@ -1062,7 +1132,7 @@
                     visit += '<div class="player_td">';
                     visit += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
                     visit += '<div class="dotted-left">';
-                    visit += '<div class="player_name"><p>' + data.lineupVisit.coach.nickName + '</p></div>';
+                    visit += '<div class="player_name"><p>' + data.lineupVisit.coach.longName + '</p></div>';
                     visit += '<div class="players_icons">';
                     //visit += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
                     visit += '</div></div></div>';
