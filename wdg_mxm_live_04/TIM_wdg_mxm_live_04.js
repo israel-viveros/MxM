@@ -12,7 +12,8 @@
 
 
         var wdgLiveObj = {
-            urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
+            //urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
+            urlFinal: 'http://lab.israelviveros.com/deportes/wdg_mxm_live_04/1255/144/mxm_contenido.js',
             callback: 'datamxmvivo',
             urlfeedHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_header.js',
             feedCallbackHeader: 'mxmheader',
