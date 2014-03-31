@@ -80,7 +80,7 @@
                 MaquetadoHEader += (settings.tema === 'mundial') ? '<div class="solid_separator"></div></div>' : '';
 
                 MaquetadoHEader += '<div class="date_venue">';
-                MaquetadoHEader += '<div class="when">' + data.fechaPartidoLetra.replace(/-/g, " ") + ' ' + data.horaPartido + '</div>';
+                MaquetadoHEader += '<div class="when">' + data.fechaPartidoLetra.replace(/-/g, " ") + ' <span>' + data.horaPartido + '</span></div>';
                 MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">Estadio ' + data.estadio.nombre + '<br>' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
                 MaquetadoHEader += (typeof data.datocurioso !== "undefined") ? '<div class="info">' + data.datocurioso + '</div>' : '';
                 MaquetadoHEader += '</div>';
