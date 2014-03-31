@@ -194,12 +194,21 @@
                 globalthis.html(maquetado);
 
                 if ($("#viewmoreTIM").length) {
-                    $("#viewmoreTIM").click(function(event) {
+                    $("#viewmoreTIM").unbind().click(function(event) {
+                        var colapsablesimbo = $(".wdg_lineup_01 .simbologia").height();
+                        console.log(colapsablesimbo);
                         event.preventDefault();
-                        $(this).hide();
-                        $(".simbologia").animate({
-                            'height': '452px'
-                        }, 200);
+                        if (colapsablesimbo == 452) {
+                            $(this).html("Ver Todos <i class=\"tvsa-caret-down\"></i>");
+                            $(".simbologia").animate({
+                                'height': '112px'
+                            }, 200);
+                        } else {
+                            $(this).html("Ver Menos <i class=\"tvsa-caret-up\"></i>");
+                            $(".simbologia").animate({
+                                'height': '452px'
+                            }, 200);
+                        }
                     });
                 }
 
