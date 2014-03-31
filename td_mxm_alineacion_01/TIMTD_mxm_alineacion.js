@@ -314,7 +314,9 @@
 
 
                         //Modulo expulsados
-                        wdg_smex_strategy.Modexpulsados(expulsadosLocal, expulsadosVisit);
+                        if (expulsadosLocal !== "undefined" || expulsadosVisit !== "undefined") {
+                            wdg_smex_strategy.Modexpulsados(expulsadosLocal, expulsadosVisit);
+                        }
 
                         if ($("#datosTIMHeader").length) {
                             clearInterval(wdg_smex_strategy.intervaloVe);
@@ -844,11 +846,79 @@
             }, // promedio Cancha
 
             Modexpulsados: function(local, visit) {
+                local = [{
+                    "nickName": "Oliver Joseph Ortiz",
+                    "actions": [{
+                        "minute": "90",
+                        "type": "amonestacion"
+                    }],
+                    "number": 38,
+                    "longName": "Oliver Joseph Ortiz",
+                    "url": "",
+                    "name": "Oliver Joseph Ortiz",
+                    "idjugador": 41851
+                }, {
+                    "nickName": "Hernán Pellerano",
+                    "actions": [{
+                        "minute": "36",
+                        "type": "amonestacion"
+                    }],
+                    "number": 4,
+                    "longName": "Pellerano",
+                    "url": "/futbol/jugadores/hernandariopellerano/4757",
+                    "name": "Pellerano",
+                    "idjugador": 4757
+                }, {
+                    "nickName": "Fernando Arce Juarez",
+                    "actions": [{
+                        "minute": "83",
+                        "type": "amonestacion"
+                    }],
+                    "number": 83,
+                    "longName": "Fernando Arce Juarez",
+                    "url": "",
+                    "name": "Fernando Arce Juarez",
+                    "idjugador": 41854
+                }, {
+                    "nickName": "Paul Arriola",
+                    "actions": [{
+                        "minute": "90",
+                        "type": "amonestacion"
+                    }],
+                    "number": 47,
+                    "longName": "Arriola",
+                    "url": "/futbol/jugadores/pauljosepharriola/14400",
+                    "name": "Arriola",
+                    "idjugador": 14400
+                }, {
+                    "nickName": "Javier Güemez ",
+                    "actions": [{
+                        "minute": "61",
+                        "type": "amonestacion"
+                    }],
+                    "number": 42,
+                    "longName": "Güemez ",
+                    "url": "/futbol/jugadores/javiergemez/17635",
+                    "name": "Güemez ",
+                    "idjugador": 17635
+                }];
+                visit = [{
+                    "nickName": "Jesús Corona",
+                    "actions": [{
+                        "minute": "85",
+                        "type": "amonestacion"
+                    }],
+                    "number": 1,
+                    "longName": "Corona",
+                    "url": "/futbol/jugadores/jose-de-jesus-corona/223",
+                    "name": "Corona",
+                    "idjugador": 223
+                }];
                 var arrayGlobal = new Array(),
                     itemshtml = "",
                     localm = "",
                     visitm = "";
-                if (local.length !== 0) {
+                if (typeof(local) !== "undefined") {
                     for (var i = 0; i < local.length; i++) {
                         var minuto = 0;
                         for (var z = 0; z < local[i].actions.length; z++) {
@@ -866,7 +936,7 @@
                     };
 
                 }
-                if (visit.length !== 0) {
+                if (typeof(visit) !== "undefined") {
                     for (var k = 0; k < visit.length; k++) {
                         var minuto = 0;
                         for (var y = 0; y < visit[k].actions.length; y++) {
@@ -899,7 +969,9 @@
                 maquetado += '</div>' + itemshtml;
                 maquetado += '</div></div></div>';
 
-                wdg_smex_strategy.tagExpulsion.html(maquetado);
+                if (typeof(visit) !== "undefined" || typeof(local) !== "undefined") {
+                    wdg_smex_strategy.tagExpulsion.html(maquetado);
+                }
             }, // Modexpulsados
 
             ModexpulsadosUpdate: function(local, visit) {
@@ -1268,7 +1340,6 @@
                         arrayGlobal.push(visitM);
                     };
                 }
-
                 for (var d = 0; d < arrayGlobal.sort().length; d++) {
                     finalM += arrayGlobal.sort()[d];
                 };
