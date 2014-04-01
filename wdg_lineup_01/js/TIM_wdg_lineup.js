@@ -375,7 +375,9 @@
                             if (typeof data.lineupLocal.substitutes[l].actions !== "undefined") {
                                 ActBL = giveActions(data.lineupLocal.substitutes[l].actions);
                             }
-                            bancalocal += '<div class="jugador_alineacion_partido dotted-bottom" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].nickName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>    </div><div style="clear: both; z-index: 630;"></div></div>';
+                            if (ActBL !== "") {
+                                bancalocal += '<div class="jugador_alineacion_partido dotted-bottom" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].nickName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>    </div><div style="clear: both; z-index: 630;"></div></div>';
+                            }
                         };
                         $("#bancaLocalTIM").fadeIn('slow', function() {
                             $(this).html(bancalocal);
@@ -388,7 +390,10 @@
                             if (typeof data.lineupVisit.substitutes[m].actions !== "undefined") {
                                 ActBV = giveActions(data.lineupVisit.substitutes[m].actions);
                             }
-                            bancaVisit += '<div class="player_alineado dotted-bottom " style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineupVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineupVisit.substitutes[m].nickName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
+                            if (ActBV !== "") {
+                                bancaVisit += '<div class="player_alineado dotted-bottom " style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineupVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineupVisit.substitutes[m].nickName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
+                            }
+
                         };
                         $("#bancaVisitTIM").fadeIn('slow', function() {
                             $(this).html(bancaVisit);
