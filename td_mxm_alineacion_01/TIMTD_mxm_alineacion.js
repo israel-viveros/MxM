@@ -765,7 +765,7 @@
                         }; // equipos array
 
                         GlobalThis.find(".players").append(NuevosJugadores).children().fadeIn('slow', function() {
-                            $(this).css("display", "block");
+                            GlobalThis.find(".players").css("display", "block");
                         });
 
                         // update goles 
