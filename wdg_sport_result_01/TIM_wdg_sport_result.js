@@ -44,7 +44,7 @@
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
                 MaquetadoHEader += '<div class="subtitulo textcolor-title2">' + data.jornada.nombre + '</div>';
                 MaquetadoHEader += '</div>';
-                MaquetadoHEader += '<div class="realtedimg"><img src="http://placehold.it/300x50" alt=""></div>';
+                //MaquetadoHEader += '<div class="realtedimg"><img src="http://placehold.it/300x50" alt=""></div>';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1"><span>' + data.tiempo.replace(/'/g, "\'") + '</span></div>';
                 MaquetadoHEader += '<div class="leftside">';
