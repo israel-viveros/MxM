@@ -231,9 +231,9 @@
 
 
                         if (setting.tema === "mundial") {
-                            ItemView += '<a class="textcolor-title1" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
                         } else {
-                            ItemView += '<a class="textcolor-title1" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
                             ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink.substring(0, numSplit) + '</span></a>';
                         }
                         ItemView += '</p>';
