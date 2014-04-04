@@ -930,7 +930,7 @@
                         localm += '<div class="' + local[i].actions[minuto].minute + ' bodyt dotted-bottom">';
                         localm += '<div class="textcolor-title1">' + local[i].number + '</div>';
                         localm += '<div class="dotted-left name"><p>' + local[i].nickName + '</p></div>';
-                        localm += '<div class="textcolor-title4 dotted-left">' + local[i].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div>';
+                        localm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + local[i].actions[minuto].minute + '\'</div>';
                         localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
                         arrayGlobal.push(localm);
                     };
@@ -949,7 +949,7 @@
                         visitm += '<div class="textcolor-title2">' + visit[k].number + '</div>';
                         visitm += '<div class="dotted-left name"><p>' + visit[k].nickName + '</p></div>';
                         visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
-                        visitm += '<div class="textcolor-title4 dotted-left">' + visit[k].actions[minuto].minute + '\'<i class="tvsa-mxm-yellowcard"></i></div></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + visit[k].actions[minuto].minute + '\'</div></div>';
                         arrayGlobal.push(visitm);
                     };
 
