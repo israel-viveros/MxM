@@ -391,6 +391,60 @@
                 });
             }, // End timeUpdate()
 
+
+            Banner: function(tiempo) { //funcion que pone banner cada cierto tiempo. La función se manda a llamar en la linea 447. Solo aplica para USA
+                googletag.cmd.push(function() {
+                    //Map Sizing Banner Logo en Header
+                    var mappingHeader = googletag.sizeMapping().
+                    addSize([980, 140], [
+                        [970, 90],
+                        [955, 90],
+                        [955, 75],
+                        [955, 31],
+                        [728, 90]
+                    ]). //Desktop and landscape.
+                    addSize([728, 140], [468, 60]). // /Ipad.
+                    addSize([370, 140], [360, 50]). // /Landscape
+                    addSize([320, 140], [320, 50]). // Iphones.
+                    addSize([200, 140], [168, 28]). // smartphones here.
+                    addSize([150, 140], [120, 20]). // smallest smartphones here.
+
+                    build();
+
+                    var adUnit = "es.televisa.ent/videos/telenovelas";
+                    var slotG = googletag.defineSlot("/5644/" + adUnit, [
+                        [970, 90],
+                        [955, 90],
+                        [955, 75],
+                        [955, 31],
+                        [728, 90]
+                    ], "ban01_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "atf");
+                    var slotH = googletag.defineSlot("/5644/" + adUnit, [
+                        [970, 90],
+                        [955, 90],
+                        [955, 75],
+                        [955, 31],
+                        [728, 90]
+                    ], "ban02_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "middle-btf");
+                    var slotJ = googletag.defineSlot("/5644/" + adUnit, [
+                        [970, 90],
+                        [955, 90],
+                        [955, 75],
+                        [955, 31],
+                        [728, 90]
+                    ], "ban03_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "middle-btf");
+                    var PotesSponsor = googletag.defineOutOfPageSlot("/5644/" + adUnit, "oop-ad").addService(googletag.pubads()).setTargeting("intertype", "layer");
+                    googletag.enableServices();
+                    googletag.display("ban01_955x90");
+                    //googletag.display("ban02_955x90");
+                    //googletag.display("ban03_955x90");
+                    setInterval(function() {
+                        googletag.pubads().refresh([slotG]);
+                    }, tiempo);
+
+                });
+            },
+
             DeterminaTiempoActualizacion: function(dia, hora) {
 
                 var FechaPartido = dia.substring(3, 5) + '-' + dia.substring(0, 2) + '-' + dia.substring(8, 10) + ' ' + hora.substring(0, 5) + ':00';
@@ -413,6 +467,9 @@
                             //console.log("ya empezo el partido");
                             //Ya empezo el partido, actualizar valores cada minuto										
                             wdg_matchresult.timeUpdateA.push(60000);
+                            if (setting.country_code == 'USA') {
+                                wdg_matchresult.Banner(60000);
+                            }
                         } else {
                             var h1 = a.getHours();
                             var h2 = b.getHours();
