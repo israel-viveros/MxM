@@ -11,10 +11,8 @@
         var globalthis = this;
 
         var wdgLineUpOb = {
-            feedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/clubes/4/matchesclub.js',
-            //feedDropLocal: 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + settings.idEquipo + '/matchesclub.js',
-            //feedDropVisit: 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + settings.idEquipo2 + '/matchesclub.js',
-            feedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/clubes/4/matchesclub.js',
+            feedDropLocal: 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + settings.idEquipo + '/matchesclub.js',
+            feedDropVisit: 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + settings.idEquipo2 + '/matchesclub.js',
 
             inicio: function() {
                 var maquetado = "";

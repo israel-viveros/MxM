@@ -12,8 +12,7 @@
 
 
         var wdgLiveObj = {
-            //urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
-            urlFinal: 'http://lab.israelviveros.com/deportes/wdg_mxm_live_04/1255/144/mxm_contenido.js',
+            urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
             callback: 'datamxmvivo',
             urlfeedHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_header.js',
             feedCallbackHeader: 'mxmheader',
@@ -299,6 +298,7 @@
 
             },
             timeUpdate: function(dia, hora) {
+                console.log("entrando en timeUpdate");
                 var tiempoActualizacion = 0;
                 var FechaPartido = dia.substring(3, 5) + '-' + dia.substring(0, 2) + '-' + dia.substring(8, 10) + ' ' + hora.substring(0, 5) + ':00';
                 $.ajax({
@@ -330,15 +330,15 @@
                         var msDateB = Date.UTC(b.getFullYear(), b.getMonth() + 1, b.getDate());
 
                         if (parseFloat(msDateA) < parseFloat(msDateB)) {
-                            //console.log("MENOR");
+                            console.log("MENOR");
                         } else {
                             if (parseFloat(msDateA) == parseFloat(msDateB)) {
-                                //console.log("IGUAL");
+                                console.log("IGUAL");
                                 tiempoActualizacion = 60000;
                                 var resta = parseInt(b.getHours() - a.getHours());
                                 //cop
                                 if (b.getHours() >= a.getHours()) {
-                                    //console.log("ya empezo el partido");
+                                    console.log("ya empezo el partido");
                                     //Ya empezo el partido, actualizar valores cada minuto										
                                     tiempoActualizacion = 60000;
                                 } else {
@@ -350,29 +350,31 @@
                                     var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
 
                                     if (minutosrestantes <= 15) {
-                                        //console.log("faltan menos de 15 min");
+                                        console.log("faltan menos de 15 min");
                                         //Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
                                         tiempoActualizacion = 60000;
 
                                     } else {
-                                        //console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+                                        console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
                                         //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
 
                                         (minutosrestantes < 60) ? tiempoActualizacion = 900000 : '';
                                     }
                                 }
                                 //cop
-                                //console.log(tiempoActualizacion)
-                                setInterval(function() {
-                                    wdgLiveObj.updateMxm()
-                                }, tiempoActualizacion);
-                                //setInterval(function(){wdgLiveObj.updateMxm()},10000);
+                                console.log(tiempoActualizacion)
+                                if (tiempoActualizacion !== 0) {
+                                    setInterval(function() {
+                                        wdgLiveObj.updateMxm()
+                                    }, tiempoActualizacion);
+                                }
+
                             } else {
                                 if (parseFloat(msDateA) > parseFloat(msDateB)) {
-                                    //console.log("MAYOR");
+                                    console.log("MAYOR");
 
                                 } else {
-                                    //console.log("Error no actualizo");
+
                                 }
                             }
                         }

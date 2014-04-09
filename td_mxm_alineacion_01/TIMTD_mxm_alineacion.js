@@ -552,6 +552,7 @@
             },
 
             timeUpdate: function(dia, hora) {
+                console.log("entrando en timeUpdate");
                 var tiempoActualizacion = 0;
                 var FechaPartido = dia.substring(3, 5) + '-' + dia.substring(0, 2) + '-' + dia.substring(8, 10) + ' ' + hora.substring(0, 5) + ':00';
                 $.ajax({
@@ -583,15 +584,15 @@
                         var msDateB = Date.UTC(b.getFullYear(), b.getMonth() + 1, b.getDate());
 
                         if (parseFloat(msDateA) < parseFloat(msDateB)) {
-                            //console.log("MENOR");
+                            console.log("MENOR");
                         } else {
                             if (parseFloat(msDateA) == parseFloat(msDateB)) {
-                                //console.log("IGUAL");
+                                console.log("IGUAL");
                                 tiempoActualizacion = 60000;
                                 var resta = parseInt(b.getHours() - a.getHours());
                                 //cop
                                 if (b.getHours() >= a.getHours()) {
-                                    //console.log("ya empezo el partido");
+                                    console.log("ya empezo el partido");
                                     //Ya empezo el partido, actualizar valores cada minuto                                      
                                     tiempoActualizacion = 60000;
                                 } else {
@@ -603,32 +604,31 @@
                                     var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
 
                                     if (minutosrestantes <= 15) {
-                                        //console.log("faltan menos de 15 min");
+                                        console.log("faltan menos de 15 min");
                                         //Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
                                         tiempoActualizacion = 60000;
 
                                     } else {
-                                        //console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+                                        console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
                                         //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
 
                                         (minutosrestantes < 60) ? tiempoActualizacion = 900000 : '';
                                     }
                                 }
                                 //cop
-                                //console.log(tiempoActualizacion)
+                                console.log(tiempoActualizacion)
                                 if (tiempoActualizacion !== 0) {
                                     setInterval(function() {
                                         wdg_smex_strategy.updatePlayers()
                                     }, tiempoActualizacion);
                                 }
-                                //setInterval(function(){wdg_smex_strategy.updatePlayers()},15000);
 
                             } else {
                                 if (parseFloat(msDateA) > parseFloat(msDateB)) {
-                                    //console.log("MAYOR");
+                                    console.log("MAYOR");
 
                                 } else {
-                                    //console.log("Error no actualizo");
+                                    console.log("Error no actualizo");
                                 }
                             }
                         }
@@ -846,74 +846,6 @@
             }, // promedio Cancha
 
             Modexpulsados: function(local, visit) {
-                local = [{
-                    "nickName": "Oliver Joseph Ortiz",
-                    "actions": [{
-                        "minute": "90",
-                        "type": "amonestacion"
-                    }],
-                    "number": 38,
-                    "longName": "Oliver Joseph Ortiz",
-                    "url": "",
-                    "name": "Oliver Joseph Ortiz",
-                    "idjugador": 41851
-                }, {
-                    "nickName": "Hernán Pellerano",
-                    "actions": [{
-                        "minute": "36",
-                        "type": "amonestacion"
-                    }],
-                    "number": 4,
-                    "longName": "Pellerano",
-                    "url": "/futbol/jugadores/hernandariopellerano/4757",
-                    "name": "Pellerano",
-                    "idjugador": 4757
-                }, {
-                    "nickName": "Fernando Arce Juarez",
-                    "actions": [{
-                        "minute": "83",
-                        "type": "amonestacion"
-                    }],
-                    "number": 83,
-                    "longName": "Fernando Arce Juarez",
-                    "url": "",
-                    "name": "Fernando Arce Juarez",
-                    "idjugador": 41854
-                }, {
-                    "nickName": "Paul Arriola",
-                    "actions": [{
-                        "minute": "90",
-                        "type": "amonestacion"
-                    }],
-                    "number": 47,
-                    "longName": "Arriola",
-                    "url": "/futbol/jugadores/pauljosepharriola/14400",
-                    "name": "Arriola",
-                    "idjugador": 14400
-                }, {
-                    "nickName": "Javier Güemez ",
-                    "actions": [{
-                        "minute": "61",
-                        "type": "amonestacion"
-                    }],
-                    "number": 42,
-                    "longName": "Güemez ",
-                    "url": "/futbol/jugadores/javiergemez/17635",
-                    "name": "Güemez ",
-                    "idjugador": 17635
-                }];
-                visit = [{
-                    "nickName": "Jesús Corona",
-                    "actions": [{
-                        "minute": "85",
-                        "type": "amonestacion"
-                    }],
-                    "number": 1,
-                    "longName": "Corona",
-                    "url": "/futbol/jugadores/jose-de-jesus-corona/223",
-                    "name": "Corona",
-                    "idjugador": 223
-                }];
                 var arrayGlobal = new Array(),
                     itemshtml = "",
                     localm = "",
@@ -1037,79 +969,9 @@
                 wdg_smex_strategy.GolesAnotados(golesLocal, golesVisit, data.lineupLocal.name, data.lineupVisit.name);
 
 
-                /*if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
+                if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
                     wdg_smex_strategy.wdgPenales(data.PenaltiesLocal, data.PenaltiesVisit, data.lineupLocal.name, data.lineupVisit.name);
-                }*/
-                var localp = [{
-                    longName: 'Diego Martan Forla¡n Corazo',
-                    name: 'D. Forlan',
-                    nickName: 'Diego Forlan',
-                    number: 10,
-                    url: '/futbol/jugadores/diegomartinforlan/1016',
-                    type: 'penalAnotadoSerie'
-                }, {
-                    longName: 'Mauricio Bernardo Victorino Dansilio',
-                    name: 'M. Victorino',
-                    nickName: 'Mauricio Victorino',
-                    number: 6,
-                    url: '/futbol/jugadores/mauricio-bernardo-victorino/2002',
-                    type: 'penalAnotadoSerie'
-                }, {
-                    longName: 'Andras Scotti Ponce de Leon',
-                    name: 'A. Scotti',
-                    nickName: 'Andrao Scotti ',
-                    number: 19,
-                    url: '/futbol/jugadores/andres-scotti/2789',
-                    type: 'penalAnotadoSerie'
-                }, {
-                    longName: 'Victorio Maximiliano Pereira Paez',
-                    name: 'M. Pereira',
-                    nickName: 'Maximiliano Pereira',
-                    number: 16,
-                    url: '/futbol/jugadores/maximiliano-pereira/4786',
-                    type: 'penalFalladoSerie'
-                }, {
-                    longName: 'Washington Sebastian Abreu Gallo',
-                    name: 'S. Abreu',
-                    nickName: 'Sebastian Abreu',
-                    number: 13,
-                    url: '/futbol/jugadores/washington-sebastian-abreu/474',
-                    type: 'penalAnotadoSerie'
-                }];
-                var visitp = [{
-                    longName: 'Asamoah Gyan ',
-                    name: 'A. Gyan',
-                    nickName: 'Asamoah Gyan',
-                    number: 3,
-                    url: '/futbol/jugadores/asamoah-gyan/1572',
-                    type: 'penalAnotadoSerie'
-                }, {
-                    longName: 'Stephen Leroy Appiah ',
-                    name: 'S. Appiah',
-                    nickName: 'Stephen Appiah',
-                    number: 10,
-                    url: '/futbol/jugadores/stephen-leroy-appiah/1566',
-                    type: 'penalAnotadoSerie'
-                }, {
-                    longName: 'John Mensah ',
-                    name: 'J. Mensah',
-                    nickName: 'John Mensah',
-                    number: 5,
-                    url: '/futbol/jugadores/john-mensah/1559',
-                    type: 'penalFalladoSerie'
-                }, {
-                    longName: 'Dominic Adiyiah ',
-                    name: 'D. Adiyiah',
-                    nickName: 'Dominic Adiyiah',
-                    number: 18,
-                    url: '/futbol/jugadores/dominic-adiyiah/11587',
-                    type: 'penalFalladoSerie'
-                }];
-
-                wdg_smex_strategy.wdgPenales(localp, visitp, data.lineupLocal.name, data.lineupVisit.name);
-
-
-
+                }
 
                 var maquetado = "",
                     local = '',
