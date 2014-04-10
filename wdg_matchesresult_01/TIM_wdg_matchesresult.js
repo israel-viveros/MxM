@@ -458,6 +458,10 @@
 
                 if (parseFloat(msDateA) < parseFloat(msDateB)) {
                     //console.log("MENOR");
+                    if (setting.country_code == 'USA') {
+                        //console.log('actualiza cada 5min');
+                        wdg_matchresult.Banner(300000);
+                    }
                 } else {
                     if (parseFloat(msDateA) == parseFloat(msDateB)) {
                         //console.log("IGUAL");										
@@ -497,6 +501,10 @@
                     } else {
                         if (parseFloat(msDateA) > parseFloat(msDateB)) {
                             //console.log("MAYOR");
+                            if (setting.country_code == 'USA') {
+                                //console.log('actualiza cada 5min');
+                                wdg_matchresult.Banner(300000);
+                            }
 
                         } else {
                             //console.log("Error no actualizo");
