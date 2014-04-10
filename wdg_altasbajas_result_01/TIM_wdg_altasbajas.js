@@ -52,7 +52,7 @@
             iniciar: function(fechaCalendar) {
                 var num = (settings.tema !== "mundial") ? '1' : '';
                 MaqueWdgAltas = "";
-                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><h3 class="str_pleca_01_title background-color' + num + '"><a class="textcolor-title3" href="#" title="Link Description"><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></h3></div>' : '';
+                MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><h3 class="str_pleca_01_title background-color' + num + '"><a class="textcolor-title3" ><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></h3></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
                 MaqueWdgAltas += (settings.tema !== "mundial") ? '<img src="" width="45" height="30">' : '';
