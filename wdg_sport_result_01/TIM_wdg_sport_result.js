@@ -266,14 +266,18 @@
                 wdf_sportResult.IdPestanasMenu.html(MaqMenu).show();
 
                 var urlAc = document.URL;
-                (/previo/.test(urlAc)) ? $(".previoMenuTim").addClass('current') : '';
-                (/alineacion/.test(urlAc)) ? $(".alineacionMenuTim").addClass('current') : '';
-                (/rating/.test(urlAc)) ? $(".ratingMenuTim").addClass('current') : '';
-                (/mxm/.test(urlAc)) ? $(".mxmMenuTim").addClass('current') : '';
-                (/pizarra/.test(urlAc)) ? $(".pizarraMenuTim").addClass('current') : '';
-                (/cronica/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
-                (/video/.test(urlAc)) ? $(".videoMenuTim").addClass('current') : '';
-                (/interacciontd/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
+                (/previo.html/.test(urlAc)) ? $(".previoMenuTim").addClass('current') : '';
+                (/previo_m.html/.test(urlAc)) ? $(".previoMenuTim").addClass('current') : '';
+                (/alineacion.html/.test(urlAc)) ? $(".alineacionMenuTim").addClass('current') : '';
+                (/alineacion_m.html/.test(urlAc)) ? $(".alineacionMenuTim").addClass('current') : '';
+                (/rating.html/.test(urlAc)) ? $(".ratingMenuTim").addClass('current') : '';
+                (/mxm.html/.test(urlAc)) ? $(".mxmMenuTim").addClass('current') : '';
+                (/mxm_m.html/.test(urlAc)) ? $(".mxmMenuTim").addClass('current') : '';
+                (/pizarra.html/.test(urlAc)) ? $(".pizarraMenuTim").addClass('current') : '';
+                (/cronica.html/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
+                (/cronica_m.html/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
+                (/video.html/.test(urlAc)) ? $(".videoMenuTim").addClass('current') : '';
+                (/interacciontd.html/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
             } // ENd drawMenu()
 
         }; // end wdf_sportResult object
