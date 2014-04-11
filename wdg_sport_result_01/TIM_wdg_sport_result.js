@@ -135,9 +135,9 @@
 
                 (NuevoGolLocal !== String(ActGolLocal)) ? wdf_sportResult.nuevoValor($(".team1 .score"), NuevoGolLocal) : '';
                 (NuevoGolVisit !== String(ActGolVisit)) ? wdf_sportResult.nuevoValor($(".team2 .score, .team2_m .score"), NuevoGolVisit) : '';
-                (ActPEnalLocal !== String(NuevoPenalLocal)) ? wdf_sportResult.nuevoValor($(".team1 .penal"), NuevoPenalLocal) : '';
-                (ActPenalVisit !== String(NuevoPenalVisit)) ? wdf_sportResult.nuevoValor($(".team2 .penal,.team2_m .penal"), NuevoPenalVisit) : '';
-                (NuevoStatusPartido !== String(ActStatusPartido)) ? wdf_sportResult.nuevoValor($(".live_time"), NuevoStatusPartido) : '';
+                (ActPEnalLocal !== String(NuevoPenalLocal) && parseInt(NuevoPenalLocal) > 0) ? wdf_sportResult.nuevoValor($(".team1 .penal"), NuevoPenalLocal) : '';
+                (ActPenalVisit !== String(NuevoPenalVisit) && parseInt(NuevoPenalVisit) > 0) ? wdf_sportResult.nuevoValor($(".team2 .penal,.team2_m .penal"), NuevoPenalVisit) : '';
+                (NuevoStatusPartido !== String(ActStatusPartido)) ? wdf_sportResult.nuevoValor($(".live_time span"), NuevoStatusPartido) : '';
                 (NuevoGlobalLocal !== String(ActGlobalLocal)) ? wdf_sportResult.nuevoValor($("#globalLoc"), NuevoGlobalLocal) : '';
                 (NuevoGlobalVisit !== String(ActGlobalVisit)) ? wdf_sportResult.nuevoValor($("#globalVi"), NuevoGlobalVisit) : '';
 

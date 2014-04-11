@@ -1213,6 +1213,7 @@
                 wdg_smex_strategy.tagAlineacionGoles.html(maquetado);
                 if (local === '' && visit === '') {
                     wdg_smex_strategy.tagAlineacionGoles.hide();
+                    wdg_smex_strategy.tagAlineacionGoles.parents('.wdg_goalsanoted_01').hide('slow');
                 }
 
 
@@ -1252,6 +1253,7 @@
                     };
 
                     wdg_smex_strategy.tagAlineacionGoles.find(".convocados").append(nuevoFinal);
+                    wdg_smex_strategy.tagAlineacionGoles.parents('.wdg_goalsanoted_01').show('slow');
 
                 }
 
