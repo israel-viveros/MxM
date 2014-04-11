@@ -172,7 +172,6 @@
                     dataType: 'jsonp'
                 })
                     .done(function(data) {
-                        console.log(data);
                         wdgavgfieldObj.timeUpdate(data.fechaPartido, data.horaPartido);
                     })
                     .fail(function() {
