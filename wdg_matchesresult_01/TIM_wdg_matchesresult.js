@@ -392,7 +392,7 @@
             }, // End timeUpdate()
 
 
-            Banner: function(tiempo) { //funcion que pone banner cada cierto tiempo. La función se manda a llamar en la linea 447. Solo aplica para USA
+            Banner: function(tiempo) { //funcion que pone banner cada cierto tiempo. La funciÃ³n se manda a llamar en la linea 447. Solo aplica para USA
                 googletag.cmd.push(function() {
                     //Map Sizing Banner Logo en Header
                     var mappingHeader = googletag.sizeMapping().
@@ -418,30 +418,29 @@
                         [955, 75],
                         [955, 31],
                         [728, 90]
-                    ], "ban01_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "atf");
-                    var slotH = googletag.defineSlot("/5644/" + adUnit, [
+                    ], "banWid_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "atf");
+                    var slotHome1 = googletag.defineSlot("/5644/" + adUnit, [
                         [970, 90],
                         [955, 90],
                         [955, 75],
                         [955, 31],
                         [728, 90]
-                    ], "ban02_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "middle-btf");
-                    var slotJ = googletag.defineSlot("/5644/" + adUnit, [
+                    ], "banHome01_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "middle-btf");
+                    var slotHome2 = googletag.defineSlot("/5644/" + adUnit, [
                         [970, 90],
                         [955, 90],
                         [955, 75],
                         [955, 31],
                         [728, 90]
-                    ], "ban03_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "middle-btf");
+                    ], "banHome02_955x90").defineSizeMapping(mappingHeader).addService(googletag.pubads()).setTargeting("position", "middle-btf");
                     var PotesSponsor = googletag.defineOutOfPageSlot("/5644/" + adUnit, "oop-ad").addService(googletag.pubads()).setTargeting("intertype", "layer");
                     googletag.enableServices();
-                    googletag.display("ban01_955x90");
-                    //googletag.display("ban02_955x90");
-                    //googletag.display("ban03_955x90");
+                    googletag.display("banWid_955x90");
+                    googletag.display("banHome01_955x90");
+                    googletag.display("banHome02_955x90");
                     setInterval(function() {
                         googletag.pubads().refresh([slotG]);
                     }, tiempo);
-
                 });
             },
 
