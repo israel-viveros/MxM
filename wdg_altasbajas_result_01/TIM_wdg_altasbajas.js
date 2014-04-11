@@ -36,7 +36,7 @@
         }
 
         var jornadasCalendarDTV = {
-            jornadaCalendarRoute: "http://mxm.televisadeportes.esmas.com/deportes/home/jornada/",
+            jornadaCalendarRoute: "http://static-televisadeportes.esmas.com/sportsdata/futbol/data/",
             jornadaPresente: 0,
             fechaInicio: '',
             contenidoCentral: '',
@@ -126,7 +126,7 @@
                 });
 
                 if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo === 0) {
-                    urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js';
+                    urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadas/jornadalistadojsonp.js';
 
                     $.ajax({
                         url: urFinal,
@@ -156,7 +156,7 @@
 
                             $('#name-jornada').html("<p>" + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name + '</p><span class="tvsa-caret-down"></span>');
                             //$('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
-                            var urlfinalTmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js';
+                            var urlfinalTmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadas/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + '.js';
                             $.ajax({
                                 url: urlfinalTmp,
                                 jsonpCallback: jornadasCalendarDTV.callbackJornada,
@@ -189,13 +189,14 @@
 
             },
             primeraJornada: function() {
-                if (jornadasCalendarDTV.numeroIdEquipo != 0 && jornadasCalendarDTV.numeroTorneoAct != 0) {
+                if (jornadasCalendarDTV.numeroIdEquipo !== 0 && jornadasCalendarDTV.numeroTorneoAct !== 0) {
                     //console.log("ejecuto la primera ronda");
-                    urFinal = "http://mxm.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.numeroTorneoAct + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
+                    urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + "/clubes/" + jornadasCalendarDTV.numeroIdEquipo + "/teamcalendar.js";
+                    //urFinal = "http://static-televisadeportes.esmas.com/sportsdata/futbol/data/335/clubes/141/teamcalendar.js";
                     globalThis.find('.full-timetable').css("visibility", "hidden");
                     $.ajax({
                         url: urFinal,
-                        jsonpCallback: jornadasCalendarDTV.callbackJornada,
+                        jsonpCallback: "matches",
                         dataType: 'jsonp',
                         cache: false,
                         data: 'v=' + timeDTV.returnData(),
@@ -230,7 +231,7 @@
 
                 if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo === 0) {
                     $.ajax({
-                        url: jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadalistadojsonp.js',
+                        url: jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadas/jornadalistadojsonp.js',
                         jsonpCallback: jornadasCalendarDTV.callbackListado,
                         dataType: 'jsonp',
                         cache: true,
@@ -255,7 +256,7 @@
                                 }
                             }
                             //$('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
-                            var urltmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + 'jsonp.js';
+                            var urltmp = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadas/jornada_' + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].weekid + '.js';
                             $.ajax({
                                 url: urltmp,
                                 jsonpCallback: jornadasCalendarDTV.callbackJornada,
@@ -264,6 +265,7 @@
                                 success: function(data) {
                                     $("#feedsAct").data("primero", urltmp);
                                     crear_jornada(data);
+
                                 }
                             });
 
@@ -278,7 +280,8 @@
 
                 if (jornadasCalendarDTV.Jornada2 !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0) {
                     //console.log("ejecuto la segunda ronda");
-                    urFinal = "http://mxm.televisadeportes.esmas.com/deportes/home/jornada/" + jornadasCalendarDTV.Jornada2 + "/jornada_" + jornadasCalendarDTV.numeroIdEquipo + "jsonp.js";
+                    urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.Jornada2 + "/clubes/" + jornadasCalendarDTV.numeroIdEquipo + "/teamcalendar.js";
+                    //urFinal = "http://static-televisadeportes.esmas.com/sportsdata/futbol/data/335/clubes/141/teamcalendar.js";
                     $.ajax({
                         url: urFinal,
                         jsonpCallback: jornadasCalendarDTV.callbackJornada,
@@ -382,9 +385,13 @@
             $("#circleGLoading").fadeIn("fast");
             jornadasCalendarDTV.jornadasCalendarDTV(a);
             $("ul.deg").delay(10).fadeIn("slow");
+            $("#circleGLoading").fadeOut('slow', function() {
+                $(this).css("display", "none");
+            });
         }
 
         function crear_jornada(data, jornada2) {
+
             if (jornada2 !== "jornada2") {
                 jornadasCalendarDTV.Global.length = 0;
                 jornadasCalendarDTV.GlobalSort.length = 0;
@@ -424,73 +431,84 @@
 
                 conjunto = data[i];
 
-                if (conjunto.tournament.id == jornadasCalendarDTV.numeroTorneoAct || jornadasCalendarDTV.numeroTorneoAct == 0) {
-                    var partidoHtml = '';
 
-                    var fechaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "dd/mmm");
-                    fechaEvento = fechaEvento.replace("/", ".&nbsp;");
-                    var horaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "HH:MM");
-                    var sefMxmHash = (tbaner != undefined && tbaner != null && tbaner != '') ? '#' + tbaner : '';
 
-                    var clickUrlTv = (conjunto.eventurl != undefined && conjunto.eventurl != null && conjunto.eventurl != '') ? conjunto.eventurl : '';
+                var partidoHtml = '';
+
+                var fechaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "dd/mmm");
+                fechaEvento = fechaEvento.replace("/", ".&nbsp;");
+                var horaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "HH:MM");
+                var sefMxmHash = (tbaner != undefined && tbaner != null && tbaner != '') ? '#' + tbaner : '';
+
+                var clickUrlTv = (conjunto.eventurl != undefined && conjunto.eventurl != null && conjunto.eventurl != '') ? conjunto.eventurl : '';
+
+                if (typeof(conjunto.sef) !== "undefined") {
                     var clickUrlSef = (conjunto.sef.mxmurl != undefined && conjunto.sef.mxmurl != null && conjunto.sef.mxmurl != '') ? conjunto.sef.mxmurl + sefMxmHash : '';
-
-                    var imagenLocal = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.local.team.img.oficial + '" alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.local.team.img.oficialno + '" alt="' + conjunto.local.name + '">';
+                }
+                var clickUrlSef = "";
+                var imagenLocal = "";
+                if (typeof(conjunto.local.team) !== "undefined") {
+                    imagenLocal = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.local.team.img.oficial + '" alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.local.team.img.oficialno + '" alt="' + conjunto.local.name + '">';
+                }
+                var imagenVisit = "";
+                if (typeof(conjunto.visit.team) !== "undefined") {
                     var imagenVisit = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.visit.team.img.oficial + '" alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.visit.team.img.oficialno + '" alt="' + conjunto.local.name + '">';
+                }
 
-                    if (imagenLocal == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '">') {
-                        imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
-                    }
+                if (imagenLocal == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '">') {
+                    imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
+                }
 
-                    if (imagenVisit == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '">') {
-                        imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
-                    }
+                if (imagenVisit == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '">') {
+                    imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
+                }
 
-                    var golesLocal = validaGoles(conjunto.local.team.gol, conjunto.local.team.golstatus, conjunto.fechastamp);
-                    var golesVisit = validaGoles(conjunto.visit.team.gol, conjunto.visit.team.golstatus, conjunto.fechastamp);
+                var golesLocal = (typeof(conjunto.local.team) !== "undefined") ? validaGoles(conjunto.local.team.gol, conjunto.local.team.golstatus, conjunto.fechastamp) : '';
+                var golesVisit = (typeof(conjunto.visit.team) !== "undefined") ? validaGoles(conjunto.visit.team.gol, conjunto.visit.team.golstatus, conjunto.fechastamp) : '';
 
-
+                if (typeof(conjunto.local.team) !== "undefined" && typeof(conjunto.visit.team) !== "undefined") {
                     if (parseInt(conjunto.local.team.pen) > 0 || parseInt(conjunto.visit.team.pen) > 0) {
                         golesLocal = '<div class="result textcolor-title2">(' + conjunto.local.team.pen + ') ' + golesLocal + '</div>';
                         golesVisit = '<div class="result textcolor-title2">' + golesVisit + ' (' + conjunto.visit.team.pen + ')</div>';
                     }
-                    var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
-                    partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
-                    partidoHtml += '<div class="date textcolor-title2">';
-
-                    partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
-                    partidoHtml += '<span class="time">' + horaEvento + '</span>';
-
-                    partidoHtml += '</div>';
-
-                    //Just a simple reduction and html5 incorporation to team's image-label 
-                    partidoHtml += '<figure>' + imagenLocal + '<figcaption>' + conjunto.local.abrev + '</figcaption></figure>';
-                    partidoHtml += '<div class="ligaResult"><span class="result textcolor-title2">' + golesLocal + '</span>';
-                    partidoHtml += '<div class="content_versus"> <span class="versus textcolor-title4">-</span>';
-                    partidoHtml += '<span class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
-                    partidoHtml += '<span class="result textcolor-title2">' + golesVisit + '</span></div>';
-                    partidoHtml += '<figure><figcaption>' + conjunto.visit.abrev + '</figcaption>' + imagenVisit + '</figure>';
-
-
-                    //partidoHtml += '<div class="icon_team">';
-                    //partidoHtml += imagenLocal
-                    //partidoHtml += '</div>'
-                    //partidoHtml += '<div class="team">' +  + '</div>'     
-                    //partidoHtml += '<div class="result textcolor-title2">' + golesLocal + '</div>'
-                    //partidoHtml += '<div class="content_versus">'
-                    //partidoHtml += '<div class="versus textcolor-title4">-</div>'
-                    //partidoHtml += '<div class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</div>'
-                    //partidoHtml += '</div>'
-                    //partidoHtml += '<div class="result textcolor-title2">' + golesVisit + '</div>'
-                    //partidoHtml += '<div class="team">' + conjunto.visit.abrev + '</div>'
-                    //partidoHtml += '<div class="icon_team">'
-                    //partidoHtml += imagenVisit
-                    //partidoHtml += '</div>'
-                    partidoHtml += "</li>"
-
-
-
                 }
+                var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
+                partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
+                partidoHtml += '<div class="date textcolor-title2">';
+
+                partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
+                partidoHtml += '<span class="time">' + horaEvento + '</span>';
+
+                partidoHtml += '</div>';
+
+                //Just a simple reduction and html5 incorporation to team's image-label 
+                partidoHtml += '<figure>' + imagenLocal + '<figcaption>' + conjunto.local.abrev + '</figcaption></figure>';
+                partidoHtml += '<div class="ligaResult"><span class="result textcolor-title2">' + golesLocal + '</span>';
+                partidoHtml += '<div class="content_versus"> <span class="versus textcolor-title4">-</span>';
+                partidoHtml += '<span class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
+                partidoHtml += '<span class="result textcolor-title2">' + golesVisit + '</span></div>';
+                partidoHtml += '<figure><figcaption>' + conjunto.visit.abrev + '</figcaption>' + imagenVisit + '</figure>';
+
+
+                //partidoHtml += '<div class="icon_team">';
+                //partidoHtml += imagenLocal
+                //partidoHtml += '</div>'
+                //partidoHtml += '<div class="team">' +  + '</div>'     
+                //partidoHtml += '<div class="result textcolor-title2">' + golesLocal + '</div>'
+                //partidoHtml += '<div class="content_versus">'
+                //partidoHtml += '<div class="versus textcolor-title4">-</div>'
+                //partidoHtml += '<div class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</div>'
+                //partidoHtml += '</div>'
+                //partidoHtml += '<div class="result textcolor-title2">' + golesVisit + '</div>'
+                //partidoHtml += '<div class="team">' + conjunto.visit.abrev + '</div>'
+                //partidoHtml += '<div class="icon_team">'
+                //partidoHtml += imagenVisit
+                //partidoHtml += '</div>'
+                partidoHtml += "</li>"
+
+
+
+
 
 
                 //wth
