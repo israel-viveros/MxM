@@ -11,8 +11,8 @@
         var globalthis = this;
 
         var wdgLineUpOb = {
-            feedDropLocal: 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + settings.idEquipo + '/matchesclub.js',
-            feedDropVisit: 'http://lab.israelviveros.com/deportes/wdg_lineup_01/' + settings.idTorneo + '/' + settings.idEquipo2 + '/matchesclub.js',
+            feedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idTorneo + '/clubes/' + settings.idEquipo + '/matchesclub.js',
+            feedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idTorneo + '/clubes/' + settings.idEquipo2 + '/matchesclub.js',
 
             inicio: function() {
                 var maquetado = "";
@@ -246,7 +246,6 @@
                     jsonpCallback: 'effectivenessByTeam'
                 })
                     .done(function(data) {
-                        console.log(data);
                         var tmp = "";
                         for (var i = 0; i < data.efectividad.length; i++) {
                             tmp += '<li><p data-matchid="' + data.efectividad[i].matchid + '">' + data.efectividad[i].weekName + '</p></li>';
