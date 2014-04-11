@@ -1186,7 +1186,7 @@
                         localM += '<div class="' + local[i].minute + ' block_container localTIMGol">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                         localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                        localM += '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>';
+                        localM += (typeof(local[i].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>' : '';
                         localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
                         arrayGlobal.push(localM);
                     };
@@ -1197,7 +1197,7 @@
                         visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol">';
                         visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                         visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                        visitM += '<span class="textcolor-title2">Tiro Libre</span></p></div>';
+                        visitM += (typeof(visit[l].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].formaGol + '</span></p></div>' : '';
                         visitM += '<div class="dotted-left marcador dotted-left"><p>' + local[l].current_score + '</p></div></div>';
                         arrayGlobal.push(visitM);
                     };
@@ -1231,7 +1231,7 @@
                             localM += '<div class="' + local[i].minute + ' block_container localTIMGol">';
                             localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                             localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                            localM += '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>';
+                            localM += (typeof(local[i].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>' : '';
                             localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
                             arrayGlobal.push(localM);
                         };
@@ -1242,7 +1242,7 @@
                             visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol">';
                             visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                             visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                            visitM += '<span class="textcolor-title2">Tiro Libre</span></p></div>';
+                            visitM += (typeof(visit[l].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].formaGol + '</span></p></div>' : '';
                             visitM += '<div class="dotted-left marcador dotted-left"><p>' + local[l].current_score + '</p></div></div>';
                             arrayGlobal.push(visitM);
                         };
