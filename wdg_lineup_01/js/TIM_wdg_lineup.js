@@ -282,39 +282,103 @@
                         clase = "";
                     for (var q = 0; q < array.length; q++) {
                         //console.log(array[q].type)
+
                         switch (array[q].type.toLowerCase()) {
-                            case "golvisitante":
-                                clase = "mxm-goal"
-                                break;
-                            case "gollocal":
-                                clase = "mxm-goal"
-                                break;
-                            case "saledeljuego":
-                                clase = "mxm-playerout"
-                                break;
                             case "amonestacion":
-                                clase = "mxm-yellowcard"
+                                clase = "tvsa-mxm-yellowcard"
+                                break;
+                            case "segundaamonestacion":
+                                clase = "tvsa-mxm-secondyellowcard"
                                 break;
                             case "expulsion":
-                                clase = "mxm-redcard"
+                                clase = "tvsa-mxm-redcard"
                                 break;
-                            case "penalfalladoserie":
-                                clase = "mxm-penaltykick"
+                            case "fueradelugar":
+                                clase = "tvsa-mxm-offside"
+                                break;
+                            case "tirodeesquina":
+                                clase = "tvsa-mxm-cornerkick"
+                                break;
+                            case "iniciaelpartido":
+                                clase = "tvsa-mxm-startfirsthalf"
+                                break;
+                            case "iniciasegundotiempo":
+                                clase = "tvsa-mxm-startsecondhalf"
+                                break;
+                            case "-":
+                                clase = "tvsa-mxm-startovertime"
+                                break;
+                            case "iniciaprimertiempoextra":
+                                clase = "tvsa-mxm-startextrafirsthalf"
+                                break;
+                            case "iniciasegundotiempoextra":
+                                clase = "tvsa-mxm-startextrasecondhalf"
+                                break;
+                            case "--":
+                                clase = "tvsa-mxm-penalties"
+                                break;
+                            case "finalizaelpartido":
+                                clase = "tvsa-mxm-gameend"
+                                break;
+                            case "pegaenelposte":
+                                clase = "tvsa-mxm-crossbar"
+                                break;
+                            case "pasaporafuera":
+                                clase = "tvsa-mxm-out"
+                                break;
+                            case "penal":
+                                clase = "tvsa-mxm-penaltykick"
+                                break;
+                            case "atajada":
+                                clase = "tvsa-mxm-block"
+                                break;
+                            case "autogollocal":
+                                clase = "tvsa-mxm-owngoal"
+                                break;
+                            case "autogolvisitante":
+                                clase = "tvsa-mxm-owngoal"
+                                break;
+                            case "gollocal":
+                                clase = "tvsa-mxm-goal"
+                                break;
+                            case "golvisitante":
+                                clase = "tvsa-mxm-goal"
+                                break;
+                            case "golpenallocal":
+                                clase = "tvsa-mxm-goal"
+                                break;
+                            case "golpenalvisitante":
+                                clase = "tvsa-mxm-goal"
+                                break;
+                            case "falta":
+                                clase = "tvsa-mxm-foul"
+                                break;
+                            case "comentario":
+                                clase = "tvsa-mxm-comment"
+                                break;
+                            case "datoestadistico":
+                                clase = "tvsa-mxm-statisticdata"
                                 break;
                             case "entraaljuego":
-                                clase = "mxm-playerin"
+                                clase = "tvsa-mxm-playerin"
                                 break;
-                            case "baja":
-                                clase = "mxm-baja"
+                            case "saledeljuego":
+                                clase = "tvsa-mxm-playerout"
+                                break;
+                            case "suspenciontemporaljuego":
+                                clase = "tvsa-mxm-suspended"
+                                break;
+                            case "lesion":
+                                clase = "tvsa-mxm-lesion"
                                 break;
                             default:
-                                clase = "desconocida";
+                                clase = array[q].type.toLowerCase();
                                 break;
 
 
                         }
                         //console.log(data.lineupVisit.team[j].actions[q]);
-                        acteaml += '<h2>' + array[q].minute + '\'</h2><i class="tvsa-' + clase + '"> </i>';
+                        acteaml += '<h2>' + array[q].minute + '\'</h2><i class="' + clase + '"> </i>';
                     };
                     return acteaml;
                 }
