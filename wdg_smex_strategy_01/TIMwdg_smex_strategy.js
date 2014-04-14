@@ -4,7 +4,8 @@
         var setting = $.extend({
             'ideventomxm': 0,
             'ideventomxmtv': 0,
-            'idclub': 0
+            'idclub': 0,
+            'title': ''
         }, options);
 
         var GlobalThis = this;
@@ -21,7 +22,7 @@
             PintaCacha: function(tipo) {
                 var ContenidoMaq = "";
                 if (tipo === "dropdown") {
-                    ContenidoMaq += '<div class="titulo textcolor-title4">Estrategia más utilizada</div>'
+                    ContenidoMaq += '<div class="titulo textcolor-title4">' + setting.title + '</div>'
                     ContenidoMaq += '<div class="pleca_inferior">'
                     ContenidoMaq += '<div>'
                     ContenidoMaq += '<strong>Partidos</strong>'
