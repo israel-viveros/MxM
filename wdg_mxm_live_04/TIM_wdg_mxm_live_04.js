@@ -49,107 +49,121 @@
                             //console.log(data.actionsMXM[i].type.toLowerCase());
                             switch (data.actionsMXM[i].type.toLowerCase()) {
                                 case "amonestacion":
-                                    icono = "mxm-yellowcard";
-                                    break;
-                                case "autogol":
-                                    icono = "mxm-owngoal";
-                                    break;
-                                case "comentario":
-                                    icono = "mxm-comment";
-                                    break;
-                                case "datoestadistico":
-                                    icono = "mxm-statisticdata";
-                                    break;
-                                case "desdeafueradelarea":
-                                    icono = "mxm-offside";
-                                    break;
-                                case "elpartidohasidosuspendido":
-                                    icono = "";
-                                    break;
-                                case "empiezasegundotiempo":
-                                    icono = "mxm-startsecondhalf";
-                                    break;
-                                case "empiezanpenales":
-                                    icono = "mxm-penalties";
-                                    break;
-                                case "expulsion":
-                                    icono = "mxm-redcard";
-                                    break;
-                                case "fallaelpenal":
-                                    icono = "mxm-out";
-                                    break;
-                                case "finalizaelpartido":
-                                    icono = "mxm-gameend";
-                                    break;
-                                case "fueradelugar":
-                                    icono = "mxm-offside";
-                                    break;
-                                case "twitter":
-                                    icono = "twitter";
-                                    break;
-                                case "gol":
-                                    icono = "mxm-goal";
-                                    break;
-                                case "iniciaelsegundotiempo":
-                                    icono = "mxm-startsecondhalf";
-                                    break;
-                                case "iniciaprimertiempoextra":
-                                    icono = "mxm-startextrafirsthalf";
-                                    break;
-                                case "iniciasegundotiempoextra":
-                                    icono = "mxm-startextrasecondhalf";
-                                    break;
-                                case "pasaporafuera":
-                                    icono = "mxm-out";
-                                    break;
-                                case "pegaenelposte":
-                                    icono = "mxm-crossbar";
-                                    break;
-                                case "penal":
-                                    icono = "mxm-penaltykick";
+                                    clase = "tvsa-mxm-yellowcard"
                                     break;
                                 case "segundaamonestacion":
-                                    icono = "mxm-secondyellowcard";
+                                    clase = "tvsa-mxm-secondyellowcard"
                                     break;
-                                case "terminaprimertiempo":
-                                    icono = "mxm-gameend";
+                                case "expulsion":
+                                    clase = "tvsa-mxm-redcard"
                                     break;
-                                case "terminaprimertiempoextra":
-                                    icono = "mxm-gameend";
-                                    break;
-                                case "terminasegundotiempo":
-                                    icono = "mxm-gameend";
-                                    break;
-                                case "terminasegundotiempoextra":
-                                    icono = "mxm-gameend";
-                                    break;
-                                case "falta":
-                                    icono = "mxm-foul";
+                                case "fueradelugar":
+                                    clase = "tvsa-mxm-offside"
                                     break;
                                 case "tirodeesquina":
-                                    icono = "mxm-cornerkick";
+                                    clase = "tvsa-mxm-cornerkick"
+                                    break;
+                                case "iniciaelpartido":
+                                    clase = "tvsa-mxm-startfirsthalf"
+                                    break;
+                                case "iniciasegundotiempo":
+                                    clase = "tvsa-mxm-startsecondhalf"
+                                    break;
+                                case "-":
+                                    clase = "tvsa-mxm-startovertime"
+                                    break;
+                                case "iniciaprimertiempoextra":
+                                    clase = "tvsa-mxm-startextrafirsthalf"
+                                    break;
+                                case "iniciasegundotiempoextra":
+                                    clase = "tvsa-mxm-startextrasecondhalf"
+                                    break;
+                                case "--":
+                                    clase = "tvsa-mxm-penalties"
+                                    break;
+                                case "finalizaelpartido":
+                                    clase = "tvsa-mxm-gameend"
+                                    break;
+                                case "pegaenelposte":
+                                    clase = "tvsa-mxm-crossbar"
+                                    break;
+                                case "pasaporafuera":
+                                    clase = "tvsa-mxm-out"
+                                    break;
+                                case "penal":
+                                    clase = "tvsa-mxm-penaltykick"
+                                    break;
+                                case "atajada":
+                                    clase = "tvsa-mxm-block"
+                                    break;
+                                case "autogollocal":
+                                    clase = "tvsa-mxm-owngoal"
+                                    break;
+                                case "autogolvisitante":
+                                    clase = "tvsa-mxm-owngoal"
+                                    break;
+                                case "gollocal":
+                                    clase = "tvsa-mxm-goal"
+                                    break;
+                                case "golvisitante":
+                                    clase = "tvsa-mxm-goal"
+                                    break;
+                                case "golpenallocal":
+                                    clase = "tvsa-mxm-goal"
+                                    break;
+                                case "golpenalvisitante":
+                                    clase = "tvsa-mxm-goal"
+                                    break;
+                                case "falta":
+                                    clase = "tvsa-mxm-foul"
+                                    break;
+                                case "comentario":
+                                    clase = "tvsa-mxm-comment"
+                                    break;
+                                case "datoestadistico":
+                                    clase = "tvsa-mxm-statisticdata"
                                     break;
                                 case "entraaljuego":
-                                    icono = "mxm-playerin";
+                                    clase = "tvsa-mxm-playerin"
                                     break;
+                                case "saledeljuego":
+                                    clase = "tvsa-mxm-playerout"
+                                    break;
+                                case "suspenciontemporaljuego":
+                                    clase = "tvsa-mxm-suspended"
+                                    break;
+                                case "lesion":
+                                    clase = "tvsa-mxm-lesion"
+                                    break;
+                                case "terminasegundotiempo":
+                                    clase = "tvsa-mxm-gameend"
+                                    break;
+                                case "terminaprimertiempo":
+                                    clase = "tvsa-mxm-gameend"
+                                    break;
+                                case "twitter":
+                                    clase = "twitter"
+                                    break;
+
                                 default:
-                                    icono = "";
+                                    clase = data.actionsMXM[i].type.toLowerCase()
                                     break;
+
 
                             }
 
                             item += '<li data-id="' + guuid + '" style="display:none">';
-                            item += (icono === "twitter") ? '<div class="time-icon twitter">' : '<div class="time-icon">';
+                            item += (clase === "twitter") ? '<div class="time-icon twitter">' : '<div class="time-icon">';
                             item += '<div class="textcolor-title6 time">' + data.actionsMXM[i].minute + '\'</div>';
-                            if (icono === "twitter") {
+                            if (clase === "twitter") {
                                 item += '<div class="icon-time"><i class="tvsa-twitter"></i></div>';
                             } else {
-                                item += '<div class="icon-time"><i class="tvsa-' + icono + '"></i></div>';
+                                item += '<div class="icon-time"><i class="' + clase + '"></i></div>';
                             }
                             item += '</div>';
-                            item += (icono !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
+                            item += (clase !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
 
-                            if (icono === "twitter") {
+                            if (clase === "twitter") {
                                 var comaA = data.actionsMXM[i].description.replace(",", "|")
                                 var coma = comaA.split("|");
                                 var usertw = coma[0].split("@");
@@ -409,60 +423,121 @@
                                     galeria = "";
 
                                 switch (data.actionsMXM[i].type.toLowerCase()) {
-                                    case "fueradelarea":
-                                        icono = "";
+                                    case "amonestacion":
+                                        clase = "tvsa-mxm-yellowcard"
                                         break;
-                                    case "centroalarea":
-                                        icono = "";
+                                    case "segundaamonestacion":
+                                        clase = "tvsa-mxm-secondyellowcard"
+                                        break;
+                                    case "expulsion":
+                                        clase = "tvsa-mxm-redcard"
+                                        break;
+                                    case "fueradelugar":
+                                        clase = "tvsa-mxm-offside"
                                         break;
                                     case "tirodeesquina":
-                                        icono = "";
+                                        clase = "tvsa-mxm-cornerkick"
                                         break;
-                                    case "disparoagol":
-                                        icono = "";
+                                    case "iniciaelpartido":
+                                        clase = "tvsa-mxm-startfirsthalf"
+                                        break;
+                                    case "iniciasegundotiempo":
+                                        clase = "tvsa-mxm-startsecondhalf"
+                                        break;
+                                    case "-":
+                                        clase = "tvsa-mxm-startovertime"
+                                        break;
+                                    case "iniciaprimertiempoextra":
+                                        clase = "tvsa-mxm-startextrafirsthalf"
+                                        break;
+                                    case "iniciasegundotiempoextra":
+                                        clase = "tvsa-mxm-startextrasecondhalf"
+                                        break;
+                                    case "--":
+                                        clase = "tvsa-mxm-penalties"
+                                        break;
+                                    case "finalizaelpartido":
+                                        clase = "tvsa-mxm-gameend"
+                                        break;
+                                    case "pegaenelposte":
+                                        clase = "tvsa-mxm-crossbar"
+                                        break;
+                                    case "pasaporafuera":
+                                        clase = "tvsa-mxm-out"
+                                        break;
+                                    case "penal":
+                                        clase = "tvsa-mxm-penaltykick"
                                         break;
                                     case "atajada":
-                                        icono = "block";
+                                        clase = "tvsa-mxm-block"
                                         break;
-                                    case "comentario":
-                                        icono = "";
+                                    case "autogollocal":
+                                        clase = "tvsa-mxm-owngoal"
+                                        break;
+                                    case "autogolvisitante":
+                                        clase = "tvsa-mxm-owngoal"
                                         break;
                                     case "gollocal":
-                                        icono = "goal";
-                                        break;
-                                    case "saledeljuego":
-                                        icono = "";
-                                        break;
-                                    case "entraaljuego":
-                                        icono = "";
-                                        break;
-                                    case "empiezasegundotiempo":
-                                        icono = "gameend";
+                                        clase = "tvsa-mxm-goal"
                                         break;
                                     case "golvisitante":
-                                        icono = "goal";
+                                        clase = "tvsa-mxm-goal"
                                         break;
-                                    case "amonestacion":
-                                        icono = "yellowcard";
+                                    case "golpenallocal":
+                                        clase = "tvsa-mxm-goal"
+                                        break;
+                                    case "golpenalvisitante":
+                                        clase = "tvsa-mxm-goal"
+                                        break;
+                                    case "falta":
+                                        clase = "tvsa-mxm-foul"
+                                        break;
+                                    case "comentario":
+                                        clase = "tvsa-mxm-comment"
+                                        break;
+                                    case "datoestadistico":
+                                        clase = "tvsa-mxm-statisticdata"
+                                        break;
+                                    case "entraaljuego":
+                                        clase = "tvsa-mxm-playerin"
+                                        break;
+                                    case "saledeljuego":
+                                        clase = "tvsa-mxm-playerout"
+                                        break;
+                                    case "suspenciontemporaljuego":
+                                        clase = "tvsa-mxm-suspended"
+                                        break;
+                                    case "lesion":
+                                        clase = "tvsa-mxm-lesion"
+                                        break;
+                                    case "terminasegundotiempo":
+                                        clase = "tvsa-mxm-gameend"
+                                        break;
+                                    case "terminaprimertiempo":
+                                        clase = "tvsa-mxm-gameend"
                                         break;
                                     case "twitter":
-                                        icono = "twitter";
+                                        clase = "twitter"
                                         break;
-                                }
+                                    default:
+                                        clase = data.actionsMXM[i].type.toLowerCase()
+                                        break;
 
+
+                                }
                                 item += '<li data-id="' + guuid + '" style="display:none">';
-                                item += (icono === "twitter") ? '<div class="time-icon twitter">' : '<div class="time-icon">';
+                                item += (clase === "twitter") ? '<div class="time-icon twitter">' : '<div class="time-icon">';
                                 item += '<div class="textcolor-title6 time">' + data.actionsMXM[i].minute + '\'</div>';
-                                if (icono === "twitter") {
-                                    item += '<div class="icon-time"><i class="tvsa-' + icono + '"></i></div>';
+                                if (clase === "twitter") {
+                                    item += '<div class="icon-time"><i class="tvsa-' + clase + '"></i></div>';
                                 } else {
-                                    item += '<div class="icon-time"><i class="tvsa-mxm-' + icono + '"></i></div>';
+                                    item += '<div class="icon-time"><i class="' + clase + '"></i></div>';
                                 }
 
                                 item += '</div>';
-                                item += (icono !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
+                                item += (clase !== "twitter") ? '<div class="chronic"><span>' + data.actionsMXM[i].description + '</span></div>' : '';
 
-                                if (icono === "twitter") {
+                                if (clase === "twitter") {
                                     var comaA = data.actionsMXM[i].description.replace(",", "|")
                                     var coma = comaA.split("|");
                                     var usertw = coma[0].split("@");
