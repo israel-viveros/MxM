@@ -252,12 +252,30 @@
                         };
 
                         $(ID).html(tmp);
+
                     })
                     .fail(function() {
                         console.log("error");
                     })
 
+                var validaDrops = window.setInterval(function() {
+                    $("#TIMPALocal").data("status", "chequed");
+                    if ($("#TIMPALocal").children('li').size() === 0) {
+                        $(".wdg_lineup_01_dropdown.drop1").unbind().css("cursor", "auto").find('span.sprite').removeClass('sprite');
+                    }
+                    if ($("#TIMPAVisit").children('li').size() === 0) {
+                        $(".wdg_lineup_012_dropdown.drop2").unbind().css("cursor", "auto").find('span.sprite').removeClass('sprite');
+                    }
+                    if ($("#TIMPALocal").data("status") === "chequed") {
+                        window.clearInterval(validaDrops);
+                    }
+
+                }, 5000);
+
+
+
             },
+
             loadDatacomplete: function(idMatch, tipo) {
                 function giveActions(array) {
                     var acteaml = "",
@@ -479,7 +497,11 @@
                 var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
                 var $listItems = $('.wdg_lineup_01_dropdownlist')
                 $('.wdg_lineup_01_dropdowncontent p').html($firstItem.find('p').html());
+
+                //                console.log($("#TIMPALocal").children('li').size());
+
                 $dropdownAnchor.bind('click', function(evt) {
+                    //console.log("DROP 1");
                     evt.preventDefault();
                     //var totalHeight= 0;
                     /*var visibilidad = $listItems.css('visibility'); */
@@ -542,6 +564,7 @@
                 var $listItems2 = $('.wdg_lineup_012_dropdownlist')
                 $('.wdg_lineup_012_dropdowncontent p').html($firstItem2.find('p').html());
                 $dropdownAnchor2.bind('click', function(evt) {
+                    //console.log("DROP 2");
 
 
                     //var totalHeight= 0;
