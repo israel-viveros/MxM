@@ -250,7 +250,7 @@
                                                 clase = "tvsa-mxm-lesion"
                                                 break;
                                             default:
-                                                clase = array[q].type.toLowerCase();
+                                                clase = data[equipoString].team[i].actions[a].type.toLowerCase();
                                                 break;
 
 
@@ -1153,7 +1153,7 @@
                                 clase = "tvsa-mxm-lesion"
                                 break;
                             default:
-                                clase = array[q].type.toLowerCase();
+                            clase = array[q].type.toLowerCase();
                                 break;
 
 
