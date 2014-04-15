@@ -38,7 +38,7 @@
                 //console.log(data);
                 var MaquetadoHEader = "";
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
-                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
@@ -223,12 +223,6 @@
                                     }
                                 }
                                 //cop
-                                if (tiempoActualizacion !== 0) {
-                                    setInterval(function() {
-                                        wdf_sportResult.loadInfo('update')
-                                    }, tiempoActualizacion);
-                                }
-                                console.log("el tiempo de actualizacion es: " + tiempoActualizacion);
                             } else {
                                 if (parseFloat(msDateA) > parseFloat(msDateB)) {
                                     console.log("Fecha Mayor");
@@ -237,6 +231,13 @@
                                     console.log("Error no actualizo");
                                 }
                             }
+                        }
+
+                        $("#timeUpdateMxM").text(tiempoActualizacion);
+                        if (tiempoActualizacion !== 0) {
+                            setInterval(function() {
+                                wdf_sportResult.loadInfo('update')
+                            }, tiempoActualizacion);
                         }
 
                     }
