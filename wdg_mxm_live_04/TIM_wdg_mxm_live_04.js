@@ -14,11 +14,10 @@
         var wdgLiveObj = {
             urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
             callback: 'datamxmvivo',
-            urlfeedHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_header.js',
-            feedCallbackHeader: 'mxmheader',
+            //urlfeedHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_header.js',
+            //feedCallbackHeader: 'mxmheader',
 
             inicio: function() {
-                Maquetado = '';
                 Maquetado += '<div class="wdg_mxm_live_04_title textcolor-title1">' + settings.title + '</div>';
                 Maquetado += '<div class="wdg_mxm_live_04_status">';
                 Maquetado += '<ul class="wdg_mxm_live_04_list" id="pintaAcciones"></ul>';
@@ -28,6 +27,24 @@
                 globalThis.html(Maquetado);
 
                 wdgLiveObj.loadMaster();
+
+                wdgLiveObj.listener = setInterval(function() {
+                    console.log("buscando etiqueta actualizable..")
+                    var objTime = $("#timeUpdateMxM");
+                    if (objTime.length) {
+                        console.log("ACTUALIZANDO CON ... " + objTime.text());
+                        var timeAct = parseInt(objTime.text());
+                        clearInterval(wdgLiveObj.listener);
+                        if (timeAct > 0) {
+                            setInterval(function() {
+                                wdgLiveObj.updateMxm();
+                            }, timeAct);
+                        }
+
+
+                    }
+                }, 5000);
+
             },
 
             loadMaster: function() {
@@ -146,7 +163,7 @@
                                     break;
 
                                 default:
-                                    clase = data.actionsMXM[i].type.toLowerCase()
+                                    clase = "tvsa-" + data.actionsMXM[i].type.toLowerCase()
                                     break;
 
 
@@ -291,11 +308,11 @@
 
                 });
 
-                wdgLiveObj.header();
+                // wdgLiveObj.header();
 
 
             },
-            header: function() {
+            /* header: function() {
                 $.ajax({
                     url: wdgLiveObj.urlfeedHeader,
                     jsonpCallback: wdgLiveObj.feedCallbackHeader,
@@ -310,7 +327,7 @@
                     })
 
 
-            },
+            }, 
             timeUpdate: function(dia, hora) {
                 console.log("entrando en timeUpdate");
                 var tiempoActualizacion = 0;
@@ -396,6 +413,7 @@
                     }
                 });
             }, // End timeUpdate()
+            */
             updateMxm: function() {
                 var item = "",
                     icono = "";
@@ -520,7 +538,7 @@
                                         clase = "twitter"
                                         break;
                                     default:
-                                        clase = data.actionsMXM[i].type.toLowerCase()
+                                        clase = "tvsa-" + data.actionsMXM[i].type.toLowerCase()
                                         break;
 
 
