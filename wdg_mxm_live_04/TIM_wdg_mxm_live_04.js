@@ -18,7 +18,7 @@
             //feedCallbackHeader: 'mxmheader',
 
             inicio: function() {
-                Maquetado += '<div class="wdg_mxm_live_04_title textcolor-title1">' + settings.title + '</div>';
+                Maquetado = '<div class="wdg_mxm_live_04_title textcolor-title1">' + settings.title + '</div>';
                 Maquetado += '<div class="wdg_mxm_live_04_status">';
                 Maquetado += '<ul class="wdg_mxm_live_04_list" id="pintaAcciones"></ul>';
                 Maquetado += '</div>';
