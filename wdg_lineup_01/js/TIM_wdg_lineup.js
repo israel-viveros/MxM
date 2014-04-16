@@ -198,7 +198,7 @@
                 maquetado += '<div style="clear: both; z-index: -70;"></div></div><div class="see-all textcolor-title4" id="viewmoreTIM">Ver Todo <i class="tvsa-caret-down "></i></div>';
                 maquetado += '</div><div style="clear: both; z-index: -90;"></div>';
 
-                globalthis.html(maquetado);
+                globalthis.html(maquetado).css("display", "none");
 
                 if ($("#viewmoreTIM").length) {
                     $("#viewmoreTIM").unbind().click(function(event) {
@@ -527,6 +527,10 @@
                         if (flagAusenVisit === 1 && flagAusenLocal === 1) {
                             $("#ausenciasconta").hide('fast');
                         }
+
+                        globalthis.slideDown('slow', function() {
+                            $(this).css('display', 'block');
+                        });
 
 
                     })
