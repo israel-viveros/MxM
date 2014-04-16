@@ -19,7 +19,7 @@
 
             urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
             urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
-            urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
+           // urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
             tagPromedio: $("#AlineacionPromedioTIM"),
             tagExpulsion: $("#ExpulsionTIM"),
             tagAlineacionList: $("#TIMAlineacionList"),
@@ -69,7 +69,23 @@
                 (tipo === "alineacionFinal") ? wdg_smex_strategy.botonesAlineacion() : '';
 
 
-                (setting.ideventomxm !== 0 && setting.ideventomxmtv !== 0 && setting.idclub === 0) ? wdg_smex_strategy.header() : '';
+                 wdg_smex_strategy.listener = setInterval(function() {
+                    console.log("buscando etiqueta actualizable..")
+                    var objTime = $("#timeUpdateMxM");
+                    if (objTime.length) {
+                        console.log("ACTUALIZANDO CON ... " + objTime.text());
+                        var timeAct = parseInt(objTime.text());
+                        clearInterval(wdg_smex_strategy.listener);
+                        if (timeAct > 0) {
+                            setInterval(function() {
+                                wdg_smex_strategy.updatePlayers();
+                            }, timeAct);
+                        }
+
+
+                    }
+                }, 5000);
+                
 
             },
 
@@ -617,11 +633,17 @@
                 /*Desktop*/
                 $('section.wdg_smex_strategy_01 .player a').live('mouseenter', function(event) {
                     event.preventDefault();
-                    $(this).children('.tooltip').css('display', 'block');
+                    //$(this).children('.tooltip').css('display', 'block');
+                    $(this).children('.tooltip').stop(true, true).delay(100).fadeIn('fast', function() {
+                        $(this).css('display', 'block');
+                    });
                 });
                 $('section.wdg_smex_strategy_01 .player a').live('mouseleave', function(event) {
                     event.preventDefault();
-                    $(this).children('.tooltip').css('display', 'none');
+                    //$(this).children('.tooltip').css('display', 'none');
+                    $(this).children('.tooltip').stop(true, true).delay(500).fadeOut('fast', function() {
+                        $(this).css('display', 'none');
+                    });
                 });
                 if ($(window).width() < 948) {
                     /*Tablet-Mobile*/
@@ -629,9 +651,15 @@
                         event.preventDefault();
                         $wss1_status = $(this).children('.tooltip').css('display');
                         if ($wss1_status == 'block') {
-                            $(this).children('.tooltip').css('display', 'none');
+                            //$(this).children('.tooltip').css('display', 'none');
+                            $(this).children('.tooltip').stop(true, true).delay(500).fadeOut('fast', function() {
+                                $(this).css('display', 'none');
+                            });
                         } else {
-                            $(this).children('.tooltip').css('display', 'block');
+                            //$(this).children('.tooltip').css('display', 'block');
+                            $(this).children('.tooltip').stop(true, true).delay(100).fadeIn('fast', function() {
+                                $(this).css('display', 'block');
+                            });
                         }
                     });
                     $('section.wdg_smex_strategy_01 .player a > span').bind("touchstart", function(event) {
@@ -678,7 +706,7 @@
             AlineacionFinal: function() {
                 wdg_smex_strategy.loadAlineacion(GlobalThis, setting.ideventomxmtv, 'Alineacionfinal');
             },
-
+/*
             header: function() {
                 $.ajax({
                     url: wdg_smex_strategy.urlmxmheader,
@@ -787,6 +815,7 @@
                     }
                 });
             }, // End timeUpdate()
+            */
 
             updatePlayers: function() {
                 var itemActual, itemleft, itemtop, NuevosJugadores = "";

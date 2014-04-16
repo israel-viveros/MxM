@@ -10,7 +10,7 @@
 
         var wdgavgfieldObj = {
             urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idMatch + '/match_summary.js',
-            urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idMatch + '/match_header.js',
+            //urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idMatch + '/match_header.js',
 
             loadMaster: function() {
                 $.ajax({
@@ -28,7 +28,6 @@
                     })
             },
             update: function() {
-                console.log("update");
                 $.ajax({
                     url: wdgavgfieldObj.urlFinal,
                     type: 'jsonp',
@@ -44,7 +43,6 @@
                     })
             },
             updateData: function(data) {
-                console.log(data);
                 var LocalAmarilla = $("#LocalamarillasTIM").text(),
                     LocalRoja = $("#rojasLocalTIM").text(),
                     LocalEsquina = $("#esquinaLocalTIM").text(),
@@ -161,10 +159,27 @@
                     $(this).css("display", "block");
                 });
 
-                wdgavgfieldObj.header();
+                wdgavgfieldObj.listener = setInterval(function() {
+                    console.log("buscando etiqueta actualizable..")
+                    var objTime = $("#timeUpdateMxM");
+                    if (objTime.length) {
+                        console.log("ACTUALIZANDO CON ... " + objTime.text());
+                        var timeAct = parseInt(objTime.text());
+                        clearInterval(wdgavgfieldObj.listener);
+                        if (timeAct > 0) {
+                            setInterval(function() {
+                                wdgavgfieldObj.update();
+                            }, timeAct);
+                        }
 
-            },
-            header: function() {
+
+                    }
+                }, 5000);
+                //wdgavgfieldObj.header();
+
+            }
+            /*
+            ,header: function() {
                 $.ajax({
                     url: wdgavgfieldObj.urlmxmheader,
                     jsonpCallback: 'mxmheader',
@@ -262,6 +277,8 @@
                     }
                 });
             }, // End timeUpdate()
+
+            */
 
 
 
