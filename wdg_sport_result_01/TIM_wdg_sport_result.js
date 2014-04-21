@@ -92,8 +92,10 @@
                         'display': 'block'
                     });
                 });;
-                if (data.tiempo.toLowerCase() != "final") {
-                    wdf_sportResult.timeUpdate(data.fechaPartido, data.horaPartido);
+                if (data.tiempo.toLowerCase() !== "final") {
+                    setTimeout(function() {
+                        wdf_sportResult.timeUpdate(data.fechaPartido, data.horaPartido);
+                    }, 300);
                 }
 
 
@@ -156,7 +158,8 @@
                 console.log("Metod -> timeUpdate");
                 var tagVivo = $("#TIMVivoHeader");
                 var tiempoActualizacion = 0;
-                var FechaPartido = dia.substring(3, 5) + '-' + dia.substring(0, 2) + '-' + dia.substring(8, 10) + ' ' + hora.substring(0, 5) + ':00';
+                //var FechaPartido = dia.substring(3, 5) + '-' + dia.substring(0, 2) + '-' + dia.substring(8, 10) + ' ' + hora.substring(0, 5) + ':00';
+                var FechaPartido = '20' + dia.substring(8, 10) + ',' + dia.substring(3, 5) + ',' + dia.substring(0, 2) + ',' + hora.substring(0, 5) + ':00';
                 $.ajax({
                     url: "http://mxm.televisadeportes.esmas.com/deportes/home/timetvjsonp.js",
                     async: false,
@@ -176,7 +179,8 @@
                             m = '0' + m;
                         }
                         anio = parseInt(arr[2]) + 1900;
-                        fechas = m + '-' + arr[0] + '-' + anio;
+                        //fechas = m + '-' + arr[0] + '-' + anio;
+                        fechas = anio + ',' + m + ',' + arr[0];
                         fechas = fechas + ' ' + horas + ':00';
 
                         var a = new Date(FechaPartido);
@@ -226,7 +230,7 @@
                             } else {
                                 if (parseFloat(msDateA) > parseFloat(msDateB)) {
                                     console.log("Fecha Mayor");
-
+                                    GlobalThis.find('.score').css('visibility', 'hidden');
                                 } else {
                                     console.log("Error no actualizo");
                                 }
