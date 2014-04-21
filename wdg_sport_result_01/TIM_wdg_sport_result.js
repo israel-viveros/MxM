@@ -190,13 +190,13 @@
                         } else {
                             if (parseFloat(msDateA) == parseFloat(msDateB)) {
                                 console.log("Dia del Evento");
-                                tiempoActualizacion = 60000;
+                                tiempoActualizacion = 300000;
                                 var resta = parseInt(b.getHours() - a.getHours());
                                 //cop
                                 if (b.getHours() >= a.getHours()) {
                                     console.log("ya empezo el partido");
                                     //Ya empezo el partido, actualizar valores cada minuto										
-                                    tiempoActualizacion = 60000;
+                                    tiempoActualizacion = 30000;
                                 } else {
                                     var h1 = a.getHours();
                                     var h2 = b.getHours();
