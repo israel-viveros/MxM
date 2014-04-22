@@ -38,7 +38,7 @@
                 //console.log(data);
                 var MaquetadoHEader = "";
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
-                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
@@ -91,11 +91,14 @@
                     $(this).css({
                         'display': 'block'
                     });
-                });;
+                });
                 if (data.tiempo.toLowerCase() !== "final") {
                     setTimeout(function() {
                         wdf_sportResult.timeUpdate(data.fechaPartido, data.horaPartido);
                     }, 300);
+                    setInterval(function() {
+                        wdf_sportResult.timeUpdate(data.fechaPartido, data.horaPartido);
+                    }, 60000);
                 }
 
 
@@ -167,6 +170,7 @@
                     dataType: 'jsonp',
                     jsonpCallback: 'timetv',
                     success: function(data) {
+                        GlobalThis.find('.score').css('visibility', 'hidden');
                         var arr = '';
                         var m = 0;
                         var anio = 0;
@@ -185,67 +189,74 @@
 
                         var a = new Date(FechaPartido);
                         var b = new Date(fechas);
+                        //b = new Date('2014/04/22 13:45:00');
+
 
                         var msDateA = Date.UTC(a.getFullYear(), a.getMonth() + 1, a.getDate());
                         var msDateB = Date.UTC(b.getFullYear(), b.getMonth() + 1, b.getDate());
 
                         if (parseFloat(msDateA) < parseFloat(msDateB)) {
-                            console.log("Fecha Menor");
+                            console.log("Fecha Menor(YA PASO EL PARTIDO)");
+                            GlobalThis.find('.score').css('visibility', 'visible');
                         } else {
                             if (parseFloat(msDateA) == parseFloat(msDateB)) {
                                 console.log("Dia del Evento");
-                                tiempoActualizacion = 300000;
-                                var resta = parseInt(b.getHours() - a.getHours());
-                                //cop
-                                if (b.getHours() >= a.getHours()) {
-                                    console.log("Hora mayor del partido partido");
-                                    //Ya empezo el partido, actualizar valores cada minuto
 
-                                    tiempoActualizacion = 30000;
-                                } else {
-                                    var h1 = a.getHours();
-                                    var h2 = b.getHours();
-                                    var m1 = a.getMinutes();
-                                    var m2 = b.getMinutes();
-                                    //Validar cuantos minutos faltan para el inicio del partido
-                                    var minutosrestantes = (((h1 - h2) * 60) + m1) - m2;
+                                var partidoMs = a.getTime(),
+                                    servidorMs = b.getTime(),
+                                    duracionPartido = 9000000, //2.5 hrs
+                                    minutosPrevio = 900000, // 15 min
+                                    finalPartido = partidoMs + duracionPartido,
+                                    partidoAntes = partidoMs - minutosPrevio,
+                                    restaAntes = partidoAntes - servidorMs;
 
-                                    if (minutosrestantes <= 15) {
-                                        console.log("faltan menos de 15 min");
-                                        //Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
-                                        tiempoActualizacion = 300000;
-                                        if (tagVivo.length) {
-                                            tagVivo.removeClass('hidden');
-                                        }
+                                console.log("Hora Servidor: " + new Date(servidorMs));
+                                console.log("Hora Partido: " + new Date(partidoMs));
+                                console.log("Hora Previo partido: " + new Date(partidoAntes));
+                                console.log("Hora Fin partido: " + new Date(finalPartido));
 
-                                    } else {
-                                        console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
-                                        GlobalThis.find('.score').css('visibility', 'hidden');
-                                        //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
-                                        (minutosrestantes > 60) ? tiempoActualizacion = 900000 : '';
-                                        if (tagVivo.length) {
-                                            tagVivo.removeClass('hidden');
-                                        }
+                                if (partidoMs <= servidorMs && servidorMs <= finalPartido) {
+                                    console.log("El patido esta en vivo");
+                                    if (tagVivo.length) {
+                                        tagVivo.removeClass('hidden');
                                     }
+                                    tiempoActualizacion = 30000; // 30 seg
+                                    GlobalThis.find('.score').css('visibility', 'visible');
+                                } else {
+
+                                    //Faltan 15 min para que empieze
+                                    if (parseInt(restaAntes) < 0) {
+                                        console.log("Estamos a 15 min del partido");
+                                        tiempoActualizacion = 300000; // 5 min
+                                    }
+
                                 }
-                                //cop
+
+
+
+
                             } else {
                                 if (parseFloat(msDateA) > parseFloat(msDateB)) {
-                                    console.log("Fecha Mayor");
-                                    GlobalThis.find('.score').css('visibility', 'hidden');
+                                    console.log("Fecha Mayor (AUN NO PASA EL PARTIDO)");
                                 } else {
                                     console.log("Error no actualizo");
                                 }
                             }
                         }
 
-                        $("#timeUpdateMxM").text(tiempoActualizacion);
-                        console.log("tiempo de actualizacion: " + tiempoActualizacion)
+
+                        console.log("Tiempo de actualizacion: " + tiempoActualizacion)
                         if (tiempoActualizacion !== 0) {
                             setInterval(function() {
                                 wdf_sportResult.loadInfo('update')
                             }, tiempoActualizacion);
                         }
+                        if (!$("#timeUpdateMxM").length) {
+                            $("#datosTIMHeader").append('<span id="timeUpdateMxM">' + tiempoActualizacion + '</span>');
+                        } else {
+                            $("#timeUpdateMxM").text(tiempoActualizacion);
+                        }
+
 
                     }
                 });
@@ -291,6 +302,13 @@
         }; // end wdf_sportResult object
 
 
-        (settings.idtorneo != 0 && settings.idteam !== 0) ? wdf_sportResult.loadInfo() : (console.log("---->Faltan los Id's de team y/o torneo"));
+        if (settings.idtorneo != 0 && settings.idteam !== 0) {
+            setTimeout(function() {
+                wdf_sportResult.loadInfo();
+            }, 300);
+
+        } else {
+            (console.log("---->Faltan los Id's de team y/o torneo"));
+        }
     }
 })(jQuery);
