@@ -198,8 +198,9 @@
                                 var resta = parseInt(b.getHours() - a.getHours());
                                 //cop
                                 if (b.getHours() >= a.getHours()) {
-                                    console.log("ya empezo el partido");
-                                    //Ya empezo el partido, actualizar valores cada minuto										
+                                    console.log("Hora mayor del partido partido");
+                                    //Ya empezo el partido, actualizar valores cada minuto
+
                                     tiempoActualizacion = 30000;
                                 } else {
                                     var h1 = a.getHours();
@@ -212,13 +213,14 @@
                                     if (minutosrestantes <= 15) {
                                         console.log("faltan menos de 15 min");
                                         //Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
-                                        tiempoActualizacion = 60000;
+                                        tiempoActualizacion = 300000;
                                         if (tagVivo.length) {
                                             tagVivo.removeClass('hidden');
                                         }
 
                                     } else {
                                         console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
+                                        GlobalThis.find('.score').css('visibility', 'hidden');
                                         //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
                                         (minutosrestantes > 60) ? tiempoActualizacion = 900000 : '';
                                         if (tagVivo.length) {
@@ -238,6 +240,7 @@
                         }
 
                         $("#timeUpdateMxM").text(tiempoActualizacion);
+                        console.log("tiempo de actualizacion: " + tiempoActualizacion)
                         if (tiempoActualizacion !== 0) {
                             setInterval(function() {
                                 wdf_sportResult.loadInfo('update')
