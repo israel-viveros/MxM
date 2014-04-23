@@ -11,10 +11,8 @@
             'idEvento': 0
     
         }, options);
-    	
-    	console.log(setting);    	
-    	var GlobalThis = this;
-    	
+    	    	    
+    	var GlobalThis = this;    	
   
         var wdg_mxm_rating = {
         		
@@ -24,22 +22,10 @@
         		
         		tagRating: $("#containerwdg_mxm_rating_01"),
         		
-        		//-- Carga la alineacion
-        		loadAlineacion: function(){
-        			console.log('loadAlineacion');
-        			$.ajax({
-                        url: wdg_mxm_rating.urlFinalAlineacion,
-                        dataType: 'jsonp',
-                        jsonpCallback: 'datagame',
-                        cache: false,
-                        success: function(dataAlineacion) {
-                        	console.log('dataAlineacion');
-                        	wdg_mxm_rating.getInfo(dataAlineacion);                			
-                        }
-            		});        			        			        			                	        	        		
-        		},
+        		
         		        		        		
         		pintaInfo: function(dataAlineacion,dataMatchHeader) {
+        			alert ('entra a pintar');
         			//console.log(data.poll['answers']['answer']['0']['number']);
         			//alert (data.poll['answers']['answer']['0']['clubname']);
         			var equipo = new Array();
@@ -49,17 +35,16 @@
                     equipo[1] = "lineupVisit";
                     equipoMatch[0] = "equipoLocal";
                     equipoMatch[1] = "equipoVisitante";
+                    
                     var logoLocal = dataMatchHeader[equipoMatch[0]]['smallImage'];
                     var logoVisitante = dataMatchHeader[equipoMatch[1]]['smallImage'];
                     var nombreLocal = dataMatchHeader[equipoMatch[0]]['nombre'];
-                    var nombreVisit = dataMatchHeader[equipoMatch[1]]['nombre'];
-                    //console.log(equipoMatch.length);                    
-                    //console.log(dataAlineacion[equipo[0]]['teamShirt']);
-                    //console.log(dataAlineacion[equipo[1]]['teamShirt']);                            			        			
-//        			for (var i=0; i<equipo.length; i++){  
-//        				console.log('pinta ' + i);
-//        			}
-        			
+                    var nombreVisit = dataMatchHeader[equipoMatch[1]]['nombre'];                                                        
+                    var regLocal = dataAlineacion[equipo[0]]['team'].length;
+                    var regVisit = dataAlineacion[equipo[1]]['team'].length;                           
+                    
+                    
+                    //---------Equipo Local---------
            			var maquetado = "";
            			maquetado += "<div class='wdg_rate_player_01' data-enhance='false'>";
            			maquetado += "<div class='qualifies textcolor-title4'>Elige a tu jugador y vota</div>";
@@ -92,12 +77,59 @@
 					maquetado += "</div>";
 					maquetado += "<div style='clear:both;'></div>";
                     maquetado += "</th></tr>";                    
-           			maquetado += "</table></td></tr></table";
+           			maquetado += "</table>";
+           			maquetado += "<table class='dotted-right'>";
+                    maquetado += "<thead><!-- Listbox --></thead>";
+                    maquetado += "<tbody>";
+                    for (var i=1; i < regLocal; i++){  
+        				console.log('pinta ' + i); 
+        				var nombreJugador = dataAlineacion[equipo[0]]['team'][i]['nickName'];
+        				var posicion = dataAlineacion[equipo[0]]['team'][i]['position'];
+        				        				
+        				if (i == 1){
+        					console.log('es el primero');
+        					maquetado += "<tr class='evaluation first_child'>";        					
+        				}
+        				else{
+        					maquetado += "<tr class='evaluation'>";        					
+        				}         				
+        				maquetado += "<td>";
+        				maquetado += "<div class='conteiner_two'>";
+        				maquetado += "<div class='vote_block vote dotted-bottom'>";
+        				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+        				maquetado += "<div class='div'><p class='textcolor-title4'>6.2</p></div>";
+        				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>7.5</p></div>";
+        				maquetado += "<div class='position'><p class='textcolor-title4'>" + posicion + "elantero </p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='calification  textcolor-title4'>";
+        				maquetado += "<div><p>5</p></div>";
+        				maquetado += "<div><p>6</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+        				maquetado += "<div><p>8</p></div>";
+        				maquetado += "<div><p>9</p></div>";
+        				maquetado += "<div><p>10</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+        				maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+                        maquetado += "</div>";            
+                        maquetado += "</div>";        
+                        maquetado += "</td>";
+                        maquetado += "</tr>";                                				
+        			}
+                    
+                    maquetado += "</tbody></table>";
+                    
+                    //---------Equipo Visitante---------
+                    
+           			maquetado += "</td></tr></table";            					
            			maquetado += "</div>";					
            			        		                                       
             		wdg_mxm_rating.tagRating.html(maquetado);
             		
             	},            	
+            	
             	
             	//Obtiene el logotipo de los equipos y nombre
         		getInfo: function(dataAlineacion){        		        			
@@ -107,12 +139,27 @@
                         dataType: 'jsonp',
                         jsonpCallback: 'mxmheader',
                         cache: false,
-                        success:function(dataMatchHeader){                        	                        			                                                                                                               
+                        success:function(dataMatchHeader){ 
+                        	
                             wdg_mxm_rating.pintaInfo(dataAlineacion,dataMatchHeader);
+                        
                         }
                         		                        		           			        			
         			});        			        			        			        		
-        		}                	
+        		},
+            	            	            
+            	//-- Carga la alineacion
+        		loadAlineacion: function(){        			
+        			$.ajax({
+                        url: wdg_mxm_rating.urlFinalAlineacion,
+                        dataType: 'jsonp',
+                        jsonpCallback: 'datagame',
+                        cache: false,
+                        success: function(dataAlineacion) {                          	
+                        	wdg_mxm_rating.getInfo(dataAlineacion);                			
+                        }
+            		});        			        			        			                	        	        		
+        		}
         }
         
         
