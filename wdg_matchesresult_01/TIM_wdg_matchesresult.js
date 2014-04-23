@@ -181,7 +181,7 @@
                 var posibles = new Array('&aacute', '&Aacute', '&eacute', '&Eacute', '&iacute', '&Iacute', '&oacute;', '&Oacute', '&uacute', '&Uacute', '&ntilde');
 
                 if (tipo === "only") {
-                    $("#FListTournaments").html('<a class="featured onShowItem" data-url="http://interacciontd.televisadeportes.esmas.com/deportes/home/TickerFutbol_' + wdg_matchresult.TickerTournamen + 'jsonp.js" href="#" >' + contenido[0].EventTournamentName + '</a>');
+                    $("#FListTournaments").html('<a class="featured onShowItem" data-url="http://static-televisadeportes.esmas.com/sportsdata/futbol/data/tickers/TickerFutbol_' + wdg_matchresult.TickerTournamen + '.js" href="#" >' + contenido[0].EventTournamentName + '</a>');
                     //setInterval(function(){wdg_matchresult.updateInfo()}, wdg_matchresult.timeUpdate);
                 }
 
