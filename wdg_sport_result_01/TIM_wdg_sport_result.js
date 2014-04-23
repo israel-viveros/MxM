@@ -36,7 +36,8 @@
 
             drawHeader: function(data) {
                 //console.log(data);
-                var MaquetadoHEader = "";
+                var MaquetadoHEader = "",
+                    minuto = (parseInt(data.minuto) != 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
                 MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
@@ -46,7 +47,7 @@
                 MaquetadoHEader += '</div>';
                 //MaquetadoHEader += '<div class="realtedimg"><img src="http://placehold.it/300x50" alt=""></div>';
                 MaquetadoHEader += '</div>';
-                MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1"><span>' + data.tiempo.replace(/'/g, "\'") + '</span></div>';
+                MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1"><span>' + data.tiempo.replace(/'/g, "\'") + ' ' + minuto + '</span></div>';
                 MaquetadoHEader += '<div class="leftside">';
                 MaquetadoHEader += (settings.tema == 'mundial') ? '<div class="padre">' : '';
                 MaquetadoHEader += '<div class="team1">';
@@ -121,12 +122,13 @@
                     ActGlobalVisit = "",
                     NuevoGlobalVisit = "",
                     ActGlobalLocal = "",
-                    NuevoGlobalLocal = "";
+                    NuevoGlobalLocal = "",
+                    minuto = (parseInt(data.minuto) != 0) ? data.minuto + '\'' : '';
                 var NuevoGolLocal = String(data.equipoLocal.goles),
                     NuevoGolVisit = String(data.equipoVisitante.goles),
                     NuevoPenalLocal = String(data.equipoLocal.penales),
                     NuevoPenalVisit = String(data.equipoVisitante.penales),
-                    NuevoStatusPartido = String(data.tiempo),
+                    NuevoStatusPartido = String(data.tiempo) + " " + String(minuto),
                     NuevoGlobalLocal = String(data.equipoLocal.golesGlobal),
                     NuevoGlobalVisit = String(data.equipoVisitante.golesGlobal);
                 ActGolLocal = $(".team1 .score").text(),
@@ -245,7 +247,8 @@
                         }
 
 
-                        console.log("Tiempo de actualizacion: " + tiempoActualizacion)
+                        console.log("Tiempo de actualizacion: " + tiempoActualizacion);
+
                         if (tiempoActualizacion !== 0) {
                             setInterval(function() {
                                 wdf_sportResult.loadInfo('update')
