@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 1.2.4
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.WdgSportResult = function(options) {
@@ -191,7 +196,7 @@
 
                         var a = new Date(FechaPartido);
                         var b = new Date(fechas);
-                        //b = new Date('2014/04/22 19:50:00');
+                        //b = new Date('2014/04/22 13:31:00');
 
 
                         var msDateA = Date.UTC(a.getFullYear(), a.getMonth() + 1, a.getDate());
@@ -210,7 +215,7 @@
                                     minutosPrevio = 900000, // 15 min
                                     finalPartido = partidoMs + duracionPartido,
                                     partidoAntes = partidoMs - minutosPrevio,
-                                    restaAntes = partidoAntes - servidorMs;
+                                    restaAntes = partidoMs - servidorMs;
 
                                 console.log("Hora Servidor: " + new Date(servidorMs));
                                 console.log("Hora Partido: " + new Date(partidoMs));
@@ -227,8 +232,9 @@
                                 } else {
 
                                     //Faltan 15 min para que empieze
-                                    if (parseInt(restaAntes) < 0) {
-                                        console.log("Estamos a 15 min del partido");
+                                    console.log(restaAntes);
+                                    if (parseInt(restaAntes) < minutosPrevio && parseInt(restaAntes) > 0) {
+                                        console.log("Estamos a menos de 15 min del partido");
                                         tiempoActualizacion = 300000; // 5 min
                                     }
 
