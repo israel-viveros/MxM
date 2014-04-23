@@ -403,15 +403,19 @@
                         [955, 31],
                         [728, 90]
                     ]). //Desktop and landscape.
-                    addSize([728, 140], [468, 60]). // /Ipad.
-                    addSize([370, 140], [360, 50]). // /Landscape
-                    addSize([320, 140], [320, 50]). // Iphones.
-                    addSize([200, 140], [168, 28]). // smartphones here.
-                    addSize([150, 140], [120, 20]). // smallest smartphones here.
+                    addSize([980, 70], [
+                        [970, 90],
+                        [955, 90],
+                        [955, 75],
+                        [955, 31],
+                        [955, 70]
+                    ]). //Desktop and landscape.
+                    addSize([460, 70], [468, 60]). // /Ipad.
+                    addSize([300, 70], [320, 50]). // Iphones..
 
                     build();
 
-                    var adUnit = "es.televisa.ent/videos/telenovelas";
+                    var adUnit = "es.esmas.dep/home";
                     var slotG = googletag.defineSlot("/5644/" + adUnit, [
                         [970, 90],
                         [955, 90],
