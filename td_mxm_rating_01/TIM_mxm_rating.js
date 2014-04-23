@@ -24,7 +24,7 @@
         		
         		tagRating: $("#containerwdg_mxm_rating_01"),
         		
-        		//-- Carga la alinacion
+        		//-- Carga la alineacion
         		loadAlineacion: function(){
         			console.log('loadAlineacion');
         			$.ajax({
@@ -33,16 +33,13 @@
                         jsonpCallback: 'datagame',
                         cache: false,
                         success: function(dataAlineacion) {
-                        	console.log('dataAlineacion');                        	                        	                        	                        	                        	                                             	                                                 
+                        	console.log('dataAlineacion');
+                        	wdg_mxm_rating.getInfo(dataAlineacion);                			
                         }
-            		});
-        			
-        			var valores = wdg_mxm_rating.getInfo(data);
-        			console.log (valores);
-        			
+            		});        			        			        			                	        	        		
         		},
         		        		        		
-        		pintaInfo: function(dataAlineacion) {
+        		pintaInfo: function(dataAlineacion,dataMatchHeader) {
         			//console.log(data.poll['answers']['answer']['0']['number']);
         			//alert (data.poll['answers']['answer']['0']['clubname']);
         			var equipo = new Array();
@@ -60,8 +57,7 @@
                                         
                     console.log('dshkjdhkjdhsj' + dataMatchHeader);
                     //console.log(dataMatchHeader[equipoMatch[1]]['smallImage']);
-                    //console.log(equipoMatch.length);
-                    
+                    //console.log(equipoMatch.length);                    
                     //console.log(dataAlineacion[equipo[0]]['teamShirt']);
                     //console.log(dataAlineacion[equipo[1]]['teamShirt']);
                     console.log(equipo.length);
@@ -105,68 +101,36 @@
            			maquetado += "</div>";					
            			
         			}
-                    
-                    
-           			
-           			
-//            		maquetado += '<div>';
-//            		maquetado += data.poll['summary']['conteo'];
-//            		maquetado += '</div>';
+                                        
             		wdg_mxm_rating.tagRating.html(maquetado);
-            	},
+            	},            	
             	
-//            	getInfoClubPartido: function(idTorneo,idPartido){
-//            		$.ajax({
-//                        url: 'jason.js',  //wdg_mxm_rating.url,
-//                        type: 'GET',
-//                        dataType: 'json',                        
-//                        cache: false,
-//                        success: function(data){
-//                        	console.log('hi'); 
-//                        	wdg_mxm_rating = idPartido                        
-//                        	wdg_mxm_rating.pintaInfo(data,dataAlineacion);                        	                        	                       
-//                        }
-//                    })            		
-//            	}
-            	
-        		getInfo: function(){        		
+        		getInfo: function(dataAlineacion){        		
         			console.log ('getInfo');
-        			var data = new Array();
+        			var equipoMatch = new Array();
+        			
         			//Obtiene el logotipo de los equipos y nombre
         			$.ajax({
-                        url: wdg_mxm_rating.urlMatchHeader,
+        				url: wdg_mxm_rating.urlMatchHeader,
                         dataType: 'jsonp',
                         jsonpCallback: 'mxmheader',
-                        cache: false,                                                                                              
-                        success: function(data){
-                        	console.log('Informacion de dataMatchHeader');                        	
-                        	//var equipoMatch = new Array();
-                        	//equipoMatch[0] = "equipoLocal";
-                            //equipoMatch[1] = "equipoVisitante";
-                            //console.log(data[equipoMatch[0]]['smallImage']);
-                            //var logoLocal = data[equipoMatch[0]]['smallImage'];
-                            //var logoVisitante = data[equipoMatch[1]]['smallImage'];
-                            //console.log(data.length); 
-                        	data = data;
+                        cache: false,
+                        success:function(dataMatchHeader){
+                        	console.log(dataMatchHeader);
+                        	console.log(dataAlineacion);                        			
+                            equipoMatch[0] = "equipoLocal";
+                            equipoMatch[1] = "equipoVisitante";
+                            
+                            console.log(dataMatchHeader.length);
+                            console.log(dataMatchHeader[equipoMatch[0]]['smallImage']);
+                            console.log(dataMatchHeader[equipoMatch[1]]['smallImage']);
+                            
+                            wdg_mxm_rating.pintaInfo(dataAlineacion,dataMatchHeader);
+                            
+                            
                         }
-        			        				
-                    });
-        			
-        			return data;
-//        			
-//        			$.ajax({
-//                        url: 'jason.js',  //wdg_mxm_rating.url,
-//                        type: 'GET',
-//                        dataType: 'json',                        
-//                        cache: false,
-//                        success: function(data){
-//                        	console.log('hi'); 
-//                        	wdg_mxm_rating = idPartido
-//                        	
-//                        	wdg_mxm_rating.pintaInfo(data,dataAlineacion);                        	                        	                       
-//                        }
-//                    });
-                    
+                        		                        		           			        			
+        			});        			        			        			        		
         		}
         
         	
