@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 3.2.1
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.wdgMatchResult = function(options) {
@@ -188,35 +193,50 @@
                 var ItemView = "";
                 for (var y = 0; y < contenido.length; y++) {
                     if (y < 16) {
-                        var numSplit = 7;
+                        console.log(contenido[y].period);
+                        var numSplit = 7,
+                            tituloMatch = "",
+                            golesTotalLocal = parseInt(contenido[y].equipos.local.goals) + parseInt(contenido[y].equipos.local.penales),
+                            golestotalVisit = parseInt(contenido[y].equipos.visit.goals) + parseInt(contenido[y].equipos.visit.penales);
+                        if ((String(contenido[y].period) === "P")) {
+                            tituloMatch = contenido[y].MatchDate + " " + contenido[y].MatchHour.substring(0, 5);
+                        } else {
+                            if (String(contenido[y].period) === "F") {
+                                tituloMatch = 'Final del partido';
+                            } else {
+                                tituloMatch = contenido[y].periodabrev + ' ' + contenido[y].time;
+                            }
+                        }
+
                         ItemView += '<li id="' + contenido[y].TimeStamp + '">';
                         ItemView += '<div class="wdg_match_01">';
                         ItemView += '<div class="wdg_match_01_time background-color1">';
                         ItemView += '<p>';
-                        ItemView += '<a class="textcolor-title5">' + contenido[y].periodabrev + ' ' + (isNaN(contenido[y].time) ? contenido[y].time + '"' : '') + '</a>';
+                        //ItemView += '<a class="textcolor-title5">' + contenido[y].periodabrev + ' ' + (isNaN(contenido[y].time) ? contenido[y].time + '"' : '') + '</a>';
+                        ItemView += '<a class="textcolor-title5">' + tituloMatch + '</a>';
                         ItemView += '</p>';
                         ItemView += '</div> ';
                         ItemView += '<div class="wdg_match_01_team winner">';
                         ItemView += '<div class="wdg_match_01_teamname">';
-                        ItemView += '<p>                ';
+                        ItemView += '<p>';
                         ItemView += '<a>' + contenido[y].equipos.local.name.substring(0, 18) + '</a>';
                         ItemView += '</p> ';
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_teamscore">';
-                        ItemView += '<p>                ';
-                        ItemView += '<a>' + contenido[y].equipos.local.goals + '</a>';
+                        ItemView += '<p>';
+                        ItemView += ((String(contenido[y].period) === "P")) ? '<a>-</a>  ' : '<a>' + golesTotalLocal + '</a>  ';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_team loser">';
                         ItemView += '<div class="wdg_match_01_teamname">';
-                        ItemView += '<p>                ';
+                        ItemView += '<p>';
                         ItemView += '<a>' + contenido[y].equipos.visit.name.substring(0, 18) + '</a>';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_teamscore">';
                         ItemView += '<p>';
-                        ItemView += '<a>' + contenido[y].equipos.visit.goals + '</a>  ';
+                        ItemView += ((String(contenido[y].period) === "P")) ? '<a>-</a>  ' : '<a>' + golestotalVisit + '</a>  ';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '</div><div class="shadow"></div>';
@@ -293,6 +313,16 @@
                 //console.log(data);
                 var selectorTMP, NuevoGolV, ActGolV, NuevoGolL, ActGolL, tituloAct, tituloNue;
                 for (var o = 0; o < data.matches.match.length; o++) {
+                    var tituloMatch = "";
+                    if ((String(data.matches.match[o].period) === "P")) {
+                        tituloMatch = data.matches.match[o].MatchDate + " " + data.matches.match[o].MatchHour.substring(0, 5);
+                    } else {
+                        if (String(data.matches.match[o].period) === "F") {
+                            tituloMatch = 'Final del partido';
+                        } else {
+                            tituloMatch = data.matches.match[o].periodabrev + ' ' + data.matches.match[o].time;
+                        }
+                    }
                     //console.log(data.matches.match[o])
                     selectorTMP = $("#" + data.matches.match[o].TimeStamp);
                     ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text().trim());
@@ -300,7 +330,7 @@
                     NuevoGolL = String(data.matches.match[o].equipos.local.goals.trim());
                     NuevoGolV = String(data.matches.match[o].equipos.visit.goals.trim());
                     tituloAct = selectorTMP.find(".textcolor-title5").text();
-                    tituloNue = String(data.matches.match[o].periodabrev.trim());
+                    tituloNue = String(tituloMatch);
 
                     //console.log("TITLE"+tituloAct+"<->"+tituloNue);
                     //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
