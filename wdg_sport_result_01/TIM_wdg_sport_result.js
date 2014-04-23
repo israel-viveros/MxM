@@ -39,7 +39,7 @@
                 var MaquetadoHEader = "",
                     minuto = (parseInt(data.minuto) != 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
-                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
@@ -191,7 +191,7 @@
 
                         var a = new Date(FechaPartido);
                         var b = new Date(fechas);
-                        //b = new Date('2014/04/22 13:45:00');
+                        //b = new Date('2014/04/22 19:50:00');
 
 
                         var msDateA = Date.UTC(a.getFullYear(), a.getMonth() + 1, a.getDate());
@@ -254,11 +254,9 @@
                                 wdf_sportResult.loadInfo('update')
                             }, tiempoActualizacion);
                         }
-                        if (!$("#timeUpdateMxM").length) {
-                            $("#datosTIMHeader").append('<span id="timeUpdateMxM">' + tiempoActualizacion + '</span>');
-                        } else {
-                            $("#timeUpdateMxM").text(tiempoActualizacion);
-                        }
+
+                        $("#timeUpdateMxM").text(tiempoActualizacion);
+
 
 
                     }
