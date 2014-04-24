@@ -1258,7 +1258,7 @@
                 function givemeName(parametro) {
                     var tmp = parametro;
                     var tmp2 = tmp.split(":");
-                    return tmp2[1];
+                    return tmp2[tmp2.length - 1];
                 }
 
                 function giveActions(array) {
