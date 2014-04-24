@@ -186,7 +186,7 @@
 
 
                     }
-                }, 6000);
+                }, 60000);
                 //wdgavgfieldObj.header();
 
             }
