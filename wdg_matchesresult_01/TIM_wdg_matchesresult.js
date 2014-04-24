@@ -193,7 +193,6 @@
                 var ItemView = "";
                 for (var y = 0; y < contenido.length; y++) {
                     if (y < 16) {
-                        console.log(contenido[y].period);
                         var numSplit = 7,
                             tituloMatch = "",
                             golesTotalLocal = parseInt(contenido[y].equipos.local.goals) + parseInt(contenido[y].equipos.local.penales),
@@ -426,13 +425,6 @@
                 googletag.cmd.push(function() {
                     //Map Sizing Banner Logo en Header
                     var mappingHeader = googletag.sizeMapping().
-                    addSize([980, 140], [
-                        [970, 90],
-                        [955, 90],
-                        [955, 75],
-                        [955, 31],
-                        [728, 90]
-                    ]). //Desktop and landscape.
                     addSize([980, 70], [
                         [970, 90],
                         [955, 90],
@@ -441,7 +433,7 @@
                         [955, 70]
                     ]). //Desktop and landscape.
                     addSize([460, 70], [468, 60]). // /Ipad.
-                    addSize([300, 70], [320, 50]). // Iphones..
+                    addSize([300, 70], [320, 50]). // Iphones.
 
                     build();
 
