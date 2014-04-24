@@ -74,14 +74,17 @@
     <link rel="stylesheet" href="http://54.243.192.45/na-at-deportes/trunk/wdg_smex_strategy_01/css/wdg_smex_strategy_01_tablet.css" media="screen and (min-width: 624px)">
     <link rel="stylesheet" href="http://54.243.192.45/na-at-deportes/trunk/wdg_smex_strategy_01/css/wdg_smex_strategy_01.css" media="screen and (min-width: 948px)">
 
-
+<style type="text/css">
+    .wdg_team_align_01 .player_td{height: auto;}
+    .wdg_team_align_01 .player_name p{height: auto;}
+</style>
 
       <script src="TIMTD_mxm_alineacion.js"></script>
     <script>    
          $(window).load(function() {
             $("#TIMwdg_sport_result").WdgSportResult({'idtorneo':356,'idteam':24941,'tema': 'mundial'});
             setTimeout(function(){
-                $("#containerWdgMexStrategy").MxMAlineacionTD({'ideventomxm': 300,'ideventomxmtv': 25565,'GolesAnotados': true,'Penales':true,'Amonestados': true,'Promedio': true});       
+                $("#containerWdgMexStrategy").MxMAlineacionTD({'ideventomxm': 362,'ideventomxmtv': 25606,'GolesAnotados': true,'Penales':true,'Amonestados': true,'Promedio': true});       
             },1000);
             
         });

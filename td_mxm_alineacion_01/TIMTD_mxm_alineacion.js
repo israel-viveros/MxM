@@ -1261,6 +1261,21 @@
                     return tmp2[tmp2.length - 1];
                 }
 
+                function formatNombre(cadena) {
+                    if (cadena.length > 14) {
+                        var sp = cadena.split(" ");
+                        var cadenaNueva = "",
+                            nuevo = sp.length - 1;
+                        for (var i = 0; i < nuevo; i++) {
+                            cadenaNueva += sp[i] + ' ';
+                        };
+                        cadenaNueva += '<br>' + sp[nuevo];
+                        return cadenaNueva;
+                    } else {
+                        return cadena;
+                    }
+                }
+
                 function giveActions(array) {
                     var acteaml = "",
                         clase = "";
@@ -1387,7 +1402,7 @@
                     local = '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
                     local += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.team[i].number + '</p></div>';
                     local += '<div class="dotted-left container_card">';
-                    local += '<div class="player_name"><p>' + data.lineupLocal.team[i].nickName + '</p></div>';
+                    local += '<div class="player_name"><p>' + formatNombre(data.lineupLocal.team[i].nickName) + '</p></div>';
                     local += '<div class="players_icons">';
                     local += ActL;
                     local += '</div></div></div>';
@@ -1427,7 +1442,7 @@
 
 
                 for (var j = 0; j < data.lineupVisit.team.length; j++) {
-                    ActV = "";
+                    ActV = "", positionPlayerM = data.lineupVisit.team[j].position;
                     if (typeof(data.lineupVisit.team[j].actions) === "object") {
                         ActV = giveActions(data.lineupVisit.team[j].actions);
                     };
@@ -1435,7 +1450,7 @@
                     visit = '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
                     visit += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.team[j].number + '</p></div>';
                     visit += '<div class="dotted-left container_card">';
-                    visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].nickName + '</p></div>';
+                    visit += '<div class="player_name"><p>' + formatNombre(data.lineupVisit.team[j].nickName) + '</p></div>';
                     visit += '<div class="players_icons">';
                     visit += ActV;
                     visit += '</div></div></div>';
@@ -1451,8 +1466,8 @@
                         visitotros.push(visit)
                     }
                 };
-                var visitGlobal = localportero.concat(localdefensas, localmedios, localdelanteros, localotros);
-                for (var w = 0; w < localGlobal.length; w++) {
+                var visitGlobal = visitportero.concat(visitdefensas, visitmedios, visitdelanteros, visitotros);
+                for (var w = 0; w < visitGlobal.length; w++) {
                     visitF += visitGlobal[w];
                 };
                 if (typeof(data.lineupVisit.coach) !== "undefined") {
@@ -1476,7 +1491,7 @@
                     localSub += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
                     localSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.substitutes[p].number + '</p></div>';
                     localSub += '<div class="dotted-left container_card">';
-                    localSub += '<div class="player_name"><p>' + data.lineupLocal.substitutes[p].nickName + '</p></div>';
+                    localSub += '<div class="player_name"><p>' + formatNombre(data.lineupLocal.substitutes[p].nickName) + '</p></div>';
                     localSub += '<div class="players_icons">';
                     localSub += ActLB;
                     localSub += '</div></div></div>';
@@ -1491,7 +1506,7 @@
                     visitSub += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
                     visitSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.substitutes[o].number + '</p></div>';
                     visitSub += '<div class="dotted-left container_card">';
-                    visitSub += '<div class="player_name"><p>' + data.lineupVisit.substitutes[o].nickName + '</p></div>';
+                    visitSub += '<div class="player_name"><p>' + formatNombre(data.lineupVisit.substitutes[o].nickName) + '</p></div>';
                     visitSub += '<div class="players_icons">';
                     visitSub += ActVB;
                     visitSub += '</div></div></div>';
@@ -1567,6 +1582,47 @@
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionList.html(maquetado);
+
+                //calcular height de la alineacion
+
+                //player_table 
+                //
+                //$(window).resize(function() {
+                if ($(window).width() >= 624) {
+                    $(".wdg_team_align_01 .second_team  .player_table").find(".player_td").each(function(index) {
+                        var contador = index + 1;
+                        if ($(this).height() > $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height()) {
+                            $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                            $(this).height($(this).height())
+                        } else {
+                            $(this).height($(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height())
+                            $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                        }
+                    });
+                }
+                if ($(window).width() < 624) {
+
+                    $('.wdg_team_align_01 .first_team .title').on('touchstart', function() {
+                        $(this).addClass('current');
+                        $('.wdg_team_align_01 .second_team .title').removeClass('current');
+                        $('.wdg_team_align_01 .art_latestnews_01_arrow').css('left', '22%');
+                        $('.wdg_team_align_01 .firts_team_table').css('display', 'block');
+                        $('.wdg_team_align_01 .second_team_table').css('display', 'none');
+                        $('.wdg_team_align_01 .player_table_first').css('display', 'block');
+                        $('.wdg_team_align_01 .player_table_second').css('display', 'none');
+                    });
+                    $('.wdg_team_align_01 .second_team .title').on('touchstart', function() {
+                        $(this).addClass('current');
+                        $('.wdg_team_align_01 .first_team .title').removeClass('current');
+                        $('.wdg_team_align_01 .art_latestnews_01_arrow').css('left', '73%');
+                        $('.wdg_team_align_01 .firts_team_table').css('display', 'none');
+                        $('.wdg_team_align_01 .second_team_table').css('display', 'block');
+                        $('.wdg_team_align_01 .player_table_first').css('display', 'none');
+                        $('.wdg_team_align_01 .player_table_second').css('display', 'block');
+                    });
+                }
+                //}
+                //END calcular height de la alineacion
             },
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
@@ -1740,15 +1796,7 @@
             },
 
             finalesNaat: function() {
-                //player_table 
-                //
-                $(".wdg_team_align_01 .second_team  .player_table").find(".player_td").each(function(index) {
-                    var contador = index + 1;
-                    if ($(this).height() > $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height())
-                        $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height($(this).height())
-                    else
-                        $(this).height($(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height())
-                });
+
                 (function($, T) {
 
                     var altura = $('.wdg_team_align_01 .principal').height();
