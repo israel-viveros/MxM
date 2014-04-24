@@ -13,10 +13,12 @@
         }, options);
 
         var GlobalThis = this;
+        var globalTimer = null;
 
         var wdf_sportResult = {
             urlFinalHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idtorneo + '/' + settings.idteam + '/match_header.js',
             IdPestanasMenu: $("#TIMnav_smnu_sports"),
+            tmpescuchaListener: 0,
 
             loadInfo: function(tipo) {
                 $.ajax({
@@ -33,7 +35,7 @@
                     .fail(function(jqXHR) {
                         console.log("Error al cargar: " + wdf_sportResult.urlFinalHeader);
                         console.log(jqXHR);
-                        GlobalThis.hide();
+                        //GlobalThis.hide();
                     })
 
             }, // loadInfo END
@@ -255,10 +257,13 @@
 
                         console.log("Tiempo de actualizacion: " + tiempoActualizacion);
 
+                        clearInterval(globalTimer);
                         if (tiempoActualizacion !== 0) {
-                            setInterval(function() {
+                            globalTimer = setInterval(function() {
+                                wdf_sportResult.tmpescuchaListener = parseInt($("#timeUpdateMxM").text());
                                 wdf_sportResult.loadInfo('update')
                             }, tiempoActualizacion);
+
                         }
 
                         $("#timeUpdateMxM").text(tiempoActualizacion);
