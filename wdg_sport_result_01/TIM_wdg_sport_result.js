@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.4
+ *   Version: 1.2.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -179,10 +179,18 @@
                     dataType: 'jsonp',
                     jsonpCallback: 'timetv',
                     success: function(data) {
-                        GlobalThis.find('.score').css('visibility', 'hidden');
-                        var arr = '';
-                        var m = 0;
-                        var anio = 0;
+                        //GlobalThis.find('.score').css('visibility', 'hidden');
+                        var arr = '',
+                            m = 0,
+                            anio = 0,
+                            validaScore = GlobalThis.find(".live_time").text().toLowerCase().trim();
+
+
+                        if (validaScore === "previo") {
+                            GlobalThis.find('.score').css('visibility', 'hidden');
+                        } else {
+                            GlobalThis.find('.score').css('visibility', 'visible');
+                        }
 
                         horas = data.timetv;
                         arr = data.fechatv.replace(/_/gi, "-").split("-");
@@ -206,7 +214,7 @@
 
                         if (parseFloat(msDateA) < parseFloat(msDateB)) {
                             console.log("Fecha Menor(YA PASO EL PARTIDO)");
-                            GlobalThis.find('.score').css('visibility', 'visible');
+                            //GlobalThis.find('.score').css('visibility', 'visible');
                         } else {
                             if (parseFloat(msDateA) == parseFloat(msDateB)) {
                                 console.log("Dia del Evento");
@@ -230,7 +238,7 @@
                                         tagVivo.removeClass('hidden');
                                     }
                                     tiempoActualizacion = 30000; // 30 seg
-                                    GlobalThis.find('.score').css('visibility', 'visible');
+                                    //GlobalThis.find('.score').css('visibility', 'visible');
                                 } else {
 
                                     //Faltan 15 min para que empieze
@@ -254,6 +262,9 @@
                             }
                         }
 
+                        if (tiempoActualizacion === 0) {
+                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 30000 : 0;
+                        }
 
                         console.log("Tiempo de actualizacion: " + tiempoActualizacion);
 
