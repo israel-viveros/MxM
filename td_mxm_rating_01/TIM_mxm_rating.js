@@ -18,19 +18,49 @@
         		
         		urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
         		urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
-        		url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetail.js',
-        		
+        		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetail.js',        		
         		tagRating: $("#containerwdg_mxm_rating_01"),
         		
         		
-        		        		        		
-        		pintaInfo: function(dataAlineacion,dataMatchHeader) {
+        		//Metodo para colocar la posicion del jugador
+        		posicionTexto: function(posicion){        			
+        			var posicionTexto;        			
+        			switch (posicion){
+        				case "GK":
+        					posicionTexto = "Portero";
+        					break;
+        					
+	        			case "D":
+	        				posicionTexto = "Defensa";
+	        				break;
+	        				
+	        			case "MF":
+	        				posicionTexto = "Medio";
+	        				break;
+	        				
+	        			case "F":
+	        				posicionTexto = "Delantero";
+	        				break;
+	        				
+	        			default: 
+	        				posicionTexto = "      ";
+	        			
+        			}
+        			
+        			return posicionTexto;
+        			
+        		}, 
+        		      		        		
+        		pintaInfo: function(dataAlineacion,dataMatchHeader,dataGamePlayer) {
         			alert ('entra a pintar');
-        			//console.log(data.poll['answers']['answer']['0']['number']);
-        			//alert (data.poll['answers']['answer']['0']['clubname']);
+        			console.log(dataGamePlayer.poll['answers']['answer']['0']['number']);
+        			alert (dataGamePlayer.poll['answers']['answer']['0']['percent']);
         			var equipo = new Array();
         			var equipoMatch = new Array();
-        			        			        			        		
+        			var textoPosicion;
+    				var nombreJugador; 
+    				var posicion; 
+    				
         			equipo[0] = "lineupLocal";
                     equipo[1] = "lineupVisit";
                     equipoMatch[0] = "equipoLocal";
@@ -41,7 +71,15 @@
                     var nombreLocal = dataMatchHeader[equipoMatch[0]]['nombre'];
                     var nombreVisit = dataMatchHeader[equipoMatch[1]]['nombre'];                                                        
                     var regLocal = dataAlineacion[equipo[0]]['team'].length;
-                    var regVisit = dataAlineacion[equipo[1]]['team'].length;                           
+                    var regVisit = dataAlineacion[equipo[1]]['team'].length;    
+                    var regbancaLocal = dataAlineacion[equipo[0]]['substitutes'].length;
+                    var regbancaVisit = dataAlineacion[equipo[1]]['substitutes'].length;
+                    var regPlayerDetail = dataGamePlayer.poll['answers']['answer'].length;
+//                  var playerDetailClubId = dataGamePlayer.poll['answers']['answer']['0']['club']);
+//					var playerDetailPlayerId = 	dataGamePlayer.poll['answers']['answer']['0']['number']);
+                    console.log("son "+regPlayerDetail+" registros");
+                    
+                    
                     
                     
                     //---------Equipo Local---------
@@ -81,25 +119,42 @@
            			maquetado += "<table class='dotted-right'>";
                     maquetado += "<thead><!-- Listbox --></thead>";
                     maquetado += "<tbody>";
-                    for (var i=1; i < regLocal; i++){  
-        				console.log('pinta ' + i); 
-        				var nombreJugador = dataAlineacion[equipo[0]]['team'][i]['nickName'];
-        				var posicion = dataAlineacion[equipo[0]]['team'][i]['position'];
-        				        				
-        				if (i == 1){
+                    for (var i=0; i < regLocal ; i++){          				      		      		
+        				nombreJugador = dataAlineacion[equipo[0]]['team'][i]['nickName'];	
+        				posicion = dataAlineacion[equipo[0]]['team'][i]['position']; 
+        				textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
+        				console.log("Nueva posicion: " + textoPosicion);        			        				
+        				
+        				idEquipo = dataAlineacion[equipo[0]]['idTeam']; 
+        				numPlayer = dataAlineacion[equipo[0]]['team'][i]['number']; 
+        				console.log("idEquipo "+idEquipo);
+        				console.log ("idJugador "+numPlayer);
+        				
+//        				for (var a=0; a < regPlayerDetail; a++){
+//                        	console.log (a);   	                 	
+////                        	var playerDetailClubId = dataGamePlayer.poll['answers']['answer'][a][idEquipo];
+////    						console.log("registro "+a+" del club: "+playerDetailClubId);
+////    						var playerDetailPlayerId = dataGamePlayer.poll['answers']['answer'][a]['number'];
+////    						console.log("Player "+a+" del Jugador: "+playerDetailPlayerId);
+//    						if(playerDetailClubId )
+//    						
+//                        }
+        				
+        				if (i == 0){
         					console.log('es el primero');
         					maquetado += "<tr class='evaluation first_child'>";        					
         				}
         				else{
         					maquetado += "<tr class='evaluation'>";        					
-        				}         				
+        				}
+        				
         				maquetado += "<td>";
         				maquetado += "<div class='conteiner_two'>";
         				maquetado += "<div class='vote_block vote dotted-bottom'>";
         				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
-        				maquetado += "<div class='div'><p class='textcolor-title4'>6.2</p></div>";
+        				maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
         				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>7.5</p></div>";
-        				maquetado += "<div class='position'><p class='textcolor-title4'>" + posicion + "elantero </p></div>";
+        				maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
         				maquetado += "</div>";
         				maquetado += "<div class='calification  textcolor-title4'>";
         				maquetado += "<div><p>5</p></div>";
@@ -119,10 +174,158 @@
                         maquetado += "</tr>";                                				
         			}
                     
-                    maquetado += "</tbody></table>";
+                    maquetado += "</tbody></table></td>";
+                    
                     
                     //---------Equipo Visitante---------
+                    maquetado += "<td class='header_team_ext'>";
+                    maquetado += "<table class='head_table2'>";
+                    maquetado += "<tr>";
+                    maquetado += "<th><img alt='' src='" + logoVisitante + "'></th>";
+                    maquetado += "<th colspan='2'><p class='title_team textcolor-title1'>" + nombreVisit + "</p></th>";
+                    maquetado += "<th><p class='title_td textcolor-title4 dotted-right'>TD</p></th>";
+                    maquetado += "<th><p class='title_afision textcolor-title1'>Afici&oacuten</p></th>";
+                    maquetado += "</tr>";
+                    maquetado += "<tr><td colspan='6' class='day_relative2'><div class='jornada'><div class='wdg_lineup_012_dropdown drop2'><div class='wdg_lineup_012_dropdowncontent'><p>Jornada 16</p><span class='sprite dropdown-gray'></span></div><div class='wdg_lineup_012_listcontainer'><ul class='wdg_lineup_012_dropdownlist'><li><p>Jornada 1</p></li><li><p>Jornada 2</p></li><li><p>Jornada 3</p></li><li><p>Jornada 4</p></li><li><p>Jornada 5</p></li><li><p>Jornada 6</p></li><li><p>Jornada 7</p></li></ul> </div></div></div><div style='clear:both;'></div></td></tr>";
+                    maquetado += "</table>";
                     
+                    maquetado += "<table class='header_team_2'>";
+                    maquetado += "<thead><!-- Listbox --></thead>";
+                    maquetado += "<tbody>";
+                    for (var i=0; i < regVisit ; i++){          				    				
+        				nombreJugador = dataAlineacion[equipo[1]]['team'][i]['nickName'];	
+        				posicion = dataAlineacion[equipo[1]]['team'][i]['position'];        				
+        				textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
+        				console.log("Nueva posicion: " + textoPosicion);        			
+        				
+        				if (i == 0){
+        					console.log('es el primero');
+        					maquetado += "<tr class='evaluation first_child'>";        					
+        				}
+        				else{
+        					maquetado += "<tr class='evaluation'>";        					
+        				}         				
+        				maquetado += "<td>";
+        				maquetado += "<div class='conteiner_two'>";
+        				maquetado += "<div class='vote_block vote dotted-bottom'>";
+        				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+        				maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
+        				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>7.5</p></div>";
+        				maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='calification  textcolor-title4'>";
+        				maquetado += "<div><p>5</p></div>";
+        				maquetado += "<div><p>6</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+        				maquetado += "<div><p>8</p></div>";
+        				maquetado += "<div><p>9</p></div>";
+        				maquetado += "<div><p>10</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+        				maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+                        maquetado += "</div>";            
+                        maquetado += "</div>";        
+                        maquetado += "</td>";
+                        maquetado += "</tr>";                                				
+        			}	
+                    maquetado += "</tbody></table></td></tr>";
+                    
+                    // BANCA 
+                    // Local --
+                    maquetado += "<tr class='textcolor-title1'>";
+                    maquetado += "<td colspan='3' class='reserves'>Banca</td>";            
+                    maquetado += "</tr>";
+                    maquetado += "<tr>";
+                    maquetado += "<td class='header_team dotted-right'>";
+                    maquetado += "<table>";
+                    maquetado += "<tbody>";
+                    for (var i=0; i < regbancaLocal ; i++){  
+        				nombreJugador = dataAlineacion[equipo[0]]['substitutes'][i]['nickName'];	
+        				posicion = dataAlineacion[equipo[0]]['substitutes'][i]['position'];        				
+        				textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
+        				console.log("Nueva posicion: " + textoPosicion);        			
+        				        				
+        				if (i == 0){
+        					console.log('es el primero');
+        					maquetado += "<tr class='evaluation first_child'>";        					
+        				}
+        				else{
+        					maquetado += "<tr class='evaluation'>";        					
+        				} 
+        				
+        				maquetado += "<td>";
+        				maquetado += "<div class='conteiner_two'>";
+        				maquetado += "<div class='vote_block vote dotted-bottom'>";
+        				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+        				maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
+        				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>7.5</p></div>";
+        				maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='calification  textcolor-title4'>";
+        				maquetado += "<div><p>5</p></div>";
+        				maquetado += "<div><p>6</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+        				maquetado += "<div><p>8</p></div>";
+        				maquetado += "<div><p>9</p></div>";
+        				maquetado += "<div><p>10</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+        				maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+                        maquetado += "</div>";            
+                        maquetado += "</div>";        
+                        maquetado += "</td>";
+                        maquetado += "</tr>";                                				
+        			}
+                    
+                    maquetado += "</tbody></table></td>";
+                    
+                    //-- visitante
+                    maquetado += "<td class='header_team_2 header_team_ext2'><table class='rate_team_2'><tbody>";
+                    for (var i=0; i < regbancaVisit ; i++){          				        				
+        				nombreJugador = dataAlineacion[equipo[1]]['substitutes'][i]['nickName'];	
+        				posicion = dataAlineacion[equipo[1]]['substitutes'][i]['position'];        				
+        				textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
+        				console.log("Nueva posicion: " + textoPosicion);        			
+        				        				
+        				if (i == 0){
+        					console.log('es el primero');
+        					maquetado += "<tr class='evaluation first_child'>";        					
+        				}
+        				else{
+        					maquetado += "<tr class='evaluation'>";        					
+        				}
+        				
+        				maquetado += "<td>";
+        				maquetado += "<div class='conteiner_two'>";
+        				maquetado += "<div class='vote_block vote dotted-bottom'>";
+        				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+        				maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
+        				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>7.5</p></div>";
+        				maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='calification  textcolor-title4'>";
+        				maquetado += "<div><p>5</p></div>";
+        				maquetado += "<div><p>6</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+        				maquetado += "<div><p>8</p></div>";
+        				maquetado += "<div><p>9</p></div>";
+        				maquetado += "<div><p>10</p></div>";
+        				maquetado += "</div>";
+        				maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+        				maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+        				maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+                        maquetado += "</div>";            
+                        maquetado += "</div>";        
+                        maquetado += "</td>";
+                        maquetado += "</tr>";                                				
+        			}
+                    maquetado += "</tbody>";
+                    maquetado += "</table>";
            			maquetado += "</td></tr></table";            					
            			maquetado += "</div>";					
            			        		                                       
@@ -130,19 +333,33 @@
             		
             	},            	
             	
+            	//Obtener los Detalles de los jugadores
+            	getGamePlayerDetail: function(dataAlineacion,dataMatchHeader) {
+            		console.log("entra.....");
+            		
+            		$.ajax({
+        				url: 'jason.js', //wdg_mxm_rating.urlPLayerDetail,
+        				type: "GET",
+                        dataType: 'json',
+                        //jsonpCallback: 'mxmheader',
+                        cache: false,
+                        success:function(dataGamePlayer){          
+                        	console.log('...dataGamePlayer...');
+                        	wdg_mxm_rating.pintaInfo(dataAlineacion,dataMatchHeader,dataGamePlayer);                        	                       
+                        }
+            		});
+            	},
+            	
             	
             	//Obtiene el logotipo de los equipos y nombre
-        		getInfo: function(dataAlineacion){        		        			
-        			var equipoMatch = new Array();        			        		
+        		getInfo: function(dataAlineacion){        		        			        			      			        		
         			$.ajax({
         				url: wdg_mxm_rating.urlMatchHeader,
                         dataType: 'jsonp',
                         jsonpCallback: 'mxmheader',
                         cache: false,
                         success:function(dataMatchHeader){ 
-                        	
-                            wdg_mxm_rating.pintaInfo(dataAlineacion,dataMatchHeader);
-                        
+                        	wdg_mxm_rating.getGamePlayerDetail(dataAlineacion,dataMatchHeader)                        
                         }
                         		                        		           			        			
         			});        			        			        			        		
