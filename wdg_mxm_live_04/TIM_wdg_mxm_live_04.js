@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1.3
+ *   Version: 1.1.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -425,7 +425,6 @@
             }, // End timeUpdate()
             */
             updateMxm: function() {
-                console.log("funcion updateMxm");
                 var item = "",
                     icono = "";
                 $.ajax({
@@ -436,9 +435,11 @@
                     cache: false
                 })
                     .done(function(data) {
-                        var guuid = Math.floor((1 + Math.random()) * 0x10000).toString(16);
-                        var TotalItemNow = globalThis.find("#pintaAcciones").children('li').size();
-                        var totalitemNew = data.actionsMXM.length;
+                        var guuid = Math.floor((1 + Math.random()) * 0x10000).toString(16),
+                            TotalItemNow = 0,
+                            totalitemNew = 0;
+                        TotalItemNow = parseInt(globalThis.find("#pintaAcciones").children('li').length);
+                        totalitemNew = parseInt(data.actionsMXM.length);
                         //console.log(totalitemNew+">"+TotalItemNow);
                         if (totalitemNew > TotalItemNow) {
                             //actualizo
