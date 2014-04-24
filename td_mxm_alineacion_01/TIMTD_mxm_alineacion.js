@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 1.1.4
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.MxMAlineacionTD = function(options) {
@@ -12,6 +17,7 @@
         }, options);
 
         var GlobalThis = this;
+        var timerGlobal = null;
 
 
         var wdg_smex_strategy = {
@@ -25,6 +31,7 @@
             tagAlineacionList: $("#TIMAlineacionList"),
             tagAlineacionGoles: $("#TIMAlineacionGoles"),
             tagwdgPenales: $("#TIMWdgPenales"),
+            tmpescuchaListener: 0,
 
 
             PintaCacha: function(tipo) {
@@ -73,18 +80,22 @@
                     console.log("buscando etiqueta actualizable..")
                     var objTime = $("#timeUpdateMxM");
                     if (objTime.length) {
-                        console.log("ACTUALIZANDO CON ... " + objTime.text());
+                        console.log("Antes: " + wdg_smex_strategy.tmpescuchaListener);
+                        console.log("Ahora: " + objTime.text());
                         var timeAct = parseInt(objTime.text());
-                        clearInterval(wdg_smex_strategy.listener);
-                        if (timeAct > 0) {
-                            setInterval(function() {
+                        //clearInterval(wdg_smex_strategy.listener);
+                        if (timeAct > 0 && parseInt(objTime.text()) !== parseInt(wdg_smex_strategy.tmpescuchaListener)) {
+                            console.log("ACTUALIZANDO CON ... " + objTime.text());
+                            wdg_smex_strategy.tmpescuchaListener = parseInt(objTime.text());
+                            clearInterval(timerGlobal);
+                            timerGlobal = setInterval(function() {
                                 wdg_smex_strategy.updatePlayers();
                             }, timeAct);
                         }
 
 
                     }
-                }, 5000);
+                }, 60000);
 
 
             },
@@ -818,6 +829,7 @@
             */
 
             updatePlayers: function() {
+                console.log("method updatePlayers");
                 var itemActual, itemleft, itemtop, NuevosJugadores = "";
 
                 $.ajax({
