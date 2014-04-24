@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 1.1.3
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
 
@@ -9,11 +14,13 @@
         }, options);
 
         var globalThis = this;
+        var timerGlobal = null;
 
 
         var wdgLiveObj = {
             urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_mxm.js',
             callback: 'datamxmvivo',
+            tmpescuchaListener: 0,
             //urlfeedHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idjornada + '/' + settings.idmatch + '/match_header.js',
             //feedCallbackHeader: 'mxmheader',
 
@@ -32,18 +39,21 @@
                     console.log("buscando etiqueta actualizable..")
                     var objTime = $("#timeUpdateMxM");
                     if (objTime.length) {
-                        console.log("ACTUALIZANDO CON ... " + objTime.text());
+                        console.log("Antes: " + wdgLiveObj.tmpescuchaListener);
+                        console.log("Ahora: " + objTime.text());
                         var timeAct = parseInt(objTime.text());
-                        clearInterval(wdgLiveObj.listener);
-                        if (timeAct > 0) {
-                            setInterval(function() {
+                        if (timeAct > 0 && parseInt(objTime.text()) !== parseInt(wdgLiveObj.tmpescuchaListener)) {
+                            console.log("ACTUALIZANDO CON ... " + objTime.text());
+                            wdgLiveObj.tmpescuchaListener = parseInt(objTime.text());
+                            clearInterval(timerGlobal);
+                            timerGlobal = setInterval(function() {
                                 wdgLiveObj.updateMxm();
                             }, timeAct);
                         }
 
 
                     }
-                }, 5000);
+                }, 60000);
 
             },
 
@@ -415,6 +425,7 @@
             }, // End timeUpdate()
             */
             updateMxm: function() {
+                console.log("funcion updateMxm");
                 var item = "",
                     icono = "";
                 $.ajax({
