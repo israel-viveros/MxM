@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 1.1.8
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.wdg_avgfield = function(parametros) {
@@ -7,9 +12,11 @@
             'title': ''
         }, parametros);
         var globalThis = this;
+        var timerGlobal = null;
 
         var wdgavgfieldObj = {
             urlFinal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idMatch + '/match_summary.js',
+            tmpescuchaListener: 0,
             //urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idMatch + '/match_header.js',
 
             loadMaster: function() {
@@ -159,22 +166,27 @@
                     $(this).css("display", "block");
                 });
 
+
                 wdgavgfieldObj.listener = setInterval(function() {
                     console.log("buscando etiqueta actualizable..")
                     var objTime = $("#timeUpdateMxM");
                     if (objTime.length) {
-                        console.log("ACTUALIZANDO CON ... " + objTime.text());
+                        console.log("Antes: " + wdgavgfieldObj.tmpescuchaListener);
+                        console.log("Ahora: " + objTime.text());
                         var timeAct = parseInt(objTime.text());
-                        clearInterval(wdgavgfieldObj.listener);
-                        if (timeAct > 0) {
-                            setInterval(function() {
+                        //clearInterval(wdg_smex_strategy.listener);
+                        if (timeAct > 0 && parseInt(objTime.text()) !== parseInt(wdgavgfieldObj.tmpescuchaListener)) {
+                            console.log("ACTUALIZANDO CON ... " + objTime.text());
+                            wdgavgfieldObj.tmpescuchaListener = parseInt(objTime.text());
+                            clearInterval(timerGlobal);
+                            timerGlobal = setInterval(function() {
                                 wdgavgfieldObj.update();
                             }, timeAct);
                         }
 
 
                     }
-                }, 5000);
+                }, 6000);
                 //wdgavgfieldObj.header();
 
             }
