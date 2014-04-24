@@ -1364,14 +1364,27 @@
                     return acteaml;
                 }
 
+                var localportero = new Array(),
+                    localdefensas = new Array(),
+                    localmedios = new Array(),
+                    localdelanteros = new Array(),
+                    localotros = new Array(),
+                    visitportero = new Array(),
+                    visitdefensas = new Array(),
+                    visitmedios = new Array(),
+                    visitdelanteros = new Array(),
+                    visitotros = new Array(),
+                    positionPlayerM = "",
+                    localF = "",
+                    visitF = "";
 
                 for (var i = 0; i < data.lineupLocal.team.length; i++) {
-                    ActL = "";
+                    ActL = "", positionPlayerM = data.lineupLocal.team[i].position;
                     if (typeof(data.lineupLocal.team[i].actions) === "object") {
                         ActL = giveActions(data.lineupLocal.team[i].actions);
                     };
 
-                    local += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
+                    local = '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.team[i].idjugador + '">';
                     local += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.team[i].number + '</p></div>';
                     local += '<div class="dotted-left container_card">';
                     local += '<div class="player_name"><p>' + data.lineupLocal.team[i].nickName + '</p></div>';
@@ -1380,16 +1393,34 @@
                     local += '</div></div></div>';
 
 
+                    if (positionPlayerM === "GK") {
+                        localportero.push(local);
+                    } else if (positionPlayerM === "D") {
+                        localdefensas.push(local);
+                    } else if (positionPlayerM === "MF") {
+                        localmedios.push(local);
+                    } else if (positionPlayerM === "F") {
+                        localdelanteros.push(local);
+                    } else {
+                        localotros.push(local)
+                    }
+
+
+                };
+
+                var localGlobal = localportero.concat(localdefensas, localmedios, localdelanteros, localotros);
+                for (var m = 0; m < localGlobal.length; m++) {
+                    localF += localGlobal[m];
                 };
 
                 if (typeof(data.lineupLocal.coach) !== "undefined") {
-                    local += '<div class="player_td">';
-                    local += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
-                    local += '<div class="dotted-left container_card">';
-                    local += '<div class="player_name"><p>' + data.lineupLocal.coach.longName + '</p></div>';
-                    local += '<div class="players_icons">';
+                    localF += '<div class="player_td">';
+                    localF += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
+                    localF += '<div class="dotted-left container_card">';
+                    localF += '<div class="player_name"><p>' + data.lineupLocal.coach.longName + '</p></div>';
+                    localF += '<div class="players_icons">';
                     //local += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
-                    local += '</div></div></div>';
+                    localF += '</div></div></div>';
                 }
 
 
@@ -1400,22 +1431,38 @@
                     if (typeof(data.lineupVisit.team[j].actions) === "object") {
                         ActV = giveActions(data.lineupVisit.team[j].actions);
                     };
-                    visit += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
+
+                    visit = '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.team[j].idjugador + '">';
                     visit += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.team[j].number + '</p></div>';
                     visit += '<div class="dotted-left container_card">';
                     visit += '<div class="player_name"><p>' + data.lineupVisit.team[j].nickName + '</p></div>';
                     visit += '<div class="players_icons">';
                     visit += ActV;
                     visit += '</div></div></div>';
+                    if (positionPlayerM === "GK") {
+                        visitportero.push(visit);
+                    } else if (positionPlayerM === "D") {
+                        visitdefensas.push(visit);
+                    } else if (positionPlayerM === "MF") {
+                        visitmedios.push(visit);
+                    } else if (positionPlayerM === "F") {
+                        visitdelanteros.push(visit);
+                    } else {
+                        visitotros.push(visit)
+                    }
+                };
+                var visitGlobal = localportero.concat(localdefensas, localmedios, localdelanteros, localotros);
+                for (var w = 0; w < localGlobal.length; w++) {
+                    visitF += visitGlobal[w];
                 };
                 if (typeof(data.lineupVisit.coach) !== "undefined") {
-                    visit += '<div class="player_td">';
-                    visit += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
-                    visit += '<div class="dotted-left">';
-                    visit += '<div class="player_name"><p>' + data.lineupVisit.coach.longName + '</p></div>';
-                    visit += '<div class="players_icons">';
+                    visitF += '<div class="player_td">';
+                    visitF += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
+                    visitF += '<div class="dotted-left">';
+                    visitF += '<div class="player_name"><p>' + data.lineupVisit.coach.longName + '</p></div>';
+                    visitF += '<div class="players_icons">';
                     //visit += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
-                    visit += '</div></div></div>';
+                    visitF += '</div></div></div>';
                 }
 
 
@@ -1461,7 +1508,7 @@
                 maquetado += '<div class="team"><p>' + data.lineupLocal.name + '</p><p></p></div>';
                 maquetado += '</div>';
                 maquetado += '<div class="player_table dotted-right" id="jugadoreslocalTIM">';
-                maquetado += local;
+                maquetado += localF;
                 maquetado += '</div></div>';
                 maquetado += '<div class="second_team aling">';
                 maquetado += '<div class="title">';
@@ -1469,7 +1516,7 @@
                 maquetado += '<div class="team"><p>' + data.lineupVisit.name + '</p></div>';
                 maquetado += '</div>';
                 maquetado += '<div class="player_table" id="jugadoresvisitTIM">';
-                maquetado += visit;
+                maquetado += visitF;
                 maquetado += '</div></div>';
                 maquetado += '<div class="table_title"><p class="textcolor-title1">Banca</p></div>';
                 maquetado += '<div class="first_team ">';
