@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 1.2.8
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.wdgLineup = function(options) {
@@ -425,7 +430,7 @@
                             if (typeof data.lineupLocal.team[k].actions !== "undefined") {
                                 ActL = giveActions(data.lineupLocal.team[k].actions);
                             }
-                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>';
+                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>';
                         };
                         if (typeof data.lineupLocal.coach !== "undefined") {
                             tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
