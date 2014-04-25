@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1.4
+ *   Version: 1.2.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -179,6 +179,7 @@
                                 positionx = (isNaN(positionx)) ? 0 : positionx;
                                 positiony = (isNaN(positiony)) ? 0 : positiony;
 
+
                                 if (positionx <= 290 && positiony <= 140) arrow = 'grid1';
                                 else if (positionx <= 290 && positiony > 140) arrow = 'grid3';
                                 else if (positionx > 290 && positiony <= 140) arrow = 'grid2';
@@ -306,6 +307,7 @@
                                     '</span>' +
                                     '</a>' +
                                     '</span>';
+
 
                             };
                             el.find('span.players').html(miHTML).fadeIn('slow', function() {
@@ -439,14 +441,16 @@
                                                 ArregloHidden.push(data[equipoString].substitutes[d].actions[f].playeridchange);
 
 
-                                                var itemT = $("span[data-guid=" + data[equipoString].substitutes[d].actions[f].playeridchange + "]");
-                                                var nuevox = itemT.css("top");
-                                                var nuevoy = itemT.css("left");
+                                                //var itemT = $("span[data-guid=" + data[equipoString].substitutes[d].actions[f].playeridchange + "]");
+                                                // var nuevox = itemT.css("top");
+                                                //var nuevoy = itemT.css("left");
 
-                                                nuevox = (typeof nuevoy === "undefined") ? 0 : nuevox;
-                                                nuevoy = (typeof nuevoy === "undefined") ? 0 : nuevoy;
 
-                                                aliFinal += '<span data-guid="' + data[equipoString].substitutes[d].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + nuevoy + ';top:' + nuevox + '">' +
+                                                var nuevoy = data[equipoString].substitutes[d].posx;
+                                                var nuevox = data[equipoString].substitutes[d].posy;
+
+
+                                                aliFinal += '<span data-guid="' + data[equipoString].substitutes[d].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + nuevoy + 'px;top:' + nuevox + 'px">' +
                                                     '<a href="#" title="' + data[equipoString].substitutes[d].nickName + '">' +
                                                     '<span class="number textcolor-title2">' + data[equipoString].substitutes[d].number + '</span>' +
                                                     '<span class="tooltip">' +
@@ -481,6 +485,38 @@
 
 
                         };
+                        //corrigiendo ceros
+                        if (tipo !== "Alineacionfinal") {
+                            for (var r = 0; r < data.lineupVisit.substitutes.length; r++) {
+                                //console.log(typeof(data.lineupVisit.substitutes[r].actions))
+                                if (typeof(data.lineupVisit.substitutes[r].actions) === "object") {
+                                    for (var e = 0; e < data.lineupVisit.substitutes[r].actions.length; e++) {
+                                        //console.log(data.lineupVisit.substitutes[r])
+                                        if (data.lineupVisit.substitutes[r].actions[e].type === "entraAlJuego") {
+                                            $("span[data-guid=" + data.lineupVisit.substitutes[r].actions[e].playeridchange + "]").css({
+                                                'top': data.lineupVisit.substitutes[r].posy + 'px',
+                                                'left': data.lineupVisit.substitutes[r].posx + 'px'
+                                            });
+                                        }
+                                    };
+                                }
+                            };
+                            for (var r = 0; r < data.lineupLocal.substitutes.length; r++) {
+                                //console.log(typeof(data.lineupLocal.substitutes[r].actions))
+                                if (typeof(data.lineupLocal.substitutes[r].actions) === "object") {
+                                    for (var e = 0; e < data.lineupLocal.substitutes[r].actions.length; e++) {
+                                        //console.log(data.lineupLocal.substitutes[r])
+                                        if (data.lineupLocal.substitutes[r].actions[e].type === "entraAlJuego") {
+                                            $("span[data-guid=" + data.lineupLocal.substitutes[r].actions[e].playeridchange + "]").css({
+                                                'top': data.lineupLocal.substitutes[r].posy + 'px',
+                                                'left': data.lineupLocal.substitutes[r].posx + 'px'
+                                            });
+                                        }
+                                    };
+                                }
+                            };
+                        }
+                        //terminando correccion de ceros
 
                         if (setting.Promedio === true) {
                             wdg_smex_strategy.promedioCancha(promedio)
@@ -698,7 +734,7 @@
                                 break;
                             case 'final':
                                 $.when(wdg_smex_strategy.AlineacionFinal()).done(function() {
-                                    wdg_smex_strategy.updatePlayers();
+                                    //wdg_smex_strategy.updatePlayers();
                                 });
 
                                 break;
