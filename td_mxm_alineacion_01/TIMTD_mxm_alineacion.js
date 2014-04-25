@@ -1589,14 +1589,24 @@
                 //
                 //$(window).resize(function() {
                 if ($(window).width() >= 624) {
-                    $(".wdg_team_align_01 .second_team  .player_table").find(".player_td").each(function(index) {
+                    $("#jugadoresvisitTIM").find(".player_td").each(function(index) {
                         var contador = index + 1;
-                        if ($(this).height() > $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height()) {
-                            $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                        if ($(this).height() > $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height()) {
+                            $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height($(this).height())
                             $(this).height($(this).height())
                         } else {
-                            $(this).height($(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height())
-                            $(".wdg_team_align_01 .first_team .player_table").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                            $(this).height($("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height())
+                            $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                        }
+                    });
+                    $("#visitbandaTIM").find(".player_td").each(function(index) {
+                        var contador2 = index + 1;
+                        if ($(this).height() > $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height()) {
+                            $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height($(this).height())
+                            $(this).height($(this).height())
+                        } else {
+                            $(this).height($("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height())
+                            $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height($(this).height())
                         }
                     });
                 }
