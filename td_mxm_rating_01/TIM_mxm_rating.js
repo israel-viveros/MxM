@@ -20,7 +20,7 @@
         		
         		urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
         		urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
-        		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetail.js',        		
+        		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',        		
         		tagRating: $("#containerwdg_mxm_rating_01"),
         		        		
         		//Metodo para colocar la posicion del jugador
@@ -190,15 +190,9 @@
         				//--Pintar porcentaje
         				for (var b=0; b < regPlayerDetail; b++){         					
                         	var playerDetailClubIdVisit = dataGamePlayer.poll['answers']['answer'][b]['club'];    						
-    						var playerDetailPlayerIdVisit = dataGamePlayer.poll['answers']['answer'][b]['number'];
-    						console.log(idEquipoVisit);
-    						console.log(playerDetailClubIdVisit);
-    						console.log(numPlayerVisit);
-    						console.log(playerDetailPlayerIdVisit);
-    						if (idEquipoVisit == playerDetailClubIdVisit && numPlayerVisit == playerDetailPlayerIdVisit){
-    							console.log ('son iguales...');    				
-    							playerDetailPorcVisit = dataGamePlayer.poll['answers']['answer'][b]['percent'];
-    							console.log(playerDetailPorcVisit);
+    						var playerDetailPlayerIdVisit = dataGamePlayer.poll['answers']['answer'][b]['number'];    						
+    						if (idEquipoVisit == playerDetailClubIdVisit && numPlayerVisit == playerDetailPlayerIdVisit){    										
+    							playerDetailPorcVisit = dataGamePlayer.poll['answers']['answer'][b]['percent'];    						
     						}    						
                         }
         				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>"+playerDetailPorcVisit+"</p></div>";        				
@@ -320,10 +314,10 @@
             	//Obtener los Detalles de los jugadores
             	getGamePlayerDetail: function(dataAlineacion,dataMatchHeader) {            		
             		$.ajax({
-        				url: 'jason.js', //wdg_mxm_rating.urlPLayerDetail,
+        				url: wdg_mxm_rating.urlPLayerDetail,
         				type: "GET",
-                        dataType: 'json',
-                        //jsonpCallback: 'mxmheader',
+                        dataType: 'jsonp',
+                        jsonpCallback: 'gameplayerdetail',
                         cache: false,
                         success:function(dataGamePlayer){                                  	
                         	wdg_mxm_rating.pintaInfo(dataAlineacion,dataMatchHeader,dataGamePlayer);                        	                       
