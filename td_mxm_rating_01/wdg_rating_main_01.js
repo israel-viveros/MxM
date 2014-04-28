@@ -15,72 +15,116 @@
         		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
         		tagRatingMain: $("#containerwdg_rating_main_01"),
         		
+        		posicionTexto: function(posicion){        			
+        			var posicionTexto;        			
+        			switch (posicion){
+        				case "GK":
+        					posicionTexto = "Portero";
+        					break;        					
+	        			case "D":
+	        				posicionTexto = "Defensa";
+	        				break;	        				
+	        			case "MF":
+	        				posicionTexto = "Medio";
+	        				break;	        				
+	        			case "F":
+	        				posicionTexto = "Delantero";
+	        				break;
+	        				
+	        			default: 
+	        				posicionTexto = "<span style='display:block; height:10px; width:50px;'>";	        			
+        			}        			
+        			return posicionTexto;        			
+        		}, 
         		
         		pintaInfo: function(dataGamePlayer) {
         			alert ('entra a pintar Main');
         			var maquetado = "";
-        			var porcentaje = new Array();
-        			var photo = new Array();        			
-        			//console.log(dataGamePlayer);
-        			//console.log(objeto);
-        			var longitud = dataGamePlayer.poll['answers']['answer'].length;        			        		
-        			console.log(longitud);
-        			        			
-        			for(var i=0; i<longitud; i++){        		
-        				porcentaje[i] = parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']);        				
-        				photo[i] = dataGamePlayer.poll['answers']['answer'][i]['photo'];
-
-        				//        				var objeto2 = new Array();        			
-//        				objeto2[0]=dataGamePlayer.poll['answers']['answer'][i]['number'];        			
-//        				objeto2[1]=dataGamePlayer.poll['answers']['answer'][i]['photo'];
-//        				objeto2[2]=dataGamePlayer.poll['answers']['answer'][i]['percent'];
-//        				objeto2[3]=dataGamePlayer.poll['answers']['answer'][i]['name'];
-//        				
-//        				objeto[i]=objeto2;
-        				        				
-        			}
+        			var infoArray = new Array();        			        		       			        	
         			
+        			for(var i=0; i<dataGamePlayer.poll['answers']['answer'].length; i++){        		
+        				
+        				//Validamos si la foto viene vacia
+        				switch (i){
+        					case 0:
+        						if (dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null){        					                					
+                					var valorFoto = 'http://placehold.it/300x225';
+                				}else{
+                					var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];
+                				}
+        					case 1:
+        						if (dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null){
+        							var valorFoto = 'http://placehold.it/136x102';
+        						}else{
+        							var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];        							
+        						}        						
+        					case 2:
+        						if (dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null){
+        							var valorFoto = 'http://placehold.it/136x102';
+        						}else{
+        							var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];        							
+        						}        						
+        					default: 	 
+        						var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];
+        				}
+        				
+        				if ((dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null)){        					
+        					console.log('entra');
+        					var valorFoto = 'http://placehold.it/300x225';
+        				}
+        				
+        				dataGamePlayer.poll['answers']['answer'][i]['photo']
+        				infoArray.push({
+        					id:i,
+        					porcentaje:parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']),
+        					foto:valorFoto,
+        					nombre:dataGamePlayer.poll['answers']['answer'][i]['name'],
+        					posicion:wdg_rating_main_01.posicionTexto(dataGamePlayer.poll['answers']['answer'][i]['position']),
+        					club:dataGamePlayer.poll['answers']['answer'][i]['clubname']
+        				});        				
+        			}        			
         			
-        			porcentaje.sort(function(a,b){return b - a});
+        			infoArray.sort(function(a,b){
+        				return b.porcentaje - a.porcentaje;
+        			});
         			
-        			
-        			console.log(porcentaje);
+        			console.log(infoArray);        			
         			
            			maquetado += "<div class='wdg_rating_main_01'>";           			
 	           			maquetado += "<div class='wdg_rating_main_01_player'>";
 		           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
-		           			maquetado += "<p class='average textcolor-title4 dotted-right'>8.2</p>";
-		           			maquetado += "<p class='average_total textcolor-title1'>8.5</p>";
-		           			maquetado += "<img alt='' class='father' src='http://placehold.it/300x225'>";
-		           			maquetado += "<p class='name'>Jonathan Orozco</p>";
-		           			maquetado += "<p class='activity textcolor-title4'>Portero</p>"; 
-		           			maquetado += "<p class='activityn textcolor-title1'>Monterrey</p>";
+		           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
+		           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[0]['porcentaje']+"</p>";
+		           			maquetado += "<img alt='' class='father' src='"+infoArray[0]['foto']+"'>";
+		           			maquetado += "<p class='name'>Nombre "+ infoArray[0]['nombre']+"</p>";
+		           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[0]['posicion']+"</p>"; 
+		           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[0]['club']+"</p>";
 	           			maquetado += "</div>";           			
 	           			maquetado += "<div class='wdg_rating_main_01_players dotted-bottom'>";
-		           			maquetado += "<img alt='' src='http://placehold.it/136x102'>";
+		           			maquetado += "<img alt='' src='"+infoArray[1]['foto']+"'>";
 		           			maquetado += "<div class='player_data dotted-bottom'>";
 			           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
-			           			maquetado += "<p class='average textcolor-title4 dotted-right'>8.2</p>";
-			           			maquetado += "<p class='average_total textcolor-title1'>8.5</p>";
+			           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
+			           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[1]['porcentaje']+"</p>";
 			           		maquetado += "</div>";			           	
 		           			maquetado += "<div class='player_data2'>";
-			           			maquetado += "<p class='name'>Jonathan Orozco</p>";
-			           			maquetado += "<p class='activity textcolor-title4'>Portero</p>";
-			           			maquetado += "<p class='activityn textcolor-title1'>Monterrey</p>";
+			           			maquetado += "<p class='name'>Nombre "+ infoArray[1]['nombre']+"</p>";
+			           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[1]['posicion']+"</p>";
+			           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[1]['club']+"</p>";
 		           			maquetado += "</div>";
 	           			maquetado += "</div>";
 	           			maquetado += "<div class='separator'></div>";
 	           				maquetado += "<div class='wdg_rating_main_01_players'>";
-	           					maquetado += "<img alt='' src='http://placehold.it/136x102'>";
+	           					maquetado += "<img alt='' src='"+infoArray[2]['foto']+"'>";
 	           					maquetado += "<div class='player_data dotted-bottom'>";
 				           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
-				           			maquetado += "<p class='average textcolor-title4 dotted-right'>8.2</p>";
-				           			maquetado += "<p class='average_total textcolor-title1'>8.5</p>";
+				           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
+				           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[2]['porcentaje']+"</p>";
 				           		maquetado += "</div>";
 				           		maquetado += "<div class='player_data2'>";
-				           			maquetado += "<p class='name'>Jonathan Orozco</p>";
-				           			maquetado += "<p class='activity textcolor-title4'>Portero</p>";
-				           			maquetado += "<p class='activityn textcolor-title1'>Monterrey</p>";
+				           			maquetado += "<p class='name'> Nombre"+ infoArray[2]['nombre']+"</p>";
+				           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[2]['posicion']+"</p>";
+				           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[2]['club']+"</p>";
 				           		maquetado += "</div>";
 				           	maquetado += "</div>";
 				        maquetado += "</div>";
