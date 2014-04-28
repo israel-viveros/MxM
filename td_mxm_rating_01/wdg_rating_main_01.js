@@ -35,49 +35,17 @@
 	        				posicionTexto = "<span style='display:block; height:10px; width:50px;'>";	        			
         			}        			
         			return posicionTexto;        			
-        		}, 
+        		},        		        		
         		
-        		pintaInfo: function(dataGamePlayer) {
-        			alert ('entra a pintar Main');
+        		pintaInfo: function(dataGamePlayer) {        			
         			var maquetado = "";
         			var infoArray = new Array();        			        		       			        	
-        			
-        			for(var i=0; i<dataGamePlayer.poll['answers']['answer'].length; i++){        		
-        				
-        				//Validamos si la foto viene vacia
-        				switch (i){
-        					case 0:
-        						if (dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null){        					                					
-                					var valorFoto = 'http://placehold.it/300x225';
-                				}else{
-                					var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];
-                				}
-        					case 1:
-        						if (dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null){
-        							var valorFoto = 'http://placehold.it/136x102';
-        						}else{
-        							var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];        							
-        						}        						
-        					case 2:
-        						if (dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null){
-        							var valorFoto = 'http://placehold.it/136x102';
-        						}else{
-        							var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];        							
-        						}        						
-        					default: 	 
-        						var valorFoto = dataGamePlayer.poll['answers']['answer'][i]['photo'];
-        				}
-        				
-        				if ((dataGamePlayer.poll['answers']['answer'][i]['photo'] == '' || dataGamePlayer.poll['answers']['answer'][i]['photo'] == null)){        					
-        					console.log('entra');
-        					var valorFoto = 'http://placehold.it/300x225';
-        				}
-        				
-        				dataGamePlayer.poll['answers']['answer'][i]['photo']
+       
+        			for(var i=0; i<dataGamePlayer.poll['answers']['answer'].length; i++){        		        				        				     		
         				infoArray.push({
         					id:i,
         					porcentaje:parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']),
-        					foto:valorFoto,
+        					foto:dataGamePlayer.poll['answers']['answer'][i]['photo'],
         					nombre:dataGamePlayer.poll['answers']['answer'][i]['name'],
         					posicion:wdg_rating_main_01.posicionTexto(dataGamePlayer.poll['answers']['answer'][i]['position']),
         					club:dataGamePlayer.poll['answers']['answer'][i]['clubname']
@@ -86,22 +54,40 @@
         			
         			infoArray.sort(function(a,b){
         				return b.porcentaje - a.porcentaje;
-        			});
+        			});        			        			     		
         			
-        			console.log(infoArray);        			
-        			
+        			//Validar que el campo de la foto no este vacio...
+					if (infoArray[0]['foto'] == '' || infoArray[0]['foto'] == null){
+						console.log('entra 0');
+        				var valorFoto0 = 'http://placehold.it/300x225';
+        			}else{
+        				var valorFoto0 = infoArray[0]['foto'];
+        			}
+					if (infoArray[1]['foto'] == '' || infoArray[1]['foto'] == null){
+						console.log('entra 1');
+        				var valorFoto1 = 'http://placehold.it/300x225';
+        			}else{
+        				var valorFoto1 = infoArray[1]['foto'];
+        			}
+					if (infoArray[2]['foto'] == '' || infoArray[2]['foto'] == null){
+						console.log('entra 2');
+        				var valorFoto2 = 'http://placehold.it/300x225';
+        			}else{
+        				var valorFoto2 = infoArray[2]['foto'];
+        			}
+										
            			maquetado += "<div class='wdg_rating_main_01'>";           			
 	           			maquetado += "<div class='wdg_rating_main_01_player'>";
 		           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
 		           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
 		           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[0]['porcentaje']+"</p>";
-		           			maquetado += "<img alt='' class='father' src='"+infoArray[0]['foto']+"'>";
+		           			maquetado += "<img alt='' class='father' src='"+valorFoto0+"'>";
 		           			maquetado += "<p class='name'>Nombre "+ infoArray[0]['nombre']+"</p>";
 		           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[0]['posicion']+"</p>"; 
 		           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[0]['club']+"</p>";
 	           			maquetado += "</div>";           			
 	           			maquetado += "<div class='wdg_rating_main_01_players dotted-bottom'>";
-		           			maquetado += "<img alt='' src='"+infoArray[1]['foto']+"'>";
+		           			maquetado += "<img alt='' src='"+valorFoto1+"'>";
 		           			maquetado += "<div class='player_data dotted-bottom'>";
 			           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
 			           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
@@ -115,7 +101,7 @@
 	           			maquetado += "</div>";
 	           			maquetado += "<div class='separator'></div>";
 	           				maquetado += "<div class='wdg_rating_main_01_players'>";
-	           					maquetado += "<img alt='' src='"+infoArray[2]['foto']+"'>";
+	           					maquetado += "<img alt='' src='"+valorFoto2+"'>";
 	           					maquetado += "<div class='player_data dotted-bottom'>";
 				           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
 				           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
