@@ -41,10 +41,12 @@
         			var maquetado = "";
         			var infoArray = new Array();        			        		       			        	
        
-        			for(var i=0; i<dataGamePlayer.poll['answers']['answer'].length; i++){        		        				        				     		
+        			for(var i=0; i<dataGamePlayer.poll['answers']['answer'].length; i++){        				
+        				var porc = parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']);        				
+        				
         				infoArray.push({
         					id:i,
-        					porcentaje:parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']),
+        					porcentaje:parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']).toFixed(1),
         					foto:dataGamePlayer.poll['answers']['answer'][i]['photo'],
         					nombre:dataGamePlayer.poll['answers']['answer'][i]['name'],
         					posicion:wdg_rating_main_01.posicionTexto(dataGamePlayer.poll['answers']['answer'][i]['position']),
