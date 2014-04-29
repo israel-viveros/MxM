@@ -19,6 +19,7 @@
   
         var wdg_mxm_rating = { 
         		urlfeedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
+        		urlfeedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
         		urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
         		urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
         		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',        		
@@ -328,6 +329,9 @@
             		
             		(setting.idEquipo !== 0) ? wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropLocal, TIMPALocal) : '';
             		
+            		(setting.idEquipo2 !== 0) ? setTimeout(function() {
+            			wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropVisit, TIMPAVisit)
+                    }, 1500) : '';
             		
             	},
             	
@@ -335,7 +339,7 @@
                      $.ajax({
                          url: feed,
                          type: 'GET ',
-                         dataType: 'jsonp ',                         
+                         dataType: 'jsonp',                         
                          jsonpCallback: 'effectivenessByTeam'
                      })
                          .done(function(data) {
@@ -411,6 +415,10 @@
                         }
             		});        			        			        			                	        	        		
         		},
+//        		
+//        		loadDatacomplete: function(idMatch, tipo) {
+//        			
+//        		},
         		
         		
         		//FUNCIONES NA-AT-------------------------------------------
@@ -423,8 +431,7 @@
                     });
                     // TODO: refactor for a better approach
                     var $parent = $('.wdg_mxm_rating_01 table');                    	
-                    var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');
-                    console.log($dropdownAnchor);
+                    var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');                    
                     var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
                     var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
                     var $listItems = $('.wdg_lineup_01_dropdownlist')
@@ -453,7 +460,7 @@
 
                         lisItemsChild.find("p").unbind('click').click(function(event) {
                             var idM = $(this).data("matchid");
-                            wdgLineUpOb.loadDatacomplete(idM, 'drop');
+                            //wdg_mxm_rating.loadDatacomplete(idM, 'drop');
                             $("#nameJALocal").text($(this).text());
                         });
                     });
@@ -483,6 +490,7 @@
                     $('.wdg_lineup_012_dropdowncontent p').html($firstItem2.find('p').html());
                     $dropdownAnchor2.bind('click', function(evt) {
                         console.log("DROP 2");
+                        evt.preventDefault();
                         var visibilidad = $(this).children('.wdg_lineup_012_listcontainer').children().css('visibility');
                         var lisItemsChild = $(this).children('.wdg_lineup_012_listcontainer').children();
                         if (visibilidad == 'hidden') {
@@ -502,7 +510,7 @@
                         }
                         lisItemsChild.find("p").unbind('click').click(function(event) {
                             var idM = $(this).data("matchid");
-                            wdgLineUpOb.loadDatacomplete(idM, 'drop');
+                            //wdg_mxm_rating.loadDatacomplete(idM, 'drop');
                             var valorn = String($(this).text());
                             $("#nameJAVisit").text(valorn);
                         });
@@ -525,11 +533,8 @@
                         $('.wdg_lineup_012_dropdowncontent p').html($(this).find('p').html());
                     });
 
-
                 }
-        		
-  	
-        		
+        		        		
         }
         
         wdg_mxm_rating.loadAlineacion(true);
