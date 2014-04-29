@@ -128,7 +128,7 @@
                         	var playerDetailClubId = dataGamePlayer.poll['answers']['answer'][a]['club'];    						
     						var playerDetailPlayerId = dataGamePlayer.poll['answers']['answer'][a]['number'];    						    						    					
     						if (idEquipo == playerDetailClubId && numPlayer == playerDetailPlayerId ){    							    							
-    							playerDetailPorcentaje = dataGamePlayer.poll['answers']['answer'][a]['percent'];    							
+    							playerDetailPorcentaje = parseFloat(dataGamePlayer.poll['answers']['answer'][a]['percent']).toFixed(1);    							
     						}    						
                         }
         				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>"+playerDetailPorcentaje+"</p></div>";        			
@@ -209,7 +209,7 @@
                         	var playerDetailClubIdVisit = dataGamePlayer.poll['answers']['answer'][b]['club'];    						
     						var playerDetailPlayerIdVisit = dataGamePlayer.poll['answers']['answer'][b]['number'];    						
     						if (idEquipoVisit == playerDetailClubIdVisit && numPlayerVisit == playerDetailPlayerIdVisit){    										
-    							playerDetailPorcVisit = dataGamePlayer.poll['answers']['answer'][b]['percent'];    						
+    							playerDetailPorcVisit = parseFloat(dataGamePlayer.poll['answers']['answer'][b]['percent']).toFixed(1);    						
     						}    						
                         }
         				maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>"+playerDetailPorcVisit+"</p></div>";        				
@@ -330,7 +330,7 @@
             		(setting.idEquipo !== 0) ? wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropLocal, TIMPALocal) : '';
             		
             		(setting.idEquipo2 !== 0) ? setTimeout(function() {
-            			wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropVisit, TIMPAVisit)
+            			wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropVisit, TIMPAVisit);
                     }, 1500) : '';
             		
             	},
@@ -460,7 +460,7 @@
 
                         lisItemsChild.find("p").unbind('click').click(function(event) {
                             var idM = $(this).data("matchid");
-                            //wdg_mxm_rating.loadDatacomplete(idM, 'drop');
+                            //wdg_mxm_rating.loadDatacomplete(idM, 'drop');                            
                             $("#nameJALocal").text($(this).text());
                         });
                     });
@@ -486,8 +486,10 @@
                     var $dropdownAnchor2 = $parent2.find('.wdg_lineup_012_dropdown');
                     var $firstItem2 = $('.wdg_lineup_012_dropdowncontent li:first-child');
                     var $dropdownItems2 = $parent2.find('.wdg_lineup_012_dropdownlist li');
-                    var $listItems2 = $('.wdg_lineup_012_dropdownlist')
+                    var $listItems2 = $('.wdg_lineup_012_dropdownlist');
+                    
                     $('.wdg_lineup_012_dropdowncontent p').html($firstItem2.find('p').html());
+                    
                     $dropdownAnchor2.bind('click', function(evt) {
                         console.log("DROP 2");
                         evt.preventDefault();
@@ -510,8 +512,9 @@
                         }
                         lisItemsChild.find("p").unbind('click').click(function(event) {
                             var idM = $(this).data("matchid");
+                            console.log($(this).data("matchid"));
                             //wdg_mxm_rating.loadDatacomplete(idM, 'drop');
-                            var valorn = String($(this).text());
+                            var valorn = String($(this).text());                           
                             $("#nameJAVisit").text(valorn);
                         });
                     });
@@ -532,6 +535,56 @@
                         evt.preventDefault();
                         $('.wdg_lineup_012_dropdowncontent p').html($(this).find('p').html());
                     });
+                    
+                    
+                    //-- MOSTRAR VOTACION
+                    //----
+                    if($(window).width()<948){
+                    	$('.wdg_rate_player_01 .vote_block').on('touchstart',function(event){
+                    		$(this).next('div').toggle();
+                    		event.preventDefault(event);
+                    	});
+                    }  
+                    
+                    $('.wdg_rate_player_01 .vote_block').click(function(){                
+                		$(this).next('div').show();
+                		$(this).next().find('div').css('border-top','0');
+                		$(".participated").delay(5000).fadeOut('slow');                		                	
+                	});
+
+                    $('.wdg_rate_player_01 .calification div').mouseenter(function() {
+                		$(this).children('p').removeClass();
+                		$(this).children('p').addClass('textcolor-title1');
+                	}).mouseleave(function() {
+                		$(this).children('p').removeClass();
+                		$(this).children('p').addClass('textcolor-title4');
+                	});
+                    
+                    
+                    $('.wdg_rate_player_01 .calification div').on('click',function(){
+                		console.log( $(this).next());                        
+                        $(this).parents('.calification').prev('.calification').remove();                        
+                        $(this).parents('.calification').next('.participated').find('div').css('border-bottom','1px solid #ccc');                        
+                        $(this).parents('.calification').next().show();
+                        $(this).parents('.calification').remove();
+                        $('.wdg_rate_player_01 .last_child div').css('border-bottom','0');
+                        $(".participated").delay(5000).fadeOut('slow'); 
+                	});
+                	
+                	$(".wdg_rate_player_01 .conteiner_two").mouseleave(function(){
+                		$('.wdg_rate_player_01 .calification').hide();
+                	});
+                	
+                	/*Salgo del div calificaciones */
+                	$('.wdg_rate_player_01 .calification').mouseleave(function() {
+                		$(this).hide();
+                		$(this).prev('tr').prev('.vote').show();
+                		$(this).prev('tr').show();                		
+                	});
+                	
+                	
+                	
+
 
                 }
         		        		
