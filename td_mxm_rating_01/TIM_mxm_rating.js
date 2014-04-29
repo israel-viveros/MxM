@@ -3,25 +3,26 @@
 (function() {	
 	//-----------------------------------------------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------------------------------------------------------
-   
-        
+           
 	var resultadoGlobal;
 	
     $.fn.MxMRating = function(options) {    	
     	var setting = $.extend({        	
             'idTorneo': 0,
-            'idEvento': 0
-    
+            'idEvento': 0,
+            'idEquipo': 0,
+            'idEquipo2': 0,
+            'title': ''
         }, options);
-    	    	    
+    	console.log ("idTorneo:"+setting.idTorneo+" idEvento:"+setting.idEvento+" idEquipo:"+setting.idEquipo+" idEquipo2:"+setting.idEquipo2+" title:"+setting.title);    	    
     	var GlobalThis = this;    	
   
-        var wdg_mxm_rating = {
-        		
+        var wdg_mxm_rating = { 
+        		urlfeedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
         		urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
         		urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
         		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',        		
-        		tagRating: $("#containerwdg_mxm_rating_01"),
+        		tagRating: $("#containerwdg_mxm_rating_01"),        		
         		        		
         		//Metodo para colocar la posicion del jugador
         		posicionTexto: function(posicion){        			
@@ -46,8 +47,7 @@
         			return posicionTexto;        			
         		}, 
         		      		        		
-        		pintaInfo: function(dataAlineacion,dataMatchHeader,dataGamePlayer) {
-        			alert ('entra a pintar');        			
+        		pintaInfo: function(dataAlineacion,dataMatchHeader,dataGamePlayer) {        			       			
         			var equipo = new Array();
         			var equipoMatch = new Array();
         			var textoPosicion;
@@ -82,26 +82,24 @@
            			maquetado += "</tr>";
            			maquetado += "<tr class='dotted-right'>";
            			maquetado += "<th colspan='6' class='day_relative'>";
-			        maquetado += "<div class='jornada'>";
-					maquetado += "<div class='wdg_lineup_01_dropdown drop1'>";
-					maquetado += "<div class='wdg_lineup_01_dropdowncontent'>";
-					maquetado += "<p>Jornada 16</p>";
-					maquetado += "<span class='sprite dropdown-gray'></span>";
-					maquetado += "</div>";
-					maquetado += "<div class='wdg_lineup_01_listcontainer'>";
-					maquetado += "<ul class='wdg_lineup_01_dropdownlist'>";
-					maquetado += "<li><p>Jornada 1</p></li>";
-					maquetado += "<li><p>Jornada 2</p></li>";
-					maquetado += "<li><p>Jornada 3</p></li>";
-					maquetado += "<li><p>Jornada 4</p></li>";
-					maquetado += "<li><p>Jornada 5</p></li>";
-					maquetado += "<li><p>Jornada 6</p></li>";
-					maquetado += "<li><p>Jornada 7</p></li>";
-					maquetado += "</ul>";  
-					maquetado += "</div>";
-					maquetado += "</div>";
-					maquetado += "</div>";
-					maquetado += "<div style='clear:both;'></div>";
+           			
+           			//Drop Equipo Local
+           			maquetado += '<div class="jornada" style="z-index: 910;">';
+                      maquetado += '<div class="wdg_lineup_01_dropdown drop1" style="z-index: 900;">';
+                         maquetado += '<div class="wdg_lineup_01_dropdowncontent" style="z-index: 890;">';
+                          maquetado += '<p id="nameJALocal"></p>';
+                         maquetado += '<span class="sprite dropdown-gray"></span></div>';
+                          
+                          maquetado += '<div class="wdg_lineup_01_listcontainer" style="z-index: 880;">';
+                            maquetado += '<ul class="wdg_lineup_01_dropdownlist" id="TIMPALocal"></ul>  ';
+                          maquetado += '</div>';
+                         
+                       maquetado += '</div>';
+                    maquetado += '</div>';
+                    
+                    maquetado += '<div style="clear: both; z-index: 870;"></div>';
+           			//....
+                    
                     maquetado += "</th></tr>";                    
            			maquetado += "</table>";
            			maquetado += "<table class='dotted-right'>";
@@ -163,7 +161,25 @@
                     maquetado += "<th><p class='title_td textcolor-title4 dotted-right'>TD</p></th>";
                     maquetado += "<th><p class='title_afision textcolor-title1'>Afici&oacuten</p></th>";
                     maquetado += "</tr>";
-                    maquetado += "<tr><td colspan='6' class='day_relative2'><div class='jornada'><div class='wdg_lineup_012_dropdown drop2'><div class='wdg_lineup_012_dropdowncontent'><p>Jornada 16</p><span class='sprite dropdown-gray'></span></div><div class='wdg_lineup_012_listcontainer'><ul class='wdg_lineup_012_dropdownlist'><li><p>Jornada 1</p></li><li><p>Jornada 2</p></li><li><p>Jornada 3</p></li><li><p>Jornada 4</p></li><li><p>Jornada 5</p></li><li><p>Jornada 6</p></li><li><p>Jornada 7</p></li></ul> </div></div></div><div style='clear:both;'></div></td></tr>";
+                    maquetado += "<tr>";
+                    maquetado += "<td colspan='6' class='day_relative2'>";
+                    
+                    //Drop Equipo Visitante...
+           			maquetado += '<div class="jornada" style="z-index: -1160;">';           			
+           			maquetado += '<div class="wdg_lineup_012_dropdown drop2" style="z-index: 800;">'; 
+           			maquetado += '<div class="wdg_lineup_012_dropdowncontent" style="z-index: 790;">';
+                    maquetado += '<p id="nameJAVisit"></p>';
+                    maquetado += '<span class="sprite dropdown-gray"></span>';
+                    maquetado += '</div>';                      
+                    maquetado += '<div class="wdg_lineup_012_listcontainer" style="z-index: 780;">';
+                    maquetado += '<ul class="wdg_lineup_012_dropdownlist" id="TIMPAVisit"></ul>  ';
+                    maquetado += '</div>';                       
+                    maquetado += '</div>'
+                    maquetado += '</div>';                      
+                    maquetado += '<div style="clear: both; z-index: 770;"></div>';
+                                      
+                    maquetado += "</td>";
+                    maquetado += "</tr>";                                                                              
                     maquetado += "</table>";
                     
                     maquetado += "<table class='header_team_2'>";
@@ -309,7 +325,50 @@
            			        		                                       
             		wdg_mxm_rating.tagRating.html(maquetado);
             		
-            	},            	
+            		
+            		(setting.idEquipo !== 0) ? wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropLocal, TIMPALocal) : '';
+            		
+            		
+            	},
+            	
+            	 loadDrops: function(feed, ID) {
+                     $.ajax({
+                         url: feed,
+                         type: 'GET ',
+                         dataType: 'jsonp ',                         
+                         jsonpCallback: 'effectivenessByTeam'
+                     })
+                         .done(function(data) {
+                             var tmp = "";                             
+                             for (var i = 0; i < data.efectividad.length; i++) {                            	 
+                                 tmp += '<li><p data-matchid="' + data.efectividad[i].matchid + '">' + data.efectividad[i].weekName + '</p></li>';
+                             };
+
+                             $(ID).html(tmp);
+
+                         })
+                         .fail(function() {
+                             console.log("error");
+                         })
+
+                     var validaDrops = window.setInterval(function() {
+                         $("#TIMPALocal").data("status", "chequed");
+                         if ($("#TIMPALocal").children('li').size() === 0) {
+                             $(".wdg_lineup_01_dropdown.drop1").unbind().css("cursor", "auto").find('span.sprite').removeClass('sprite');
+                         }
+                         if ($("#TIMPAVisit").children('li').size() === 0) {
+                             $(".wdg_lineup_012_dropdown.drop2").unbind().css("cursor", "auto").find('span.sprite').removeClass('sprite');
+                         }
+                         if ($("#TIMPALocal").data("status") === "chequed") {
+                             window.clearInterval(validaDrops);
+                         }
+
+                     }, 5000);
+
+
+
+                 },
+            	
             	
             	//Obtener los Detalles de los jugadores
             	getGamePlayerDetail: function(dataAlineacion,dataMatchHeader) {            		
@@ -351,10 +410,130 @@
                         	wdg_mxm_rating.getInfo(dataAlineacion);                			
                         }
             		});        			        			        			                	        	        		
-        		}
+        		},
+        		
+        		
+        		//FUNCIONES NA-AT-------------------------------------------
+        		funcionesNaat: function() {
+        			alert ('hola Na-at');
+                    var zIndexNumber = 1000;
+                    $('.wdg_mxm_rating_01 div').each(function() {
+                        $(this).css('zIndex', zIndexNumber);
+                        zIndexNumber -= 10;
+                    });
+                    // TODO: refactor for a better approach
+                    var $parent = $('.wdg_mxm_rating_01 table');                    	
+                    var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');
+                    console.log($dropdownAnchor);
+                    var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
+                    var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
+                    var $listItems = $('.wdg_lineup_01_dropdownlist')
+                    $('.wdg_lineup_01_dropdowncontent p').html($firstItem.find('p').html());
+                    	                    
+                    $dropdownAnchor.bind('click', function(evt) {
+                        console.log("DROP 1");
+                        evt.preventDefault();                        
+                        var lisItemsChild = $(this).children('.wdg_lineup_01_listcontainer').children('.wdg_lineup_01_dropdownlist:first-child');
+                        var visibilidad = lisItemsChild.css('visibility');
+                        visibilidadChild = $(this).children($listItems);
+                        if (visibilidad == 'hidden') {
+                            lisItemsChild.css({
+                                visibility: 'visible',
+                                height: '176px',
+                                'overflow-y': 'scroll',
+                                'overflow-x': 'hidden'
+                            });
+
+                        } else {
+                            lisItemsChild.css({
+                                visibility: 'hidden',
+                                height: '0px'
+                            });
+                        }
+
+                        lisItemsChild.find("p").unbind('click').click(function(event) {
+                            var idM = $(this).data("matchid");
+                            wdgLineUpOb.loadDatacomplete(idM, 'drop');
+                            $("#nameJALocal").text($(this).text());
+                        });
+                    });
+
+                    $dropdownAnchor.bind('mouseleave', function(evt) {
+                        evt.preventDefault();
+                        var $listItems = $(this).find('.wdg_lineup_01_dropdownlist');
+                        var visibilidad = $listItems.css('visibility');
+                        if (visibilidad == 'visible') {
+                            $listItems.css({
+                                visibility: 'hidden',
+                                height: '0px'
+                            });
+                        }
+                    });
+
+
+                    $dropdownItems.bind('click', function(evt) {
+                        $('.wdg_lineup_01_dropdowncontent p').html($(this).find('p').html());
+                    });
+                    // TODO: refactor for a better approach                    
+                    var $parent2 = $('.wdg_mxm_rating_01 table');
+                    var $dropdownAnchor2 = $parent2.find('.wdg_lineup_012_dropdown');
+                    var $firstItem2 = $('.wdg_lineup_012_dropdowncontent li:first-child');
+                    var $dropdownItems2 = $parent2.find('.wdg_lineup_012_dropdownlist li');
+                    var $listItems2 = $('.wdg_lineup_012_dropdownlist')
+                    $('.wdg_lineup_012_dropdowncontent p').html($firstItem2.find('p').html());
+                    $dropdownAnchor2.bind('click', function(evt) {
+                        console.log("DROP 2");
+                        var visibilidad = $(this).children('.wdg_lineup_012_listcontainer').children().css('visibility');
+                        var lisItemsChild = $(this).children('.wdg_lineup_012_listcontainer').children();
+                        if (visibilidad == 'hidden') {
+                            lisItemsChild.css({
+                                visibility: 'visible',
+                                height: '176px',
+                                'overflow-y': 'scroll',
+                                'overflow-x': 'hidden'
+                            });
+
+                        } else {
+
+                            lisItemsChild.css({
+                                visibility: 'hidden',
+                                height: '0px'
+                            });
+                        }
+                        lisItemsChild.find("p").unbind('click').click(function(event) {
+                            var idM = $(this).data("matchid");
+                            wdgLineUpOb.loadDatacomplete(idM, 'drop');
+                            var valorn = String($(this).text());
+                            $("#nameJAVisit").text(valorn);
+                        });
+                    });
+
+                    $dropdownAnchor2.bind('mouseleave', function(evt) {
+                        evt.preventDefault();
+                        var $listItems = $(this).find('.wdg_lineup_012_dropdownlist');
+                        var visibilidad = $listItems.css('visibility');
+                        if (visibilidad == 'visible') {
+                            $listItems.css({
+                                visibility: 'hidden',
+                                height: '0px'
+                            });
+                        }
+                    });
+
+                    $dropdownItems2.bind('click', function(evt) {
+                        evt.preventDefault();
+                        $('.wdg_lineup_012_dropdowncontent p').html($(this).find('p').html());
+                    });
+
+
+                }
+        		
+  	
+        		
         }
         
         wdg_mxm_rating.loadAlineacion(true);
+        wdg_mxm_rating.funcionesNaat();
  
 	
     };
