@@ -63,7 +63,7 @@
                     cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
                     cuerpoHTML += '<li class="selected">';
                     cuerpoHTML += '<a href="">';
-                    cuerpoHTML += '<p>Fútbol</p>';
+                    cuerpoHTML += '<p>F\u00FAtbol</p>';
                     cuerpoHTML += '</a> ';
                     cuerpoHTML += '</li>';
                     cuerpoHTML += '</ul>';
@@ -156,7 +156,6 @@
 
 
             LoadFirst: function(urlData, tipo) {
-                //console.log("function LoadFirst");
                 $.ajax({
                     url: urlData,
                     type: 'GET',
@@ -275,7 +274,7 @@
                     }
                 };
 
-                (contenido.length <= 4) ? ($(".wdg_matchesresult_hide, .wdg_matchesresult_show").hide()) : '';
+                (contenido.length <= 4 && tipo === "only") ? ($(".wdg_matchesresult_hide, .wdg_matchesresult_show").hide()) : '';
 
 
                 objMasc = $("#listNow");
@@ -643,7 +642,7 @@ jQuery(function($) {
                     $x.find('ul').width(800);
                     if (visShow == 'hidden') {
                         $('.wdg_matchesresult_01').animate({
-                            'height': 665
+                            'height': 675
                         }, 0);
                     }
                 }
@@ -1011,7 +1010,7 @@ jQuery(function($) {
             if (numeroItems <= 4) {
                 heightModulo = 221;
                 if (listaItems > 11) {
-                    heightModulo = 665
+                    heightModulo = 675
                 } else if (listaItems <= 11 && listaItems >= 8) {
                     heightModulo = 515
                 } else if (listaItems < 8 && listaItems >= 1) {
@@ -1020,17 +1019,17 @@ jQuery(function($) {
             } else if (numeroItems > 4 && numeroItems <= 8) {
                 heightModulo = 366;
                 if (listaItems > 11) {
-                    heightModulo = 665
+                    heightModulo = 675
                 } else if (listaItems <= 11 && listaItems >= 8) {
                     heightModulo = 515
                 }
             } else if (numeroItems > 8 && numeroItems <= 12) {
                 heightModulo = 515;
                 if (listaItems > 11) {
-                    heightModulo = 665
+                    heightModulo = 675
                 }
             } else if (numeroItems > 12) {
-                heightModulo = 665;
+                heightModulo = 675;
             }
             //	}// tema mundial
 
