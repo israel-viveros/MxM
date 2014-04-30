@@ -11,7 +11,7 @@
     	var GlobalThis = this;    	
   
         var wdg_rating_main_01 = {
-        
+        		//http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/25016/gameplayerdetailjsonp.js        		
         		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
         		tagRatingMain: $("#containerwdg_rating_main_01"),
         		
@@ -47,8 +47,8 @@
         				infoArray.push({
         					id:i,
         					porcentaje:parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']).toFixed(1),
-        					foto:dataGamePlayer.poll['answers']['answer'][i]['photo'],
-        					nombre:dataGamePlayer.poll['answers']['answer'][i]['name'],
+        					foto:dataGamePlayer.poll['answers']['answer'][i]['photoRaiting'],
+        					nombre:dataGamePlayer.poll['answers']['answer'][i]['namePlayer'],
         					posicion:wdg_rating_main_01.posicionTexto(dataGamePlayer.poll['answers']['answer'][i]['position']),
         					club:dataGamePlayer.poll['answers']['answer'][i]['clubname']
         				});        				
@@ -83,13 +83,13 @@
 		           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
 		           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
 		           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[0]['porcentaje']+"</p>";
-		           			maquetado += "<img alt='' class='father' src='"+valorFoto0+"'>";
+		           			maquetado += "<img alt='' class='father' src='"+valorFoto0+"' width='300' height='225'>";
 		           			maquetado += "<p class='name'>Nombre "+ infoArray[0]['nombre']+"</p>";
 		           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[0]['posicion']+"</p>"; 
 		           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[0]['club']+"</p>";
 	           			maquetado += "</div>";           			
 	           			maquetado += "<div class='wdg_rating_main_01_players dotted-bottom'>";
-		           			maquetado += "<img alt='' src='"+valorFoto1+"'>";
+		           			maquetado += "<img alt='' src='"+valorFoto1+"' width='136' height='102'>";
 		           			maquetado += "<div class='player_data dotted-bottom'>";
 			           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
 			           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
@@ -101,9 +101,9 @@
 			           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[1]['club']+"</p>";
 		           			maquetado += "</div>";
 	           			maquetado += "</div>";
-	           			maquetado += "<div class='separator'></div>";
+	           			maquetado += "<div class='separator'></div>";	
 	           				maquetado += "<div class='wdg_rating_main_01_players'>";
-	           					maquetado += "<img alt='' src='"+valorFoto2+"'>";
+	           					maquetado += "<img alt='' src='"+valorFoto2+"' width='136' height='102'>";
 	           					maquetado += "<div class='player_data dotted-bottom'>";
 				           			maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
 				           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
