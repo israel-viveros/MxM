@@ -84,7 +84,7 @@
 		           			maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
 		           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[0]['porcentaje']+"</p>";
 		           			maquetado += "<img alt='' class='father' src='"+valorFoto0+"' width='300' height='225'>";
-		           			maquetado += "<p class='name'>Nombre "+ infoArray[0]['nombre']+"</p>";
+		           			maquetado += "<p class='name'>"+ infoArray[0]['nombre']+"</p>";
 		           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[0]['posicion']+"</p>"; 
 		           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[0]['club']+"</p>";
 	           			maquetado += "</div>";           			
@@ -96,7 +96,7 @@
 			           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[1]['porcentaje']+"</p>";
 			           		maquetado += "</div>";			           	
 		           			maquetado += "<div class='player_data2'>";
-			           			maquetado += "<p class='name'>Nombre "+ infoArray[1]['nombre']+"</p>";
+			           			maquetado += "<p class='name'>"+ infoArray[1]['nombre']+"</p>";
 			           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[1]['posicion']+"</p>";
 			           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[1]['club']+"</p>";
 		           			maquetado += "</div>";
@@ -110,7 +110,7 @@
 				           			maquetado += "<p class='average_total textcolor-title1'>"+infoArray[2]['porcentaje']+"</p>";
 				           		maquetado += "</div>";
 				           		maquetado += "<div class='player_data2'>";
-				           			maquetado += "<p class='name'> Nombre"+ infoArray[2]['nombre']+"</p>";
+				           			maquetado += "<p class='name'>"+ infoArray[2]['nombre']+"</p>";
 				           			maquetado += "<p class='activity textcolor-title4'>"+infoArray[2]['posicion']+"</p>";
 				           			maquetado += "<p class='activityn textcolor-title1'>"+infoArray[2]['club']+"</p>";
 				           		maquetado += "</div>";
