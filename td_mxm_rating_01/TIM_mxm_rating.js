@@ -78,6 +78,7 @@
            			maquetado += "<table><tr><td class='header_team'><table class='head_table'><tr>";
            			maquetado += "<th><img alt='' src='" + logoLocal + "'></th>";
            			maquetado += "<th colspan='3' class='equipo'><p class='title_team textcolor-title1'>" + nombreLocal + "</p></th>";
+           			
            			maquetado += "<th><p class='title_td textcolor-title4 dotted-right'>TD</p></th>";
            			maquetado += "<th><p class='title_afision textcolor-title1'>Afici&oacute;n</p></th>";
            			maquetado += "</tr>";
@@ -111,7 +112,8 @@
         				posicion = dataAlineacion[equipo[0]]['team'][i]['position']; 
         				textoPosicion = wdg_mxm_rating.posicionTexto(posicion);        				
         				idEquipo = dataAlineacion[equipo[0]]['idTeam']; 
-        				numPlayer = dataAlineacion[equipo[0]]['team'][i]['number'];         				
+        				numPlayer = dataAlineacion[equipo[0]]['team'][i]['number']; 
+        				idPlayer  = dataAlineacion[equipo[0]]['team'][i]['guid'];
         				if (i == 0){        					
         					maquetado += "<tr class='evaluation first_child'>";        					
         				}
@@ -121,7 +123,8 @@
         				maquetado += "<td>";
         				maquetado += "<div class='conteiner_two'>";
         				maquetado += "<div class='vote_block vote dotted-bottom'>";
-        				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+        				maquetado += "<div id ='"+idPlayer+"' class='player_name'><p>" + nombreJugador + "</p></div>";
+        				//maquetado += "<input type='hidden' value="++">";
         				maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
         				//--Pintar porcentaje
         				for (var a=0; a < regPlayerDetail; a++){                        	        				
@@ -562,6 +565,14 @@
                     
                     
                     $('.wdg_rate_player_01 .calification div').on('click',function(){
+                    	
+                    	alert('comenzaste a botar');
+                    	//.vote_block
+                    	//parents.('');
+                    	console.log($(this).before('div'.attr('class')));
+                    	//console.log ('ID: '+ $('.player_name').attr('id'));
+                    	
+                    	
                 		console.log( $(this).next());                        
                         $(this).parents('.calification').prev('.calification').remove();                        
                         $(this).parents('.calification').next('.participated').find('div').css('border-bottom','1px solid #ccc');                        
@@ -581,6 +592,85 @@
                 		$(this).prev('tr').prev('.vote').show();
                 		$(this).prev('tr').show();                		
                 	});
+                	
+                	
+                	//REALIZAR VOTACION.....
+                	
+                	
+                	function votar(){
+                		var elemento = $('input[name=gameplayerradio]:radio:checked').val();
+                		if (elemento==undefined){
+                			alert('Para votar es necesario seleccione previamente un jugador.');
+                		}else {
+                			for(var j = 0; j < jugadores.length ; j++){
+                				if (jugadores[j].value == elemento){
+                					conteo 			= jugadores[j].conteo; // 0
+                					number 			= jugadores[j].number; // 20
+                					value 			= jugadores[j].value; // 15aecde6-9c59-102d-95e7-0019b9d72a1e
+                					guid_section 	= jugadores[j].guid_section; // a2596a38-7ad1-102e-835b-0019b9d72c08
+                					percent 		= jugadores[j].percent; // 0.00
+                					photo 			= jugadores[j].photo; // null
+                					position 		= jugadores[j].position; // D
+                					clubname 		= jugadores[j].clubname; // Cruz Azul
+                					name 			= jugadores[j].name; // G. Rodr\u00edguez
+                					valueorder 		= jugadores[j].valueorder; // 1
+                					guid_field 		= jugadores[j].guid_field; // a25ca220-7ad1-102e-835b-0019b9d72c08
+                					club 			= jugadores[j].club; // 4
+                					guid_poll 		= jugadores[j].guid_poll; // a253e478-7ad1-102e-835b-0019b9d72c08
+                					guid_fvl 		= jugadores[j].guid_fvl; // a25e2f3c-7ad1-102e-835b-0019b9d72c08
+                		
+                					
+                				}
+                			}
+                			guid_fvl		=guid_fvl;
+                			guid_field		=guid_field;
+                			guid_fld		=guid_field;
+                			guid_sec		=guid_section;
+                			PollGuid		=guid_poll;	
+                			
+                			//alert(name);
+                			var pixvote = new Image();
+                			guid_box='';
+                			guid_thm_spl='';
+                			guid_spl=PollGuid;
+                			altern_field_value=' Sitio';
+                			sefVPrograma='MXM';
+                			sefVCategoria='Deportes';
+                			sefVSubcategoria='Futbol';
+                			sefVToken='Token-';
+                			sefVCSIE='CSIE-';
+                			sefVUrlactual='Urlactual';
+                			sefVSexodelUsuario='SexodelUsuario';
+                			sefVIP='VIP';
+                			sefVCodigodelPais='MX';
+                			sefVCuidad='Cuidad';
+                			sefVEstado='Estado';
+                			sefVTimestamp=Math.round(new Date().getTime() / 1000);
+                			sefVNavegador=SEFBrowserDetect.browser;
+                			sefVVersion=SEFBrowserDetect.version;
+                			sefVSistemaOperativo=SEFBrowserDetect.OS;
+                			sefVResoluciondelapantalla=screen.width+' x '+screen.height;
+                			sefVjavaEnabled='Yes';
+                			sefVDireccionanterior='Previous Page';
+                			sefVLenguajedelsistema='es-mx';
+                			sefVLenguajedelUsuario='es-mx';
+                			sefVLenguajedelNavegador='es';
+                			voteslog=guid_box+'@@@'+guid_spl+'@@@'+guid_sec+'@@@'+guid_fld+'@@@['+guid_fld+'&&&'+guid_fvl+']@@@'+guid_thm_spl+'@@@'+altern_field_value+'@@@';
+                			voteslog+=sefVPrograma+'@@@'+sefVCategoria+'@@@'+sefVSubcategoria+'@@@'+sefVToken+'@@@'+sefVCSIE+'@@@'+sefVUrlactual+'@@@'+sefVSexodelUsuario+'@@@'+sefVIP+'@@@'+sefVCodigodelPais+'@@@'+sefVCuidad+'@@@'+sefVEstado+'@@@'+sefVTimestamp+'@@@'+sefVNavegador+'@@@'+sefVVersion+'@@@'+sefVSistemaOperativo+'@@@'+sefVResoluciondelapantalla+'@@@'+sefVjavaEnabled+'@@@'+sefVDireccionanterior+'@@@'+sefVLenguajedelsistema+'@@@'+sefVLenguajedelUsuario+'@@@'+sefVLenguajedelNavegador;
+                			pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_field+'&&&'+guid_fvl;
+                			//alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_field+'&&&'+guid_fvl);
+                			createCookie(cookieName,'1', 60);
+                		
+                			if(readCookie(cookieName2) != null){		
+                				createCookie(cookieName2,'',-1);	
+                			}
+                			createCookie(cookieName2, value, 120);
+                			informacionactualizada();
+                			secondScreen();
+                			setTimeout('pantallaCorrecta()',refreshtimeesp*60000);
+                		}
+                	}
+                	
                 	
                 	
                 	
