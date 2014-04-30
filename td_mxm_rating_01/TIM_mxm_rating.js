@@ -680,8 +680,13 @@
         		        		
         }
         
-        wdg_mxm_rating.loadAlineacion(true);
-        wdg_mxm_rating.funcionesNaat();
+        $.when(wdg_mxm_rating.loadAlineacion(true)).done(function() {
+            setTimeout(function() {
+                wdg_mxm_rating.funcionesNaat();
+            }, 500);
+
+        });
+       
  
 	
     };
