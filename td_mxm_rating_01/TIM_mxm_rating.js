@@ -22,7 +22,7 @@
         		urlfeedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
         		urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
         		urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
-        		urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',        		
+        		urlPlayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',        		
         		tagRating: $("#containerwdg_mxm_rating_01"),        		
         		        		
         		//Metodo para colocar la posicion del jugador
@@ -195,7 +195,7 @@
         				textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
         				idEquipoVisit = dataAlineacion[equipo[1]]['idTeam']; 
         				numPlayerVisit = dataAlineacion[equipo[1]]['team'][i]['number']; 
-        				
+        				idPlayer  = dataAlineacion[equipo[1]]['team'][i]['guid'];
         				if (i == 0){        					
         					maquetado += "<tr class='evaluation first_child'>";        					
         				}
@@ -205,7 +205,7 @@
         				maquetado += "<td>";
         				maquetado += "<div class='conteiner_two'>";
         				maquetado += "<div class='vote_block vote dotted-bottom'>";
-        				maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+        				maquetado += "<div class='player_name' id='"+idPlayer+"'><p>" + nombreJugador + "</p></div>";
         				maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";        				
         				//--Pintar porcentaje
         				for (var b=0; b < regPlayerDetail; b++){         					
@@ -380,7 +380,7 @@
             	//Obtener los Detalles de los jugadores
             	getGamePlayerDetail: function(dataAlineacion,dataMatchHeader) {            		
             		$.ajax({
-        				url: wdg_mxm_rating.urlPLayerDetail,
+        				url: wdg_mxm_rating.urlPlayerDetail,
         				type: "GET",
                         dataType: 'jsonp',
                         jsonpCallback: 'gameplayerdetail',
@@ -426,7 +426,7 @@
         		
         		//FUNCIONES NA-AT-------------------------------------------
         		funcionesNaat: function() {
-        			alert ('hola Na-at');
+        			alert ('codigo Na-at');
                     var zIndexNumber = 1000;
                     $('.wdg_mxm_rating_01 div').each(function() {
                         $(this).css('zIndex', zIndexNumber);
@@ -567,13 +567,101 @@
                     $('.wdg_rate_player_01 .calification div').on('click',function(){
                     	
                     	alert('comenzaste a botar');
-                    	//.vote_block
-                    	//parents.('');
-                    	console.log($(this).before('div'.attr('class')));
-                    	//console.log ('ID: '+ $('.player_name').attr('id'));
+                    	var votacion = $(this).children('p').text();                    	
+                    	var padre = $(this).parent('div');                    	
+                    	var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');                    	                    
+                    	var idPlayer = hermano.children('div').attr('id');
                     	
                     	
-                		console.log( $(this).next());                        
+                    	$.ajax({
+                    		url: wdg_mxm_rating.urlPlayerDetail,
+                            type: 'GET ',
+                            dataType: 'jsonp',                         
+                            jsonpCallback: 'gameplayerdetail',
+                            cache: false,
+                        }).done(function(data) {
+                                var tmp = '';
+                                var guid_box = '';
+                            	var guid_spl = '';
+                            	var guid_sec = '';
+                            	var guid_fld = '';
+                            	var guid_fvl = '';
+                            	var guid_thm_spl = '';
+                            	var altern_field_value='Sitio';
+                            	var pixvote = new Image();
+                    			                                      			                    			
+                    			var sefVPrograma='MXM';
+                    			var sefVCategoria='Deportes';
+                    			var sefVSubcategoria='Futbol';
+                    			var sefVToken='Token-';
+                    			var sefVCSIE='CSIE-';
+                    			var sefVUrlactual='Urlactual';
+                    			var sefVSexodelUsuario='SexodelUsuario';
+                    			var sefVIP='VIP';
+                    			var sefVCodigodelPais='MX';
+                    			var sefVCuidad='Cuidad';
+                    			var sefVEstado='Estado';
+                    			var sefVTimestamp=Math.round(new Date().getTime() / 1000);
+                    			
+                    			//var sefVNavegador=SEFBrowserDetect.browser;
+                    			//var sefVVersion=SEFBrowserDetect.version;
+                    			//var sefVSistemaOperativo=SEFBrowserDetect.OS;                    			
+                    			var sefVNavegador='';
+                    			var sefVVersion='';
+                    			var sefVSistemaOperativo='';
+                    			
+                    			var sefVResoluciondelapantalla=screen.width+' x '+screen.height;
+                    			var sefVjavaEnabled='Yes';
+                    			var sefVDireccionanterior='Previous Page';
+                    			var sefVLenguajedelsistema='es-mx';
+                    			var sefVLenguajedelUsuario='es-mx';
+                    			var sefVLenguajedelNavegador='es';                    			                            	
+                            	
+                                console.log(data);
+                                for (var i = 0; i < data.poll['answers']['answer'].length; i++) {
+                                	if (data.poll['answers']['answer'][i].value == idPlayer){                                		
+                                		var photoRaiting = data.poll['answers']['answer'][i]['photoRaiting'];
+                    					var number = data.poll['answers']['answer'][i]['number'];
+                    					var conteo = data.poll['answers']['answer'][i]['conteo'];
+										var photo = data.poll['answers']['answer'][i]['photo'];
+										var percent = data.poll['answers']['answer'][i]['percent'];
+										var guidsection = data.poll['answers']['answer'][i]['guid_section'];
+										var value = data.poll['answers']['answer'][i]['value'];
+										var name = data.poll['answers']['answer'][i]['name'];
+										var clubname = data.poll['answers']['answer'][i]['clubname'];
+										var position = data.poll['answers']['answer'][i]['clubname'];
+										var club = data.poll['answers']['answer'][i]['club'];
+										var guidfield = data.poll['answers']['answer'][i]['guid_field'];
+										var valueorder = data.poll['answers']['answer'][i]['valueorde'];
+										var nameplayer = data.poll['answers']['answer'][i]['namePlayer'];
+										var guidpoll = data.poll['answers']['answer'][i]['guid_poll'];
+										var guidfvl = data.poll['answers']['answer'][i]['guid_fvl'];										
+                                	}
+                                }
+                              
+                              guid_spl = guidpoll;
+                            	guid_sec = guidsection;
+                            	guid_fld = guidfield;
+                            	guid_fvl = guidfvl;
+                            	
+                            	console.log (guid_box+"/"+guid_spl+"/"+guid_sec+"/"+guid_fld+"/"+guid_fvl);
+                            	voteslog=guid_box+'@@@'+guid_spl+'@@@'+guid_sec+'@@@'+guid_fld+'@@@['+guid_fld+'&&&'+guid_fvl+']@@@'+guid_thm_spl+'@@@'+altern_field_value+'@@@';
+                            	voteslog+=sefVPrograma+'@@@'+sefVCategoria+'@@@'+sefVSubcategoria+'@@@'+sefVToken+'@@@'+sefVCSIE+'@@@'+sefVUrlactual+'@@@'+sefVSexodelUsuario+'@@@'+sefVIP+'@@@'+sefVCodigodelPais+'@@@'+sefVCuidad+'@@@'+sefVEstado+'@@@'+sefVTimestamp+'@@@'+sefVNavegador+'@@@'+sefVVersion+'@@@'+sefVSistemaOperativo+'@@@'+sefVResoluciondelapantalla+'@@@'+sefVjavaEnabled+'@@@'+sefVDireccionanterior+'@@@'+sefVLenguajedelsistema+'@@@'+sefVLenguajedelUsuario+'@@@'+sefVLenguajedelNavegador;
+                            	pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl;
+                            	alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
+                            	
+                        
+                        }).fail(function() {
+                          console.log("error");
+                         });
+                    	
+                    	
+                                        	
+                    	//voteslog=guid_box+'@@@'+guid_spl+'@@@'+guid_sec+'@@@'+guid_fld+'@@@['+guid_fld+'&&&'+guid_fvl+']@@@'+guid_thm_spl+'@@@'+altern_field_value+'@@@';
+                		
+                    	
+                    	
+                    	//console.log( $(this).next());                		
                         $(this).parents('.calification').prev('.calification').remove();                        
                         $(this).parents('.calification').next('.participated').find('div').css('border-bottom','1px solid #ccc');                        
                         $(this).parents('.calification').next().show();
@@ -594,87 +682,7 @@
                 	});
                 	
                 	
-                	//REALIZAR VOTACION.....
-                	
-                	
-                	function votar(){
-                		var elemento = $('input[name=gameplayerradio]:radio:checked').val();
-                		if (elemento==undefined){
-                			alert('Para votar es necesario seleccione previamente un jugador.');
-                		}else {
-                			for(var j = 0; j < jugadores.length ; j++){
-                				if (jugadores[j].value == elemento){
-                					conteo 			= jugadores[j].conteo; // 0
-                					number 			= jugadores[j].number; // 20
-                					value 			= jugadores[j].value; // 15aecde6-9c59-102d-95e7-0019b9d72a1e
-                					guid_section 	= jugadores[j].guid_section; // a2596a38-7ad1-102e-835b-0019b9d72c08
-                					percent 		= jugadores[j].percent; // 0.00
-                					photo 			= jugadores[j].photo; // null
-                					position 		= jugadores[j].position; // D
-                					clubname 		= jugadores[j].clubname; // Cruz Azul
-                					name 			= jugadores[j].name; // G. Rodr\u00edguez
-                					valueorder 		= jugadores[j].valueorder; // 1
-                					guid_field 		= jugadores[j].guid_field; // a25ca220-7ad1-102e-835b-0019b9d72c08
-                					club 			= jugadores[j].club; // 4
-                					guid_poll 		= jugadores[j].guid_poll; // a253e478-7ad1-102e-835b-0019b9d72c08
-                					guid_fvl 		= jugadores[j].guid_fvl; // a25e2f3c-7ad1-102e-835b-0019b9d72c08
-                		
-                					
-                				}
-                			}
-                			guid_fvl		=guid_fvl;
-                			guid_field		=guid_field;
-                			guid_fld		=guid_field;
-                			guid_sec		=guid_section;
-                			PollGuid		=guid_poll;	
-                			
-                			//alert(name);
-                			var pixvote = new Image();
-                			guid_box='';
-                			guid_thm_spl='';
-                			guid_spl=PollGuid;
-                			altern_field_value=' Sitio';
-                			sefVPrograma='MXM';
-                			sefVCategoria='Deportes';
-                			sefVSubcategoria='Futbol';
-                			sefVToken='Token-';
-                			sefVCSIE='CSIE-';
-                			sefVUrlactual='Urlactual';
-                			sefVSexodelUsuario='SexodelUsuario';
-                			sefVIP='VIP';
-                			sefVCodigodelPais='MX';
-                			sefVCuidad='Cuidad';
-                			sefVEstado='Estado';
-                			sefVTimestamp=Math.round(new Date().getTime() / 1000);
-                			sefVNavegador=SEFBrowserDetect.browser;
-                			sefVVersion=SEFBrowserDetect.version;
-                			sefVSistemaOperativo=SEFBrowserDetect.OS;
-                			sefVResoluciondelapantalla=screen.width+' x '+screen.height;
-                			sefVjavaEnabled='Yes';
-                			sefVDireccionanterior='Previous Page';
-                			sefVLenguajedelsistema='es-mx';
-                			sefVLenguajedelUsuario='es-mx';
-                			sefVLenguajedelNavegador='es';
-                			voteslog=guid_box+'@@@'+guid_spl+'@@@'+guid_sec+'@@@'+guid_fld+'@@@['+guid_fld+'&&&'+guid_fvl+']@@@'+guid_thm_spl+'@@@'+altern_field_value+'@@@';
-                			voteslog+=sefVPrograma+'@@@'+sefVCategoria+'@@@'+sefVSubcategoria+'@@@'+sefVToken+'@@@'+sefVCSIE+'@@@'+sefVUrlactual+'@@@'+sefVSexodelUsuario+'@@@'+sefVIP+'@@@'+sefVCodigodelPais+'@@@'+sefVCuidad+'@@@'+sefVEstado+'@@@'+sefVTimestamp+'@@@'+sefVNavegador+'@@@'+sefVVersion+'@@@'+sefVSistemaOperativo+'@@@'+sefVResoluciondelapantalla+'@@@'+sefVjavaEnabled+'@@@'+sefVDireccionanterior+'@@@'+sefVLenguajedelsistema+'@@@'+sefVLenguajedelUsuario+'@@@'+sefVLenguajedelNavegador;
-                			pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_field+'&&&'+guid_fvl;
-                			//alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_field+'&&&'+guid_fvl);
-                			createCookie(cookieName,'1', 60);
-                		
-                			if(readCookie(cookieName2) != null){		
-                				createCookie(cookieName2,'',-1);	
-                			}
-                			createCookie(cookieName2, value, 120);
-                			informacionactualizada();
-                			secondScreen();
-                			setTimeout('pantallaCorrecta()',refreshtimeesp*60000);
-                		}
-                	}
-                	
-                	
-                	
-                	
-
+            
 
                 }
         		        		
