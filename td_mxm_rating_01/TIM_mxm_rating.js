@@ -323,7 +323,6 @@
                 maquetado += "</td></tr></table";
                 maquetado += "</div>";
 
-
                 wdg_mxm_rating.tagRating.html(maquetado);
 
 
@@ -402,8 +401,6 @@
             //-- Carga la alineacion
             loadAlineacion: function() {
                 alert('alineacion');
-                console.log(setting.idEvento);
-                console.log(wdg_mxm_rating.urlFinalAlineacion)
                 $.ajax({
                     url: wdg_mxm_rating.urlFinalAlineacion,
                     dataType: 'jsonp',
@@ -454,7 +451,6 @@
 
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idM = $(this).data("matchid");
-                        console.log(setting.idEvento);
                         setting.idEvento = idM;
                         console.log(setting.idEvento);
                         wdg_mxm_rating.loadAlineacion();
