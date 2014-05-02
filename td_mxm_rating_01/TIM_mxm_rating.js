@@ -13,20 +13,19 @@
             'idEquipo2': 0,
             'title': ''
         }, options);
-        console.log("idTorneo:" + setting.idTorneo + " idEvento:" + setting.idEvento + " idEquipo:" + setting.idEquipo + " idEquipo2:" + setting.idEquipo2 + " title:" + setting.title);
+        //console.log("idTorneo:" + setting.idTorneo + " idEvento:" + setting.idEvento + " idEquipo:" + setting.idEquipo + " idEquipo2:" + setting.idEquipo2 + " title:" + setting.title);
         var GlobalThis = this;
 
         var wdg_mxm_rating = {
             urlfeedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
             urlfeedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
-            urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
-            urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
-            urlPlayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
+            //urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
+            //urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
+            //urlPlayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
             tagRating: $("#containerwdg_mxm_rating_01"),
 
             //Metodo para colocar la posicion del jugador
-            posicionTexto: function(posicion) {
-                console.log(wdg_mxm_rating.urlfeedDropLocal);
+            posicionTexto: function(posicion) {                
                 var posicionTexto;
                 switch (posicion) {
                     case "GK":
@@ -41,7 +40,6 @@
                     case "F":
                         posicionTexto = "Delantero";
                         break;
-
                     default:
                         posicionTexto = "<span style='display:block; height:10px; width:50px;'>";
                 }
@@ -67,7 +65,7 @@
                 var nombreVisit = dataMatchHeader[equipoMatch[1]]['nombre'];
                 var regLocal = dataAlineacion[equipo[0]]['team'].length;
                 var regVisit = dataAlineacion[equipo[1]]['team'].length;
-                var regbancaLocal = dataAlineacion[equipo[0]]['substitutes'].length;
+                var regbancaLocal = dataAlineacion[equipo[0]]['substitutes'].length;	
                 var regbancaVisit = dataAlineacion[equipo[1]]['substitutes'].length;
                 var regPlayerDetail = dataGamePlayer.poll['answers']['answer'].length;
 
@@ -335,6 +333,7 @@
             },
 
             loadDrops: function(feed, ID) {
+            	console.log(feed);            	
                 $.ajax({
                     url: feed,
                     type: 'GET ',
@@ -371,9 +370,10 @@
             },
 
             //Obtener los Detalles de los jugadores
-            getGamePlayerDetail: function(dataAlineacion, dataMatchHeader) {
-                $.ajax({
-                    url: wdg_mxm_rating.urlPlayerDetail,
+            getGamePlayerDetail: function(idtorneo,idMatch,dataAlineacion,dataMatchHeader) {
+                console.log ('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
+            	$.ajax({
+                    url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js',
                     type: "GET",
                     dataType: 'jsonp',
                     jsonpCallback: 'gameplayerdetail',
@@ -385,29 +385,32 @@
             },
 
             //Obtiene el logotipo de los equipos y nombre
-            getInfo: function(dataAlineacion) {
+            getInfo: function(idtorneo,idMatch,dataAlineacion) {
+            	console.log ('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js');
                 $.ajax({
-                    url: wdg_mxm_rating.urlMatchHeader,
+                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'mxmheader',
                     cache: false,
                     success: function(dataMatchHeader) {
-                        wdg_mxm_rating.getGamePlayerDetail(dataAlineacion, dataMatchHeader)
+                        wdg_mxm_rating.getGamePlayerDetail(idtorneo,idMatch,dataAlineacion,dataMatchHeader)
                     }
 
                 });
             },
 
             //-- Carga la alineacion
-            loadAlineacion: function() {
-                alert('alineacion');
+            loadAlineacion: function(idtorneo,idMatch) {
+            	console.log(idtorneo);
+            	console.log(idMatch);
+            	console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js');
                 $.ajax({
-                    url: wdg_mxm_rating.urlFinalAlineacion,
+                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'datagame',
                     cache: false,
                     success: function(dataAlineacion) {
-                        wdg_mxm_rating.getInfo(dataAlineacion);
+                        wdg_mxm_rating.getInfo(idtorneo,idMatch,dataAlineacion);
                     }
                 });
             },
@@ -429,7 +432,7 @@
                 $('.wdg_lineup_01_dropdowncontent p').html($firstItem.find('p').html());
 
                 $dropdownAnchor.bind('click', function(evt) {
-                    console.log("DROP 1");
+                    //console.log("DROP 1");
                     evt.preventDefault();
                     var lisItemsChild = $(this).children('.wdg_lineup_01_listcontainer').children('.wdg_lineup_01_dropdownlist:first-child');
                     var visibilidad = lisItemsChild.css('visibility');
@@ -450,11 +453,12 @@
                     }
 
                     lisItemsChild.find("p").unbind('click').click(function(event) {
-                        var idM = $(this).data("matchid");
-                        setting.idEvento = idM;
-                        console.log(setting.idEvento);
-                        wdg_mxm_rating.loadAlineacion();
-                        $("#nameJALocal").text($(this).text());
+                        var idMatch = $(this).data("matchid");
+                        idtorneo = setting.idTorneo;
+                        console.log(idtorneo);                        
+                        wdg_mxm_rating.loadAlineacion(idtorneo,idMatch);
+                        var valorn = String($(this).text());
+                        $("#nameJALocal").text(valorn);
                     });
                 });
 
@@ -484,7 +488,7 @@
                 $('.wdg_lineup_012_dropdowncontent p').html($firstItem2.find('p').html());
 
                 $dropdownAnchor2.bind('click', function(evt) {
-                    console.log("DROP 2");
+                    //console.log("DROP 2");
                     evt.preventDefault();
                     var visibilidad = $(this).children('.wdg_lineup_012_listcontainer').children().css('visibility');
                     var lisItemsChild = $(this).children('.wdg_lineup_012_listcontainer').children();
@@ -504,10 +508,10 @@
                         });
                     }
                     lisItemsChild.find("p").unbind('click').click(function(event) {
-                        var idM = $(this).data("matchid");
-                        console.log($(this).data("matchid"));
-
-                        //wdg_mxm_rating.loadDatacomplete(idM, 'drop');
+                    	var idMatch = $(this).data("matchid");
+                        idtorneo = setting.idTorneo;
+                        console.log(idtorneo);                        
+                        wdg_mxm_rating.loadAlineacion(idtorneo,idMatch);                    	
                         var valorn = String($(this).text());
                         $("#nameJAVisit").text(valorn);
                     });
@@ -556,16 +560,15 @@
 
 
                 $('.wdg_rate_player_01 .calification div').on('click', function() {
-
-
+                	console.log('comienza la botacion');
                     var votacion = $(this).children('p').text();
                     var padre = $(this).parent('div');
                     var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');
                     var idPlayer = hermano.children('div').attr('id');
 
-
                     $.ajax({
-                        url: wdg_mxm_rating.urlPlayerDetail,
+                        //url: wdg_mxm_rating.urlPlayerDetail,
+                    	url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
                         type: 'GET ',
                         dataType: 'jsonp',
                         jsonpCallback: 'gameplayerdetail',
@@ -594,14 +597,12 @@
                         var sefVCuidad = 'Cuidad';
                         var sefVEstado = 'Estado';
                         var sefVTimestamp = Math.round(new Date().getTime() / 1000);
-
                         //var sefVNavegador=SEFBrowserDetect.browser;
                         //var sefVVersion=SEFBrowserDetect.version;
                         //var sefVSistemaOperativo=SEFBrowserDetect.OS;                    			
                         var sefVNavegador = '';
                         var sefVVersion = '';
                         var sefVSistemaOperativo = '';
-
                         var sefVResoluciondelapantalla = screen.width + ' x ' + screen.height;
                         var sefVjavaEnabled = 'Yes';
                         var sefVDireccionanterior = 'Previous Page';
@@ -609,7 +610,7 @@
                         var sefVLenguajedelUsuario = 'es-mx';
                         var sefVLenguajedelNavegador = 'es';
 
-                        console.log(data);
+                        //console.log(data);
                         for (var i = 0; i < data.poll['answers']['answer'].length; i++) {
                             if (data.poll['answers']['answer'][i].value == idPlayer) {
                                 var photoRaiting = data.poll['answers']['answer'][i]['photoRaiting'];
@@ -630,17 +631,15 @@
                                 var guidfvl = data.poll['answers']['answer'][i]['guid_fvl'];
                             }
                         }
-
                         guid_spl = guidpoll;
                         guid_sec = guidsection;
                         guid_fld = guidfield;
                         guid_fvl = guidfvl;
-
                         console.log(guid_box + "/" + guid_spl + "/" + guid_sec + "/" + guid_fld + "/" + guid_fvl);
                         voteslog = guid_box + '@@@' + guid_spl + '@@@' + guid_sec + '@@@' + guid_fld + '@@@[' + guid_fld + '&&&' + guid_fvl + ']@@@' + guid_thm_spl + '@@@' + altern_field_value + '@@@';
                         voteslog += sefVPrograma + '@@@' + sefVCategoria + '@@@' + sefVSubcategoria + '@@@' + sefVToken + '@@@' + sefVCSIE + '@@@' + sefVUrlactual + '@@@' + sefVSexodelUsuario + '@@@' + sefVIP + '@@@' + sefVCodigodelPais + '@@@' + sefVCuidad + '@@@' + sefVEstado + '@@@' + sefVTimestamp + '@@@' + sefVNavegador + '@@@' + sefVVersion + '@@@' + sefVSistemaOperativo + '@@@' + sefVResoluciondelapantalla + '@@@' + sefVjavaEnabled + '@@@' + sefVDireccionanterior + '@@@' + sefVLenguajedelsistema + '@@@' + sefVLenguajedelUsuario + '@@@' + sefVLenguajedelNavegador;
                         pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl;
-                        //alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
+                        alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
 
                         //createCookie(cookieName,'1', 60);
 
@@ -704,7 +703,7 @@
 
         }
 
-        $.when(wdg_mxm_rating.loadAlineacion(true)).done(function() {
+        $.when(wdg_mxm_rating.loadAlineacion(setting.idTorneo,setting.idEvento)).done(function() {
             setTimeout(function() {
                 wdg_mxm_rating.funcionesNaat();
             }, 500);
