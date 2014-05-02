@@ -1,0 +1,291 @@
+@media screen {
+	.wdg_altasbajas_01 {
+		margin-bottom: 5px;
+	}
+	.wdg_altasbajas_01 .contenedor {
+		width: 97%;
+		margin-left: 0px;
+		padding: 5px 0;
+		overflow: hidden;
+		position:relative;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_izq {
+		height: 51px;
+		border-bottom: 1px solid #CA4F51;
+		font-style: italic;
+		font-weight: normal;
+		float: left;
+		overflow: hidden;
+		padding-right: 8px;
+		width: 100%
+	}
+	.wdg_altasbajas_01 .contenedor .underline_text{
+	   color:#fff;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_izq .background-color2 {
+		max-width: 60px;
+		height: 30px;
+		margin-right: 4px;
+		float: left;
+		padding: 7px 7px 14px;
+		font-size: 13px;
+		width: 44px;
+		margin-left: 7px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_izq .background-color2:nth-child(2) {
+		width: 37px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_izq .background-color2 .hline {
+		width: 20px;
+		height: 1px;
+		border-bottom: 1px solid #FFF;
+		margin-top: 7px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_izq .subtitulo {
+		float: left;
+		margin-left: 7px;
+		margin-top: 2px;
+		/*width:200px;*/
+		font-size: 18px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_izq .textcolor-title2 {
+		font-size: 14px;
+		float: left;
+		margin-left: 5px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der {
+		height: 45px;
+		border-bottom: 1px solid #CA4F51;
+		font-style: normal;
+		font-weight: normal;
+		float: left;
+		overflow: hidden;
+		width: 100%;
+		padding-top: 13px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der .textcolor-title3 {
+		font-size: 20px;
+	}
+	.one{
+	   width:400px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der #months .superior,
+	.wdg_altasbajas_01 .contenedor .sup_der #months .superior{
+       width:30px;
+    }
+    .wdg_altasbajas_01 .contenedor .sup_der #days .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #hours .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #minutes .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #seconds .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #days .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #hours .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #minutes .superior,
+    .wdg_altasbajas_01 .contenedor .sup_der #seconds .superior{
+       width:40px;
+    }
+    
+    .ie7 .wdg_altasbajas_01 .contenedor{
+        width:900px;
+        margin:auto;
+    }
+    
+    .ie7 .wdg_altasbajas_01 .contenedor .sup_izq{
+        width: 544px;
+        padding-right: 10px;
+        display:inline-block;
+        height: 61px;
+    }
+    .ie7 .wdg_altasbajas_01 .contenedor .sup_der{
+        width: 345px;
+        height: 48px;
+    }
+    .ie7 .wdg_altasbajas_01 .contenedor .sup_izq .background-color2{
+        display:inline-block;
+    }
+    .ie7 .wdg_altasbajas_01 .contenedor .sup_izq .subtitulo{
+        width: 380px;
+		padding-bottom: 0px;
+		margin-left: 9px;
+    }
+    .ie7 .wdg_altasbajas_01 .contenedor table tbody .cut{
+        /*background-color:red;*/
+    }
+    .wdg_altasbajas_01 .contenedor table tbody .cut .vline{
+    	width: 71px;
+    }
+    .ie7 .wdg_altasbajas_01 .contenedor table tbody .cut .vline{
+        display:inline-block;
+        border-left: 1px dotted #CA4F51;
+		width: 1px;
+		height: 45px;
+		float: left;
+    }
+    .ie7 .wdg_altasbajas_01 .contenedor .sup_der .textcolor-title3 {
+	   font-size: 28px;
+	}
+	
+	.ie7 .wdg_altasbajas_01 .tabla_ab .tabla table.teams tbody tr td img{
+       display:block;
+       width:27px!important;
+       height:27px!important;
+    }
+    .ie7 .wdg_altasbajas_01 .tabla_ab .tabla table.teams tbody tr td{
+       width:10px!important;
+       overflow:hidden!important;
+    }
+    
+    .ie7 .wdg_altasbajas_01 .tabla_ab .tabla{
+       width:780px!important;
+       margin-left:10px;
+    }
+    .ie7 .wdg_altasbajas_01 .tabla_ab .titles{
+       width:30px!important;
+       display:inline-block;
+    }
+    
+    .ie7 .wdg_altasbajas_01 .tabla_ab .totales{
+       float:right;
+       margin-right:10px;
+    }
+     
+	.wdg_altasbajas_01 .contenedor .sup_der .textcolor-title2 {
+		font-size: 11px;
+		font-weight: bold;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der .timing tr:first-child td.textcolor-title2 {
+		font-style: italic;
+		padding-right: 0px;
+		padding-top: 5px;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der .timing {
+		width: auto;
+		margin-top: -6px;
+		border-collapse: collapse;
+		border-spacing: 0;
+		width: 100%;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der .timing td {
+		vertical-align: top;
+		text-align: center;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der .timing .cut {
+		vertical-align: top;
+		text-align: right;
+	}
+	.wdg_altasbajas_01 .contenedor .sup_der .timing tr td.espacio {
+		width: 5px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab {
+		margin-left: 10px;
+		height: 120px;
+		overflow: hidden;
+		width: 100%;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab > div {
+		float: left;
+		height: 40px;
+		padding: 3px 0 0 0;
+		font-size: 12px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .titles {
+		margin-top: 68px;
+		width: 6px;
+		overflow: hidden;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .titles div {
+		font-size: 10px;
+		margin-bottom: 8px;
+		font-weight: bold;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab  .tabla {
+		width: 80%;
+		overflow-x: auto;
+		overflow-y: hidden;
+		height: 155px;
+		background-image: url(../img/degradado_rojo_izq.png), url(../img/degradado_rojo_der.png);
+		/*background-image: url(../img/left-shadow.png), url(../img/right-shadow.png);*/
+		background-position: left, right;
+		background-repeat:  repeat-y;
+		
+	}
+	*/
+	
+	.wdg_altasbajas_01 .contenedor .tabla_ab .degradado_izq{
+	
+	}
+	.wdg_altasbajas_01 .teams {
+		padding-left: 4px;
+		border-collapse: separate;
+		border-spacing: 4;
+		width: 778px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .tabla .teams td {
+		text-align: center;
+		color: #D9A961;
+		padding: 4px 4px 0px 4px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .tabla .teams tr.ab td {
+		font-size: 14px;
+		font-weight: bold;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .tabla .teams tr:first-child td {
+		text-align: center;
+		font-size: 11px;
+		font-weight: normal;
+		border-bottom: 1px dotted #CA4F51;
+		width: 30px;
+		padding-bottom: 9px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .tabla .teams tr:first-child td img {
+		padding-bottom: 3px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .totales {
+		width: 47px;
+		font-size: 12px;
+		margin-left: 0px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .totales .textcolor-title2 {
+		font-style: italic;
+		margin-top: 23px;
+		margin-bottom: 22px;
+		font-size: 13px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .totales .numeros {
+		background-color: #6f0707;
+		text-align: center;
+		font-size: 14px;
+		height: 37px;
+		padding: 6px 0;
+		font-weight: bold;
+		margin-left:2px;
+	}
+	.wdg_altasbajas_01 .contenedor .tabla_ab .totales .numeros div:first-child {
+		margin-bottom: 3px;
+	}
+	.wdg_altasbajas_01 .cut {
+		width: 80px;
+	}
+	.wdg_altasbajas_01 .inferior{
+		font-size:10px;
+		color:#D6A256;
+		float:none;
+		margin-top:0px;
+	}
+	.wdg_altasbajas_01 .degraded_left{
+		background-image: url(../img/degradado_rojo_izq.png);
+		height: 106px;
+		width: 22px;
+		position: absolute;
+		top: 123px;
+		left: 16px;
+	}
+	.wdg_altasbajas_01 .degraded_right{
+		background-image: url(../img/degradado_rojo_der.png);
+		height: 106px;
+		width: 22px;
+		position: absolute;
+		top: 123px;
+		right: 15%;
+	}
+	
+}
