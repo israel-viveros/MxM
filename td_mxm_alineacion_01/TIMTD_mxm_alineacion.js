@@ -25,6 +25,7 @@
 
             urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
             urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
+            urlview: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/view.js',
             // urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
             tagPromedio: $("#AlineacionPromedioTIM"),
             tagExpulsion: $("#ExpulsionTIM"),
@@ -57,7 +58,7 @@
                     ContenidoMaq += '<li class="first active"><a href="#" data-query="inicial" class="ui-link">Alineaci\u00F3n Inicial</a></li><li><a href="#" data-query="final" class="ui-link">Alineaci\u00F3n Final</a></li>';
                     ContenidoMaq += '</ul>';
                 }
-                ContenidoMaq += '<div class="field">';
+                ContenidoMaq += '<div class="field" id="canchaValidate">';
                 ContenidoMaq += '<div id="LoadingCancha"><div id="fountainG_1" class="fountainG"></div><div id="fountainG_2" class="fountainG"></div><div id="fountainG_3" class="fountainG"></div><div id="fountainG_4" class="fountainG"></div><div id="fountainG_5" class="fountainG"></div><div id="fountainG_6" class="fountainG"></div><div id="fountainG_7" class="fountainG"></div><div id="fountainG_8" class="fountainG"></div></div>';
                 ContenidoMaq += '<img class="cancha" src="http://i2.esmas.com/deportes30/copa-mundial-fifa-brasil-2014/Fase2yFase3/img/cancha.png" alt="field" width="624" height="334"/>';
                 ContenidoMaq += '<span class="players">';
@@ -546,6 +547,43 @@
                 }).fail(function() {
                     $("#LoadingCancha").hide();
                 })
+
+
+
+                wdg_smex_strategy.verificar_views();
+
+            },
+
+            verificar_views: function() {
+                console.log(wdg_smex_strategy.urlview);
+                var offCancha = 0;
+
+                $.ajax({
+                    url: wdg_smex_strategy.urlview,
+                    type: 'GET',
+                    dataType: 'json'
+                })
+                    .done(function(data) {
+                        console.log("success");
+                        console.log(data);
+
+                        for (var i = 0; i < data.elementos.length; i++) {
+                            console.log(data.elementos[i].id);
+                            if (data.elementos[i].id === "chkCampo") {
+                                offCancha = data.elementos[i].activo;
+                            }
+                        };
+
+                        if (parseInt(offCancha) === 0) {
+                            console.log("es cero")
+                            GlobalThis.hide('fast');
+                        }
+
+                    })
+                    .fail(function() {
+                        console.log("error al cargar views");
+                    })
+
 
 
             },
