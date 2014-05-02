@@ -418,6 +418,10 @@
                         }
             		});        			        			        			                	        	        		
         		},
+        		
+        		createCookie: function (name,value,segundos){
+                	alert('aqui');
+                },
 //        		
 //        		loadDatacomplete: function(idMatch, tipo) {
 //        			
@@ -589,7 +593,8 @@
                             	var guid_thm_spl = '';
                             	var altern_field_value='Sitio';
                             	var pixvote = new Image();
-                    			                                      			                    			
+                    			var cookieName = 'galleta';
+                    			var cookieName2 = 'galleta2';
                     			var sefVPrograma='MXM';
                     			var sefVCategoria='Deportes';
                     			var sefVSubcategoria='Futbol';
@@ -639,7 +644,7 @@
                                 	}
                                 }
                               
-                              guid_spl = guidpoll;
+                                guid_spl = guidpoll;
                             	guid_sec = guidsection;
                             	guid_fld = guidfield;
                             	guid_fvl = guidfvl;
@@ -650,25 +655,53 @@
                             	pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl;
                             	alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
                             	
+                            	//createCookie(cookieName,'1', 60);
+                            	
+//                            	if(readCookie(cookieName2) != null){		
+//                    				createCookie(cookieName2,'',-1);	
+//                    			}
+                            	
+//                            	createCookie(cookieName2, value, 120);
+                    			//informacionactualizada();
+                    			//secondScreen();
+                    			//setTimeout('pantallaCorrecta()',refreshtimeesp*60000);
+                            	
+                    			
+                    			function createCookie(name,value,segundos) {
+                    				alert ("aqui");
+                    				if (segundos) {
+                    					var date = new Date();
+                    					date.setTime(date.getTime()+(segundos*1000));
+                    					var expires = "; expires="+date.toGMTString();
+                    				}
+                    				else var expires = "";
+                    				document.cookie = name+"="+value+expires+"; path=/";                    				
+                    			}
+                    			
+                    			function readCookie(name) {
+                    				var nameEQ = name + "=";
+                    				var ca = document.cookie.split(';');
+                    				for(var i=0;i < ca.length;i++) {
+                    					var c = ca[i];
+                    					while (c.charAt(0)==' ') c = c.substring(1,c.length);
+                    					if (c.indexOf(nameEQ) == 0) console.log(c.substring(nameEQ.length,c.length)); return c.substring(nameEQ.length,c.length);
+                    				}
+                    				return null;
+                    			}
+                    			
+                            	
                         
                         }).fail(function() {
                           console.log("error");
-                         });
-                    	
-                    	
-                                        	
-                    	//voteslog=guid_box+'@@@'+guid_spl+'@@@'+guid_sec+'@@@'+guid_fld+'@@@['+guid_fld+'&&&'+guid_fvl+']@@@'+guid_thm_spl+'@@@'+altern_field_value+'@@@';
-                		
-                    	
-                    	
-                    	//console.log( $(this).next());                		
+                        });
+                                                                   	                    	                                   
                         $(this).parents('.calification').prev('.calification').remove();                        
                         $(this).parents('.calification').next('.participated').find('div').css('border-bottom','1px solid #ccc');                        
                         $(this).parents('.calification').next().show();
                         $(this).parents('.calification').remove();
                         $('.wdg_rate_player_01 .last_child div').css('border-bottom','0');
                         $(".participated").delay(5000).fadeOut('slow'); 
-                	});
+                	});                                                         
                 	
                 	$(".wdg_rate_player_01 .conteiner_two").mouseleave(function(){
                 		$('.wdg_rate_player_01 .calification').hide();
@@ -680,10 +713,7 @@
                 		$(this).prev('tr').prev('.vote').show();
                 		$(this).prev('tr').show();                		
                 	});
-                	
-                	
-            
-
+     
                 }
         		        		
         }
