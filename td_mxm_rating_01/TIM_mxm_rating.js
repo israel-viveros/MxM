@@ -26,7 +26,8 @@
         		tagRating: $("#containerwdg_mxm_rating_01"),        		
         		        		
         		//Metodo para colocar la posicion del jugador
-        		posicionTexto: function(posicion){        			
+        		posicionTexto: function(posicion){ 
+        			console.log(wdg_mxm_rating.urlfeedDropLocal);
         			var posicionTexto;        			
         			switch (posicion){
         				case "GK":
@@ -338,7 +339,7 @@
             		
             	},
             	
-            	 loadDrops: function(feed, ID) {
+            	 loadDrops: function(feed, ID) {            		 
                      $.ajax({
                          url: feed,
                          type: 'GET ',
@@ -372,11 +373,8 @@
 
                      }, 5000);
 
-
-
                  },
-            	
-            	
+            	            	
             	//Obtener los Detalles de los jugadores
             	getGamePlayerDetail: function(dataAlineacion,dataMatchHeader) {            		
             		$.ajax({
@@ -389,8 +387,7 @@
                         	wdg_mxm_rating.pintaInfo(dataAlineacion,dataMatchHeader,dataGamePlayer);                        	                       
                         }
             		});
-            	},
-            	
+            	},            	
             	
             	//Obtiene el logotipo de los equipos y nombre
         		getInfo: function(dataAlineacion){        		        			        			      			        		
@@ -407,7 +404,8 @@
         		},
             	            	            
             	//-- Carga la alineacion
-        		loadAlineacion: function(){        			
+        		loadAlineacion: function(){
+        			alert('alineacion');
         			$.ajax({
                         url: wdg_mxm_rating.urlFinalAlineacion,
                         dataType: 'jsonp',
@@ -417,20 +415,11 @@
                         	wdg_mxm_rating.getInfo(dataAlineacion);                			
                         }
             		});        			        			        			                	        	        		
-        		},
-        		
-        		createCookie: function (name,value,segundos){
-                	alert('aqui');
-                },
-//        		
-//        		loadDatacomplete: function(idMatch, tipo) {
-//        			
-//        		},
-        		
+        		},        		        		        
         		
         		//FUNCIONES NA-AT-------------------------------------------
         		funcionesNaat: function() {
-        			alert ('codigo Na-at');
+      
                     var zIndexNumber = 1000;
                     $('.wdg_mxm_rating_01 div').each(function() {
                         $(this).css('zIndex', zIndexNumber);
@@ -466,8 +455,10 @@
                         }
 
                         lisItemsChild.find("p").unbind('click').click(function(event) {
-                            var idM = $(this).data("matchid");
-                            //wdg_mxm_rating.loadDatacomplete(idM, 'drop');                            
+                            var idM = $(this).data("matchid");    
+                            setting.idEvento = idM;
+                            console.log(setting.idEvento);
+                            wdg_mxm_rating.loadAlineacion();                            
                             $("#nameJALocal").text($(this).text());
                         });
                     });
@@ -520,6 +511,7 @@
                         lisItemsChild.find("p").unbind('click').click(function(event) {
                             var idM = $(this).data("matchid");
                             console.log($(this).data("matchid"));
+                            
                             //wdg_mxm_rating.loadDatacomplete(idM, 'drop');
                             var valorn = String($(this).text());                           
                             $("#nameJAVisit").text(valorn);
@@ -570,7 +562,7 @@
                     
                     $('.wdg_rate_player_01 .calification div').on('click',function(){
                     	
-                    	alert('comenzaste a botar');
+                    	
                     	var votacion = $(this).children('p').text();                    	
                     	var padre = $(this).parent('div');                    	
                     	var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');                    	                    
@@ -653,7 +645,7 @@
                             	voteslog=guid_box+'@@@'+guid_spl+'@@@'+guid_sec+'@@@'+guid_fld+'@@@['+guid_fld+'&&&'+guid_fvl+']@@@'+guid_thm_spl+'@@@'+altern_field_value+'@@@';
                             	voteslog+=sefVPrograma+'@@@'+sefVCategoria+'@@@'+sefVSubcategoria+'@@@'+sefVToken+'@@@'+sefVCSIE+'@@@'+sefVUrlactual+'@@@'+sefVSexodelUsuario+'@@@'+sefVIP+'@@@'+sefVCodigodelPais+'@@@'+sefVCuidad+'@@@'+sefVEstado+'@@@'+sefVTimestamp+'@@@'+sefVNavegador+'@@@'+sefVVersion+'@@@'+sefVSistemaOperativo+'@@@'+sefVResoluciondelapantalla+'@@@'+sefVjavaEnabled+'@@@'+sefVDireccionanterior+'@@@'+sefVLenguajedelsistema+'@@@'+sefVLenguajedelUsuario+'@@@'+sefVLenguajedelNavegador;
                             	pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl;
-                            	alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
+                            	//alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
                             	
                             	//createCookie(cookieName,'1', 60);
                             	
@@ -666,28 +658,27 @@
                     			//secondScreen();
                     			//setTimeout('pantallaCorrecta()',refreshtimeesp*60000);
                             	
-                    			
-                    			function createCookie(name,value,segundos) {
-                    				alert ("aqui");
-                    				if (segundos) {
-                    					var date = new Date();
-                    					date.setTime(date.getTime()+(segundos*1000));
-                    					var expires = "; expires="+date.toGMTString();
-                    				}
-                    				else var expires = "";
-                    				document.cookie = name+"="+value+expires+"; path=/";                    				
-                    			}
-                    			
-                    			function readCookie(name) {
-                    				var nameEQ = name + "=";
-                    				var ca = document.cookie.split(';');
-                    				for(var i=0;i < ca.length;i++) {
-                    					var c = ca[i];
-                    					while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                    					if (c.indexOf(nameEQ) == 0) console.log(c.substring(nameEQ.length,c.length)); return c.substring(nameEQ.length,c.length);
-                    				}
-                    				return null;
-                    			}
+//                    			function createCookie(name,value,segundos) {
+//                    				alert ("aqui");
+//                    				if (segundos) {
+//                    					var date = new Date();
+//                    					date.setTime(date.getTime()+(segundos*1000));
+//                    					var expires = "; expires="+date.toGMTString();
+//                    				}
+//                    				else var expires = "";
+//                    				document.cookie = name+"="+value+expires+"; path=/";                    				
+//                    			}
+//                    			
+//                    			function readCookie(name) {
+//                    				var nameEQ = name + "=";
+//                    				var ca = document.cookie.split(';');
+//                    				for(var i=0;i < ca.length;i++) {
+//                    					var c = ca[i];
+//                    					while (c.charAt(0)==' ') c = c.substring(1,c.length);
+//                    					if (c.indexOf(nameEQ) == 0) console.log(c.substring(nameEQ.length,c.length)); return c.substring(nameEQ.length,c.length);
+//                    				}
+//                    				return null;
+//                    			}
                     			
                             	
                         
@@ -724,12 +715,8 @@
             }, 500);
 
         });
-       
- 
-	
+      	
     };
-  
-    
-    
+
     
 })(jQuery);
