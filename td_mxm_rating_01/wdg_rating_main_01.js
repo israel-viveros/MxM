@@ -59,20 +59,17 @@
         			});        			        			     		
         			
         			//Validar que el campo de la foto no este vacio...
-					if (infoArray[0]['foto'] == '' || infoArray[0]['foto'] == null){
-						console.log('entra 0');
+					if (infoArray[0]['foto'] == '' || infoArray[0]['foto'] == null){						
         				var valorFoto0 = 'http://placehold.it/300x225';
         			}else{
         				var valorFoto0 = infoArray[0]['foto'];
         			}
-					if (infoArray[1]['foto'] == '' || infoArray[1]['foto'] == null){
-						console.log('entra 1');
+					if (infoArray[1]['foto'] == '' || infoArray[1]['foto'] == null){						
         				var valorFoto1 = 'http://placehold.it/300x225';
         			}else{
         				var valorFoto1 = infoArray[1]['foto'];
         			}
-					if (infoArray[2]['foto'] == '' || infoArray[2]['foto'] == null){
-						console.log('entra 2');
+					if (infoArray[2]['foto'] == '' || infoArray[2]['foto'] == null){						
         				var valorFoto2 = 'http://placehold.it/300x225';
         			}else{
         				var valorFoto2 = infoArray[2]['foto'];
