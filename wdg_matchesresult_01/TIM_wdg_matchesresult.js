@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 3.2.1
+ *   Version: 3.2.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -249,7 +249,8 @@
 
 
                         if (setting.tema === "mundial") {
-                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
+                            //ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
+                            ItemView += '<a class="textcolor-title1"></a>';
                         } else {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
                             ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink.substring(0, numSplit) + '</span></a>';
