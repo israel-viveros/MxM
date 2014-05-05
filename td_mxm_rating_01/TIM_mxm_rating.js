@@ -23,9 +23,12 @@
             //urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
             //urlPlayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
             tagRating: $("#containerwdg_mxm_rating_01"),
+            tagAlineacionGoles: $("#TIMAlineacionGoles"),
+            tagwdgPenales: $("#TIMWdgPenales"),
+            tagExpulsion: $("#ExpulsionTIM"),
 
             //Metodo para colocar la posicion del jugador
-            posicionTexto: function(posicion) {                
+            posicionTexto: function(posicion) {
                 var posicionTexto;
                 switch (posicion) {
                     case "GK":
@@ -47,6 +50,33 @@
             },
 
             pintaInfo: function(dataAlineacion, dataMatchHeader, dataGamePlayer) {
+
+                // START Israel Viveros
+                wdg_mxm_rating.intervaloVe = setInterval(function() {
+                    wdg_mxm_rating.listenerInfo();
+                }, 3000);
+                var golesLocal = (typeof(dataAlineacion.goalsLocal) !== "undefined") ? dataAlineacion.goalsLocal : '';
+                var golesVisit = (typeof(dataAlineacion.goalsVisit) !== "undefined") ? dataAlineacion.goalsVisit : '';
+
+
+                wdg_mxm_rating.GolesAnotados(golesLocal, golesVisit, dataAlineacion.lineupLocal.name, dataAlineacion.lineupVisit.name);
+
+
+                if (typeof(dataAlineacion.PenaltiesLocal) !== "undefined" || typeof(dataAlineacion.PenaltiesVisit) !== "undefined") {
+                    wdg_mxm_rating.wdgPenales(dataAlineacion.PenaltiesLocal, dataAlineacion.PenaltiesVisit, dataAlineacion.lineupLocal.name, dataAlineacion.lineupVisit.name);
+                }
+
+                //Modulo expulsados
+                var expulsadosLocal = new Array(),
+                    expulsadosVisit = new Array();
+                expulsadosLocal = dataAlineacion['lineupLocal'].penalization;
+                expulsadosVisit = dataAlineacion['lineupVisit'].penalization;
+                if (expulsadosLocal !== "undefined" || expulsadosVisit !== "undefined") {
+                    wdg_mxm_rating.Modexpulsados(expulsadosLocal, expulsadosVisit);
+                }
+                // END Israel Viveros
+
+
                 var equipo = new Array();
                 var equipoMatch = new Array();
                 var textoPosicion;
@@ -65,7 +95,7 @@
                 var nombreVisit = dataMatchHeader[equipoMatch[1]]['nombre'];
                 var regLocal = dataAlineacion[equipo[0]]['team'].length;
                 var regVisit = dataAlineacion[equipo[1]]['team'].length;
-                var regbancaLocal = dataAlineacion[equipo[0]]['substitutes'].length;	
+                var regbancaLocal = dataAlineacion[equipo[0]]['substitutes'].length;
                 var regbancaVisit = dataAlineacion[equipo[1]]['substitutes'].length;
                 var regPlayerDetail = dataGamePlayer.poll['answers']['answer'].length;
 
@@ -333,7 +363,7 @@
             },
 
             loadDrops: function(feed, ID) {
-            	console.log(feed);            	
+                console.log(feed);
                 $.ajax({
                     url: feed,
                     type: 'GET ',
@@ -370,9 +400,9 @@
             },
 
             //Obtener los Detalles de los jugadores
-            getGamePlayerDetail: function(idtorneo,idMatch,dataAlineacion,dataMatchHeader) {
-                console.log ('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
-            	$.ajax({
+            getGamePlayerDetail: function(idtorneo, idMatch, dataAlineacion, dataMatchHeader) {
+                console.log('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
+                $.ajax({
                     url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js',
                     type: "GET",
                     dataType: 'jsonp',
@@ -385,35 +415,191 @@
             },
 
             //Obtiene el logotipo de los equipos y nombre
-            getInfo: function(idtorneo,idMatch,dataAlineacion) {
-            	console.log ('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js');
+            getInfo: function(idtorneo, idMatch, dataAlineacion) {
+                console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js');
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'mxmheader',
                     cache: false,
                     success: function(dataMatchHeader) {
-                        wdg_mxm_rating.getGamePlayerDetail(idtorneo,idMatch,dataAlineacion,dataMatchHeader)
+                        wdg_mxm_rating.getGamePlayerDetail(idtorneo, idMatch, dataAlineacion, dataMatchHeader)
                     }
 
                 });
             },
 
             //-- Carga la alineacion
-            loadAlineacion: function(idtorneo,idMatch) {
-            	console.log(idtorneo);
-            	console.log(idMatch);
-            	console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js');
+            loadAlineacion: function(idtorneo, idMatch) {
+                console.log(idtorneo);
+                console.log(idMatch);
+                console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js');
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'datagame',
                     cache: false,
                     success: function(dataAlineacion) {
-                        wdg_mxm_rating.getInfo(idtorneo,idMatch,dataAlineacion);
+                        wdg_mxm_rating.getInfo(idtorneo, idMatch, dataAlineacion);
                     }
                 });
             },
+
+
+
+            GolesAnotados: function(local, visit, namelocal, namevisit) {
+                var maquetado = "",
+                    localM,
+                    visitM, finalM = "",
+                    arrayGlobal = new Array();
+                if (local !== '') {
+                    for (var i = 0; i < local.length; i++) {
+                        localM = "";
+                        localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '">';
+                        localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
+                        localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
+                        localM += (typeof(local[i].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>' : '</div>';
+                        localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
+                        arrayGlobal.push(localM);
+                    };
+                }
+                if (visit !== '') {
+                    for (var l = 0; l < visit.length; l++) {
+                        visitM = "";
+                        visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '">';
+                        visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
+                        visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
+                        visitM += (typeof(visit[l].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].formaGol + '</span></p></div>' : '</div>';
+                        visitM += '<div class="dotted-left marcador dotted-left"><p>' + visit[l].current_score + '</p></div></div>';
+                        arrayGlobal.push(visitM);
+                    };
+                }
+                for (var d = 0; d < arrayGlobal.sort().length; d++) {
+                    finalM += arrayGlobal.sort()[d];
+                };
+
+                maquetado += '<div class="convocados">';
+                maquetado += finalM;
+                maquetado += '</div>';
+
+                wdg_mxm_rating.tagAlineacionGoles.html(maquetado);
+                if (local === '' && visit === '') {
+                    wdg_mxm_rating.tagAlineacionGoles.hide();
+                    wdg_mxm_rating.tagAlineacionGoles.parents('.wdg_goalsanoted_01').hide('fast');
+                }
+
+
+
+            },
+            wdgPenales: function(local, visit, nombreLocal, nombrevisit) {
+                var maquetado = "",
+                    content = "";
+                for (var i = 0; i < local.length; i++) {
+                    content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '">';
+                    content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
+                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                    content += '</div>';
+                };
+                for (var j = 0; j < visit.length; j++) {
+                    content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '">';
+                    content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
+                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                    content += '</div>';
+                };
+
+
+                maquetado += '<div class="wdg_mxm_penalties_01">';
+                maquetado += '<div class="titulo textcolor-title1">Penales</div>';
+                maquetado += '<div class="convocados">';
+                maquetado += content;
+                maquetado += '</div></div>';
+                wdg_mxm_rating.tagwdgPenales.html(maquetado);
+
+            },
+
+            Modexpulsados: function(local, visit) {
+                var arrayGlobal = new Array(),
+                    itemshtml = "",
+                    localm = "",
+                    visitm = "";
+                if (typeof(local) !== "undefined") {
+                    for (var i = 0; i < local.length; i++) {
+                        var minuto = 0;
+                        for (var z = 0; z < local[i].actions.length; z++) {
+                            if (local[i].actions[z].type === "amonestacion") {
+                                minuto = z;
+                            }
+                        };
+                        localm = "";
+                        localm += '<div class="' + local[i].actions[minuto].minute + ' bodyt dotted-bottom" id="expulsado' + local[i].actions[minuto].minute + '">';
+                        localm += '<div class="textcolor-title1">' + local[i].number + '</div>';
+                        localm += '<div class="dotted-left name"><p>' + local[i].nickName + '</p></div>';
+                        localm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + local[i].actions[minuto].minute + '\'</div>';
+                        localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
+                        arrayGlobal.push(localm);
+                    };
+
+                }
+                if (typeof(visit) !== "undefined") {
+                    for (var k = 0; k < visit.length; k++) {
+                        var minuto = 0;
+                        for (var y = 0; y < visit[k].actions.length; y++) {
+                            if (visit[k].actions[y].type === "amonestacion") {
+                                minuto = y;
+                            }
+                        };
+                        visitm = "";
+                        visitm += '<div class="' + visit[k].actions[minuto].minute + ' bodyt dotted-bottom" id="expulsado' + visit[k].actions[minuto].minute + '">';
+                        visitm += '<div class="textcolor-title2">' + visit[k].number + '</div>';
+                        visitm += '<div class="dotted-left name"><p>' + visit[k].nickName + '</p></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + visit[k].actions[minuto].minute + '\'</div></div>';
+                        arrayGlobal.push(visitm);
+                    };
+
+                }
+                for (var x = 0; x < arrayGlobal.sort().length; x++) {
+                    itemshtml += arrayGlobal.sort()[x];
+                };
+                var maquetado = '<div class = "wdg_mxm_plcards_01" >';
+                maquetado += '<div class="str_pleca_01 collapsable">';
+                maquetado += '<div class="str_pleca_01_title">';
+                maquetado += '<h3 class="background-color-pleca1">';
+                maquetado += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
+                maquetado += '<div class="convocados"><div class="head">';
+                maquetado += '<div class="textcolor-title1 player">JUGADOR</div>';
+                maquetado += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
+                maquetado += '<div class="icon-team2 dotted-left"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
+                maquetado += '</div>' + itemshtml;
+                maquetado += '</div></div></div>';
+
+                if (typeof(visit) !== "undefined" || typeof(local) !== "undefined") {
+                    wdg_mxm_rating.tagExpulsion.html(maquetado);
+                }
+            }, // Modexpulsados
+
+            listenerInfo: function() {
+                if ($("#datosTIMHeader").length) {
+                    clearInterval(wdg_mxm_rating.intervaloVe);
+                    var imgLocal = $("#localImgTIM").text();
+                    var imgVisit = $("#visitImgTIM").text();
+                    $(".TIMimgLocal").attr('src', imgLocal);
+                    $(".TIMimgVisit").attr('src', imgVisit);
+
+
+                }
+
+            },
+
+
+
+
+
+
+
+
 
             //FUNCIONES NA-AT-------------------------------------------
             funcionesNaat: function() {
@@ -455,8 +641,8 @@
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;
-                        console.log(idtorneo);                        
-                        wdg_mxm_rating.loadAlineacion(idtorneo,idMatch);
+                        console.log(idtorneo);
+                        wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
                         var valorn = String($(this).text());
                         $("#nameJALocal").text(valorn);
                     });
@@ -508,10 +694,10 @@
                         });
                     }
                     lisItemsChild.find("p").unbind('click').click(function(event) {
-                    	var idMatch = $(this).data("matchid");
+                        var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;
-                        console.log(idtorneo);                        
-                        wdg_mxm_rating.loadAlineacion(idtorneo,idMatch);                    	
+                        console.log(idtorneo);
+                        wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
                         var valorn = String($(this).text());
                         $("#nameJAVisit").text(valorn);
                     });
@@ -560,7 +746,7 @@
 
 
                 $('.wdg_rate_player_01 .calification div').on('click', function() {
-                	console.log('comienza la botacion');
+                    console.log('comienza la botacion');
                     var votacion = $(this).children('p').text();
                     var padre = $(this).parent('div');
                     var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');
@@ -568,7 +754,7 @@
 
                     $.ajax({
                         //url: wdg_mxm_rating.urlPlayerDetail,
-                    	url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
+                        url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
                         type: 'GET ',
                         dataType: 'jsonp',
                         jsonpCallback: 'gameplayerdetail',
@@ -639,7 +825,7 @@
                         voteslog = guid_box + '@@@' + guid_spl + '@@@' + guid_sec + '@@@' + guid_fld + '@@@[' + guid_fld + '&&&' + guid_fvl + ']@@@' + guid_thm_spl + '@@@' + altern_field_value + '@@@';
                         voteslog += sefVPrograma + '@@@' + sefVCategoria + '@@@' + sefVSubcategoria + '@@@' + sefVToken + '@@@' + sefVCSIE + '@@@' + sefVUrlactual + '@@@' + sefVSexodelUsuario + '@@@' + sefVIP + '@@@' + sefVCodigodelPais + '@@@' + sefVCuidad + '@@@' + sefVEstado + '@@@' + sefVTimestamp + '@@@' + sefVNavegador + '@@@' + sefVVersion + '@@@' + sefVSistemaOperativo + '@@@' + sefVResoluciondelapantalla + '@@@' + sefVjavaEnabled + '@@@' + sefVDireccionanterior + '@@@' + sefVLenguajedelsistema + '@@@' + sefVLenguajedelUsuario + '@@@' + sefVLenguajedelNavegador;
                         pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl;
-                        alert('http://polls.esmas.com/calcularesultado/arreglo/'+voteslog+'/voto/'+guid_fld+'&&&'+guid_fvl);
+                        alert('http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl);
 
                         //createCookie(cookieName,'1', 60);
 
@@ -703,7 +889,7 @@
 
         }
 
-        $.when(wdg_mxm_rating.loadAlineacion(setting.idTorneo,setting.idEvento)).done(function() {
+        $.when(wdg_mxm_rating.loadAlineacion(setting.idTorneo, setting.idEvento)).done(function() {
             setTimeout(function() {
                 wdg_mxm_rating.funcionesNaat();
             }, 500);

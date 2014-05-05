@@ -74,6 +74,8 @@
     <link rel="stylesheet" href="http://54.243.192.45/na-at-deportes/trunk/wdg_rate_player_01/css/wdg_rate_player_01_tablet.css" media="screen and (min-width: 624px)">
     <link rel="stylesheet" href="http://54.243.192.45/na-at-deportes/trunk/wdg_rate_player_01/css/wdg_rate_player_01.css" media="screen and (min-width: 948px)">
  	--> 	
+
+    <link rel="stylesheet" href="http://166.78.2.40/deportes/td_mxm_rating_01/css/td_mxm_rating_01.css">
  	<script type="text/javascript" src="http://166.78.2.40/deportes/wdg_rate_player_01/js/wdg_rate_player_01.js"></script>
  	<link rel="stylesheet" href="http://166.78.2.40/deportes/wdg_rate_player_01/css/wdg_rate_player_01_mobile.css" media="screen">
     <link rel="stylesheet" href="http://166.78.2.40/deportes/wdg_rate_player_01/css/wdg_rate_player_01_tablet.css" media="screen and (min-width: 624px)">
@@ -83,7 +85,7 @@
          $(window).load(function() {            
             setTimeout(function(){
                 $("#containerwdg_rating_main_01").MxMRatingMain({'idTorneo': 356,'idEvento': 24999,'GolesAnotados': true,'Penales':true,'Amonestados': true,'Promedio': true});
-                $("#containerwdg_mxm_rating_01").MxMRating({'idTorneo': 356,'idEvento': 24999,'idEquipo':1,'idEquipo2':1240,'title':'Alineacion','GolesAnotados': true,'Penales':true,'Amonestados': true,'Promedio': true});
+                $("#containerwdg_mxm_rating_01").MxMRating({'idTorneo': 334,'idEvento': 23692,'idEquipo':1,'idEquipo2':1240,'title':'Alineacion','GolesAnotados': true,'Penales':true,'Amonestados': true,'Promedio': true});
             },1000);                    
         });
 
@@ -94,6 +96,12 @@
 </head>
 
 <body>
+<section class="td_mxm_rating_01">
+
+
+    <div class="main">
+
+        <div class="c1 left">
 <!-- BEGIN:  wdg_rating_main_01 -->
 	<section class="wdg_rating_main_01" id="containerwdg_rating_main_01"></section>
 <!-- END: wdg_rating_main_01 -->
@@ -101,6 +109,76 @@
 <!-- BEGIN: wdg_mxm_rating_01 -->
 	<section class="wdg_mxm_rating_01" id="containerwdg_mxm_rating_01"></section>
 <!-- END: wdg_mxm_rating_01 -->
+
+
+
+
+
+
+</div>
+
+<div class="c3 right hide-mobile">
+    <div class="c3_1 hide-tablet">  
+                <div id="ban01_300x250" ><img src="http://imagemockup.com/300/250/ads/"></div>
+            </div>
+
+<div class="c3_2 left">
+    <!-- BEGIN: wdg_goalsanoted_01 -->
+<div class="wdg_goalsanoted_01">
+    
+    <!-- BEGIN: str_pleca_01 -->
+    <div class="str_pleca_01 collapsable">
+        <div class="str_pleca_01_title">
+            <h3 class="background-color-pleca1">
+                <a  title="Link Description" class="textcolor-title3">
+                    Goles anotados
+                </a>
+            </h3>
+        </div>
+    </div>
+    <!-- END: str_pleca_01 -->
+    
+    
+    <div class="scroll-carrusel">
+                <div class="scroll">
+            <!-- Tabla -->
+           <div id="TIMAlineacionGoles"></div>
+            <!-- END Tabla -->
+            
+            <!-- BEGIN: wdg_mxm_penalties_01 -->
+            <div id="TIMWdgPenales"></div>
+        </div>
+        <!-- END: wdg_mxm_penalties_01 -->
+        
+    </div>
+    
+    
+    <!-- 
+    <div class="arrow_buttons"> 
+        <a class="view_all background-gradient-content1" title="Link Description" href="http://www.televisa.com">Ver todos</a>  
+    </div>-->
+  <div class="degraded"></div>
+</div>
+<!-- END: wdg_goalsanoted_01 -->
+
+</div>
+
+
+
+
+<!-- BEGIN: wdg_mxm_plcards_01 -->
+<div class="c3_4 right">
+    <div id="ExpulsionTIM"></div>
+</div>
+<!-- END: wdg_mxm_plcards_01 -->
+
+</div>
+
+
+</div>
+
+
+</section>
 </body>
 </html>
 	
