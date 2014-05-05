@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.5
+ *   Version: 1.2.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -65,7 +65,7 @@
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="dotted_separator"></div>';
                 MaquetadoHEader += '<div class="team2">';
-                MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES2</div>';
+                MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
                 MaquetadoHEader += '<div class="equipo"><span>' + data.equipoVisitante.nombre + '</span></div>';
                 MaquetadoHEader += '<div class="escudo"><img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '"></div>';
