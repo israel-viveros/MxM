@@ -70,15 +70,15 @@
                     feedvisitgol = data.acciones.visitant.tiros_gol;
 
 
-                (LocalAmarilla !== feedlocalamarilla) ? $("#LocalamarillasTIM").text(feedlocalamarilla) : '';
-                (LocalRoja !== feedlocalroja) ? $("#rojasLocalTIM").text(feedlocalroja) : '';
-                (LocalEsquina !== feedlocalesquina) ? $("#esquinaLocalTIM").text(feedlocalesquina) : '';
-                (feedlocalgol !== feedlocalgol) ? $("#tiroslocalTIM").text(feedlocalgol) : '';
+                (LocalAmarilla !== feedlocalamarilla) ? $("#LocalamarillasTIM").empty().text(feedlocalamarilla) : '';
+                (LocalRoja !== feedlocalroja) ? $("#rojasLocalTIM").empty().text(feedlocalroja) : '';
+                (LocalEsquina !== feedlocalesquina) ? $("#esquinaLocalTIM").empty().text(feedlocalesquina) : '';
+                (feedlocalgol !== feedlocalgol) ? $("#tiroslocalTIM").empty().text(feedlocalgol) : '';
 
-                (VisitAmarilla !== feedvisitamarilla) ? $("#LocalamarillasTIM").text(feedvisitamarilla) : '';
-                (VisitRoja !== feedvisitroja) ? $("#LocalamarillasTIM").text(feedvisitroja) : '';
-                (VisitEsquina !== feedvisitesquina) ? $("#LocalamarillasTIM").text(feedvisitesquina) : '';
-                (VisitGol !== feedvisitgol) ? $("#LocalamarillasTIM").text(feedvisitgol) : '';
+                (VisitAmarilla !== feedvisitamarilla) ? $("#LocalamarillasTIM").empty().text(feedvisitamarilla) : '';
+                (VisitRoja !== feedvisitroja) ? $("#LocalamarillasTIM").empty().text(feedvisitroja) : '';
+                (VisitEsquina !== feedvisitesquina) ? $("#LocalamarillasTIM").empty().text(feedvisitesquina) : '';
+                (VisitGol !== feedvisitgol) ? $("#LocalamarillasTIM").empty().text(feedvisitgol) : '';
 
 
 
