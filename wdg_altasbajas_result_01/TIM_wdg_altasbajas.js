@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 2.2.9
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.wdgAltasBajas = function(options) {
@@ -425,7 +430,8 @@
                 if (i === 0) {
                     globalThis.find('.division img').attr('src', data[i].tournament.icono);
                     globalThis.find('.division h2').text(data[i].tournament.name);
-                    globalThis.find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/' + String(data[i].tournament.name).replace(/ /g, "-").toLowerCase() + '/calendario/' + data[i].sef.tournamentid + '/');
+
+                    (typeof(data[i].sef) !== "undefined" && typeof(data[i].sef.tournamentid) !== "undefined") ? globalThis.find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/' + String(data[i].tournament.name).replace(/ /g, "-").toLowerCase() + '/calendario/' + data[i].sef.tournamentid + '/') : '';
                 }
 
 
