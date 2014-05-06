@@ -1,0 +1,28 @@
+@media screen and (min-width: 948px){    
+	.wdg_mxm_live_03 > div .prev, 
+    .wdg_mxm_live_03 > div .next {
+        display: block;
+    }
+
+    .wdg_mxm_live_03 .wdg_mxm_live_03_list{
+    	overflow: hidden;
+    	width: 100%;
+    }
+    .wdg_mxm_live_03 .arrow_buttons{
+    	display: none !important;
+    }
+    .wdg_mxm_live_03 .degraded{
+        display:none;
+    }
+	.wdg_mxm_live_03 ul li{
+        padding: 15px 10px 15px 0;
+    }
+    .ie7 .wdg_mxm_live_03 .icon-interactive2{
+    	width: 3%;
+    }
+	
+	.wdg_mxm_live_03 .scroll{
+		
+		width:640px;
+	}
+}
