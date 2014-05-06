@@ -77,10 +77,10 @@
     	            dataType: 'jsonp',
     	            jsonpCallback: 'draft',
     	            cache: false,
-    	            success:function(data){    	            	    	            	
+                    success: function(data) {
                         console.log(data);
-    	            	//wdg_playerdraft_01.pintaInfo(data);                        	                       
-    	            }
+                        //wdg_playerdraft_01.pintaInfo(data);                                                  
+                    }
     			});
     		}
     	
