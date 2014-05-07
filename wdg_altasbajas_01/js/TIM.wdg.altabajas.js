@@ -27,7 +27,7 @@
                 maquetado += '<div class="degraded_left"></div>';
                 maquetado += '<div class="sup_izq textcolor-title3">';
                 maquetado += '<a id="targetDraft" href="#" class="underline_text"><div class="background-color2">DRAFT<div class="hline"></div></div></a>';
-                maquetado += '<a href="#" class="underline_text"><div class="background-color2 hide-mobile">MXM<div class="hline"></div></div></a>';
+                maquetado += '<a id="targetMxMDraft" href="#" class="underline_text"><div class="background-color2 hide-mobile">MXM<div class="hline"></div></div></a>';
                 maquetado += '<div class="subtitulo">Altas y Bajas por equipo</div>';
                 maquetado += '<div class="textcolor-title2" id="nameTournDraft"></div>';
                 maquetado += '</div>';
@@ -175,6 +175,7 @@
                         (typeof(data.draftTotalDelete) === "string") ? $("#totBaj").text(data.draftTotalDelete) : '';
                         (typeof(data.draftTournament.name) === "string") ? $("#nameTournDraft").text(data.draftTournament.name) : '';
                         (typeof(data.draftURL) === "string") ? $("#targetDraft").attr("href", data.draftURL) : '';
+                        (typeof(data.draftURL) === "string") ? $("#targetMxMDraft").attr("href", data.draftURL + "mxm.html") : '';
 
                         try {
                             objAltasbajas.startCountdown(target);
