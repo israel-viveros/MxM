@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.0
+ *   Version: 1.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -95,7 +95,8 @@
 
                             }
                             maquetado += '<li>';
-                            maquetado += '<div class="textcolor-title2 time">' + fecha[0] + ' ' + nombreMes + '</div>';
+                            maquetado += '<div class="textcolor-title2 time">' + fecha[0] + '.' + nombreMes;
+                            maquetado += ((data[i].hora) !== "undefined") ? '<p>' + data[i].hora + '</p></div>' : '</div>';
                             maquetado += '<div class="chronic">';
                             maquetado += '<div class="logoTeam"><img src="' + data[i].icon + '" alt="Image description"> </div>';
                             maquetado += (typeof(data[i].Jugador) !== "undefined") ? '<h2>' + data[i].Jugador + '</h2>' : '';

@@ -6,6 +6,7 @@ actionsDraft([{
     "tipo": "alta",
     "status": "realizada",
     "fecha": "21/02/2014",
+    "hora": "21:00",
     "icon": "http://lorempixel.com/sports/24/24/",
     "descripcion": "1 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, facilis, libero fuga accusantium veritatis tenetur autem dolore ea nemo reprehenderit aliquid et asperiores id. Nobis, commodi illo nulla minima perspiciatis!"
 }, {
@@ -16,6 +17,7 @@ actionsDraft([{
     "tipo": "alta",
     "status": "realizada",
     "fecha": "21/02/2014",
+    "hora": "21:02",
     "icon": "http://lorempixel.com/sports/24/24/",
     "descripcion": "2 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, facilis, libero fuga accusantium veritatis tenetur autem dolore ea nemo reprehenderit aliquid et asperiores id. Nobis, commodi illo nulla minima perspiciatis!"
 }, {
@@ -26,6 +28,7 @@ actionsDraft([{
     "tipo": "alta",
     "status": "realizada",
     "fecha": "21/02/2014",
+    "hora": "21:03",
     "icon": "http://lorempixel.com/sports/24/24/",
     "descripcion": "3 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, facilis, libero fuga accusantium veritatis tenetur autem dolore ea nemo reprehenderit aliquid et asperiores id. Nobis, commodi illo nulla minima perspiciatis!"
 }, {
@@ -36,6 +39,7 @@ actionsDraft([{
     "tipo": "alta",
     "status": "realizada",
     "fecha": "21/02/2014",
+    "hora": "21:04",
     "icon": "http://lorempixel.com/sports/24/24/",
     "descripcion": "4 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, facilis, libero fuga accusantium veritatis tenetur autem dolore ea nemo reprehenderit aliquid et asperiores id. Nobis, commodi illo nulla minima perspiciatis!"
 }, {
@@ -46,6 +50,7 @@ actionsDraft([{
     "tipo": "alta",
     "status": "realizada",
     "fecha": "21/02/2014",
+    "hora": "21:05",
     "icon": "http://lorempixel.com/sports/24/24/",
     "descripcion": "5 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, facilis, libero fuga accusantium veritatis tenetur autem dolore ea nemo reprehenderit aliquid et asperiores id. Nobis, commodi illo nulla minima perspiciatis!"
 }, {
@@ -56,6 +61,7 @@ actionsDraft([{
     "tipo": "alta",
     "status": "realizada",
     "fecha": "21/02/2014",
+    "hora": "21:06",
     "icon": "http://lorempixel.com/sports/24/24/",
     "descripcion": "6 Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, facilis, libero fuga accusantium veritatis tenetur autem dolore ea nemo reprehenderit aliquid et asperiores id. Nobis, commodi illo nulla minima perspiciatis!"
 }])

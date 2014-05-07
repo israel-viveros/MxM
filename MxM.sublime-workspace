@@ -508,42 +508,9 @@
 	"buffers":
 	[
 		{
-			"file": "wdg_mxm_live_03/index.html",
 			"settings":
 			{
-				"buffer_size": 3895,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "/Users/israelviveros/Desktop/teamdraft",
-			"settings":
-			{
-				"buffer_size": 5292,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "wdg_mxm_live_03/feed.js",
-			"settings":
-			{
-				"buffer_size": 2984,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
-			"settings":
-			{
-				"buffer_size": 12620,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
-			"settings":
-			{
-				"buffer_size": 3370,
+				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
 		}
@@ -604,12 +571,18 @@
 	},
 	"file_history":
 	[
+		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/feed.js",
+		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/index.html",
+		"/Users/israelviveros/Desktop/teamdraft",
+		"/Users/israelviveros/Sites/MxM/wdg_teamdraft_01/wdg.teamdraft.js",
+		"/Users/israelviveros/Sites/MxM/wdg_teamdraft_01/index.html",
 		"/Users/israelviveros/Desktop/index.php",
 		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/js/mxm.draft.live.js",
 		"/Users/israelviveros/Desktop/feed.txt",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/index.html",
 		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/wdgMxMGlobal.css",
-		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
 		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/index.html",
 		"/Users/israelviveros/Sites/MxM/td_mxm_alineacion_01/TIMTD_mxm_alineacion.js",
 		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/TIM_mxm_rating.js",
@@ -622,7 +595,6 @@
 		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/index.html",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/TIM.wdg.altabajas.js",
 		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/index.html",
-		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
 		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/fix.wdgs.mxm.css",
 		"/Users/israelviveros/Sites/MxM/MxM.sublime-workspace",
 		"/Users/israelviveros/Sites/MxM/.gitignore",
@@ -726,12 +698,7 @@
 		"/Users/israelviveros/Sites/Fase-2-3-Mundial-2014/Galaxy/mxmprevio.html",
 		"/Users/israelviveros/Sites/pruebas/pdf/vidi.html",
 		"/Users/israelviveros/Sites/pruebas/impresion/index.html",
-		"/Users/israelviveros/Sites/pruebas/impresion/print.js",
-		"/Users/israelviveros/Sites/pruebas/koala/correo.php",
-		"/Users/israelviveros/Desktop/wdg_smex_strategy.html",
-		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/index.html",
-		"/Users/israelviveros/Sites/Fase-2-3-Mundial-2014/Maquetado/widgets/td_mxm_previo_01/funcionesMxm.js",
-		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/wdg.avgfield02.js"
+		"/Users/israelviveros/Sites/pruebas/impresion/print.js"
 	],
 	"find":
 	{
@@ -958,23 +925,22 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 0,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "wdg_mxm_live_03/index.html",
 					"settings":
 					{
-						"buffer_size": 3895,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3019,
-								3019
+								0,
+								0
 							]
 						],
 						"settings":
@@ -1023,300 +989,10 @@
 								"bh_single_quote_open",
 								"bh_single_quote_close"
 							],
-							"syntax": "Packages/HTML/HTML.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 581.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "/Users/israelviveros/Desktop/teamdraft",
-					"settings":
-					{
-						"buffer_size": 5292,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								787,
-								800
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "wdg_mxm_live_03/feed.js",
-					"settings":
-					{
-						"buffer_size": 2984,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								2502,
-								2502
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 71.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 3,
-					"file": "wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
-					"settings":
-					{
-						"buffer_size": 12620,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								314,
-								128
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 1.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
-					"settings":
-					{
-						"buffer_size": 3370,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								3259,
-								3039
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 506.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
