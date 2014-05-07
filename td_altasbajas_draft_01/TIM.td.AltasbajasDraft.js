@@ -61,7 +61,7 @@
     			
     			//Contenido___
     			maquetado += "<tr>";
-    			maquetado += "<td colspan='6' class='separador' style='position:relative;'></td>";    			
+    			maquetado += "<td colspan='6' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";    			
     			maquetado += "</tr>";
     			
                 for (var i=0; i<data['draftTeams'].length; i++) {                
@@ -95,20 +95,20 @@
                         
                         //Calificaciones del jugador___
                         maquetado += "<tr>";
-                        maquetado += "<td colspan='6' class='separador' style='position:relative;'>";
-                            maquetado += "<div class='dotted-top'></div>";
-                            maquetado += "<div class='qualifies'><div>califica al jugador</div></div>";
-                            maquetado += "<div class='calification textcolor-title4'>";
-                                maquetado += "<div><a href='#'>5</a></div>";   
-                                maquetado += "<div><a href='#'>6</a></div>";
-                                maquetado += "<div><a href='#'>7</a></div>";
-                                maquetado += "<div><a href='#'>8</a></div>";
-                                maquetado += "<div><a href='#'>9</a></div>";
-                                maquetado += "<div><a href='#'>10</a></div>";
-                            maquetado += "</div>";
-                            maquetado += "<div class='participated  textcolor-title4'>";
-                                maquetado += "<div class='voted'><p>Gracias por votar <i class='tvsa-like'></i></p></div>";
-                            maquetado += "</div>";
+                        maquetado += "<td colspan='6' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF;'>";
+                        maquetado += "<div class='dotted-top'></div>";
+                        maquetado += "<div class='qualifies'><div>califica al jugador</div></div>";
+                        maquetado += "<div class='calification textcolor-title4'>";
+                        maquetado += "<div><a href='#'>5</a></div>";   
+                        maquetado += "<div><a href='#'>6</a></div>";
+                        maquetado += "<div><a href='#'>7</a></div>";
+                        maquetado += "<div><a href='#'>8</a></div>";
+                        maquetado += "<div><a href='#'>9</a></div>";
+                        maquetado += "<div><a href='#'>10</a></div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'><p>Gracias por votar <i class='tvsa-like'></i></p></div>";
+                        maquetado += "</div>";
                         maquetado += "</td>";
                         maquetado += "</tr>";
                     }    
@@ -124,10 +124,8 @@
     			
     		},
             funcionesNaat: function() { 
-                alert ('comienzan las funciones de Na-at'); 
-
-                
-                
+                //e.event.preventDefault();
+                alert('comienzan las funciones de Na-at');           
                 /*Para IPAD*/
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').on('touchstart', function(e){
                     //e.event.preventDefault();
@@ -155,7 +153,7 @@
     
                 //Over del jugador
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').mouseenter(function(){
-                    console.log('hover');
+                    
                     //provisional
                     $(this).next('tr').find('td.separador .qualifies').show();
 
@@ -230,9 +228,7 @@
                 }
 
             },
-    			
-    			
-    			
+    				
     		getDataDraft: function() {                
     			console.log(wdg_playerdraft_01.urlData);
     			$.ajax({
@@ -241,25 +237,14 @@
     	            dataType: 'jsonp',
     	            jsonpCallback: 'draft',
     	            cache: false,
-
-    	            success:function(data){
-                        alert("OK");                                          
+    	            success:function(data){                                                            
                         wdg_playerdraft_01.viewHtml(data);                        	            	
     	            },
                     error: function(data){
                         alert("ERROR____");                        
-                    }
-
-                    success: function(data) {
-                        console.log(data);
-                        //wdg_playerdraft_01.pintaInfo(data);                                                  
-                    }
-
-    			});
-                
+                    }                    
+    			});                
     		}
-    	
-    	
     	}
     	
         wdg_playerdraft_01.getDataDraft();
