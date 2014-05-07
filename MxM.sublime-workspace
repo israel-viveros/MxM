@@ -4,6 +4,26 @@
 		"selected_items":
 		[
 			[
+				"name",
+				"nameTeam"
+			],
+			[
+				"final",
+				"finalYea"
+			],
+			[
+				"end",
+				"endDate"
+			],
+			[
+				"en",
+				"endDate"
+			],
+			[
+				"fee",
+				"feedDraft"
+			],
+			[
 				"ready",
 				"ready	$(document).ready"
 			],
@@ -300,10 +320,6 @@
 				"actualGoles"
 			],
 			[
-				"name",
-				"namevisit"
-			],
-			[
 				"goals",
 				"goalsVisit"
 			],
@@ -492,25 +508,42 @@
 	"buffers":
 	[
 		{
-			"file": "wdg_matchesresult_01/TIM_wdg_matchesresult.js",
+			"file": "wdg_mxm_live_03/index.html",
 			"settings":
 			{
-				"buffer_size": 53724,
+				"buffer_size": 3895,
 				"line_ending": "Unix"
 			}
 		},
 		{
+			"file": "/Users/israelviveros/Desktop/teamdraft",
 			"settings":
 			{
-				"buffer_size": 0,
+				"buffer_size": 5292,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "wdg_matchesresult_01/index.html",
+			"file": "wdg_mxm_live_03/feed.js",
 			"settings":
 			{
-				"buffer_size": 9801,
+				"buffer_size": 2984,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+			"settings":
+			{
+				"buffer_size": 12620,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
+			"settings":
+			{
+				"buffer_size": 3370,
 				"line_ending": "Unix"
 			}
 		}
@@ -571,27 +604,41 @@
 	},
 	"file_history":
 	[
-		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/TIM_wdg_matchesresult.js",
+		"/Users/israelviveros/Desktop/index.php",
+		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/js/mxm.draft.live.js",
+		"/Users/israelviveros/Desktop/feed.txt",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/index.html",
+		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/wdgMxMGlobal.css",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/index.html",
+		"/Users/israelviveros/Sites/MxM/td_mxm_alineacion_01/TIMTD_mxm_alineacion.js",
 		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/TIM_mxm_rating.js",
-		"/Users/israelviveros/Sites/Deportes_restructura/pizarra.html",
-		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/fix.wdgs.mxm.css",
-		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/js/functions.wdgs.mxm.js",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/TIM_wdg_altasbajas.js",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/index.html",
+		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/TIM.wdg.avgfield02.js",
+		"/Users/israelviveros/Sites/MxM/wdg_sport_result_01/TIM_wdg_sport_result.js",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/libs.countdown.altasbajas.js",
+		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/TIM_wdg_matchesresult.js",
+		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/index.html",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/TIM.wdg.altabajas.js",
+		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/index.html",
+		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
+		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/fix.wdgs.mxm.css",
+		"/Users/israelviveros/Sites/MxM/MxM.sublime-workspace",
+		"/Users/israelviveros/Sites/MxM/.gitignore",
+		"/Users/israelviveros/Sites/Deportes_restructura/pizarra.html",
+		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/js/functions.wdgs.mxm.js",
 		"/Users/israelviveros/Desktop/loader.html",
 		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/wdg_rating_main_01.js",
 		"/Users/israelviveros/Sites/MxM/wdg_lineup_01/js/TIM_wdg_lineup.js",
-		"/Users/israelviveros/Sites/MxM/td_mxm_alineacion_01/TIMTD_mxm_alineacion.js",
-		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/wdgMxMGlobal.css",
 		"/Users/israelviveros/Sites/Deportes_restructura/mxm.html",
 		"/Users/israelviveros/Sites/Deportes_restructura/replace.php",
 		"/Users/israelviveros/Sites/Deportes_restructura/fix.mxm.css",
 		"/Users/israelviveros/Sites/MxM/td_mxm_alineacion_01/index.html",
 		"/Users/israelviveros/Desktop/probando.html",
 		"/Users/israelviveros/Desktop/fix_mxm.css",
-		"/Users/israelviveros/Sites/MxM/wdg_sport_result_01/TIM_wdg_sport_result.js",
 		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_04/TIM_wdg_mxm_live_04.js",
 		"/Users/israelviveros/Sites/MxM/wdg_sport_result_01/index.html",
-		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/TIM.wdg.avgfield02.js",
 		"/Users/israelviveros/Sites/Deportes_restructura/alineacion.html",
 		"/Users/israelviveros/Downloads/wdgMxMGlobal.css",
 		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/TIM_wdg_matchesresult.min.js",
@@ -617,7 +664,6 @@
 		"/Users/israelviveros/Sites/MxM/wdg_smex_strategy_01/index.html",
 		"/Users/israelviveros/Desktop/pdf_generate/examples/mio.php",
 		"/Users/israelviveros/Desktop/maquetado.html",
-		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/TIM_wdg_altasbajas.js",
 		"/Users/israelviveros/Desktop/pdf_generate/examples/data.php",
 		"/Users/israelviveros/Desktop/previo.html",
 		"/Users/israelviveros/Desktop/mxm/alineacion.html",
@@ -685,20 +731,7 @@
 		"/Users/israelviveros/Desktop/wdg_smex_strategy.html",
 		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/index.html",
 		"/Users/israelviveros/Sites/Fase-2-3-Mundial-2014/Maquetado/widgets/td_mxm_previo_01/funcionesMxm.js",
-		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/wdg.avgfield02.js",
-		"/Users/israelviveros/Desktop/loading.html",
-		"/Users/israelviveros/Sites/pruebas/previo.html",
-		"/Users/israelviveros/Desktop/loaderMxM.js",
-		"/Users/israelviveros/Desktop/match_lineup.js",
-		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_04/TIM_wdg_mxm_live_04.min.js",
-		"/Users/israelviveros/Sites/Fase-2-3-Mundial-2014/Maquetado/widgets/td_mxm_alineacion_01/actions.mxm.Alineacion.js",
-		"/Users/israelviveros/Sites/Fase-2-3-Mundial-2014/Maquetado/widgets/td_mxm_alineacion_01/index.html",
-		"/Users/israelviveros/Sites/Fase-2-3-Mundial-2014/Maquetado/widgets/td_mxm_alineacion_01/file_mxm_alineacion.css",
-		"/Users/israelviveros/Sites/pruebas/home.html",
-		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/index.html",
-		"/Users/israelviveros/Sites/pruebas/matchresult.html",
-		"/Users/israelviveros/Sites/pruebas/TIM_wdg_sport_result.js",
-		"/Users/israelviveros/Sites/pruebas/TIM_wdg_lineup.js"
+		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/wdg.avgfield02.js"
 	],
 	"find":
 	{
@@ -716,6 +749,49 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"http://floreriadetallesycaprichos.com.mx/informes/banner/inlay_01_0.gif?id=01&type=inlay",
+			"secondDraw",
+			"resi",
+			"equipos",
+			"secondDraw",
+			"separator_team",
+			"teams_stadistics_table",
+			"secondDraw",
+			"ajax",
+			"listenerInfo",
+			"wdg_smex_strategy",
+			"TIMimgLocal",
+			"wdg_smex_strategy",
+			"Modexpulsados",
+			"tagExpulsion",
+			"wdgPenalesupdate",
+			"wdg_smex_strategy",
+			"tagwdgPenales",
+			"tagAlineacionGoles",
+			"muestragoles",
+			"strate",
+			"smex",
+			"tagAlineacionGoles",
+			"GolesAnotados",
+			"tagAlineacionGoles",
+			"evaluation first_child",
+			"penales2",
+			"ajax",
+			"torneo",
+			"wdg_match_01_extra",
+			"<tr",
+			"tbody",
+			"urlFinalAlineacion",
+			"wdg_mxm_rating.urlFinalAlineacion",
+			"pintaInfo",
+			"getGamePlayerDetail",
+			"loadAlineacion",
+			"loadalineacion",
+			"console.log(setting.idEvento);",
+			"loadAlineacion",
+			"getInfo",
+			"containerWdgMexStrategy",
+			"ModexpulsadosUpdate",
 			"665",
 			"LoadFirst",
 			"data(\"url\")",
@@ -800,50 +876,7 @@
 			"append",
 			"playerfoto",
 			"final",
-			"contenidoMxM",
-			"../vid_player_01/css/",
-			"../img_stage_01/css/",
-			"timeUpdate",
-			"loadInfo",
-			"urlFinalHeader",
-			"timeUpdate",
-			"GlobalThis.find('.score').css('visibility', 'hidden');",
-			" var a = new Date('2014,04,22,13,45,0'0);\n console.log(a)",
-			"timeUpdate",
-			"globalthis",
-			"match_lineup",
-			"imagecreatefrompng",
-			"updat",
-			"new Date()",
-			"new date",
-			"now(",
-			"now",
-			"fade",
-			".countdown",
-			"                console.log(serverTime());",
-			".count",
-			"timeUpdate",
-			"switch",
-			"swi",
-			"giveActions",
-			"tagAlineacionList",
-			"read",
-			"validaDrops",
-			"wdgLineUpOb.intervaloDrops",
-			"intervaloVe",
-			"clearInterval",
-			"infoequipo",
-			"clic",
-			"$contLineup->{'lineupVisit'}->{'team'} ",
-			"coachlocal",
-			"contLineup",
-			"visitPLayersbanca2",
-			"trim",
-			"outputAmonestados",
-			"    $penal = ($penal>0) ? $penal : '';\nGlobalamonestados",
-			"Globalamonestados",
-			"amonestaciones",
-			"amonestacionesç"
+			"contenidoMxM"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -930,159 +963,18 @@
 			[
 				{
 					"buffer": 0,
-					"file": "wdg_matchesresult_01/TIM_wdg_matchesresult.js",
+					"file": "wdg_mxm_live_03/index.html",
 					"settings":
 					{
-						"buffer_size": 53724,
+						"buffer_size": 3895,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								51424,
-								51424
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 1.0,
-						"translation.y": 14783.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"settings":
-					{
-						"buffer_size": 0,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"BracketHighlighterBusy": false,
-							"bh_regions":
-							[
-								"bh_regex",
-								"bh_regex_center",
-								"bh_regex_open",
-								"bh_regex_close",
-								"bh_double_quote",
-								"bh_double_quote_center",
-								"bh_double_quote_open",
-								"bh_double_quote_close",
-								"bh_square",
-								"bh_square_center",
-								"bh_square_open",
-								"bh_square_close",
-								"bh_angle",
-								"bh_angle_center",
-								"bh_angle_open",
-								"bh_angle_close",
-								"bh_curly",
-								"bh_curly_center",
-								"bh_curly_open",
-								"bh_curly_close",
-								"bh_default",
-								"bh_default_center",
-								"bh_default_open",
-								"bh_default_close",
-								"bh_unmatched",
-								"bh_unmatched_center",
-								"bh_unmatched_open",
-								"bh_unmatched_close",
-								"bh_round",
-								"bh_round_center",
-								"bh_round_open",
-								"bh_round_close",
-								"bh_tag",
-								"bh_tag_center",
-								"bh_tag_open",
-								"bh_tag_close",
-								"bh_single_quote",
-								"bh_single_quote_center",
-								"bh_single_quote_open",
-								"bh_single_quote_close"
-							],
-							"syntax": "Packages/Text/Plain text.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 2,
-					"file": "wdg_matchesresult_01/index.html",
-					"settings":
-					{
-						"buffer_size": 9801,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								9654,
-								9654
+								3019,
+								3019
 							]
 						],
 						"settings":
@@ -1136,7 +1028,295 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 2156.0,
+						"translation.y": 581.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "/Users/israelviveros/Desktop/teamdraft",
+					"settings":
+					{
+						"buffer_size": 5292,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								787,
+								800
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "wdg_mxm_live_03/feed.js",
+					"settings":
+					{
+						"buffer_size": 2984,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2502,
+								2502
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 71.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+					"settings":
+					{
+						"buffer_size": 12620,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								314,
+								128
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 1.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
+					"settings":
+					{
+						"buffer_size": 3370,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								3259,
+								3039
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 506.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
