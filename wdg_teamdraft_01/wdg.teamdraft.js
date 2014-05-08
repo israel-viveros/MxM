@@ -1,17 +1,18 @@
 ;
 (function() {
-    $.fn.MxMTeamDraft = function(options) {
-        var setting = $.extend({
-            'idTorneo': 0,
-            'idEvento': 0
-        }, options);
+    $.fn.MxMTeamDraft = function(options) {               
+        var setting = $.extend({            
+            'idTorneo':0,
+            'idTeam':0
+        }, options);                
 
         var wdgTeamDraft = {
-            urlData: 'http://mxm.televisadeportes.esmas.com/futbol/draft/liga-mx-clausura-2014/draft.js?1910',
-            tagWdgTeamDraft: $("#containerwdg_teamdraft_01"),
-
+            urlData: 'http://lab.israelviveros.com/draft/'+setting.idTorneo+'/draft.js',           
+            tagWdgTeamDraft: $("#containerwdg_teamdraft_01"), 
             arrayAltas: new Array(),
             arrayBajas: new Array(),
+            arrayRumores: new Array(),
+            arrayTrans: new Array(),
             arrayPrestamos: new Array(),
 
             remplazaComas: function(textArray) {
@@ -129,48 +130,44 @@
                         playerDraft += "</tr>";
 
                         wdgTeamDraft.arrayPrestamos.push(playerDraft);
+
                         break;
-
-                    default:
-                        alert(type);
-
+                    default: 
+                        console.log(type);
                         break;
                 }
             },
 
-            viewHtml: function(data) {
-                //Asignamos valores...                
-                console.log(data);
-                // console.log(data['draftTeams'].length);
-                for (var i = 0; i < data['draftTeams'].length; i++) {
-                    // console.log("Team"+i);
-                    // console.log(data['draftTeams'][i]['operation'].length);                                                                
-                    for (var n = 0; n < data['draftTeams'][i]['operation'].length; n++) {
-                        var type = "";
-                        var idPlayer = "";
-                        var namePlayer = "";
-                        var lastTeam = "";
-                        var transfer = "";
-                        var rantingTD = "";
-                        var ratingUser = "";
-                        var nationality = "";
+            viewHtml: function(data){                                                                                                  
+                for (var i=0; i<data['draftTeams'].length; i++) {                                    
+                    if (data['draftTeams'][i]['id']==setting.idTeam) {
+                        alert (data['draftTeams'][i]['name']);                                                                                                        
+                        for (var n=0; n<data['draftTeams'][i]['operation'].length; n++) {
+                            var type = "";
+                            var idPlayer = "";
+                            var namePlayer = "";
+                            var lastTeam = "";
+                            var transfer = "";                        
+                            var rantingTD = "";
+                            var ratingUser = "";
+                            var nationality = "";            
 
-                        type = data['draftTeams'][i]['operation'][n]['type'];
-                        idPlayer = data['draftTeams'][i]['operation'][n]['id'];
-                        namePlayer = data['draftTeams'][i]['operation'][n]['name'];
-                        lastTeam = data['draftTeams'][i]['operation'][n]['lastTeam'];
-                        transfer = data['draftTeams'][i]['operation'][n]['transfer'];
-                        rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
-                        ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];
-                        nationality = data['draftTeams'][i]['operation'][n]['nationality'];
-                        console.log(wdgTeamDraft.arrayAltas);
-                        wdgTeamDraft.typeDraft(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality);
+                            type = data['draftTeams'][i]['operation'][n]['type'];                        
+                            idPlayer = data['draftTeams'][i]['operation'][n]['id'];
+                            namePlayer = data['draftTeams'][i]['operation'][n]['name'];
+                            lastTeam = data['draftTeams'][i]['operation'][n]['lastTeam'];
+                            transfer = data['draftTeams'][i]['operation'][n]['transfer'];                        
+                            rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
+                            ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser']; 
+                            nationality =  data['draftTeams'][i]['operation'][n]['nationality']; 
+                            
+                            wdgTeamDraft.typeDraft(type,idPlayer,namePlayer,lastTeam,transfer,rantingTD,ratingUser,nationality);
 
+                        }
                     }
-                }
-
+                }                
+                var textArray = "";
                 maquetado = "<div id='wdg_teamdraft_01' class='wdg_teamdraft_01' data-enhance='false'>";
-
                 //Encabezado___
                 maquetado += "<div class='div1'><img src='http://placehold.it/75x85'></div>";
                 maquetado += "<div class='div2'>";
@@ -182,8 +179,7 @@
                 maquetado += "</div>";
                 maquetado += "<div class='div3'>";
                 maquetado += "<div>Altas Totales</div>";
-                // maquetado += "<div class='textcolor-title2'>"+wdgTeamDraft.arrayAltas.length+"</div>";
-                maquetado += "<div class='textcolor-title2'>20</div>";
+                maquetado += "<div class='textcolor-title2'>"+wdgTeamDraft.arrayAltas.length+"</div>";                
                 maquetado += "</div>";
                 maquetado += "<div class='subtitle'>";
                 maquetado += "<div class='textcolor-title4'>Elige a tu jugador y vota</div>";
@@ -204,9 +200,9 @@
                 maquetado += "<tr>";
                 maquetado += "<td colspan='7' class='separador'></td>";
                 maquetado += "</tr>";
-                //Aqui inserto Tabla de Altas... 
-                wdgTeamDraft.remplazaComas();
-                maquetado += wdgTeamDraft.arrayAltas;
+                //Aqui inserto Tabla de Altas...   
+                textArray = wdgTeamDraft.arrayAltas;              
+                maquetado += wdgTeamDraft.remplazaComas(textArray);
                 maquetado += "</table>";
                 maquetado += "</div>";
 
@@ -224,7 +220,8 @@
                 maquetado += "<td colspan='7' class='separador'></td>";
                 maquetado += "</tr>";
                 // Aqui inserto la Tabla de Bajas... 
-                maquetado += wdgTeamDraft.arrayBajas;
+                textArray = wdgTeamDraft.arrayBajas;              
+                maquetado += wdgTeamDraft.remplazaComas(textArray);                
                 maquetado += "</table>";
                 maquetado += "</div>";
 
@@ -333,8 +330,11 @@
                 maquetado += "<tr>";
                 maquetado += "<td colspan='7' class='separador'></td>";
                 maquetado += "</tr>";
-                //Aqui inserto la tabla de PRESTAMO...                
-                maquetado += wdgTeamDraft.arrayPrestamos;
+
+                //Aqui inserto la tabla de PRESTAMO...
+                textArray = wdgTeamDraft.arrayPrestamos;              
+                maquetado += wdgTeamDraft.remplazaComas(textArray);                                
+
                 maquetado += "</table>";
                 maquetado += "</div>";
                 maquetado += "<div class='degraded'></div>";
@@ -450,13 +450,13 @@
 
             },*/
 
-            getDataTeamDraft: function() {
+            getDataTeamDraft: function() { 
                 console.log(wdgTeamDraft.urlData);
                 $.ajax({
-                    url: 'teamdraft.js',
+                    url: wdgTeamDraft.urlData,                                        
                     type: "GET",
                     dataType: 'jsonp',
-                    jsonpCallback: 'teamDraft',
+                    jsonpCallback: 'llave',
                     cache: false,
                     success: function(data) {
                         wdgTeamDraft.viewHtml(data);
