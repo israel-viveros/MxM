@@ -9,11 +9,21 @@
         var wdgTeamDraft = {
             urlData: 'http://lab.israelviveros.com/draft/'+setting.idTorneo+'/draft.js',           
             tagWdgTeamDraft: $("#containerwdg_teamdraft_01"), 
+            
             arrayAltas: new Array(),
             arrayBajas: new Array(),
-            arrayRumores: new Array(),
+            arrayRumores: new Array(),            
             arrayTrans: new Array(),
             arrayPrestamos: new Array(),
+
+            flagTypeAltas: 0,
+            flagTypeBajas: 0,
+            flagTypeRumores: 0,
+            flagTypeTransf: 0,
+            flagTypePrestamos: 0,
+
+
+
 
             remplazaComas: function(textArray) {
                 var htmlArray = "";
@@ -23,113 +33,153 @@
                 return htmlArray;
             },
 
-            typeDraft: function(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality) {
+            typeDraft: function(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details) {
 
                 switch (type) {
                     case 'ALTA':
-                        playerDraft = "<tr class='vote_block'>";
-                        playerDraft += "<td class='dotted-right'>";
-                        playerDraft += namePlayer;
-                        playerDraft += "<div class='nacionalidad'>" + nationality + "</div>";
-                        playerDraft += "</td>";
-                        playerDraft += "<td width='22'><img src='http://placehold.it/22x22'></td>";
-                        playerDraft += "<td class='dotted-right'>" + lastTeam + "</td>";
-                        playerDraft += "<td class='dotted-right center'>" + rantingTD + "</td>";
-                        playerDraft += "<td class='textcolor-title1'>0</td>";
-                        playerDraft += "</tr>";
-                        playerDraft += "<tr>";
-                        playerDraft += "<td colspan='7' class='separador' style='position:relative'><div class='dotted-top'></div>";
-                        playerDraft += "<div class='qualifies'>";
-                        playerDraft += "<div>califica al jugador</div>";
-                        playerDraft += "</div>";
-                        playerDraft += "<div class='calification  textcolor-title4'>";
-                        playerDraft += "<div><a href='#'>5</a></div>";
-                        playerDraft += "<div><a href='#'>6</a></div>";
-                        playerDraft += "<div><a href='#'>7</a></div>";
-                        playerDraft += "<div><a href='#'>8</a></div>";
-                        playerDraft += "<div><a href='#'>9</a></div>";
-                        playerDraft += "<div><a href='#'>10</a></div>";
-                        playerDraft += "</div>";
-                        playerDraft += "<div class='participated  textcolor-title4'>";
-                        playerDraft += "<div class='voted'>";
-                        playerDraft += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
-                        playerDraft += "</div>";
-                        playerDraft += "</div>";
-                        playerDraft += "</td>";
-                        playerDraft += "</tr>";
+                        wdgTeamDraft.flagTypeAltas = 1;
+                        maquetado = "<tr class='vote_block'>";
+                        maquetado += "<td class='dotted-right'>";
+                        maquetado += namePlayer;
+                        maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
+                        maquetado += "</td>";
+                        maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
+                        maquetado += "<td class='dotted-right'>" + lastTeam + "</td>";
+                        maquetado += "<td class='dotted-right center'>" + rantingTD + "</td>";
+                        maquetado += "<td class='textcolor-title1'>0</td>";
+                        maquetado += "</tr>";
+                        maquetado += "<tr>";
+                        maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF; left:0;'><div class='dotted-top'></div>";
+                        maquetado += "<div class='qualifies'>";
+                        maquetado += "<div>califica al jugador</div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='calification  textcolor-title4'>";
+                        maquetado += "<div><a href='#'>5</a></div>";
+                        maquetado += "<div><a href='#'>6</a></div>";
+                        maquetado += "<div><a href='#'>7</a></div>";
+                        maquetado += "<div><a href='#'>8</a></div>";
+                        maquetado += "<div><a href='#'>9</a></div>";
+                        maquetado += "<div><a href='#'>10</a></div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'>";
+                        maquetado += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
+                        maquetado += "</div>";
+                        maquetado += "</div>";
+                        maquetado += "</td>";
+                        maquetado += "</tr>";
 
-                        wdgTeamDraft.arrayAltas.push(playerDraft);
+                        wdgTeamDraft.arrayAltas.push(maquetado);
 
                         break;
 
                     case 'BAJA':
-                        playerDraft = "<tr class='vote_block'>";
-                        playerDraft += "<td class='dotted-right'>";
-                        playerDraft += namePlayer;
-                        playerDraft += "<div class='nacionalidad'>" + nationality + "</div>";
-                        playerDraft += "</td>";
-                        playerDraft += "<td width='22'><img src='http://placehold.it/22x22'></td>";
-                        playerDraft += "<td class='dotted-right'>" + lastTeam + "</td>";
-                        playerDraft += "<td class='dotted-right center'>" + rantingTD + "</td>";
-                        playerDraft += "<td class='textcolor-title1'>0</td>";
-                        playerDraft += "</tr>";
-                        playerDraft += "<tr>";
-                        playerDraft += "<td colspan='7' class='separador' style='position:relative'><div class='dotted-top'></div>";
-                        playerDraft += "<div class='qualifies'>";
-                        playerDraft += "<div>califica al jugador</div>";
-                        playerDraft += "</div>";
-                        playerDraft += "<div class='calification  textcolor-title4'>";
-                        playerDraft += "<div><a href='#'>5</a></div>";
-                        playerDraft += "<div><a href='#'>6</a></div>";
-                        playerDraft += "<div><a href='#'>7</a></div>";
-                        playerDraft += "<div><a href='#'>8</a></div>";
-                        playerDraft += "<div><a href='#'>9</a></div>";
-                        playerDraft += "<div><a href='#'>10</a></div>";
-                        playerDraft += "</div>";
-                        playerDraft += "<div class='participated  textcolor-title4'>";
-                        playerDraft += "<div class='voted'>";
-                        playerDraft += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
-                        playerDraft += "</div>";
-                        playerDraft += "</div>";
-                        playerDraft += "</td>";
-                        playerDraft += "</tr>";
+                        wdgTeamDraft.flagTypeBajas = 1;
+                        maquetado = "<tr class='vote_block'>";
+                        maquetado += "<td class='dotted-right'>";
+                        maquetado += namePlayer;
+                        maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
+                        maquetado += "</td>";
+                        maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
+                        maquetado += "<td class='dotted-right'>" + lastTeam + "</td>";
+                        maquetado += "<td class='dotted-right center'>" + rantingTD + "</td>";
+                        maquetado += "<td class='textcolor-title1'>0</td>";
+                        maquetado += "</tr>";
+                        maquetado += "<tr>";
+                        maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF; left:0'><div class='dotted-top'></div>";
+                        maquetado += "<div class='qualifies'>";
+                        maquetado += "<div>califica al jugador</div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='calification  textcolor-title4'>";
+                        maquetado += "<div><a href='#'>5</a></div>";
+                        maquetado += "<div><a href='#'>6</a></div>";
+                        maquetado += "<div><a href='#'>7</a></div>";
+                        maquetado += "<div><a href='#'>8</a></div>";
+                        maquetado += "<div><a href='#'>9</a></div>";
+                        maquetado += "<div><a href='#'>10</a></div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'>";
+                        maquetado += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
+                        maquetado += "</div>";
+                        maquetado += "</div>";
+                        maquetado += "</td>";
+                        maquetado += "</tr>";
 
-                        wdgTeamDraft.arrayBajas.push(playerDraft);
+                        wdgTeamDraft.arrayBajas.push(maquetado);
 
                         break;
-                    case 'PRESTAMO':
-                        playerDraft = "<tr class='vote_block'>";
-                        playerDraft += "<td class='dotted-right'>";
-                        playerDraft += namePlayer;
-                        playerDraft += "<div class='nacionalidad'>" + nationality + "</div>";
-                        playerDraft += "</td>";
-                        playerDraft += "<td width='22'><img src='http://placehold.it/22x22'></td>";
-                        playerDraft += "<td class='dotted-right'>" + lastTeam + "</td>";
-                        playerDraft += "<td class='dotted-right center'>" + rantingTD + "</td>";
-                        playerDraft += "<td class='textcolor-title1'>0</td>";
-                        playerDraft += "</tr>";
-                        playerDraft += "<tr>";
-                        playerDraft += "<td colspan='7' class='separador' style='position:relative'><div class='dotted-top'></div>";
-                        playerDraft += "<div class='qualifies'>";
-                        playerDraft += "<div>califica al jugador</div>";
-                        playerDraft += "</div>";
-                        playerDraft += "<div class='calification  textcolor-title4'>";
-                        playerDraft += "<div><a href='#'>5</a></div>";
-                        playerDraft += "<div><a href='#'>6</a></div>";
-                        playerDraft += "<div><a href='#'>7</a></div>";
-                        playerDraft += "<div><a href='#'>8</a></div>";
-                        playerDraft += "<div><a href='#'>9</a></div>";
-                        playerDraft += "<div><a href='#'>10</a></div>";
-                        playerDraft += "</div>";
-                        playerDraft += "<div class='participated  textcolor-title4'>";
-                        playerDraft += "<div class='voted'>";
-                        playerDraft += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
-                        playerDraft += "</div>";
-                        playerDraft += "</div>";
-                        playerDraft += "</td>";
-                        playerDraft += "</tr>";
+                    
+                    case 'RUMORES':                        
+                        wdgTeamDraft.flagTypeRumores = 1;
+                        maquetado = "<tr class=''>";
+                        maquetado += "<td class='dotted-right'>";
+                        maquetado += namePlayer;
+                        maquetado += "<div class='nacionalidad'>"+ nationality +"</div>";
+                        maquetado += "</td>";
+                        maquetado += "<td class='dotted-right'>"+ nationality +"</td>";
+                        maquetado += "<td class='gris'>"+ details +"</td>";
+                        maquetado += "</tr>"; 
+                        maquetado += "<tr>";
+                        maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF; left:0;'><div class='dotted-top'></div></td>";
+                        maquetado += "</tr>";
+                
+                        wdgTeamDraft.arrayRumores.push(maquetado);
 
-                        wdgTeamDraft.arrayPrestamos.push(playerDraft);
+                        break;  
+
+                    case 'TRANSFERIBLES':
+                        wdgTeamDraft.flagTypeTransf = 1;
+                        maquetado = "<tr class=''>";
+                        maquetado += "<td class='dotted-right'>";
+                        maquetado += namePlayer;
+                        maquetado += "<div class='nacionalidad'>"+ nationality +"</div>";
+                        maquetado += "</td>";
+                        maquetado += "<td class='dotted-right'>"+ nationality +"</td>";
+                        maquetado += "<td class='gris'>"+ details +"</td>";
+                        maquetado += "</tr>"; 
+                        maquetado += "<tr>";
+                        maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF;left:0;'><div class='dotted-top'></div></td>";
+                        maquetado += "</tr>";  
+
+                        wdgTeamDraft.arrayTrans.push(maquetado);
+
+                        break;
+
+                    case 'PRESTAMO':
+                        wdgTeamDraft.flagTypePrestamos = 1;
+                        maquetado = "<tr class='vote_block'>";
+                        maquetado += "<td class='dotted-right'>";
+                        maquetado += namePlayer;
+                        maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
+                        maquetado += "</td>";
+                        maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
+                        maquetado += "<td class='dotted-right'>" + lastTeam + "</td>";
+                        maquetado += "<td class='dotted-right center'>" + rantingTD + "</td>";
+                        maquetado += "<td class='textcolor-title1'>0</td>";
+                        maquetado += "</tr>";
+                        maquetado += "<tr>";
+                        maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF; left:0;'><div class='dotted-top'></div>";
+                        maquetado += "<div class='qualifies'>";
+                        maquetado += "<div>califica al jugador</div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='calification  textcolor-title4'>";
+                        maquetado += "<div><a href='#'>5</a></div>";
+                        maquetado += "<div><a href='#'>6</a></div>";
+                        maquetado += "<div><a href='#'>7</a></div>";
+                        maquetado += "<div><a href='#'>8</a></div>";
+                        maquetado += "<div><a href='#'>9</a></div>";
+                        maquetado += "<div><a href='#'>10</a></div>";
+                        maquetado += "</div>";
+                        maquetado += "<div class='participated  textcolor-title4'>";
+                        maquetado += "<div class='voted'>";
+                        maquetado += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
+                        maquetado += "</div>";
+                        maquetado += "</div>";
+                        maquetado += "</td>";
+                        maquetado += "</tr>";
+
+                        wdgTeamDraft.arrayPrestamos.push(maquetado);
 
                         break;
                     default: 
@@ -140,8 +190,7 @@
 
             viewHtml: function(data){                                                                                                  
                 for (var i=0; i<data['draftTeams'].length; i++) {                                    
-                    if (data['draftTeams'][i]['id']==setting.idTeam) {
-                        alert (data['draftTeams'][i]['name']);                                                                                                        
+                    if (data['draftTeams'][i]['id']==setting.idTeam) {                                                                                                                            
                         for (var n=0; n<data['draftTeams'][i]['operation'].length; n++) {
                             var type = "";
                             var idPlayer = "";
@@ -150,7 +199,8 @@
                             var transfer = "";                        
                             var rantingTD = "";
                             var ratingUser = "";
-                            var nationality = "";            
+                            var nationality = "";                                        
+                            var details = "";
 
                             type = data['draftTeams'][i]['operation'][n]['type'];                        
                             idPlayer = data['draftTeams'][i]['operation'][n]['id'];
@@ -159,9 +209,10 @@
                             transfer = data['draftTeams'][i]['operation'][n]['transfer'];                        
                             rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
                             ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser']; 
-                            nationality =  data['draftTeams'][i]['operation'][n]['nationality']; 
+                            nationality = data['draftTeams'][i]['operation'][n]['nationality']; 
+                            details = data['draftTeams'][i]['operation'][n]['Detail']; 
                             
-                            wdgTeamDraft.typeDraft(type,idPlayer,namePlayer,lastTeam,transfer,rantingTD,ratingUser,nationality);
+                            wdgTeamDraft.typeDraft(type,idPlayer,namePlayer,lastTeam,transfer,rantingTD,ratingUser,nationality,details);
 
                         }
                     }
@@ -187,156 +238,108 @@
                 maquetado += "<div class='scroll'>";
 
                 //Contenido___
-                //Altas...
-                maquetado += "<div class='verde'>";
-                maquetado += "<div class='textcolor-title1 pleca'>Altas</div>";
-                maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
-                maquetado += "<tr>";
-                maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
-                maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
-                maquetado += "<th class='gris center f_small td_medium'>TD</th>";
-                maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador'></td>";
-                maquetado += "</tr>";
-                //Aqui inserto Tabla de Altas...   
-                textArray = wdgTeamDraft.arrayAltas;              
-                maquetado += wdgTeamDraft.remplazaComas(textArray);
-                maquetado += "</table>";
-                maquetado += "</div>";
-
-                //Bajas...
-                maquetado += "<div class='rojo'>";
-                maquetado += "<div class='textcolor-title1 pleca'>Bajas</div>";
-                maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
-                maquetado += "<tr>";
-                maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
-                maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
-                maquetado += "<th class='gris center f_small td_medium'>TD</th>";
-                maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador'></td>";
-                maquetado += "</tr>";
-                // Aqui inserto la Tabla de Bajas... 
-                textArray = wdgTeamDraft.arrayBajas;              
-                maquetado += wdgTeamDraft.remplazaComas(textArray);                
-                maquetado += "</table>";
-                maquetado += "</div>";
-
-                //Rumores...
-                maquetado += "<div class='naranja'>";
-                maquetado += "<div class='textcolor-title1 pleca'>Rumores</div>";
-                maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
-                maquetado += "<tr>";
-                maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
-                maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
-                maquetado += "<th class='gris center f_small td_medium'>TD</th>";
-                maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador'></td>";
-                maquetado += "</tr>";
-                maquetado += "<tr class='vote_block'>";
-                maquetado += "<td class='dotted-right'>";
-                maquetado += "Daniel Casillas";
-                maquetado += "<div class='nacionalidad'>Mexicano</div>";
-                maquetado += "</td>";
-                maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
-                maquetado += "<td class='dotted-right'> Chivas USA</td>";
-                maquetado += "<td class='dotted-right center'>7.5</td>";
-                maquetado += "<td class='textcolor-title1'>6.7</td>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador' style='position:relative'><div class='dotted-top'></div>";
-                maquetado += "<div class='qualifies'>";
-                maquetado += "<div>califica al jugador</div>";
-                maquetado += "</div>";
-                maquetado += "<div class='calification  textcolor-title4'>";
-                maquetado += "<div><a href='#'>5</a></div>";
-                maquetado += "<div><a href='#'>6</a></div>";
-                maquetado += "<div><a href='#'>7</a></div>";
-                maquetado += "<div><a href='#'>8</a></div>";
-                maquetado += "<div><a href='#'>9</a></div>";
-                maquetado += "<div><a href='#'>10</a></div>";
-                maquetado += "</div>";
-                maquetado += "<div class='participated  textcolor-title4'>";
-                maquetado += "<div class='voted'>";
-                maquetado += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
-                maquetado += "</div>";
-                maquetado += "</div>";
-                maquetado += "</td>";
-                maquetado += "</tr>";
-                maquetado += "</table>";
-                maquetado += "</div>";
-
-                //Transferibles...
-                maquetado += "<div class='azul'>";
-                maquetado += "<div class='textcolor-title1 pleca'>Transferibles</div>";
-                maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
-                maquetado += "<tr>";
-                maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
-                maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
-                maquetado += "<th class='gris center f_small td_medium'>TD</th>";
-                maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador'></td>";
-                maquetado += "</tr>";
-                maquetado += "<tr class='vote_block'>";
-                maquetado += "<td class='dotted-right'>";
-                maquetado += "Daniel Casillas";
-                maquetado += "<div class='nacionalidad'>Mexicano</div>";
-                maquetado += "</td>";
-                maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
-                maquetado += "<td class='dotted-right'> Chivas USA</td>";
-                maquetado += "<td class='dotted-right center'>7.5</td>";
-                maquetado += "<td class='textcolor-title1'>6.7</td>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador' style='position:relative'><div class='dotted-top'></div>";
-                maquetado += "<div class='qualifies'>";
-                maquetado += "<div>califica al jugador</div>";
-                maquetado += "</div>";
-                maquetado += "<div class='calification  textcolor-title4'>";
-                maquetado += "<div><a href='#'>5</a></div>";
-                maquetado += "<div><a href='#'>6</a></div>";
-                maquetado += "<div><a href='#'>7</a></div>";
-                maquetado += "<div><a href='#'>8</a></div>";
-                maquetado += "<div><a href='#'>9</a></div>";
-                maquetado += "<div><a href='#'>10</a></div>";
-                maquetado += "</div>";
-                maquetado += "<div class='participated  textcolor-title4'>";
-                maquetado += "<div class='voted'>";
-                maquetado += "<p>Gracias por votar <i class='tvsa-like'></i></p>";
-                maquetado += "</div>";
-                maquetado += "</div>";
-                maquetado += "</td>";
-                maquetado += "</tr>";
-                maquetado += "</table>";
-                maquetado += "</div>";
-
+                //ALTAS...
+                if(wdgTeamDraft.flagTypeAltas == 1){
+                    maquetado += "<div class='verde'>";
+                    maquetado += "<div class='textcolor-title1 pleca'>Altas</div>";
+                    maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
+                    maquetado += "<tr>";
+                    maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
+                    maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
+                    maquetado += "<th class='gris center f_small td_medium'>TD</th>";
+                    maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
+                    maquetado += "</tr>";
+                    maquetado += "<tr>";
+                    maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
+                    maquetado += "</tr>";
+                    //Aqui inserto Tabla de Altas...   
+                    textArray = wdgTeamDraft.arrayAltas;              
+                    maquetado += wdgTeamDraft.remplazaComas(textArray);
+                    maquetado += "</table>";
+                    maquetado += "</div>";
+                }                
+                
+                //BAJAS...
+                if (wdgTeamDraft.flagTypeBajas == 1) {
+                    maquetado += "<div class='rojo'>";
+                    maquetado += "<div class='textcolor-title1 pleca'>Bajas</div>";
+                    maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
+                    maquetado += "<tr>";
+                    maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
+                    maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
+                    maquetado += "<th class='gris center f_small td_medium'>TD</th>";
+                    maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
+                    maquetado += "</tr>";
+                    maquetado += "<tr>";
+                    maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
+                    maquetado += "</tr>";
+                    // Aqui inserto la Tabla de Bajas... 
+                    textArray = wdgTeamDraft.arrayBajas;              
+                    maquetado += wdgTeamDraft.remplazaComas(textArray);                
+                    maquetado += "</table>";
+                    maquetado += "</div>";    
+                }
+                
+                //RUMORES...
+                if (wdgTeamDraft.flagTypeRumores == 1) {
+                    maquetado += "<div class='naranja'>";
+                    maquetado += "<div class='textcolor-title1 pleca'>Rumores</div>";
+                    maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
+                    maquetado += "<tr>";
+                    maquetado += "<th width='140' class='extcolor-title1'>JUGADOR</th>";
+                    maquetado += "<th width='120' class='textcolor-title1 sp'>NACIONALIDAD</th>";
+                    maquetado += "<th width='' class='textcolor-title1'>COMENTARIO</th>";
+                    maquetado += "</tr>";                                    
+                    maquetado += "<tr>";
+                    maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
+                    maquetado += "</tr>";
+                    // Aqui inserto la Tabla de Rumores... 
+                    textArray = wdgTeamDraft.arrayRumores;              
+                    maquetado += wdgTeamDraft.remplazaComas(textArray);                
+                    maquetado += "</table>";
+                    maquetado += "</div>";
+                }
+                
+                //TRANSFERIBLES...
+                if (wdgTeamDraft.flagTypeTransf == 1) {
+                    maquetado += "<div class='azul'>";
+                    maquetado += "<div class='textcolor-title1 pleca'>Transferibles</div>";
+                    maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
+                    maquetado += "<tr>";
+                    maquetado += "<th width='140' class='extcolor-title1'>JUGADOR</th>";
+                    maquetado += "<th width='120' class='textcolor-title1 sp'>NACIONALIDAD</th>";
+                    maquetado += "<th width='' class='textcolor-title1'>COMENTARIO</th>";
+                    maquetado += "</tr>";                                    
+                    maquetado += "<tr>";
+                    maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
+                    maquetado += "</tr>";
+                    // Aqui inserto la Tabla de Transferibles... 
+                    textArray = wdgTeamDraft.arrayTrans;              
+                    maquetado += wdgTeamDraft.remplazaComas(textArray);                
+                    maquetado += "</table>";
+                    maquetado += "</div>";
+                }
+                
                 //Renovación de Prestamo...
-                maquetado += "<div class='azul2'>";
-                maquetado += "<div class='textcolor-title1 pleca'>Renovaci&oacute;n de Prestamo</div>";
-                maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
-                maquetado += "<tr>";
-                maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
-                maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
-                maquetado += "<th class='gris center f_small td_medium'>TD</th>";
-                maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
-                maquetado += "</tr>";
-                maquetado += "<tr>";
-                maquetado += "<td colspan='7' class='separador'></td>";
-                maquetado += "</tr>";
-
-                //Aqui inserto la tabla de PRESTAMO...
-                textArray = wdgTeamDraft.arrayPrestamos;              
-                maquetado += wdgTeamDraft.remplazaComas(textArray);                                
-
-                maquetado += "</table>";
-                maquetado += "</div>";
+                if (wdgTeamDraft.flagTypePrestamos == 1) {
+                    maquetado += "<div class='azul2'>";
+                    maquetado += "<div class='textcolor-title1 pleca'>Renovaci&oacute;n de Prestamo</div>";
+                    maquetado += "<table width='100%'' border='0' cellspacing='0' cellpadding='0' class='tblDraft'>";
+                    maquetado += "<tr>";
+                    maquetado += "<th class='textcolor-title1 td_large'>JUGADOR</th>";
+                    maquetado += "<th width='' class='textcolor-title1 sm' colspan='2'>EQUIPO ANTERIOR</th>";
+                    maquetado += "<th class='gris center f_small td_medium'>TD</th>";
+                    maquetado += "<th class='textcolor-title1 f_small td_short'>AFICI&Oacute;N</th>";
+                    maquetado += "</tr>";
+                    maquetado += "<tr>";
+                    maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
+                    maquetado += "</tr>";
+                    //Aqui inserto la tabla de PRESTAMO...
+                    textArray = wdgTeamDraft.arrayPrestamos;              
+                    maquetado += wdgTeamDraft.remplazaComas(textArray);                                
+                    maquetado += "</table>";
+                    maquetado += "</div>";                    
+                }
                 maquetado += "<div class='degraded'></div>";
                 maquetado += "</div>"; //div scroll          
                 maquetado += "</div>"; //div wdg_teamdraft_01             
@@ -344,11 +347,11 @@
                 wdgTeamDraft.tagWdgTeamDraft.html(maquetado);
 
             },
-            /*funcionesNaat: function() { 
-                //e.event.preventDefault();
-                alert('comienzan las funciones de Na-at');           
-                /*Para IPAD
-                $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').on('touchstart', function(e){
+            funcionesNaat: function() { 
+                // e.event.preventDefault();
+                alert('funciones de Na-at');           
+                // Para IPAD
+                $('containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .vote_block').on('touchstart', function(e){
                     //e.event.preventDefault();
                     if($(window).width() > 624){
                         var state = $(this).next('tr').find('td.separador .qualifies').css('display');
@@ -373,15 +376,8 @@
                 });
 
                 //Over del jugador
-                $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').mouseenter(function(){
-                    
-                    //provisional
-                    $(this).next('tr').find('td.separador .qualifies').show();
-
-
-                        //$('.wdg_playerdraft_01 .scroll').height(1388);
-                        //console.log($('.wdg_playerdraft_01 .scroll').height());
-                    
+                $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .vote_block').mouseenter(function(){
+                    $(this).next('tr').find('td.separador .qualifies').show();                    
                     if ($(window).width() < 624) {
                         return;
                     }
@@ -404,56 +400,60 @@
                 });
 
                 //Over del jugador
-                $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft ').mouseleave(function(){
-                    //$('.wdg_playerdraft_01 .scroll').height(1342);
+                $('.containerwdg_teamdraft_01 .wdg_playerdraft_01 .tblDraft ').mouseleave(function(){                   
                     setCleanRecord();
                 });
                 
-                //click calificacion
-                $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .separador .calification a').click(function(event){
+
+                $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .separador .calification a').click(function(event){
                     event.preventDefault();
                     alert ("has dado click en " + $(this).text());    
                     alert ("la URL es http://mxm.televisadeportes.esmas.com/futbol/draft/liga-mx-clausura-2013/1733");
-
-
-                    $(this).parents('.calification').hide();
-                            
-                    $(this).parents('.separador').find('.participated').fadeIn().delay(1000).fadeOut(function() {
-                            
+                    $(this).parents('.calification').hide();                            
+                    $(this).parents('.separador').find('.participated').fadeIn().delay(1000).fadeOut(function() {                            
                         // Animation complete.
                         $(this).parents('.separador').find('.qualifies').hide();
-                        $(this).parents('.separador').find('.dotted-top').show();
-                        
+                        $(this).parents('.separador').find('.dotted-top').show();                        
                     });
                     $(this).parents('.calification').remove();
                 });
 
                 // Mouseput del "gracias por votar"
-                $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .separador .participated').mouseout(function(){                    
+                $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .separador .participated').mouseout(function(){
                     $(this).hide();
                     $(this).parents('.separador').find('.qualifies').hide();
                     $(this).parents('.separador').find('.dotted-top').show();
                     
                 });
 
+                // Over de calificaciones
+                $('.containerwdg_teamdraft_01 .wdg_teamdraft_01  .tblDraft .calification div a').mouseover(function(){
+                    $(this).addClass('textcolor-title1');
+                });
+                
+                $('.containerwdg_teamdraft_01 .wdg_teamdraft_01  .tblDraft .calification div a').mouseout(function(){
+                    $(this).removeClass('textcolor-title1');
+                });
+
                 function setCleanRecord(){
-                    $('.wdg_playerdraft_01 .tblDraft td.separador .calification').hide();
-                    $('.wdg_playerdraft_01 .tblDraft td.separador .participated').hide();
-                    $('.wdg_playerdraft_01 .tblDraft td.separador .qualifies').hide();
-                    $('.wdg_playerdraft_01 .tblDraft td.separador .dotted-top').show();
+                    $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft td.separador .calification').hide();
+                    $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft td.separador .participated').hide();
+                    $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft td.separador .qualifies').hide();
+                    $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft td.separador .dotted-top').show();
                 }
 
                 if ($.browser.msie && parseInt($.browser.version, 10) <= 8){
-                    $('.wdg_playerdraft_01 .tblDraft td').css('display','block');
-                    $('.wdg_playerdraft_01 .tblDraft th').css('display','block');
+                    $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft td').css('display','block');
+                    $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft th').css('display','block');
                 }
 
-            },*/
+            },
 
             getDataTeamDraft: function() { 
                 console.log(wdgTeamDraft.urlData);
                 $.ajax({
-                    url: wdgTeamDraft.urlData,                                        
+                    url: wdgTeamDraft.urlData, 
+                    // url: 'draft.js',                                       
                     type: "GET",
                     dataType: 'jsonp',
                     jsonpCallback: 'llave',
@@ -469,7 +469,7 @@
         }
 
         wdgTeamDraft.getDataTeamDraft();
-        //wdgTeamDraft.funcionesNaat();
+        wdgTeamDraft.funcionesNaat();
 
     };
 
