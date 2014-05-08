@@ -7,24 +7,25 @@
         }, options);                
 
         var wdgTeamDraft = {
+            // ....................................................................
+            // -- Creacion y asignacion de valores a las variables
+            // ....................................................................
             urlData: 'http://lab.israelviveros.com/draft/'+setting.idTorneo+'/draft.js',           
-            tagWdgTeamDraft: $("#containerwdg_teamdraft_01"), 
-            
+            tagWdgTeamDraft: $("#containerwdg_teamdraft_01"),         
             arrayAltas: new Array(),
             arrayBajas: new Array(),
             arrayRumores: new Array(),            
             arrayTrans: new Array(),
             arrayPrestamos: new Array(),
-
             flagTypeAltas: 0,
             flagTypeBajas: 0,
             flagTypeRumores: 0,
             flagTypeTransf: 0,
-            flagTypePrestamos: 0,
+            flagTypePrestamos: 0, 
 
-
-
-
+            // ....................................................................
+            // -- Funcion que concatena los registros del array en una variable
+            // ....................................................................
             remplazaComas: function(textArray) {
                 var htmlArray = "";
                 for (var m = 0; m < textArray.length; m++) {
@@ -33,6 +34,9 @@
                 return htmlArray;
             },
 
+            // .....................................................................................
+            // Funcion que pinta el html para los casos (ALTA,BAJA,RUMORES,TRANSFERIBLES,PRESTAMO)
+            // .....................................................................................
             typeDraft: function(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details) {
 
                 switch (type) {
@@ -400,7 +404,7 @@
                 });
 
                 //Over del jugador
-                $('.containerwdg_teamdraft_01 .wdg_playerdraft_01 .tblDraft ').mouseleave(function(){                   
+                $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft').mouseleave(function(){                      
                     setCleanRecord();
                 });
                 
