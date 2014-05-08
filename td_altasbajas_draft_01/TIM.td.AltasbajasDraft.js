@@ -2,13 +2,12 @@
 (function() {
     $.fn.MxMAltasBajasDraft = function(options) {    	    	
     	var setting = $.extend({        	
-    		'idTorneo':0,
-    		'idEvento':0
+    		'idTorneo':0    		
         }, options);
     	console.log ('Altas Bajas Draft');
     	   
-    	var wdg_playerdraft_01 = {
-    		urlData: 'http://mxm.televisadeportes.esmas.com/futbol/draft/liga-mx-apertura-2013/draft.js',    		
+    	var wdg_playerdraft_01 = {    		
+    		urlData:'http://lab.israelviveros.com/draft/'+setting.idTorneo+'/draft.js',
     		tagWdgPlayerdraft: $("#containerwdg_playerdraft_01"),
     	
     		viewHtml: function(data){                
@@ -21,16 +20,6 @@
                 compras = data['draftPurchase']; 
                 prestamos = data['draftLoan'];
                 transf = data['draftTransfers'];
-/*
-    			console.log(data);
-                console.log(data);                              
-                console.log('compras');
-                console.log(data['draftPurchase']);
-                console.log("Prestamo");
-                console.log(data['draftLoan']);
-                console.log("Transferencias Draft");
-                console.log(data['draftTransfers']);
-                console.log(data['draftTeams'].length);*/
                 
     			maquetado = "<div id='wdg_playerdraft_01' class='wdg_playerdraft_01'>";
     			//Encabezado___
@@ -125,7 +114,7 @@
     		},
             funcionesNaat: function() { 
                 //e.event.preventDefault();
-                alert('comienzan las funciones de Na-at');           
+                alert('Funciones...');           
                 /*Para IPAD*/
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').on('touchstart', function(e){
                     //e.event.preventDefault();
@@ -232,16 +221,16 @@
     		getDataDraft: function() {                
     			console.log(wdg_playerdraft_01.urlData);
     			$.ajax({
-    				url: 'draftjsonp.js',                    
+    				url: wdg_playerdraft_01.urlData,                    
     				type: "GET",
     	            dataType: 'jsonp',
-    	            jsonpCallback: 'draft',
+    	            jsonpCallback: 'llave',
     	            cache: false,
     	            success:function(data){                                                            
                         wdg_playerdraft_01.viewHtml(data);                        	            	
     	            },
                     error: function(data){
-                        alert("ERROR____");                        
+                        alert("ERROR___");                        
                     }                    
     			});                
     		}
