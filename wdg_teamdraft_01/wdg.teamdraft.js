@@ -205,7 +205,8 @@
             // ..............................................................................
             viewHtml: function(data){                                                                                                  
                 for (var i=0; i<data['draftTeams'].length; i++) {                                    
-                    if (data['draftTeams'][i]['id']==setting.idTeam) {                                                                                                                            
+                    if (data['draftTeams'][i]['id']==setting.idTeam) {
+                        var nameTeam = data['draftTeams'][i]['name'];                                                                                                                                                    
                         for (var n=0; n<data['draftTeams'][i]['operation'].length; n++) {
                             var type = "";
                             var idPlayer = "";
@@ -239,7 +240,7 @@
                 // ENCABEZADO
                 maquetado += "<div class='div1'><img src='http://placehold.it/75x85'></div>";
                 maquetado += "<div class='div2'>";
-                maquetado += "<div class='textcolor-title1'>Guadalajara</div>";
+                maquetado += "<div class='textcolor-title1'>"+ nameTeam +"</div>";
                 maquetado += "<div class='underline'></div>";
                 maquetado += "<div class='nombre'>Club Guadalajara S.A. de C.V.</div>";
                 maquetado += "<div class='presidente'>Jorge Carlos Vergara Madrigal</div>";
@@ -484,8 +485,15 @@
             }
         }
 
-        wdgTeamDraft.getDataTeamDraft();
-        wdgTeamDraft.funcionesNaat();
+        //wdgTeamDraft.getDataTeamDraft();
+        //wdgTeamDraft.funcionesNaat();
+        
+        $.when(wdgTeamDraft.getDataTeamDraft().done(function() {
+            setTimeout(function() {
+                wdgTeamDraft.funcionesNaat();
+            }, 500);
+
+        });
 
     };
 
