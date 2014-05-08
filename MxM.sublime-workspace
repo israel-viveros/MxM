@@ -513,6 +513,23 @@
 				"buffer_size": 0,
 				"line_ending": "Unix"
 			}
+		},
+		{
+			"file": "wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+			"settings":
+			{
+				"buffer_size": 12771,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "/Users/israelviveros/Desktop/clockstoper/info.txt",
+			"settings":
+			{
+				"buffer_size": 253,
+				"line_ending": "Unix",
+				"name": "http://www.darkreloaded.com/descarga-de-peliculas-"
+			}
 		}
 	],
 	"build_system": "Packages/YUI Compressor/YUI Compressor.sublime-build",
@@ -571,6 +588,7 @@
 	},
 	"file_history":
 	[
+		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/js/mxm.draft.live.js",
 		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
 		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/feed.js",
@@ -579,7 +597,6 @@
 		"/Users/israelviveros/Sites/MxM/wdg_teamdraft_01/wdg.teamdraft.js",
 		"/Users/israelviveros/Sites/MxM/wdg_teamdraft_01/index.html",
 		"/Users/israelviveros/Desktop/index.php",
-		"/Users/israelviveros/Sites/MxM/wdg_mxm_live_03/js/mxm.draft.live.js",
 		"/Users/israelviveros/Desktop/feed.txt",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/index.html",
 		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/wdgMxMGlobal.css",
@@ -716,6 +733,7 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"targetDraft",
 			"http://floreriadetallesycaprichos.com.mx/informes/banner/inlay_01_0.gif?id=01&type=inlay",
 			"secondDraw",
 			"resi",
@@ -842,8 +860,7 @@
 			"MuestraAlineacion",
 			"append",
 			"playerfoto",
-			"final",
-			"contenidoMxM"
+			"final"
 		],
 		"highlight": true,
 		"in_selection": false,
@@ -925,7 +942,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -946,6 +963,149 @@
 						"settings":
 						{
 							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+					"settings":
+					{
+						"buffer_size": 12771,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								7748,
+								7748
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"bh_regions":
+							[
+								"bh_regex",
+								"bh_regex_center",
+								"bh_regex_open",
+								"bh_regex_close",
+								"bh_double_quote",
+								"bh_double_quote_center",
+								"bh_double_quote_open",
+								"bh_double_quote_close",
+								"bh_square",
+								"bh_square_center",
+								"bh_square_open",
+								"bh_square_close",
+								"bh_angle",
+								"bh_angle_center",
+								"bh_angle_open",
+								"bh_angle_close",
+								"bh_curly",
+								"bh_curly_center",
+								"bh_curly_open",
+								"bh_curly_close",
+								"bh_default",
+								"bh_default_center",
+								"bh_default_open",
+								"bh_default_close",
+								"bh_unmatched",
+								"bh_unmatched_center",
+								"bh_unmatched_open",
+								"bh_unmatched_close",
+								"bh_round",
+								"bh_round_center",
+								"bh_round_open",
+								"bh_round_close",
+								"bh_tag",
+								"bh_tag_center",
+								"bh_tag_open",
+								"bh_tag_close",
+								"bh_single_quote",
+								"bh_single_quote_center",
+								"bh_single_quote_open",
+								"bh_single_quote_close"
+							],
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 24.0,
+						"translation.y": 2263.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "/Users/israelviveros/Desktop/clockstoper/info.txt",
+					"settings":
+					{
+						"buffer_size": 253,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								167,
+								167
+							]
+						],
+						"settings":
+						{
+							"BracketHighlighterBusy": false,
+							"auto_name": "http://www.darkreloaded.com/descarga-de-peliculas-",
 							"bh_regions":
 							[
 								"bh_regex",
