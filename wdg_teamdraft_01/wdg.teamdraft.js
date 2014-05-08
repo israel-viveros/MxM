@@ -44,6 +44,7 @@
                         wdgTeamDraft.flagTypeAltas = 1;
                         maquetado = "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right'>";
+                        maquetado += "<div style='visibility:hidden;'>"+idPlayer+"</div>";
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -81,6 +82,7 @@
                         wdgTeamDraft.flagTypeBajas = 1;
                         maquetado = "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right'>";
+                        maquetado += "<div style='visibility:hidden;'>"+idPlayer+"</div>";
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -118,6 +120,7 @@
                         wdgTeamDraft.flagTypeRumores = 1;
                         maquetado = "<tr class=''>";
                         maquetado += "<td class='dotted-right'>";
+                        maquetado += "<div style='visibility:hidden;'>"+idPlayer+"</div>";
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>"+ nationality +"</div>";
                         maquetado += "</td>";
@@ -136,6 +139,7 @@
                         wdgTeamDraft.flagTypeTransf = 1;
                         maquetado = "<tr class=''>";
                         maquetado += "<td class='dotted-right'>";
+                        maquetado += "<div style='visibility:hidden;'>"+idPlayer+"</div>";
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>"+ nationality +"</div>";
                         maquetado += "</td>";
@@ -154,6 +158,7 @@
                         wdgTeamDraft.flagTypePrestamos = 1;
                         maquetado = "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right'>";
+                        maquetado += "<div style='visibility:hidden;'>"+idPlayer+"</div>";
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -192,6 +197,12 @@
                 }
             },
 
+            // ..............................................................................
+            // -- Funcion que recorre la informacion.
+            // -- Pinta el Encabezado del equipo.
+            // -- Hace un llamado a las funciones que contruyen los arreglos con los registros
+            //    de cada uno de los tipos de Draft.
+            // ..............................................................................
             viewHtml: function(data){                                                                                                  
                 for (var i=0; i<data['draftTeams'].length; i++) {                                    
                     if (data['draftTeams'][i]['id']==setting.idTeam) {                                                                                                                            
@@ -221,9 +232,11 @@
                         }
                     }
                 }                
+                
                 var textArray = "";
                 maquetado = "<div id='wdg_teamdraft_01' class='wdg_teamdraft_01' data-enhance='false'>";
-                //Encabezado___
+                
+                // ENCABEZADO
                 maquetado += "<div class='div1'><img src='http://placehold.it/75x85'></div>";
                 maquetado += "<div class='div2'>";
                 maquetado += "<div class='textcolor-title1'>Guadalajara</div>";
@@ -241,8 +254,8 @@
                 maquetado += "</div>";
                 maquetado += "<div class='scroll'>";
 
-                //Contenido___
-                //ALTAS...
+                // CONTENIDO
+                // -- ALTAS --
                 if(wdgTeamDraft.flagTypeAltas == 1){
                     maquetado += "<div class='verde'>";
                     maquetado += "<div class='textcolor-title1 pleca'>Altas</div>";
@@ -256,14 +269,14 @@
                     maquetado += "<tr>";
                     maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
                     maquetado += "</tr>";
-                    //Aqui inserto Tabla de Altas...   
+                    // ...Tabla de Altas...   
                     textArray = wdgTeamDraft.arrayAltas;              
                     maquetado += wdgTeamDraft.remplazaComas(textArray);
                     maquetado += "</table>";
                     maquetado += "</div>";
                 }                
                 
-                //BAJAS...
+                // -- BAJAS --
                 if (wdgTeamDraft.flagTypeBajas == 1) {
                     maquetado += "<div class='rojo'>";
                     maquetado += "<div class='textcolor-title1 pleca'>Bajas</div>";
@@ -277,14 +290,14 @@
                     maquetado += "<tr>";
                     maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
                     maquetado += "</tr>";
-                    // Aqui inserto la Tabla de Bajas... 
+                    // ...Tabla de Bajas... 
                     textArray = wdgTeamDraft.arrayBajas;              
                     maquetado += wdgTeamDraft.remplazaComas(textArray);                
                     maquetado += "</table>";
                     maquetado += "</div>";    
                 }
                 
-                //RUMORES...
+                //  -- RUMORES --
                 if (wdgTeamDraft.flagTypeRumores == 1) {
                     maquetado += "<div class='naranja'>";
                     maquetado += "<div class='textcolor-title1 pleca'>Rumores</div>";
@@ -297,14 +310,14 @@
                     maquetado += "<tr>";
                     maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
                     maquetado += "</tr>";
-                    // Aqui inserto la Tabla de Rumores... 
+                    // ...Tabla de Rumores... 
                     textArray = wdgTeamDraft.arrayRumores;              
                     maquetado += wdgTeamDraft.remplazaComas(textArray);                
                     maquetado += "</table>";
                     maquetado += "</div>";
                 }
                 
-                //TRANSFERIBLES...
+                // -- TRANSFERIBLES --
                 if (wdgTeamDraft.flagTypeTransf == 1) {
                     maquetado += "<div class='azul'>";
                     maquetado += "<div class='textcolor-title1 pleca'>Transferibles</div>";
@@ -317,14 +330,14 @@
                     maquetado += "<tr>";
                     maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
                     maquetado += "</tr>";
-                    // Aqui inserto la Tabla de Transferibles... 
+                    // ...Tabla de Transferibles... 
                     textArray = wdgTeamDraft.arrayTrans;              
                     maquetado += wdgTeamDraft.remplazaComas(textArray);                
                     maquetado += "</table>";
                     maquetado += "</div>";
                 }
                 
-                //Renovación de Prestamo...
+                // -- RENOVACION DE PRESTAMO --
                 if (wdgTeamDraft.flagTypePrestamos == 1) {
                     maquetado += "<div class='azul2'>";
                     maquetado += "<div class='textcolor-title1 pleca'>Renovaci&oacute;n de Prestamo</div>";
@@ -338,7 +351,7 @@
                     maquetado += "<tr>";
                     maquetado += "<td colspan='7' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
                     maquetado += "</tr>";
-                    //Aqui inserto la tabla de PRESTAMO...
+                    // ...Tabla de Prestamo...
                     textArray = wdgTeamDraft.arrayPrestamos;              
                     maquetado += wdgTeamDraft.remplazaComas(textArray);                                
                     maquetado += "</table>";
@@ -392,8 +405,7 @@
                     $(this).next('tr').find('td.separador .dotted-top').hide();
                     $(this).next('tr').find('td.separador .qualifies').show();
                     
-                    // Verificamos si ya votaron
-                    //alert($(this).next('tr').find(' td.separador .calification'));
+                    // Verificamos si ya votaron                    
                     if($(this).next('tr').find(' td.separador .calification').length > 0){
                         $(this).next('tr').find(' td.separador .calification').show();                    
                     }
