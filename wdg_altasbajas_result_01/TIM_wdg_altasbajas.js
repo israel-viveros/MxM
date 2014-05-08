@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.2.9
+ *   Version: 2.3.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -443,7 +443,9 @@
 
                 var fechaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "dd/mmm");
                 fechaEvento = fechaEvento.replace("/", ".&nbsp;");
-                var horaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "HH:MM");
+                //var horaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "HH:MM");
+                var horaEvento = conjunto.eventtime.substring(0, 5);
+
                 var sefMxmHash = (tbaner != undefined && tbaner != null && tbaner != '') ? '#' + tbaner : '';
 
                 var clickUrlTv = (conjunto.eventurl != undefined && conjunto.eventurl != null && conjunto.eventurl != '') ? conjunto.eventurl : '';
