@@ -296,7 +296,7 @@
                         wdg_playerdraft_01.viewHtml(data);                        	            	
     	            },
                     error: function(data){
-                        alert("ERROR___");                        
+                        console.log("ERROR___");                        
                     }                    
     			});                
     		}
