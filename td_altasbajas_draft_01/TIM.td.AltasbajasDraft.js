@@ -78,9 +78,7 @@
                         //Datos de Jugador___
                         maquetado += "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right'>";
-                        maquetado += "<h3>"+namePlayer+"</h3>";                        
-                        maquetado += "<div id='urlDraft' style='visibility:hidden; height:0;'>"+urlDraft+"</div>";
-                        maquetado += "<div id='idOperation' style='visibility:hidden; height:0;'>"+idOperation+"</div>";
+                        maquetado += "<h3 data-urlDraft='"+urlDraft+"' data-idOperation='"+idOperation+"'>"+namePlayer+"</h3>";                                                
                         maquetado += "</td>";                        
                         maquetado += "<td class='dotted-right'>"+acquire+"</td>";
                         maquetado += "<td class='dotted-right'>"+transfer+"</td>";
@@ -139,7 +137,7 @@
 
             funcionesNaat: function() { 
                 //e.event.preventDefault();
-                alert('Funciones...');           
+                console.log('Funciones...');           
                 /*Para IPAD*/
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').on('touchstart', function(e){
                     //e.event.preventDefault();
@@ -209,12 +207,15 @@
                     //Votacion...
                     var num_star = $(this).text();
                     var varTr = $(this).parents('tr');
-                    var element = varTr.prev();
+                    var element = varTr.prev();                    
                     var firstElement = element.children(':first-child');
-                    var urlDraft = firstElement.find('div#urlDraft').text();
-                    var draftOperation = firstElement.find('div#idOperation').text();                    
+                    console.log(firstElement);
+                    var urlDraft = firstElement.find('h3').data('urldraft');
+                    var draftOperation = firstElement.find('h3').data('idoperation');                    
                     var urlSet = urlDraft+draftOperation; 
-                    var div_gracias = "";                   
+                    var div_gracias = "";
+                    console.log(urlDraft);
+                    console.log(draftOperation);
                     console.log(num_star+" - "+urlSet+" - "+div_gracias);
                     if (typeof div_gracias == "undefined") { div_gracias = null; }                            
                     if (typeof url == "undefined") { url = wdg_playerdraft_01.cl_url(urlSet); }
@@ -242,10 +243,10 @@
                         var negative_votes=5-num_star;
                         var votes_type = 1;
                         var url = urlSet;
-
                         console.log(negative_votes);
                         COMM_img_set = document.createElement("IMG");
                         COMM_img_set.src = "http://v.esmas.com:8081/votos/spacer.gif?1|"+positive_votes+"|"+negative_votes+"|"+votes_type+"|"+url;
+                        console.log(COMM_img_set.src);
                         document.body.appendChild(COMM_img_set); 
                     }
                     //-------
@@ -299,17 +300,14 @@
                     }                    
     			});                
     		}
-    	}
-    	
-        wdg_playerdraft_01.getDataDraft();
-        wdg_playerdraft_01.funcionesNaat();
-
-        /*$.when(wdg_playerdraft_01.getDataDraft().done(function() {
+    	}    	
+        
+        $.when(wdg_playerdraft_01.getDataDraft()).done(function() {
             setTimeout(function() {
                 wdg_playerdraft_01.funcionesNaat();
-            }, 500);
+            }, 3000);
 
-        });*/
+        });
     	
     };
 
