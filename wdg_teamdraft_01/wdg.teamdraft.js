@@ -37,10 +37,11 @@
             // .....................................................................................
             // Funcion que pinta el html para los casos (ALTA,BAJA,RUMORES,TRANSFERIBLES,PRESTAMO)
             // .....................................................................................
-            typeDraft: function(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details) {
+            typeDraft: function(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam) {
 
                 switch (type) {
                     case 'ALTA':
+                        console.log(logolastTeam);
                         wdgTeamDraft.flagTypeAltas = 1;
                         maquetado = "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right'>";
@@ -48,7 +49,7 @@
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
-                        maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
+                        maquetado += "<td width='22'><img src='" + logolastTeam + "'></td>";
                         maquetado += "<td class='dotted-right'>" + lastTeam + "</td>";
                         maquetado += "<td class='dotted-right center'>" + rantingTD + "</td>";
                         maquetado += "<td class='textcolor-title1'>0</td>";
@@ -86,7 +87,7 @@
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
-                        maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
+                        maquetado += "<td width='22'><img src='" + logolastTeam + "'></td>";
                         maquetado += "<td class='dotted-right'>" + lastTeam + "</td>";
                         maquetado += "<td class='dotted-right center'>" + rantingTD + "</td>";
                         maquetado += "<td class='textcolor-title1'>0</td>";
@@ -162,7 +163,7 @@
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
-                        maquetado += "<td width='22'><img src='http://placehold.it/22x22'></td>";
+                        maquetado += "<td width='22'><img src='" + logolastTeam + "'></td>";
                         maquetado += "<td class='dotted-right'>" + lastTeam + "</td>";
                         maquetado += "<td class='dotted-right center'>" + rantingTD + "</td>";
                         maquetado += "<td class='textcolor-title1'>0</td>";
@@ -206,6 +207,18 @@
             viewHtml: function(data) {
                 for (var i = 0; i < data['draftTeams'].length; i++) {
                     if (data['draftTeams'][i]['id'] == setting.idTeam) {
+                        var nameTeam = data['draftTeams'][i]['name'];
+                        var clubName = data['draftTeams'][i]['clubName'];
+                        var namePresident = data['draftTeams'][i]['namePresident'];
+                        var charge = data['draftTeams'][i]['charge'];
+                        for(var l = 0; l<data['draftTeams'][i]['logos'].length; l++){
+                            if (l==0){
+                                //Logotipo de 70X70...
+                                var logoTeam = data['draftTeams'][i]['logos'][l]['URL'];
+                            }
+                        }
+
+
                         for (var n = 0; n < data['draftTeams'][i]['operation'].length; n++) {
                             var type = "";
                             var idPlayer = "";
@@ -216,6 +229,7 @@
                             var ratingUser = "";
                             var nationality = "";
                             var details = "";
+                            var logolastTeam = "";
 
                             type = data['draftTeams'][i]['operation'][n]['type'];
                             idPlayer = data['draftTeams'][i]['operation'][n]['id'];
@@ -225,9 +239,10 @@
                             rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
                             ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];
                             nationality = data['draftTeams'][i]['operation'][n]['nationality'];
-                            details = data['draftTeams'][i]['operation'][n]['Detail'];
+                            details = data['draftTeams'][i]['operation'][n]['Detail'];                            
+                            logolastTeam = data['draftTeams'][i]['operation'][n]['logolastTeam'];
 
-                            wdgTeamDraft.typeDraft(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details);
+                            wdgTeamDraft.typeDraft(type, idPlayer, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam);
 
                         }
                     }
@@ -237,13 +252,13 @@
                 maquetado = "<div id='wdg_teamdraft_01' class='wdg_teamdraft_01' data-enhance='false'>";
 
                 // ENCABEZADO
-                maquetado += "<div class='div1'><img src='http://placehold.it/75x85'></div>";
+                maquetado += "<div class='div1'><img src='"+logoTeam+"'></div>";
                 maquetado += "<div class='div2'>";
-                maquetado += "<div class='textcolor-title1'>Guadalajara</div>";
+                maquetado += "<div class='textcolor-title1'>"+nameTeam+"</div>";
                 maquetado += "<div class='underline'></div>";
-                maquetado += "<div class='nombre'>Club Guadalajara S.A. de C.V.</div>";
-                maquetado += "<div class='presidente'>Jorge Carlos Vergara Madrigal</div>";
-                maquetado += "<div class='puesto'>Presidente</div>";
+                maquetado += "<div class='nombre'>"+clubName+"</div>";
+                maquetado += "<div class='presidente'>"+namePresident+"</div>";
+                maquetado += "<div class='puesto'>"+charge+"</div>";
                 maquetado += "</div>";
                 maquetado += "<div class='div3'>";
                 maquetado += "<div>Altas Totales</div>";
@@ -367,7 +382,7 @@
             funcionesNaat: function() {
                 console.log("funcionesNaat")
                 // e.event.preventDefault();
-                alert('funciones de Na-at');
+                //alert('funciones de Na-at');
                 // Para IPAD
                 $('containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .vote_block').on('touchstart', function(e) {
                     //e.event.preventDefault();
@@ -469,8 +484,8 @@
                 console.log("getDataTeamDraft")
                 console.log(wdgTeamDraft.urlData);
                 $.ajax({
-                    url: wdgTeamDraft.urlData,
-                    // url: 'draft.js',                                       
+                    // url: wdgTeamDraft.urlData,
+                    url: 'draft.js',                                       
                     type: "GET",
                     dataType: 'jsonp',
                     jsonpCallback: 'llave',
@@ -485,16 +500,12 @@
             }
         }
 
-
         $.when(wdgTeamDraft.getDataTeamDraft()).done(function() {
             setTimeout(function() {
                 wdgTeamDraft.funcionesNaat();
             }, 3000);
         });
-
-
-
+        
     };
-
 
 })(jQuery);
