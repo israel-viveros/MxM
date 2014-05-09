@@ -376,6 +376,24 @@
                 wdgTeamDraft.tagWdgTeamDraft.html(maquetado);
 
             },
+            
+            cl_url : function(a){
+                b=a.search(/\?/);
+                if(b!=-1){
+                    b=a.search(/\=/);
+                    if (b != -1) {
+                        a=a.replace(/\=/g,"_");
+                        a=a.replace(/\&/g,"/");
+                        a=a.replace("?","/no_clean_url/");
+                    }
+                }
+                b=a.search(/\#/);
+                if(b!=-1){a=a.substring(0,b)}
+                b=a.search(/\?/);
+                if(b!=-1){a=a.substring(0,b)}
+                return a
+            },
+            
             funcionesNaat: function() {
                 console.log("funcionesNaat")
                 // e.event.preventDefault();
@@ -458,7 +476,7 @@
                     console.log(draftOperation);
                     console.log(num_star+" - "+urlSet+" - "+div_gracias);
                     if (typeof div_gracias == "undefined") { div_gracias = null; }                            
-                    if (typeof url == "undefined") { url = wdg_playerdraft_01.cl_url(urlSet); }
+                    if (typeof url == "undefined") { url = wdgTeamDraft.cl_url(urlSet); }
                     console.log(num_star);
                     if(num_star == 10){
                         num_star = 5;
