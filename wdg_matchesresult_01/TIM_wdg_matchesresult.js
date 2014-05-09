@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 3.2.2
+ *   Version: 3.2.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -292,6 +292,19 @@
                     });
                 }
                 $(".windows8").hide();
+
+
+                if ($(window).width() >= 933) {
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(800)
+                }
+                if ($(window).width() < 933 && $(window).width() >= 609) {
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(748);
+
+                }
+                if ($(window).width() < 609) {
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(3546);
+                    $('.wdg_matchesresult_01_theme').css('width', '450px');
+                }
 
             }, // END DrawContentFirst
 
@@ -643,7 +656,8 @@ jQuery(function($) {
                     $x.find('ul').width(800);
                     if (visShow == 'hidden') {
                         $('.wdg_matchesresult_01').animate({
-                            'height': 675
+                            'height': 675,
+                            'width': '100%'
                         }, 0);
                     }
                 }
@@ -1073,6 +1087,7 @@ jQuery(function($) {
                 });
             }
         });
+        /*
         $(window).load(function() {
 
             if ($(window).width() >= 933) {
@@ -1087,6 +1102,7 @@ jQuery(function($) {
                 $('.wdg_matchesresult_01_theme').css('width', '450px');
             }
         });
+*/
 
 
     }(Televisa, jQuery));
