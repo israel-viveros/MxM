@@ -15,12 +15,13 @@
                 var compras = "";
                 var prestamos = "";
                 var transf = "";                
-
+                var urlDraft = "";
                 //Asignamos valores...
                 compras = data['draftPurchase']; 
                 prestamos = data['draftLoan'];
                 transf = data['draftTransfers'];
-                
+                urlDraft = data['draftURL'];
+
     			maquetado = "<div id='wdg_playerdraft_01' class='wdg_playerdraft_01'>";
     			//Encabezado___
     			maquetado += "<div class='titulo textcolor-title2'><h2>Balance en el Draft</h2></div>";
@@ -53,28 +54,34 @@
     			maquetado += "<td colspan='6' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";    			
     			maquetado += "</tr>";
     			
+                
                 for (var i=0; i<data['draftTeams'].length; i++) {                
-                    console.log("Team"+i);                                            
-                    for (var n=0; n<data['draftTeams'][i]['operation'].length; n++) {
-                        var idPlayer = "";
+                    console.log("Team"+i); 
+
+                    for (var n=0; n<data['draftTeams'][i]['operation'].length; n++) {                        
                         var namePlayer = "";
                         var acquire = "";
                         var transfer = "";
                         var type = "";
                         var rantingTD = "";
-                        var ratingUser = "";
+                        var ratingUser = "";                        
+                        var idOperation = "";
 
-                        idPlayer = data['draftTeams'][i]['operation'][n]['id'];
+                        idOperation = data['draftTeams'][i]['operation'][n]['id'];
                         namePlayer = data['draftTeams'][i]['operation'][n]['name'];
                         acquire = data['draftTeams'][i]['operation'][n]['acquire'];
                         transfer = data['draftTeams'][i]['operation'][n]['transfer'];
                         type = data['draftTeams'][i]['operation'][n]['type'];
                         rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
-                        ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];
+                        ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];                        
 
                         //Datos de Jugador___
                         maquetado += "<tr class='vote_block'>";
-                        maquetado += "<td class='dotted-right'><h3>"+namePlayer+"</h3><div style='visibility:hidden;'>"+idPlayer+"</div></td>";                        
+                        maquetado += "<td class='dotted-right'>";
+                        maquetado += "<h3>"+namePlayer+"</h3>";                        
+                        maquetado += "<div id='urlDraft' style='visibility:hidden; height:0;'>"+urlDraft+"</div>";
+                        maquetado += "<div id='idOperation' style='visibility:hidden; height:0;'>"+idOperation+"</div>";
+                        maquetado += "</td>";                        
                         maquetado += "<td class='dotted-right'>"+acquire+"</td>";
                         maquetado += "<td class='dotted-right'>"+transfer+"</td>";
                         maquetado += "<td class='dotted-right'>"+type+"</td>";
@@ -112,6 +119,24 @@
     			wdg_playerdraft_01.tagWdgPlayerdraft.html(maquetado);
     			
     		},
+
+            cl_url : function(a){
+                b=a.search(/\?/);
+                if(b!=-1){
+                    b=a.search(/\=/);
+                    if (b != -1) {
+                        a=a.replace(/\=/g,"_");
+                        a=a.replace(/\&/g,"/");
+                        a=a.replace("?","/no_clean_url/");
+                    }
+                }
+                b=a.search(/\#/);
+                if(b!=-1){a=a.substring(0,b)}
+                b=a.search(/\?/);
+                if(b!=-1){a=a.substring(0,b)}
+                return a
+            },
+
             funcionesNaat: function() { 
                 //e.event.preventDefault();
                 alert('Funciones...');           
@@ -179,13 +204,53 @@
                 
                 //click calificacion
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .separador .calification a').click(function(event){
-                    event.preventDefault();
-                    alert ("has dado click en " + $(this).text());    
-                    alert ("la URL es http://mxm.televisadeportes.esmas.com/futbol/draft/liga-mx-clausura-2013/1733");
+                    event.preventDefault();                    
+                    
+                    //Votacion...
+                    var num_star = $(this).text();
+                    var varTr = $(this).parents('tr');
+                    var element = varTr.prev();
+                    var firstElement = element.children(':first-child');
+                    var urlDraft = firstElement.find('div#urlDraft').text();
+                    var draftOperation = firstElement.find('div#idOperation').text();                    
+                    var urlSet = urlDraft+draftOperation; 
+                    var div_gracias = "";                   
+                    console.log(num_star+" - "+urlSet+" - "+div_gracias);
+                    if (typeof div_gracias == "undefined") { div_gracias = null; }                            
+                    if (typeof url == "undefined") { url = wdg_playerdraft_01.cl_url(urlSet); }
+                    console.log(num_star);
+                    if(num_star == 10){
+                        num_star = 5;
+                    }else if(num_star == 9) {
+                        num_star = 4;
+                    }
+                    else if (num_star == 8){
+                        num_star = 3;
+                    }
+                    else if (num_star == 7){
+                        num_star = 2;
+                    }
+                    else if (num_star == 6){
+                        num_star = 1;
+                    }
+                    else{
+                        num_star = 0;
+                    }
+                    console.log(num_star);
+                    if(num_star<6 && num_star>=0){                        
+                        var positive_votes = num_star;
+                        var negative_votes=5-num_star;
+                        var votes_type = 1;
+                        var url = urlSet;
 
+                        console.log(negative_votes);
+                        COMM_img_set = document.createElement("IMG");
+                        COMM_img_set.src = "http://v.esmas.com:8081/votos/spacer.gif?1|"+positive_votes+"|"+negative_votes+"|"+votes_type+"|"+url;
+                        document.body.appendChild(COMM_img_set); 
+                    }
+                    //-------
 
-                    $(this).parents('.calification').hide();
-                            
+                    $(this).parents('.calification').hide();                            
                     $(this).parents('.separador').find('.participated').fadeIn().delay(1000).fadeOut(function() {
                             
                         // Animation complete.
