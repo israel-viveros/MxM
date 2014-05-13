@@ -2,9 +2,7 @@
 (function() {
     //-----------------------------------------------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------------------------------------------------------
-
-    var resultadoGlobal;
-
+    
     $.fn.MxMRating = function(options) {
         var setting = $.extend({
             'idTorneo': 0,
@@ -25,8 +23,9 @@
             tagRating: $("#containerwdg_mxm_rating_01"),
             tagAlineacionGoles: $("#TIMAlineacionGoles"),
             tagwdgPenales: $("#TIMWdgPenales"),
-            tagExpulsion: $("#ExpulsionTIM"),
-
+            tagExpulsion: $("#ExpulsionTIM"),            
+            jornadaText: '',
+        
             //Metodo para colocar la posicion del jugador
             posicionTexto: function(posicion) {
                 var posicionTexto;
@@ -50,7 +49,7 @@
             },
 
             pintaInfo: function(dataAlineacion, dataMatchHeader, dataGamePlayer) {
-
+            	            	            	
                 // START Israel Viveros
                 wdg_mxm_rating.intervaloVe = setInterval(function() {
                     wdg_mxm_rating.listenerInfo();
@@ -88,7 +87,8 @@
                 equipo[1] = "lineupVisit";
                 equipoMatch[0] = "equipoLocal";
                 equipoMatch[1] = "equipoVisitante";
-
+                
+                wdg_mxm_rating.jornadaText = dataMatchHeader['jornada']['nombre']; 
                 var logoLocal = dataMatchHeader[equipoMatch[0]]['smallImage'];
                 var logoVisitante = dataMatchHeader[equipoMatch[1]]['smallImage'];
                 var nombreLocal = dataMatchHeader[equipoMatch[0]]['nombre'];
@@ -362,8 +362,7 @@
 
             },
 
-            loadDrops: function(feed, ID) {
-                console.log(feed);
+            loadDrops: function(feed, ID) {                
                 $.ajax({
                     url: feed,
                     type: 'GET ',
@@ -401,7 +400,7 @@
 
             //Obtener los Detalles de los jugadores
             getGamePlayerDetail: function(idtorneo, idMatch, dataAlineacion, dataMatchHeader) {
-                console.log('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
+                //console.log('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
                 $.ajax({
                     url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js',
                     type: "GET",
@@ -416,7 +415,7 @@
 
             //Obtiene el logotipo de los equipos y nombre
             getInfo: function(idtorneo, idMatch, dataAlineacion) {
-                console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js');
+                //console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js');
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_header.js',
                     dataType: 'jsonp',
@@ -430,10 +429,8 @@
             },
 
             //-- Carga la alineacion
-            loadAlineacion: function(idtorneo, idMatch) {
-                console.log(idtorneo);
-                console.log(idMatch);
-                console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js');
+            loadAlineacion: function(idtorneo, idMatch) {               
+                //console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js');
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js',
                     dataType: 'jsonp',
@@ -594,28 +591,24 @@
             },
 
 
-
-
-
-
-
-
-
             //FUNCIONES NA-AT-------------------------------------------
             funcionesNaat: function() {
-
-                var zIndexNumber = 1000;
-                $('.wdg_mxm_rating_01 div').each(function() {
-                    $(this).css('zIndex', zIndexNumber);
-                    zIndexNumber -= 10;
-                });
+            	//alert ('funciones');
+//                var zIndexNumber = 1000;
+//                $('.wdg_mxm_rating_01 div').each(function() {
+//                    $(this).css('zIndex', zIndexNumber);
+//                    zIndexNumber -= 10;
+//                });
+//                
                 // TODO: refactor for a better approach
                 var $parent = $('.wdg_mxm_rating_01 table');
                 var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');
-                var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
+                //var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
                 var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
-                var $listItems = $('.wdg_lineup_01_dropdownlist')
-                $('.wdg_lineup_01_dropdowncontent p').html($firstItem.find('p').html());
+                var $listItems = $('.wdg_lineup_01_dropdownlist');
+                
+                $('.wdg_lineup_01_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
+                $('.wdg_lineup_012_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
 
                 $dropdownAnchor.bind('click', function(evt) {
                     //console.log("DROP 1");
@@ -640,8 +633,7 @@
 
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
-                        idtorneo = setting.idTorneo;
-                        console.log(idtorneo);
+                        idtorneo = setting.idTorneo;                        
                         wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
                         var valorn = String($(this).text());
                         $("#nameJALocal").text(valorn);
@@ -695,10 +687,10 @@
                     }
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
-                        idtorneo = setting.idTorneo;
-                        console.log(idtorneo);
+                        idtorneo = setting.idTorneo;                        
                         wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
                         var valorn = String($(this).text());
+                        alert (valorn);
                         $("#nameJAVisit").text(valorn);
                     });
                 });
@@ -745,8 +737,7 @@
                 });
 
 
-                $('.wdg_rate_player_01 .calification div').on('click', function() {
-                    console.log('comienza la botacion');
+                $('.wdg_rate_player_01 .calification div').on('click', function() {                    
                     var votacion = $(this).children('p').text();
                     var padre = $(this).parent('div');
                     var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');
@@ -821,11 +812,11 @@
                         guid_sec = guidsection;
                         guid_fld = guidfield;
                         guid_fvl = guidfvl;
-                        console.log(guid_box + "/" + guid_spl + "/" + guid_sec + "/" + guid_fld + "/" + guid_fvl);
+                        //console.log(guid_box + "/" + guid_spl + "/" + guid_sec + "/" + guid_fld + "/" + guid_fvl);
                         voteslog = guid_box + '@@@' + guid_spl + '@@@' + guid_sec + '@@@' + guid_fld + '@@@[' + guid_fld + '&&&' + guid_fvl + ']@@@' + guid_thm_spl + '@@@' + altern_field_value + '@@@';
                         voteslog += sefVPrograma + '@@@' + sefVCategoria + '@@@' + sefVSubcategoria + '@@@' + sefVToken + '@@@' + sefVCSIE + '@@@' + sefVUrlactual + '@@@' + sefVSexodelUsuario + '@@@' + sefVIP + '@@@' + sefVCodigodelPais + '@@@' + sefVCuidad + '@@@' + sefVEstado + '@@@' + sefVTimestamp + '@@@' + sefVNavegador + '@@@' + sefVVersion + '@@@' + sefVSistemaOperativo + '@@@' + sefVResoluciondelapantalla + '@@@' + sefVjavaEnabled + '@@@' + sefVDireccionanterior + '@@@' + sefVLenguajedelsistema + '@@@' + sefVLenguajedelUsuario + '@@@' + sefVLenguajedelNavegador;
                         pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl;
-                        alert('http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl);
+                        console.log('http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl);
 
                         //createCookie(cookieName,'1', 60);
 
@@ -892,7 +883,7 @@
         $.when(wdg_mxm_rating.loadAlineacion(setting.idTorneo, setting.idEvento)).done(function() {
             setTimeout(function() {
                 wdg_mxm_rating.funcionesNaat();
-            }, 500);
+            }, 1000);
 
         });
 
