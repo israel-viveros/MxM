@@ -409,6 +409,9 @@
                     cache: false,
                     success: function(dataGamePlayer) {
                         wdg_mxm_rating.pintaInfo(dataAlineacion, dataMatchHeader, dataGamePlayer);
+                    },
+                    error: function(data) {
+                    	console.log("error en gatGame Player");                    	
                     }
                 });
             },
@@ -423,6 +426,9 @@
                     cache: false,
                     success: function(dataMatchHeader) {
                         wdg_mxm_rating.getGamePlayerDetail(idtorneo, idMatch, dataAlineacion, dataMatchHeader)
+                    },
+                    error: function(data) {
+                    	console.log("error en info");                    	
                     }
 
                 });
@@ -438,11 +444,13 @@
                     cache: false,
                     success: function(dataAlineacion) {
                         wdg_mxm_rating.getInfo(idtorneo, idMatch, dataAlineacion);
-                    }
+                    },
+                error: function(data) {
+                	console.log("error en load");                	
+                }
+                    
                 });
             },
-
-
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
                 var maquetado = "",
@@ -589,11 +597,10 @@
                 }
 
             },
-
-
+                        
             //FUNCIONES NA-AT-------------------------------------------
             funcionesNaat: function() {
-            	//alert ('funciones');
+            	
 //                var zIndexNumber = 1000;
 //                $('.wdg_mxm_rating_01 div').each(function() {
 //                    $(this).css('zIndex', zIndexNumber);
@@ -633,8 +640,13 @@
 
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
-                        idtorneo = setting.idTorneo;                        
+                        idtorneo = setting.idTorneo;
+                        
                         wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
+                        setTimeout(function() {                          
+                           wdg_mxm_rating.cargaFunciones();
+                        }, 1000);                        
+                            
                         var valorn = String($(this).text());
                         $("#nameJALocal").text(valorn);
                     });
@@ -688,9 +700,13 @@
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;                        
-                        wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
+                        wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);                        
+                        setTimeout(function() {                          
+                           wdg_mxm_rating.cargaFunciones();
+                        }, 1000);
+                        
                         var valorn = String($(this).text());
-                        alert (valorn);
+                        console.log (valorn);
                         $("#nameJAVisit").text(valorn);
                     });
                 });
@@ -773,10 +789,7 @@
                         var sefVCodigodelPais = 'MX';
                         var sefVCuidad = 'Cuidad';
                         var sefVEstado = 'Estado';
-                        var sefVTimestamp = Math.round(new Date().getTime() / 1000);
-                        //var sefVNavegador=SEFBrowserDetect.browser;
-                        //var sefVVersion=SEFBrowserDetect.version;
-                        //var sefVSistemaOperativo=SEFBrowserDetect.OS;                    			
+                        var sefVTimestamp = Math.round(new Date().getTime() / 1000);                                         		
                         var sefVNavegador = '';
                         var sefVVersion = '';
                         var sefVSistemaOperativo = '';
@@ -786,8 +799,7 @@
                         var sefVLenguajedelsistema = 'es-mx';
                         var sefVLenguajedelUsuario = 'es-mx';
                         var sefVLenguajedelNavegador = 'es';
-
-                        //console.log(data);
+                        
                         for (var i = 0; i < data.poll['answers']['answer'].length; i++) {
                             if (data.poll['answers']['answer'][i].value == idPlayer) {
                                 var photoRaiting = data.poll['answers']['answer'][i]['photoRaiting'];
@@ -816,42 +828,7 @@
                         voteslog = guid_box + '@@@' + guid_spl + '@@@' + guid_sec + '@@@' + guid_fld + '@@@[' + guid_fld + '&&&' + guid_fvl + ']@@@' + guid_thm_spl + '@@@' + altern_field_value + '@@@';
                         voteslog += sefVPrograma + '@@@' + sefVCategoria + '@@@' + sefVSubcategoria + '@@@' + sefVToken + '@@@' + sefVCSIE + '@@@' + sefVUrlactual + '@@@' + sefVSexodelUsuario + '@@@' + sefVIP + '@@@' + sefVCodigodelPais + '@@@' + sefVCuidad + '@@@' + sefVEstado + '@@@' + sefVTimestamp + '@@@' + sefVNavegador + '@@@' + sefVVersion + '@@@' + sefVSistemaOperativo + '@@@' + sefVResoluciondelapantalla + '@@@' + sefVjavaEnabled + '@@@' + sefVDireccionanterior + '@@@' + sefVLenguajedelsistema + '@@@' + sefVLenguajedelUsuario + '@@@' + sefVLenguajedelNavegador;
                         pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl;
-                        console.log('http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl);
-
-                        //createCookie(cookieName,'1', 60);
-
-                        //                            	if(readCookie(cookieName2) != null){		
-                        //                    				createCookie(cookieName2,'',-1);	
-                        //                    			}
-
-                        //                            	createCookie(cookieName2, value, 120);
-                        //informacionactualizada();
-                        //secondScreen();
-                        //setTimeout('pantallaCorrecta()',refreshtimeesp*60000);
-
-                        //                    			function createCookie(name,value,segundos) {
-                        //                    				alert ("aqui");
-                        //                    				if (segundos) {
-                        //                    					var date = new Date();
-                        //                    					date.setTime(date.getTime()+(segundos*1000));
-                        //                    					var expires = "; expires="+date.toGMTString();
-                        //                    				}
-                        //                    				else var expires = "";
-                        //                    				document.cookie = name+"="+value+expires+"; path=/";                    				
-                        //                    			}
-                        //                    			
-                        //                    			function readCookie(name) {
-                        //                    				var nameEQ = name + "=";
-                        //                    				var ca = document.cookie.split(';');
-                        //                    				for(var i=0;i < ca.length;i++) {
-                        //                    					var c = ca[i];
-                        //                    					while (c.charAt(0)==' ') c = c.substring(1,c.length);
-                        //                    					if (c.indexOf(nameEQ) == 0) console.log(c.substring(nameEQ.length,c.length)); return c.substring(nameEQ.length,c.length);
-                        //                    				}
-                        //                    				return null;
-                        //                    			}
-
-
+                        console.log('http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl);                        
 
                     }).fail(function() {
                         console.log("error");
@@ -876,6 +853,10 @@
                     $(this).prev('tr').show();
                 });
 
+            },
+            
+            cargaFunciones: function() {
+            	wdg_mxm_rating.funcionesNaat();
             }
 
         }
@@ -886,6 +867,7 @@
             }, 1000);
 
         });
+                
 
     };
 
