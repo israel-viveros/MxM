@@ -645,7 +645,7 @@
                         wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
                         setTimeout(function() {                          
                            wdg_mxm_rating.cargaFunciones();
-                        }, 1000);                        
+                        }, 1200);                        
                             
                         var valorn = String($(this).text());
                         $("#nameJALocal").text(valorn);
@@ -703,7 +703,7 @@
                         wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);                        
                         setTimeout(function() {                          
                            wdg_mxm_rating.cargaFunciones();
-                        }, 1000);
+                        }, 1200);
                         
                         var valorn = String($(this).text());
                         console.log (valorn);
@@ -864,7 +864,7 @@
         $.when(wdg_mxm_rating.loadAlineacion(setting.idTorneo, setting.idEvento)).done(function() {
             setTimeout(function() {
                 wdg_mxm_rating.funcionesNaat();
-            }, 1000);
+            }, 1200);
 
         });
                 
