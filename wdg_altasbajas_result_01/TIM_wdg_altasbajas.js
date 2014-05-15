@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.1
+ *   Version: 2.3.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -60,7 +60,7 @@
                 MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><h3 class="str_pleca_01_title background-color' + num + '"><a class="textcolor-title3" ><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></h3></div>' : '';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="division">';
-                MaqueWdgAltas += (settings.tema !== "mundial") ? '<img src="" width="45" height="30">' : '';
+                MaqueWdgAltas += (settings.tema !== "mundial") ? '<img src="" id="ALtournamentLogo" width="45" height="30">' : '';
                 MaqueWdgAltas += '<h2 class="games"></h2>';
                 MaqueWdgAltas += '</div>';
                 MaqueWdgAltas += '<div class="filterResultado">';
@@ -430,6 +430,12 @@
                 if (i === 0) {
                     globalThis.find('.division img').attr('src', data[i].tournament.icono);
                     globalThis.find('.division h2').text(data[i].tournament.name);
+                    if (data[i].tournament.icono.length > 0) {
+                        globalThis.find('#ALtournamentLogo').attr('src', data[i].tournament.icono);
+                    } else {
+                        globalThis.find('#ALtournamentLogo').hide();
+                    }
+
 
                     (typeof(data[i].sef) !== "undefined" && typeof(data[i].sef.tournamentid) !== "undefined") ? globalThis.find('.controls .full-timetable').attr('href', 'http://stats.televisadeportes.esmas.com/futbol/torneo/' + String(data[i].tournament.name).replace(/ /g, "-").toLowerCase() + '/calendario/' + data[i].sef.tournamentid + '/') : '';
                 }
@@ -631,7 +637,7 @@ jQuery(function($) {
             var $parent = $('.wdg_altasbajas_result_01 ');
             var $dropdownAnchor = $parent.find('.lineaResultado .filter');
             $dropdownAnchor.on('click', function(evt) {
-                console.log("drop")
+                //console.log("drop")
                 var $listItems = $(this).find('.wdg_altasbajas_result_012_dropdownlist');
                 var $visibility = $listItems.css('visibility');
                 var padre = $(this);
