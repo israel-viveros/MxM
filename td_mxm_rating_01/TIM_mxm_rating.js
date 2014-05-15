@@ -613,10 +613,14 @@
                 //var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
                 var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
                 var $listItems = $('.wdg_lineup_01_dropdownlist');
+                                
+                $('.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul, .wdg_rate_player_01 .wdg_lineup_012_listcontainer ul').css('display','none');
                 
                 $('.wdg_lineup_01_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
                 $('.wdg_lineup_012_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
-
+                
+                
+                
                 $dropdownAnchor.bind('click', function(evt) {
                     console.log("DROP 1");
                     //evt.preventDefault();
@@ -626,6 +630,7 @@
                     if (visibilidad == 'hidden') {
                     	console.log("entra a oculto");
                         lisItemsChild.css({
+                        	display: 'block',
                             visibility: 'visible',
                             height: '176px',
                             'overflow-y': 'scroll',
@@ -688,6 +693,7 @@
                     var lisItemsChild = $(this).children('.wdg_lineup_012_listcontainer').children();
                     if (visibilidad == 'hidden') {
                         lisItemsChild.css({
+                        	display: 'block',
                             visibility: 'visible',
                             height: '176px',
                             'overflow-y': 'scroll',
