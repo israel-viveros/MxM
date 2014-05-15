@@ -443,13 +443,13 @@
                     jsonpCallback: 'datagame',
                     cache: false,
                     success: function(dataAlineacion) {
+                    	console.log("exitoso Load");
                         wdg_mxm_rating.getInfo(idtorneo, idMatch, dataAlineacion);
-                    },
-                error: function(data) {
-                	console.log("error en load");                	
-                }
-                    
-                });
+                    },                    
+                    error: function(data) {
+                    	console.log("error en load");                	
+                    }                    
+                });                
             },
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
@@ -618,12 +618,13 @@
                 $('.wdg_lineup_012_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
 
                 $dropdownAnchor.bind('click', function(evt) {
-                    //console.log("DROP 1");
-                    evt.preventDefault();
+                    console.log("DROP 1");
+                    //evt.preventDefault();
                     var lisItemsChild = $(this).children('.wdg_lineup_01_listcontainer').children('.wdg_lineup_01_dropdownlist:first-child');
                     var visibilidad = lisItemsChild.css('visibility');
                     visibilidadChild = $(this).children($listItems);
                     if (visibilidad == 'hidden') {
+                    	console.log("entra a oculto");
                         lisItemsChild.css({
                             visibility: 'visible',
                             height: '176px',
@@ -631,14 +632,17 @@
                             'overflow-x': 'hidden'
                         });
 
-                    } else {
-                        lisItemsChild.css({
-                            visibility: 'hidden',
-                            height: '0px'
-                        });
-                    }
-
-                    lisItemsChild.find("p").unbind('click').click(function(event) {
+                    } 
+//                    else {
+//                    	console.log("entra a visible");
+//                        lisItemsChild.css({
+//                            visibility: 'hidden',
+//                            height: '0px'
+//                        });
+//                    }
+                    
+                    lisItemsChild.find("p").unbind('click').click(function(event) {                    	
+                    	console.log("click");
                         var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;
                         
@@ -690,13 +694,14 @@
                             'overflow-x': 'hidden'
                         });
 
-                    } else {
-
-                        lisItemsChild.css({
-                            visibility: 'hidden',
-                            height: '0px'
-                        });
-                    }
+                    } 
+//                    else {
+//
+//                        lisItemsChild.css({
+//                            visibility: 'hidden',
+//                            height: '0px'
+//                        });
+//                    }
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;                        
@@ -856,6 +861,7 @@
             },
             
             cargaFunciones: function() {
+            	console.log("carga funciones");
             	wdg_mxm_rating.funcionesNaat();
             }
 
