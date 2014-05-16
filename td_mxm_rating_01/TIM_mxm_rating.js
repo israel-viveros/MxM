@@ -11,15 +11,13 @@
             'idEquipo2': 0,
             'title': ''
         }, options);
-        //console.log("idTorneo:" + setting.idTorneo + " idEvento:" + setting.idEvento + " idEquipo:" + setting.idEquipo + " idEquipo2:" + setting.idEquipo2 + " title:" + setting.title);
+    
         var GlobalThis = this;
 
         var wdg_mxm_rating = {
             urlfeedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
             urlfeedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
-            //urlFinalAlineacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_lineup.js',
-            //urlMatchHeader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/match_header.js',
-            //urlPlayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
+            
             tagRating: $("#containerwdg_mxm_rating_01"),
             tagAlineacionGoles: $("#TIMAlineacionGoles"),
             tagwdgPenales: $("#TIMWdgPenales"),
@@ -86,7 +84,7 @@
                 equipo[0] = "lineupLocal";
                 equipo[1] = "lineupVisit";
                 equipoMatch[0] = "equipoLocal";
-                equipoMatch[1] = "equipoVisitante";
+                equipoMatch[1] = "equipoVisitante";                
                 
                 wdg_mxm_rating.jornadaText = dataMatchHeader['jornada']['nombre']; 
                 var logoLocal = dataMatchHeader[equipoMatch[0]]['smallImage'];
@@ -150,8 +148,7 @@
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div id ='" + idPlayer + "' class='player_name'><p>" + nombreJugador + "</p></div>";
-                    //maquetado += "<input type='hidden' value="++">";
+                    maquetado += "<div id ='" + idPlayer + "' class='player_name'><p>" + nombreJugador + "</p></div>";                   
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     //--Pintar porcentaje
                     for (var a = 0; a < regPlayerDetail; a++) {
@@ -353,13 +350,18 @@
 
                 wdg_mxm_rating.tagRating.html(maquetado);
 
+                setting.idEquipo = dataMatchHeader[equipoMatch[0]]['id'];
+                setting.idEquipo2 = dataMatchHeader[equipoMatch[1]]['id'];
+                wdg_mxm_rating.urlfeedDropLocal = 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
+                wdg_mxm_rating.urlfeedDropVisit = 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
+
+                console.log('local '+wdg_mxm_rating.urlfeedDropLocal);
+                console.log('Visitante '+wdg_mxm_rating.urlfeedDropVisit);
 
                 (setting.idEquipo !== 0) ? wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropLocal, TIMPALocal) : '';
-
                 (setting.idEquipo2 !== 0) ? setTimeout(function() {
                     wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropVisit, TIMPAVisit);
-                }, 1500) : '';
-
+                }, 1000) : '';
             },
 
             loadDrops: function(feed, ID) {                
@@ -381,21 +383,6 @@
                     .fail(function() {
                         console.log("error");
                     })
-
-                var validaDrops = window.setInterval(function() {
-                    $("#TIMPALocal").data("status", "chequed");
-                    if ($("#TIMPALocal").children('li').size() === 0) {
-                        $(".wdg_lineup_01_dropdown.drop1").unbind().css("cursor", "auto").find('span.sprite').removeClass('sprite');
-                    }
-                    if ($("#TIMPAVisit").children('li').size() === 0) {
-                        $(".wdg_lineup_012_dropdown.drop2").unbind().css("cursor", "auto").find('span.sprite').removeClass('sprite');
-                    }
-                    if ($("#TIMPALocal").data("status") === "chequed") {
-                        window.clearInterval(validaDrops);
-                    }
-
-                }, 5000);
-
             },
 
             //Obtener los Detalles de los jugadores
@@ -408,6 +395,7 @@
                     jsonpCallback: 'gameplayerdetail',
                     cache: false,
                     success: function(dataGamePlayer) {
+                        
                         wdg_mxm_rating.pintaInfo(dataAlineacion, dataMatchHeader, dataGamePlayer);
                     },
                     error: function(data) {
@@ -492,10 +480,8 @@
                     wdg_mxm_rating.tagAlineacionGoles.hide();
                     wdg_mxm_rating.tagAlineacionGoles.parents('.wdg_goalsanoted_01').hide('fast');
                 }
-
-
-
             },
+
             wdgPenales: function(local, visit, nombreLocal, nombrevisit) {
                 var maquetado = "",
                     content = "";
@@ -598,15 +584,9 @@
 
             },
                         
-            //FUNCIONES NA-AT-------------------------------------------
-            funcionesNaat: function() {
+            //FUNCIONES DE ACCION 
+            funcionesAccion: function() {
             	
-//                var zIndexNumber = 1000;
-//                $('.wdg_mxm_rating_01 div').each(function() {
-//                    $(this).css('zIndex', zIndexNumber);
-//                    zIndexNumber -= 10;
-//                });
-//                
                 // TODO: refactor for a better approach
                 var $parent = $('.wdg_mxm_rating_01 table');
                 var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');
@@ -618,9 +598,7 @@
                 
                 $('.wdg_lineup_01_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
                 $('.wdg_lineup_012_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
-                
-                
-                
+                                                
                 $dropdownAnchor.bind('click', function(evt) {
                     console.log("DROP 1");
                     //evt.preventDefault();
@@ -638,13 +616,6 @@
                         });
 
                     } 
-//                    else {
-//                    	console.log("entra a visible");
-//                        lisItemsChild.css({
-//                            visibility: 'hidden',
-//                            height: '0px'
-//                        });
-//                    }
                     
                     lisItemsChild.find("p").unbind('click').click(function(event) {                    	
                     	console.log("click");
@@ -701,13 +672,7 @@
                         });
 
                     } 
-//                    else {
-//
-//                        lisItemsChild.css({
-//                            visibility: 'hidden',
-//                            height: '0px'
-//                        });
-//                    }
+
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;                        
@@ -738,7 +703,6 @@
                     evt.preventDefault();
                     $('.wdg_lineup_012_dropdowncontent p').html($(this).find('p').html());
                 });
-
 
                 //-- MOSTRAR VOTACION
                 //----
@@ -868,14 +832,14 @@
             
             cargaFunciones: function() {
             	console.log("carga funciones");
-            	wdg_mxm_rating.funcionesNaat();
+            	wdg_mxm_rating.funcionesAccion();
             }
 
         }
 
         $.when(wdg_mxm_rating.loadAlineacion(setting.idTorneo, setting.idEvento)).done(function() {
             setTimeout(function() {
-                wdg_mxm_rating.funcionesNaat();
+                wdg_mxm_rating.cargaFunciones();
             }, 1200);
 
         });
