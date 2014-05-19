@@ -447,8 +447,52 @@
 
                 var partidoHtml = '';
 
-                var fechaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "dd/mmm");
-                fechaEvento = fechaEvento.replace("/", ".&nbsp;");
+                //var fechaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "dd/mmm");
+                //fechaEvento = fechaEvento.replace("/", ".&nbsp;");
+
+                var fechasp = conjunto.eventdate.split("-");
+                var nombreMes = "";
+
+
+                switch (parseInt(fechasp[1])) {
+                    case 1:
+                        nombreMes = "Ene";
+                        break;
+                    case 2:
+                        nombreMes = "Feb";
+                        break;
+                    case 3:
+                        nombreMes = "Mar";
+                        break;
+                    case 4:
+                        nombreMes = "Abr";
+                        break;
+                    case 5:
+                        nombreMes = "May";
+                        break;
+                    case 6:
+                        nombreMes = "Jun";
+                        break;
+                    case 7:
+                        nombreMes = "Jul";
+                        break;
+                    case 8:
+                        nombreMes = "Ago";
+                        break;
+                    case 9:
+                        nombreMes = "Sep";
+                        break;
+                    case 10:
+                        nombreMes = "Oct";
+                        break;
+                    case 11:
+                        nombreMes = "Nov";
+                        break;
+                    case 12:
+                        nombreMes = "Dic";
+                        break;
+                }
+                var fechaEvento = fechasp[2] + " " + nombreMes;
                 //var horaEvento = convierteFecha(conjunto.fechastamp, offsetCookie, "HH:MM");
                 var horaEvento = conjunto.eventtime.substring(0, 5);
 
