@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.2
+ *   Version: 2.3.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -127,12 +127,11 @@
                 $.when(jornadasCalendarDTV.primeraJornada()).done(function() {
                     setTimeout(function() {
                         jornadasCalendarDTV.segundaJornada()
-                    }, 1000);
+                    }, 800);
                 });
 
                 if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo === 0) {
                     urFinal = jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadas/jornadalistadojsonp.js';
-
                     $.ajax({
                         url: urFinal,
                         jsonpCallback: jornadasCalendarDTV.callbackListado,
@@ -171,6 +170,8 @@
                                 success: function(data) {
                                     crear_jornada(data);
                                     $("#feedsAct").data("primero", urlfinalTmp);
+                                    globalThis.fadeIn(1000);
+
                                 }
                             });
 
@@ -189,7 +190,7 @@
 
 
 
-                globalThis.fadeIn(1000);
+
 
 
             },
@@ -208,6 +209,8 @@
                         success: function(data) {
                             crear_jornada(data);
                             $("#feedsAct").data("primero", urFinal);
+                            globalThis.fadeIn(1000);
+
                         },
                         fail: function() {
                             //console.log("Algo salio mal en 1");
@@ -221,6 +224,7 @@
                     globalThis.children('.filterResultado').remove();
                 }
                 $("#title-jornada").text(settings.title);
+
             },
             jornadasCalendarDTV: function(fechaCalendar) {
                 clearInterval(jornadasCalendarDTV.timerCalendar);
@@ -289,7 +293,7 @@
                     //urFinal = "http://static-televisadeportes.esmas.com/sportsdata/futbol/data/335/clubes/141/teamcalendar.js";
                     $.ajax({
                         url: urFinal,
-                        jsonpCallback: jornadasCalendarDTV.callbackJornada,
+                        jsonpCallback: "matches",
                         dataType: 'jsonp',
                         cache: false,
                         success: function(data) {
@@ -490,6 +494,9 @@
                         break;
                     case 12:
                         nombreMes = "Dic";
+                        break;
+                    default:
+                        nombreMes = "";
                         break;
                 }
                 var fechaEvento = fechasp[2] + " " + nombreMes;
