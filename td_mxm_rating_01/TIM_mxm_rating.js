@@ -147,8 +147,8 @@
                     }
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
-                    maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div id ='" + idPlayer + "' class='player_name'><p>" + nombreJugador + "</p></div>";                   
+                    maquetado += "<div class='vote_block vote dotted-bottom'>";                    
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     //--Pintar porcentaje
                     for (var a = 0; a < regPlayerDetail; a++) {
@@ -228,7 +228,7 @@
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div class='player_name' id='" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     //--Pintar porcentaje
                     for (var b = 0; b < regPlayerDetail; b++) {
@@ -387,6 +387,7 @@
 
             //Obtener los Detalles de los jugadores
             getGamePlayerDetail: function(idtorneo, idMatch, dataAlineacion, dataMatchHeader) {
+            	setting.idEvento = idMatch;
                 //console.log('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
                 $.ajax({
                     url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js',
@@ -732,82 +733,10 @@
                     var votacion = $(this).children('p').text();
                     var padre = $(this).parent('div');
                     var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');
-                    var idPlayer = hermano.children('div').attr('id');
-
-                    $.ajax({
-                        //url: wdg_mxm_rating.urlPlayerDetail,
-                        url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
-                        type: 'GET ',
-                        dataType: 'jsonp',
-                        jsonpCallback: 'gameplayerdetail',
-                        cache: false,
-                    }).done(function(data) {
-                        var tmp = '';
-                        var guid_box = '';
-                        var guid_spl = '';
-                        var guid_sec = '';
-                        var guid_fld = '';
-                        var guid_fvl = '';
-                        var guid_thm_spl = '';
-                        var altern_field_value = 'Sitio';
-                        var pixvote = new Image();
-                        var cookieName = 'galleta';
-                        var cookieName2 = 'galleta2';
-                        var sefVPrograma = 'MXM';
-                        var sefVCategoria = 'Deportes';
-                        var sefVSubcategoria = 'Futbol';
-                        var sefVToken = 'Token-';
-                        var sefVCSIE = 'CSIE-';
-                        var sefVUrlactual = 'Urlactual';
-                        var sefVSexodelUsuario = 'SexodelUsuario';
-                        var sefVIP = 'VIP';
-                        var sefVCodigodelPais = 'MX';
-                        var sefVCuidad = 'Cuidad';
-                        var sefVEstado = 'Estado';
-                        var sefVTimestamp = Math.round(new Date().getTime() / 1000);                                         		
-                        var sefVNavegador = '';
-                        var sefVVersion = '';
-                        var sefVSistemaOperativo = '';
-                        var sefVResoluciondelapantalla = screen.width + ' x ' + screen.height;
-                        var sefVjavaEnabled = 'Yes';
-                        var sefVDireccionanterior = 'Previous Page';
-                        var sefVLenguajedelsistema = 'es-mx';
-                        var sefVLenguajedelUsuario = 'es-mx';
-                        var sefVLenguajedelNavegador = 'es';
-                        
-                        for (var i = 0; i < data.poll['answers']['answer'].length; i++) {
-                            if (data.poll['answers']['answer'][i].value == idPlayer) {
-                                var photoRaiting = data.poll['answers']['answer'][i]['photoRaiting'];
-                                var number = data.poll['answers']['answer'][i]['number'];
-                                var conteo = data.poll['answers']['answer'][i]['conteo'];
-                                var photo = data.poll['answers']['answer'][i]['photo'];
-                                var percent = data.poll['answers']['answer'][i]['percent'];
-                                var guidsection = data.poll['answers']['answer'][i]['guid_section'];
-                                var value = data.poll['answers']['answer'][i]['value'];
-                                var name = data.poll['answers']['answer'][i]['name'];
-                                var clubname = data.poll['answers']['answer'][i]['clubname'];
-                                var position = data.poll['answers']['answer'][i]['clubname'];
-                                var club = data.poll['answers']['answer'][i]['club'];
-                                var guidfield = data.poll['answers']['answer'][i]['guid_field'];
-                                var valueorder = data.poll['answers']['answer'][i]['valueorde'];
-                                var nameplayer = data.poll['answers']['answer'][i]['namePlayer'];
-                                var guidpoll = data.poll['answers']['answer'][i]['guid_poll'];
-                                var guidfvl = data.poll['answers']['answer'][i]['guid_fvl'];
-                            }
-                        }
-                        guid_spl = guidpoll;
-                        guid_sec = guidsection;
-                        guid_fld = guidfield;
-                        guid_fvl = guidfvl;
-                        //console.log(guid_box + "/" + guid_spl + "/" + guid_sec + "/" + guid_fld + "/" + guid_fvl);
-                        voteslog = guid_box + '@@@' + guid_spl + '@@@' + guid_sec + '@@@' + guid_fld + '@@@[' + guid_fld + '&&&' + guid_fvl + ']@@@' + guid_thm_spl + '@@@' + altern_field_value + '@@@';
-                        voteslog += sefVPrograma + '@@@' + sefVCategoria + '@@@' + sefVSubcategoria + '@@@' + sefVToken + '@@@' + sefVCSIE + '@@@' + sefVUrlactual + '@@@' + sefVSexodelUsuario + '@@@' + sefVIP + '@@@' + sefVCodigodelPais + '@@@' + sefVCuidad + '@@@' + sefVEstado + '@@@' + sefVTimestamp + '@@@' + sefVNavegador + '@@@' + sefVVersion + '@@@' + sefVSistemaOperativo + '@@@' + sefVResoluciondelapantalla + '@@@' + sefVjavaEnabled + '@@@' + sefVDireccionanterior + '@@@' + sefVLenguajedelsistema + '@@@' + sefVLenguajedelUsuario + '@@@' + sefVLenguajedelNavegador;
-                        pixvote.src = 'http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl;
-                        console.log('http://polls.esmas.com/calcularesultado/arreglo/' + voteslog + '/voto/' + guid_fld + '&&&' + guid_fvl);                        
-
-                    }).fail(function() {
-                        console.log("error");
-                    });
+                    var url = hermano.children('div').data('url');                    
+                    console.log("click");
+                    console.log(url);
+                    console.log(votacion);                                                         
 
                     $(this).parents('.calification').prev('.calification').remove();
                     $(this).parents('.calification').next('.participated').find('div').css('border-bottom', '1px solid #ccc');
