@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1
+ *   Version: 1.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -110,7 +110,7 @@
                         for (var i = 0; i < data.dataEstadistica.length; i++) {
                             if (i < 18) {
                                 maquetado += '<td class="textcolor-title3" id="lg' + data.dataEstadistica[i].idTeam + '">';
-                                maquetado += '<a href="#" class="underline_text">';
+                                maquetado += '<a href="' + data.dataEstadistica[i].webNameTeam + '.html" target="_parent" class="underline_text">';
                                 maquetado += '<img src="' + data.dataEstadistica[i].urlLogoClub + '" width="24" height="24" alt="#">' + data.dataEstadistica[i].aliasTeam;
                                 maquetado += '</a>';
                                 maquetado += '</td>';
