@@ -564,18 +564,18 @@
                     dataType: 'json'
                 })
                     .done(function(data) {
-                        console.log("success");
-                        console.log(data);
+                        //console.log("success");
+                        //console.log(data);
 
                         for (var i = 0; i < data.elementos.length; i++) {
-                            console.log(data.elementos[i].id);
+                            //console.log(data.elementos[i].id);
                             if (data.elementos[i].id === "chkCampo") {
                                 offCancha = data.elementos[i].activo;
                             }
                         };
 
                         if (parseInt(offCancha) === 0) {
-                            console.log("es cero")
+                            //console.log("es cero")
                             GlobalThis.hide('fast');
                         }
 
