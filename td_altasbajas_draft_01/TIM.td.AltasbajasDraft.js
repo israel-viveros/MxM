@@ -20,8 +20,8 @@
                 compras = data['draftPurchase']; 
                 prestamos = data['draftLoan'];
                 transf = data['draftTransfers'];
-                urlDraft = data['draftURL'];
-
+                urlDraft = data['draftURL'];                
+                
     			maquetado = "<div id='wdg_playerdraft_01' class='wdg_playerdraft_01'>";
     			//Encabezado___
     			maquetado += "<div class='titulo textcolor-title2'><h2>Balance en el Draft</h2></div>";
@@ -66,6 +66,7 @@
                         var rantingTD = "";
                         var ratingUser = "";                        
                         var idOperation = "";
+                        var idPlayer = "";
 
                         idOperation = data['draftTeams'][i]['operation'][n]['id'];
                         namePlayer = data['draftTeams'][i]['operation'][n]['name'];
@@ -73,12 +74,17 @@
                         transfer = data['draftTeams'][i]['operation'][n]['transfer'];
                         type = data['draftTeams'][i]['operation'][n]['type'];
                         rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
-                        ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];                        
+                        ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser']; 
+                        
+                        idPlayer = data['draftTeams'][i]['operation'][n]['playerURL'].split('/');
+                        idPlayer = idPlayer[4];
+                        //idPlayer = data['draftTeams'][i]['operation'][n]['playerURL'].slice(data['draftTeams'][i]['operation'][n]['playerURL'].length-4);
+                        console.log(idPlayer);                        
 
                         //Datos de Jugador___
                         maquetado += "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right'>";
-                        maquetado += "<h3 data-urlDraft='"+urlDraft+"' data-idOperation='"+idOperation+"'>"+namePlayer+"</h3>";                                                
+                        maquetado += "<h3 data-urlDraft='"+urlDraft+"' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>"+namePlayer+"</h3>";                                                
                         maquetado += "</td>";                        
                         maquetado += "<td class='dotted-right'>"+acquire+"</td>";
                         maquetado += "<td class='dotted-right'>"+transfer+"</td>";
@@ -210,16 +216,25 @@
                     var element = varTr.prev();                    
                     var firstElement = element.children(':first-child');
                     console.log(firstElement);
-                    var urlDraft = firstElement.find('h3').data('urldraft');
-                    var draftOperation = firstElement.find('h3').data('idoperation');                    
-                    var urlSet = urlDraft+draftOperation; 
+                    var porcentaje = element.children('.textcolor-title1');
+                    console.log("porcentaje");
+                    console.log(porcentaje.text());
+                    //var urlDraft = firstElement.find('h3').data('urldraft');
+                    //var urlSet = urlDraft+draftOperation;
+                    var url = firstElement.find('h3').data('url');                                                          
                     var div_gracias = "";
-                    console.log(urlDraft);
-                    console.log(draftOperation);
-                    console.log(num_star+" - "+urlSet+" - "+div_gracias);
-                    if (typeof div_gracias == "undefined") { div_gracias = null; }                            
-                    if (typeof url == "undefined") { url = wdg_playerdraft_01.cl_url(urlSet); }
+                    
+                    console.log(url);                    
+                    console.log(num_star+" - "+url+" - "+div_gracias);
+                    
+                    
+                    if (typeof div_gracias == "undefined") { div_gracias = null; }                    
+                    if (typeof url == "undefined") { url = wdg_playerdraft_01.cl_url(url); }
+                    
                     console.log(num_star);
+                    console.log(url);
+                    porcentaje.html('1');
+                    /*
                     if(num_star == 10){
                         num_star = 5;
                     }else if(num_star == 9) {
@@ -236,8 +251,9 @@
                     }
                     else{
                         num_star = 0;
-                    }
+                    }                    
                     console.log(num_star);
+                   
                     if(num_star<6 && num_star>=0){                        
                         var positive_votes = num_star;
                         var negative_votes=5-num_star;
@@ -249,17 +265,21 @@
                         console.log(COMM_img_set.src);
                         document.body.appendChild(COMM_img_set); 
                     }
+                     */
+                    
                     //-------
 
                     $(this).parents('.calification').hide();                            
-                    $(this).parents('.separador').find('.participated').fadeIn().delay(1000).fadeOut(function() {
-                            
+                    
+                    $(this).parents('.separador').find('.participated').fadeIn().delay(1000).fadeOut(function() {                            
                         // Animation complete.
                         $(this).parents('.separador').find('.qualifies').hide();
                         $(this).parents('.separador').find('.dotted-top').show();
                         
                     });
+                    
                     $(this).parents('.calification').remove();
+                    
                 });
     
                 // Mouseput del "gracias por votar"
