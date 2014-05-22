@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"data",
+				"dataEstadistica"
+			],
+			[
+				"nombre",
+				"nombreMes"
+			],
+			[
+				"fe",
+				"fechasp"
+			],
+			[
 				"naat",
 				"naatFunction"
 			],
@@ -502,14 +514,6 @@
 			[
 				"hora",
 				"horaItem"
-			],
-			[
-				"match",
-				"match"
-			],
-			[
-				"fecha",
-				"fechaItem"
 			]
 		]
 	},
@@ -572,18 +576,31 @@
 	},
 	"file_history":
 	[
+		"/Users/israelviveros/Downloads/fwdpagesforvisiwareplayalong/channel.html",
+		"/Users/israelviveros/Downloads/fwdpagesforvisiwareplayalong/close.html",
+		"/Users/israelviveros/Downloads/fwdpagesforvisiwareplayalong/receive.html",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/index.html",
+		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/TIM_wdg_altasbajas.js",
+		"/Users/israelviveros/Sites/MxM/td_mxm_alineacion_01/TIMTD_mxm_alineacion.js",
+		"/Users/israelviveros/Sites/pruebas/array.php",
+		"/Users/israelviveros/Sites/intelli-site/loadCarrusel 20140519.js",
+		"/Users/israelviveros/Sites/Floreria/componentes/footer/footer.html",
+		"/Users/israelviveros/Sites/intelli-site/index-jorge-php.php",
+		"/Users/israelviveros/Sites/intelli-site/nt-20140519 renta local.html",
+		"/Users/israelviveros/Desktop/chat.php",
+		"/Users/israelviveros/Sites/Floreria/componentes/footer/url.txt",
+		"/Users/israelviveros/Desktop/jsonp.php",
+		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/TIM_mxm_rating.js",
 		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/index.html",
 		"/Users/israelviveros/Desktop/index.html",
 		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/js/functions.wdgs.mxm.js",
 		"/Users/israelviveros/Sites/MxM/wdg_teamdraft_01/wdg.teamdraft.js",
 		"/Users/israelviveros/Sites/MxM/td_altasbajas_draft_01/TIM.td.AltasbajasDraft.js",
-		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/TIM_wdg_altasbajas.js",
 		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/TIM_wdg_matchesresult.js",
 		"/Users/israelviveros/Sites/Deportes_restructura/pruebas/TIM_wdg_altasbajas.js",
 		"/Users/israelviveros/Sites/MxM/wdg_matchesresult_01/untitled.html",
-		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_result_01/index.html",
 		"/Users/israelviveros/Sites/Deportes_restructura/pruebas/drop.html",
-		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/TIM.wdg.altabajas.js",
 		"/Users/israelviveros/Desktop/clockstoper/info.txt",
 		"/Users/israelviveros/Sites/Deportes_restructura/televisa-deportes/css/wdgMxMGlobal.css",
 		"/Users/israelviveros/Sites/MxM/wdg_teamdraft_01/index.html",
@@ -595,8 +612,6 @@
 		"/Users/israelviveros/Desktop/feed.txt",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/index.html",
 		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/index.html",
-		"/Users/israelviveros/Sites/MxM/td_mxm_alineacion_01/TIMTD_mxm_alineacion.js",
-		"/Users/israelviveros/Sites/MxM/td_mxm_rating_01/TIM_mxm_rating.js",
 		"/Users/israelviveros/Sites/MxM/wdg_avgfield_02/TIM.wdg.avgfield02.js",
 		"/Users/israelviveros/Sites/MxM/wdg_sport_result_01/TIM_wdg_sport_result.js",
 		"/Users/israelviveros/Sites/MxM/wdg_altasbajas_01/js/libs.countdown.altasbajas.js",
@@ -688,18 +703,7 @@
 		"/Users/israelviveros/Desktop/html2pdf_v4.03/_class/exception.class.php",
 		"/Users/israelviveros/Desktop/fpdf17/font/helvetica.php",
 		"/Users/israelviveros/Desktop/pdfClassesAndFonts_009e/class.ezpdf.php",
-		"/Users/israelviveros/Sites/MxM/PDF/jspdf.js",
-		"/Users/israelviveros/Desktop/jsPDF-0.9.0rc2/examples/basic.html",
-		"/Users/israelviveros/Sites/MxM/PDF/index.html",
-		"/Users/israelviveros/Sites/MxM/PDF/TIM.Generate.PDF.js",
-		"/Users/israelviveros/Desktop/pdf/index.html",
-		"/Users/israelviveros/Desktop/jsPDF-0.9.0rc2/examples/js/basic.js",
-		"/Users/israelviveros/Desktop/jsPDF-0.9.0rc2/examples/js/from-html.js",
-		"/Users/israelviveros/Desktop/jsPDF-0.9.0rc2/jspdf.plugin.from_html.js",
-		"/Users/israelviveros/Desktop/file_mxm_acciones.js",
-		"/Users/israelviveros/Desktop/carpeta/mxm_cronica_web.html",
-		"/Users/israelviveros/Desktop/carpeta/mxm_interaccion_web.html",
-		"/Users/israelviveros/Desktop/carpeta/mxm_alineacion_web.html"
+		"/Users/israelviveros/Sites/MxM/PDF/jspdf.js"
 	],
 	"find":
 	{
@@ -717,6 +721,36 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"startCountdown",
+			"underline_text",
+			"warn",
+			"gal",
+			"GAL",
+			"console",
+			"globalThis.fadeIn(1000);",
+			"teamcalen",
+			"crear",
+			"primera",
+			"segunda",
+			"callbackJornada\ncallbackJornada",
+			"callbackJornada",
+			"segundaJornada",
+			"segunda",
+			"crear_jornada",
+			"globalThis",
+			"jornadalistadojsonp",
+			"urFinal",
+			"ajaxValidationCallback",
+			"0.138",
+			"datetext",
+			"msie",
+			"console",
+			"h2",
+			"games",
+			"crear_jornada",
+			"crea_jornada",
+			"creajornada",
+			"jornada",
 			"televisa",
 			"tv.",
 			"real:",
@@ -814,37 +848,7 @@
 			"tagExpulsion",
 			"tiros",
 			"wdg_sport_result_01",
-			"wdg_sport_result_01_mobile.css",
-			"wdg_avgfield_02_mobile.css",
-			"loadAlineacion",
-			"alineacionfinal",
-			"alineacionfina",
-			"updatepl",
-			"match_lineup",
-			"nuevox",
-			"top",
-			"positionx",
-			"$(\".wdg_team_align_01 .second_team  .player_table\")",
-			"array()",
-			"arr",
-			"updateMxm",
-			"final",
-			"updateplayer",
-			"jugadoreslocalTIM",
-			"updatePlayers",
-			"var aduni",
-			"addSize([460, 70], [468, 60])",
-			"loadInfo",
-			"tmpescuchaListener",
-			"setinterval",
-			"setinter",
-			"error al car",
-			"error",
-			"Globalthis",
-			".players",
-			"updateData",
-			"updateMxm",
-			"updatePlayers"
+			"wdg_sport_result_01_mobile.css"
 		],
 		"highlight": true,
 		"in_selection": false,
