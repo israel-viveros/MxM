@@ -37,14 +37,14 @@
             // .....................................................................................
             // Funcion que pinta el html para los casos (ALTA,BAJA,RUMORES,TRANSFERIBLES,PRESTAMO)
             // .....................................................................................
-            typeDraft: function(type, idOperation, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam,urlDraft) {
+            typeDraft: function(type, idOperation, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam,urlDraft,idPlayer) {
 
                 switch (type) {
                     case 'ALTA':
                         console.log(logolastTeam);
                         wdgTeamDraft.flagTypeAltas = 1;
                         maquetado = "<tr class='vote_block'>";
-                        maquetado += "<td class='dotted-right' data-idOperation='"+idOperation+"' data-urlDraft='"+urlDraft+"'>";                        
+                        maquetado += "<td class='dotted-right' data-urlDraft='"+urlDraft+"' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                        
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -227,7 +227,8 @@
                             var nationality = "";
                             var details = "";
                             var logolastTeam = "";                           
-
+                            var idPlayer = "";
+                            
                             type = data['draftTeams'][i]['operation'][n]['type'];
                             idOperation = data['draftTeams'][i]['operation'][n]['id'];
                             namePlayer = data['draftTeams'][i]['operation'][n]['name'];
@@ -237,9 +238,11 @@
                             ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];
                             nationality = data['draftTeams'][i]['operation'][n]['nationality'];
                             details = data['draftTeams'][i]['operation'][n]['Detail'];                            
-                            logolastTeam = data['draftTeams'][i]['operation'][n]['logolastTeam'];                            
+                            logolastTeam = data['draftTeams'][i]['operation'][n]['logolastTeam'];  
+                            idPlayer = data['draftTeams'][i]['operation'][n]['playerURL'].split('/');
+                            idPlayer = idPlayer[4];
 
-                            wdgTeamDraft.typeDraft(type, idOperation, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam, urlDraft);
+                            wdgTeamDraft.typeDraft(type, idOperation, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam, urlDraft,idPlayer);
 
                         }
                     }
@@ -452,61 +455,31 @@
 
                 //Click Votacion ---
                 $('.containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .separador .calification a').click(function(event) {
-                    event.preventDefault();
-                    //alert("has dado click en " + $(this).text());
-                    //alert("la URL es http://mxm.televisadeportes.esmas.com/futbol/draft/liga-mx-clausura-2013/1733");                    
-                    var num_star = $(this).text();
-                    var draftURL = '';
-                    var url = 'http://mxm.televisadeportes.esmas.com/futbol/draft/liga-mx-clausura-2013/1733';
-
-                  //Votacion...
+                	event.preventDefault();                                        
+                    //Votacion...
                     var num_star = $(this).text();
                     var varTr = $(this).parents('tr');
-                    console.log(varTr);
-                    var element = varTr.prev();
-                    console.log(element);
+                    var element = varTr.prev();                    
                     var firstElement = element.children(':first-child');
-                    console.log(firstElement);                    
-                    var urlDraft = firstElement.data('urldraft');
-                    var draftOperation = firstElement.data('idoperation');                    
-                    var urlSet = urlDraft+draftOperation; 
+                    console.log(firstElement);
+                    var porcentaje = element.children('.textcolor-title1');
+                    console.log("porcentaje");
+                    console.log(porcentaje.text());                    
+                    var url = firstElement.data('url'); 
+                    console.log("URL");
+                    console.log(url);
                     var div_gracias = "";
-                    console.log("---------------");
-                    console.log(urlDraft);
-                    console.log(draftOperation);
-                    console.log(num_star+" - "+urlSet+" - "+div_gracias);
-                    if (typeof div_gracias == "undefined") { div_gracias = null; }                            
-                    if (typeof url == "undefined") { url = wdgTeamDraft.cl_url(urlSet); }
+                    
+                    console.log(url);                    
+                    console.log(num_star+" - "+url+" - "+div_gracias);
+                    
+                    
+                    if (typeof div_gracias == "undefined") { div_gracias = null; }                    
+                    if (typeof url == "undefined") { url = wdg_playerdraft_01.cl_url(url); }
+                    
                     console.log(num_star);
-                    if(num_star == 10){
-                        num_star = 5;
-                    }else if(num_star == 9) {
-                        num_star = 4;
-                    }
-                    else if (num_star == 8){
-                        num_star = 3;
-                    }
-                    else if (num_star == 7){
-                        num_star = 2;
-                    }
-                    else if (num_star == 6){
-                        num_star = 1;
-                    }
-                    else{
-                        num_star = 0;
-                    }
-                    console.log(num_star);
-                    if(num_star<6 && num_star>=0){                        
-                        var positive_votes = num_star;
-                        var negative_votes=5-num_star;
-                        var votes_type = 1;
-                        var url = urlSet;
-                        console.log(negative_votes);
-                        COMM_img_set = document.createElement("IMG");
-                        COMM_img_set.src = "http://v.esmas.com:8081/votos/spacer.gif?1|"+positive_votes+"|"+negative_votes+"|"+votes_type+"|"+url;
-                        console.log(COMM_img_set.src);
-                        document.body.appendChild(COMM_img_set); 
-                    }
+                    console.log(url);
+                    porcentaje.html('1');
                     //-------
      
                     $(this).parents('.calification').hide();
