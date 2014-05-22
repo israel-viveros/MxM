@@ -9,7 +9,8 @@
             'idEvento': 0,
             'idEquipo': 0,
             'idEquipo2': 0,
-            'title': ''
+            'title': '',
+            'votos': 0
         }, options);
     
         var GlobalThis = this;
@@ -96,6 +97,8 @@
                 var regbancaLocal = dataAlineacion[equipo[0]]['substitutes'].length;
                 var regbancaVisit = dataAlineacion[equipo[1]]['substitutes'].length;
                 var regPlayerDetail = dataGamePlayer.poll['answers']['answer'].length;
+                setting.votos = dataGamePlayer.poll['summary']['conteo'];
+                
 
                 //ALINEACION LOCAL
                 var maquetado = "";
@@ -156,9 +159,10 @@
                         var playerDetailPlayerId = dataGamePlayer.poll['answers']['answer'][a]['number'];
                         if (idEquipo == playerDetailClubId && numPlayer == playerDetailPlayerId) {
                             playerDetailPorcentaje = parseFloat(dataGamePlayer.poll['answers']['answer'][a]['percent']).toFixed(1);
+                            votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][a]['conteo']);
                         }
                     }
-                    maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
+                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"' class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
                     maquetado += "<div class='calification  textcolor-title4'>";
@@ -236,9 +240,10 @@
                         var playerDetailPlayerIdVisit = dataGamePlayer.poll['answers']['answer'][b]['number'];
                         if (idEquipoVisit == playerDetailClubIdVisit && numPlayerVisit == playerDetailPlayerIdVisit) {
                             playerDetailPorcVisit = parseFloat(dataGamePlayer.poll['answers']['answer'][b]['percent']).toFixed(1);
+                            votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][b]['conteo']);
                         }
                     }
-                    maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
+                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"' class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
                     maquetado += "<div class='calification  textcolor-title4'>";
@@ -733,11 +738,23 @@
                     var votacion = $(this).children('p').text();
                     var padre = $(this).parent('div');
                     var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');
-                    var url = hermano.children('div').data('url');                    
-                    console.log("click");
-                    console.log(url);
-                    console.log(votacion);                                                         
-
+                    var url = hermano.children('div').data('url');
+                    var votPorcentAfision = hermano.children('div.afision').find('p').text();
+                    var totalVotes = hermano.children('div.afision').find('p').data('vote'); //Votos del jugador
+                    console.log("___________________click___________________");
+                    console.log("Total de votos del jugador:" + totalVotes);                    
+                    console.log("Porcentaje:" + votPorcentAfision);
+                    console.log("URL:"+ url);
+                    console.log("Calificacion del Usuario:"+ votacion);
+                    var calificacion = 1;
+                    var totalaux = setting.votos + 1; //total de votos lo podemos obtener del Feed "poll-summary-conteo"
+                                    
+                    totalVotes = totalVotes + calificacion;                                     
+                    //sprintf("%.2f",(($pollitem->{conteo}*100)/$totalaux));
+                    var newPorcent = parseFloat((totalVotes*100)/totalaux).toFixed(1);                                                            
+                    //actualiza el porcentaje
+                    hermano.children('div.afision').find('p').html(newPorcent);
+                                        
                     $(this).parents('.calification').prev('.calification').remove();
                     $(this).parents('.calification').next('.participated').find('div').css('border-bottom', '1px solid #ccc');
                     $(this).parents('.calification').next().show();
