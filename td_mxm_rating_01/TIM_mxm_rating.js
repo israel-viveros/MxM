@@ -285,25 +285,28 @@
                     }
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
-                    maquetado += "<div class='vote_block vote dotted-bottom'>";
+                    maquetado += "<div class='vote_block vote dotted-bottom' style='cursor:auto'>";
                     maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>0.00</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
-                    maquetado += "<div class='calification  textcolor-title4'>";
-                    maquetado += "<div><p>5</p></div>";
-                    maquetado += "<div><p>6</p></div>";
-                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
-                    maquetado += "<div><p>8</p></div>";
-                    maquetado += "<div><p>9</p></div>";
-                    maquetado += "<div><p>10</p></div>";
-                    maquetado += "</div>";
-                    maquetado += "<div class='participated  textcolor-title4'>";
-                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
-                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
-                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
-                    maquetado += "</div>";
+                    /*                   
+	                    maquetado += "<div class='calification  textcolor-title4'>";
+	                    maquetado += "<div><p>5</p></div>";
+	                    maquetado += "<div><p>6</p></div>";
+	                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+	                    maquetado += "<div><p>8</p></div>";
+	                    maquetado += "<div><p>9</p></div>";
+	                    maquetado += "<div><p>10</p></div>";
+	                    maquetado += "</div>";
+	                    
+	                    maquetado += "<div class='participated  textcolor-title4'>";
+	                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+	                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+	                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+	                    maquetado += "</div>";
+                    */
                     maquetado += "</div>";
                     maquetado += "</td>";
                     maquetado += "</tr>";
@@ -325,25 +328,27 @@
 
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
-                    maquetado += "<div class='vote_block vote dotted-bottom'>";
+                    maquetado += "<div class='vote_block vote dotted-bottom' style='cursor:auto'>";
                     maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>0.00</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
-                    maquetado += "<div class='calification  textcolor-title4'>";
-                    maquetado += "<div><p>5</p></div>";
-                    maquetado += "<div><p>6</p></div>";
-                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
-                    maquetado += "<div><p>8</p></div>";
-                    maquetado += "<div><p>9</p></div>";
-                    maquetado += "<div><p>10</p></div>";
-                    maquetado += "</div>";
-                    maquetado += "<div class='participated  textcolor-title4'>";
-                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
-                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
-                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
-                    maquetado += "</div>";
+                    /* 
+	                    maquetado += "<div class='calification  textcolor-title4'>";
+	                    maquetado += "<div><p>5</p></div>";
+	                    maquetado += "<div><p>6</p></div>";
+	                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+	                    maquetado += "<div><p>8</p></div>";
+	                    maquetado += "<div><p>9</p></div>";
+	                    maquetado += "<div><p>10</p></div>";
+	                    maquetado += "</div>";
+	                    maquetado += "<div class='participated  textcolor-title4'>";
+	                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+	                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+	                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+	                    maquetado += "</div>";
+                    */
                     maquetado += "</div>";
                     maquetado += "</td>";
                     maquetado += "</tr>";
