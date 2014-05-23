@@ -44,7 +44,7 @@
                         console.log(logolastTeam);
                         wdgTeamDraft.flagTypeAltas = 1;
                         maquetado = "<tr class='vote_block'>";
-                        maquetado += "<td class='dotted-right' data-urlDraft='"+urlDraft+"' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                        
+                        maquetado += "<td class='dotted-right' data-urlDraft=' "+urlDraft+" ' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                        
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -81,7 +81,7 @@
                     case 'BAJA':
                         wdgTeamDraft.flagTypeBajas = 1;
                         maquetado = "<tr class='vote_block'>";
-                        maquetado += "<td class='dotted-right' data-idOperation='"+idOperation+"' data-urlDraft='"+urlDraft+"'>";                        
+                        maquetado += "<td class='dotted-right' data-urlDraft=' "+urlDraft+" ' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                        
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -118,7 +118,7 @@
                     case 'RUMORES':
                         wdgTeamDraft.flagTypeRumores = 1;
                         maquetado = "<tr class=''>";
-                        maquetado += "<td class='dotted-right' data-idOperation='"+idOperation+"' data-urlDraft='"+urlDraft+"'>";                                               
+                        maquetado += "<td class='dotted-right'  data-urlDraft='"+urlDraft+"' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                                               
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -136,7 +136,7 @@
                     case 'TRANSFERIBLES':
                         wdgTeamDraft.flagTypeTransf = 1;
                         maquetado = "<tr class=''>";                        
-                        maquetado += "<td class='dotted-right' data-idOperation='"+idOperation+"' data-urlDraft='"+urlDraft+"'>";                        
+                        maquetado += "<td class='dotted-right' data-urlDraft='"+urlDraft+"' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                        
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
@@ -154,7 +154,7 @@
                     case 'PRESTAMO':
                         wdgTeamDraft.flagTypePrestamos = 1;
                         maquetado = "<tr class='vote_block'>";                        
-                        maquetado += "<td class='dotted-right' data-idOperation='"+idOperation+"' data-urlDraft='"+urlDraft+"'>";                        
+                        maquetado += "<td class='dotted-right' data-urlDraft='"+urlDraft+"' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+idOperation+"/jugador/"+idPlayer+"'>";                        
                         maquetado += namePlayer;
                         maquetado += "<div class='nacionalidad'>" + nationality + "</div>";
                         maquetado += "</td>";
