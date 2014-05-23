@@ -278,17 +278,33 @@
                     nombreJugador = dataAlineacion[equipo[0]]['substitutes'][i]['nickName'];
                     posicion = dataAlineacion[equipo[0]]['substitutes'][i]['position'];
                     textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
+					idEquipo = dataAlineacion[equipo[0]]['idTeam'];
+                    numPlayer = dataAlineacion[equipo[0]]['team'][i]['number'];
+                    idPlayer = dataAlineacion[equipo[0]]['team'][i]['guid'];
+					
                     if (i == 0) {
                         maquetado += "<tr class='evaluation first_child'>";
                     } else {
                         maquetado += "<tr class='evaluation'>";
                     }
+					
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
+					
+					//--Pintar porcentaje
+                    for (var a = 0; a < regPlayerDetail; a++) {
+                        var playerDetailClubId = dataGamePlayer.poll['answers']['answer'][a]['club'];
+                        var playerDetailPlayerId = dataGamePlayer.poll['answers']['answer'][a]['number'];
+                        if (idEquipo == playerDetailClubId && numPlayer == playerDetailPlayerId) {
+                            playerDetailPorcentaje = parseFloat(dataGamePlayer.poll['answers']['answer'][a]['percent']).toFixed(1);
+                            votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][a]['conteo']);
+                        }
+                    }
+					
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
-                    maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>0.00</p></div>";
+                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"'  class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
                                       
@@ -320,6 +336,10 @@
                     nombreJugador = dataAlineacion[equipo[1]]['substitutes'][i]['nickName'];
                     posicion = dataAlineacion[equipo[1]]['substitutes'][i]['position'];
                     textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
+					idEquipoVisit = dataAlineacion[equipo[1]]['idTeam'];
+                    numPlayerVisit = dataAlineacion[equipo[1]]['team'][i]['number'];
+                    idPlayer = dataAlineacion[equipo[1]]['team'][i]['guid'];
+					
                     if (i == 0) {
                         maquetado += "<tr class='evaluation first_child'>";
                     } else {
@@ -329,9 +349,20 @@
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div class='player_name'><p>" + nombreJugador + "</p></div>";
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
-                    maquetado += "<div class='afision'><p class='textcolor-title1 dotted-left'>0.00</p></div>";
+					
+					//--Pintar porcentaje
+                    for (var b = 0; b < regPlayerDetail; b++) {
+                        var playerDetailClubIdVisit = dataGamePlayer.poll['answers']['answer'][b]['club'];
+                        var playerDetailPlayerIdVisit = dataGamePlayer.poll['answers']['answer'][b]['number'];
+                        if (idEquipoVisit == playerDetailClubIdVisit && numPlayerVisit == playerDetailPlayerIdVisit) {
+                            playerDetailPorcVisit = parseFloat(dataGamePlayer.poll['answers']['answer'][b]['percent']).toFixed(1);
+                            votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][b]['conteo']);
+                        }
+                    }
+										
+                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"'  class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
                      
