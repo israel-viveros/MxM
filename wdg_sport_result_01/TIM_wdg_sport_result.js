@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.6
+ *   Version: 1.2.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -320,6 +320,18 @@
                 (/cronica_m.html/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
                 (/video.html/.test(urlAc)) ? $(".videoMenuTim").addClass('current') : '';
                 (/interacciontd.html/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
+
+                if (settings.tema === "mundial") {
+                    var noInteraccion = [25521, 25395, 25487, 25488];
+                    for (var x = 0; x < noInteraccion.length; x++) {
+                        if (parseInt(settings.idteam) === noInteraccion[x]) {
+                            $(".interaMenuTim").css("display", "none");
+                        }
+                    };
+                }
+
+
+
             } // ENd drawMenu()
 
         }; // end wdf_sportResult object
