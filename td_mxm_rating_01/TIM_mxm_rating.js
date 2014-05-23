@@ -757,6 +757,10 @@
                     totalVotes = totalVotes + calificacion;                                     
                     //sprintf("%.2f",(($pollitem->{conteo}*100)/$totalaux));
                     var newPorcent = parseFloat((totalVotes*100)/totalaux).toFixed(1);                                                            
+					if(isNaN(newPorcent)) {						
+						var newPorcent = '10.0';
+					}
+					
                     //actualiza el porcentaje
                     hermano.children('div.afision').find('p').html(newPorcent);
                                         
