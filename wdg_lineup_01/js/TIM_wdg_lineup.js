@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.8
+ *   Version: 1.2.9
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -210,7 +210,7 @@
                         var colapsablesimbo = $(".wdg_lineup_01 .simbologia").height();
                         console.log(colapsablesimbo);
                         event.preventDefault();
-                        if (colapsablesimbo == 467) {
+                        if (colapsablesimbo === 467) {
                             $(this).html("Ver Todos <i class=\"tvsa-caret-down\"></i>");
                             $(".simbologia").animate({
                                 'height': '112px'
@@ -228,7 +228,7 @@
                 (settings.idEquipo !== 0) ? wdgLineUpOb.loadDrops(wdgLineUpOb.feedDropLocal, TIMPALocal) : '';
 
                 (settings.idEquipo2 !== 0) ? setTimeout(function() {
-                    wdgLineUpOb.loadDrops(wdgLineUpOb.feedDropVisit, TIMPAVisit)
+                    wdgLineUpOb.loadDrops(wdgLineUpOb.feedDropVisit, TIMPAVisit);
                 }, 1500) : '';
 
 
@@ -261,7 +261,7 @@
                     })
                     .fail(function() {
                         console.log("error");
-                    })
+                    });
 
                 var validaDrops = window.setInterval(function() {
                     $("#TIMPALocal").data("status", "chequed");
@@ -290,91 +290,91 @@
 
                         switch (array[q].type.toLowerCase()) {
                             case "amonestacion":
-                                clase = "tvsa-mxm-yellowcard"
+                                clase = "tvsa-mxm-yellowcard";
                                 break;
                             case "segundaamonestacion":
-                                clase = "tvsa-mxm-secondyellowcard"
+                                clase = "tvsa-mxm-secondyellowcard";
                                 break;
                             case "expulsion":
-                                clase = "tvsa-mxm-redcard"
+                                clase = "tvsa-mxm-redcard";
                                 break;
                             case "fueradelugar":
-                                clase = "tvsa-mxm-offside"
+                                clase = "tvsa-mxm-offside";
                                 break;
                             case "tirodeesquina":
-                                clase = "tvsa-mxm-cornerkick"
+                                clase = "tvsa-mxm-cornerkick";
                                 break;
                             case "iniciaelpartido":
-                                clase = "tvsa-mxm-startfirsthalf"
+                                clase = "tvsa-mxm-startfirsthalf";
                                 break;
                             case "iniciasegundotiempo":
-                                clase = "tvsa-mxm-startsecondhalf"
+                                clase = "tvsa-mxm-startsecondhalf";
                                 break;
                             case "-":
-                                clase = "tvsa-mxm-startovertime"
+                                clase = "tvsa-mxm-startovertime";
                                 break;
                             case "iniciaprimertiempoextra":
-                                clase = "tvsa-mxm-startextrafirsthalf"
+                                clase = "tvsa-mxm-startextrafirsthalf";
                                 break;
                             case "iniciasegundotiempoextra":
-                                clase = "tvsa-mxm-startextrasecondhalf"
+                                clase = "tvsa-mxm-startextrasecondhalf";
                                 break;
                             case "--":
-                                clase = "tvsa-mxm-penalties"
+                                clase = "tvsa-mxm-penalties";
                                 break;
                             case "finalizaelpartido":
-                                clase = "tvsa-mxm-gameend"
+                                clase = "tvsa-mxm-gameend";
                                 break;
                             case "pegaenelposte":
-                                clase = "tvsa-mxm-crossbar"
+                                clase = "tvsa-mxm-crossbar";
                                 break;
                             case "pasaporafuera":
-                                clase = "tvsa-mxm-out"
+                                clase = "tvsa-mxm-out";
                                 break;
                             case "penal":
-                                clase = "tvsa-mxm-penaltykick"
+                                clase = "tvsa-mxm-penaltykick";
                                 break;
                             case "atajada":
-                                clase = "tvsa-mxm-block"
+                                clase = "tvsa-mxm-block";
                                 break;
                             case "autogollocal":
-                                clase = "tvsa-mxm-owngoal"
+                                clase = "tvsa-mxm-owngoal";
                                 break;
                             case "autogolvisitante":
-                                clase = "tvsa-mxm-owngoal"
+                                clase = "tvsa-mxm-owngoal";
                                 break;
                             case "gollocal":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "golvisitante":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "golpenallocal":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "golpenalvisitante":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "falta":
-                                clase = "tvsa-mxm-foul"
+                                clase = "tvsa-mxm-foul";
                                 break;
                             case "comentario":
-                                clase = "tvsa-mxm-comment"
+                                clase = "tvsa-mxm-comment";
                                 break;
                             case "datoestadistico":
-                                clase = "tvsa-mxm-statisticdata"
+                                clase = "tvsa-mxm-statisticdata";
                                 break;
                             case "entraaljuego":
-                                clase = "tvsa-mxm-playerin"
+                                clase = "tvsa-mxm-playerin";
                                 break;
                             case "saledeljuego":
-                                clase = "tvsa-mxm-playerout"
+                                clase = "tvsa-mxm-playerout";
                                 break;
                             case "suspenciontemporaljuego":
-                                clase = "tvsa-mxm-suspended"
+                                clase = "tvsa-mxm-suspended";
                                 break;
                             case "lesion":
-                                clase = "tvsa-mxm-lesion"
+                                clase = "tvsa-mxm-lesion";
                                 break;
                             default:
                                 clase = array[q].type.toLowerCase();
@@ -405,7 +405,15 @@
                     bancaVisit = "",
                     ausenLocal = "",
                     ausenVisit = "",
-                    acteaml = "";
+                    acteaml = "",
+                    GkLocal = new Array(),
+                    DLocal = new Array(),
+                    MFLocal = new Array(),
+                    FLocal = new Array(),
+                    GkVisit = new Array(),
+                    DVisit = new Array(),
+                    MFVisit = new Array(),
+                    FVisit = new Array();
                 $.ajax({
                     url: urlFeed,
                     type: 'GET',
@@ -430,8 +438,26 @@
                             if (typeof data.lineupLocal.team[k].actions !== "undefined") {
                                 ActL = giveActions(data.lineupLocal.team[k].actions);
                             }
-                            tmpTeam += '<div class="jugador_alineacion_partido" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>';
+                            switch (data.lineupLocal.team[k].position) {
+                                case "GK":
+                                    GkLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                    break;
+                                case "D":
+                                    DLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                    break;
+                                case "MF":
+                                    MFLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                    break;
+                                case "F":
+                                    FLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + ' " style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                    break;
+                            };
                         };
+                        var finalLocal = GkLocal.concat(DLocal, MFLocal, FLocal);
+                        for (var M = 0; M < finalLocal.length; M++) {
+                            tmpTeam += finalLocal[M];
+                        }
+
                         if (typeof data.lineupLocal.coach !== "undefined") {
                             tmpTeam += '<div class="dt_alineacion_partido dotted-right" style="z-index: 680;"><div class="simbolo2 dotted-right" style="z-index: 670;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 660;"><h1>' + data.lineupLocal.coach.name + '</h1></div><div style="clear: both; z-index: 650;"></div></div>';
                         }
@@ -449,9 +475,26 @@
                             if (typeof data.lineupVisit.team[j].actions !== "undefined") {
                                 ActV = giveActions(data.lineupVisit.team[j].actions);
                             }
+                            switch (data.lineupVisit.team[j].position) {
+                                case "GK":
+                                    GkVisit.push('<div class="jugador_alineacion_partido ' + data.lineupVisit.team[j].position + '" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].nickName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>  </div><div style="clear: both; z-index: 570;"></div></div>');
+                                    break;
+                                case "D":
+                                    DVisit.push('<div class="jugador_alineacion_partido ' + data.lineupVisit.team[j].position + '" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].nickName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>  </div><div style="clear: both; z-index: 570;"></div></div>');
+                                    break;
+                                case "MF":
+                                    MFVisit.push('<div class="jugador_alineacion_partido ' + data.lineupVisit.team[j].position + '" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].nickName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>  </div><div style="clear: both; z-index: 570;"></div></div>');
+                                    break;
+                                case "F":
+                                    FVisit.push('<div class="jugador_alineacion_partido ' + data.lineupVisit.team[j].position + '" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].nickName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>  </div><div style="clear: both; z-index: 570;"></div></div>');
+                                    break;
+                            };
 
-                            tmpTeamV += '<div class="jugador_alineacion_partido" style="z-index: 620;"><div class="player_alineado dotted-bottom " style="z-index: 610;"><div class="simbolo2 dotted-right" style="z-index: 600;">' + data.lineupVisit.team[j].number + '</div><div class="jugador_info_alineado" style="z-index: 590;"><h1>' + data.lineupVisit.team[j].nickName + '</h1>' + ActV + '</div><div style="clear: both; z-index: 580;"></div>  </div><div style="clear: both; z-index: 570;"></div></div>';
                         };
+                        var finalVisit = GkVisit.concat(DVisit, MFVisit, FVisit);
+                        for (var N = 0; N < finalVisit.length; N++) {
+                            tmpTeamV += finalVisit[N];
+                        }
                         if (typeof data.lineupVisit.coach !== "undefined") {
                             tmpTeamV += '<div class="dt_alineacion_partido" style="z-index: 560;"><div class="simbolo2 dotted-right" style="z-index: 550;"><span class="textcolor-title1">DT</span></div><div class="jugador_info_alineado" style="z-index: 540;"><h1>' + data.lineupVisit.coach.name + '</h1></div><div style="clear: both; z-index: 530;"></div></div>';
                         }
@@ -541,7 +584,7 @@
                     })
                     .fail(function() {
                         console.log("error");
-                    })
+                    });
 
 
 
@@ -568,7 +611,7 @@
                 var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');
                 var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
                 var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
-                var $listItems = $('.wdg_lineup_01_dropdownlist')
+                var $listItems = $('.wdg_lineup_01_dropdownlist');
                 $('.wdg_lineup_01_dropdowncontent p').html($firstItem.find('p').html());
 
                 //                console.log($("#TIMPALocal").children('li').size());
@@ -588,7 +631,7 @@
                 $(this).find('div.selectedGallery').removeClass('selectedGallery');
             }); */
                     visibilidadChild = $(this).children($listItems);
-                    if (visibilidad == 'hidden') {
+                    if (visibilidad === 'hidden') {
 
                         lisItemsChild.css({
                             visibility: 'visible',
@@ -615,7 +658,7 @@
                     evt.preventDefault();
                     var $listItems = $(this).find('.wdg_lineup_01_dropdownlist');
                     var visibilidad = $listItems.css('visibility');
-                    if (visibilidad == 'visible') {
+                    if (visibilidad === 'visible') {
                         $listItems.css({
                             visibility: 'hidden',
                             height: '0px'
@@ -634,7 +677,7 @@
                 var $dropdownAnchor2 = $parent2.find('.wdg_lineup_012_dropdown');
                 var $firstItem2 = $('.wdg_lineup_012_dropdowncontent li:first-child');
                 var $dropdownItems2 = $parent2.find('.wdg_lineup_012_dropdownlist li');
-                var $listItems2 = $('.wdg_lineup_012_dropdownlist')
+                var $listItems2 = $('.wdg_lineup_012_dropdownlist');
                 $('.wdg_lineup_012_dropdowncontent p').html($firstItem2.find('p').html());
                 $dropdownAnchor2.bind('click', function(evt) {
                     //console.log("DROP 2");
@@ -651,7 +694,7 @@
                     /*$listItems.find('li').each(function() {
                 totalHeight += $(this).outerHeight(true);
             });*/
-                    if (visibilidad == 'hidden') {
+                    if (visibilidad === 'hidden') {
                         lisItemsChild.css({
                             visibility: 'visible',
                             height: '176px',
@@ -680,7 +723,7 @@
                     evt.preventDefault();
                     var $listItems = $(this).find('.wdg_lineup_012_dropdownlist');
                     var visibilidad = $listItems.css('visibility');
-                    if (visibilidad == 'visible') {
+                    if (visibilidad === 'visible') {
                         $listItems.css({
                             visibility: 'hidden',
                             height: '0px'
@@ -704,5 +747,5 @@
 
 
 
-    }
+    };
 })(jQuery);
