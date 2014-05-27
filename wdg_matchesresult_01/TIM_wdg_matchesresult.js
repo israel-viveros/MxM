@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 3.2.3
+ *   Version: 3.2.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -178,7 +178,7 @@
                     })
                     .fail(function() {
                         //console.log("Error al cargar: "+urlData);
-                    })
+                    });
             }, // END LoadFirst
 
             DrawContentFirst: function(contenido, tipo) {
@@ -242,14 +242,14 @@
                         ItemView += '<div class="wdg_match_01_extra">';
                         ItemView += '<p>';
                         for (var m = 0; m < posibles.length; m++) {
-                            if (contenido[y].txtLink.indexOf(posibles[m]) != -1) {
+                            if (contenido[y].txtLink.indexOf(posibles[m]) !== -1) {
                                 numSplit = 14;
                             }
                         };
 
 
                         if (setting.tema === "mundial") {
-                            //ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
                             ItemView += '<a class="textcolor-title1"></a>';
                         } else {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
@@ -261,10 +261,10 @@
                             ItemView += '<div class="wdg_match_01_extra2"></div>';
                         }
                         ItemView += '<div class="wdg_match_01_icon">';
-                        if (setting.country_code == 'USA') {
-                            ItemView += (contenido[y].USAvideo != "") ? '<a href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
-                        } else if (setting.country_code == 'MEX') {
-                            ItemView += (contenido[y].MXvideo != "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                        if (setting.country_code === 'USA') {
+                            ItemView += (contenido[y].USAvideo !== "") ? '<a href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                        } else if (setting.country_code === 'MEX') {
+                            ItemView += (contenido[y].MXvideo !== "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         }
                         ItemView += '</div>';
                         ItemView += '</div>';
@@ -284,7 +284,7 @@
                     objMasc.empty().html(ItemView);
                 } else {
                     objMasc.fadeOut('fast', function() {
-                        objMasc.empty().html(ItemView)
+                        objMasc.empty().html(ItemView);
                     });
                     objMasc.fadeIn('slow', function() {
                         wdg_matchresult.resize();
@@ -295,7 +295,7 @@
 
 
                 if ($(window).width() >= 933) {
-                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(800)
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(800);
                 }
                 if ($(window).width() < 933 && $(window).width() >= 609) {
                     $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(748);
@@ -419,7 +419,7 @@
                         arr = data.fechatv.replace(/_/gi, "-").split("-");
                         m = parseInt(arr[1]) + 1;
 
-                        if (String(m).length == 1) {
+                        if (String(m).length === 1) {
                             m = '0' + m;
                         }
                         anio = parseInt(arr[2]) + 1900;
@@ -496,12 +496,12 @@
 
                 if (parseFloat(msDateA) < parseFloat(msDateB)) {
                     //console.log("MENOR");
-                    if (setting.country_code == 'USA') {
+                    if (setting.country_code === 'USA') {
                         //console.log('actualiza cada 5min');
                         wdg_matchresult.Banner(300000);
                     }
                 } else {
-                    if (parseFloat(msDateA) == parseFloat(msDateB)) {
+                    if (parseFloat(msDateA) === parseFloat(msDateB)) {
                         //console.log("IGUAL");										
                         var resta = parseInt(b.getHours() - a.getHours());
                         //cop
@@ -509,7 +509,7 @@
                             //console.log("ya empezo el partido");
                             //Ya empezo el partido, actualizar valores cada minuto										
                             wdg_matchresult.timeUpdateA.push(60000);
-                            if (setting.country_code == 'USA') {
+                            if (setting.country_code === 'USA') {
                                 wdg_matchresult.Banner(60000);
                             }
                         } else {
@@ -539,7 +539,7 @@
                     } else {
                         if (parseFloat(msDateA) > parseFloat(msDateB)) {
                             //console.log("MAYOR");
-                            if (setting.country_code == 'USA') {
+                            if (setting.country_code === 'USA') {
                                 //console.log('actualiza cada 5min');
                                 wdg_matchresult.Banner(300000);
                             }
@@ -566,7 +566,7 @@
                     var tiempA = Math.min.apply(null, wdg_matchresult.timeUpdateA);
                     //console.log("tiempo Actualizacion: " + tiempA);					
                     wdg_matchresult.globalTimer = setInterval(function() {
-                        wdg_matchresult.updateInfo()
+                        wdg_matchresult.updateInfo();
                     }, tiempA);
                 }
 
@@ -579,7 +579,7 @@
         $.when(wdg_matchresult.DrawCuerpo()).done(function() {
             if (wdg_matchresult.TickerMaster !== 0) {
                 try {
-                    wdg_matchresult.LoadMaster(wdg_matchresult.TickerMaster)
+                    wdg_matchresult.LoadMaster(wdg_matchresult.TickerMaster);
                 } catch (e) {
                     console.log("error en tickerMaster" + e);
                 }
@@ -600,7 +600,7 @@
 
 
 
-    }
+    };
 })(jQuery);
 
 
@@ -654,7 +654,7 @@ jQuery(function($) {
                     $m.find('ul').height(600);
                     $m.height(600);
                     $x.find('ul').width(800);
-                    if (visShow == 'hidden') {
+                    if (visShow === 'hidden') {
                         $('.wdg_matchesresult_01').animate({
                             'height': 675,
                             'width': '100%'
@@ -663,7 +663,7 @@ jQuery(function($) {
                 }
                 if ($(window).width() < 933 && $(window).width() >= 609) {
 
-                    if (visShow == 'hidden') {
+                    if (visShow === 'hidden') {
                         $('.wdg_matchesresult_01').animate({
                             'height': 460
                         }, 0);
@@ -754,7 +754,7 @@ jQuery(function($) {
                         //$('.wdg_matchesresult_01 #left').removeClass('end');
                         $('.wdg_matchesresult_01 .wdg_matchesresult_left').css('color', '#D6A256');
                     }
-                    if (position == large_tot) {
+                    if (position === large_tot) {
                         $('.wdg_matchesresult_01 .wdg_matchesresult_right').css('color', '#6C0808');
                     } else {
                         $('.wdg_matchesresult_01 .wdg_matchesresult_right').css('color', '#D6A256');
@@ -805,13 +805,13 @@ jQuery(function($) {
         $(document).ready(function() {
             $('.wdg_matchesresult_01_arrows').css('display', 'none');
             if ($(window).width() >= 933) {
-                $_brinca = 888
+                $_brinca = 888;
             }
             if ($(window).width() >= 609) {
-                $_brinca = 370
+                $_brinca = 370;
             }
             if ($(window).width() < 609) {
-                $_brinca = 222
+                $_brinca = 222;
             }
             $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').bind('swipeleft', function() {
                 $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').animate({
@@ -833,7 +833,7 @@ jQuery(function($) {
             var $widthT = $scroll.scrollLeft() + $scroll.width();
             // var $height = $parent.height();
             $('.wdg_matchesresult_01 .wdg_matchesresult_01_mobileleft .tvsa-double-caret-left').css('color', '#D6A256');
-            if ($scroll.scrollLeft() == 0) {
+            if ($scroll.scrollLeft() === 0) {
                 $('.wdg_matchesresult_01 .wdg_matchesresult_01_mobileleft .tvsa-double-caret-left, .wdg_matchesresult_01 .wdg_matchesresult_01_arrows .tvsa-double-caret-left').css('color', '#6C0808');
             } else {
                 $('.wdg_matchesresult_01 .wdg_matchesresult_01_mobileleft .tvsa-double-caret-left, .wdg_matchesresult_01 .wdg_matchesresult_01_arrows .tvsa-double-caret-left').css('color', '#D6A256');
@@ -891,12 +891,12 @@ jQuery(function($) {
                     var large_tot = $(this).children().width();
                     var position = $parent.scrollLeft();
                     med = position + $(this).parent().width();
-                    if (position == 0) {
+                    if (position === 0) {
                         $(this).siblings('.wdg_matchesresult_navarrowleft').children().children().css('color', '#6C0808');
                     } else {
                         $(this).siblings('.wdg_matchesresult_navarrowleft').children().children().css('color', '#D6A256');
                     }
-                    if (position != 0) {
+                    if (position !== 0) {
                         $(this).siblings('.wdg_matchesresult_navarrowright').children().children().css('color', '#6C0808');
                     } else {
                         $(this).siblings('.wdg_matchesresult_navarrowright').children().children().css('color', '#D6A256');
@@ -922,12 +922,12 @@ jQuery(function($) {
                     var position = $parent.scrollLeft();
                     med = position + $(this).parent().width();
                     //console.log('This es:'+$(this).attr('class')+' position: '+position);	
-                    if (position == 0) {
+                    if (position === 0) {
                         $(this).siblings('.wdg_matchesresult_navarrowleft').children().children().css('color', '#6C0808');
                     } else {
                         $(this).siblings('.wdg_matchesresult_navarrowleft').children().children().css('color', '#D6A256');
                     }
-                    if (position != 0) {
+                    if (position !== 0) {
                         $(this).siblings('.wdg_matchesresult_navarrowright').children().children().css('color', '#6C0808');
                     } else {
                         $(this).siblings('.wdg_matchesresult_navarrowright').children().children().css('color', '#D6A256');
@@ -971,7 +971,7 @@ jQuery(function($) {
                 'height': heich
             }, animationDelay);
             $(this).closest('.wdg_matchesresult_01_left').find('.wdg_matchesresult_01_bottom').hide();
-            if (visShow == 'hidden') {
+            if (visShow === 'hidden') {
                 $show.css({
                     visibility: 'visible'
                 });
@@ -1002,7 +1002,7 @@ jQuery(function($) {
             var numeroItems = parseInt($("#listNow li").size());
             var listaItems = parseInt($("#ListTournaments li").size());
             if (listaItems < 1) {
-                $("#FListTournaments").hide()
+                $("#FListTournaments").hide();
             }
 
             /*if($(".wdg_matchesresult_01").data("tema") ==="mundial"){
@@ -1025,23 +1025,23 @@ jQuery(function($) {
             if (numeroItems <= 4) {
                 heightModulo = 221;
                 if (listaItems > 11) {
-                    heightModulo = 675
+                    heightModulo = 675;
                 } else if (listaItems <= 11 && listaItems >= 8) {
-                    heightModulo = 515
+                    heightModulo = 515;
                 } else if (listaItems < 8 && listaItems >= 1) {
-                    heightModulo = 366
+                    heightModulo = 366;
                 }
             } else if (numeroItems > 4 && numeroItems <= 8) {
                 heightModulo = 366;
                 if (listaItems > 11) {
-                    heightModulo = 675
+                    heightModulo = 675;
                 } else if (listaItems <= 11 && listaItems >= 8) {
-                    heightModulo = 515
+                    heightModulo = 515;
                 }
             } else if (numeroItems > 8 && numeroItems <= 12) {
                 heightModulo = 515;
                 if (listaItems > 11) {
-                    heightModulo = 675
+                    heightModulo = 675;
                 }
             } else if (numeroItems > 12) {
                 heightModulo = 675;
@@ -1070,7 +1070,7 @@ jQuery(function($) {
                 }, animationDelay);
             }
             $(this).closest('.wdg_matchesresult_01_left').find('.wdg_matchesresult_01_bottom').show();
-            if (visHide == 'hidden') {
+            if (visHide === 'hidden') {
                 $hide.css({
                     visibility: 'visible'
                 });
