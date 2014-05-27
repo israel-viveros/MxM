@@ -1,3 +1,8 @@
+/*!
+ *   TIM Developer: Israel Viveros
+ *   Version: 1.4
+ *   Copyright: Televisa Interactive Media (2014)
+ */
 ;
 (function() {
     $.fn.wdgStrategyMxM = function(options) {
@@ -22,20 +27,20 @@
             PintaCacha: function(tipo) {
                 var ContenidoMaq = "";
                 if (tipo === "dropdown") {
-                    ContenidoMaq += '<div class="titulo textcolor-title4">' + setting.title + '</div>'
-                    ContenidoMaq += '<div class="pleca_inferior">'
-                    ContenidoMaq += '<div>'
-                    ContenidoMaq += '<strong>Partidos</strong>'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdown">'
-                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdowncontent">'
-                    ContenidoMaq += '<p></p>'
-                    ContenidoMaq += '<div> <a id="dropdwon-right"  href="#" title="Link Description"> <i class="tvsa-caret-down"></i></a> </div>'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '<div class="wdg_smex_strategy_01_listcontainer">'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '</div>'
+                    ContenidoMaq += '<div class="titulo textcolor-title4">' + setting.title + '</div>';
+                    ContenidoMaq += '<div class="pleca_inferior">';
+                    ContenidoMaq += '<div>';
+                    ContenidoMaq += '<strong>Partidos</strong>';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdown">';
+                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdowncontent">';
+                    ContenidoMaq += '<p></p>';
+                    ContenidoMaq += '<div> <a id="dropdwon-right"  href="#" title="Link Description"> <i class="tvsa-caret-down"></i></a> </div>';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '<div class="wdg_smex_strategy_01_listcontainer">';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '</div>';
                 }
                 if (tipo === "alineacionFinal") {
                     ContenidoMaq += '<ul class="menu">';
@@ -51,10 +56,10 @@
 
                 GlobalThis.html(ContenidoMaq).css("display", "none").fadeIn('slow', function() {
                     $(this).css("display", "block");
-                });;
+                });
 
                 (setting.idclub !== 0) ? setTimeout(function() {
-                    wdg_smex_strategy.loadDropdown()
+                    wdg_smex_strategy.loadDropdown();
                 }, 1000) : '';
                 wdg_smex_strategy.FunInicio();
 
@@ -72,17 +77,16 @@
                 $.ajax({
                     url: wdg_smex_strategy.urlDropdown,
                     dataType: 'jsonp',
-                    jsonpCallback: 'matches',
-                    cache: false,
+                    jsonpCallback: 'effectivenessByTeam',
+                    cache: false
                 })
                     .done(function(data) {
                         ContDropdown += '<ul class="wdg_smex_strategy_01_dropdownlist">';
-                        for (var r = 0; r < data.Team.length; r++) {
-                            ContDropdown += '<li><p data-field="' + data.Team[r].matchid + '">' + data.Team[r].week + '</p></li>';
+                        for (var r = 0; r < data.efectividad.length; r++) {
+                            ContDropdown += '<li><p data-field="' + data.efectividad[r].matchid + '">' + data.efectividad[r].weekName + '</p></li>';
 
                         };
                         ContDropdown += '</ul>';
-
                         $(".wdg_smex_strategy_01_listcontainer").html(ContDropdown);
 
                         var ultimoId = $(".wdg_smex_strategy_01_dropdownlist li").eq(0).find('p').data("field");
@@ -95,9 +99,7 @@
                     })
                     .fail(function() {
                         console.log("error al cargar DROPDOWN: " + wdg_smex_strategy.urlDropdown);
-
-
-                    })
+                    });
 
 
 
@@ -171,13 +173,13 @@
                                     }
                                     actions += '</span>';
                                 }
-                                if (actions == '') {
+                                if (actions === '') {
                                     toolact += 'noactions';
                                 }
                                 if (equipoString === "lineupLocal") {
-                                    vc = "local"
+                                    vc = "local";
                                 } else {
-                                    vc = "visit"
+                                    vc = "visit";
                                 }
                                 imageJugador = (data[equipoString].team[i].image !== "") ? data[equipoString].team[i].image : 'http://i2.esmas.com/img/spacer.gif';
                                 miHTML += '<span data-guid="' + data[equipoString].team[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + positionx + 'px;top:' + positiony + 'px;">' +
@@ -236,9 +238,9 @@
                                             toolact += 'noactions';
                                         }
                                         if (equipoString === "lineupLocal") {
-                                            vc = "local"
+                                            vc = "local";
                                         } else {
-                                            vc = "visit"
+                                            vc = "visit";
                                         }
                                         for (var f = 0; f < data[equipoString].substitutes[d].actions.length; f++) {
                                             //console.log(data[equipoString].substitutes[d].actions[f]);
@@ -290,14 +292,14 @@
                     }
                 }).fail(function() {
                     $("#LoadingCancha").hide();
-                })
+                });
             },
 
             FunInicio: function() {
 
                 $('section.wdg_smex_strategy_01').each(function() {
                     /* Show Retina Version */
-                    var root = (typeof exports == 'undefined' ? window : exports);
+                    var root = (typeof exports === 'undefined' ? window : exports);
                     var config = {
                         check_mime_type: true
                     };
@@ -305,7 +307,7 @@
 
                     function Retina() {}
                     Retina.configure = function(options) {
-                        if (options == null) options = {};
+                        if (options === null) options = {};
                         for (var prop in options) config[prop] = options[prop];
                     };
                     Retina.isRetina = function() {
@@ -349,7 +351,7 @@
                         var padre = $(this);
                         var visibilidad = listItems.css('visibility');
 
-                        if (visibilidad == 'hidden')
+                        if (visibilidad === 'hidden')
                             listItems.css({
                                 visibility: 'visible',
                                 height: 'auto',
@@ -425,7 +427,7 @@
                     $('section.wdg_smex_strategy_01 .player a').live('click', 'touchstart', function(event) {
                         event.preventDefault();
                         $wss1_status = $(this).children('.tooltip').css('display');
-                        if ($wss1_status == 'block') {
+                        if ($wss1_status === 'block') {
                             $(this).children('.tooltip').css('display', 'none');
                         } else {
                             $(this).children('.tooltip').css('display', 'block');
@@ -483,7 +485,7 @@
                     })
                     .fail(function() {
                         console.log("Error al cargar el header " + wdg_smex_strategy.urlmxmheader);
-                    })
+                    });
 
 
 
@@ -510,7 +512,7 @@
                         arr = data.fechatv.replace(/_/gi, "-").split("-");
                         m = parseInt(arr[1]) + 1;
 
-                        if (String(m).length == 1) {
+                        if (String(m).length === 1) {
                             m = '0' + m;
                         }
                         anio = parseInt(arr[2]) + 1900;
@@ -526,7 +528,7 @@
                         if (parseFloat(msDateA) < parseFloat(msDateB)) {
                             //console.log("MENOR");
                         } else {
-                            if (parseFloat(msDateA) == parseFloat(msDateB)) {
+                            if (parseFloat(msDateA) === parseFloat(msDateB)) {
                                 //console.log("IGUAL");
                                 tiempoActualizacion = 60000;
                                 var resta = parseInt(b.getHours() - a.getHours());
@@ -558,7 +560,7 @@
                                 //cop
                                 //console.log(tiempoActualizacion)
                                 setInterval(function() {
-                                    wdg_smex_strategy.updatePlayers()
+                                    wdg_smex_strategy.updatePlayers();
                                 }, tiempoActualizacion);
                                 //setInterval(function(){wdg_smex_strategy.updatePlayers()},15000);
 
@@ -646,7 +648,7 @@
                                                     }
                                                     actions += '</span>';
                                                 }
-                                                if (actions == '') {
+                                                if (actions === '') {
                                                     toolact += 'noactions';
                                                 }
 
@@ -665,7 +667,7 @@
                                                     '</span>';
 
                                                 itemActual.fadeOut('fast', function() {
-                                                    $(this).remove()
+                                                    $(this).remove();
                                                 });
 
 
@@ -692,7 +694,7 @@
                         console.log("error update jugadores");
 
 
-                    })
+                    });
 
 
             } //updatePlayers
