@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.7
+ *   Version: 1.2.8
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -36,7 +36,7 @@
                         console.log("Error al cargar: " + wdf_sportResult.urlFinalHeader);
                         console.log(jqXHR);
                         //GlobalThis.hide();
-                    })
+                    });
 
             }, // loadInfo END
 
@@ -44,11 +44,11 @@
             drawHeader: function(data) {
                 //console.log(data);
                 var MaquetadoHEader = "",
-                    minuto = (parseInt(data.minuto) != 0) ? data.minuto + '\'' : '';
+                    minuto = (parseInt(data.minuto) !== 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
                 MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
-                MaquetadoHEader += (data.transmisionVivo != "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
+                MaquetadoHEader += (data.transmisionVivo !== "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
                 MaquetadoHEader += '<div class="subtitulo textcolor-title2">' + data.jornada.nombre + '</div>';
                 MaquetadoHEader += '</div>';
@@ -56,7 +56,7 @@
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="live_time textcolor-title3 background-color1"><span>' + data.tiempo.replace(/'/g, "\'") + ' ' + minuto + '</span></div>';
                 MaquetadoHEader += '<div class="leftside">';
-                MaquetadoHEader += (settings.tema == 'mundial') ? '<div class="padre">' : '';
+                MaquetadoHEader += (settings.tema === 'mundial') ? '<div class="padre">' : '';
                 MaquetadoHEader += '<div class="team1">';
                 MaquetadoHEader += '<div class="escudo"><img src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48"></div>';
                 MaquetadoHEader += '<div class="equipo"><span>' + data.equipoLocal.nombre + '</span></div>';
@@ -130,7 +130,7 @@
                     NuevoGlobalVisit = "",
                     ActGlobalLocal = "",
                     NuevoGlobalLocal = "",
-                    minuto = (parseInt(data.minuto) != 0) ? data.minuto + '\'' : '';
+                    minuto = (parseInt(data.minuto) !== 0) ? data.minuto + '\'' : '';
                 var NuevoGolLocal = String(data.equipoLocal.goles),
                     NuevoGolVisit = String(data.equipoVisitante.goles),
                     NuevoPenalLocal = String(data.equipoLocal.penales),
@@ -196,7 +196,7 @@
                         arr = data.fechatv.replace(/_/gi, "-").split("-");
                         m = parseInt(arr[1]) + 1;
 
-                        if (String(m).length == 1) {
+                        if (String(m).length === 1) {
                             m = '0' + m;
                         }
                         anio = parseInt(arr[2]) + 1900;
@@ -216,7 +216,7 @@
                             console.log("Fecha Menor(YA PASO EL PARTIDO)");
                             //GlobalThis.find('.score').css('visibility', 'visible');
                         } else {
-                            if (parseFloat(msDateA) == parseFloat(msDateB)) {
+                            if (parseFloat(msDateA) === parseFloat(msDateB)) {
                                 console.log("Dia del Evento");
 
                                 var partidoMs = a.getTime(),
@@ -237,7 +237,7 @@
                                     if (tagVivo.length) {
                                         tagVivo.removeClass('hidden');
                                     }
-                                    tiempoActualizacion = 30000; // 30 seg
+                                    tiempoActualizacion = 20000; // 20 seg
                                     //GlobalThis.find('.score').css('visibility', 'visible');
                                 } else {
 
@@ -263,7 +263,7 @@
                         }
 
                         if (tiempoActualizacion === 0) {
-                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 30000 : 0;
+                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 20000 : 0;
                         }
 
                         console.log("Tiempo de actualizacion: " + tiempoActualizacion);
@@ -272,7 +272,7 @@
                         if (tiempoActualizacion !== 0) {
                             globalTimer = setInterval(function() {
                                 wdf_sportResult.tmpescuchaListener = parseInt($("#timeUpdateMxM").text());
-                                wdf_sportResult.loadInfo('update')
+                                wdf_sportResult.loadInfo('update');
                             }, tiempoActualizacion);
 
                         }
@@ -337,7 +337,7 @@
         }; // end wdf_sportResult object
 
 
-        if (settings.idtorneo != 0 && settings.idteam !== 0) {
+        if (settings.idtorneo !== 0 && settings.idteam !== 0) {
             setTimeout(function() {
                 wdf_sportResult.loadInfo();
             }, 300);
@@ -345,5 +345,5 @@
         } else {
             (console.log("---->Faltan los Id's de team y/o torneo"));
         }
-    }
+    };
 })(jQuery);
