@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 3.2.5
+ *   Version: 3.2.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -249,7 +249,8 @@
 
 
                         if (setting.tema === "mundial") {
-                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
+                            //ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
+                            ItemView += (parseInt(contenido[y].EventTournamentId) !== 238) ? '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>' : '<a class="textcolor-title1" target="_blank" href=""></a>';
                             ItemView += '<a class="textcolor-title1"></a>';
                         } else {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
@@ -495,7 +496,7 @@
                 var msDateB = Date.UTC(b.getFullYear(), b.getMonth() + 1, b.getDate());
 
                 if (parseFloat(msDateA) < parseFloat(msDateB)) {
-                    //console.log("MENOR");
+                    console.log("MENOR");
                     if (setting.country_code === 'USA') {
                         //console.log('actualiza cada 5min');
                         wdg_matchresult.Banner(300000);
@@ -506,7 +507,7 @@
                         var resta = parseInt(b.getHours() - a.getHours());
                         //cop
                         if (b.getHours() >= a.getHours()) {
-                            //console.log("ya empezo el partido");
+                            console.log("ya empezo el partido");
                             //Ya empezo el partido, actualizar valores cada minuto										
                             wdg_matchresult.timeUpdateA.push(60000);
                             if (setting.country_code === 'USA') {
@@ -538,7 +539,7 @@
 
                     } else {
                         if (parseFloat(msDateA) > parseFloat(msDateB)) {
-                            //console.log("MAYOR");
+                            console.log("MAYOR");
                             if (setting.country_code === 'USA') {
                                 //console.log('actualiza cada 5min');
                                 wdg_matchresult.Banner(300000);
@@ -562,9 +563,10 @@
             }, // End timeUpdate()
 
             setTimer: function() {
+                console.log(wdg_matchresult.timeUpdateA);
                 if (wdg_matchresult.timeUpdateA.length > 0) {
                     var tiempA = Math.min.apply(null, wdg_matchresult.timeUpdateA);
-                    //console.log("tiempo Actualizacion: " + tiempA);					
+                    console.log("tiempo Actualizacion: " + tiempA);
                     wdg_matchresult.globalTimer = setInterval(function() {
                         wdg_matchresult.updateInfo();
                     }, tiempA);
