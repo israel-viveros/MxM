@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.9
+ *   Version: 1.3.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -27,7 +27,7 @@
                 maquetado += '<div class="str_pleca_01_title">';
                 maquetado += '<h3 class="background-color-pleca1">';
                 maquetado += '<a title="Alineacion" class="textcolor-title3">';
-                maquetado += 'Alineacion';
+                maquetado += 'Alineaci\u00F3n';
                 maquetado += '<span class="str_pleca_01_arrowa selected"></span>';
                 maquetado += '<span class="str_pleca_01_arrowb"></span>';
                 maquetado += '</a></h3></div></div>';
@@ -76,7 +76,7 @@
                 maquetado += '<div style="clear: both; z-index: 510;"></div>';
                 maquetado += '</div>';
 
-                maquetado += '<div class="alineacion_partido lineaBajo" style="z-index: 500;">';
+                maquetado += '<div class="alineacion_partido lineaBajo" id="allbancaTIM" style="z-index: 500;">';
                 maquetado += '<div class="encabezado_alineacion_partido lineaBajo" style="z-index: 490;">';
                 maquetado += '<h3 class="head_component">Banca</h3>';
                 maquetado += '<div style="clear: both; z-index: 480;"></div>';
@@ -533,6 +533,10 @@
                             $(this).html(bancaVisit);
                         });
 
+                        if (bancalocal === "" && bancaVisit === "") {
+                            $("#allbancaTIM").hide();
+                        }
+
                         var ausenAc,
                             ausenLoc;
                         if (typeof data.lineupLocal.ausentes !== "undefined") {
@@ -596,6 +600,12 @@
                     clearInterval(wdgLineUpOb.intervaloVe);
                     var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>' + $("#visitAbrevTIM").text() + '</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
                     $("#localLineupRTIM, #visitLineupRTIM").html(Local);
+
+                    if ($(".wdg_sport_result_01 .team1 .score").css("visibility") === "hidden") {
+                        $(".wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido .rojo").css('visibility', 'hidden');
+                    }
+
+
 
                 }
             },
