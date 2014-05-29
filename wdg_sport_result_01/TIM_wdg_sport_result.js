@@ -222,7 +222,7 @@
                                 var partidoMs = a.getTime(),
                                     servidorMs = b.getTime(),
                                     duracionPartido = 9000000, //2.5 hrs
-                                    minutosPrevio = 900000, // 15 min
+                                    minutosPrevio = 3600000, // 60 min
                                     finalPartido = partidoMs + duracionPartido,
                                     partidoAntes = partidoMs - minutosPrevio,
                                     restaAntes = partidoMs - servidorMs;
@@ -245,7 +245,7 @@
                                     console.log(restaAntes);
                                     if (parseInt(restaAntes) < minutosPrevio && parseInt(restaAntes) > 0) {
                                         console.log("Estamos a menos de 15 min del partido");
-                                        tiempoActualizacion = 300000; // 5 min
+                                        tiempoActualizacion = 20000; // 5 min
                                     }
 
                                 }
@@ -300,6 +300,7 @@
                 MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "" && settings.tema !== "mundial") ? '<li class="hide2 pizarraMenuTim"><a href="' + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
                 MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
+                MaqMenu += (parseInt(settings.idteam) === 25521) ? '<li class="last nav_smnu_sports_01_block camara360"><a href="camara360.html" title="camara" target="_parent">C\u00E1mara 360</a></li>' : '';
                 MaqMenu += (settings.tema === "mundial") ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul></div></div>';
                 MaqMenu += '<div class="navarrowright"><a class="wdg_matchesresult_navright" href="#right">';
@@ -320,6 +321,7 @@
                 (/cronica_m.html/.test(urlAc)) ? $(".cronicaMenuTim").addClass('current') : '';
                 (/video.html/.test(urlAc)) ? $(".videoMenuTim").addClass('current') : '';
                 (/interacciontd.html/.test(urlAc)) ? $(".interaMenuTim").addClass('current') : '';
+                (/camara360.html/.test(urlAc)) ? $(".camara360").addClass('current') : '';
 
                 if (settings.tema === "mundial") {
                     var noInteraccion = [25521, 25395, 25487, 25488];
