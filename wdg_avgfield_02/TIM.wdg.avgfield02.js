@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1.8
+ *   Version: 1.1.9
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -50,35 +50,44 @@
                     })
             },
             updateData: function(data) {
-                var LocalAmarilla = $("#LocalamarillasTIM").text(),
-                    LocalRoja = $("#rojasLocalTIM").text(),
-                    LocalEsquina = $("#esquinaLocalTIM").text(),
-                    LocalGol = $("#tiroslocalTIM").text(),
-                    VisitAmarilla = $("#VisitAmarillasTIM").text(),
-                    VisitRoja = $("#rojasVisitTIM").text(),
-                    VisitEsquina = $("#esquinavisitTIM").text(),
-                    VisitGol = $("#tirosvisitLocal").text(),
+                var LocalAmarilla = parseInt($("#LocalamarillasTIM").text()),
+                    LocalRoja = parseInt($("#rojasLocalTIM").text()),
+                    LocalEsquina = parseInt($("#esquinaLocalTIM").text()),
+                    LocalGol = parseInt($("#tiroslocalTIM").text()),
+                    VisitAmarilla = parseInt($("#VisitAmarillasTIM").text()),
+                    VisitRoja = parseInt($("#rojasVisitTIM").text()),
+                    VisitEsquina = parseInt($("#esquinavisitTIM").text()),
+                    VisitGol = parseInt($("#tirosvisitLocal").text()),
 
-                    feedlocalamarilla = data.acciones.local.tarjeta_amarilla,
-                    feedlocalroja = data.acciones.local.tarjeta_roja,
-                    feedlocalesquina = data.acciones.local.tiros_esquina,
-                    feedlocalgol = data.acciones.local.tiros_gol,
+                    feedlocalamarilla = parseInt(data.acciones.local.tarjeta_amarilla),
+                    feedlocalroja = parseInt(data.acciones.local.tarjeta_roja),
+                    feedlocalesquina = parseInt(data.acciones.local.tiros_esquina),
+                    feedlocalgol = parseInt(data.acciones.local.tiros_gol),
 
-                    feedvisitamarilla = data.acciones.visitant.tarjeta_amarilla
-                    feedvisitroja = data.acciones.visitant.tarjeta_roja,
-                    feedvisitesquina = data.acciones.visitant.tiros_esquina,
-                    feedvisitgol = data.acciones.visitant.tiros_gol;
+                    feedvisitamarilla = parseInt(data.acciones.visitant.tarjeta_amarilla),
+                    feedvisitroja = parseInt(data.acciones.visitant.tarjeta_roja),
+                    feedvisitesquina = parseInt(data.acciones.visitant.tiros_esquina),
+                    feedvisitgol = parseInt(data.acciones.visitant.tiros_gol);
+
+                console.log(LocalAmarilla + "--" + feedlocalamarilla);
+                console.log(LocalRoja + "--" + feedlocalroja);
+                console.log(LocalEsquina + "--" + feedlocalesquina);
+                console.log(LocalGol + "--" + feedlocalgol);
+                console.log(VisitAmarilla + "--" + feedvisitamarilla);
+                console.log(VisitRoja + "--" + feedvisitroja);
+                console.log(VisitEsquina + "--" + feedvisitesquina);
+                console.log(VisitGol + "--" + feedvisitgol);
 
 
-                (LocalAmarilla !== feedlocalamarilla) ? $("#LocalamarillasTIM").empty().text(feedlocalamarilla) : '';
-                (LocalRoja !== feedlocalroja) ? $("#rojasLocalTIM").empty().text(feedlocalroja) : '';
-                (LocalEsquina !== feedlocalesquina) ? $("#esquinaLocalTIM").empty().text(feedlocalesquina) : '';
-                (feedlocalgol !== feedlocalgol) ? $("#tiroslocalTIM").empty().text(feedlocalgol) : '';
+                (LocalAmarilla !== feedlocalamarilla) ? $("#LocalamarillasTIM").html(feedlocalamarilla) : '';
+                (LocalRoja !== feedlocalroja) ? $("#rojasLocalTIM").html(feedlocalroja) : '';
+                (LocalEsquina !== feedlocalesquina) ? $("#esquinaLocalTIM").html(feedlocalesquina) : '';
+                (LocalGol !== feedlocalgol) ? $("#tiroslocalTIM").html(feedlocalgol) : '';
 
-                (VisitAmarilla !== feedvisitamarilla) ? $("#LocalamarillasTIM").empty().text(feedvisitamarilla) : '';
-                (VisitRoja !== feedvisitroja) ? $("#LocalamarillasTIM").empty().text(feedvisitroja) : '';
-                (VisitEsquina !== feedvisitesquina) ? $("#LocalamarillasTIM").empty().text(feedvisitesquina) : '';
-                (VisitGol !== feedvisitgol) ? $("#LocalamarillasTIM").empty().text(feedvisitgol) : '';
+                (VisitAmarilla !== feedvisitamarilla) ? $("#LocalamarillasTIM").html(feedvisitamarilla) : '';
+                (VisitRoja !== feedvisitroja) ? $("#LocalamarillasTIM").html(feedvisitroja) : '';
+                (VisitEsquina !== feedvisitesquina) ? $("#LocalamarillasTIM").html(feedvisitesquina) : '';
+                (VisitGol !== feedvisitgol) ? $("#LocalamarillasTIM").html(feedvisitgol) : '';
 
 
 
