@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.1
+ *   Version: 1.2.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -322,9 +322,9 @@
 
                                 //console.log("calcula la alineacion final");
                                 for (var d = 0; d < data[equipoString].substitutes.length; d++) {
-                                    //console.log(data[equipoString].substitutes[d].nickName);
+                                    //console.log(data[equipoString].substitutes[d].nickName);;                                    
                                     if (typeof data[equipoString].substitutes[d].actions !== "undefined") {
-                                        if (typeof data[equipoString].team[d].actions !== "undefined") {
+                                        if (typeof data[equipoString].team[d] !== "undefined" && typeof data[equipoString].team[d].actions !== "undefined") {
                                             var actions2 = "";
                                             actions2 += '<em>acciones</em><span class="actions">';
                                             for (var a = 0; a < data[equipoString].team[d].actions.length; a++) {
