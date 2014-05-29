@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.2
+ *   Version: 1.2.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1724,7 +1724,7 @@
                         localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                         localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                        localM += (typeof(local[i].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>' : '</div>';
+                        localM += (typeof(local[i].label) !== "undefined") ? '<span class="textcolor-title2">' + local[i].label + '</span></p></div>' : '</div>';
                         localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
                         arrayGlobal.push(localM);
                     };
@@ -1735,7 +1735,7 @@
                         visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '">';
                         visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                         visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                        visitM += (typeof(visit[l].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].formaGol + '</span></p></div>' : '</div>';
+                        visitM += (typeof(visit[l].label) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].label + '</span></p></div>' : '</div>';
                         visitM += '<div class="dotted-left marcador dotted-left"><p>' + visit[l].current_score + '</p></div></div>';
                         arrayGlobal.push(visitM);
                     };
@@ -1769,7 +1769,7 @@
                             localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '" style="display:none;">';
                             localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                             localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                            localM += (typeof(local[i].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + local[i].formaGol + '</span></p></div>' : '';
+                            localM += (typeof(local[i].label) !== "undefined") ? '<span class="textcolor-title2">' + local[i].label + '</span></p></div>' : '';
                             localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
                             //console.log($('#goal' + local[i].minute + ''));
                             if (!$('#goal' + local[i].minute + '').length) {
@@ -1784,7 +1784,7 @@
                             visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '" style="display:none">';
                             visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                             visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                            visitM += (typeof(visit[l].formaGol) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].formaGol + '</span></p></div>' : '';
+                            visitM += (typeof(visit[l].label) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].label + '</span></p></div>' : '';
                             visitM += '<div class="dotted-left marcador dotted-left"><p>' + visit[l].current_score + '</p></div></div>';
                             //console.log($('#goal' + visit[l].minute + ''));
                             if (!$('#goal' + visit[l].minute + '').length) {
