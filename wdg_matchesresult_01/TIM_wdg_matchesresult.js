@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 3.2.7
+ *   Version: 4.0.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -156,6 +156,11 @@
 
 
             LoadFirst: function(urlData, tipo) {
+                if (tipo !== "update") {
+                    setInterval(function() {
+                        wdg_matchresult.updateInfo();
+                    }, 20000);
+                }
                 $.ajax({
                     url: urlData,
                     type: 'GET',
@@ -323,7 +328,7 @@
                 });
             },
             updateGoles: function(data) {
-                //console.log(data);
+                console.log(data);
                 var selectorTMP, NuevoGolV, ActGolV, NuevoGolL, ActGolL, tituloAct, tituloNue;
                 for (var o = 0; o < data.matches.match.length; o++) {
                     var tituloMatch = "";
@@ -334,14 +339,15 @@
                             tituloMatch = 'Final del partido';
                         } else {
                             tituloMatch = data.matches.match[o].periodabrev + ' ' + data.matches.match[o].time;
+                            console.log(tituloMatch);
                         }
                     }
                     //console.log(data.matches.match[o])
                     selectorTMP = $("#" + data.matches.match[o].TimeStamp);
-                    ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text().trim());
-                    ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text().trim());
-                    NuevoGolL = String(data.matches.match[o].equipos.local.goals.trim());
-                    NuevoGolV = String(data.matches.match[o].equipos.visit.goals.trim());
+                    ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text());
+                    ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text());
+                    NuevoGolL = String(data.matches.match[o].equipos.local.goals);
+                    NuevoGolV = String(data.matches.match[o].equipos.visit.goals);
                     tituloAct = selectorTMP.find(".textcolor-title5").text();
                     tituloNue = String(tituloMatch);
 
@@ -499,7 +505,7 @@
                     console.log("MENOR");
                     if (setting.country_code === 'USA') {
                         //console.log('actualiza cada 5min');
-                        wdg_matchresult.Banner(300000);
+                        wdg_matchresult.Banner(60000);
                     }
                 } else {
                     if (parseFloat(msDateA) === parseFloat(msDateB)) {
@@ -508,10 +514,10 @@
                         //cop
                         if (b.getHours() >= a.getHours()) {
                             console.log("ya empezo el partido");
-                            //Ya empezo el partido, actualizar valores cada minuto										
-                            wdg_matchresult.timeUpdateA.push(60000);
+                            //Ya empezo el partido, actualizar valores cada 20 seg										
+                            wdg_matchresult.timeUpdateA.push(20000);
                             if (setting.country_code === 'USA') {
-                                wdg_matchresult.Banner(60000);
+                                wdg_matchresult.Banner(20000);
                             }
                         } else {
                             var h1 = a.getHours();
@@ -523,14 +529,14 @@
 
                             if (minutosrestantes <= 15) {
                                 //console.log("faltan menos de 15 min");
-                                //Faltan 15 minutos o menos para el inicio, actualizar los valores cada minuto
-                                wdg_matchresult.timeUpdateA.push(60000);
+                                //Faltan 15 minutos o menos para el inicio, actualizar los valores cada 20 seg
+                                wdg_matchresult.timeUpdateA.push(20000);
 
                             } else {
                                 //console.log("faltan mas de 15 pero menos de 1hr " + minutosrestantes);
-                                //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 15 minutos pero menos de una hora
+                                //Faltan mas de 15 minutos para el inicio, actualizar los valores cada 5 minutos pero menos de una hora
                                 //console.log("comparo-->"+minutosrestantes);
-                                (minutosrestantes <= 60) ? (wdg_matchresult.timeUpdateA.push(900000)) : '';
+                                (minutosrestantes <= 60) ? (wdg_matchresult.timeUpdateA.push(350000)) : '';
                             }
                         }
                         //cop
@@ -558,19 +564,18 @@
 
                 //console.log(wdg_matchresult.timeUpdateA.length);
 
-
-
             }, // End timeUpdate()
 
             setTimer: function() {
-                console.log(wdg_matchresult.timeUpdateA);
-                if (wdg_matchresult.timeUpdateA.length > 0) {
+
+                /*
+                if (parseInt(wdg_matchresult.timeUpdateA.length) > 0) {
                     var tiempA = Math.min.apply(null, wdg_matchresult.timeUpdateA);
                     console.log("tiempo Actualizacion: " + tiempA);
                     wdg_matchresult.globalTimer = setInterval(function() {
                         wdg_matchresult.updateInfo();
                     }, tiempA);
-                }
+                }*/
 
             }
 
