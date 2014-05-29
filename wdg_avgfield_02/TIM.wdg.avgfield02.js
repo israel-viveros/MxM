@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1.9
+ *   Version: 2.0.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -32,7 +32,7 @@
                     })
                     .fail(function() {
                         console.log("error al cargar el feed de summary actions");
-                    })
+                    });
             },
             update: function() {
                 $.ajax({
@@ -47,7 +47,7 @@
                     })
                     .fail(function() {
                         console.log("error al cargar el feed de summary actions");
-                    })
+                    });
             },
             updateData: function(data) {
                 var LocalAmarilla = parseInt($("#LocalamarillasTIM").text()),
@@ -69,14 +69,14 @@
                     feedvisitesquina = parseInt(data.acciones.visitant.tiros_esquina),
                     feedvisitgol = parseInt(data.acciones.visitant.tiros_gol);
 
-                console.log(LocalAmarilla + "--" + feedlocalamarilla);
-                console.log(LocalRoja + "--" + feedlocalroja);
-                console.log(LocalEsquina + "--" + feedlocalesquina);
-                console.log(LocalGol + "--" + feedlocalgol);
-                console.log(VisitAmarilla + "--" + feedvisitamarilla);
-                console.log(VisitRoja + "--" + feedvisitroja);
-                console.log(VisitEsquina + "--" + feedvisitesquina);
-                console.log(VisitGol + "--" + feedvisitgol);
+                /* console.log("Local Amarilla: " + LocalAmarilla + "--" + feedlocalamarilla);
+                console.log("Local Roja: " + LocalRoja + "--" + feedlocalroja);
+                console.log("Local Esquina: " + LocalEsquina + "--" + feedlocalesquina);
+                console.log("Local gol: " + LocalGol + "--" + feedlocalgol);
+                console.log("Visita Amarilla: " + VisitAmarilla + "--" + feedvisitamarilla);
+                console.log("Visita Roja: " + VisitRoja + "--" + feedvisitroja);
+                console.log("Visita Esquina: " + VisitEsquina + "--" + feedvisitesquina);
+                console.log("Visita Gol: " + VisitGol + "--" + feedvisitgol);*/
 
 
                 (LocalAmarilla !== feedlocalamarilla) ? $("#LocalamarillasTIM").html(feedlocalamarilla) : '';
@@ -84,10 +84,10 @@
                 (LocalEsquina !== feedlocalesquina) ? $("#esquinaLocalTIM").html(feedlocalesquina) : '';
                 (LocalGol !== feedlocalgol) ? $("#tiroslocalTIM").html(feedlocalgol) : '';
 
-                (VisitAmarilla !== feedvisitamarilla) ? $("#LocalamarillasTIM").html(feedvisitamarilla) : '';
-                (VisitRoja !== feedvisitroja) ? $("#LocalamarillasTIM").html(feedvisitroja) : '';
-                (VisitEsquina !== feedvisitesquina) ? $("#LocalamarillasTIM").html(feedvisitesquina) : '';
-                (VisitGol !== feedvisitgol) ? $("#LocalamarillasTIM").html(feedvisitgol) : '';
+                (VisitAmarilla !== feedvisitamarilla) ? $("#VisitAmarillasTIM").html(feedvisitamarilla) : '';
+                (VisitRoja !== feedvisitroja) ? $("#rojasVisitTIM").html(feedvisitroja) : '';
+                (VisitEsquina !== feedvisitesquina) ? $("#esquinavisitTIM").html(feedvisitesquina) : '';
+                (VisitGol !== feedvisitgol) ? $("#tirosvisitLocal").html(feedvisitgol) : '';
 
 
 
@@ -175,10 +175,10 @@
                     $(this).css("display", "block");
                 });
 
-
                 wdgavgfieldObj.listener = setInterval(function() {
-                    console.log("buscando etiqueta actualizable..")
+                    console.log("buscando etiqueta actualizable..");
                     var objTime = $("#timeUpdateMxM");
+                    console.log(objTime);
                     if (objTime.length) {
                         console.log("Antes: " + wdgavgfieldObj.tmpescuchaListener);
                         console.log("Ahora: " + objTime.text());
@@ -193,9 +193,9 @@
                             }, timeAct);
                         }
 
-
                     }
                 }, 60000);
+
                 //wdgavgfieldObj.header();
 
             }
@@ -312,5 +312,5 @@
         }
 
 
-    }
+    };
 })(jQuery);
