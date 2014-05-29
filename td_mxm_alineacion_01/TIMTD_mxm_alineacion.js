@@ -38,20 +38,20 @@
             PintaCacha: function(tipo) {
                 var ContenidoMaq = "";
                 if (tipo === "dropdown") {
-                    ContenidoMaq += '<div class="titulo textcolor-title4">Estrategia mÃ¡s utilizada</div>'
-                    ContenidoMaq += '<div class="pleca_inferior">'
-                    ContenidoMaq += '<div>'
-                    ContenidoMaq += '<strong>Partidos</strong>'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdown">'
-                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdowncontent">'
-                    ContenidoMaq += '<p></p>'
-                    ContenidoMaq += '<div> <a id="dropdwon-right"  href="#" title="Link Description"> <i class="tvsa-caret-down"></i></a> </div>'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '<div class="wdg_smex_strategy_01_listcontainer">'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '</div>'
-                    ContenidoMaq += '</div>'
+                    ContenidoMaq += '<div class="titulo textcolor-title4">Estrategia mÃ¡s utilizada</div>';
+                    ContenidoMaq += '<div class="pleca_inferior">';
+                    ContenidoMaq += '<div>';
+                    ContenidoMaq += '<strong>Partidos</strong>';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdown">';
+                    ContenidoMaq += '<div class="wdg_smex_strategy_01_dropdowncontent">';
+                    ContenidoMaq += '<p></p>';
+                    ContenidoMaq += '<div> <a id="dropdwon-right"  href="#" title="Link Description"> <i class="tvsa-caret-down"></i></a> </div>';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '<div class="wdg_smex_strategy_01_listcontainer">';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '</div>';
+                    ContenidoMaq += '</div>';
                 }
                 if (tipo === "alineacionFinal") {
                     ContenidoMaq += '<ul class="menu">';
@@ -70,7 +70,7 @@
                 });;
 
                 (setting.idclub !== 0) ? setTimeout(function() {
-                    wdg_smex_strategy.loadDropdown()
+                    wdg_smex_strategy.loadDropdown();
                 }, 1000) : '';
                 wdg_smex_strategy.FunInicio();
 
@@ -78,7 +78,7 @@
 
 
                 wdg_smex_strategy.listener = setInterval(function() {
-                    console.log("buscando etiqueta actualizable..")
+                    console.log("buscando etiqueta actualizable..");
                     var objTime = $("#timeUpdateMxM");
                     if (objTime.length) {
                         console.log("Antes: " + wdg_smex_strategy.tmpescuchaListener);
@@ -109,7 +109,7 @@
                     url: wdg_smex_strategy.urlDropdown,
                     dataType: 'jsonp',
                     jsonpCallback: 'matches',
-                    cache: false,
+                    cache: false
                 })
                     .done(function(data) {
                         ContDropdown += '<ul class="wdg_smex_strategy_01_dropdownlist">';
@@ -133,7 +133,7 @@
                         console.log("error al cargar DROPDOWN: " + wdg_smex_strategy.urlDropdown);
 
 
-                    })
+                    });
 
 
 
@@ -192,91 +192,91 @@
 
                                         switch (data[equipoString].team[i].actions[a].type.toLowerCase()) {
                                             case "amonestacion":
-                                                clase = "tvsa-mxm-yellowcard"
+                                                clase = "tvsa-mxm-yellowcard";
                                                 break;
                                             case "segundaamonestacion":
-                                                clase = "tvsa-mxm-secondyellowcard"
+                                                clase = "tvsa-mxm-secondyellowcard";
                                                 break;
                                             case "expulsion":
-                                                clase = "tvsa-mxm-redcard"
+                                                clase = "tvsa-mxm-redcard";
                                                 break;
                                             case "fueradelugar":
-                                                clase = "tvsa-mxm-offside"
+                                                clase = "tvsa-mxm-offside";
                                                 break;
                                             case "tirodeesquina":
-                                                clase = "tvsa-mxm-cornerkick"
+                                                clase = "tvsa-mxm-cornerkick";
                                                 break;
                                             case "iniciaelpartido":
-                                                clase = "tvsa-mxm-startfirsthalf"
+                                                clase = "tvsa-mxm-startfirsthalf";
                                                 break;
                                             case "iniciasegundotiempo":
-                                                clase = "tvsa-mxm-startsecondhalf"
+                                                clase = "tvsa-mxm-startsecondhalf";
                                                 break;
                                             case "-":
-                                                clase = "tvsa-mxm-startovertime"
+                                                clase = "tvsa-mxm-startovertime";
                                                 break;
                                             case "iniciaprimertiempoextra":
-                                                clase = "tvsa-mxm-startextrafirsthalf"
+                                                clase = "tvsa-mxm-startextrafirsthalf";
                                                 break;
                                             case "iniciasegundotiempoextra":
-                                                clase = "tvsa-mxm-startextrasecondhalf"
+                                                clase = "tvsa-mxm-startextrasecondhalf";
                                                 break;
                                             case "--":
-                                                clase = "tvsa-mxm-penalties"
+                                                clase = "tvsa-mxm-penalties";
                                                 break;
                                             case "finalizaelpartido":
-                                                clase = "tvsa-mxm-gameend"
+                                                clase = "tvsa-mxm-gameend";
                                                 break;
                                             case "pegaenelposte":
-                                                clase = "tvsa-mxm-crossbar"
+                                                clase = "tvsa-mxm-crossbar";
                                                 break;
                                             case "pasaporafuera":
-                                                clase = "tvsa-mxm-out"
+                                                clase = "tvsa-mxm-out";
                                                 break;
                                             case "penal":
-                                                clase = "tvsa-mxm-penaltykick"
+                                                clase = "tvsa-mxm-penaltykick";
                                                 break;
                                             case "atajada":
-                                                clase = "tvsa-mxm-block"
+                                                clase = "tvsa-mxm-block";
                                                 break;
                                             case "autogollocal":
-                                                clase = "tvsa-mxm-owngoal"
+                                                clase = "tvsa-mxm-owngoal";
                                                 break;
                                             case "autogolvisitante":
-                                                clase = "tvsa-mxm-owngoal"
+                                                clase = "tvsa-mxm-owngoal";
                                                 break;
                                             case "gollocal":
-                                                clase = "tvsa-mxm-goal"
+                                                clase = "tvsa-mxm-goal";
                                                 break;
                                             case "golvisitante":
-                                                clase = "tvsa-mxm-goal"
+                                                clase = "tvsa-mxm-goal";
                                                 break;
                                             case "golpenallocal":
-                                                clase = "tvsa-mxm-goal"
+                                                clase = "tvsa-mxm-goal";
                                                 break;
                                             case "golpenalvisitante":
-                                                clase = "tvsa-mxm-goal"
+                                                clase = "tvsa-mxm-goal";
                                                 break;
                                             case "falta":
-                                                clase = "tvsa-mxm-foul"
+                                                clase = "tvsa-mxm-foul";
                                                 break;
                                             case "comentario":
-                                                clase = "tvsa-mxm-comment"
+                                                clase = "tvsa-mxm-comment";
                                                 break;
                                             case "datoestadistico":
-                                                clase = "tvsa-mxm-statisticdata"
+                                                clase = "tvsa-mxm-statisticdata";
                                                 break;
                                             case "entraaljuego":
-                                                clase = "tvsa-mxm-playerin"
+                                                clase = "tvsa-mxm-playerin";
                                                 break;
                                             case "saledeljuego":
-                                                clase = "tvsa-mxm-playerout"
+                                                clase = "tvsa-mxm-playerout";
                                                 break;
                                             case "suspenciontemporaljuego":
-                                                clase = "tvsa-mxm-suspended"
+                                                clase = "tvsa-mxm-suspended";
                                                 break;
                                             case "lesion":
-                                                clase = "tvsa-mxm-lesion"
+                                                clase = "tvsa-mxm-lesion";
                                                 break;
                                             default:
                                                 clase = data[equipoString].team[i].actions[a].type.toLowerCase();
@@ -288,13 +288,13 @@
                                     }
                                     actions += '</span>';
                                 }
-                                if (actions == '') {
+                                if (actions === '') {
                                     toolact += 'noactions';
                                 }
                                 if (equipoString === "lineupLocal") {
-                                    vc = "local"
+                                    vc = "local";
                                 } else {
-                                    vc = "visit"
+                                    vc = "visit";
                                 }
                                 imageJugador = (data[equipoString].team[i].image !== "") ? data[equipoString].team[i].image : 'http://i2.esmas.com/img/spacer.gif';
                                 miHTML += '<span data-guid="' + data[equipoString].team[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + positionx + 'px;top:' + positiony + 'px;">' +
@@ -330,91 +330,91 @@
                                             for (var a = 0; a < data[equipoString].team[d].actions.length; a++) {
                                                 switch (data[equipoString].team[d].actions[a].type.toLowerCase()) {
                                                     case "amonestacion":
-                                                        icon = "tvsa-mxm-yellowcard"
+                                                        icon = "tvsa-mxm-yellowcard";
                                                         break;
                                                     case "segundaamonestacion":
-                                                        icon = "tvsa-mxm-secondyellowcard"
+                                                        icon = "tvsa-mxm-secondyellowcard";
                                                         break;
                                                     case "expulsion":
-                                                        icon = "tvsa-mxm-redcard"
+                                                        icon = "tvsa-mxm-redcard";
                                                         break;
                                                     case "fueradelugar":
-                                                        icon = "tvsa-mxm-offside"
+                                                        icon = "tvsa-mxm-offside";
                                                         break;
                                                     case "tirodeesquina":
-                                                        icon = "tvsa-mxm-cornerkick"
+                                                        icon = "tvsa-mxm-cornerkick";
                                                         break;
                                                     case "iniciaelpartido":
-                                                        icon = "tvsa-mxm-startfirsthalf"
+                                                        icon = "tvsa-mxm-startfirsthalf";
                                                         break;
                                                     case "iniciasegundotiempo":
-                                                        icon = "tvsa-mxm-startsecondhalf"
+                                                        icon = "tvsa-mxm-startsecondhalf";
                                                         break;
                                                     case "-":
-                                                        icon = "tvsa-mxm-startovertime"
+                                                        icon = "tvsa-mxm-startovertime";
                                                         break;
                                                     case "iniciaprimertiempoextra":
-                                                        icon = "tvsa-mxm-startextrafirsthalf"
+                                                        icon = "tvsa-mxm-startextrafirsthalf";
                                                         break;
                                                     case "iniciasegundotiempoextra":
-                                                        icon = "tvsa-mxm-startextrasecondhalf"
+                                                        icon = "tvsa-mxm-startextrasecondhalf";
                                                         break;
                                                     case "--":
-                                                        icon = "tvsa-mxm-penalties"
+                                                        icon = "tvsa-mxm-penalties";
                                                         break;
                                                     case "finalizaelpartido":
-                                                        icon = "tvsa-mxm-gameend"
+                                                        icon = "tvsa-mxm-gameend";
                                                         break;
                                                     case "pegaenelposte":
-                                                        icon = "tvsa-mxm-crossbar"
+                                                        icon = "tvsa-mxm-crossbar";
                                                         break;
                                                     case "pasaporafuera":
-                                                        icon = "tvsa-mxm-out"
+                                                        icon = "tvsa-mxm-out";
                                                         break;
                                                     case "penal":
-                                                        icon = "tvsa-mxm-penaltykick"
+                                                        icon = "tvsa-mxm-penaltykick";
                                                         break;
                                                     case "atajada":
-                                                        icon = "tvsa-mxm-block"
+                                                        icon = "tvsa-mxm-block";
                                                         break;
                                                     case "autogollocal":
-                                                        icon = "tvsa-mxm-owngoal"
+                                                        icon = "tvsa-mxm-owngoal";
                                                         break;
                                                     case "autogolvisitante":
-                                                        icon = "tvsa-mxm-owngoal"
+                                                        icon = "tvsa-mxm-owngoal";
                                                         break;
                                                     case "gollocal":
-                                                        icon = "tvsa-mxm-goal"
+                                                        icon = "tvsa-mxm-goal";
                                                         break;
                                                     case "golvisitante":
-                                                        icon = "tvsa-mxm-goal"
+                                                        icon = "tvsa-mxm-goal";
                                                         break;
                                                     case "golpenallocal":
-                                                        icon = "tvsa-mxm-goal"
+                                                        icon = "tvsa-mxm-goal";
                                                         break;
                                                     case "golpenalvisitante":
-                                                        icon = "tvsa-mxm-goal"
+                                                        icon = "tvsa-mxm-goal";
                                                         break;
                                                     case "falta":
-                                                        icon = "tvsa-mxm-foul"
+                                                        icon = "tvsa-mxm-foul";
                                                         break;
                                                     case "comentario":
-                                                        icon = "tvsa-mxm-comment"
+                                                        icon = "tvsa-mxm-comment";
                                                         break;
                                                     case "datoestadistico":
-                                                        icon = "tvsa-mxm-statisticdata"
+                                                        icon = "tvsa-mxm-statisticdata";
                                                         break;
                                                     case "entraaljuego":
-                                                        icon = "tvsa-mxm-playerin"
+                                                        icon = "tvsa-mxm-playerin";
                                                         break;
                                                     case "saledeljuego":
-                                                        icon = "tvsa-mxm-playerout"
+                                                        icon = "tvsa-mxm-playerout";
                                                         break;
                                                     case "suspenciontemporaljuego":
-                                                        icon = "tvsa-mxm-suspended"
+                                                        icon = "tvsa-mxm-suspended";
                                                         break;
                                                     case "lesion":
-                                                        icon = "tvsa-mxm-lesion"
+                                                        icon = "tvsa-mxm-lesion";
                                                         break;
                                                     default:
                                                         icon = data[equipoString].team[d].actions[a].type.toLowerCase();
@@ -430,9 +430,9 @@
                                             toolact += 'noactions';
                                         }
                                         if (equipoString === "lineupLocal") {
-                                            vc = "local"
+                                            vc = "local";
                                         } else {
-                                            vc = "visit"
+                                            vc = "visit";
                                         }
                                         for (var f = 0; f < data[equipoString].substitutes[d].actions.length; f++) {
                                             //console.log(data[equipoString].substitutes[d].actions[f]);
@@ -520,7 +520,7 @@
                         //terminando correccion de ceros
 
                         if (setting.Promedio === true) {
-                            wdg_smex_strategy.promedioCancha(promedio)
+                            wdg_smex_strategy.promedioCancha(promedio);
                         }
                         //Modulo alineacion
                         wdg_smex_strategy.MuestraAlineacion(data);
@@ -546,7 +546,7 @@
                     }
                 }).fail(function() {
                     $("#LoadingCancha").hide();
-                })
+                });
 
 
 
@@ -586,7 +586,7 @@
                     })
                     .fail(function() {
                         console.log("error al cargar views");
-                    })
+                    });
 
 
 
@@ -600,12 +600,12 @@
                         wdg_smex_strategy.listenerInfo();
                     }, 3000);
                 } catch (e) {
-                    console.log(e)
+                    console.log(e);
                 }
 
                 $('section.wdg_smex_strategy_01').each(function() {
                     /* Show Retina Version */
-                    var root = (typeof exports == 'undefined' ? window : exports);
+                    var root = (typeof exports === 'undefined' ? window : exports);
                     var config = {
                         check_mime_type: true
                     };
@@ -613,7 +613,7 @@
 
                     function Retina() {}
                     Retina.configure = function(options) {
-                        if (options == null) options = {};
+                        if (options === null) options = {};
                         for (var prop in options) config[prop] = options[prop];
                     };
                     Retina.isRetina = function() {
@@ -657,7 +657,7 @@
                         var padre = $(this);
                         var visibilidad = listItems.css('visibility');
 
-                        if (visibilidad == 'hidden')
+                        if (visibilidad === 'hidden')
                             listItems.css({
                                 visibility: 'visible',
                                 height: 'auto',
@@ -739,7 +739,7 @@
                     $('section.wdg_smex_strategy_01 .player a').live('click', 'touchstart', function(event) {
                         event.preventDefault();
                         $wss1_status = $(this).children('.tooltip').css('display');
-                        if ($wss1_status == 'block') {
+                        if ($wss1_status === 'block') {
                             //$(this).children('.tooltip').css('display', 'none');
                             $(this).children('.tooltip').stop(true, true).delay(500).fadeOut('fast', function() {
                                 $(this).css('display', 'none');
@@ -975,91 +975,91 @@
                                                     for (var a = 0; a < data[equipoString].substitutes[i].actions.length; a++) {
                                                         switch (data[equipoString].substitutes[i].actions[a].type.toLowerCase()) {
                                                             case "amonestacion":
-                                                                icon = "tvsa-mxm-yellowcard"
+                                                                icon = "tvsa-mxm-yellowcard";
                                                                 break;
                                                             case "segundaamonestacion":
-                                                                icon = "tvsa-mxm-secondyellowcard"
+                                                                icon = "tvsa-mxm-secondyellowcard";
                                                                 break;
                                                             case "expulsion":
-                                                                icon = "tvsa-mxm-redcard"
+                                                                icon = "tvsa-mxm-redcard";
                                                                 break;
                                                             case "fueradelugar":
-                                                                icon = "tvsa-mxm-offside"
+                                                                icon = "tvsa-mxm-offside";
                                                                 break;
                                                             case "tirodeesquina":
-                                                                icon = "tvsa-mxm-cornerkick"
+                                                                icon = "tvsa-mxm-cornerkick";
                                                                 break;
                                                             case "iniciaelpartido":
-                                                                icon = "tvsa-mxm-startfirsthalf"
+                                                                icon = "tvsa-mxm-startfirsthalf";
                                                                 break;
                                                             case "iniciasegundotiempo":
-                                                                icon = "tvsa-mxm-startsecondhalf"
+                                                                icon = "tvsa-mxm-startsecondhalf";
                                                                 break;
                                                             case "-":
-                                                                icon = "tvsa-mxm-startovertime"
+                                                                icon = "tvsa-mxm-startovertime";
                                                                 break;
                                                             case "iniciaprimertiempoextra":
-                                                                icon = "tvsa-mxm-startextrafirsthalf"
+                                                                icon = "tvsa-mxm-startextrafirsthalf";
                                                                 break;
                                                             case "iniciasegundotiempoextra":
-                                                                icon = "tvsa-mxm-startextrasecondhalf"
+                                                                icon = "tvsa-mxm-startextrasecondhalf";
                                                                 break;
                                                             case "--":
-                                                                icon = "tvsa-mxm-penalties"
+                                                                icon = "tvsa-mxm-penalties";
                                                                 break;
                                                             case "finalizaelpartido":
-                                                                icon = "tvsa-mxm-gameend"
+                                                                icon = "tvsa-mxm-gameend";
                                                                 break;
                                                             case "pegaenelposte":
-                                                                icon = "tvsa-mxm-crossbar"
+                                                                icon = "tvsa-mxm-crossbar";
                                                                 break;
                                                             case "pasaporafuera":
-                                                                icon = "tvsa-mxm-out"
+                                                                icon = "tvsa-mxm-out";
                                                                 break;
                                                             case "penal":
-                                                                icon = "tvsa-mxm-penaltykick"
+                                                                icon = "tvsa-mxm-penaltykick";
                                                                 break;
                                                             case "atajada":
-                                                                icon = "tvsa-mxm-block"
+                                                                icon = "tvsa-mxm-block";
                                                                 break;
                                                             case "autogollocal":
-                                                                icon = "tvsa-mxm-owngoal"
+                                                                icon = "tvsa-mxm-owngoal";
                                                                 break;
                                                             case "autogolvisitante":
-                                                                icon = "tvsa-mxm-owngoal"
+                                                                icon = "tvsa-mxm-owngoal";
                                                                 break;
                                                             case "gollocal":
-                                                                icon = "tvsa-mxm-goal"
+                                                                icon = "tvsa-mxm-goal";
                                                                 break;
                                                             case "golvisitante":
-                                                                icon = "tvsa-mxm-goal"
+                                                                icon = "tvsa-mxm-goal";
                                                                 break;
                                                             case "golpenallocal":
-                                                                icon = "tvsa-mxm-goal"
+                                                                icon = "tvsa-mxm-goal";
                                                                 break;
                                                             case "golpenalvisitante":
-                                                                icon = "tvsa-mxm-goal"
+                                                                icon = "tvsa-mxm-goal";
                                                                 break;
                                                             case "falta":
-                                                                icon = "tvsa-mxm-foul"
+                                                                icon = "tvsa-mxm-foul";
                                                                 break;
                                                             case "comentario":
-                                                                icon = "tvsa-mxm-comment"
+                                                                icon = "tvsa-mxm-comment";
                                                                 break;
                                                             case "datoestadistico":
-                                                                icon = "tvsa-mxm-statisticdata"
+                                                                icon = "tvsa-mxm-statisticdata";
                                                                 break;
                                                             case "entraaljuego":
-                                                                icon = "tvsa-mxm-playerin"
+                                                                icon = "tvsa-mxm-playerin";
                                                                 break;
                                                             case "saledeljuego":
-                                                                icon = "tvsa-mxm-playerout"
+                                                                icon = "tvsa-mxm-playerout";
                                                                 break;
                                                             case "suspenciontemporaljuego":
-                                                                icon = "tvsa-mxm-suspended"
+                                                                icon = "tvsa-mxm-suspended";
                                                                 break;
                                                             case "lesion":
-                                                                icon = "tvsa-mxm-lesion"
+                                                                icon = "tvsa-mxm-lesion";
                                                                 break;
                                                             default:
                                                                 icon = data[equipoString].substitutes[i].actions[a].type.toLowerCase();
@@ -1071,7 +1071,7 @@
                                                     }
                                                     actions += '</span>';
                                                 }
-                                                if (actions == '') {
+                                                if (actions === '') {
                                                     toolact += 'noactions';
                                                 }
 
@@ -1133,7 +1133,7 @@
                         console.log("error update jugadores");
 
 
-                    })
+                    });
 
 
             }, //updatePlayers
@@ -1360,91 +1360,91 @@
                     for (var q = 0; q < array.length; q++) {
                         switch (array[q].type.toLowerCase()) {
                             case "amonestacion":
-                                clase = "tvsa-mxm-yellowcard"
+                                clase = "tvsa-mxm-yellowcard";
                                 break;
                             case "segundaamonestacion":
-                                clase = "tvsa-mxm-secondyellowcard"
+                                clase = "tvsa-mxm-secondyellowcard";
                                 break;
                             case "expulsion":
-                                clase = "tvsa-mxm-redcard"
+                                clase = "tvsa-mxm-redcard";
                                 break;
                             case "fueradelugar":
-                                clase = "tvsa-mxm-offside"
+                                clase = "tvsa-mxm-offside";
                                 break;
                             case "tirodeesquina":
-                                clase = "tvsa-mxm-cornerkick"
+                                clase = "tvsa-mxm-cornerkick";
                                 break;
                             case "iniciaelpartido":
-                                clase = "tvsa-mxm-startfirsthalf"
+                                clase = "tvsa-mxm-startfirsthalf";
                                 break;
                             case "iniciasegundotiempo":
-                                clase = "tvsa-mxm-startsecondhalf"
+                                clase = "tvsa-mxm-startsecondhalf";
                                 break;
                             case "-":
-                                clase = "tvsa-mxm-startovertime"
+                                clase = "tvsa-mxm-startovertime";
                                 break;
                             case "iniciaprimertiempoextra":
-                                clase = "tvsa-mxm-startextrafirsthalf"
+                                clase = "tvsa-mxm-startextrafirsthalf";
                                 break;
                             case "iniciasegundotiempoextra":
-                                clase = "tvsa-mxm-startextrasecondhalf"
+                                clase = "tvsa-mxm-startextrasecondhalf";
                                 break;
                             case "--":
-                                clase = "tvsa-mxm-penalties"
+                                clase = "tvsa-mxm-penalties";
                                 break;
                             case "finalizaelpartido":
-                                clase = "tvsa-mxm-gameend"
+                                clase = "tvsa-mxm-gameend";
                                 break;
                             case "pegaenelposte":
-                                clase = "tvsa-mxm-crossbar"
+                                clase = "tvsa-mxm-crossbar";
                                 break;
                             case "pasaporafuera":
-                                clase = "tvsa-mxm-out"
+                                clase = "tvsa-mxm-out";
                                 break;
                             case "penal":
-                                clase = "tvsa-mxm-penaltykick"
+                                clase = "tvsa-mxm-penaltykick";
                                 break;
                             case "atajada":
-                                clase = "tvsa-mxm-block"
+                                clase = "tvsa-mxm-block";
                                 break;
                             case "autogollocal":
-                                clase = "tvsa-mxm-owngoal"
+                                clase = "tvsa-mxm-owngoal";
                                 break;
                             case "autogolvisitante":
-                                clase = "tvsa-mxm-owngoal"
+                                clase = "tvsa-mxm-owngoal";
                                 break;
                             case "gollocal":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "golvisitante":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "golpenallocal":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "golpenalvisitante":
-                                clase = "tvsa-mxm-goal"
+                                clase = "tvsa-mxm-goal";
                                 break;
                             case "falta":
-                                clase = "tvsa-mxm-foul"
+                                clase = "tvsa-mxm-foul";
                                 break;
                             case "comentario":
-                                clase = "tvsa-mxm-comment"
+                                clase = "tvsa-mxm-comment";
                                 break;
                             case "datoestadistico":
-                                clase = "tvsa-mxm-statisticdata"
+                                clase = "tvsa-mxm-statisticdata";
                                 break;
                             case "entraaljuego":
-                                clase = "tvsa-mxm-playerin"
+                                clase = "tvsa-mxm-playerin";
                                 break;
                             case "saledeljuego":
-                                clase = "tvsa-mxm-playerout"
+                                clase = "tvsa-mxm-playerout";
                                 break;
                             case "suspenciontemporaljuego":
-                                clase = "tvsa-mxm-suspended"
+                                clase = "tvsa-mxm-suspended";
                                 break;
                             case "lesion":
-                                clase = "tvsa-mxm-lesion"
+                                clase = "tvsa-mxm-lesion";
                                 break;
                             default:
                                 clase = array[q].type.toLowerCase();
@@ -1495,7 +1495,7 @@
                     } else if (positionPlayerM === "F") {
                         localdelanteros.push(local);
                     } else {
-                        localotros.push(local)
+                        localotros.push(local);
                     }
 
 
@@ -1541,7 +1541,7 @@
                     } else if (positionPlayerM === "F") {
                         visitdelanteros.push(visit);
                     } else {
-                        visitotros.push(visit)
+                        visitotros.push(visit);
                     }
                 };
                 var visitGlobal = visitportero.concat(visitdefensas, visitmedios, visitdelanteros, visitotros);
@@ -1670,21 +1670,21 @@
                     $("#jugadoresvisitTIM").find(".player_td").each(function(index) {
                         var contador = index + 1;
                         if ($(this).height() > $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height()) {
-                            $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height($(this).height())
-                            $(this).height($(this).height())
+                            $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height($(this).height());
+                            $(this).height($(this).height());
                         } else {
-                            $(this).height($("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height())
-                            $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height($(this).height())
+                            $(this).height($("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height());
+                            $("#jugadoreslocalTIM").find(".player_td:nth-child(" + contador + ")").height($(this).height());
                         }
                     });
                     $("#visitbandaTIM").find(".player_td").each(function(index) {
                         var contador2 = index + 1;
                         if ($(this).height() > $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height()) {
-                            $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height($(this).height())
-                            $(this).height($(this).height())
+                            $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height($(this).height());
+                            $(this).height($(this).height());
                         } else {
-                            $(this).height($("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height())
-                            $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height($(this).height())
+                            $(this).height($("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height());
+                            $("#localbancaTIM").find(".player_td:nth-child(" + contador2 + ")").height($(this).height());
                         }
                     });
                 }
