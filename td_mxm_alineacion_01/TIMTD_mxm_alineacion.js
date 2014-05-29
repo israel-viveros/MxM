@@ -556,7 +556,8 @@
 
             verificar_views: function() {
                 console.log(wdg_smex_strategy.urlview);
-                var offCancha = 0;
+                var offCancha = 0,
+                    offpromedio = 1;
 
                 $.ajax({
                     url: wdg_smex_strategy.urlview,
@@ -564,19 +565,22 @@
                     dataType: 'json'
                 })
                     .done(function(data) {
-                        //console.log("success");
-                        //console.log(data);
 
                         for (var i = 0; i < data.elementos.length; i++) {
                             //console.log(data.elementos[i].id);
                             if (data.elementos[i].id === "chkCampo") {
                                 offCancha = data.elementos[i].activo;
                             }
+                            if (data.elementos[i].id === "campo-campo_promedTeamInField") {
+                                offpromedio = data.elementos[i].activo;
+                            }
                         };
 
                         if (parseInt(offCancha) === 0) {
-                            //console.log("es cero")
                             GlobalThis.hide('fast');
+                        }
+                        if (parseInt(offpromedio) === 0) {
+                            $("#AlineacionPromedioTIM").hide('fast');
                         }
 
                     })
