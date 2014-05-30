@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.9
+ *   Version: 1.3.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -206,7 +206,7 @@
 
                         var a = new Date(FechaPartido);
                         var b = new Date(fechas);
-                        //b = new Date('2014/04/22 13:31:00');
+                        //b = new Date('2014/05/31 14:00:00');
 
 
                         var msDateA = Date.UTC(a.getFullYear(), a.getMonth() + 1, a.getDate());
@@ -241,11 +241,11 @@
                                     //GlobalThis.find('.score').css('visibility', 'visible');
                                 } else {
 
-                                    //Faltan 15 min para que empieze
+                                    //Faltan 60 min para que empieze
                                     console.log(restaAntes);
                                     if (parseInt(restaAntes) < minutosPrevio && parseInt(restaAntes) > 0) {
-                                        console.log("Estamos a menos de 15 min del partido");
-                                        tiempoActualizacion = 20000; // 5 min
+                                        console.log("Estamos a menos de 60 min del partido");
+                                        tiempoActualizacion = 20000; // 20 seg
                                     }
 
                                 }
