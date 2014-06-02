@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.3
+ *   Version: 1.2.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1717,25 +1717,38 @@
                 var maquetado = "",
                     localM,
                     visitM, finalM = "",
+                    TipoGolLocal = "",
+                    TipoGolVisit = "",
+                    tmpGol = "",
                     arrayGlobal = new Array();
                 if (local !== '') {
                     for (var i = 0; i < local.length; i++) {
+                        tmpGol = local[i].formaGol;
+                        TipoGolLocal = (tmpGol === "Gol de Fuera del Area" || tmpGol === "Gol de Penal" || tmpGol === "Autogol" || tmpGol === "Gol de Tiro Libre") ? tmpGol : '';
+                        if (TipoGolLocal === "" && local[i].assistant_player !== "") {
+                            TipoGolLocal = "Asistencia de " + local[i].assistant_player;
+                        }
                         localM = "";
                         localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                         localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                        localM += (typeof(local[i].label) !== "undefined") ? '<span class="textcolor-title2">' + local[i].label + '</span></p></div>' : '</div>';
+                        localM += (TipoGolLocal !== "") ? '<span class="textcolor-title2">' + TipoGolLocal + '</span></p></div>' : '</div>';
                         localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
                         arrayGlobal.push(localM);
                     };
                 }
                 if (visit !== '') {
                     for (var l = 0; l < visit.length; l++) {
+                        tmpGol = visit[l].formaGol;
+                        TipoGolVisit = (tmpGol === "Gol de Fuera del Area" || tmpGol === "Gol de Penal" || tmpGol === "Autogol" || tmpGol === "Gol de Tiro Libre") ? tmpGol : '';
+                        if (TipoGolVisit === "" && visit[l].assistant_player !== "") {
+                            TipoGolVisit = "Asistencia de " + visit[l].assistant_player;
+                        }
                         visitM = "";
                         visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '">';
                         visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                         visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                        visitM += (typeof(visit[l].label) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].label + '</span></p></div>' : '</div>';
+                        visitM += (TipoGolVisit !== "") ? '<span class="textcolor-title2">' + TipoGolVisit + '</span></p></div>' : '</div>';
                         visitM += '<div class="dotted-left marcador dotted-left"><p>' + visit[l].current_score + '</p></div></div>';
                         arrayGlobal.push(visitM);
                     };
@@ -1759,17 +1772,25 @@
             },
             updateGolesAnotados: function(local, visit, namelocal, namevisit) {
                 var arrayGlobal = new Array(),
-                    nuevoFinal = "";
+                    nuevoFinal = "",
+                    TipoGolLocal = "",
+                    TipoGolVisit = "",
+                    tmpGol = "";
                 var actualNow = parseInt(local.length) + parseInt(visit.length);
                 var actualGoles = parseInt(wdg_smex_strategy.tagAlineacionGoles.find('.block_container').size());
                 if (actualNow > actualGoles) {
                     if (local !== '') {
                         for (var i = 0; i < local.length; i++) {
+                            tmpGol = local[i].formaGol;
+                            TipoGolLocal = (tmpGol === "Gol de Fuera del Area" || tmpGol === "Gol de Penal" || tmpGol === "Autogol" || tmpGol === "Gol de Tiro Libre") ? tmpGol : '';
+                            if (TipoGolLocal === "" && local[i].assistant_player !== "") {
+                                TipoGolLocal = "Asistencia de " + local[i].assistant_player;
+                            }
                             localM = "";
                             localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '" style="display:none;">';
                             localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                             localM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
-                            localM += (typeof(local[i].label) !== "undefined") ? '<span class="textcolor-title2">' + local[i].label + '</span></p></div>' : '';
+                            localM += (TipoGolLocal !== "") ? '<span class="textcolor-title2">' + TipoGolLocal + '</span></p></div>' : '';
                             localM += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div></div>';
                             //console.log($('#goal' + local[i].minute + ''));
                             if (!$('#goal' + local[i].minute + '').length) {
@@ -1780,11 +1801,16 @@
                     }
                     if (visit !== '') {
                         for (var l = 0; l < visit.length; l++) {
+                            tmpGol = visit[l].formaGol;
+                            TipoGolVisit = (tmpGol === "Gol de Fuera del Area" || tmpGol === "Gol de Penal" || tmpGol === "Autogol" || tmpGol === "Gol de Tiro Libre") ? tmpGol : '';
+                            if (TipoGolVisit === "" && visit[l].assistant_player !== "") {
+                                TipoGolVisit = "Asistencia de " + visit[l].assistant_player;
+                            }
                             visitM = "";
                             visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '" style="display:none">';
                             visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                             visitM += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
-                            visitM += (typeof(visit[l].label) !== "undefined") ? '<span class="textcolor-title2">' + visit[l].label + '</span></p></div>' : '';
+                            visitM += (TipoGolVisit !== "") ? '<span class="textcolor-title2">' + TipoGolVisit + '</span></p></div>' : '';
                             visitM += '<div class="dotted-left marcador dotted-left"><p>' + visit[l].current_score + '</p></div></div>';
                             //console.log($('#goal' + visit[l].minute + ''));
                             if (!$('#goal' + visit[l].minute + '').length) {
