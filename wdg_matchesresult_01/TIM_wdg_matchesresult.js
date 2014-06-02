@@ -378,7 +378,7 @@
                             'position': 'relative'
                         }).text(tituloNue).fadeIn('slow');
                     }
-                    console.log("comparando tiempos: " + textoLink + " - " + textoLinkNuevo);
+                    //console.log("comparando tiempos: " + textoLink + " - " + textoLinkNuevo);
                     if (textoLink !== textoLinkNuevo) {
                         selectorTMP.find(".wdg_match_01_extra span").html(textoLinkNuevo);
                     }
