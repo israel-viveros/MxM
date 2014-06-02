@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 4.0.2
+ *   Version: 4.0.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -329,7 +329,7 @@
             },
             updateGoles: function(data) {
                 console.log(data);
-                var selectorTMP, NuevoGolV, ActGolV, NuevoGolL, ActGolL, tituloAct, tituloNue;
+                var selectorTMP, NuevoGolV, ActGolV, NuevoGolL, ActGolL, tituloAct, tituloNue, textoLink, textoLinkNuevo;
                 for (var o = 0; o < data.matches.match.length; o++) {
                     var tituloMatch = "";
                     if ((String(data.matches.match[o].period) === "P")) {
@@ -342,6 +342,8 @@
                             console.log(tituloMatch);
                         }
                     }
+
+                    textoLinkNuevo = data.matches.match[o].txtLink;
                     //console.log(data.matches.match[o])
                     selectorTMP = $("#" + data.matches.match[o].TimeStamp);
                     ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text());
@@ -350,6 +352,7 @@
                     NuevoGolV = String(data.matches.match[o].equipos.visit.goals);
                     tituloAct = selectorTMP.find(".textcolor-title5").text();
                     tituloNue = String(tituloMatch);
+                    textoLink = selectorTMP.find(".wdg_match_01_extra span").text();
 
                     //console.log("TITLE"+tituloAct+"<->"+tituloNue);
                     //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
@@ -374,6 +377,10 @@
                             'display': 'none',
                             'position': 'relative'
                         }).text(tituloNue).fadeIn('slow');
+                    }
+                    console.log("comparando tiempos: " + textoLink + " - " + textoLinkNuevo);
+                    if (textoLink !== textoLinkNuevo) {
+                        selectorTMP.find(".wdg_match_01_extra span").html(textoLinkNuevo);
                     }
 
 
