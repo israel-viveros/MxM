@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.0
+ *   Version: 1.3.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -43,6 +43,8 @@
 
             drawHeader: function(data) {
                 //console.log(data);
+                var logolocal = (data.equipoLocal.url !== "") ? '<a target="_blank" href="' + data.equipoLocal.url + '"><img src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48"></a>' : '<img src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48">';
+                var logoVisit = (data.equipoVisitante.url !== "") ? '<a target="_blank" href="' + data.equipoVisitante.url + '"><img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '"></a>' : '<img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '">';
                 var MaquetadoHEader = "",
                     minuto = (parseInt(data.minuto) !== 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
@@ -58,7 +60,7 @@
                 MaquetadoHEader += '<div class="leftside">';
                 MaquetadoHEader += (settings.tema === 'mundial') ? '<div class="padre">' : '';
                 MaquetadoHEader += '<div class="team1">';
-                MaquetadoHEader += '<div class="escudo"><img src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48"></div>';
+                MaquetadoHEader += '<div class="escudo">' + logolocal + '</div>';
                 MaquetadoHEader += '<div class="equipo"><span>' + data.equipoLocal.nombre + '</span></div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoLocal.goles + '</div>';
                 MaquetadoHEader += (data.equipoLocal.penales === "" || parseInt(data.equipoLocal.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoLocal.penales + '</span> PENALES</div>';
@@ -68,10 +70,10 @@
                 MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
                 MaquetadoHEader += '<div class="equipo"><span>' + data.equipoVisitante.nombre + '</span></div>';
-                MaquetadoHEader += '<div class="escudo"><img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '"></div>';
+                MaquetadoHEader += '<div class="escudo">' + logoVisit + '</div>';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="team2_m">';
-                MaquetadoHEader += (data.equipoVisitante.lineupImage !== "") ? '<div class="escudo"><img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '"></div>' : '';
+                MaquetadoHEader += (data.equipoVisitante.lineupImage !== "") ? '<div class="escudo">' + logoVisit + '</div>' : '';
                 MaquetadoHEader += '<div class="equipo"><span>' + data.equipoVisitante.nombre + '</span></div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
                 MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
