@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.1
+ *   Version: 1.3.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -43,12 +43,14 @@
 
             drawHeader: function(data) {
                 //console.log(data);
-                var logolocal = (data.equipoLocal.url !== "") ? '<a target="_blank" href="' + data.equipoLocal.url + '"><img src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48"></a>' : '<img src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="48">';
-                var logoVisit = (data.equipoVisitante.url !== "") ? '<a target="_blank" href="' + data.equipoVisitante.url + '"><img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '"></a>' : '<img src="' + data.equipoVisitante.lineupImage + '" width="48" height="48" alt="' + data.equipoVisitante.nombre + '">';
+                var logolocal = '<img class="linkbanderalocal" src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="36">';
+                var logoVisit = '<img class="linkbanderavisit" src="' + data.equipoVisitante.lineupImage + '" width="48" height="36" alt="' + data.equipoVisitante.nombre + '">';
+                var nameLocal = '<span class="linkbanderalocal">' + data.equipoLocal.nombre + '</span>';
+                var nameVisit = '<span class="linkbanderavisit">' + data.equipoVisitante.nombre + '</span>';
                 var MaquetadoHEader = "",
                     minuto = (parseInt(data.minuto) !== 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
-                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="linklocalTIM">' + data.equipoLocal.url + '</span> <span id="linkvisitTIM">' + data.equipoVisitante.url + '</span> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + data.equipoLocal.smallImage + '</span> <span id="visitImgTIM" class="hidden">' + data.equipoVisitante.smallImage + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo !== "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
@@ -61,7 +63,7 @@
                 MaquetadoHEader += (settings.tema === 'mundial') ? '<div class="padre">' : '';
                 MaquetadoHEader += '<div class="team1">';
                 MaquetadoHEader += '<div class="escudo">' + logolocal + '</div>';
-                MaquetadoHEader += '<div class="equipo"><span>' + data.equipoLocal.nombre + '</span></div>';
+                MaquetadoHEader += '<div class="equipo">' + nameLocal + '</div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoLocal.goles + '</div>';
                 MaquetadoHEader += (data.equipoLocal.penales === "" || parseInt(data.equipoLocal.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoLocal.penales + '</span> PENALES</div>';
                 MaquetadoHEader += '</div>';
@@ -69,12 +71,12 @@
                 MaquetadoHEader += '<div class="team2">';
                 MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
-                MaquetadoHEader += '<div class="equipo"><span>' + data.equipoVisitante.nombre + '</span></div>';
+                MaquetadoHEader += '<div class="equipo">' + nameVisit + '</div>';
                 MaquetadoHEader += '<div class="escudo">' + logoVisit + '</div>';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '<div class="team2_m">';
                 MaquetadoHEader += (data.equipoVisitante.lineupImage !== "") ? '<div class="escudo">' + logoVisit + '</div>' : '';
-                MaquetadoHEader += '<div class="equipo"><span>' + data.equipoVisitante.nombre + '</span></div>';
+                MaquetadoHEader += '<div class="equipo">' + nameVisit + '</div>';
                 MaquetadoHEader += '<div class="score">' + data.equipoVisitante.goles + '</div>';
                 MaquetadoHEader += (data.equipoVisitante.penales === "" || parseInt(data.equipoVisitante.penales) === 0) ? '<div class="penales" style="visibility:hidden"><span class="penal"></span> PENALES</div>' : '<div class="penales"><span class="penal">' + data.equipoVisitante.penales + '</span> PENALES</div>';
                 MaquetadoHEader += '</div>';
@@ -113,6 +115,22 @@
 
 
                 (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : wdf_sportResult.IdPestanasMenu.hide();
+
+                //clicked banderas
+
+                $(document).on('click', '.linkbanderalocal', function(event) {
+                    event.preventDefault();
+                    var objvisil = $("#linklocalTIM").text();
+                    console.log("click local");
+                    (objvisil !== "") ? window.open(objvisil, '_blank') : '';
+                });
+
+                $(document).on('click', '.linkbanderavisit', function() {
+                    event.preventDefault();
+                    var objvisiv = $("#linkvisitTIM").text();
+                    console.log("click ");
+                    (objvisiv !== "") ? window.open(objvisiv, '_blank') : '';
+                });
 
             }, // End drawHeader
 
@@ -303,7 +321,7 @@
                 MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
                 MaqMenu += (parseInt(settings.idteam) === 25521 || parseInt(settings.idteam) === 25395 || parseInt(settings.idteam) === 25487 || parseInt(settings.idteam) === 25488) ? '<li class="last nav_smnu_sports_01_block camara360"><a href="camara360.html" title="camara" target="_parent">C\u00E1mara 360</a></li>' : '';
-                MaqMenu += (settings.tema === "mundial") ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
+                MaqMenu += (settings.tema === "mundial" && settings.idtorneo !== 369) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul></div></div>';
                 MaqMenu += '<div class="navarrowright"><a class="wdg_matchesresult_navright" href="#right">';
                 MaqMenu += '<span class="navrighticon"><i class="tvsa-double-caret-right active"></i></span></a></div>';
