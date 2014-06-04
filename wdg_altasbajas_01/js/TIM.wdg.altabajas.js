@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1
+ *   Version: 1.2.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -8,6 +8,7 @@
     $.fn.wdgAltasbajas = function(parametros) {
         var setting = $.extend({
             'idTournament': 0,
+            'nameTournament': 0,
             'abbody': false,
             'title': ''
         }, parametros);
@@ -18,7 +19,8 @@
 
         var objAltasbajas = {
             feedEquipos: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTournament + '/teamsclassification.js',
-            feedDraft: 'http://lab.israelviveros.com/draft/' + setting.idTournament + '/draft.js',
+            //feedDraft: 'http://lab.israelviveros.com/draft/' + setting.idTournament + '/draft.js',
+            feedDraft: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/draft/' + setting.nameTournament + '/teamdraft.js',
             secondIDdraw: $("#altasbajasbodyTIM"),
 
             iniciaMaquetado: function() {
@@ -110,7 +112,7 @@
                         for (var i = 0; i < data.dataEstadistica.length; i++) {
                             if (i < 18) {
                                 maquetado += '<td class="textcolor-title3" id="lg' + data.dataEstadistica[i].idTeam + '">';
-                                maquetado += '<a href="' + data.dataEstadistica[i].webNameTeam + '.html" target="_parent" class="underline_text">';
+                                maquetado += '<a href="' + document.URL + data.dataEstadistica[i].webNameTeam + '_d.html" target="_parent" class="underline_text">';
                                 maquetado += '<img src="' + data.dataEstadistica[i].urlLogoClub + '" width="24" height="24" alt="#">' + data.dataEstadistica[i].aliasTeam;
                                 maquetado += '</a>';
                                 maquetado += '</td>';
@@ -152,7 +154,7 @@
                     url: objAltasbajas.feedDraft,
                     type: 'GET',
                     dataType: 'jsonp',
-                    jsonpCallback: 'llave',
+                    jsonpCallback: 'teamDraft',
                     cache: false
                 })
                     .done(function(data) {
@@ -234,7 +236,7 @@
             },
 
             secondDraw: function(data) {
-                console.log(data)
+                //console.log(data)
                 var maquetado = "";
                 maquetado += '<div class="wdg_stats_teams_02" data-enhance="false">    ';
                 maquetado += '<h2 class="textcolor-title2">' + setting.title + '</h2>';
@@ -244,7 +246,7 @@
                 for (var i = 0; i < data.dataEstadistica.length; i++) {
 
                     maquetado += '<div class="teams_stadistics">';
-                    maquetado += '<a class="link_table" target="_self" href="' + data.dataEstadistica[i].webNameTeam + '.html">';
+                    maquetado += '<a class="link_table" target="_self" href="' + document.URL + data.dataEstadistica[i].webNameTeam + '_d.html">';
                     maquetado += '<div class="name_team"><h3>' + data.dataEstadistica[i].nameTeam + '</h3></div>';
                     maquetado += '<div class="img_team"><img src="' + data.dataEstadistica[i].urlLogoClub + '" alt="' + data.dataEstadistica[i].nameTeam + '"></div>';
                     maquetado += '<div class="textcolor-title4 tot' + data.dataEstadistica[i].idTeam + '">-</div>';
