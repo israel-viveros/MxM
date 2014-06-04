@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.2
+ *   Version: 1.3.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -598,7 +598,7 @@
             infoequipo: function() {
                 if ($("#datosTIMHeader").length) {
                     clearInterval(wdgLineUpOb.intervaloVe);
-                    var Local = '<img src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>' + $("#visitAbrevTIM").text() + '</h2><img src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
+                    var Local = '<img width="19" height="13" class="linkbanderalocal" src="' + $("#localImgTIM").text() + '"><h2>' + $("#localAbrevTIM").text() + '<span class="rojo">' + $("#localGolesTIM").text() + '</span><span class="grisPequeno">vs</span><span class="rojo">' + $("#visitGolesTIM").text() + '</span>' + $("#visitAbrevTIM").text() + '</h2><img width="19" height="13" class="linkbanderavisit" src="' + $("#visitImgTIM").text() + '"><div style="clear: both; z-index: 920;"></div>';
                     $("#localLineupRTIM, #visitLineupRTIM").html(Local);
 
                     if ($(".wdg_sport_result_01 .team1 .score").css("visibility") === "hidden") {
