@@ -75,7 +75,11 @@
     <script>    
          $(window).load(function() {            
             setTimeout(function(){
-                $("#containerwdg_teamdraft_01").MxMTeamDraft({'idTorneo': 356,'idTeam': 5});                
+                $("#containerwdg_teamdraft_01").MxMTeamDraft({
+                    'idTorneo': 356,
+                    'idTeam': 5,
+                    'nameTournament':'liga-mx-clausura-2014'
+                });                
             },1000);                    
         });
 
