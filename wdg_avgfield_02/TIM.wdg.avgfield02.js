@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.0.1
+ *   Version: 2.0.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -108,13 +108,13 @@
                 maquetado += '<a class="wdg_avgfield_02_red textcolor-title1 ui-link"></a></div>';
                 maquetado += '<div class="wdg_avgfield_02_teams">';
                 maquetado += '<div class="wdg_avgfield_02_teama">';
-                maquetado += '<div class="element">';
-                maquetado += (typeof(data.acciones.local.logoch) !== "undefined") ? '<img src="' + data.acciones.local.logoch + '" alt="' + data.acciones.local.equipo + '">' : '';
+                maquetado += '<div class="element" id="avgTIMLocal">';
+                //maquetado += (typeof(data.acciones.local.logoch) !== "undefined") ? '<img src="' + data.acciones.local.logoch + '" alt="' + data.acciones.local.equipo + '">' : '';
                 maquetado += '</div>              ';
                 maquetado += '</div>';
                 maquetado += '<div class="dotted-right"></div>';
-                maquetado += '<div class="wdg_avgfield_02_teamb">';
-                maquetado += (typeof(data.acciones.visitant.logoch) !== "undefined") ? '<img src="' + data.acciones.visitant.logoch + '" alt="' + data.acciones.visitant.equipo + '">' : '';
+                maquetado += '<div class="wdg_avgfield_02_teamb" id="avgTIMVisit">';
+                //maquetado += (typeof(data.acciones.visitant.logoch) !== "undefined") ? '<img src="' + data.acciones.visitant.logoch + '" alt="' + data.acciones.visitant.equipo + '">' : '';
                 maquetado += '</div>';
                 maquetado += '</div>';
                 maquetado += '</div>';
@@ -175,9 +175,24 @@
                     $(this).css("display", "block");
                 });
 
+                setTimeout(function() {
+                    if ($("#avgTIMLocal").length) {
+                        var LocalmxmImg = '<img class="linkbanderalocal" src="' + $("#localImgTIM").text() + '" width="24" height="18">';
+                        var VisitmxmImg = '<img class="linkbanderavisit" src="' + $("#visitImgTIM").text() + '" width="24" height="18">';
+                        $("#avgTIMLocal").html(LocalmxmImg);
+                        $("#avgTIMVisit").html(VisitmxmImg);
+                    }
+                }, 5000);
+
                 wdgavgfieldObj.listener = setInterval(function() {
                     console.log("buscando etiqueta actualizable..");
                     var objTime = $("#timeUpdateMxM");
+                    if ($("#avgTIMLocal").length) {
+                        var LocalmxmImg = '<img class="linkbanderalocal" src="' + $("#localImgTIM").text() + '" width="24" height="18">';
+                        var VisitmxmImg = '<img class="linkbanderavisit" src="' + $("#visitImgTIM").text() + '" width="24" height="18">';
+                        $("#avgTIMLocal").html(LocalmxmImg);
+                        $("#avgTIMVisit").html(VisitmxmImg);
+                    }
                     console.log(objTime);
                     if (objTime.length) {
                         console.log("Antes: " + wdgavgfieldObj.tmpescuchaListener);
