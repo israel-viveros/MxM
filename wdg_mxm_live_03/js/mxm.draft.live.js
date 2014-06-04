@@ -1,19 +1,21 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1
+ *   Version: 1.2.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
 (function() {
     $.fn.mxmLiveDraft = function(opciones) {
         var setting = $.extend({
-            'idTournament': 0
+            'idTournament': 0,
+            'nameTournament': ''
         }, opciones);
 
         var globalThis = this;
 
         var objLiveDraft = {
-            feedActions: 'http://lab.israelviveros.com/draft/' + setting.idTournament + '/feed.js',
+            //feedActions: 'http://lab.israelviveros.com/draft/' + setting.idTournament + '/feed.js',
+            feedActions: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/draft/' + setting.nameTournament + '/mxmDraft.js',
 
             drawMaquetado: function() {
                 var maquetado = "";
@@ -96,9 +98,9 @@
                             }
                             maquetado += '<li>';
                             maquetado += '<div class="textcolor-title2 time">' + fecha[0] + '.' + nombreMes;
-                            maquetado += ((data[i].hora) !== "undefined") ? '<p>' + data[i].hora + '</p></div>' : '</div>';
+                            maquetado += ((data[i].hora) !== "undefined") ? '<p>' + data[i].hora.substring(0, 5) + '</p></div>' : '</div>';
                             maquetado += '<div class="chronic">';
-                            maquetado += '<div class="logoTeam"><img src="' + data[i].icon + '" alt="Image description"> </div>';
+                            maquetado += '<div class="logoTeam"><img src="' + data[i].icon + '" > </div>';
                             maquetado += (typeof(data[i].Jugador) !== "undefined") ? '<h2>' + data[i].Jugador + '</h2>' : '';
                             maquetado += (typeof(data[i].descripcion) !== "undefined") ? '<div class="chronic_description">' + data[i].descripcion + '</div>' : '';
                             maquetado += '</div>';
