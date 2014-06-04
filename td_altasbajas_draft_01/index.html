@@ -75,7 +75,10 @@
     <script>    
          $(window).load(function() {            
             setTimeout(function(){
-                $("#containerwdg_playerdraft_01").MxMAltasBajasDraft({'idTorneo':'356'});                
+                $("#containerwdg_playerdraft_01").MxMAltasBajasDraft({
+                    'idTorneo':'356',
+                    'nameTournament': 'liga-mx-clausura-2014'
+            });                
             },1000);                    
         });
 
