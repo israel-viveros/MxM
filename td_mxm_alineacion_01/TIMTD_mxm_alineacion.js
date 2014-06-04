@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.5
+ *   Version: 1.2.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -535,8 +535,8 @@
                             clearInterval(wdg_smex_strategy.intervaloVe);
                             var imgLocal = $("#localImgTIM").text();
                             var imgVisit = $("#visitImgTIM").text();
-                            $(".TIMimgLocal").attr('src', imgLocal);
-                            $(".TIMimgVisit").attr('src', imgVisit);
+                            $(".TIMimgLocal").attr('src', imgLocal).addClass('linkbanderalocal');
+                            $(".TIMimgVisit").attr('src', imgVisit).addClass('linkbanderavisit');
 
 
                         }
