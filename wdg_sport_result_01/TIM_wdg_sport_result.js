@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.6
+ *   Version: 1.3.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -117,20 +117,30 @@
                 (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : wdf_sportResult.IdPestanasMenu.hide();
 
                 //clicked banderas
-
+                var objvisil = $("#linklocalTIM").text();
+                var objvisiv = $("#linkvisitTIM").text();
                 $(document).on('click', '.linkbanderalocal', function(event) {
                     event.preventDefault();
-                    var objvisil = $("#linklocalTIM").text();
-                    console.log("click local");
                     (objvisil !== "") ? window.open(objvisil, '_blank') : '';
                 });
 
-                $(document).on('click', '.linkbanderavisit', function() {
+                $(document).on('click', '.linkbanderavisit', function(event) {
                     event.preventDefault();
-                    var objvisiv = $("#linkvisitTIM").text();
-                    console.log("click ");
                     (objvisiv !== "") ? window.open(objvisiv, '_blank') : '';
                 });
+
+                $(document).on('hover', '.linkbanderalocal', function() {
+                    if (objvisil !== "") {
+                        $(this).css('cursor', 'pointer');
+                    }
+                });
+                $(document).on('hover', '.linkbanderavisit', function() {
+                    if (objvisiv !== "") {
+                        $(this).css('cursor', 'pointer');
+                    }
+                });
+
+
 
             }, // End drawHeader
 
