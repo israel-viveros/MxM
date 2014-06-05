@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.3
+ *   Version: 1.3.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -76,7 +76,9 @@
                 maquetado += '<div style="clear: both; z-index: 510;"></div>';
                 maquetado += '</div>';
 
-                maquetado += '<div class="alineacion_partido lineaBajo" id="allbancaTIM" style="z-index: 500;">';
+                maquetado += '<div id="errorLineup" style="display:none">No existe informaci\u00F3n, sobre este partido.</div>';
+
+                maquetado += '<div class="alineacion_partido lineaBajo" id="allbancaTIM" style="z-index: 500;display:none;">';
                 maquetado += '<div class="encabezado_alineacion_partido lineaBajo" style="z-index: 490;">';
                 maquetado += '<h3 class="head_component">Banca</h3>';
                 maquetado += '<div style="clear: both; z-index: 480;"></div>';
@@ -533,9 +535,10 @@
                             $(this).html(bancaVisit);
                         });
 
-                        if (bancalocal === "" && bancaVisit === "") {
-                            $("#allbancaTIM").hide();
+                        if (bancalocal !== "" || bancaVisit !== "") {
+                            $("#allbancaTIM").css('display', 'block');
                         }
+
 
                         var ausenAc,
                             ausenLoc;
@@ -583,11 +586,13 @@
                         globalthis.slideDown('slow', function() {
                             $(this).css('display', 'block');
                         });
-
+                        $("#errorLineup").css('display', 'none');
 
                     })
                     .fail(function() {
                         console.log("error");
+                        $("#allbancaTIM").css('display', 'none');
+                        $("#errorLineup").show('slow');
                     });
 
 
