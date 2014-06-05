@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.6
+ *   Version: 1.2.8
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -23,7 +23,8 @@
         var wdg_smex_strategy = {
 
 
-            urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
+            //urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
+            urlFinalAlienacion: 'http://www.israelviveros.com/televisa-deportes/js/match_lineup.js',
             urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
             urlview: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/view.js',
             // urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
@@ -142,7 +143,8 @@
                 var promedio = new Array();
                 el.find('span.players').fadeOut('fast');
                 $.ajax({
-                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
+                    //url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
+                    url: 'http://www.israelviveros.com/televisa-deportes/js/match_lineup.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'datagame',
                     cache: false,
@@ -528,6 +530,18 @@
 
                         //Modulo expulsados
                         if (expulsadosLocal !== "undefined" || expulsadosVisit !== "undefined") {
+                            var maqModEx = '<div class = "wdg_mxm_plcards_01" >';
+                            maqModEx += '<div class="str_pleca_01 collapsable">';
+                            maqModEx += '<div class="str_pleca_01_title">';
+                            maqModEx += '<h3 class="background-color-pleca1">';
+                            maqModEx += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
+                            maqModEx += '<div class="convocados"><div class="head">';
+                            maqModEx += '<div class="textcolor-title1 player">JUGADOR</div>';
+                            maqModEx += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
+                            maqModEx += '<div class="icon-team2 dotted-left"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
+                            maqModEx += '</div>';
+                            maqModEx += '</div></div></div>';
+                            wdg_smex_strategy.tagExpulsion.html(maqModEx).css('display', 'none');
                             wdg_smex_strategy.Modexpulsados(expulsadosLocal, expulsadosVisit);
                         }
 
@@ -1234,31 +1248,33 @@
                 for (var x = 0; x < arrayGlobal.sort().length; x++) {
                     itemshtml += arrayGlobal.sort()[x];
                 };
-                var maquetado = '<div class = "wdg_mxm_plcards_01" >';
-                maquetado += '<div class="str_pleca_01 collapsable">';
-                maquetado += '<div class="str_pleca_01_title">';
-                maquetado += '<h3 class="background-color-pleca1">';
-                maquetado += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
-                maquetado += '<div class="convocados"><div class="head">';
-                maquetado += '<div class="textcolor-title1 player">JUGADOR</div>';
-                maquetado += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
-                maquetado += '<div class="icon-team2 dotted-left"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgVisit"></div>';
-                maquetado += '</div>' + itemshtml;
-                maquetado += '</div></div></div>';
 
-                if (typeof(visit) !== "undefined" || typeof(local) !== "undefined") {
-                    wdg_smex_strategy.tagExpulsion.html(maquetado);
+                if (itemshtml !== "") {
+                    wdg_smex_strategy.tagExpulsion.show('fast', function() {
+                        $(this).css('display', 'block');
+                    });
+                    wdg_smex_strategy.tagExpulsion.find(".convocados").append(itemshtml);
+                    wdg_smex_strategy.tagExpulsion.find(".bodyt").slideDown('slow', function() {
+                        $(this).css('display', 'block');
+                    });
                 }
+
+
+
+
+
             }, // Modexpulsados
 
             ModexpulsadosUpdate: function(local, visit) {
+
                 var arrayGlobal = new Array(),
                     localm = "",
                     visitm = "",
                     finalHTML = "";
                 var itemfeed = local.length + visit.length;
                 var actualitems = wdg_smex_strategy.tagExpulsion.find(".bodyt").size();
-
+                console.log("itemfeed: " + itemfeed);
+                console.log("actualitems: " + actualitems);
                 if (itemfeed > actualitems) {
                     if (local.length !== 0) {
                         for (var i = 0; i < local.length; i++) {
@@ -1302,14 +1318,21 @@
                         };
 
                     }
+
                     for (var x = 0; x < arrayGlobal.sort().length; x++) {
                         finalHTML += arrayGlobal.sort()[x];
                     };
 
-                    wdg_smex_strategy.tagExpulsion.find(".convocados").append(finalHTML);
-                    wdg_smex_strategy.tagExpulsion.find(".bodyt").slideDown('slow', function() {
-                        $(this).css('display', 'block');
-                    });
+                    if (finalHTML !== "") {
+                        wdg_smex_strategy.tagExpulsion.show('slow', function() {
+                            $(this).css('display', 'block');
+                        });
+                        wdg_smex_strategy.tagExpulsion.find(".convocados").append(finalHTML);
+                        wdg_smex_strategy.tagExpulsion.find(".bodyt").slideDown('slow', function() {
+                            $(this).css('display', 'block');
+                        });
+                    }
+
 
                 }
             },
@@ -1621,9 +1644,9 @@
                 maquetado += visitSub;
                 maquetado += '</div></div>';
 
-                maquetado += '<div class="table_title"><p class="textcolor-title1">Arbitros</p></div>';
 
                 if (typeof(data.referees) !== "undefined") {
+                    maquetado += '<div class="table_title"><p class="textcolor-title1">\u00C1rbitros</p></div>';
                     maquetado += '<div class="referee">';
                     maquetado += '<div class="dotted-right">';
                     if (typeof(data.referees.central) !== "undefined") {
