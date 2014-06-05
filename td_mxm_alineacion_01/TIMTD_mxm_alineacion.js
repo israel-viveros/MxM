@@ -23,8 +23,7 @@
         var wdg_smex_strategy = {
 
 
-            //urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
-            urlFinalAlienacion: 'http://www.israelviveros.com/televisa-deportes/js/match_lineup.js',
+            urlFinalAlienacion: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_lineup.js',
             urlDropdown: 'http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/' + setting.ideventomxm + '/' + setting.idclub + '/matchesclub.js',
             urlview: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/view.js',
             // urlmxmheader: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + setting.ideventomxmtv + '/match_header.js',
@@ -143,8 +142,7 @@
                 var promedio = new Array();
                 el.find('span.players').fadeOut('fast');
                 $.ajax({
-                    //url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
-                    url: 'http://www.israelviveros.com/televisa-deportes/js/match_lineup.js',
+                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'datagame',
                     cache: false,
