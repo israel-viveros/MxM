@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.8
+ *   Version: 1.2.9
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -589,7 +589,7 @@
                         };
 
                         if (parseInt(offCancha) === 0) {
-                            GlobalThis.hide('fast');
+                            GlobalThis.hide('fast').addClass('hiddenimportant');
                         }
                         if (parseInt(offpromedio) === 0) {
                             $("#AlineacionPromedioTIM").hide('fast');
