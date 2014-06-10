@@ -1,6 +1,6 @@
 /*!
- *   TIM Developer: Israel Viveros
- *   Version: 4.0.4
+ * TIM Developer: Israel Viveros
+ *   Version: 4.0.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -11,7 +11,7 @@
             'tickertournament': 0,
             'link': '',
             'tema': 'deportes',
-            'country_code': ''
+            'country_code': 'MEX'
         }, options);
 
         var Globalthis = this;
@@ -255,8 +255,10 @@
 
                         if (setting.tema === "mundial") {
                             //ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
-                            ItemView += (parseInt(contenido[y].EventTournamentId) !== 238) ? '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink + '</a>' : '<a class="textcolor-title1"></a>';
-                            ItemView += '<a class="textcolor-title1"></a>';
+                            var periodNow = contenido[y].period;
+
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
+
                         } else {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
                             ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink.substring(0, numSplit) + '</span></a>';
@@ -270,14 +272,22 @@
                         if (setting.country_code === 'USA') {
                             ItemView += (contenido[y].USAvideo !== "") ? '<a href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         } else if (setting.country_code === 'MEX') {
-                            ItemView += (contenido[y].MXvideo !== "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+
+                            if (setting.tema === "mundial") {
+                                ItemView += (periodNow === "F" && contenido[y].ResumenTransmision !== "" && typeof contenido[y].ResumenTransmision !== "") ? '<a href="' + contenido[y].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "") ? '<a href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                            } else {
+                                ItemView += (contenido[y].MXvideo !== "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                            }
+
+
                         }
                         ItemView += '</div>';
                         ItemView += '</div>';
                         ItemView += '</div>';
                         ItemView += '</li>';
 
-                        (contenido[y].periodabrev.toLowerCase() !== "fin") ? (wdg_matchresult.DeterminaTiempoActualizacion(contenido[y].MatchDate, contenido[y].MatchHour)) : '';
+                        //(contenido[y].periodabrev.toLowerCase() !== "fin") ? (wdg_matchresult.DeterminaTiempoActualizacion(contenido[y].MatchDate, contenido[y].MatchHour)) : '';
                     }
                 };
 
@@ -328,7 +338,6 @@
                 });
             },
             updateGoles: function(data) {
-                console.log(data);
                 var selectorTMP, NuevoGolV, ActGolV, NuevoGolL, ActGolL, tituloAct, tituloNue, textoLink, textoLinkNuevo;
                 for (var o = 0; o < data.matches.match.length; o++) {
                     var tituloMatch = "";
@@ -339,7 +348,6 @@
                             tituloMatch = 'Final del partido';
                         } else {
                             tituloMatch = data.matches.match[o].periodabrev + ' ' + data.matches.match[o].time;
-                            console.log(tituloMatch);
                         }
                     }
 
@@ -352,12 +360,12 @@
                     NuevoGolV = String(data.matches.match[o].equipos.visit.goals);
                     tituloAct = selectorTMP.find(".textcolor-title5").text();
                     tituloNue = String(tituloMatch);
-                    textoLink = selectorTMP.find(".wdg_match_01_extra span").text();
+                    //textoLink = selectorTMP.find(".wdg_match_01_extra span").text();
+                    textoLink = selectorTMP.find(".wdg_match_01_extra p a").eq(0).text();
 
                     //console.log("TITLE"+tituloAct+"<->"+tituloNue);
                     //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
                     //console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
-
 
                     if (ActGolL !== NuevoGolL) {
                         selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({
@@ -380,10 +388,21 @@
                     }
                     //console.log("comparando tiempos: " + textoLink + " - " + textoLinkNuevo);
                     if (textoLink !== textoLinkNuevo) {
-                        selectorTMP.find(".wdg_match_01_extra span").html(textoLinkNuevo);
+                        selectorTMP.find(".wdg_match_01_extra p a").eq(0).html(textoLinkNuevo);
                     }
 
 
+                    if (data.matches.match[o].period !== "P" && setting.tema === "mundial") {
+                        //vivo minuto a minuto
+                        if (data.matches.match[o].period === "F" && data.matches.match[o].ResumenTransmision !== "" && typeof data.matches.match[o].ResumenTransmision !== "undefined") {
+                            //console.log("FINAL con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
+                            selectorTMP.find('.wdg_match_01_icon').html('<a href="' + data.matches.match[o].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>');
+                        } else if (data.matches.match[o].EventUrl !== "") {
+                            //console.log("VIVO con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
+                            selectorTMP.find('.wdg_match_01_icon').html('<a href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>');
+                        }
+
+                    }
 
 
                 };
