@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.1
+ *   Version: 1.4.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -246,7 +246,7 @@
 
                         var a = new Date(FechaPartido);
                         var b = new Date(fechas);
-                        //b = new Date('2014/05/31 14:00:00');
+                        //b = new Date('2014/06/12 15:31:00');
 
 
                         var msDateA = Date.UTC(a.getFullYear(), a.getMonth() + 1, a.getDate());
@@ -277,7 +277,7 @@
                                     if (tagVivo.length) {
                                         tagVivo.removeClass('hidden');
                                     }
-                                    tiempoActualizacion = 20000; // 20 seg
+                                    tiempoActualizacion = 30000; // 30 seg
                                     //GlobalThis.find('.score').css('visibility', 'visible');
                                 } else {
 
@@ -285,7 +285,7 @@
                                     console.log(restaAntes);
                                     if (parseInt(restaAntes) < minutosPrevio && parseInt(restaAntes) > 0) {
                                         console.log("Estamos a menos de 60 min del partido");
-                                        tiempoActualizacion = 20000; // 20 seg
+                                        tiempoActualizacion = 30000; // 30 seg
                                     }
 
                                 }
@@ -303,7 +303,7 @@
                         }
 
                         if (tiempoActualizacion === 0) {
-                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 20000 : 0;
+                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 30000 : 0;
                         }
 
                         console.log("Tiempo de actualizacion: " + tiempoActualizacion);
@@ -318,6 +318,14 @@
                         }
 
                         $("#timeUpdateMxM").text(tiempoActualizacion);
+
+                        if (settings.tema === "mundial") {
+                            if (tiempoActualizacion !== 0) {
+                                $(".interaMenuTim").css('display', 'inline');
+                            } else if (tiempoActualizacion === 0) {
+                                $(".interaMenuTim").css('display', 'none');
+                            }
+                        }
 
 
 
@@ -341,7 +349,7 @@
                 MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
                 MaqMenu += (parseInt(settings.idteam) === 25521 || parseInt(settings.idteam) === 25395 || parseInt(settings.idteam) === 25487 || parseInt(settings.idteam) === 25488) ? '<li class="last nav_smnu_sports_01_block camara360"><a href="camara360.html" title="camara" target="_parent">C\u00E1mara 360</a></li>' : '';
-                MaqMenu += (settings.tema === "mundial" && settings.idtorneo !== 369) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
+                MaqMenu += (settings.tema === "mundial" && settings.idtorneo !== 369) ? '<li class="last nav_smnu_sports_01_block interaMenuTim" style="display:none"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul></div></div>';
                 MaqMenu += '<div class="navarrowright"><a class="wdg_matchesresult_navright" href="#right">';
                 MaqMenu += '<span class="navrighticon"><i class="tvsa-double-caret-right active"></i></span></a></div>';
