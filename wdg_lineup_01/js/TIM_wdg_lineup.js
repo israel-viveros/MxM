@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.4
+ *   Version: 1.3.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -431,6 +431,10 @@
                         if (tipo !== "drop") {
                             $("#nameJALocal").html(data.week);
                             $("#nameJAVisit").html(data.week);
+                        }
+
+                        if (typeof data.lineupLocal.team == "undefined" || typeof data.lineupVisit.team == "undefined") {
+                            $("#errorLineup").show();
                         }
 
 
