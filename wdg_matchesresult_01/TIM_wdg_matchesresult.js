@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 4.0.6
+ *   Version: 4.0.8
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -210,7 +210,6 @@
                                 tituloMatch = contenido[y].periodabrev + ' ' + contenido[y].time;
                             }
                         }
-
                         ItemView += '<li id="' + contenido[y].TimeStamp + '">';
                         ItemView += '<div class="wdg_match_01">';
                         ItemView += '<div class="wdg_match_01_time background-color1">';
@@ -227,7 +226,7 @@
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_teamscore">';
                         ItemView += '<p>';
-                        ItemView += ((String(contenido[y].period) === "P")) ? '<a>-</a>  ' : '<a>' + golesTotalLocal + '</a>  ';
+                        ItemView += (contenido[y].period === "P") ? '<a>-</a>  ' : '<a>' + golesTotalLocal + '</a>  ';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '</div>';
@@ -239,7 +238,7 @@
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_teamscore">';
                         ItemView += '<p>';
-                        ItemView += ((String(contenido[y].period) === "P")) ? '<a>-</a>  ' : '<a>' + golestotalVisit + '</a>  ';
+                        ItemView += (contenido[y].period === "P") ? '<a>-</a>  ' : '<a>' + golestotalVisit + '</a>  ';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '</div><div class="shadow"></div>';
@@ -270,14 +269,14 @@
                         }
                         ItemView += '<div class="wdg_match_01_icon">';
                         if (setting.country_code === 'USA') {
-                            ItemView += (contenido[y].USAvideo !== "") ? '<a href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                            ItemView += (contenido[y].USAvideo !== "") ? '<a target="_blank" href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         } else if (setting.country_code === 'MEX') {
 
                             if (setting.tema === "mundial") {
-                                ItemView += (periodNow === "F" && contenido[y].ResumenTransmision !== "" && typeof contenido[y].ResumenTransmision !== "") ? '<a href="' + contenido[y].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
-                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "") ? '<a href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (periodNow === "F" && contenido[y].ResumenTransmision !== "" && typeof contenido[y].ResumenTransmision !== "") ? '<a target="_blank" href="' + contenido[y].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "") ? '<a target="_blank" href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                             } else {
-                                ItemView += (contenido[y].MXvideo !== "") ? '<a href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (contenido[y].MXvideo !== "") ? '<a target="_blank" href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                             }
 
 
@@ -366,20 +365,25 @@
                     //console.log("TITLE"+tituloAct+"<->"+tituloNue);
                     //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
                     //console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
+                    if (data.matches.match[o].period !== "P") {
+                        console.log("actualizo goles de: ");
+                        console.log(data.matches.match[o]);
+                        if (ActGolL !== NuevoGolL) {
+                            selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({
+                                'display': 'none',
+                                'position': 'relative'
+                            }).text(NuevoGolL).fadeIn('slow');
+                        }
 
-                    if (ActGolL !== NuevoGolL) {
-                        selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({
-                            'display': 'none',
-                            'position': 'relative'
-                        }).text(NuevoGolL).fadeIn('slow');
+                        if (ActGolV !== NuevoGolV) {
+                            selectorTMP.find('.wdg_match_01_teamscore').eq(1).css({
+                                'display': 'none',
+                                'position': 'relative'
+                            }).text(NuevoGolV).fadeIn('slow');
+                        }
                     }
 
-                    if (ActGolV !== NuevoGolV) {
-                        selectorTMP.find('.wdg_match_01_teamscore').eq(1).css({
-                            'display': 'none',
-                            'position': 'relative'
-                        }).text(NuevoGolV).fadeIn('slow');
-                    }
+
                     if (tituloNue !== tituloAct) {
                         selectorTMP.find(".textcolor-title5").css({
                             'display': 'none',
@@ -396,10 +400,10 @@
                         //vivo minuto a minuto
                         if (data.matches.match[o].period === "F" && data.matches.match[o].ResumenTransmision !== "" && typeof data.matches.match[o].ResumenTransmision !== "undefined") {
                             //console.log("FINAL con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
-                            selectorTMP.find('.wdg_match_01_icon').html('<a href="' + data.matches.match[o].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>');
+                            selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>');
                         } else if (data.matches.match[o].EventUrl !== "") {
                             //console.log("VIVO con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
-                            selectorTMP.find('.wdg_match_01_icon').html('<a href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>');
+                            selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>');
                         }
 
                     }
