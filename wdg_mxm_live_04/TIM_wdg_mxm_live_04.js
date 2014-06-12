@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1.4
+ *   Version: 1.1.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -205,7 +205,7 @@
                                 for (var l = 0; l < data.actionsMXM[i].datarelated.length; l++) {
                                     if (data.actionsMXM[i].datarelated[l].type.toLowerCase() === "galeria") {
                                         galeria += '<div class="img_stage_01 not_here" style="display: none;">';
-                                        galeria += '<div class="img_stage_01_image"> <img src="' + data.actionsMXM[i].datarelated[l].url + '" alt="Image description"> </div>';
+                                        galeria += '<div class="img_stage_01_image"> <img src="' + data.actionsMXM[i].datarelated[l].url + '" > </div>';
 
                                         if (typeof data.actionsMXM[i].datarelated[l].imagenTitulo !== "undefined" && typeof data.actionsMXM[i].datarelated[l].imagenDesc !== "undefined") {
                                             galeria += (data.actionsMXM[i].datarelated[l].imagenDesc !== "") ? '<a class="img_stage_01_whtbkg" href="#"><p class="img_stage_01_black">' + data.actionsMXM[i].datarelated[l].imagenTitulo + '</p>' : '';
@@ -214,7 +214,7 @@
                                         }
                                     }
 
-                                    if (data.actionsMXM[i].datarelated[l].type.toLowerCase() === "video") {
+                                    if (data.actionsMXM[i].datarelated[l].type.toLowerCase() === "video" && data.actionsMXM[i].datarelated[l].id !== 0) {
                                         video += '<div class="vid_player_01 not_here" style="display: none;">';
                                         video += '<div class="vid_player_01_image">';
                                         video += '<iframe width="100%" height="100%" src="" data-id="' + data.actionsMXM[i].datarelated[l].id + '" ></iframe>';
@@ -582,7 +582,7 @@
                                     for (var l = 0; l < data.actionsMXM[i].datarelated.length; l++) {
                                         if (data.actionsMXM[i].datarelated[l].type.toLowerCase() === "galeria") {
                                             galeria += '<div class="img_stage_01 not_here" style="display: none;">';
-                                            galeria += '<div class="img_stage_01_image"> <img src="' + data.actionsMXM[i].datarelated[l].url + '" alt="Image description"> </div>';
+                                            galeria += '<div class="img_stage_01_image"> <img src="' + data.actionsMXM[i].datarelated[l].url + '"> </div>';
 
                                             if (typeof data.actionsMXM[i].datarelated[l].imagenTitulo !== "undefined" && typeof data.actionsMXM[i].datarelated[l].imagenDesc !== "undefined") {
                                                 galeria += (data.actionsMXM[i].datarelated[l].imagenDesc !== "") ? '<a class="img_stage_01_whtbkg" href="#"><p class="img_stage_01_black">' + data.actionsMXM[i].datarelated[l].imagenTitulo + '</p>' : '';
@@ -591,7 +591,7 @@
                                             }
                                         }
 
-                                        if (data.actionsMXM[i].datarelated[l].type.toLowerCase() === "video") {
+                                        if (data.actionsMXM[i].datarelated[l].type.toLowerCase() === "video" && data.actionsMXM[i].datarelated[l].id !== 0) {
                                             video += '<div class="vid_player_01 not_here" style="display: none;">';
                                             video += '<div class="vid_player_01_image">';
                                             video += '<iframe width="100%" height="100%" src="" data-id="' + data.actionsMXM[i].datarelated[l].id + '" ></iframe>';
