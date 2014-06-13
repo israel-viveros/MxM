@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.2
+ *   Version: 1.4.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -349,7 +349,7 @@
                 MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
                 MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
                 MaqMenu += (parseInt(settings.idteam) === 25521 || parseInt(settings.idteam) === 25395 || parseInt(settings.idteam) === 25487 || parseInt(settings.idteam) === 25488) ? '<li class="last nav_smnu_sports_01_block camara360"><a href="camara360.html" title="camara" target="_parent">C\u00E1mara 360</a></li>' : '';
-                MaqMenu += (settings.tema === "mundial" && settings.idtorneo !== 369) ? '<li class="last nav_smnu_sports_01_block interaMenuTim" style="display:none"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
+                MaqMenu += (settings.tema === "mundial" && settings.idtorneo !== 369) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul></div></div>';
                 MaqMenu += '<div class="navarrowright"><a class="wdg_matchesresult_navright" href="#right">';
                 MaqMenu += '<span class="navrighticon"><i class="tvsa-double-caret-right active"></i></span></a></div>';
