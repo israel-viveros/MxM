@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 4.0.8
+ *   Version: 4.0.9
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -365,7 +365,7 @@
                     //console.log("TITLE"+tituloAct+"<->"+tituloNue);
                     //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
                     //console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
-                    if (data.matches.match[o].period !== "P") {
+                    if (data.matches.match[o].period !== "P" && data.matches.match[o].period !== "F") {
                         console.log("actualizo goles de: ");
                         console.log(data.matches.match[o]);
                         if (ActGolL !== NuevoGolL) {
@@ -395,13 +395,12 @@
                         selectorTMP.find(".wdg_match_01_extra p a").eq(0).html(textoLinkNuevo);
                     }
 
-
                     if (data.matches.match[o].period !== "P" && setting.tema === "mundial") {
                         //vivo minuto a minuto
                         if (data.matches.match[o].period === "F" && data.matches.match[o].ResumenTransmision !== "" && typeof data.matches.match[o].ResumenTransmision !== "undefined") {
                             //console.log("FINAL con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
                             selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>');
-                        } else if (data.matches.match[o].EventUrl !== "") {
+                        } else if (data.matches.match[o].EventUrl !== "" && data.matches.match[o].period !== "F") {
                             //console.log("VIVO con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
                             selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>');
                         }
