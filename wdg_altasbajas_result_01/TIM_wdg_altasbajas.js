@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.5
+ *   Version: 2.3.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -143,13 +143,10 @@
                                 data = new Array();
                             }
                             jornadasCalendarDTV.dataCalendarH = data;
-                            var i = 0;
-                            for (i = 0; i < jornadasCalendarDTV.dataCalendarH.length; i++) {
-
+                            for (var i = 0; i < jornadasCalendarDTV.dataCalendarH.length; i++) {
                                 var valorj = jornadasCalendarDTV.dataCalendarH[i];
                                 jornadasCalendarDTV.jornadaPresente = i;
-                                var startDate = new Date(valorj.enddate)
-                                name_jor += '<li data-jornada="' + startDate.format('yyyy/mm/dd') + '"><p>' + valorj.name + '</p></li>'
+                                name_jor += '<li data-jornada="' + valorj.enddate.replace(/-/gi, "/") + '"><p>' + valorj.name + '</p></li>'
 
                                 /* if (tiempoActual <= valorj.startstamp) {
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
