@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.0
+ *   Version: 1.3.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -170,6 +170,7 @@
                             promedio.push(data[equipoString].average);
 
                             for (var i = 0; i < data[equipoString].team.length; i++) {
+                                var siexpulsado = 0;
                                 /* arrow styles based on px values */
                                 var arrow = '';
                                 var toolact = '';
@@ -199,6 +200,7 @@
                                                 break;
                                             case "expulsion":
                                                 clase = "tvsa-mxm-redcard";
+                                                siexpulsado = 1;
                                                 break;
                                             case "fueradelugar":
                                                 clase = "tvsa-mxm-offside";
@@ -296,8 +298,9 @@
                                 } else {
                                     vc = "visit";
                                 }
+                                var visiblep = (siexpulsado == 0) ? 'visible' : 'hidden';
                                 imageJugador = (data[equipoString].team[i].image !== "") ? data[equipoString].team[i].image : 'http://i2.esmas.com/img/spacer.gif';
-                                miHTML += '<span data-guid="' + data[equipoString].team[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + positionx + 'px;top:' + positiony + 'px;">' +
+                                miHTML += '<span data-guid="' + data[equipoString].team[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + positionx + 'px;top:' + positiony + 'px;visibility:' + visiblep + '">' +
                                     '<a href="#" title="' + data[equipoString].team[i].nickName + '">' +
                                     '<span class="number textcolor-title2">' + data[equipoString].team[i].number + '</span>' +
                                     '<span class="tooltip ' + toolact + '">' +
@@ -322,6 +325,7 @@
 
                                 //console.log("calcula la alineacion final");
                                 for (var d = 0; d < data[equipoString].substitutes.length; d++) {
+                                    var siexpulsado = 0;
                                     //console.log(data[equipoString].substitutes[d].nickName);;                                    
                                     if (typeof data[equipoString].substitutes[d].actions !== "undefined") {
                                         if (typeof data[equipoString].team[d] !== "undefined" && typeof data[equipoString].team[d].actions !== "undefined") {
@@ -337,6 +341,7 @@
                                                         break;
                                                     case "expulsion":
                                                         icon = "tvsa-mxm-redcard";
+                                                        siexpulsado = 1;
                                                         break;
                                                     case "fueradelugar":
                                                         icon = "tvsa-mxm-offside";
@@ -449,9 +454,9 @@
 
                                                 var nuevoy = data[equipoString].substitutes[d].posx;
                                                 var nuevox = data[equipoString].substitutes[d].posy;
+                                                var visiblejugador = (siexpulsado == 1) ? 'hidden' : 'visible';
 
-
-                                                aliFinal += '<span data-guid="' + data[equipoString].substitutes[d].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + nuevoy + 'px;top:' + nuevox + 'px">' +
+                                                aliFinal += '<span data-guid="' + data[equipoString].substitutes[d].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + nuevoy + 'px;top:' + nuevox + 'px;visibility:' + visiblejugador + '">' +
                                                     '<a href="#" title="' + data[equipoString].substitutes[d].nickName + '">' +
                                                     '<span class="number textcolor-title2">' + data[equipoString].substitutes[d].number + '</span>' +
                                                     '<span class="tooltip">' +
@@ -938,6 +943,7 @@
                             var equipoString = String(equipos[z]);
 
                             for (var i = 0; i < data[equipoString].substitutes.length; i++) {
+                                var siexpulsado = 0;
                                 actionsPlayer = data[equipoString].substitutes[i].actions;
                                 if (typeof actionsPlayer !== "undefined") {
                                     for (var x = 0; x < actionsPlayer.length; x++) {
@@ -994,6 +1000,7 @@
                                                                 break;
                                                             case "expulsion":
                                                                 icon = "tvsa-mxm-redcard";
+                                                                siexpulsado = 1;
                                                                 break;
                                                             case "fueradelugar":
                                                                 icon = "tvsa-mxm-offside";
@@ -1088,8 +1095,8 @@
                                                 }
 
                                                 vc = (equipos[z] === "lineupLocal") ? 'local' : 'visit';
-
-                                                NuevosJugadores += '<span data-guid="' + data[equipoString].substitutes[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + itemleft + ';top:' + itemtop + ';display:none">' +
+                                                var expulsaplayer = (siexpulsado == 1) ? 'hidden' : 'visible';
+                                                NuevosJugadores += '<span data-guid="' + data[equipoString].substitutes[i].idjugador + '" class="player ' + vc + ' ' + arrow + '" style="left:' + itemleft + ';top:' + itemtop + ';display:none;visibility:' + expulsaplayer + '">' +
                                                     '<a href="#" title="' + data[equipoString].substitutes[i].nickName + ' ' + data[equipoString].substitutes[i].nickName + '">' +
                                                     '<span class="number textcolor-title2">' + data[equipoString].substitutes[i].number + '</span>' +
                                                     '<span class="tooltip ' + toolact + '">' +
