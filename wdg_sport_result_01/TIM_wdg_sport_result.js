@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.4
+ *   Version: 1.4.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -95,7 +95,7 @@
 
                 MaquetadoHEader += '<div class="date_venue">';
                 MaquetadoHEader += '<div class="when">' + data.fechaPartidoLetra.replace(/-/g, " ") + ' <span>' + data.horaPartido + '</span></div>';
-                MaquetadoHEader += (typeof data.estadio !== "undefined") ? '<div class="where">Estadio ' + data.estadio.nombre + '<br>' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
+                MaquetadoHEader += (typeof data.estadio !== "undefined" && data.estadio.nombre !== "") ? '<div class="where">Estadio ' + data.estadio.nombre + '<br>' + data.estadio.ciudad + ', ' + data.estadio.pais + '</div>' : '';
                 MaquetadoHEader += (typeof data.datocurioso !== "undefined") ? '<div class="info">' + data.datocurioso + '</div>' : '';
                 MaquetadoHEader += '</div>';
                 MaquetadoHEader += '</div>';
