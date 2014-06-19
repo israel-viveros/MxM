@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.2.0
+ *   Version: 1.2.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -8,7 +8,7 @@
     $.fn.wdgAltasbajas = function(parametros) {
         var setting = $.extend({
             'idTournament': 0,
-            'nameTournament': 0,
+            'nameTournament': '',
             'abbody': false,
             'title': ''
         }, parametros);
@@ -112,8 +112,8 @@
                         for (var i = 0; i < data.dataEstadistica.length; i++) {
                             if (i < 18) {
                                 maquetado += '<td class="textcolor-title3" id="lg' + data.dataEstadistica[i].idTeam + '">';
-                                maquetado += '<a href="' + document.URL + data.dataEstadistica[i].webNameTeam + '_d.html" target="_parent" class="underline_text">';
-                                maquetado += '<img src="' + data.dataEstadistica[i].urlLogoClub + '" width="24" height="24" alt="#">' + data.dataEstadistica[i].aliasTeam;
+                                maquetado += '<a href="' + document.URL.replace(/[\\\/][^\\\/]*$/, '') + '/' + data.dataEstadistica[i].webNameTeam + '_d.html" target="_parent" class="underline_text">';
+                                maquetado += '<img src="' + data.dataEstadistica[i].urlLogoClub + '" width="24" height="24" alt="' + data.dataEstadistica[i].aliasTeam + '">' + data.dataEstadistica[i].aliasTeam;
                                 maquetado += '</a>';
                                 maquetado += '</td>';
 
@@ -246,7 +246,7 @@
                 for (var i = 0; i < data.dataEstadistica.length; i++) {
 
                     maquetado += '<div class="teams_stadistics">';
-                    maquetado += '<a class="link_table" target="_self" href="' + document.URL + data.dataEstadistica[i].webNameTeam + '_d.html">';
+                    maquetado += '<a class="link_table" target="_self" href="' + document.URL.replace(/[\\\/][^\\\/]*$/, '') + '/' + data.dataEstadistica[i].webNameTeam + '_d.html">';
                     maquetado += '<div class="name_team"><h3>' + data.dataEstadistica[i].nameTeam + '</h3></div>';
                     maquetado += '<div class="img_team"><img src="' + data.dataEstadistica[i].urlLogoClub + '" alt="' + data.dataEstadistica[i].nameTeam + '"></div>';
                     maquetado += '<div class="textcolor-title4 tot' + data.dataEstadistica[i].idTeam + '">-</div>';
