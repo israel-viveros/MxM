@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.6
+ *   Version: 2.3.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -640,22 +640,14 @@
                     var clickUrlSef = (conjunto.sef.mxmurl != undefined && conjunto.sef.mxmurl != null && conjunto.sef.mxmurl != '') ? conjunto.sef.mxmurl + sefMxmHash : '';
                 }
                 var clickUrlSef = "";
-                var imagenLocal = "";
-                if (typeof(conjunto.local.team) !== "undefined") {
-                    imagenLocal = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.local.team.img.oficial + '" alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.local.team.img.oficialno + '" alt="' + conjunto.local.name + '">';
-                }
-                var imagenVisit = "";
-                if (typeof(conjunto.visit.team) !== "undefined") {
-                    var imagenVisit = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.visit.team.img.oficial + '" alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.visit.team.img.oficialno + '" alt="' + conjunto.local.name + '">';
-                }
 
-                if (imagenLocal == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '">') {
-                    imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
-                }
 
-                if (imagenVisit == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '">') {
-                    imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
-                }
+                var imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
+
+                var imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
+
+
+
 
                 var golesLocal = (typeof(conjunto.local.team) !== "undefined") ? validaGoles(conjunto.local.team.gol, conjunto.local.team.golstatus, conjunto.fechastamp) : '';
                 var golesVisit = (typeof(conjunto.visit.team) !== "undefined") ? validaGoles(conjunto.visit.team.gol, conjunto.visit.team.golstatus, conjunto.fechastamp) : '';
