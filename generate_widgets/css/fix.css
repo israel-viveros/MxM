@@ -1,0 +1,6 @@
+@media screen {
+	.pure-button-primary, .pure-button-selected, a.pure-button-primary, a.pure-button-selected{background: #A70A0B}
+	#menu .pure-menu-heading{background: rgba(63, 63, 63, 0.33);}
+	  #menu .pure-menu-heading:hover,
+    #menu .pure-menu-heading:focus {color: #FFF}
+}
