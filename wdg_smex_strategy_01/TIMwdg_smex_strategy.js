@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4
+ *   Version: 1.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -111,8 +111,8 @@
                 el.find('span.players').fadeOut('fast');
                 //console.log('cargando--> http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/'+setting.ideventomxm+'/'+IDTemp+'/previo_alineacion.js');				
                 $.ajax({
-                    //url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
-                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/24911/match_lineup.js',
+                    url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.ideventomxm + '/' + IDTemp + '/match_lineup.js',
+                    //url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/24911/match_lineup.js',
                     dataType: 'jsonp',
                     jsonpCallback: 'datagame',
                     cache: false,
