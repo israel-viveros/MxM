@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.7
+ *   Version: 2.3.8
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -642,9 +642,9 @@
                 var clickUrlSef = "";
 
 
-                var imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
+                var imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logo + '"  alt="' + conjunto.local.name + '">';
 
-                var imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logoch + '"  alt="' + conjunto.local.name + '">';
+                var imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logo + '"  alt="' + conjunto.local.name + '">';
 
 
 
