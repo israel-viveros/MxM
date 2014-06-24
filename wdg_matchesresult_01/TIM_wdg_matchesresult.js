@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 4.0.9
+ *   Version: 5.0.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -109,6 +109,13 @@
                 if (setting.tema === "mundial") {
                     Globalthis.attr("data-tema", "mundial");
                 }
+
+                window.onresize = function(event) {
+                    clearTimeout(t);
+                    t = setTimeout(function() {
+                        wdg_matchresult.rezisewindow();
+                    }, 500);
+                };
             }, // END DrawCuerpo
 
 
@@ -172,6 +179,9 @@
                         //console.log(dataFirst);
                         //wdg_matchresult.DrawContentFirst(dataFirst.matches.match,tipo);
                         (tipo === "update") ? wdg_matchresult.updateGoles(dataFirst) : wdg_matchresult.DrawContentFirst(dataFirst.matches.match, tipo);
+                        if (tipo !== "rezise" && tipo !== "update") {
+                            wdg_matchresult.rezisewindow('inicio');
+                        }
                         try {
                             //console.log("SETIMER...");
                             clearInterval(wdg_matchresult.globalTimer);
@@ -210,7 +220,7 @@
                                 tituloMatch = contenido[y].periodabrev + ' ' + contenido[y].time;
                             }
                         }
-                        ItemView += '<li id="' + contenido[y].TimeStamp + '">';
+                        ItemView += '<li id="' + contenido[y].MatchGuid + '">';
                         ItemView += '<div class="wdg_match_01">';
                         ItemView += '<div class="wdg_match_01_time background-color1">';
                         ItemView += '<p>';
@@ -302,13 +312,13 @@
                         objMasc.empty().html(ItemView);
                     });
                     objMasc.fadeIn('slow', function() {
-                        wdg_matchresult.resize();
+                        //wdg_matchresult.resize();
 
                     });
                 }
                 $(".windows8").hide();
 
-
+                /*
                 if ($(window).width() >= 933) {
                     $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(800);
                 }
@@ -320,6 +330,8 @@
                     $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width(3546);
                     $('.wdg_matchesresult_01_theme').css('width', '450px');
                 }
+                */
+
 
             }, // END DrawContentFirst
 
@@ -352,7 +364,9 @@
 
                     textoLinkNuevo = data.matches.match[o].txtLink;
                     //console.log(data.matches.match[o])
-                    selectorTMP = $("#" + data.matches.match[o].TimeStamp);
+                    var selectornuevo = data.matches.match[o].MatchGuid;
+                    selectorTMP = $("#" + selectornuevo);
+                    console.log(selectorTMP);
                     ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text());
                     ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text());
                     NuevoGolL = String(data.matches.match[o].equipos.local.goals);
@@ -411,7 +425,7 @@
                 };
             },
             resize: function() {
-
+                /*
                 if ($(window).width() >= 933) {
                     $(".wdg_matchesresult_todos").show();
                     $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height', '100%');
@@ -436,7 +450,7 @@
                         'height': '118px',
                         'overflow': 'hidden'
                     });
-                }
+                }*/
             },
 
             horaServidor: function() {
@@ -606,6 +620,84 @@
                     }, tiempA);
                 }*/
 
+            },
+            rezisewindow: function(tipo) {
+                var FeedActual = "";
+                $("#FListTournaments").parent().find('a').each(function(index, el) {
+                    if ($(this).hasClass('onShowItem')) {
+                        FeedActual = $(this).data("url");
+                        //wdg_matchresult.LoadFirst($(this).data("url"), "update");
+                    }
+                });
+
+                //625
+                var widthWindow = $(window).width();
+                var carrusel = $('.wdg_matchesresult_01_list#listNow');
+                if (widthWindow <= 625 && setting.tema !== "mundial") {
+                    console.log("Es smartphone");
+                    //if (carrusel.children(".microfiche-screen").length === 0 || tipo === "inicio") {
+                    $(".wdg_matchesresult_todos").hide();
+                    var nuevoWidth = 0;
+                    var esperando = setInterval(function() {
+                        if ($('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li').length) {
+                            clearInterval(esperando);
+                            $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').css({
+                                'height': '132px',
+                                'width': '216px',
+                                'overflow-y': 'hidden',
+                                'overflow-x': 'scroll'
+                            });
+
+                            $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul li').each(function(index, el) {
+                                nuevoWidth = $(this).outerWidth() + nuevoWidth + 15;
+                            });
+                            $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({
+                                'width': nuevoWidth + 'px',
+                                //'width': '207px',
+                                'height': '132px',
+                                'position': 'relative'
+                            });
+                            /* $('.wdg_matchesresult_01_list#listNow').microfiche({
+                                bullets: false,
+                                keyboard: true,
+                                buttons: true,
+                                clickToAdvance: true
+                            });*/
+                        }
+                    }, 500);
+
+
+                    //}
+                } else if (widthWindow <= 948 && setting.tema !== "mundial") {
+                    console.log("es tablet");
+                    //if (carrusel.children(".microfiche-screen").length > 0 || tipo === "inicio") {
+                    $(".wdg_matchesresult_todos").hide();
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({
+                        'height': '300px',
+                        'overflow-y': 'scroll',
+                        'width': '100%',
+                        'overflow-x': 'hidden'
+                    });
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').css('width', '400px');
+
+                    $('.wdg_matchesresult_01_arrows').css('display', 'none');
+                    $('.wdg_matchesresult_contenedor').css('overflow', 'scroll');
+                    //(tipo !== "inicio") ? wdg_matchresult.LoadFirst(FeedActual, 'rezise') : '';
+                    //}
+                } else {
+                    console.log("es desktop");
+                    //if (carrusel.children(".microfiche-screen").length > 0 || tipo === "inicio") {
+                    $(".wdg_matchesresult_todos").show();
+                    $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({
+                        'height': '100%',
+                        'width': '100%'
+                    });
+                    $('.wdg_matchesresult_contenedor').css('overflow', 'visible');
+                    //(tipo !== "inicio") ? wdg_matchresult.LoadFirst(FeedActual, 'rezise') : '';
+                    //}
+                }
+
+
             }
 
 
@@ -630,9 +722,9 @@
             (wdg_matchresult.TickerMaster === 0 && wdg_matchresult.TickerTournamen === 0) ? Globalthis.remove() : '';
         });
 
-        $(window).resize(function(event) {
+        /*$(window).resize(function(event) {
             wdg_matchresult.resize();
-        });
+        });*/
 
 
 
@@ -672,75 +764,7 @@ jQuery(function($) {
         var $unitaryH = $w.outerHeight(true);
         var $round = 1;
         if ($.browser.msie && parseFloat($.browser.version) <= 8) {} else {
-            $(window).resize(function() {
-                var visShow = $show.css('visibility');
-                //var visHide = $hide.css('visibility'); 
-                $unitary = $w.outerWidth(true);
-                $totalWidth = 0;
-                $y.each(function() {
-                    $totalWidth += $(this).outerWidth(true);
-                });
 
-                if ($(window).width() >= 933) {
-                    $round = Math.round($count / 3);
-                    if (($count / 3) > $round)
-                        $m.find('ul').width(800);
-                    else
-                        $m.find('ul').width(800);
-                    $m.find('ul').height(600);
-                    $m.height(600);
-                    $x.find('ul').width(800);
-                    if (visShow === 'hidden') {
-                        $('.wdg_matchesresult_01').animate({
-                            'height': 675,
-                            'width': '100%'
-                        }, 0);
-                    }
-                }
-                if ($(window).width() < 933 && $(window).width() >= 609) {
-
-                    if (visShow === 'hidden') {
-                        $('.wdg_matchesresult_01').animate({
-                            'height': 460
-                        }, 0);
-                    }
-                    // $round = Math.round($count/2);
-
-                    // Se comentan estas lineas ya que modifican el ancho del ul del carrusel y descuadra en tablet
-                    /*if( ($count / 2) > $round )
-                        $m.find('ul').width( (($round + 1) * $unitary) - 152);
-                    else
-                        $m.find('ul').width( ($round * $unitary) - 152);
-					
-                    $m.find('ul').height($unitaryH * 2);*/
-                    // $m.height($unitaryH * 2);
-                    //$x.find('ul').width( $totalWidth + 20 );
-                    // if ( visShow == 'hidden' ) {
-                    //     $('.wdg_matchesresult_01').animate({
-                    //         'height': 460
-                    //     }, 0);
-                    // }
-                }
-                if ($(window).width() < 609) {
-                    // $round = Math.round($count);
-                    // $m.find('ul').width( ($round * $unitary) - 6);
-                    // $m.height($unitaryH + 28);
-                    // $m.find('ul').height($unitaryH);
-                    /*if ( visShow == 'hidden' ) {
-
-                    }*/
-                    $('.wdg_matchesresult_01_theme').css('width', '450px');
-                    $('.wdg_matchesresult_01').animate({
-                        'height': 218
-                    }, 0);
-
-                }
-                $m.animate({
-                    'scrollLeft': 0
-                }, 0);
-
-
-            });
         }
         $m.each(function() {
             var $parent = $(this);
@@ -838,6 +862,7 @@ jQuery(function($) {
             });
 
         });
+        /*
         $(document).ready(function() {
             $('.wdg_matchesresult_01_arrows').css('display', 'none');
             if ($(window).width() >= 933) {
@@ -859,7 +884,7 @@ jQuery(function($) {
                     'scrollLeft': $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').scrollLeft() - $_brinca
                 }, 500);
             });
-        });
+        }); */
 
         /*Monitorea scroll*/
         $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components').scroll(function() {
