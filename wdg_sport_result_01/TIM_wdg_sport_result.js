@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.7
+ *   Version: 1.4.9
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -117,6 +117,24 @@
 
 
                 (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : wdf_sportResult.IdPestanasMenu.hide();
+
+                if (settings.tema === "mundial" && data.tiempo === "Final") {
+                    var arregloNoIntera = new Array(25371, 25374, 25376, 25377, 25379, 25381, 25368, 25370);
+                    var comprueba = arregloNoIntera.indexOf(settings.idteam);
+                    if (comprueba !== -1) {
+                        var borrando = setInterval(function() {
+                            $(".interaMenuTim").remove();
+                            if ($(".interaMenuTim").length === 0) {
+                                clearInterval(borrando);
+                            }
+                        }, 800);
+
+                    }
+
+
+                }
+
+
 
                 //clicked banderas
                 var objvisil = $("#linklocalTIM").text();
@@ -389,7 +407,6 @@
                         }
                     };
 
-                    (settings.idteam === 25368) ? $(".interaMenuTim").remove() : '';
                 }
 
 
