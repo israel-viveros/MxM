@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.0
+ *   Version: 5.0.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -369,8 +369,8 @@
                     console.log(selectorTMP);
                     ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text());
                     ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text());
-                    NuevoGolL = String(data.matches.match[o].equipos.local.goals);
-                    NuevoGolV = String(data.matches.match[o].equipos.visit.goals);
+                    NuevoGolL = data.matches.match[o].equipos.local.goals + data.matches.match[o].equipos.local.penales;
+                    NuevoGolV = data.matches.match[o].equipos.visit.goals + data.matches.match[o].equipos.visit.penales;
                     tituloAct = selectorTMP.find(".textcolor-title5").text();
                     tituloNue = String(tituloMatch);
                     //textoLink = selectorTMP.find(".wdg_match_01_extra span").text();
