@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.6
+ *   Version: 1.4.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -388,6 +388,8 @@
                             wdf_sportResult.IdPestanasMenu.addClass('mexspecial');
                         }
                     };
+
+                    (settings.idteam === 25368) ? $(".interaMenuTim").remove() : '';
                 }
 
 
