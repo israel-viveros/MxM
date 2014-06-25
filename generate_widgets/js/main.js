@@ -143,12 +143,12 @@ var globalWdgs = {
             dataType: 'jsonp',
             jsonpCallback: 'wdgMxM'
         }).done(function(data) {
-            formi += '<div class="pure-control-group"><label for="aligned-name">Torneo:</label><select id="torneo">';
+            //formi += '<select id="torneo">';
             for (var i = 0; i < data.length; i++) {
                 var nombresaneado = data[i].Name.replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
                 formi += '<option data-guid="' + data[i].TournamentGuid + '" data-name="' + nombresaneado + '" data-id="' + data[i].TournamentId + '">' + data[i].Name + '</option>';
             };
-            formi += '</select></div>';
+            //formi += '</select>';
             globalWdgs.dataTorneos = formi;
             console.log("Feed torneos ready!");
         }).fail(function() {
@@ -156,7 +156,7 @@ var globalWdgs = {
         });
     },
     _partidos: function(guidtorneo) {
-        console.log("ME ENVIAN" + guidtorneo);
+        //console.log("ME ENVIAN" + guidtorneo);
         var formi = "";
         $.ajax({
             url: globalWdgs.feedPartidos,
@@ -164,12 +164,13 @@ var globalWdgs = {
             dataType: 'jsonp',
             jsonpCallback: 'wdgMxM'
         }).done(function(data) {
-            formi += '<div class="pure-control-group"><label for="aligned-name">Partido:</label><select id="partido">';
+            //formi += '<select id="partido">';
             for (var i = 0; i < data.length; i++) {
                 formi += (data[i].TournamentGuid === guidtorneo) ? '<option  data-id="' + data[i].MatchId + '">' + data[i].MatchName + '</option>' : '';
             };
-            formi += '</select></div>';
-            console.log(formi);
+            //formi += '</select></div>';
+            //console.log(formi);
+            $("#insertaMatch select").empty().html(formi);
 
         }).fail(function(jqXHR, textStatus) {
             console.log("Request failed: " + textStatus);
@@ -178,32 +179,29 @@ var globalWdgs = {
     },
     _constructForm: function(data, tipo) {
         var formi = "";
-        formi += '<form class="pure-form pure-form-aligned" id="formasigned"><fieldset>';
+
 
         if (data.idTorneo === 1) {
-            formi += globalWdgs.dataTorneos;
+            //formi += globalWdgs.dataTorneos;
+            $("#insertaTorneo select").empty().html(globalWdgs.dataTorneos);
         }
 
 
-        formi += '<div class="pure-controls"><button type="submit" class="pure-button pure-button-primary" id="codesubmit" rel="' + tipo + '">Generar Widget</button></div></fieldset></form>';
-        setInterval(function() {
-            $("#codesubmit").unbind('click').click(function(event) {
-                event.preventDefault();
-                //console.log($(this).attr('rel'));
-                globalWdgs._givemescript($(this).attr('rel'));
-            });
-        }, 1000);
+        //formi += '<div class="pure-controls"><button type="submit" class="pure-button pure-button-primary" id="codesubmit" rel="' + tipo + '">Generar Widget</button></div></fieldset></form>';
 
-        $(document).bind('change', $("select#torneo"), function(event) {
-            //console.log($(this).find('option:selected').data('guid'));
+        $("#codesubmit").unbind('click').click(function(event) {
+            event.preventDefault();
+            //console.log($(this).attr('rel'));
+            globalWdgs._givemescript($(this).attr('rel'));
+        });
+
+        $("#insertaTorneo").bind('change', $("#torneo"), function(event) {
+            console.log("change")
             globalWdgs._partidos($(this).find('option:selected').data('guid'));
         });
 
-        $("select#torneo").change(function() {
-            console.log("hola")
-        });
 
-        $("#formasigned").html(formi);
+        //$("#formasigned").html(formi);
     }
 
 
