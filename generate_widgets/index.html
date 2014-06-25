@@ -10,6 +10,9 @@
 		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
 		<link rel="stylesheet" href="css/baby-blue.css">
 		<link rel="stylesheet" href="css/fix.css">
+
+		<link rel="stylesheet" href="http://localhost/~israelviveros/mxm/global/css/colores.css">
+		<link rel="stylesheet" href="http://localhost/~israelviveros/mxm/global/css/tvsa-icons.css">
 	</head>
 	<body>
 		<div id="layout">
@@ -74,16 +77,15 @@
 			<h1>MxM</h1>
 			<h2>Generador de Widgets</h2>
 		
-			<h2 class="content-subhead" id="nameh1">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum itaque error dolor laborum,</h2>
-			<p>Coloca la siguientes informacion, para poder crear un widget correctamente de MxM o Stats</p>
+			<h2 class="content-subhead" id="nameh1">Selecciona una opcion</p>
 			
 		</div>
         <div class="content" >	
 			
-			<form class="pure-form pure-form-aligned" id="formasigned">
+			<form class="pure-form pure-form-aligned" id="formasigned" style="display:none">
 				<fieldset>
 					<div class="pure-control-group" id="insertaTorneo">
-						<label for="aligned-name">Torneo:</label>
+						<label for="aligned-name">Torneo</label>
                         <select id="torneo" ></select>
 					</div>
 					<div class="pure-control-group" id="insertaMatch">
@@ -93,9 +95,8 @@
 					<div class="pure-control-group">
 						<label for="aligned-foo">Tema</label>
 						<select>
-							<option>lorem impu</option>
-							<option>lorem impu</option>
-							<option>lorem impu</option>
+							<option value=""></option>
+							<option value="mundial">mundial</option>
 						</select>
 					</div>
 					<div class="pure-controls">
@@ -108,7 +109,7 @@
 				</fieldset>
 			</form>
 			
-	<div class="mxmcode">		
+	<div class="mxmcode" style="display:none">		
 			
 			<h2 class="content-subhead">HTML</h2>
 <pre class="code" data-language="html"><code class="rainbow" id="wdgcodehtml"></code></pre>
@@ -122,12 +123,15 @@
 
 <h2 class="content-subhead">Resultado</h2>
 
+<div id="resultcode"></div>
+
 </div>
 
 		</div>
 		</div>
 
 		<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
+		<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
 		<script src="js/main.js"></script>
 	</body>
 </html>

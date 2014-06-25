@@ -79,6 +79,7 @@ var globalWdgs = {
         $("#menu ul a").click(function(event) {
             event.preventDefault();
             globalWdgs._giveform($(this).attr('rel'));
+            $("#codesubmit").attr('rel', $(this).attr('rel'));
         });
 
 
@@ -86,11 +87,13 @@ var globalWdgs = {
     _givemescript: function(tipo) {
         var css = "",
             js = "",
+            js2 = "",
             htmlc = "";
         for (var i = 0; i < globalWdgs.CondfigData.length; i++) {
             var tmpAct = globalWdgs.CondfigData[i];
             if (tmpAct.id === tipo) {
                 console.log(tmpAct);
+
 
                 //HTML
                 htmlc += (tmpAct.html.tags !== "") ? tmpAct.html.tags : '';
@@ -100,6 +103,9 @@ var globalWdgs = {
                 js += (tmpAct.js.actions !== "") ? '<script src="' + tmpAct.js.actions + '"></script>' : '';
                 js += (tmpAct.js.libs !== "") ? '\r<script src="' + tmpAct.js.libs + '"></script>' : '';
                 $("#wdgcodejssrc").html(globalWdgs._htmlEntities(js));
+
+                js2 += (tmpAct.js.tags !== "") ? '<script>' + tmpAct.js.tags + '</script>' : '';
+                $("#wdgcodejs").html(globalWdgs._htmlEntities(js2));
 
                 //css
                 css += (tmpAct.css.mobile !== "") ? '<link rel="stylesheet" href="' + tmpAct.css.mobile + '">' : '';
@@ -111,6 +117,17 @@ var globalWdgs = {
                 $(".mxmcode").slideDown('slow', function() {
                     $(this).css('display', 'block');
                 });
+
+
+                //Pintando el Resultado
+                var resultCode = htmlc + css + js;
+                $("#resultcode").html(resultCode);
+                setTimeout(function() {
+                    $("#resultcode").append(js2);
+                }, 1000);
+
+
+
 
 
 
@@ -180,6 +197,7 @@ var globalWdgs = {
     _constructForm: function(data, tipo) {
         var formi = "";
 
+        $("#formasigned").show();
 
         if (data.idTorneo === 1) {
             //formi += globalWdgs.dataTorneos;
@@ -195,7 +213,7 @@ var globalWdgs = {
             globalWdgs._givemescript($(this).attr('rel'));
         });
 
-        $("#insertaTorneo").bind('change', $("#torneo"), function(event) {
+        $("#insertaTorneo").unbind('change').bind('change', $("#torneo"), function(event) {
             console.log("change")
             globalWdgs._partidos($(this).find('option:selected').data('guid'));
         });
