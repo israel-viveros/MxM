@@ -1,8 +1,163 @@
-/*your js code */ ;
+/*
+wdg_rating_main_01
+*/
+
+;
+(function() {
+    $.fn.MxMRatingMain = function(options) {
+        var setting = $.extend({
+            'idTorneo': 0,
+            'idEvento': 0
+
+        }, options);
+
+        var GlobalThis = this;
+
+        var wdg_rating_main_01 = {
+            //http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/25016/gameplayerdetailjsonp.js                
+            urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
+            tagRatingMain: $("#containerwdg_rating_main_01"),
+
+            posicionTexto: function(posicion) {
+                var posicionTexto;
+                switch (posicion) {
+                    case "GK":
+                        posicionTexto = "Portero";
+                        break;
+                    case "D":
+                        posicionTexto = "Defensa";
+                        break;
+                    case "MF":
+                        posicionTexto = "Medio";
+                        break;
+                    case "F":
+                        posicionTexto = "Delantero";
+                        break;
+
+                    default:
+                        posicionTexto = "<span style='display:block; height:10px; width:50px;'>";
+                }
+                return posicionTexto;
+            },
+
+            pintaInfo: function(dataGamePlayer) {
+                var maquetado = "";
+                var infoArray = new Array();
+
+                for (var i = 0; i < dataGamePlayer.poll['answers']['answer'].length; i++) {
+                    var porc = parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']);
+
+                    infoArray.push({
+                        id: i,
+                        porcentaje: parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']).toFixed(1),
+                        foto: dataGamePlayer.poll['answers']['answer'][i]['photoRaiting'],
+                        nombre: dataGamePlayer.poll['answers']['answer'][i]['namePlayer'],
+                        posicion: wdg_rating_main_01.posicionTexto(dataGamePlayer.poll['answers']['answer'][i]['position']),
+                        club: dataGamePlayer.poll['answers']['answer'][i]['clubname']
+                    });
+                }
+
+                infoArray.sort(function(a, b) {
+                    return b.porcentaje - a.porcentaje;
+                });
+
+                //Validar que el campo de la foto no este vacio...
+                if (infoArray[0]['foto'] == '' || infoArray[0]['foto'] == null) {
+                    var valorFoto0 = 'http://placehold.it/300x225';
+                } else {
+                    var valorFoto0 = infoArray[0]['foto'];
+                }
+                if (infoArray[1]['foto'] == '' || infoArray[1]['foto'] == null) {
+                    var valorFoto1 = 'http://placehold.it/300x225';
+                } else {
+                    var valorFoto1 = infoArray[1]['foto'];
+                }
+                if (infoArray[2]['foto'] == '' || infoArray[2]['foto'] == null) {
+                    var valorFoto2 = 'http://placehold.it/300x225';
+                } else {
+                    var valorFoto2 = infoArray[2]['foto'];
+                }
+
+                maquetado += "<div class='wdg_rating_main_01'>";
+                maquetado += "<div class='wdg_rating_main_01_player'>";
+                maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
+                maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
+                maquetado += "<p class='average_total textcolor-title1'>" + infoArray[0]['porcentaje'] + "</p>";
+                maquetado += "<img alt='' class='father' src='" + valorFoto0 + "' width='300' height='225'>";
+                maquetado += "<p class='name'>" + infoArray[0]['nombre'] + "</p>";
+                maquetado += "<p class='activity textcolor-title4'>" + infoArray[0]['posicion'] + "</p>";
+                maquetado += "<p class='activityn textcolor-title1'>" + infoArray[0]['club'] + "</p>";
+                maquetado += "</div>";
+                maquetado += "<div class='wdg_rating_main_01_players dotted-bottom'>";
+                maquetado += "<img alt='' src='" + valorFoto1 + "' width='136' height='102'>";
+                maquetado += "<div class='player_data dotted-bottom'>";
+                maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
+                maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
+                maquetado += "<p class='average_total textcolor-title1'>" + infoArray[1]['porcentaje'] + "</p>";
+                maquetado += "</div>";
+                maquetado += "<div class='player_data2'>";
+                maquetado += "<p class='name'>" + infoArray[1]['nombre'] + "</p>";
+                maquetado += "<p class='activity textcolor-title4'>" + infoArray[1]['posicion'] + "</p>";
+                maquetado += "<p class='activityn textcolor-title1'>" + infoArray[1]['club'] + "</p>";
+                maquetado += "</div>";
+                maquetado += "</div>";
+                maquetado += "<div class='separator'></div>";
+                maquetado += "<div class='wdg_rating_main_01_players'>";
+                maquetado += "<img alt='' src='" + valorFoto2 + "' width='136' height='102'>";
+                maquetado += "<div class='player_data dotted-bottom'>";
+                maquetado += "<p class='activity_title textcolor-title4'>Promedio</p>";
+                maquetado += "<p class='average textcolor-title4 dotted-right'>10</p>";
+                maquetado += "<p class='average_total textcolor-title1'>" + infoArray[2]['porcentaje'] + "</p>";
+                maquetado += "</div>";
+                maquetado += "<div class='player_data2'>";
+                maquetado += "<p class='name'>" + infoArray[2]['nombre'] + "</p>";
+                maquetado += "<p class='activity textcolor-title4'>" + infoArray[2]['posicion'] + "</p>";
+                maquetado += "<p class='activityn textcolor-title1'>" + infoArray[2]['club'] + "</p>";
+                maquetado += "</div>";
+                maquetado += "</div>";
+                maquetado += "</div>";
+                maquetado += "</div>";
+
+                wdg_rating_main_01.tagRatingMain.html(maquetado);
+
+            },
+
+            //Obtener los Detalles de los jugadores
+            getGamePlayerDetail: function(valor) {
+                $.ajax({
+                    url: wdg_rating_main_01.urlPLayerDetail,
+                    type: "GET",
+                    dataType: 'jsonp',
+                    jsonpCallback: 'gameplayerdetail',
+                    cache: false,
+                    success: function(dataGamePlayer) {
+                        wdg_rating_main_01.pintaInfo(dataGamePlayer);
+                    }
+                });
+            }
+        }
+
+        setTimeout(function() {
+            wdg_rating_main_01.getGamePlayerDetail(true);
+        }, 500);
+
+
+    };
+
+
+
+})(jQuery);
+
+/*
+wdg_rating_main_01
+*/
+
+
+;
 (function() {
     //-----------------------------------------------------------------------------------------------------------------------------------
     //-----------------------------------------------------------------------------------------------------------------------------------
-    
+
     $.fn.MxMRating = function(options) {
         var setting = $.extend({
             'idTorneo': 0,
@@ -12,19 +167,19 @@
             'title': '',
             'votos': 0
         }, options);
-    
+
         var GlobalThis = this;
 
         var wdg_mxm_rating = {
             urlfeedDropLocal: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
             urlfeedDropVisit: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
-            
+
             tagRating: $("#containerwdg_mxm_rating_01"),
             tagAlineacionGoles: $("#TIMAlineacionGoles"),
             tagwdgPenales: $("#TIMWdgPenales"),
-            tagExpulsion: $("#ExpulsionTIM"),            
+            tagExpulsion: $("#ExpulsionTIM"),
             jornadaText: '',
-        
+
             //Metodo para colocar la posicion del jugador
             posicionTexto: function(posicion) {
                 var posicionTexto;
@@ -48,7 +203,7 @@
             },
 
             pintaInfo: function(dataAlineacion, dataMatchHeader, dataGamePlayer) {
-            	            	            	
+
                 // START Israel Viveros
                 wdg_mxm_rating.intervaloVe = setInterval(function() {
                     wdg_mxm_rating.listenerInfo();
@@ -85,9 +240,9 @@
                 equipo[0] = "lineupLocal";
                 equipo[1] = "lineupVisit";
                 equipoMatch[0] = "equipoLocal";
-                equipoMatch[1] = "equipoVisitante";                
-                
-                wdg_mxm_rating.jornadaText = dataMatchHeader['jornada']['nombre']; 
+                equipoMatch[1] = "equipoVisitante";
+
+                wdg_mxm_rating.jornadaText = dataMatchHeader['jornada']['nombre'];
                 var logoLocal = dataMatchHeader[equipoMatch[0]]['smallImage'];
                 var logoVisitante = dataMatchHeader[equipoMatch[1]]['smallImage'];
                 var nombreLocal = dataMatchHeader[equipoMatch[0]]['nombre'];
@@ -98,7 +253,7 @@
                 var regbancaVisit = dataAlineacion[equipo[1]]['substitutes'].length;
                 var regPlayerDetail = dataGamePlayer.poll['answers']['answer'].length;
                 setting.votos = dataGamePlayer.poll['summary']['conteo'];
-                
+
 
                 //ALINEACION LOCAL
                 var maquetado = "";
@@ -150,8 +305,8 @@
                     }
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
-                    maquetado += "<div class='vote_block vote dotted-bottom'>";                    
-                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
+                    maquetado += "<div class='vote_block vote dotted-bottom'>";
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/" + setting.idTorneo + "/partido/" + setting.idEvento + "/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     //--Pintar porcentaje
                     for (var a = 0; a < regPlayerDetail; a++) {
@@ -162,7 +317,7 @@
                             votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][a]['conteo']);
                         }
                     }
-                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"' class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
+                    maquetado += "<div class='afision'><p data-vote='" + votePlayer + "' class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
                     maquetado += "<div class='calification  textcolor-title4'>";
@@ -232,7 +387,7 @@
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/" + setting.idTorneo + "/partido/" + setting.idEvento + "/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
                     //--Pintar porcentaje
                     for (var b = 0; b < regPlayerDetail; b++) {
@@ -243,7 +398,7 @@
                             votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][b]['conteo']);
                         }
                     }
-                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"' class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
+                    maquetado += "<div class='afision'><p data-vote='" + votePlayer + "' class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
                     maquetado += "<div class='calification  textcolor-title4'>";
@@ -278,22 +433,22 @@
                     nombreJugador = dataAlineacion[equipo[0]]['substitutes'][i]['nickName'];
                     posicion = dataAlineacion[equipo[0]]['substitutes'][i]['position'];
                     textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
-					idEquipo = dataAlineacion[equipo[0]]['idTeam'];
+                    idEquipo = dataAlineacion[equipo[0]]['idTeam'];
                     numPlayer = dataAlineacion[equipo[0]]['team'][i]['number'];
                     idPlayer = dataAlineacion[equipo[0]]['team'][i]['guid'];
-					
+
                     if (i == 0) {
                         maquetado += "<tr class='evaluation first_child'>";
                     } else {
                         maquetado += "<tr class='evaluation'>";
                     }
-					
+
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
-					
-					//--Pintar porcentaje
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/" + setting.idTorneo + "/partido/" + setting.idEvento + "/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
+
+                    //--Pintar porcentaje
                     for (var a = 0; a < regPlayerDetail; a++) {
                         var playerDetailClubId = dataGamePlayer.poll['answers']['answer'][a]['club'];
                         var playerDetailPlayerId = dataGamePlayer.poll['answers']['answer'][a]['number'];
@@ -302,27 +457,27 @@
                             votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][a]['conteo']);
                         }
                     }
-					
+
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
-                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"'  class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
+                    maquetado += "<div class='afision'><p data-vote='" + votePlayer + "'  class='textcolor-title1 dotted-left'>" + playerDetailPorcentaje + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
-                                      
-	                    maquetado += "<div class='calification  textcolor-title4'>";
-	                    maquetado += "<div><p>5</p></div>";
-	                    maquetado += "<div><p>6</p></div>";
-	                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
-	                    maquetado += "<div><p>8</p></div>";
-	                    maquetado += "<div><p>9</p></div>";
-	                    maquetado += "<div><p>10</p></div>";
-	                    maquetado += "</div>";
-	                    
-	                    maquetado += "<div class='participated  textcolor-title4'>";
-	                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
-	                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
-	                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
-	                    maquetado += "</div>";
-                   
+
+                    maquetado += "<div class='calification  textcolor-title4'>";
+                    maquetado += "<div><p>5</p></div>";
+                    maquetado += "<div><p>6</p></div>";
+                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+                    maquetado += "<div><p>8</p></div>";
+                    maquetado += "<div><p>9</p></div>";
+                    maquetado += "<div><p>10</p></div>";
+                    maquetado += "</div>";
+
+                    maquetado += "<div class='participated  textcolor-title4'>";
+                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+                    maquetado += "</div>";
+
                     maquetado += "</div>";
                     maquetado += "</td>";
                     maquetado += "</tr>";
@@ -336,10 +491,10 @@
                     nombreJugador = dataAlineacion[equipo[1]]['substitutes'][i]['nickName'];
                     posicion = dataAlineacion[equipo[1]]['substitutes'][i]['position'];
                     textoPosicion = wdg_mxm_rating.posicionTexto(posicion);
-					idEquipoVisit = dataAlineacion[equipo[1]]['idTeam'];
+                    idEquipoVisit = dataAlineacion[equipo[1]]['idTeam'];
                     numPlayerVisit = dataAlineacion[equipo[1]]['team'][i]['number'];
                     idPlayer = dataAlineacion[equipo[1]]['team'][i]['guid'];
-					
+
                     if (i == 0) {
                         maquetado += "<tr class='evaluation first_child'>";
                     } else {
@@ -349,10 +504,10 @@
                     maquetado += "<td>";
                     maquetado += "<div class='conteiner_two'>";
                     maquetado += "<div class='vote_block vote dotted-bottom'>";
-                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/"+setting.idTorneo+"/partido/"+setting.idEvento+"/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
+                    maquetado += "<div class='player_name' data-url='http://polls.esmas.com/jugadores/torneo/" + setting.idTorneo + "/partido/" + setting.idEvento + "/jugador/" + idPlayer + "'><p>" + nombreJugador + "</p></div>";
                     maquetado += "<div class='div'><p class='textcolor-title4'>10</p></div>";
-					
-					//--Pintar porcentaje
+
+                    //--Pintar porcentaje
                     for (var b = 0; b < regPlayerDetail; b++) {
                         var playerDetailClubIdVisit = dataGamePlayer.poll['answers']['answer'][b]['club'];
                         var playerDetailPlayerIdVisit = dataGamePlayer.poll['answers']['answer'][b]['number'];
@@ -361,25 +516,25 @@
                             votePlayer = parseInt(dataGamePlayer.poll['answers']['answer'][b]['conteo']);
                         }
                     }
-										
-                    maquetado += "<div class='afision'><p data-vote='"+votePlayer+"'  class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
+
+                    maquetado += "<div class='afision'><p data-vote='" + votePlayer + "'  class='textcolor-title1 dotted-left'>" + playerDetailPorcVisit + "</p></div>";
                     maquetado += "<div class='position'><p class='textcolor-title4'>" + textoPosicion + "</p></div>";
                     maquetado += "</div>";
-                     
-	                    maquetado += "<div class='calification  textcolor-title4'>";
-	                    maquetado += "<div><p>5</p></div>";
-	                    maquetado += "<div><p>6</p></div>";
-	                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
-	                    maquetado += "<div><p>8</p></div>";
-	                    maquetado += "<div><p>9</p></div>";
-	                    maquetado += "<div><p>10</p></div>";
-	                    maquetado += "</div>";
-	                    maquetado += "<div class='participated  textcolor-title4'>";
-	                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
-	                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
-	                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
-	                    maquetado += "</div>";
-                    
+
+                    maquetado += "<div class='calification  textcolor-title4'>";
+                    maquetado += "<div><p>5</p></div>";
+                    maquetado += "<div><p>6</p></div>";
+                    maquetado += "<div><div class='qualifies'>califica al jugador</div><p>7</p></div>";
+                    maquetado += "<div><p>8</p></div>";
+                    maquetado += "<div><p>9</p></div>";
+                    maquetado += "<div><p>10</p></div>";
+                    maquetado += "</div>";
+                    maquetado += "<div class='participated  textcolor-title4'>";
+                    maquetado += "<div class='voted'><p>Gracias por votar</p></div>";
+                    maquetado += "<div><div class='qualifies'>califica al jugador</div></div>";
+                    maquetado += "<div class='check'><i class='tvsa-like'></i></div>";
+                    maquetado += "</div>";
+
                     maquetado += "</div>";
                     maquetado += "</td>";
                     maquetado += "</tr>";
@@ -396,8 +551,8 @@
                 wdg_mxm_rating.urlfeedDropLocal = 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo + '/matchesclub.js',
                 wdg_mxm_rating.urlfeedDropVisit = 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/clubes/' + setting.idEquipo2 + '/matchesclub.js',
 
-                console.log('local '+wdg_mxm_rating.urlfeedDropLocal);
-                console.log('Visitante '+wdg_mxm_rating.urlfeedDropVisit);
+                console.log('local ' + wdg_mxm_rating.urlfeedDropLocal);
+                console.log('Visitante ' + wdg_mxm_rating.urlfeedDropVisit);
 
                 (setting.idEquipo !== 0) ? wdg_mxm_rating.loadDrops(wdg_mxm_rating.urlfeedDropLocal, TIMPALocal) : '';
                 (setting.idEquipo2 !== 0) ? setTimeout(function() {
@@ -405,7 +560,7 @@
                 }, 1000) : '';
             },
 
-            loadDrops: function(feed, ID) {                
+            loadDrops: function(feed, ID) {
                 $.ajax({
                     url: feed,
                     type: 'GET ',
@@ -428,7 +583,7 @@
 
             //Obtener los Detalles de los jugadores
             getGamePlayerDetail: function(idtorneo, idMatch, dataAlineacion, dataMatchHeader) {
-            	setting.idEvento = idMatch;
+                setting.idEvento = idMatch;
                 //console.log('http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js');
                 $.ajax({
                     url: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + idtorneo + '/' + idMatch + '/gameplayerdetailjsonp.js',
@@ -437,11 +592,11 @@
                     jsonpCallback: 'gameplayerdetail',
                     cache: false,
                     success: function(dataGamePlayer) {
-                        
+
                         wdg_mxm_rating.pintaInfo(dataAlineacion, dataMatchHeader, dataGamePlayer);
                     },
                     error: function(data) {
-                    	console.log("error en gatGame Player");                    	
+                        console.log("error en gatGame Player");
                     }
                 });
             },
@@ -458,14 +613,14 @@
                         wdg_mxm_rating.getGamePlayerDetail(idtorneo, idMatch, dataAlineacion, dataMatchHeader)
                     },
                     error: function(data) {
-                    	console.log("error en info");                    	
+                        console.log("error en info");
                     }
 
                 });
             },
 
             //-- Carga la alineacion
-            loadAlineacion: function(idtorneo, idMatch) {               
+            loadAlineacion: function(idtorneo, idMatch) {
                 //console.log('http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js');
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + idtorneo + '/' + idMatch + '/match_lineup.js',
@@ -473,13 +628,13 @@
                     jsonpCallback: 'datagame',
                     cache: false,
                     success: function(dataAlineacion) {
-                    	console.log("exitoso Load");
+                        console.log("exitoso Load");
                         wdg_mxm_rating.getInfo(idtorneo, idMatch, dataAlineacion);
-                    },                    
+                    },
                     error: function(data) {
-                    	console.log("error en load");                	
-                    }                    
-                });                
+                        console.log("error en load");
+                    }
+                });
             },
 
             GolesAnotados: function(local, visit, namelocal, namevisit) {
@@ -625,22 +780,22 @@
                 }
 
             },
-                        
+
             //FUNCIONES DE ACCION 
             funcionesAccion: function() {
-            	
+
                 // TODO: refactor for a better approach
                 var $parent = $('.wdg_mxm_rating_01 table');
                 var $dropdownAnchor = $parent.find('.wdg_lineup_01_dropdown');
                 //var $firstItem = $('.wdg_lineup_01_dropdownlist li:first-child');
                 var $dropdownItems = $parent.find('.wdg_lineup_01_dropdownlist li');
                 var $listItems = $('.wdg_lineup_01_dropdownlist');
-                                
-                $('.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul, .wdg_rate_player_01 .wdg_lineup_012_listcontainer ul').css('display','none');
-                
+
+                $('.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul, .wdg_rate_player_01 .wdg_lineup_012_listcontainer ul').css('display', 'none');
+
                 $('.wdg_lineup_01_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
                 $('.wdg_lineup_012_dropdowncontent p').html(wdg_mxm_rating.jornadaText);
-                                                
+
                 $dropdownAnchor.bind('click', function(evt) {
                     console.log("DROP 1");
                     //evt.preventDefault();
@@ -648,27 +803,27 @@
                     var visibilidad = lisItemsChild.css('visibility');
                     visibilidadChild = $(this).children($listItems);
                     if (visibilidad == 'hidden') {
-                    	console.log("entra a oculto");
+                        console.log("entra a oculto");
                         lisItemsChild.css({
-                        	display: 'block',
+                            display: 'block',
                             visibility: 'visible',
                             height: '176px',
                             'overflow-y': 'scroll',
                             'overflow-x': 'hidden'
                         });
 
-                    } 
-                    
-                    lisItemsChild.find("p").unbind('click').click(function(event) {                    	
-                    	console.log("click");
+                    }
+
+                    lisItemsChild.find("p").unbind('click').click(function(event) {
+                        console.log("click");
                         var idMatch = $(this).data("matchid");
                         idtorneo = setting.idTorneo;
-                        
+
                         wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
-                        setTimeout(function() {                          
-                           wdg_mxm_rating.cargaFunciones();
-                        }, 1200);                        
-                            
+                        setTimeout(function() {
+                            wdg_mxm_rating.cargaFunciones();
+                        }, 1200);
+
                         var valorn = String($(this).text());
                         $("#nameJALocal").text(valorn);
                     });
@@ -706,25 +861,25 @@
                     var lisItemsChild = $(this).children('.wdg_lineup_012_listcontainer').children();
                     if (visibilidad == 'hidden') {
                         lisItemsChild.css({
-                        	display: 'block',
+                            display: 'block',
                             visibility: 'visible',
                             height: '176px',
                             'overflow-y': 'scroll',
                             'overflow-x': 'hidden'
                         });
 
-                    } 
+                    }
 
                     lisItemsChild.find("p").unbind('click').click(function(event) {
                         var idMatch = $(this).data("matchid");
-                        idtorneo = setting.idTorneo;                        
-                        wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);                        
-                        setTimeout(function() {                          
-                           wdg_mxm_rating.cargaFunciones();
+                        idtorneo = setting.idTorneo;
+                        wdg_mxm_rating.loadAlineacion(idtorneo, idMatch);
+                        setTimeout(function() {
+                            wdg_mxm_rating.cargaFunciones();
                         }, 1200);
-                        
+
                         var valorn = String($(this).text());
-                        console.log (valorn);
+                        console.log(valorn);
                         $("#nameJAVisit").text(valorn);
                     });
                 });
@@ -770,7 +925,7 @@
                 });
 
 
-                $('.wdg_rate_player_01 .calification div').on('click', function() {                    
+                $('.wdg_rate_player_01 .calification div').on('click', function() {
                     var votacion = $(this).children('p').text();
                     var padre = $(this).parent('div');
                     var hermano = padre.siblings('div.vote_block.vote.dotted-bottom');
@@ -778,23 +933,23 @@
                     var votPorcentAfision = hermano.children('div.afision').find('p').text();
                     var totalVotes = hermano.children('div.afision').find('p').data('vote'); //Votos del jugador
                     console.log("___________________click___________________");
-                    console.log("Total de votos del jugador:" + totalVotes);                    
+                    console.log("Total de votos del jugador:" + totalVotes);
                     console.log("Porcentaje:" + votPorcentAfision);
-                    console.log("URL:"+ url);
-                    console.log("Calificacion del Usuario:"+ votacion);
+                    console.log("URL:" + url);
+                    console.log("Calificacion del Usuario:" + votacion);
                     var calificacion = 1;
                     var totalaux = setting.votos + 1; //total de votos lo podemos obtener del Feed "poll-summary-conteo"
-                                    
-                    totalVotes = totalVotes + calificacion;                                     
+
+                    totalVotes = totalVotes + calificacion;
                     //sprintf("%.2f",(($pollitem->{conteo}*100)/$totalaux));
-                    var newPorcent = parseFloat((totalVotes*100)/totalaux).toFixed(1);                                                            
-					if(isNaN(newPorcent)) {						
-						var newPorcent = '10.0';
-					}
-					
+                    var newPorcent = parseFloat((totalVotes * 100) / totalaux).toFixed(1);
+                    if (isNaN(newPorcent)) {
+                        var newPorcent = '10.0';
+                    }
+
                     //actualiza el porcentaje
                     hermano.children('div.afision').find('p').html(newPorcent);
-                                        
+
                     $(this).parents('.calification').prev('.calification').remove();
                     $(this).parents('.calification').next('.participated').find('div').css('border-bottom', '1px solid #ccc');
                     $(this).parents('.calification').next().show();
@@ -815,10 +970,10 @@
                 });
 
             },
-            
+
             cargaFunciones: function() {
-            	console.log("carga funciones");
-            	wdg_mxm_rating.funcionesAccion();
+                console.log("carga funciones");
+                wdg_mxm_rating.funcionesAccion();
             }
 
         }
@@ -829,7 +984,7 @@
             }, 1200);
 
         });
-                
+
 
     };
 
