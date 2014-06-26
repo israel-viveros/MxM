@@ -367,7 +367,7 @@
             }, // End procesoActualiza
 
             naat: function() {
-                console.log("aplicando lo de naat");
+                //console.log("aplicando lo de naat");
                 (function($, T) {
                     /*Swipe*/
                     var altWdgResult01 = 0;
