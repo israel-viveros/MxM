@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.1
+ *   Version: 5.0.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -366,7 +366,7 @@
                     //console.log(data.matches.match[o])
                     var selectornuevo = data.matches.match[o].MatchGuid;
                     selectorTMP = $("#" + selectornuevo);
-                    console.log(selectorTMP);
+                    //console.log(selectorTMP);
                     ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text());
                     ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text());
                     NuevoGolL = data.matches.match[o].equipos.local.goals + data.matches.match[o].equipos.local.penales;
@@ -380,8 +380,8 @@
                     //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
                     //console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
                     if (data.matches.match[o].period !== "P" && data.matches.match[o].period !== "F") {
-                        console.log("actualizo goles de: ");
-                        console.log(data.matches.match[o]);
+                        //console.log("actualizo goles de: ");
+                        //console.log(data.matches.match[o]);
                         if (ActGolL !== NuevoGolL) {
                             selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({
                                 'display': 'none',
@@ -406,7 +406,12 @@
                     }
                     //console.log("comparando tiempos: " + textoLink + " - " + textoLinkNuevo);
                     if (textoLink !== textoLinkNuevo) {
-                        selectorTMP.find(".wdg_match_01_extra p a").eq(0).html(textoLinkNuevo);
+                        if (setting.tema == "mundial") {
+                            selectorTMP.find(".wdg_match_01_extra p a").eq(0).html(textoLinkNuevo);
+                        } else {
+                            selectorTMP.find(".wdg_match_01_extra p a span").eq(0).html(textoLinkNuevo);
+                        }
+
                     }
 
                     if (data.matches.match[o].period !== "P" && setting.tema === "mundial") {
@@ -634,7 +639,7 @@
                 var widthWindow = $(window).width();
                 var carrusel = $('.wdg_matchesresult_01_list#listNow');
                 if (widthWindow <= 625 && setting.tema !== "mundial") {
-                    console.log("Es smartphone");
+                    //console.log("Es smartphone");
                     //if (carrusel.children(".microfiche-screen").length === 0 || tipo === "inicio") {
                     $(".wdg_matchesresult_todos").hide();
                     var nuevoWidth = 0;
@@ -669,7 +674,7 @@
 
                     //}
                 } else if (widthWindow <= 948 && setting.tema !== "mundial") {
-                    console.log("es tablet");
+                    //console.log("es tablet");
                     //if (carrusel.children(".microfiche-screen").length > 0 || tipo === "inicio") {
                     $(".wdg_matchesresult_todos").hide();
                     $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({
@@ -685,7 +690,7 @@
                     //(tipo !== "inicio") ? wdg_matchresult.LoadFirst(FeedActual, 'rezise') : '';
                     //}
                 } else {
-                    console.log("es desktop");
+                    //console.log("es desktop");
                     //if (carrusel.children(".microfiche-screen").length > 0 || tipo === "inicio") {
                     $(".wdg_matchesresult_todos").show();
                     $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components, .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css({
