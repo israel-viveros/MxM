@@ -78,6 +78,10 @@ var globalWdgs = {
 
         $("#menu ul a").click(function(event) {
             event.preventDefault();
+            $("#menu li").each(function(index, el) {
+                $(this).removeClass('current');
+            });
+            $(this).parent("li").addClass('current');
             globalWdgs._giveform($(this).attr('rel'));
             $("#codesubmit").attr('rel', $(this).attr('rel'));
         });
@@ -85,6 +89,8 @@ var globalWdgs = {
 
     }, // _menu
     _givemescript: function(tipo) {
+        console.log("_givemescript");
+        console.log(tipo);
         var css = "",
             js = "",
             js2 = "",
@@ -102,10 +108,10 @@ var globalWdgs = {
                 //Js
                 js += (tmpAct.js.actions !== "") ? '<script src="' + tmpAct.js.actions + '"></script>' : '';
                 js += (tmpAct.js.libs !== "") ? '\r<script src="' + tmpAct.js.libs + '"></script>' : '';
-                $("#wdgcodejssrc").html(globalWdgs._htmlEntities(js));
+                $("#wdgcodejssrc").empty().html(globalWdgs._htmlEntities(js));
 
                 js2 += (tmpAct.js.tags !== "") ? '<script>' + tmpAct.js.tags + '</script>' : '';
-                $("#wdgcodejs").html(globalWdgs._htmlEntities(js2));
+                $("#wdgcodejs").empty().html(globalWdgs._htmlEntities(js2));
 
                 //css
                 css += (tmpAct.css.mobile !== "") ? '<link rel="stylesheet" href="' + tmpAct.css.mobile + '">' : '';
@@ -121,9 +127,9 @@ var globalWdgs = {
 
                 //Pintando el Resultado
                 var resultCode = htmlc + css + js;
-                $("#resultcode").html(resultCode);
+                $("#resultcode .pintaconte").empty().html(resultCode);
                 setTimeout(function() {
-                    $("#resultcode").append(js2);
+                    $("#resultcode .pintaconte").append(js2);
                 }, 1000);
 
 
@@ -161,6 +167,7 @@ var globalWdgs = {
             jsonpCallback: 'wdgMxM'
         }).done(function(data) {
             //formi += '<select id="torneo">';
+            formi += '<option value="" disabled selected>Selecciona una opcion</option>';
             for (var i = 0; i < data.length; i++) {
                 var nombresaneado = data[i].Name.replace(/[^-A-Za-z0-9]+/g, '-').toLowerCase();
                 formi += '<option data-guid="' + data[i].TournamentGuid + '" data-name="' + nombresaneado + '" data-id="' + data[i].TournamentId + '">' + data[i].Name + '</option>';
@@ -182,6 +189,7 @@ var globalWdgs = {
             jsonpCallback: 'wdgMxM'
         }).done(function(data) {
             //formi += '<select id="partido">';
+            formi += '<option value="" disabled selected>Selecciona una opcion</option>';
             for (var i = 0; i < data.length; i++) {
                 formi += (data[i].TournamentGuid === guidtorneo) ? '<option  data-id="' + data[i].MatchId + '">' + data[i].MatchName + '</option>' : '';
             };

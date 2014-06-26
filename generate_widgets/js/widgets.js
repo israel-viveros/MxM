@@ -2,9 +2,9 @@ wdgMxM([{
     "nombre": "Balance del Draft",
     "id": "balancedraft",
     "css": {
-        "mobile": "http://166.78.2.40/deportes/wdg_playerdraft_01/css/wdg_playerdraft_01_mobile.css",
-        "tablet": "http://166.78.2.40/deportes/wdg_playerdraft_01/css/wdg_playerdraft_01_tablet.css",
-        "desktop": "http://166.78.2.40/deportes/wdg_playerdraft_01/css/wdg_playerdraft_01.css"
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/balance_draft.css",
+        "tablet": "",
+        "desktop": ""
     },
     "js": {
         "tags": "$(function() {$(\"#containerwdg_playerdraft_01\").MxMAltasBajasDraft({'idTorneo':'356','nameTournament': 'liga-mx-clausura-2014'}); });",
@@ -42,17 +42,21 @@ wdgMxM([{
     "nombre": "Rating MxM",
     "id": "ratingmxm",
     "css": {
-        "mobile": "#mmobile",
-        "tablet": "#tablet",
-        "desktop": "#desktop"
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/rating.css",
+        "tablet": "",
+        "desktop": ""
     },
     "js": {
-        "tags": "#tags",
-        "actions": "#actions",
+        "tags": "$(function() {$(\"#containerwdg_rating_main_01\").MxMRatingMain({'idTorneo': 356,'idEvento': 24999});$(\"#containerwdg_mxm_rating_01\").MxMRating({'idTorneo': 356,'idEvento': 24999,'idEquipo': 1,'idEquipo2': 1240,'title': 'Alineacion'});});",
+        "actions": "http://i2.esmas.com/deportes30/mxm/js/TIM_mxm_rating.js",
         "libs": ""
     },
     "html": {
-        "tags": "#html"
+        "tags": "<section class=\"wdg_rating_main_01\" id=\"containerwdg_rating_main_01\"></section> <section class=\"wdg_mxm_rating_01\" id=\"containerwdg_mxm_rating_01\"></section>"
+    },
+    "input": {
+        "idTorneo": 1,
+        "idmatch": 1
     }
 }, {
     "nombre": "Altas bajas Draft",
@@ -181,5 +185,45 @@ wdgMxM([{
     "input": {
         "idTorneo": 1,
         "idmatch": 1
+    }
+}, {
+    "nombre": "Minuto a Minuto",
+    "id": "minutoaminuto",
+    "css": {
+        "mobile": "http://166.78.2.40/deportes/wdg_matchesresult_01/css/wdg_matchesresult_01_mobile.css",
+        "tablet": "http://166.78.2.40/deportes/wdg_matchesresult_01/css/wdg_matchesresult_01_tablet.css",
+        "desktop": "http://166.78.2.40/deportes/wdg_matchesresult_01/css/wdg_matchesresult_01.css"
+    },
+    "js": {
+        "tags": "$(function() {$(\"#parentWDG_matchresult_01\").wdgMatchResult({'tickermaster':1,'link':'#url'});});",
+        "actions": "http://i2.esmas.com/deportes30/mxm/js/TIM_wdg_matchesresult.min.js",
+        "libs": ""
+    },
+    "html": {
+        "tags": "<div class=\"wdg_matchesresult_01\" id=\"parentWDG_matchresult_01\" data-enhance=\"false\"></div>"
+    },
+    "input": {
+        "idTorneo": 0,
+        "idmatch": 0
+    }
+}, {
+    "nombre": "Marcador Partido",
+    "id": "marcadorpartido",
+    "css": {
+        "mobile": "http://166.78.2.40/deportes/wdg_sport_result_01/css/wdg_sport_result_01_mobile.css",
+        "tablet": "http://166.78.2.40/deportes/wdg_sport_result_01/css/wdg_sport_result_01_tablet.css",
+        "desktop": "http://166.78.2.40/deportes/wdg_sport_result_01/css/wdg_sport_result_01.css"
+    },
+    "js": {
+        "tags": "$(function() { $(\"#TIMwdg_sport_result\").WdgSportResult({'idtorneo':359,'idteam':25368,'tema': ''});});",
+        "actions": "http://i2.esmas.com/deportes30/mxm/js/TIM_wdg_sport_result.js",
+        "libs": ""
+    },
+    "html": {
+        "tags": "<div  class=\"wdg_sport_result_01 background-color1\" id =\"TIMwdg_sport_result\"></div> <div class=\"nav_smnu_sports_01\" data-enhance=\"false\" id=\"TIMnav_smnu_sports\"></div>"
+    },
+    "input": {
+        "idTorneo": 1,
+        "idmatch": 0
     }
 }])

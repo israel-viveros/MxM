@@ -7,14 +7,17 @@
 		<!--[if lt IE 9]>
     	<script src="http://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7/html5shiv.js"></script>
 		<![endif]-->
-		<link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.5.0/pure-min.css">
-		<link rel="stylesheet" href="css/baby-blue.css">
-		<link rel="stylesheet" href="css/fix.css">
-
+		
+		<link rel="stylesheet" href="css/main.wdgs.css">
+		
+		
+		<link rel="stylesheet" href="http://166.78.2.40/deportes/global/css/global.css">
+		<link rel="stylesheet" href="http://166.78.2.40/deportes/global/css/jquery.mobile-1.3.2.min.css">
 		<link rel="stylesheet" href="http://localhost/~israelviveros/mxm/global/css/colores.css">
 		<link rel="stylesheet" href="http://localhost/~israelviveros/mxm/global/css/tvsa-icons.css">
 	</head>
 	<body>
+		<div id="canvasloader-container" class="wrapperLoading"></div>
 		<div id="layout">
 		<a href="#menu" id="menuLink" class="menu-link">
     <span></span>
@@ -22,55 +25,8 @@
 		<div id="menu">
     <div class="pure-menu pure-menu-open">
         <a class="pure-menu-heading">MxM</a>
-
-        <ul>	
-            
-        </ul>
-
+        <ul></ul>
         <a class="pure-menu-heading">Stats</a>
-
-        <ul>	
-            <li class=" ">
-                <a href="/start/">Widget 1</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/layouts/">Widget 1</a>
-            </li>
-          
-            <li class="">
-                <a href="/base/">Widget 1</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/grids/">Widget 1</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/forms/">Widget 1</a>
-            </li>
-            <li class=" ">
-                <a href="/start/">Widget 1</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/layouts/">Widget 1</a>
-            </li>
-          
-            <li class="">
-                <a href="/base/">Widget 1</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/grids/">Widget 1</a>
-            </li>
-          
-            <li class=" ">
-                <a href="/forms/">Widget 1</a>
-            </li>
-          
-           
-        </ul>
     </div>
 </div>
 		<div class="content">
@@ -95,15 +51,16 @@
 					<div class="pure-control-group">
 						<label for="aligned-foo">Tema</label>
 						<select>
-							<option value=""></option>
-							<option value="mundial">mundial</option>
+							<option value="" disabled selected>Selecciona una opcion</option>
+							<option value="mundial">Deportes</option>
+							<option value="mundial">Mundial 2014</option>
 						</select>
 					</div>
+					<div class="pure-control-group">
+						<label for="aligned-foo">Titulo</label>
+						<input type="text" placeholder="Titulo" >
+					</div>
 					<div class="pure-controls">
-						<label for="checkbox-radio-option-one" class="pure-checkbox">
-							<input id="checkbox-radio-option-one" type="checkbox" value="">
-							Here's option one.
-						</label>
 						<button type="submit" class="pure-button pure-button-primary" id="codesubmit">Generar Widget</button>
 					</div>
 				</fieldset>
@@ -123,15 +80,39 @@
 
 <h2 class="content-subhead">Resultado</h2>
 
-<div id="resultcode"></div>
+<div id="resultcode"><div class="pintaconte"></div></div>
 
 </div>
 
 		</div>
 		</div>
 
+
+		<script src="http://heartcode-canvasloader.googlecode.com/files/heartcode-canvasloader-min-0.9.1.js"></script>
 		<script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 		<script src="http://code.jquery.com/jquery-migrate-1.2.1.js"></script>
+		<script src="http://166.78.2.40/deportes/global/js/modernizr.js"></script>
+		<script src="http://166.78.2.40/deportes/global/js/Televisa.js"></script>
 		<script src="js/main.js"></script>
+		<script type="text/javascript">
+		/*
+		var cl = new CanvasLoader('canvasloader-container');
+		cl.setColor('#c9000a'); // default is '#000000'
+		cl.setShape('square'); // default is 'oval'
+		cl.setDiameter(69); // default is 40
+		cl.setDensity(111); // default is 40
+		cl.setRange(0.8); // default is 1.3
+		cl.setSpeed(3); // default is 2
+		cl.setFPS(43); // default is 24
+		cl.show(); // Hidden by default
+		
+		// This bit is only for positioning - not necessary
+		  var loaderObj = document.getElementById("canvasLoader");
+  		loaderObj.style.position = "absolute";
+  		loaderObj.style["top"] = cl.getDiameter() * -0.5 + "px";
+  		loaderObj.style["left"] = cl.getDiameter() * -0.5 + "px";
+  		*/
+    </script>
+
 	</body>
 </html>
