@@ -7,7 +7,7 @@ wdgMxM([{
         "desktop": ""
     },
     "js": {
-        "tags": "$(function() {$(\"#containerwdg_playerdraft_01\").MxMAltasBajasDraft({'idTorneo':'356','nameTournament': 'liga-mx-clausura-2014'}); });",
+        "tags": "$(function() {$(\"#containerwdg_playerdraft_01\").MxMAltasBajasDraft({'idTorneo':'%T%','nameTournament': '%TN%'}); });",
         "actions": "http://i2.esmas.com/deportes30/mxm/js/TIM.td.AltasbajasDraft.min.js",
         "libs": ""
     },
@@ -62,9 +62,9 @@ wdgMxM([{
     "nombre": "Altas bajas Draft",
     "id": "abdraft",
     "css": {
-        "mobile": "http://localhost/~israelviveros/mxm/wdg_altasbajas_01/css/wdg_altasbajas_01_mobile.css",
-        "tablet": "http://localhost/~israelviveros/mxm/wdg_altasbajas_01/css/wdg_altasbajas_01_tablet.css",
-        "desktop": "http://localhost/~israelviveros/mxm/wdg_altasbajas_01/css/wdg_altasbajas_01.css"
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/altas-bajas.css",
+        "tablet": "",
+        "desktop": ""
     },
     "js": {
         "tags": "$(function() {$(\"#altasbajasTIM\").wdgAltasbajas({'idTournament':356,'nameTournament': 'liga-mx-apertura-2014','abbody' : true,'title' : 'Titulo de muestra'});});",
@@ -73,22 +73,50 @@ wdgMxM([{
     },
     "html": {
         "tags": "<div id=\"altasbajasTIM\"></div><div id=\"altasbajasbodyTIM\"></div>"
+    },
+    "input": {
+        "idTorneo": 1,
+        "idmatch": 1
     }
 }, {
-    "nombre": "Jornadas",
-    "id": "jornadas",
+    "nombre": "Jornadas por Torneo",
+    "id": "jornadasTorneo",
     "css": {
-        "mobile": "",
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/jornadas.css",
         "tablet": "",
         "desktop": ""
     },
     "js": {
-        "tags": "$(function() {$(\"#TIMwdg_altasbajas_result\").wdgAltasBajas({'idtorneo': 356,//'idequipo':1,//'idtorneo2':356,'title':'Jornadas..','txtdropdown' : 'Jornada'});});",
+        "tags": "$(function() {$(\"#TIMwdg_altasbajas_result\").wdgAltasBajas({'idtorneo': 356,'title':'Jornadas..','txtdropdown' : 'Jornada'});});",
         "actions": "http://i2.esmas.com/deportes30/mxm/js/TIM_wdg_altasbajas.min.js",
         "libs": "http://i2.esmas.com/deportes30/mxm/js/TIM_wdg_altasbajasLibs.js"
     },
     "html": {
         "tags": " <div class=\"wdg_altasbajas_result_01\" data-enhance=\"false\" id=\"TIMwdg_altasbajas_result\"></div>"
+    },
+    "input": {
+        "idTorneo": 1,
+        "idmatch": 0
+    }
+}, {
+    "nombre": "Jornadas por Equipo",
+    "id": "jornadasEquipo",
+    "css": {
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/jornadas.css",
+        "tablet": "",
+        "desktop": ""
+    },
+    "js": {
+        "tags": "$(function() {$(\"#TIMwdg_altasbajas_result\").wdgAltasBajas({'idtorneo': 356,'idequipo':1,'title':'Jornadas..','txtdropdown' : 'Jornada'});});",
+        "actions": "http://i2.esmas.com/deportes30/mxm/js/TIM_wdg_altasbajas.min.js",
+        "libs": "http://i2.esmas.com/deportes30/mxm/js/TIM_wdg_altasbajasLibs.js"
+    },
+    "html": {
+        "tags": " <div class=\"wdg_altasbajas_result_01\" data-enhance=\"false\" id=\"TIMwdg_altasbajas_result\"></div>"
+    },
+    "input": {
+        "idTorneo": 1,
+        "idmatch": 0
     }
 }, {
     "nombre": "Promedio del partido",
@@ -134,9 +162,9 @@ wdgMxM([{
     "nombre": "MxM Acciones 2",
     "id": "mxmacciones2",
     "css": {
-        "mobile": "http://localhost/~israelviveros/mxm/wdg_mxm_live_02/css/wdg_mxm_live_02_mobile.css",
-        "tablet": "http://localhost/~israelviveros/mxm/wdg_mxm_live_02/css/wdg_mxm_live_02_tablet.css",
-        "desktop": "http://localhost/~israelviveros/mxm/wdg_mxm_live_02/css/wdg_mxm_live_02.css"
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/mxm2.css",
+        "tablet": "",
+        "desktop": ""
     },
     "js": {
         "tags": "$(function() {$(\"#wdg_mxm_live\").wdgLiveMxM({'idevento': 1233});});",
@@ -145,6 +173,11 @@ wdgMxM([{
     },
     "html": {
         "tags": "<div class=\"wdg_mxm_live_02\" id=\"wdg_mxm_live\"></div>"
+    },
+    "input": {
+        "idTorneo": 0,
+        "idmatch": 0,
+        "idEvento": 1
     }
 }, {
     "nombre": "Minuto por Minuto partido",
@@ -187,12 +220,12 @@ wdgMxM([{
         "idmatch": 1
     }
 }, {
-    "nombre": "Minuto a Minuto",
+    "nombre": " Widget Minuto a Minuto",
     "id": "minutoaminuto",
     "css": {
-        "mobile": "http://166.78.2.40/deportes/wdg_matchesresult_01/css/wdg_matchesresult_01_mobile.css",
-        "tablet": "http://166.78.2.40/deportes/wdg_matchesresult_01/css/wdg_matchesresult_01_tablet.css",
-        "desktop": "http://166.78.2.40/deportes/wdg_matchesresult_01/css/wdg_matchesresult_01.css"
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/wdg_minxmin.css",
+        "tablet": "",
+        "desktop": ""
     },
     "js": {
         "tags": "$(function() {$(\"#parentWDG_matchresult_01\").wdgMatchResult({'tickermaster':1,'link':'#url'});});",
@@ -210,9 +243,9 @@ wdgMxM([{
     "nombre": "Marcador Partido",
     "id": "marcadorpartido",
     "css": {
-        "mobile": "http://166.78.2.40/deportes/wdg_sport_result_01/css/wdg_sport_result_01_mobile.css",
-        "tablet": "http://166.78.2.40/deportes/wdg_sport_result_01/css/wdg_sport_result_01_tablet.css",
-        "desktop": "http://166.78.2.40/deportes/wdg_sport_result_01/css/wdg_sport_result_01.css"
+        "mobile": "http://localhost/~israelviveros/Deportes_restructura/televisa-deportes/marcador-equipo.css",
+        "tablet": "",
+        "desktop": ""
     },
     "js": {
         "tags": "$(function() { $(\"#TIMwdg_sport_result\").WdgSportResult({'idtorneo':359,'idteam':25368,'tema': ''});});",

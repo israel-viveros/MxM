@@ -88,6 +88,20 @@ var globalWdgs = {
 
 
     }, // _menu
+
+    _replaceTags: function(str) {
+        var torneo_id_selec = $("#insertaTorneo select option:selected").data('id'),
+            torneo_name_selec = $("#insertaTorneo select option:selected").data('name'),
+            nomenclatura = new Array('%T%', '%TN%'),
+            valoresReales = new Array(torneo_id_selec, torneo_name_selec);
+        for (var f = 0; f <= nomenclatura.length; f++) {
+            console.log("Remplazando: " + nomenclatura[f] + " por " + valoresReales[f]);
+            str = str.replace(nomenclatura[f], valoresReales[f]);
+            if (f == nomenclatura.length) {
+                return str;
+            }
+        };
+    },
     _givemescript: function(tipo) {
         console.log("_givemescript");
         console.log(tipo);
@@ -110,7 +124,10 @@ var globalWdgs = {
                 js += (tmpAct.js.libs !== "") ? '\r<script src="' + tmpAct.js.libs + '"></script>' : '';
                 $("#wdgcodejssrc").empty().html(globalWdgs._htmlEntities(js));
 
-                js2 += (tmpAct.js.tags !== "") ? '<script>' + tmpAct.js.tags + '</script>' : '';
+                var scripteje = tmpAct.js.tags;
+
+                js2 += (tmpAct.js.tags !== "") ? '<script>' + globalWdgs._replaceTags(scripteje) + '</script>' : '';
+
                 $("#wdgcodejs").empty().html(globalWdgs._htmlEntities(js2));
 
                 //css

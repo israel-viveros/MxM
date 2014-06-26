@@ -1726,6 +1726,144 @@ pre .support.value  {
 
 
 
+/*
+str_pleca_01_mobile.css
+*/
+@media screen {
+    div.str_pleca_01{
+        margin-bottom:12px;
+    }
+	.ie7 div.str_pleca_01,
+	.ie8 div.str_pleca_01{
+        border-bottom:1px solid #CCC;
+    }
+    div.str_pleca_01_title {
+        width: 100%;
+        border-bottom: none;
+    }
+    div.str_pleca_01_title:before,
+    div.str_pleca_01_title:after {
+        content: "";
+        display: table;
+    }
+    div.str_pleca_01_title:after {
+        clear: both;        
+    }
+    .collapsable .str_pleca_01_title {
+        position:relative;
+    }
+    div.str_pleca_01_title {
+        zoom: 1;
+        /* For IE 6/7 (trigger hasLayout) */
+    }
+    div.str_pleca_01_title strong,
+    div.str_pleca_01_title h2,
+    div.str_pleca_01_title h3 {
+        width: 100%;
+        font-size: 14px;
+        float: left;
+        text-align: left;
+        height: 40px;
+    }
+	.ie7 div.str_pleca_01_title h2,
+	.ie8 div.str_pleca_01_title h2,
+	.ie7  div.str_pleca_01_title h3,
+	.ie8  div.str_pleca_01_title h3 {
+		width:55%;
+        height: 32px;
+	}
+    div.str_pleca_01_title strong a,
+    div.str_pleca_01_title h2 a,
+    div.str_pleca_01_title h3 a {
+    
+        text-decoration: none;
+        line-height: 40px;
+        display: block;
+        padding:0 0 0 24px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+    .ie9 div.str_pleca_01_title strong a,
+    .ie9 div.str_pleca_01_title h2 a,
+    .ie9 div.str_pleca_01_title h3 a {  
+        *background-position-x: right 10px;
+        *background-position-y: 5px;
+    }
+    .str_pleca_01 .tvsa-caret-up,
+    .str_pleca_01 .tvsa-caret-down{
+        color: #FFFFFF;
+        font-size:35px;
+        font-weight:bold;
+        cursor:pointer;
+        display: block;
+        float: right;
+        position: absolute;
+        right: 30px;
+        top: -6px;
+    }
+}
+
+/*
+str_pleca_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+    /* BEGIN: Global (Medium) */
+    div.str_pleca_01{
+        margin-bottom: 24px;
+        border-bottom: 1px solid #CCC;
+    }
+    div.str_pleca_01_title:before,
+    div.str_pleca_01_title:after {
+        content: "";
+        display: table;
+    }
+    div.str_pleca_01_title:after {
+        clear: both;
+    }
+    div.str_pleca_01_title {
+        zoom: 1;
+        /* For IE 6/7 (trigger hasLayout) */
+    }
+    div.str_pleca_01_title strong,
+    div.str_pleca_01_title h2,
+    div.str_pleca_01_title h3 {
+        width:47.7% !important;
+        min-width: 165px;
+        max-width:300px;
+        float: left;
+        height: 32px;
+    }
+    div.str_pleca_01_title strong a,
+    div.str_pleca_01_title h2 a,
+    div.str_pleca_01_title h3 a {
+        padding:0 0 0 24px;
+        line-height: 30px;
+    }
+    div.str_pleca_01_title strong a span.icon,
+    div.str_pleca_01_title h2 a span.icon,
+    div.str_pleca_01_title h3 a span.icon {
+        display: none;
+    }
+    /* END: Global (Medium) */
+    .str_pleca_01 .tvsa-caret-up,
+    .str_pleca_01 .tvsa-caret-down{
+        display:none;   
+    }
+}
+/*
+str_pleca_01.css
+*/
+@media screen and (min-width: 948px){
+    div.str_pleca_01{
+        margin-bottom: 24px;
+    }
+}
+
+
+
+
+
 
 
 /*
@@ -1755,5 +1893,5 @@ FIX
     #menu .pure-menu-heading:focus {color: #FFF}
     #menu li.current{background: rgba(63, 63, 63, 0.33)}
     #resultcode{position: relative;margin: 20px 0}
-    #resultcode .pintaconte{position: absolute;width: 904px;height: auto;top: 0;left: -100px;}
+    #resultcode .pintaconte{position: absolute;width: 1200px;height: auto;top: 0;left: -100px;}
 }
