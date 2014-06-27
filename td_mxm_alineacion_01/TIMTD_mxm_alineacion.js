@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.3
+ *   Version: 1.3.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -67,26 +67,27 @@
 
                 GlobalThis.html(ContenidoMaq).css("display", "none").fadeIn('slow', function() {
                     $(this).css("display", "block");
-                });;
+                });
 
-                (setting.idclub !== 0) ? setTimeout(function() {
-                    wdg_smex_strategy.loadDropdown();
-                }, 1000) : '';
                 wdg_smex_strategy.FunInicio();
 
                 (tipo === "alineacionFinal") ? wdg_smex_strategy.botonesAlineacion() : '';
 
+                /* setInterval(function() {
+                    wdg_smex_strategy.updatePlayers();
+                }, 10000); */
+
 
                 wdg_smex_strategy.listener = setInterval(function() {
-                    console.log("buscando etiqueta actualizable..");
+                    //console.log("buscando etiqueta actualizable..");
                     var objTime = $("#timeUpdateMxM");
                     if (objTime.length) {
-                        console.log("Antes: " + wdg_smex_strategy.tmpescuchaListener);
-                        console.log("Ahora: " + objTime.text());
+                        //console.log("Antes: " + wdg_smex_strategy.tmpescuchaListener);
+                        //console.log("Ahora: " + objTime.text());
                         var timeAct = parseInt(objTime.text());
                         //clearInterval(wdg_smex_strategy.listener);
                         if (timeAct > 0 && parseInt(objTime.text()) !== parseInt(wdg_smex_strategy.tmpescuchaListener)) {
-                            console.log("ACTUALIZANDO CON ... " + objTime.text());
+                            //console.log("ACTUALIZANDO CON ... " + objTime.text());
                             wdg_smex_strategy.tmpescuchaListener = parseInt(objTime.text());
                             clearInterval(timerGlobal);
                             timerGlobal = setInterval(function() {
@@ -101,43 +102,7 @@
 
             },
 
-            loadDropdown: function() {
-                //console.log("execute loaddropdown function");
-                var ContDropdown = "";
 
-                $.ajax({
-                    url: wdg_smex_strategy.urlDropdown,
-                    dataType: 'jsonp',
-                    jsonpCallback: 'matches',
-                    cache: false
-                })
-                    .done(function(data) {
-                        ContDropdown += '<ul class="wdg_smex_strategy_01_dropdownlist">';
-                        for (var r = 0; r < data.Team.length; r++) {
-                            ContDropdown += '<li><p data-field="' + data.Team[r].matchid + '">' + data.Team[r].week + '</p></li>';
-
-                        };
-                        ContDropdown += '</ul>';
-
-                        $(".wdg_smex_strategy_01_listcontainer").html(ContDropdown);
-
-                        var ultimoId = $(".wdg_smex_strategy_01_dropdownlist li").eq(0).find('p').data("field");
-
-                        wdg_smex_strategy.loadAlineacion(GlobalThis, ultimoId);
-
-
-
-
-                    })
-                    .fail(function() {
-                        console.log("error al cargar DROPDOWN: " + wdg_smex_strategy.urlDropdown);
-
-
-                    });
-
-
-
-            },
             loadAlineacion: function(el, IDTemp, tipo) {
                 var promedio = new Array();
                 el.find('span.players').fadeOut('fast');
@@ -151,7 +116,9 @@
                             aliFinal = '',
                             ArregloHidden = new Array(),
                             expulsadosLocal = new Array(),
-                            expulsadosVisit = new Array();
+                            expulsadosVisit = new Array(),
+                            rojaLocal = new Array(),
+                            rojaVisit = new Array();
                         var equipo = new Array();
                         var positiony, positionx, vc, equipoString, imageJugador;
 
@@ -160,6 +127,8 @@
 
                         expulsadosLocal = data[equipo[0]].penalization;
                         expulsadosVisit = data[equipo[1]].penalization;
+                        rojaLocal = data[equipo[0]].expelled;
+                        rojaVisit = data[equipo[1]].expelled;
 
 
                         for (var t = 0; t < equipo.length; t++) {
@@ -197,6 +166,8 @@
                                                 break;
                                             case "segundaamonestacion":
                                                 clase = "tvsa-mxm-secondyellowcard";
+                                                //siexpulsado = (tipo === "Alineacionfinal") ? 1 : 0;
+                                                siexpulsado = 1;
                                                 break;
                                             case "expulsion":
                                                 clase = "tvsa-mxm-redcard";
@@ -338,6 +309,7 @@
                                                         break;
                                                     case "segundaamonestacion":
                                                         icon = "tvsa-mxm-secondyellowcard";
+                                                        siexpulsado = 1;
                                                         break;
                                                     case "expulsion":
                                                         icon = "tvsa-mxm-redcard";
@@ -532,12 +504,12 @@
 
 
                         //Modulo expulsados
-                        if (expulsadosLocal !== "undefined" || expulsadosVisit !== "undefined") {
+                        if (expulsadosLocal !== "undefined" || expulsadosVisit !== "undefined" || rojaLocal !== "undefined" || rojaVisit !== "undefined") {
                             var maqModEx = '<div class = "wdg_mxm_plcards_01" >';
                             maqModEx += '<div class="str_pleca_01 collapsable">';
                             maqModEx += '<div class="str_pleca_01_title">';
                             maqModEx += '<h3 class="background-color-pleca1">';
-                            maqModEx += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados</a></h3></div></div>';
+                            maqModEx += '<a href="#" title="Link Description" class="textcolor-title3 ui-link">Amonestados y Expulsados</a></h3></div></div>';
                             maqModEx += '<div class="convocados"><div class="head">';
                             maqModEx += '<div class="textcolor-title1 player">JUGADOR</div>';
                             maqModEx += '<div class="icon-team1"><img alt="" src="http://i2.esmas.com/img/spacer.gif" class="TIMimgLocal"></div>';
@@ -545,7 +517,7 @@
                             maqModEx += '</div>';
                             maqModEx += '</div></div></div>';
                             wdg_smex_strategy.tagExpulsion.html(maqModEx).css('display', 'none');
-                            wdg_smex_strategy.Modexpulsados(expulsadosLocal, expulsadosVisit);
+                            wdg_smex_strategy.Modexpulsados(expulsadosLocal, expulsadosVisit, rojaLocal, rojaVisit);
                         }
 
                         if ($("#datosTIMHeader").length) {
@@ -572,7 +544,7 @@
             },
 
             verificar_views: function() {
-                console.log(wdg_smex_strategy.urlview);
+                //console.log(wdg_smex_strategy.urlview);
                 var offCancha = 0,
                     offpromedio = 1;
 
@@ -924,7 +896,7 @@
             */
 
             updatePlayers: function() {
-                console.log("method updatePlayers");
+                //console.log("method updatePlayers");
                 var itemActual, itemleft, itemtop, NuevosJugadores = "";
 
                 $.ajax({
@@ -997,6 +969,7 @@
                                                                 break;
                                                             case "segundaamonestacion":
                                                                 icon = "tvsa-mxm-secondyellowcard";
+                                                                siexpulsado = 1;
                                                                 break;
                                                             case "expulsion":
                                                                 icon = "tvsa-mxm-redcard";
@@ -1138,9 +1111,12 @@
                         wdg_smex_strategy.updateGolesAnotados(golesLocal, golesVisit, data.lineupLocal.name, data.lineupVisit.name);
 
                         //update amonestados
-                        var localexp = (typeof(data.lineupLocal.penalization) !== "undefined") ? data.lineupLocal.penalization : '';
-                        var visitexo = (typeof(data.lineupVisit.penalization) !== "undefined") ? data.lineupVisit.penalization : '';
-                        wdg_smex_strategy.ModexpulsadosUpdate(localexp, visitexo);
+                        var localexp = (typeof(data.lineupLocal.penalization) !== "undefined") ? data.lineupLocal.penalization : '',
+                            visitexo = (typeof(data.lineupVisit.penalization) !== "undefined") ? data.lineupVisit.penalization : '',
+                            localroj = (typeof(data.lineupLocal.expelled) !== "undefined") ? data.lineupLocal.expelled : '',
+                            visitroj = (typeof(data.lineupVisit.expelled) !== "undefined") ? data.lineupVisit.expelled : '';
+
+                        wdg_smex_strategy.ModexpulsadosUpdate(localexp, visitexo, localroj, visitroj);
 
                         if (typeof(data.PenaltiesLocal) !== "undefined" || typeof(data.PenaltiesVisit) !== "undefined") {
                             wdg_smex_strategy.wdgPenalesupdate(data.PenaltiesLocal, data.PenaltiesVisit, data.lineupLocal.name, data.lineupVisit.name);
@@ -1209,7 +1185,7 @@
 
             }, // promedio Cancha
 
-            Modexpulsados: function(local, visit) {
+            Modexpulsados: function(local, visit, rojaLocal, rojaVisit) {
                 var arrayGlobal = new Array(),
                     itemshtml = "",
                     localm = "",
@@ -1228,10 +1204,28 @@
                         localm += '<div class="dotted-left name"><p>' + local[i].nickName + '</p></div>';
                         localm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + local[i].actions[minuto].minute + '\'</div>';
                         localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
-                        arrayGlobal.push(localm);
+                        //arrayGlobal.push(localm);
+                        arrayGlobal[minuto] = localm;
                     };
-
                 }
+                if (typeof(rojaLocal) !== "undefined") {
+                    for (var j = 0; j < rojaLocal.length; j++) {
+                        var minuto = rojaLocal[j].minute,
+                            clase = (rojaLocal[j].type === "segundaAmonestacion") ? 'tvsa-mxm-secondyellowcard' : 'tvsa-mxm-redcard';
+                        localm = "";
+                        localm += '<div class="' + minuto + ' bodyt dotted-bottom" id="expulsado' + minuto + '">';
+                        localm += '<div class="textcolor-title1">' + rojaLocal[j].number + '</div>';
+                        localm += '<div class="dotted-left name"><p>' + rojaLocal[j].nickName + '</p></div>';
+                        localm += '<div class="textcolor-title4 dotted-left"><i class="' + clase + '"></i>' + minuto + '\'</div>';
+                        localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
+                        //arrayGlobal.push(localm);
+                        arrayGlobal[minuto] = localm;
+                    };
+                }
+
+
+
+
                 if (typeof(visit) !== "undefined") {
                     for (var k = 0; k < visit.length; k++) {
                         var minuto = 0;
@@ -1246,12 +1240,30 @@
                         visitm += '<div class="dotted-left name"><p>' + visit[k].nickName + '</p></div>';
                         visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
                         visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + visit[k].actions[minuto].minute + '\'</div></div>';
-                        arrayGlobal.push(visitm);
+                        //arrayGlobal.push(visitm);
+                        arrayGlobal[minuto] = visitm;
                     };
 
                 }
+                if (typeof(rojaVisit) !== "undefined") {
+                    for (var r = 0; r < rojaVisit.length; r++) {
+                        var minuto = rojaVisit[r].minute,
+                            clase = (rojaVisit[r].type === "segundaAmonestacion") ? 'tvsa-mxm-secondyellowcard' : 'tvsa-mxm-redcard';
+                        visitm = "";
+                        visitm += '<div class="' + minuto + ' bodyt dotted-bottom" id="expulsado' + minuto + '">';
+                        visitm += '<div class="textcolor-title2">' + rojaVisit[r].number + '</div>';
+                        visitm += '<div class="dotted-left name"><p>' + rojaVisit[r].nickName + '</p></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
+                        visitm += '<div class="textcolor-title4 dotted-left"><i class="' + clase + '"></i>' + minuto + '\'</div></div>';
+                        //arrayGlobal.push(visitm);
+                        arrayGlobal[minuto] = visitm;
+                    };
+                }
+
                 for (var x = 0; x < arrayGlobal.sort().length; x++) {
-                    itemshtml += arrayGlobal.sort()[x];
+                    var temp = arrayGlobal.sort()[x];
+
+                    itemshtml += (typeof(temp) !== "undefined") ? temp : '';
                 };
 
                 if (itemshtml !== "") {
@@ -1270,16 +1282,16 @@
 
             }, // Modexpulsados
 
-            ModexpulsadosUpdate: function(local, visit) {
+            ModexpulsadosUpdate: function(local, visit, rojaLocal, rojaVisit) {
 
                 var arrayGlobal = new Array(),
                     localm = "",
                     visitm = "",
                     finalHTML = "";
-                var itemfeed = local.length + visit.length;
+                var itemfeed = local.length + visit.length + rojaLocal.length + rojaVisit.length;
                 var actualitems = wdg_smex_strategy.tagExpulsion.find(".bodyt").size();
-                console.log("itemfeed: " + itemfeed);
-                console.log("actualitems: " + actualitems);
+                //console.log("itemfeed: " + itemfeed);
+                //console.log("actualitems: " + actualitems);
                 if (itemfeed > actualitems) {
                     if (local.length !== 0) {
                         for (var i = 0; i < local.length; i++) {
@@ -1296,11 +1308,29 @@
                             localm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm-yellowcard"></i>' + local[i].actions[minuto].minute + '\'</div>';
                             localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
                             if (!$('#expulsado' + local[i].actions[minuto].minute + '').length) {
+                                //arrayGlobal[minuto] = localm;
                                 arrayGlobal.push(localm);
                             }
 
                         };
 
+                    }
+                    if (rojaLocal.length !== 0) {
+                        for (var j = 0; j < rojaLocal.length; j++) {
+                            var minuto = rojaLocal[j].minute,
+                                clase = (rojaLocal[j].type === "segundaAmonestacion") ? 'tvsa-mxm-secondyellowcard' : 'tvsa-mxm-redcard';
+                            localm = "";
+                            localm += '<div class="' + minuto + ' bodyt dotted-bottom" id="expulsado' + minuto + '">';
+                            localm += '<div class="textcolor-title1">' + rojaLocal[j].number + '</div>';
+                            localm += '<div class="dotted-left name"><p>' + rojaLocal[j].nickName + '</p></div>';
+                            localm += '<div class="textcolor-title4 dotted-left"><i class="' + clase + '"></i>' + minuto + '\'</div>';
+                            localm += '<div class="textcolor-title4 dotted-left">&nbsp;</div></div>';
+                            if (!$('#expulsado' + minuto + '').length) {
+                                //arrayGlobal[minuto] = localm;
+                                arrayGlobal.push(localm);
+                            }
+
+                        };
                     }
                     if (visit.length !== 0) {
                         for (var k = 0; k < visit.length; k++) {
@@ -1322,6 +1352,22 @@
 
                         };
 
+                    }
+                    if (rojaVisit.length !== 0) {
+                        for (var r = 0; r < rojaVisit.length; r++) {
+                            var minuto = rojaVisit[r].minute,
+                                clase = (rojaVisit[r].type === "segundaAmonestacion") ? 'tvsa-mxm-secondyellowcard' : 'tvsa-mxm-redcard';
+                            visitm = "";
+                            visitm += '<div class="' + minuto + ' bodyt dotted-bottom" id="expulsado' + minuto + '">';
+                            visitm += '<div class="textcolor-title2">' + rojaVisit[r].number + '</div>';
+                            visitm += '<div class="dotted-left name"><p>' + rojaVisit[r].nickName + '</p></div>';
+                            visitm += '<div class="textcolor-title4 dotted-left"><i class="tvsa-mxm">&nbsp;</i></div>';
+                            visitm += '<div class="textcolor-title4 dotted-left"><i class="' + clase + '"></i>' + minuto + '\'</div></div>';
+                            if (!$('#expulsado' + minuto + '').length) {
+                                arrayGlobal.push(visitm);
+                            }
+
+                        };
                     }
 
                     for (var x = 0; x < arrayGlobal.sort().length; x++) {
@@ -1864,63 +1910,89 @@
             wdgPenales: function(local, visit, nombreLocal, nombrevisit) {
                 var maquetado = "",
                     content = "";
-                for (var i = 0; i < local.length; i++) {
-                    content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '">';
-                    content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
-                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
-                    content += '</div>';
-                };
-                for (var j = 0; j < visit.length; j++) {
-                    content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '">';
-                    content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
-                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
-                    content += '</div>';
-                };
+                if (typeof(local) !== "undefined") {
+                    for (var i = 0; i < local.length; i++) {
+                        var clase = (local[i].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
+                        content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '">';
+                        content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
+                        content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
+                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        content += '</div>';
+                    };
+                }
+                if (typeof(visit) !== "undefined") {
+                    for (var j = 0; j < visit.length; j++) {
+                        var clase = (visit[j].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
+                        content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '">';
+                        content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
+                        content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        content += '</div>';
+                    };
+                }
 
-
-                maquetado += '<div class="wdg_mxm_penalties_01">';
-                maquetado += '<div class="titulo textcolor-title1">Penales</div>';
-                maquetado += '<div class="convocados">';
-                maquetado += content;
-                maquetado += '</div></div>';
-                wdg_smex_strategy.tagwdgPenales.html(maquetado);
+                if (content !== "") {
+                    maquetado += '<div class="wdg_mxm_penalties_01">';
+                    maquetado += '<div class="titulo textcolor-title1">Penales</div>';
+                    maquetado += '<div class="convocados">';
+                    maquetado += content;
+                    maquetado += '</div></div>';
+                    wdg_smex_strategy.tagwdgPenales.html(maquetado);
+                    wdg_smex_strategy.tagAlineacionGoles.parents('.wdg_goalsanoted_01').show('slow');
+                }
 
             },
             wdgPenalesupdate: function(local, visit, nombreLocal, nombrevisit) {
-
                 var maquetado = "",
                     content = "";
-                for (var i = 0; i < local.length; i++) {
-                    content = "";
-                    content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '" style="display:none">';
-                    content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
-                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
-                    content += '</div>';
-                    if (!$('#penal' + local[i].number + '').length) {
-                        maquetado += content;
+                if (typeof(local) !== "undefined") {
+                    for (var i = 0; i < local.length; i++) {
+                        var clase = (local[i].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
+                        content = "";
+                        content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '" style="display:none">';
+                        content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
+                        content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        content += '</div>';
+                        if (!$('#penal' + local[i].number + '').length) {
+                            maquetado += content;
+                        }
+                    };
+                }
+                if (typeof(visit) !== "undefined") {
+                    for (var j = 0; j < visit.length; j++) {
+                        var clase = (visit[j].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
+                        content = "";
+                        content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '" style="display:none">';
+                        content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
+                        content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        content += '</div>';
+                        if (!$('#penal' + visit[j].number + '').length) {
+                            maquetado += content;
+                        }
+                    };
+                }
+
+                if (maquetado !== "") {
+                    if (!wdg_smex_strategy.tagwdgPenales.find('.convocados').length) {
+                        var esqueleto = "";
+                        esqueleto += '<div class="wdg_mxm_penalties_01">';
+                        esqueleto += '<div class="titulo textcolor-title1">Penales</div>';
+                        esqueleto += '<div class="convocados">';
+                        esqueleto += '</div></div>';
+                        wdg_smex_strategy.tagwdgPenales.html(esqueleto);
                     }
-                };
-                for (var j = 0; j < visit.length; j++) {
-                    content = "";
-                    content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '" style="display:none">';
-                    content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
-                    content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                    content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
-                    content += '</div>';
-                    if (!$('#penal' + visit[j].number + '').length) {
-                        maquetado += content;
-                    }
-                };
-
-
-
-                wdg_smex_strategy.tagwdgPenales.find('.convocados').append(maquetado);
-                wdg_smex_strategy.tagwdgPenales.find('.block_container').slideDown('slow', function() {
-                    $(this).css("display", "block");
-                });
+                    wdg_smex_strategy.tagwdgPenales.find('.convocados').append(maquetado);
+                    wdg_smex_strategy.tagwdgPenales.find('.block_container').slideDown('slow', function() {
+                        $(this).css("display", "block");
+                    });
+                    wdg_smex_strategy.tagAlineacionGoles.parents('.wdg_goalsanoted_01').show('slow');
+                }
 
             },
 
