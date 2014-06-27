@@ -41,7 +41,7 @@
                         //console.log("Ahora: " + objTime.text());
                         var timeAct = parseInt(objTime.text());
                         if (timeAct > 0 && parseInt(objTime.text()) !== parseInt(wdgLiveObj.tmpescuchaListener)) {
-                            //console.log("ACTUALIZANDO CON ... " + objTime.text());
+                            console.log("ACTUALIZANDO CON ... " + objTime.text());
                             wdgLiveObj.tmpescuchaListener = parseInt(objTime.text());
                             clearInterval(timerGlobal);
                             timerGlobal = setInterval(function() {
@@ -173,7 +173,7 @@
                                     clase = "twitter"
                                     break;
                                 case "penalfalladoserie":
-                                    clase = "tvsa-mxm-owngoal";
+                                    clase = "tvsa-mxm-penalFallado";
                                     break;
                                 case "penalanotadoserie":
                                     clase = "tvsa-mxm-goal";
@@ -459,7 +459,7 @@
                                         clase = "twitter"
                                         break;
                                     case "penalfalladoserie":
-                                        clase = "tvsa-mxm-owngoal";
+                                        clase = "tvsa-mxm-penalFallado";
                                         break;
                                     case "penalanotadoserie":
                                         clase = "tvsa-mxm-goal";
