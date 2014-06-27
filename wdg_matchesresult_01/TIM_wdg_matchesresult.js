@@ -266,10 +266,10 @@
                             //ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
                             var periodNow = contenido[y].period;
 
-                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
 
                         } else {
-                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].EventTournamentName.substring(0, 15);
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '?' + Math.random() + '">' + contenido[y].EventTournamentName.substring(0, 15);
                             ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink.substring(0, numSplit) + '</span></a>';
                         }
                         ItemView += '</p>';
@@ -279,14 +279,14 @@
                         }
                         ItemView += '<div class="wdg_match_01_icon">';
                         if (setting.country_code === 'USA') {
-                            ItemView += (contenido[y].USAvideo !== "") ? '<a target="_blank" href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                            ItemView += (contenido[y].USAvideo !== "" && typeof(contenido[y].USAvideo) !== "undefined") ? '<a target="_blank" href="' + contenido[y].USAvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                         } else if (setting.country_code === 'MEX') {
 
                             if (setting.tema === "mundial") {
                                 ItemView += (periodNow === "F" && contenido[y].ResumenTransmision !== "" && typeof contenido[y].ResumenTransmision !== "") ? '<a target="_blank" href="' + contenido[y].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
-                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "") ? '<a target="_blank" href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "" && typeof(contenido[y].EventUrl) !== "undefined") ? '<a target="_blank" href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                             } else {
-                                ItemView += (contenido[y].MXvideo !== "") ? '<a target="_blank" href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (contenido[y].MXvideo !== "" && typeof(contenido[y].MXvideo) !== "undefined") ? '<a target="_blank" href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                             }
 
 
@@ -419,7 +419,7 @@
                         if (data.matches.match[o].period === "F" && data.matches.match[o].ResumenTransmision !== "" && typeof data.matches.match[o].ResumenTransmision !== "undefined") {
                             //console.log("FINAL con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
                             selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>');
-                        } else if (data.matches.match[o].EventUrl !== "" && data.matches.match[o].period !== "F") {
+                        } else if (data.matches.match[o].EventUrl !== "" && data.matches.match[o].period !== "F" && typeof(data.matches.match[o].EventUrl) !== "undefined") {
                             //console.log("VIVO con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
                             selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>');
                         }
