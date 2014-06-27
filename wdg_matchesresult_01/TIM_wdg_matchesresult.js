@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.3
+ *   Version: 5.0.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
