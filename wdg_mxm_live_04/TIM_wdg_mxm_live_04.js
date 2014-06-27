@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.1.5
+ *   Version: 1.1.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -36,14 +36,14 @@
                 wdgLiveObj.loadMaster();
 
                 wdgLiveObj.listener = setInterval(function() {
-                    console.log("buscando etiqueta actualizable..")
+                    //console.log("buscando etiqueta actualizable..")
                     var objTime = $("#timeUpdateMxM");
                     if (objTime.length) {
-                        console.log("Antes: " + wdgLiveObj.tmpescuchaListener);
-                        console.log("Ahora: " + objTime.text());
+                        //console.log("Antes: " + wdgLiveObj.tmpescuchaListener);
+                        //console.log("Ahora: " + objTime.text());
                         var timeAct = parseInt(objTime.text());
                         if (timeAct > 0 && parseInt(objTime.text()) !== parseInt(wdgLiveObj.tmpescuchaListener)) {
-                            console.log("ACTUALIZANDO CON ... " + objTime.text());
+                            //console.log("ACTUALIZANDO CON ... " + objTime.text());
                             wdgLiveObj.tmpescuchaListener = parseInt(objTime.text());
                             clearInterval(timerGlobal);
                             timerGlobal = setInterval(function() {
@@ -72,9 +72,12 @@
 
                         for (var i = 0; i < data.actionsMXM.length; i++) {
                             var video = "",
-                                galeria = "";
+                                galeria = "",
+                                accionminuto = data.actionsMXM[i].type.toLowerCase();
+
+
                             //console.log(data.actionsMXM[i].type.toLowerCase());
-                            switch (data.actionsMXM[i].type.toLowerCase()) {
+                            switch (accionminuto) {
                                 case "amonestacion":
                                     clase = "tvsa-mxm-yellowcard"
                                     break;
@@ -171,9 +174,20 @@
                                 case "twitter":
                                     clase = "twitter"
                                     break;
-
+                                case "penalfalladoserie":
+                                    clase = "tvsa-mxm-owngoal";
+                                    break;
+                                case "penalanotadoserie":
+                                    clase = "tvsa-mxm-goal";
+                                    break;
+                                case "terminasegundotiempoextra":
+                                    clase = "tvsa-mxm-gameend"
+                                    break;
+                                case "terminaprimertiempoextra":
+                                    clase = "tvsa-mxm-gameend"
+                                    break;
                                 default:
-                                    clase = "tvsa-" + data.actionsMXM[i].type.toLowerCase()
+                                    clase = "tvsa-" + accionminuto;
                                     break;
 
 
@@ -181,7 +195,7 @@
 
                             item += '<li data-id="' + guuid + '" style="display:none">';
                             item += (clase === "twitter") ? '<div class="time-icon twitter">' : '<div class="time-icon">';
-                            item += '<div class="textcolor-title6 time">' + data.actionsMXM[i].minute + '\'</div>';
+                            item += (accionminuto !== "penalfalladoserie" && accionminuto !== "penalanotadoserie") ? '<div class="textcolor-title6 time">' + data.actionsMXM[i].minute + '\'</div>' : '<div class="textcolor-title6 time">&nbsp;&nbsp;&nbsp;</div>';
                             if (clase === "twitter") {
                                 item += '<div class="icon-time"><i class="tvsa-twitter"></i></div>';
                             } else {
@@ -450,9 +464,10 @@
 
 
                                 var video = "",
-                                    galeria = "";
+                                    galeria = "",
+                                    accionminuto = data.actionsMXM[i].type.toLowerCase();
 
-                                switch (data.actionsMXM[i].type.toLowerCase()) {
+                                switch (accionminuto) {
                                     case "amonestacion":
                                         clase = "tvsa-mxm-yellowcard"
                                         break;
@@ -549,15 +564,27 @@
                                     case "twitter":
                                         clase = "twitter"
                                         break;
+                                    case "penalfalladoserie":
+                                        clase = "tvsa-mxm-owngoal";
+                                        break;
+                                    case "penalanotadoserie":
+                                        clase = "tvsa-mxm-goal";
+                                        break;
+                                    case "terminasegundotiempoextra":
+                                        clase = "tvsa-mxm-gameend"
+                                        break;
+                                    case "terminaprimertiempoextra":
+                                        clase = "tvsa-mxm-gameend"
+                                        break;
                                     default:
-                                        clase = "tvsa-" + data.actionsMXM[i].type.toLowerCase()
+                                        clase = "tvsa-" + accionminuto;
                                         break;
 
 
                                 }
                                 item += '<li data-id="' + guuid + '" style="display:none">';
                                 item += (clase === "twitter") ? '<div class="time-icon twitter">' : '<div class="time-icon">';
-                                item += '<div class="textcolor-title6 time">' + data.actionsMXM[i].minute + '\'</div>';
+                                item += (accionminuto !== "penalfalladoserie" && accionminuto !== "penalanotadoserie") ? '<div class="textcolor-title6 time">' + data.actionsMXM[i].minute + '\'</div>' : '<div class="textcolor-title6 time">&nbsp;&nbsp;&nbsp;</div>';
                                 if (clase === "twitter") {
                                     item += '<div class="icon-time"><i class="tvsa-' + clase + '"></i></div>';
                                 } else {
