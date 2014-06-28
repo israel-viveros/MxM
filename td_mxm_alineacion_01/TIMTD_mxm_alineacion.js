@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.6
+ *   Version: 1.3.8
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1840,7 +1840,7 @@
                         var clase = (visit[j].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
                         content = '<div class="block_container dotted-bottom" id="penal' + visit[j].number + visit[j].minuto + '">';
                         content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
-                        content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                        content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p>' + visit[j].current_score + '</p></div>';
                         content += '</div>';
                         globalcon[visit[j].minuto] = content;
@@ -1870,7 +1870,7 @@
                         content = "";
                         content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + local[i].minuto + '" style="display:none">';
                         content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
-                        content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                        content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
                         content += '</div>';
@@ -1885,7 +1885,7 @@
                         content = "";
                         content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + visit[j].minuto + '" style="display:none">';
                         content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
-                        content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
+                        content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p>' + visit[j].current_score + '</p></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
                         content += '</div>';
