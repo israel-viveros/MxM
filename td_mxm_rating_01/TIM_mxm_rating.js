@@ -15,7 +15,7 @@ wdg_rating_main_01
 
         var wdg_rating_main_01 = {
             //http://static-televisadeportes.esmas.com/sportsdata/futbol/data/356/25016/gameplayerdetailjsonp.js                
-            urlPLayerDetail: 'http://mxm.televisadeportes.esmas.com/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
+            urlPLayerDetail: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + setting.idTorneo + '/' + setting.idEvento + '/gameplayerdetailjsonp.js',
             tagRatingMain: $("#containerwdg_rating_main_01"),
 
             posicionTexto: function(posicion) {
@@ -44,6 +44,7 @@ wdg_rating_main_01
                 var maquetado = "";
                 var infoArray = new Array();
 
+                /*
                 for (var i = 0; i < dataGamePlayer.poll['answers']['answer'].length; i++) {
                     var porc = parseFloat(dataGamePlayer.poll['answers']['answer'][i]['percent']);
 
@@ -56,6 +57,29 @@ wdg_rating_main_01
                         club: dataGamePlayer.poll['answers']['answer'][i]['clubname']
                     });
                 }
+                */
+
+
+
+                for (var i = 0; i < dataGamePlayer.poll.length; i++) {
+                    //console.log(dataGamePlayer.poll[i].answers['answer'])
+                    for (var f = 0; f < dataGamePlayer.poll[i].answers['answer'].length; f++) {
+                        //console.log(dataGamePlayer.poll[i].answers['answer'][f]);
+                        infoArray.push({
+                            id: i,
+                            porcentaje: parseFloat(dataGamePlayer.poll[i].answers['answer'][f]['percent']).toFixed(1),
+                            foto: dataGamePlayer.poll[i].answers['answer'][f]['photoRaiting'],
+                            nombre: dataGamePlayer.poll[i].answers['answer'][f]['namePlayer'],
+                            posicion: wdg_rating_main_01.posicionTexto(dataGamePlayer.poll[i].answers['answer'][f]['position']),
+                            club: dataGamePlayer.poll[i].answers['answer'][f]['clubname']
+                        });
+
+                    };
+                };
+
+
+
+
 
                 infoArray.sort(function(a, b) {
                     return b.porcentaje - a.porcentaje;
@@ -148,15 +172,13 @@ wdg_rating_main_01
 
 })(jQuery);
 
+
+
 /*
 wdg_rating_main_01
 */
-
-
-;
 (function() {
-    //-----------------------------------------------------------------------------------------------------------------------------------
-    //-----------------------------------------------------------------------------------------------------------------------------------
+
 
     $.fn.MxMRating = function(options) {
         var setting = $.extend({
@@ -203,7 +225,6 @@ wdg_rating_main_01
             },
 
             pintaInfo: function(dataAlineacion, dataMatchHeader, dataGamePlayer) {
-
                 // START Israel Viveros
                 wdg_mxm_rating.intervaloVe = setInterval(function() {
                     wdg_mxm_rating.listenerInfo();
@@ -253,6 +274,8 @@ wdg_rating_main_01
                 var regbancaVisit = dataAlineacion[equipo[1]]['substitutes'].length;
                 var regPlayerDetail = dataGamePlayer.poll['answers']['answer'].length;
                 setting.votos = dataGamePlayer.poll['summary']['conteo'];
+
+                console.log(regPlayerDetail);
 
 
                 //ALINEACION LOCAL
