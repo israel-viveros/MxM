@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.4
+ *   Version: 5.0.5
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -209,8 +209,12 @@
                     if (y < 16) {
                         var numSplit = 7,
                             tituloMatch = "",
-                            golesTotalLocal = parseInt(contenido[y].equipos.local.goals) + parseInt(contenido[y].equipos.local.penales),
-                            golestotalVisit = parseInt(contenido[y].equipos.visit.goals) + parseInt(contenido[y].equipos.visit.penales);
+                            //golesTotalLocal = parseInt(contenido[y].equipos.local.goals) + parseInt(contenido[y].equipos.local.penales),
+                            //golestotalVisit = parseInt(contenido[y].equipos.visit.goals) + parseInt(contenido[y].equipos.visit.penales);
+                            golesTotalLocal = (contenido[y].equipos.local.penales !== 0) ? ' (' + String(contenido[y].equipos.local.penales) + ')' : '',
+                            golestotalVisit = (contenido[y].equipos.visit.penales !== 0) ? ' (' + String(contenido[y].equipos.visit.penales) + ')' : '';
+
+
                         if ((String(contenido[y].period) === "P")) {
                             tituloMatch = contenido[y].MatchDate + " " + contenido[y].MatchHour.substring(0, 5);
                         } else {
@@ -236,7 +240,7 @@
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_teamscore">';
                         ItemView += '<p>';
-                        ItemView += (contenido[y].period === "P") ? '<a>-</a>  ' : '<a>' + golesTotalLocal + '</a>  ';
+                        ItemView += (contenido[y].period === "P") ? '<a>-</a>  ' : '<a>' + contenido[y].equipos.local.goals + golesTotalLocal + '</a>  ';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '</div>';
@@ -248,7 +252,7 @@
                         ItemView += '</div>';
                         ItemView += '<div class="wdg_match_01_teamscore">';
                         ItemView += '<p>';
-                        ItemView += (contenido[y].period === "P") ? '<a>-</a>  ' : '<a>' + golestotalVisit + '</a>  ';
+                        ItemView += (contenido[y].period === "P") ? '<a>-</a>  ' : '<a>' + contenido[y].equipos.visit.goals + golestotalVisit + '</a>  ';
                         ItemView += '</p>';
                         ItemView += '</div>';
                         ItemView += '</div><div class="shadow"></div>';
@@ -369,20 +373,26 @@
                     //console.log(selectorTMP);
                     ActGolL = String(selectorTMP.find('.wdg_match_01_teamscore').eq(0).text());
                     ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text());
-                    NuevoGolL = data.matches.match[o].equipos.local.goals + data.matches.match[o].equipos.local.penales;
-                    NuevoGolV = data.matches.match[o].equipos.visit.goals + data.matches.match[o].equipos.visit.penales;
+                    //NuevoGolL = data.matches.match[o].equipos.local.goals + data.matches.match[o].equipos.local.penales;
+                    //NuevoGolV = data.matches.match[o].equipos.visit.goals + data.matches.match[o].equipos.visit.penales;
+                    var penalesLocal = (data.matches.match[o].equipos.local.penales !== 0) ? ' (' + data.matches.match[o].equipos.local.penales + ')' : '';
+                    var penalesVisit = (data.matches.match[o].equipos.visit.penales !== 0) ? ' (' + data.matches.match[o].equipos.visit.penales + ')' : '';
+                    NuevoGolL = String(data.matches.match[o].equipos.local.goals) + penalesLocal;
+                    NuevoGolV = String(data.matches.match[o].equipos.visit.goals) + penalesVisit;
+
                     tituloAct = selectorTMP.find(".textcolor-title5").text();
                     tituloNue = String(tituloMatch);
                     //textoLink = selectorTMP.find(".wdg_match_01_extra span").text();
                     textoLink = selectorTMP.find(".wdg_match_01_extra p a").eq(0).text();
 
                     //console.log("TITLE"+tituloAct+"<->"+tituloNue);
-                    //console.log("LOCAL"+ActGolL+"<->"+NuevoGolL);
-                    //console.log("VISIT"+ActGolV+"<->"+NuevoGolV);
+                    //console.log("LOCAL" + ActGolL + "<->" + NuevoGolL);
+                    //console.log("VISIT" + ActGolV + "<->" + NuevoGolV);
                     if (data.matches.match[o].period !== "P" && data.matches.match[o].period !== "F") {
                         //console.log("actualizo goles de: ");
                         //console.log(data.matches.match[o]);
                         if (ActGolL !== NuevoGolL) {
+                            //console.log("entro local");
                             selectorTMP.find('.wdg_match_01_teamscore').eq(0).css({
                                 'display': 'none',
                                 'position': 'relative'
@@ -390,6 +400,7 @@
                         }
 
                         if (ActGolV !== NuevoGolV) {
+                            //console.log("entro visit");
                             selectorTMP.find('.wdg_match_01_teamscore').eq(1).css({
                                 'display': 'none',
                                 'position': 'relative'
