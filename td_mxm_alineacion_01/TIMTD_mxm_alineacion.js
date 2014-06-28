@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.5
+ *   Version: 1.3.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1822,35 +1822,39 @@
             },
             wdgPenales: function(local, visit, nombreLocal, nombrevisit) {
                 var maquetado = "",
-                    content = "";
+                    content = "",
+                    globalcon = new Array();
                 if (typeof(local) !== "undefined") {
                     for (var i = 0; i < local.length; i++) {
                         var clase = (local[i].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
-                        content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '">';
+                        content = '<div class="block_container dotted-bottom" id="penal' + local[i].number + local[i].minuto + '">';
                         content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
                         content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
-                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
-                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div>';
                         content += '</div>';
+                        globalcon[local[i].minuto] = content;
                     };
                 }
                 if (typeof(visit) !== "undefined") {
                     for (var j = 0; j < visit.length; j++) {
                         var clase = (visit[j].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
-                        content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '">';
+                        content = '<div class="block_container dotted-bottom" id="penal' + visit[j].number + visit[j].minuto + '">';
                         content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
                         content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
-                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p>' + visit[j].current_score + '</p></div>';
                         content += '</div>';
+                        globalcon[visit[j].minuto] = content;
                     };
                 }
 
-                if (content !== "") {
+                if (globalcon.length !== 0) {
                     maquetado += '<div class="wdg_mxm_penalties_01">';
                     maquetado += '<div class="titulo textcolor-title1">Penales</div>';
                     maquetado += '<div class="convocados">';
-                    maquetado += content;
+                    for (var f = 0; f < globalcon.length; f++) {
+                        maquetado += (typeof(globalcon[f]) !== "undefined") ? globalcon[f] : '';
+                    };
+                    //maquetado += content;
                     maquetado += '</div></div>';
                     wdg_smex_strategy.tagwdgPenales.html(maquetado);
                     wdg_smex_strategy.tagAlineacionGoles.parents('.wdg_goalsanoted_01').show('slow');
@@ -1864,13 +1868,13 @@
                     for (var i = 0; i < local.length; i++) {
                         var clase = (local[i].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
                         content = "";
-                        content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + '" style="display:none">';
+                        content += '<div class="block_container dotted-bottom" id="penal' + local[i].number + local[i].minuto + '" style="display:none">';
                         content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
                         content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p>' + local[i].current_score + '</p></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
                         content += '</div>';
-                        if (!$('#penal' + local[i].number + '').length) {
+                        if (!$('#penal' + local[i].number + local[i].minuto + '').length) {
                             maquetado += content;
                         }
                     };
@@ -1879,13 +1883,13 @@
                     for (var j = 0; j < visit.length; j++) {
                         var clase = (visit[j].type === "penalAnotadoSerie") ? 'tvsa-mxm-goal' : 'tvsa-mxm-penalFallado';
                         content = "";
-                        content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + '" style="display:none">';
+                        content += '<div class="block_container dotted-bottom" id="penal' + visit[j].number + visit[j].minuto + '" style="display:none">';
                         content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
                         content += '<div class="estadistica dotted-left"><i class="tvsa-mxm-goal"></i></div>';
-                        //content += '<div class="dotted-left marcador dotted-left"><p>0-0</p></div>';
+                        content += '<div class="dotted-left marcador dotted-left"><p>' + visit[j].current_score + '</p></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
                         content += '</div>';
-                        if (!$('#penal' + visit[j].number + '').length) {
+                        if (!$('#penal' + visit[j].number + visit[j].minuto + '').length) {
                             maquetado += content;
                         }
                     };
