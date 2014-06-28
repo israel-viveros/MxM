@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.5
+ *   Version: 5.0.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -211,8 +211,8 @@
                             tituloMatch = "",
                             //golesTotalLocal = parseInt(contenido[y].equipos.local.goals) + parseInt(contenido[y].equipos.local.penales),
                             //golestotalVisit = parseInt(contenido[y].equipos.visit.goals) + parseInt(contenido[y].equipos.visit.penales);
-                            golesTotalLocal = (contenido[y].equipos.local.penales !== 0) ? ' (' + String(contenido[y].equipos.local.penales) + ')' : '',
-                            golestotalVisit = (contenido[y].equipos.visit.penales !== 0) ? ' (' + String(contenido[y].equipos.visit.penales) + ')' : '';
+                            golesTotalLocal = (contenido[y].equipos.local.penales !== 0) ? '(' + String(contenido[y].equipos.local.penales) + ')' : '',
+                            golestotalVisit = (contenido[y].equipos.visit.penales !== 0) ? '(' + String(contenido[y].equipos.visit.penales) + ')' : '';
 
 
                         if ((String(contenido[y].period) === "P")) {
@@ -375,8 +375,8 @@
                     ActGolV = String(selectorTMP.find('.wdg_match_01_teamscore').eq(1).text());
                     //NuevoGolL = data.matches.match[o].equipos.local.goals + data.matches.match[o].equipos.local.penales;
                     //NuevoGolV = data.matches.match[o].equipos.visit.goals + data.matches.match[o].equipos.visit.penales;
-                    var penalesLocal = (data.matches.match[o].equipos.local.penales !== 0) ? ' (' + data.matches.match[o].equipos.local.penales + ')' : '';
-                    var penalesVisit = (data.matches.match[o].equipos.visit.penales !== 0) ? ' (' + data.matches.match[o].equipos.visit.penales + ')' : '';
+                    var penalesLocal = (data.matches.match[o].equipos.local.penales !== 0) ? '(' + data.matches.match[o].equipos.local.penales + ')' : '';
+                    var penalesVisit = (data.matches.match[o].equipos.visit.penales !== 0) ? '(' + data.matches.match[o].equipos.visit.penales + ')' : '';
                     NuevoGolL = String(data.matches.match[o].equipos.local.goals) + penalesLocal;
                     NuevoGolV = String(data.matches.match[o].equipos.visit.goals) + penalesVisit;
 
