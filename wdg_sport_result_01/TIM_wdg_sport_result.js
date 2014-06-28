@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.9
+ *   Version: 1.4.10
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -279,7 +279,7 @@
 
                                 var partidoMs = a.getTime(),
                                     servidorMs = b.getTime(),
-                                    duracionPartido = 9000000, //2.5 hrs
+                                    duracionPartido = 18000000, //5 hrs
                                     minutosPrevio = 3600000, // 60 min
                                     finalPartido = partidoMs + duracionPartido,
                                     partidoAntes = partidoMs - minutosPrevio,
