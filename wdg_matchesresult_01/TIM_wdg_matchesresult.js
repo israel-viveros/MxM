@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.6
+ *   Version: 5.0.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1136,6 +1136,7 @@ jQuery(function($) {
 
                 //$('.wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible').css('margin-top','95%');
                 $('.wdg_matchesresult_01 .wdg_matchesresult_01_container , .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components ul').css('height', heightModulo + 'px');
+                $("#listNow").parent(".wdg_matchesresult_01_components").css('height', heightModulo - 75 + 'px');
                 $('.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right').css('height', heightModulo - 30 + 'px');
                 $closeElement.animate({
                     'height': heightModulo
