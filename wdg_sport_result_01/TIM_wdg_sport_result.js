@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.10
+ *   Version: 1.4.11
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -52,7 +52,7 @@
                 var MaquetadoHEader = "",
                     minuto = (parseInt(data.minuto) !== 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
-                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="linklocalTIM">' + data.equipoLocal.url + '</span> <span id="linkvisitTIM">' + data.equipoVisitante.url + '</span> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + banderaLocalch + '</span> <span id="visitImgTIM" class="hidden">' + banderaVisitch + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="linklocalTIM">' + data.equipoLocal.url + '</span> <span id="linkvisitTIM">' + data.equipoVisitante.url + '</span> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + banderaLocalch + '</span> <span id="visitImgTIM" class="hidden">' + banderaVisitch + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoLocal.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo !== "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
