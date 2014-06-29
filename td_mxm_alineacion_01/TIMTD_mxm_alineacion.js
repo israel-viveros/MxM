@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.9
+ *   Version: 1.4.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1878,7 +1878,7 @@
                         content += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + nombreLocal + '</span></p></div>';
                         content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p>' + spliMarcador + '</p></div>';
-                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        //content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
                         content += '</div>';
                         if (!$('#penal' + local[i].number + local[i].minuto + '').length) {
                             maquetado += content;
@@ -1895,7 +1895,7 @@
                         content += '<div class="jugador"><p>' + visit[j].nickName + '<span class="textcolor-title4">' + nombrevisit + '</span></p></div>';
                         content += '<div class="estadistica dotted-left"><i class="' + clase + '"></i></div>';
                         content += '<div class="dotted-left marcador dotted-left"><p>' + spliMarcador + '</p></div>';
-                        content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
+                        //content += '<div class="dotted-left marcador dotted-left"><p></p></div>';
                         content += '</div>';
                         if (!$('#penal' + visit[j].number + visit[j].minuto + '').length) {
                             maquetado += content;
