@@ -1,0 +1,507 @@
+@media screen {
+    .wdg_rate_player_01{
+        width: 630px;
+        margin-bottom: 36px;
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        margin-top: 10px;
+        height: auto;
+        overflow: hidden;
+    }
+    .wdg_rate_player_01 .qualifies{
+        background-color: #F5F5F5;
+        float: left;
+        font-size: 12px;
+        font-style: italic;
+        margin-left: 230px;
+        margin-top: -8px;
+        padding: 0 10px;
+        position: absolute;
+    }
+    .wdg_rate_player_01 table {
+        border-spacing: 0;
+        border-collapse: 0;
+        margin-top: 18px;
+		margin-bottom: 0;
+    }
+     .wdg_rate_player_01 table table{
+        margin-top: -2px;
+    }
+    .wdg_rate_player_01 table .conteiner_two{
+        line-height: 18px;
+        margin-right: 12px
+    }
+	
+    .wdg_rate_player_01 table .header_team{
+        border: 0;
+        vertical-align: top;
+        padding-right: 0px;
+    }
+	.wdg_rate_player_01 table .header_team_ext{
+        border: 0;
+        vertical-align: top;
+        padding-right: 12px;
+        padding-left: 11px;
+    }
+	.wdg_rate_player_01 table .header_team_2{
+        vertical-align: top;
+        padding-right: 12px;
+	}
+    .wdg_rate_player_01 .title_team{
+        font-weight: normal;
+        text-transform:uppercase;
+        font-size: 14px;
+        text-align: left;
+        width: 108px;
+        margin-top: -3px;
+        font-weight: bold;
+    }
+
+    .wdg_rate_player_01 table th img{
+        padding: 0 5px;
+    }
+    .wdg_rate_player_01 .title_td{
+        font-size: 12px;
+        font-weight: normal;
+        text-transform: uppercase;
+        width: 30px;
+    }
+    .wdg_rate_player_01 .title_afision{
+        font-weight: bold;
+        font-size: 12px;
+        text-transform:uppercase;
+        padding-left: 2px;
+		width:37px;
+        padding-right: 15px !important;
+    }
+    .wdg_rate_player_01 table td.reserves{
+        border-bottom: 1px solid #CCCCCC;
+        font-size: 18px;
+        font-style: italic;
+        font-weight: normal;
+        height: 39px;
+        padding-left: 45px;
+        text-align: left;
+    }
+    .wdg_rate_player_01 table .day_relative{
+         position: relative;
+         border-bottom: 0;
+    }
+    .wdg_rate_player_01 table .day_relative2{
+         position: relative;
+         border-bottom: 0;
+    }
+    .wdg_rate_player_01 table .day{
+         padding-bottom: 0px;
+		 position:relative;
+    }
+    .wdg_rate_player_01 table .day:before {
+        background: none repeat scroll 0 0 #DEDEDE;
+		box-shadow: 5px -21px 14px #EDEDED inset;
+        content: url("../global/img/arrow_down.png");
+        font: 11px "Consolas",monospace;
+        padding: 11px 10px 10px;
+        pointer-events: none;
+        position: absolute;
+        left: 267px;
+		top:3px;
+    }
+    .wdg_rate_player_01 table select.team1{
+		font-size: 14px;
+        background: none repeat scroll 0 0 #DEDEDE;
+        border: medium none;
+        box-shadow: 0 4px 14px #B8B8B8 inset;
+        color: #232323;
+        cursor: pointer;
+        height: 34px;
+        outline: medium none;
+        overflow: hidden;
+        padding: 8px 3px;
+        width: 295px;
+    }
+    .wdg_rate_player_01 table .day2{
+         padding-bottom: 0px;
+		 position:relative;
+    }
+    .wdg_rate_player_01 table .day2:before {
+        background: none repeat scroll 0 0 #DEDEDE;
+		box-shadow: 5px -21px 14px #EDEDED inset;
+        content: url("../global/img/arrow_down.png");
+        font: 11px "Consolas",monospace;
+        padding: 11px 10px 10px;
+        pointer-events: none;
+        position: absolute;
+        left: 267px;
+		top: 3px;
+    }
+    .wdg_rate_player_01 table select.team2{
+        background: none repeat scroll 0 0 #DEDEDE;
+        border: medium none;
+        box-shadow: 0 4px 14px #B8B8B8 inset;
+        color: #232323;
+        cursor: pointer;
+        height: 34px;
+        outline: medium none;
+        overflow: hidden;
+        padding: 8px 3px;
+        width: 295px;
+    }
+
+    .wdg_rate_player_01 .last_child  .vote_block{
+        border-bottom: 0;
+    }
+    .wdg_rate_player_01 .vote_block{
+        overflow: hidden;
+        clear: both;
+        width: 300px;
+        padding-left: 0;
+		cursor: pointer;
+    }
+    .wdg_rate_player_01 .vote_block div{
+        float: left;
+    }
+    .wdg_rate_player_01 .vote_block div.player_name{
+        width: 202px;
+    }
+     .wdg_rate_player_01 .vote_block div.div,
+     .wdg_rate_player_01 .vote_block div.afision{
+        width: 40px;
+        text-align: center;
+        margin-top: 6px;
+    }
+    .wdg_rate_player_01 .vote_block div p{
+        margin-top: 5px;
+        float: left;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .wdg_rate_player_01 .vote_block div.div p.textcolor-title4{
+        font-size: 16px;
+        margin-left: 0px;
+        font-weight: normal;
+    }
+    .wdg_rate_player_01 .vote_block div.position p.textcolor-title4{
+        font-size: 12px;
+		font-style:italic;
+        margin-bottom: 6px;
+        margin-top: -5px;
+        font-weight: normal;
+    }
+    .wdg_rate_player_01 .vote_block div p.textcolor-title1{
+        font-size: 16px;
+        padding-left: 16px;
+    }
+    .wdg_rate_player_01 tbody tr.last_child td{
+        border-bottom: 0;
+    }
+
+    .wdg_rate_player_01 tbody .participated{
+        display: none;
+        width: 300px;
+    }
+
+    .wdg_rate_player_01 tbody .participated div{
+        float: left;
+    }
+
+    .wdg_rate_player_01 .participated .voted p{
+        width: 250px;
+        font-size:14px;
+    }
+
+    .wdg_rate_player_01 tbody .participated td{
+        border-bottom: 0;
+    }
+    .wdg_rate_player_01 tbody .participated p{
+        padding: 14px 0;
+        text-align: left;
+}
+    }
+    .wdg_rate_player_01 tbody .participated div.participated_td{
+        text-align: left;
+        padding: 14px 0;
+        width: 250px;
+        border-top: 1px solid #ccc;
+    }
+     @-moz-document url-prefix() {
+        .wdg_rate_player_01 tbody .participated div.check{
+            height: 35px !important;
+        }
+    }
+    .wdg_rate_player_01 tbody .participated div.check{
+        height: 35px;
+        padding-top: 11px;
+        text-align: center;
+        width: 49px;
+    }
+
+    .wdg_rate_player_01 tbody .participated .qualifies{
+        background-color: #F5F5F5;
+        border-bottom: 0 none !important;
+        border-top: 0 none !important;
+        float: left;
+        font-size: 12px;
+        font-style: italic;
+        height: 15px;
+        margin-left: -174px;
+        margin-top: -12px;
+        padding-bottom: 0;
+        padding-top: 1px !important;
+        position: relative;
+        text-align: center;
+        width: 130px !important;
+    }
+    .wdg_rate_player_01 tbody .calification{
+       display: none;
+    }
+    .wdg_rate_player_01 tbody .qualifies{
+        background-color: #F5F5F5;
+        float: left;
+        font-size: 12px;
+        font-style: italic;
+        height: 2px;
+        margin-left: -15px;
+        margin-top: -25px;
+        padding-bottom: 0;
+        position: relative;
+        padding-top: 1px !important;
+        width: 130px !important;
+        border-bottom: 0 !important;
+        border-top: 0 !important;
+        text-align: center;
+    }
+
+    .wdg_rate_player_01 tbody .calification div{
+        border-bottom: 1px solid #ccc;
+        border-top: 1px solid #ccc;
+        padding: 14px 0;
+        cursor: pointer;
+        width: 50px;
+        float: left;
+        text-align: center;
+
+    }
+    
+     .wdg_rate_player_01 tbody td.player_name{
+        text-align: left;
+    }
+    .wdg_rate_player_01 tbody td.player_name p.textcolor-title4{
+        text-align: left;
+        font-size: 12px;
+        padding-bottom: 5px;
+        margin-top: -10px;
+    }
+    .wdg_rate_player_01 tbody td.position{
+        
+    }
+    .wdg_rate_player_01 tbody td.position p{
+        width: auto;
+    }
+    .wdg_rate_player_01 tbody td.td{
+        font-size: 16px;
+    }
+    .wdg_rate_player_01 tbody td.td p{
+        border-right: 1px dashed #8f8f8f;
+    }
+    .wdg_rate_player_01 tbody td.afision{
+        font-size: 16px;
+    }
+    .wdg_rate_player_01 .header_team_2{
+        padding-left: 12px;
+    }
+
+    .wdg_rate_player_01 .head_table2{
+        padding-left: 12px;
+        padding-top: 0px;
+    }
+
+    .wdg_rate_player_01 table .empty_td{
+        height: 47px;
+        width: 298px;
+        float: left;
+    }
+    .wdg_rate_player_01 table .header_table1{
+        border-bottom: 0;
+    }
+    .wdg_rate_player_01 table .header_table2{
+        width: 290px;
+    }
+    .wdg_rate_player_01 table .voted {
+        border-bottom: 0;
+    }
+    .wdg_rate_player_01 table .check {
+        border-bottom: 0;
+    }
+    .wdg_rate_player_01 table .voted p{
+        width: 188px;
+    }
+	
+	
+	.wdg_rate_player_01 select.team1{
+		position:relative;
+		z-index:10;
+		width:295px !important;
+		height:36px !important;
+		line-height:26px;
+	}
+	.wdg_rate_player_01 select.team2{
+		position:relative;
+		z-index:10;
+		width:295px !important;
+		height:36px !important;
+		line-height:26px;
+	}
+	.ie7 .wdg_rate_player_01 select.team1{
+		height:26px !important;
+		line-height:26px;
+	}
+	.ie7 .wdg_rate_player_01 select.team2{
+		height:26px !important;
+		line-height:26px;
+	}
+	
+	.wdg_rate_player_01 span.select1{
+		background: none repeat scroll 0 0 #DEDEDE;
+		border: medium none;
+		bottom: 0;
+		box-shadow: 5px -21px 14px #EDEDED inset;
+		cursor: pointer;
+		float: left;
+		font-size: 14px;
+		height: 34px;
+		left: 0;
+		line-height: 34px;
+		margin-top: -33px;
+		outline: medium none;
+		overflow: hidden;
+		position: relative;
+		text-align: left;
+		text-indent: 10px;
+		width: 89%;
+		z-index: 1;
+	}
+	.wdg_rate_player_01 span.select2{
+		position:relative;
+		font-size:14px;
+		bottom:0;
+		float:left;
+		left:0;
+		width: 86%;
+		height:34px;
+		line-height:34px;
+		text-indent:10px;
+		overflow: hidden;
+	    background: none repeat scroll 0 0 #DEDEDE;
+		border: medium none;
+		bottom: 0;
+		box-shadow: 5px -21px 14px #EDEDED inset;
+	    outline:none;
+	    cursor:pointer;
+		z-index:1;
+		font-weight:bold;
+		margin-top:-33px;
+		overflow:hidden;
+		text-align:left;
+	}
+    .wdg_rate_player_01 select{
+        font-size: 14px !important;
+        color: #232323;
+        font-weight: bold !important;
+    }
+	
+	
+	
+	.wdg_rate_player_01 table .jornada {
+		width: 100%;
+		height: 33px;
+	}
+	
+	.wdg_rate_player_01 .wdg_lineup_01_dropdown,
+	.wdg_rate_player_01 .wdg_lineup_012_dropdown {
+		clear: both;
+		width: 300px;
+		height: 100%;
+		float: left;
+		background-color: #E3E3E3;
+		box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
+		cursor: pointer;
+	}
+	
+	.wdg_rate_player_01 table .jornada .wdg_lineup_01_dropdowncontent p,
+	.wdg_rate_player_01 table .jornada .wdg_lineup_012_dropdowncontent p {
+		line-height: 34px;
+		font-size: 14px;
+		color: #333;
+		font-weight: bold;
+		float: left;
+		width: 240px;
+		display: inline-block;
+		height: 30px;
+		text-align: left;
+		padding-left: 21px;
+	}
+	
+	.wdg_rate_player_01 .wdg_lineup_01_dropdown .wdg_lineup_01_dropdowncontent span,
+	.wdg_rate_player_01 .wdg_lineup_012_dropdown .wdg_lineup_012_dropdowncontent span {
+		margin-top: 13px;
+		margin-right: 15px;
+		opacity: 0.5;
+		float: right;
+	}
+	
+	.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul,
+	.wdg_rate_player_01 .wdg_lineup_012_listcontainer ul {
+		background-color: #f5f5f5;
+		z-index: 1000 !important;
+		position: relative;
+		visibility: hidden;
+		cursor: pointer;
+	}
+	
+	.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul li,
+	.wdg_rate_player_01 .wdg_lineup_012_listcontainer ul li {
+		width: 100%;
+		height: 34px;
+		background-color: rgba(235,235,235,0.6);
+		border-bottom: 1px solid #d3d3d3;
+		box-shadow: inset 0px 0px 8px 0px rgba(0,0,0,0.1);
+		text-align: left;
+		padding-left: 10px;
+		line-height: 34px;
+	}
+	
+	.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul li p,
+	.wdg_rate_player_01 .wdg_lineup_012_listcontainer ul li p{
+		font-size: 14px;
+		font-weight: bold;
+	}
+	
+	.wdg_rate_player_01 .wdg_lineup_01_listcontainer,
+	.wdg_rate_player_01 .wdg_lineup_012_listcontainer{
+		clear: both;
+	}
+	
+	
+	 .wdg_rate_player_01 .wdg_lineup_01_listcontainer ul::-webkit-scrollbar-thumb,
+	 .wdg_rate_player_01 .wdg_lineup_012_listcontainer ul::-webkit-scrollbar-thumb {
+        background: #d3d3d3;
+        -webkit-border-radius: 1ex;
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+	.wdg_rate_player_01 .wdg_lineup_01_listcontainer ul::-webkit-scrollbar,
+	.wdg_rate_player_01 .wdg_lineup_012_listcontainer ul::-webkit-scrollbar {
+		height: 12px;
+		width: 12px;
+		background: #f5f5f5;
+	}
+	.wdg_rate_player_01 ul.wdg_lineup_01_dropdownlist li:hover,
+	.wdg_rate_player_01 ul.wdg_lineup_012_dropdownlist li:hover {
+      -webkit-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+      -moz-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+      -ms-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+      -o-box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+      box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.15);
+      background-color: #E6E6E6;
+    }
+
+}

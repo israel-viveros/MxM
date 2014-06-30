@@ -1,0 +1,60 @@
+@media screen and (min-width: 948px){
+	.ie7 .wdg_rate_player_01{
+		/*height: 582px;*/
+	}
+	.ie7 .wdg_rate_player_01 tbody .participated div.check{
+        height: 36px;
+        padding-top: 10px;
+        text-align: center;
+        width: 49px;
+    }
+
+    .ie7 .header_team_ext{
+         padding-left: 8px;
+         border-left: 1px dashed #8f8f8f;
+    }
+    .ie7 .header_team_2{
+         border-left: 0;
+    }
+
+    .ie7 .header_team_ext2{
+        /* border-left: 1px dashed #8f8f8f; */
+    }
+
+    .ie7 .head_table2{
+         margin-top: 18px;
+    }
+
+    .ie7 .wdg_rate_player_01  .title_team{
+        margin-top: 0;
+    }
+    .ie7 .wdg_rate_player_01 table .header_team{
+        padding-right: 8px;
+    }
+    .ie7 .wdg_rate_player_01  .title_afision{
+        padding-left: 0;
+    } 
+	.ie7 .wdg_rate_player_01 table td.reserves{
+		height: 10px;
+	}
+	.ie7 .wdg_rate_player_01 table .day{
+		display: block;
+		margin-right: 10px;
+    }
+	.ie7 .wdg_rate_player_01 table {
+        border-spacing: 0;
+        border-collapse: 0;
+        margin-top: 8px;
+    }
+	.ie8 .wdg_rate_player_01 table {
+        border-spacing: 0;
+        border-collapse: 0;
+        margin-top: 8px;
+		margin-bottom:0px;
+    }
+	
+	.ie7 .wdg_rate_player_01 .wdg_lineup_01_listcontainer ul li,
+	.ie7 .wdg_rate_player_01 .wdg_lineup_012_listcontainer ul li {
+		background-color:#EDEDED;
+	}
+}
