@@ -1,0 +1,109 @@
+@media screen{	
+.wdg_goalsanoted_01{
+		width: 100%	;
+		overflow: hidden;
+		margin-bottom: 18px;
+		position: relative;
+	}
+	.wdg_goalsanoted_01 .str_pleca_01{
+		margin-bottom: 0px !important;
+	}
+	.wdg_goalsanoted_01 .scroll-carrusel{
+		height: 208px;
+		overflow: hidden;
+		clear: both;
+		width: 100%;
+	}
+	.wdg_goalsanoted_01 .scroll{
+		height: 208px;
+		overflow: auto;
+		 width: 105%;
+	}
+	.wdg_goalsanoted_01 .jugador,
+	.wdg_goalsanoted_01 .estadistica,
+	.wdg_goalsanoted_01 .grado{ float: left;}
+	.wdg_goalsanoted_01 .jugador{
+
+	}
+	.wdg_goalsanoted_01 .convocados{
+		border-bottom: 1px solid #ccc;
+		margin: 0px 0 14px;
+	}
+	.wdg_goalsanoted_01 .block_container{
+		width: 300px;
+		overflow: hidden;
+		clear: both;
+		padding: 11px 0;
+	}
+	.wdg_goalsanoted_01 .jugador{
+		width: 113px;
+		font-size: 13px;
+		padding-left: 5px;
+	}
+	.wdg_goalsanoted_01 .jugador span{
+		display: block;
+		font-size: 10px;
+		font-style: italic;
+		width: 90px;
+		margin-top: 6px;
+	}
+	.wdg_goalsanoted_01 .estadistica{
+		width: 112px;
+		padding-left: 16px;
+	}
+	.wdg_goalsanoted_01 .estadistica i{
+		float: left;
+		padding-right: 6px;
+		color: #232323;
+	}
+	.wdg_goalsanoted_01 .grado{
+		font-size: 13px;
+	}
+	.wdg_goalsanoted_01 .grado span {
+		display: block;
+		margin: 10px 0px 0 -20px;
+		font-style: italic;
+		width: 94px;
+	}
+	.wdg_goalsanoted_01 .marcador{
+		float: left;
+		height: 53px;
+		padding-left: 16px;
+	}
+
+	/*Penales*/
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .titulo{
+		font-style: italic;
+		padding-left: 44px;
+		font-style: italic;
+		border-bottom: 1px solid #ccc;
+		font-size: 18px;
+		padding-bottom: 6px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .block_container{
+		padding: 11px 0;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .convocados{
+		margin-top: 2px;
+		margin-bottom: 0px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .jugador{
+		width: 171px;
+		font-size: 13px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .estadistica{
+		width: 43px;
+		padding-left: 26px;
+		padding-top: 6px;
+		height: 33px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .marcador{
+		height: 39px;
+	}	
+	.wdg_goalsanoted_01 .degraded{
+		top: 236px;
+	}
+	.wdg_goalsanoted_01 .jugador p span{
+        color:#8f8f8f;
+    }
+}

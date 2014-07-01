@@ -1,0 +1,24 @@
+@media screen and (min-width: 948px){
+	
+	.wdg_goalsanoted_01{
+		width: 300px;
+		overflow: hidden;
+		margin-bottom: 36px;
+	}
+	.wdg_goalsanoted_01 .str_pleca_01{
+		margin-bottom: 0px !important;
+	}
+	.wdg_goalsanoted_01 .scroll-carrusel{
+		height: auto;
+		overflow: hidden;
+		clear: both;
+	}
+	.wdg_goalsanoted_01 .scroll{
+		height: auto;
+		overflow: hidden;
+		 width: 317px;
+	}
+	.wdg_goalsanoted_01 .degraded{
+        display: none;
+    }
+}
