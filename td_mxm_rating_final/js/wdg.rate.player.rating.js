@@ -64,9 +64,7 @@
                 maquetado += '</tr>';
                 maquetado += '</table>        ';
                 maquetado += '<table class="dotted-right">';
-                maquetado += '<thead>';
-
-                maquetado += '</thead>';
+                maquetado += '<thead></thead>';
                 maquetado += '<tbody id="LocalTIMTitular">';
 
 
@@ -101,9 +99,7 @@
                 maquetado += '</tr>';
                 maquetado += '</table>  ';
                 maquetado += '<table class="header_team_2">';
-                maquetado += '<thead>';
-
-                maquetado += '</thead>';
+                maquetado += '<thead></thead>';
                 maquetado += '<tbody id="VisitTIMTitular">';
 
 
@@ -113,8 +109,7 @@
                 maquetado += '</tr>';
                 maquetado += '<tr class="textcolor-title1">';
                 maquetado += '<td colspan="3" class="reserves">Banca</td>';
-                maquetado += '</tr>        ';
-                maquetado += '<tr>';
+                maquetado += '</tr><tr>';
                 maquetado += '<td class="header_team dotted-right">';
                 maquetado += '<table>';
 
@@ -187,8 +182,8 @@
                             maquetado += '<div class="conteiner_two">';
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
-                            maquetado += '<div class="div"><p class="textcolor-title4">-.-</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer"></p></div> ';
+                            maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + globalRating.givemePosition(arreglo.position) + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
@@ -219,8 +214,8 @@
                             maquetado += '<div class="conteiner_two">';
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
-                            maquetado += '<div class="div"><p class="textcolor-title4">-.-</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer"></p></div> ';
+                            maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + globalRating.givemePosition(arreglo.position) + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
@@ -252,8 +247,8 @@
                             maquetado += '<div class="conteiner_two">';
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
-                            maquetado += '<div class="div"><p class="textcolor-title4">-.-</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer"></p></div> ';
+                            maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd"></p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + globalRating.givemePosition(arreglo.position) + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
@@ -284,8 +279,8 @@
                             maquetado += '<div class="conteiner_two">';
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
-                            maquetado += '<div class="div"><p class="textcolor-title4">-.-</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer"></p></div> ';
+                            maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + globalRating.givemePosition(arreglo.position) + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
