@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.11
+ *   Version: 1.4.12
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -31,6 +31,7 @@
                 })
                     .done(function(data) {
                         (tipo === "update") ? wdf_sportResult.updateGoles(data) : wdf_sportResult.drawHeader(data);
+                        (tipo === "update" && typeof(data.paginas) !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : '';
                     })
                     .fail(function(jqXHR) {
                         console.log("Error al cargar: " + wdf_sportResult.urlFinalHeader);
