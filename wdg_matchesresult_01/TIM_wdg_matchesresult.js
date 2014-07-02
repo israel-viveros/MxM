@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.8
+ *   Version: 5.1.0
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -216,12 +216,14 @@
 
 
                         if ((String(contenido[y].period) === "P")) {
-                            tituloMatch = contenido[y].MatchDate + " " + contenido[y].MatchHour.substring(0, 5);
+                            var fechacompleta = contenido[y].MatchDate.split('/'),
+                                mest = wdg_matchresult.givemeMes(parseInt(fechacompleta[1]));
+                            tituloMatch = fechacompleta[0] + '&bull;' + mest + '&bull;' + fechacompleta[2] + " " + contenido[y].MatchHour.substring(0, 5);
                         } else {
                             if (String(contenido[y].period) === "F") {
                                 tituloMatch = 'Final del partido';
                             } else {
-                                tituloMatch = contenido[y].periodabrev + ' ' + contenido[y].time;
+                                tituloMatch = contenido[y].periodabrev + ' ' + contenido[y].time + '"';
                             }
                         }
                         ItemView += '<li id="' + contenido[y].MatchGuid + '">';
@@ -268,9 +270,16 @@
 
                         if (setting.tema === "mundial") {
                             //ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '">' + contenido[y].txtLink.substring(0, numSplit) + '</a>';
-                            var periodNow = contenido[y].period;
-
-                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
+                            var periodNow = contenido[y].period,
+                                clasevivo = "novivo",
+                                banderavivo = 0;
+                            if (periodNow !== 'P' && periodNow !== "F") {
+                                clasevivo = 'vivo';
+                                contenido[y].txtLink = "EN VIVO AHORA";
+                                banderavivo = 1;
+                            }
+                            ItemView += ((contenido[y].txtVideo) !== "undefined" && contenido[y].txtVideo !== "" && banderavivo === 0) ? '<i class="txtsefvivo">' + contenido[y].txtVideo + '</i>' : '<i class="txtsefvivo"></i>';
+                            ItemView += '<a class="textcolor-title1 ' + clasevivo + '" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
 
                         } else {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '?' + Math.random() + '">' + contenido[y].EventTournamentName.substring(0, 15);
@@ -288,7 +297,7 @@
 
                             if (setting.tema === "mundial") {
                                 ItemView += (periodNow === "F" && contenido[y].ResumenTransmision !== "" && typeof contenido[y].ResumenTransmision !== "") ? '<a target="_blank" href="' + contenido[y].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
-                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "" && typeof(contenido[y].EventUrl) !== "undefined") ? '<a target="_blank" href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
+                                ItemView += (periodNow !== "F" && periodNow !== "P" && contenido[y].EventUrl !== "" && typeof(contenido[y].EventUrl) !== "undefined") ? '<a target="_blank" href="' + contenido[y].EventUrl + '"><span class="wdg_match_01_sprite video vivo"></span></a>' : '';
                             } else {
                                 ItemView += (contenido[y].MXvideo !== "" && typeof(contenido[y].MXvideo) !== "undefined") ? '<a target="_blank" href="' + contenido[y].MXvideo + '"><span class="wdg_match_01_sprite video"></span></a>' : '';
                             }
@@ -352,17 +361,63 @@
                     }
                 });
             },
+            givemeMes: function(str) {
+                switch (str) {
+                    case 1:
+                        return "Enero";
+                        break;
+                    case 2:
+                        return "Febrero";
+                        break;
+                    case 3:
+                        return "Marzo";
+                        break;
+                    case 4:
+                        return "Abril";
+                        break;
+                    case 5:
+                        return "Mayo";
+                        break;
+                    case 6:
+                        return "Junio";
+                        break;
+                    case 7:
+                        return "Julio";
+                        break;
+                    case 8:
+                        return "Agosto";
+                        break;
+                    case 9:
+                        return "Septiembre";
+                        break;
+                    case 10:
+                        return "Octubre";
+                        break;
+                    case 11:
+                        return "Noviembre";
+                        break;
+                    case 12:
+                        return "Diciembre";
+                        break;
+
+                }
+            },
             updateGoles: function(data) {
                 var selectorTMP, NuevoGolV, ActGolV, NuevoGolL, ActGolL, tituloAct, tituloNue, textoLink, textoLinkNuevo;
                 for (var o = 0; o < data.matches.match.length; o++) {
                     var tituloMatch = "";
                     if ((String(data.matches.match[o].period) === "P")) {
-                        tituloMatch = data.matches.match[o].MatchDate + " " + data.matches.match[o].MatchHour.substring(0, 5);
+                        var fechacompleta = data.matches.match[o].MatchDate.split('/'),
+                            mest = wdg_matchresult.givemeMes(parseInt(fechacompleta[1]));
+                        tituloMatch = fechacompleta[0] + '&bull;' + mest + '&bull;' + fechacompleta[2] + " " + data.matches.match[o].MatchHour.substring(0, 5);
                     } else {
                         if (String(data.matches.match[o].period) === "F") {
                             tituloMatch = 'Final del partido';
                         } else {
-                            tituloMatch = data.matches.match[o].periodabrev + ' ' + data.matches.match[o].time;
+                            var tituloFi = data.matches.match[o].periodabrev;
+                            tituloFi = (tituloFi === "1T") ? "Primer Tiempo" : tituloFi;
+                            tituloFi = (tituloFi === "2T") ? "Segundo Tiempo" : tituloFi;
+                            tituloMatch = tituloFi + '&bull;' + data.matches.match[o].time + '"';
                         }
                     }
 
@@ -406,6 +461,22 @@
                                 'position': 'relative'
                             }).text(NuevoGolV).fadeIn('slow');
                         }
+
+
+                        //mundial UX
+                        if (setting.tema === "mundial") {
+                            selectorTMP.find('.txtsefvivo').css('display', 'none');
+                            selectorTMP.find('.wdg_match_01_sprite.video').addClass('vivo');
+                            textoLinkNuevo = "EN VIVO AHORA";
+                            selectorTMP.find(".wdg_match_01_extra p a").addClass("vivo");
+                        }
+
+                    }
+
+                    if (setting.tema === "mundial" && data.matches.match[o].period === "F") {
+                        selectorTMP.find(".wdg_match_01_extra p a").removeClass("vivo");
+                        (typeof(data.matches.match[o].txtVideo) !== "undefined") ? selectorTMP.find('.txtsefvivo').html(data.matches.match[o].txtVideo) : '';
+                        selectorTMP.find('.txtsefvivo').css('display', 'block');
                     }
 
                     //Modulo de altasbajas result (mundial)
@@ -447,7 +518,7 @@
                         selectorTMP.find(".textcolor-title5").css({
                             'display': 'none',
                             'position': 'relative'
-                        }).text(tituloNue).fadeIn('slow');
+                        }).html(tituloNue).fadeIn('slow');
                     }
                     //console.log("comparando tiempos: " + textoLink + " - " + textoLinkNuevo);
                     if (textoLink !== textoLinkNuevo) {
@@ -466,7 +537,7 @@
                             selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].ResumenTransmision + '"><span class="wdg_match_01_sprite video"></span></a>');
                         } else if (data.matches.match[o].EventUrl !== "" && data.matches.match[o].period !== "F" && typeof(data.matches.match[o].EventUrl) !== "undefined") {
                             //console.log("VIVO con " + data.matches.match[o].equipos.visit.name + " - " + data.matches.match[o].equipos.local.name)
-                            selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video"></span></a>');
+                            selectorTMP.find('.wdg_match_01_icon').html('<a target="_blank" href="' + data.matches.match[o].EventUrl + '"><span class="wdg_match_01_sprite video vivo"></span></a>');
                         }
 
                     }
