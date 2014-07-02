@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.1.0
+ *   Version: 5.1.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -494,8 +494,8 @@
                         var finalGolesLocalJ = (penalesLocalJ !== 0) ? '<i class="penalT">(' + penalesLocalJ + ')</i><i class="golT">' + GoleslocalJ + '</i>' : GoleslocalJ;
                         var finalGolesVisitJ = (penalesvisitJ !== 0) ? '<i class="golT">' + GolesVisitJ + '</i><i class="penalT">(' + penalesvisitJ + ')</i>' : GolesVisitJ;
 
-                        selectorMundial.find(".result.textcolor-title2").eq(0).html(finalGolesLocalJ);
-                        selectorMundial.find(".result.textcolor-title2").eq(1).html(finalGolesVisitJ);
+                        (GoleslocalJ !== 0) ? selectorMundial.find(".result.textcolor-title2").eq(0).html(finalGolesLocalJ) : '';
+                        (GolesVisitJ !== 0) ? selectorMundial.find(".result.textcolor-title2").eq(1).html(finalGolesVisitJ) : '';
                         /* if (penalesLocalJ !== 0) {
                             selectorMundial.find(".result.textcolor-title2").eq(0).css({
                                 'position': 'relative',
