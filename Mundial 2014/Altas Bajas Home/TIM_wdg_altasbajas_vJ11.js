@@ -1,19 +1,12 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.2.11
+ *   Version: 2.2.13
  *   Copyright: Televisa Interactive Media (2014)
  */
 
-function createLink(country) {
-    clean = country.replace(" ", "-").toLowerCase();
-    clean = clean.replace(/Ã¡/g, 'a');
-    clean = clean.replace(/Ã©/g, 'e');
-    clean = clean.replace(/Ã­/g, 'i');
-    clean = clean.replace(/Ã³/g, 'o');
-    clean = clean.replace(/Ãº/g, 'u');
-    clean = clean.replace(/Ã±/g, 'n');
-    return "http://televisadeportes.esmas.com/copa-mundial-fifa-brasil-2014/equipos/" + clean;
-}
+
+
+
 
 var status_partidos_inicial = true;
 var timerPartidos;
@@ -72,6 +65,18 @@ var diaActualiza;
             callbackJornada: 'jornada',
             callbackListado: 'jornadalistado',
             timeRecarga: 30000,
+
+              createLink: function(text) {
+                text = text.toLowerCase(); // a minusculas
+                text = text.replace(/[á]/, 'a');
+                text = text.replace(/[é]/, 'e');
+                text = text.replace(/[í]/, 'i');
+                text = text.replace(/[ó]/, 'o');
+                text = text.replace(/[ú]/, 'u');
+                text = text.replace(/ /, '-');
+                return "http://televisadeportes.esmas.com/copa-mundial-fifa-brasil-2014/equipos/" + text;
+            },
+
             iniciar: function(fechaCalendar) {
                 var num = (settings.tema !== "mundial") ? '1' : '';
                 MaqueWdgAltas = "";
@@ -126,9 +131,9 @@ var diaActualiza;
 
 
                 clearInterval(jornadasCalendarDTV.timerCalendar);
-                jornadasCalendarDTV.timerCalendar = setInterval((function() {
+                /*jornadasCalendarDTV.timerCalendar = setInterval((function() {
                     jornadasCalendarDTV.actualizaContenido()
-                }), jornadasCalendarDTV.timeRecarga);
+                }), jornadasCalendarDTV.timeRecarga);*/
 
 
                 var timeToday = new Date(timeDTV.timeYear + "/" + timeDTV.timeMonth + "/" + timeDTV.timeDay);
@@ -145,9 +150,10 @@ var diaActualiza;
 
 
                 $.when(jornadasCalendarDTV.primeraJornada()).done(function() {
-                    setTimeout(function() {
-                        jornadasCalendarDTV.segundaJornada()
-                    }, 1000);
+                    /*setTimeout(function() {
+                        jornadasCalendarDTV.segundaJornada();
+                        console.log("Actualiza Jornada 1!");
+                    }, 1000);*/
                 });
 
                 if (jornadasCalendarDTV.numeroTorneoAct !== 0 && jornadasCalendarDTV.numeroIdEquipo === 0) {
@@ -178,7 +184,11 @@ var diaActualiza;
 
                             var auxJornadasPartidos = 4272;
 
+                            console.log(jornadasCalendarDTV.dataCalendarH);
+
                             for (i = 0; i < jornadasCalendarDTV.dataCalendarH.length; i++) {
+
+                                console.log(i);
 
                                 var valorj = jornadasCalendarDTV.dataCalendarH[i];
                                 jornadasCalendarDTV.jornadaPresente = i;
@@ -191,6 +201,12 @@ var diaActualiza;
                                 } else {
                                     if (auxJornadasPartidos == 4287) {
                                         name_jor += '<li  data-weekid="' + auxJornadasPartidos + '" data-jornada="' + auxJornadasPartidos + '"><p>Octavos de Final</p></li>'
+                                    }
+                                    if (auxJornadasPartidos == 4288) {
+                                        name_jor += '<li  data-weekid="' + auxJornadasPartidos + '" data-jornada="' + auxJornadasPartidos + '"><p>Cuartos de Final</p></li>'
+                                    }
+                                    if (auxJornadasPartidos == 4289) {
+                                        name_jor += '<li  data-weekid="' + auxJornadasPartidos + '" data-jornada="' + auxJornadasPartidos + '"><p>Semifinales</p></li>'
                                     }
                                 }
                                 auxJornadasPartidos = auxJornadasPartidos + 1;
@@ -268,9 +284,9 @@ var diaActualiza;
             },
             jornadasCalendarDTV: function(fechaCalendar) {
                 clearInterval(jornadasCalendarDTV.timerCalendar);
-                jornadasCalendarDTV.timerCalendar = setInterval((function() {
+                /*jornadasCalendarDTV.timerCalendar = setInterval((function() {
                     jornadasCalendarDTV.actualizaContenido()
-                }), jornadasCalendarDTV.timeRecarga);
+                }), jornadasCalendarDTV.timeRecarga);*/
 
                 jornadasCalendarDTV.fechaAct = fechaCalendar;
                 //        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
@@ -380,9 +396,10 @@ var diaActualiza;
 
                 } else if (jornadasCalendarDTV.Jornada2 !== 0 && jornadasCalendarDTV.numeroIdEquipo !== 0 && jornadasCalendarDTV.numeroTorneoAct !== 0) {
                     $.when(jornadasCalendarDTV.procesoActualiza(primerFeed)).done(function() {
-                        setTimeout(function() {
+                        /*setTimeout(function() {
                             jornadasCalendarDTV.procesoActualiza(segundoFeed)
-                        }, 1000);
+                            console.log("Actualiza Jornada 2!");
+                        }, 1000);*/
                     });
 
 
@@ -435,7 +452,7 @@ var diaActualiza;
 
                             if (data[z].periodo !== "Final" && data[z].periodo !== "Previo") {
                                 $("#jornadaMatch" + data[z].id).addClass('activo');
-                                var minuto = (data[z].minuto !== "") ? data[z].minuto + '"' : '';
+                                var minuto = (data[z].minuto !== "") ? data[z].minuto + "'" : '';
                                 $("#jornadaMatch" + data[z].id).find(".versus_time").text(data[z].periodo + ' ' + minuto);
                             } else {
                                 $("#jornadaMatch" + data[z].id).removeClass('activo');
@@ -479,16 +496,43 @@ var diaActualiza;
             $("#circleGLoading").fadeOut('slow', function() {
                 $(this).css("display", "none");
             });
+            var oct_j = $('.wdg_altasbajas_result_012_dropdowncontent p').text();
+            if (oct_j === "Octavos de Final") {
+                var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(7)');
+                $('.wdg_altasbajas_result_01 .deg li:nth-child(8)').after(temp);
+            }
+            if (oct_j === "Cuartos de Final") {
+                var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(9)');
+                $('.wdg_altasbajas_result_01 .deg li:nth-child(5)').after(temp);
+                var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(8)');
+                $('.wdg_altasbajas_result_01 .deg li:nth-child(6)').after(temp);
+            }
         }
 
         function actualizar_jornada_home(a, cambioAuto) {
 
             if (cambioAuto) {
+                console.log("Timeout");
                 timerPartidos = setTimeout(function() {
                     //actualizar_jornada_home(a,false);
                     jornadasCalendarDTV.jornadasCalendarDTV_vJ(a);
+
+                    //console.log("Actualizamos jornadas! (by Pako)");
+
+                    var oct_j = $('.wdg_altasbajas_result_012_dropdowncontent p').text();
+                    if (oct_j === "Octavos de Final") {
+                        var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(7)');
+                        $('.wdg_altasbajas_result_01 .deg li:nth-child(8)').after(temp);
+                    }
+                    if (oct_j === "Cuartos de Final") {
+                        var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(9)');
+                        $('.wdg_altasbajas_result_01 .deg li:nth-child(5)').after(temp);
+                        var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(8)');
+                        $('.wdg_altasbajas_result_01 .deg li:nth-child(6)').after(temp);
+                    }
                 }, 60000);
             } else {
+                //console.log("Limpia Timeout");
                 clearTimeout(timerPartidos);
             }
 
@@ -554,19 +598,19 @@ var diaActualiza;
                 var clickUrlSef = "";
                 var imagenLocal = "";
                 if (typeof(conjunto.local.team) !== "undefined") {
-                    imagenLocal = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.local.team.img.EscudoMundialF22014 + '" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">' : '<img width="24" height="24" src="' + conjunto.local.team.img.oficialno + '" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">';
+                    imagenLocal = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.local.team.img.EscudoMundialF22014 + '" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + jornadasCalendarDTV.createLink(conjunto.local.name) + '">' : '<img width="24" height="24" src="' + conjunto.local.team.img.oficialno + '" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">';
                 }
                 var imagenVisit = "";
                 if (typeof(conjunto.visit.team) !== "undefined") {
-                    var imagenVisit = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.visit.team.img.EscudoMundialF22014 + '" alt="' + conjunto.visit.name + '" class="countryLink" data-clink="' + createLink(conjunto.visit.name) + '">' : '<img width="24" height="24" src="' + conjunto.visit.team.img.oficialno + '" alt="' + conjunto.visit.name + '" class="countryLink" data-clink="' + createLink(conjunto.visit.name) + '">';
+                    var imagenVisit = (oficial == 1) ? '<img width="24" height="24" src="' + conjunto.visit.team.img.EscudoMundialF22014 + '" alt="' + conjunto.visit.name + '" class="countryLink" data-clink="' + jornadasCalendarDTV.createLink(conjunto.visit.name) + '">' : '<img width="24" height="24" src="' + conjunto.visit.team.img.oficialno + '" alt="' + conjunto.visit.name + '" class="countryLink" data-clink="' + createLink(conjunto.visit.name) + '">';
                 }
 
-                if (imagenLocal == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">') {
-                    imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.EscudoMundialF22014 + '"  alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">';
+                if (imagenLocal == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + jornadasCalendarDTV.createLink(conjunto.local.name) + '">') {
+                    imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.EscudoMundialF22014 + '"  alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + jornadasCalendarDTV.createLink(conjunto.local.name) + '">';
                 }
 
-                if (imagenVisit == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">') {
-                    imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.EscudoMundialF22014 + '"  alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + createLink(conjunto.local.name) + '">';
+                if (imagenVisit == '<img width="24" height="24" src="http://i2.esmas.com/canal30/img/spacer.gif" alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + jornadasCalendarDTV.createLink(conjunto.local.name) + '">') {
+                    imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.EscudoMundialF22014 + '"  alt="' + conjunto.local.name + '" class="countryLink" data-clink="' + jornadasCalendarDTV.createLink(conjunto.local.name) + '">';
                 }
 
                 var golesLocal = (typeof(conjunto.local.team) !== "undefined") ? validaGoles(conjunto.local.team.gol, conjunto.local.team.golstatus, conjunto.fechastamp) : '';
@@ -579,7 +623,8 @@ var diaActualiza;
                     }
                 }
                 var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
-                partidoHtml = '<li id="jornadaMatch' + conjunto.id + '" class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
+                var fromticker = 'JfromTicker' + conjunto.sef.matchid;
+                partidoHtml = '<li id="jornadaMatch' + conjunto.id + '" class="'+fromticker+' ' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
                 partidoHtml += '<div class="date textcolor-title2">';
 
                 partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
@@ -601,7 +646,8 @@ var diaActualiza;
                     if (conjunto.local.abrev == "URU" && conjunto.visit.abrev == "CRC")
                         partidoHtml += '</div>';
                     else
-                        partidoHtml += '<span class="versus_time textcolor-title4" style="width:213px;margin-left:-95px;">' + conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
+                        console.log(conjunto.minuto);
+                    partidoHtml += '<span class="versus_time textcolor-title4" style="width:213px;margin-left:-95px;">' + conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
                 } else
                     partidoHtml += '</div>';
 
@@ -738,11 +784,36 @@ var diaActualiza;
                         $("#nro_jornadas li:nth-of-type(16)").trigger('click');
                         $("#name-jornada > p").html('Octavos de Final');
                         dataJornada = $("#nro_jornadas li:nth-of-type(16)").data('jornada');
+                        var jornada = $('.wdg_altasbajas_result_012_dropdowncontent p').text();
+                        if (jornada === "Octavos de Final") {
+                            var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(7)');
+                            $('.wdg_altasbajas_result_01 .deg li:nth-child(8)').after(temp);
+                        }
                         break;
                     case 1:
-                        $("#nro_jornadas li:nth-of-type(16)").trigger('click');
-                        $("#name-jornada > p").html('Octavos de Final');
-                        dataJornada = $("#nro_jornadas li:nth-of-type(16)").data('jornada');
+                        $("#nro_jornadas li:nth-of-type(17)").trigger('click');
+                        $("#name-jornada > p").html('Cuartos de Final');
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 2:
+                        $("#nro_jornadas li:nth-of-type(17)").trigger('click');
+                        $("#name-jornada > p").html('Cuartos de Final');
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 3:
+                        $("#nro_jornadas li:nth-of-type(17)").trigger('click');
+                        $("#name-jornada > p").html('Cuartos de Final');
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 4:
+                        $("#nro_jornadas li:nth-of-type(17)").trigger('click');
+                        $("#name-jornada > p").html('Cuartos de Final');
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 5:
+                        $("#nro_jornadas li:nth-of-type(17)").trigger('click');
+                        $("#name-jornada > p").html('Cuartos de Final');
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
                         break;
                 }
 
@@ -794,9 +865,32 @@ var diaActualiza;
                         dataJornada = $("#nro_jornadas li:nth-of-type(16)").data('jornada');
                         break;
                     case 1:
-                        dataJornada = $("#nro_jornadas li:nth-of-type(16)").data('jornada');
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 2:
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 3:
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 4:
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
+                        break;
+                    case 5:
+                        dataJornada = $("#nro_jornadas li:nth-of-type(17)").data('jornada');
                         break;
                 }
+
+                console.log("Día Click: " + dayClick[2]);
+                //console.log("Día actual: "+day);
+
+                switch (dayClick[2]) {
+                    case '04':
+                        dayClick[2] = parseInt(day);
+                        break;
+                }
+
+                console.log(dataJornada);
 
                 if (parseInt(dayClick[2]) == parseInt(day)) {
                     statusCambio = true;
@@ -808,6 +902,17 @@ var diaActualiza;
 
             }
 
+            var oct_j = $('.wdg_altasbajas_result_012_dropdowncontent p').text();
+            if (oct_j === "Octavos de Final") {
+                var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(7)');
+                $('.wdg_altasbajas_result_01 .deg li:nth-child(8)').after(temp);
+            }
+            if (oct_j === "Cuartos de Final") {
+                var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(9)');
+                $('.wdg_altasbajas_result_01 .deg li:nth-child(5)').after(temp);
+                var temp = $('.wdg_altasbajas_result_01 .deg li:nth-child(8)');
+                $('.wdg_altasbajas_result_01 .deg li:nth-child(6)').after(temp);
+            }
         }
 
     }
