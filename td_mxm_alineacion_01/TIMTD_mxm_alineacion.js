@@ -1515,8 +1515,8 @@
                 if (typeof(data.lineupVisit.coach) !== "undefined") {
                     visitF += '<div class="player_td">';
                     visitF += '<div class="player_number"><p class="textcolor-title1">DT</p></div>';
-                    visitF += '<div class="dotted-left">';
-                    visitF += '<div class="player_name container_card"><p>' + data.lineupVisit.coach.longName + '</p></div>';
+                    visitF += '<div class="dotted-left container_card">';
+                    visitF += '<div class="player_name"><p>' + data.lineupVisit.coach.longName + '</p></div>';
                     visitF += '<div class="players_icons">';
                     //visit += '<i class="tvsa-mxm-yellowcard"></i><span>17\'</span>';
                     visitF += '</div></div></div>';
