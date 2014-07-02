@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.0.0
+ *   Version: 2.0.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -25,16 +25,12 @@
             tagwdgPenales: $("#TIMWdgPenales"),
             tagExpulsion: $("#ExpulsionTIM"),
 
-
             inicio: function() {
-                console.log("metod inicio");
                 (settings.idTorneo, settings.idPartido) ? globalRating.maquetado() : console.log("Error falta el Id match o el Id Tournament");
 
             },
 
             maquetado: function() {
-                console.log("metod maquetado");
-
                 var maquetado = '<div class="wdg_rate_player_01" data-enhance="false">';
                 maquetado += '<div class="qualifies textcolor-title4">Elige a tu jugador y vota</div>';
                 maquetado += '<table>';
@@ -42,10 +38,10 @@
                 maquetado += '<td class="header_team">';
                 maquetado += '<table class="head_table">';
                 maquetado += '<tr >';
-                maquetado += '<th><img alt="" src="http://placehold.it/32x32"></th>';
+                maquetado += '<th><img alt="" src="" class="TIMimgLocal"></th>';
                 maquetado += '<th colspan="3" class="equipo"><p class="title_team textcolor-title1" id="nameLocalTeam"></p></th>';
-                maquetado += '<th><p class="title_td textcolor-title4 dotted-right">TD</p></th>';
-                maquetado += '<th><p class="title_afision textcolor-title1">Afición</p></th>';
+                maquetado += '<th><p class="title_td textcolor-title4 dotted-right"><!--TD--></p></th>';
+                maquetado += '<th><p class="title_afision textcolor-title1">Votaci&oacute;n</p></th>';
                 maquetado += '</tr>';
                 maquetado += '<tr class="dotted-right">';
                 maquetado += '<th colspan="6" class="day_relative">';
@@ -78,10 +74,10 @@
                 maquetado += '<td class="header_team_ext">';
                 maquetado += '<table class="head_table2">';
                 maquetado += '<tr>';
-                maquetado += '<th><img alt="" src="http://placehold.it/32x32"></th>';
+                maquetado += '<th><img alt="" src="" class="TIMimgVisit"></th>';
                 maquetado += '<th colspan="2"><p class="title_team textcolor-title1" id="nameVisitTeam"></p></th>';
-                maquetado += '<th><p class="title_td textcolor-title4 dotted-right">TD</p></th>';
-                maquetado += '<th><p class="title_afision textcolor-title1">Afición</p></th>';
+                maquetado += '<th><p class="title_td textcolor-title4 dotted-right"><!--TD--></p></th>';
+                maquetado += '<th><p class="title_afision textcolor-title1">Votaci&oacute;n</p></th>';
                 maquetado += '</tr>';
                 maquetado += '<tr>';
                 maquetado += '<td colspan="6" class="day_relative2">';
@@ -169,7 +165,6 @@
                 }
             },
             loadPlayers: function(idMatch, type) {
-                console.log("metod loadPlayers");
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idTorneo + '/' + idMatch + '/match_lineup.js',
                     type: 'GET',
@@ -345,11 +340,9 @@
 
                     setTimeout(function() {
                         if ($("#visitTIMDrop li").length === 0) {
-                            console.log("quito a visit")
                             $("#nameJornadaVisit").html(data.week).css('cursor', 'auto');;
                         }
                         if ($("#localTIMDrop li").length === 0) {
-                            console.log("quito a local")
                             $("#nameJornadaLocal").html(data.week).css('cursor', 'auto');;
                         }
                     }, 500);
@@ -364,7 +357,6 @@
             },
 
             loadfeedrating: function(idMatch) {
-                console.log("metod loadfeedrating");
                 $.ajax({
                     url: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/data/' + settings.idTorneo + '/' + idMatch + '/gameplayerdetailjsonp.js',
                     type: 'GET',
@@ -405,15 +397,14 @@
 
                         globalthis.find(".voto5, .voto6, .voto7, .voto8, .voto9, .voto10").unbind('click').bind('click', function(event) {
                             event.preventDefault();
-                            console.log("haz votado");
                             var parent = $(this).parents('tr.evaluation');
                             var urlVoto = 'http://polls.esmas.com/calcularesultado/arreglo/@@@' + parent.data('guidpoll') + '@@@' + parent.data('guidsection') + '@@@' + parent.data('guidfield') + '@@@[' + parent.data('guidfield') + '&&&' + $(this).data('guidfvl') + ']@@@@@@Sitio@@@MXM@@@Deportes@@@Futbol@@@Token-@@@CSIE-@@@Urlactual@@@SexodelUsuario@@@VIP@@@MX@@@Cuidad@@@Estado@@@1398889521@@@Mozilla@@@an%20unknown%20version@@@Mac@@@1440%20x%20900@@@Yes@@@Previous%20Page@@@es-mx@@@es-mx@@@es/voto/' + parent.data('guidfield') + '&&&' + $(this).data('guidfvl') + '';
 
                             var pingpolls = new Image();
                             pingpolls.src = urlVoto;
 
-                            console.log('guid poll: ' + parent.data('guidpoll'));
-                            console.log('guid fvl: ' + $(this).data('guidfvl'));
+                            //console.log('guid poll: ' + parent.data('guidpoll'));
+                            //console.log('guid fvl: ' + $(this).data('guidfvl'));
 
 
                         });
@@ -428,8 +419,6 @@
             },
 
             loadDrops: function() {
-                console.log("metod loadDrops");
-
                 $.ajax({
                     url: globalRating.feedclublocal,
                     type: 'GET',
@@ -569,7 +558,6 @@
             },
 
             funcionesNaat: function() {
-                console.log("metod funcionesNaat");
                 if ($(window).width() < 948) {
                     $('.wdg_rate_player_01 .vote_block').on('touchstart', function(event) {
                         $(this).next('div').toggle();
