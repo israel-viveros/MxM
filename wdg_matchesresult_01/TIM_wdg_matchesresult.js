@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.0.7
+ *   Version: 5.0.8
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -407,6 +407,40 @@
                             }).text(NuevoGolV).fadeIn('slow');
                         }
                     }
+
+                    //Modulo de altasbajas result (mundial)
+                    if (setting.tema === "mundial") {
+                        var selectorMundial = $(".JfromTicker" + data.matches.match[o].MatchId);
+                        selectorMundial.find(".versus_time").text(tituloMatch);
+
+                        //Goles
+                        var penalesLocalJ = data.matches.match[o].equipos.local.penales;
+                        var penalesvisitJ = data.matches.match[o].equipos.visit.penales;
+
+                        var GoleslocalJ = data.matches.match[o].equipos.local.goals;
+                        var GolesVisitJ = data.matches.match[o].equipos.visit.goals;
+
+                        var finalGolesLocalJ = (penalesLocalJ !== 0) ? '<i class="penalT">(' + penalesLocalJ + ')</i><i class="golT">' + GoleslocalJ + '</i>' : GoleslocalJ;
+                        var finalGolesVisitJ = (penalesvisitJ !== 0) ? '<i class="golT">' + GolesVisitJ + '</i><i class="penalT">(' + penalesvisitJ + ')</i>' : GolesVisitJ;
+
+                        selectorMundial.find(".result.textcolor-title2").eq(0).html(finalGolesLocalJ);
+                        selectorMundial.find(".result.textcolor-title2").eq(1).html(finalGolesVisitJ);
+                        /* if (penalesLocalJ !== 0) {
+                            selectorMundial.find(".result.textcolor-title2").eq(0).css({
+                                'position': 'relative',
+                                'left': '-5px'
+                            });
+                        }*/
+                        if (penalesvisitJ !== 0) {
+                            selectorMundial.find(".result.textcolor-title2").eq(1).css({
+                                'position': 'relative',
+                                'left': '-5px'
+                            });
+                        }
+                        //add current class
+                        (data.matches.match[o].period !== "P" && data.matches.match[o].period !== "F") ? selectorMundial.addClass('activo') : '';
+                    };
+                    //End Modulo de altasbajas result (mundial)
 
 
                     if (tituloNue !== tituloAct) {
