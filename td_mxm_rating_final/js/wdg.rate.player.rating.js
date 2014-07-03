@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.0.1
+ *   Version: 2.0.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -162,6 +162,10 @@
                     case "F":
                         return "Delantero";
                         break;
+                    default:
+                        return "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+                        break;
+
                 }
             },
             loadPlayers: function(idMatch, type) {
@@ -391,9 +395,12 @@
                             }
 
                         };
-                        $(".wdg_lineup_012_listcontainer ul li, .wdg_lineup_01_listcontainer ul li").unbind("click").bind('click', function(event) {
-                            globalRating.loadPlayers($(this).data("id"), 'drop');
-                        });
+
+                        setTimeout(function() {
+                            $(".wdg_lineup_012_listcontainer ul li, .wdg_lineup_01_listcontainer ul li").unbind("click").bind('click', function(event) {
+                                globalRating.loadPlayers($(this).data("id"), 'drop');
+                            });
+                        }, 1000);
 
                         globalthis.find(".voto5, .voto6, .voto7, .voto8, .voto9, .voto10").unbind('click').bind('click', function(event) {
                             event.preventDefault();
