@@ -1,0 +1,401 @@
+/*
+	wdg_playerdraft_01_mobile.css
+*/
+@media screen {
+
+	.wdg_playerdraft_01{
+	    margin-bottom: 10px;
+		width:100%;
+		overflow: hidden;
+		position:relative;
+	}
+
+	.wdg_playerdraft_01 .titulo{
+		padding-bottom:6px;
+	    margin-bottom: 14px;
+		font-size:26px !important;
+		font-style:italic;
+		border-bottom:1px solid #CCC;
+		margin-top: -5px;
+		word-spacing: 1pt;
+		letter-spacing: -1pt;
+		margin-left: 10px;
+		margin-right: 10px;
+	}
+	.wdg_playerdraft_01 .titulo h2 {
+	   font-size:inherit;
+	   font-weight:inherit;
+	}
+	.wdg_playerdraft_01 .subtitle{
+		display:none;
+	}
+	.wdg_playerdraft_01 .div1,
+	.wdg_playerdraft_01 .div2,
+	.wdg_playerdraft_01 .div3{
+		float:left;
+		font-size:14px;
+		line-height:60px;
+		height:60px;
+		position:relative;
+	}
+	.wdg_playerdraft_01 .div1{
+		padding-left: 21px;
+		padding-right: 25px;
+	}
+	
+	.wdg_playerdraft_01 .div1{
+		width:32%;
+		padding:0 28px;
+	}
+	.wdg_playerdraft_01 .div2{
+		width:31%;
+		padding:0 30px;
+		background: none;
+	}
+	.wdg_playerdraft_01 > .dotted-top{
+		width:100%;
+		height:1px;
+		display: block;
+		float:left;	
+		margin:0;
+	}
+	
+	.wdg_playerdraft_01 .lineasep{
+		margin: 10px 0 0 7px;
+		width: 94%;
+	}
+	.wdg_playerdraft_01 .div3{
+		width:80%;
+		padding:0;
+		text-align:center;
+		float:none;
+		overflow:hidden;
+		line-height: 88px;
+		height: 72px;
+	}
+	
+	.wdg_playerdraft_01 .div1 .gris,
+	.wdg_playerdraft_01 .div2 .gris,
+	.wdg_playerdraft_01 .div3 .textcolor-title2{
+		float:right;
+	}
+	.wdg_playerdraft_01 .div1 .gris,
+	.wdg_playerdraft_01 .div2 .gris{
+		font-size:24px;
+		font-weight:bold; 
+		color:#999;
+	}
+	
+	.wdg_playerdraft_01 .div3 .textcolor-title2{
+		font-size:50px;
+	}
+	
+	.wdg_playerdraft_01 .scroll{
+		background: url("../img/dotted-horizontal.png") repeat-x scroll center top transparent ;
+		margin-top: 10px;
+		padding-top:20px;
+		clear:both;
+		float: none;
+		/*height:280px;*/
+		overflow-y: scroll;
+    	width: 103%;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft{
+		width:96%;
+		border-collapse:collapse;
+		border-spacing:0;
+	}
+	.wdg_playerdraft_01 .tblDraft td:nth-child(3){
+		background: none !important;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft th:nth-child(4),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(6),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(4),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(6){
+		display: none;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft th{
+		font-size: 14px;
+		font-weight: bold;
+		border-bottom: 1px solid #CCC;
+		text-align: left;
+		padding-left: 15px;
+		padding-bottom: 9px;
+		letter-spacing: 0pt;
+	}
+	.wdg_playerdraft_01 .tblDraft th:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(6){
+		font-size:12px;
+		padding-left:0px;
+	}
+	
+	
+	.wdg_playerdraft_01 .tblDraft td{
+		/*font-size: 10pt;*/
+		font-size: 14px;
+		padding-left: 15px;
+		height: 25px;
+		font-weight: bold;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft td.separador{
+		height:10px;
+		padding-left:0;
+	}
+	.wdg_playerdraft_01 .tblDraft tr:last-child .separador .dotted-top{
+		background: none !important;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft td.separador .dotted-top{
+		height:1px;
+		margin: 4px 0;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft td:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(5){
+		color:#999 !important;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft th:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(6),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(6){
+		text-align:center;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft td:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(6){
+		font-size:16px;
+		font-weight: normal;
+		padding: 0 5px;
+	}
+	
+	
+	
+	
+	
+	/* VOTO CALIFICACIONES */
+	.wdg_playerdraft_01 .tblDraft td.separador .calification{
+        overflow: hidden;
+        clear: both;
+		display: none;
+		border-bottom: 1px solid #CCCCCC;
+		margin-bottom: 10px;
+		padding-bottom: 10px;
+    }
+	.wdg_playerdraft_01  .tblDraft .separador .qualifies{
+		border-top: 1px solid #CCC;
+		width:100%;
+		margin-top:10px;
+		display: none;
+	}
+	.wdg_playerdraft_01  .tblDraft .separador .qualifies div{
+		font-style:italic;
+		font-size:12px;
+		margin:auto;
+		margin-top: -10px;
+		background-color:#F5F5F5;
+		width:130px;
+		margin-left:20px;
+		color:#A8A8A8 !important;
+		text-align:center;
+	}
+    .wdg_playerdraft_01 .tblDraft td.separador .calification div{
+        float: left;
+        text-align: center;
+    }
+    .wdg_playerdraft_01 .tblDraft .calification div a{
+        margin-top: 5px;
+        float: left;
+        font-size: 15px;
+		color:#999;
+		text-align:center;
+		width: 50px;
+		padding-top: 4px;
+    }
+	.wdg_playerdraft_01  .tblDraft .calification div a:hover{
+        color:#A70A0B !important;
+    }
+	.wdg_playerdraft_01 .tblDraft td.separador .participated{
+		
+		border-bottom: 1px solid #CCCCCC;
+		display: none;
+		height: 25px;
+		margin: 10px;
+	}
+	
+	.wdg_playerdraft_01  .tblDraft .vote_block{
+		cursor:pointer;
+	}
+	
+	.wdg_playerdraft_01  .tblDraft .vote_block td h3 {
+	   font-size:inherit;
+	   font-weight:inherit;
+	}
+ 
+	.wdg_playerdraft_01 .degradado{
+		border-top:none;
+		display:block;
+		position:absolute;
+		bottom:0;
+		width:100%;
+		height:12px;
+		background-image:url(../global/img/degradado_horizontal.png);
+		background-repeat:repeat-x;
+		background-position:10px;
+	}
+	
+	.wdg_playerdraft_01 .nav_paginator_01{
+		display:none;
+	}
+	
+	.ie7 .wdg_playerdraft_01 .div3 .textcolor-title2{
+		float: right; 
+		position: absolute;
+		top: 0px;
+	}
+	.ie7 .wdg_playerdraft_01 .div2 .gris,
+	.ie7 .wdg_playerdraft_01 .div1 .gris{
+		float: right; 
+		position: absolute;
+		top: 0px;
+		right: 20px;
+	}
+
+}
+
+@media screen and (max-width: 623px){
+	.wdg_playerdraft_01 .tblDraft td{
+	   padding-left: 0px;
+	   text-align:center;
+	}
+	.wdg_playerdraft_01 .tblDraft th{
+	   padding-left: 0px;
+       text-align:center;
+	}
+}
+/*
+	wdg_playerdraft_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+	#wdg_playerdraft_01{
+	    margin-bottom: 34px;
+		max-width: 624px;
+		
+		overflow: hidden;
+	}
+	
+	.wdg_playerdraft_01 .subtitle{
+		border-top: 1px solid #CCC;
+		width:100%;
+		text-align:center;
+		height:20px;
+		float:left;
+		margin-top: 27px;
+		display:block;
+	}
+	
+	.wdg_playerdraft_01 .div1{
+		width:102px;
+		padding:0 28px;
+		padding-left: 21px;
+		padding-right: 25px;
+	}
+	.wdg_playerdraft_01 .div2{
+		width:115px;
+		padding:0 30px;
+		background: url("../img/dotted-vertical.png") repeat-y scroll right center transparent;
+	}
+	.wdg_playerdraft_01 .lineasep{
+		display:none;
+	}
+	.wdg_playerdraft_01 .div3{
+		width:220px;
+		padding:0 39px;
+		height: 60px;
+		text-align:left;
+		line-height: 59px;
+	}
+	.wdg_playerdraft_01 .div3 div{
+		line-height: 53px;			
+	}	
+	.wdg_playerdraft_01 .subtitle .textcolor-title4{
+		font-style:italic;
+		font-size:12px;
+		margin:auto;
+		margin-top: -10px;
+		background-color:#F5F5F5;
+		width:150px;
+		color:#A8A8A8 !important;
+	}
+	
+	.wdg_playerdraft_01 .scroll{
+		/*height:410px;
+		overflow-y: scroll;*/
+    	width: 640px;
+		background:none;
+		padding-top: 0px;
+	}
+	
+	.wdg_playerdraft_01 .titulo{
+		margin-left: 0px;
+		margin-right: 0px;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft{
+		width:98%;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft td:nth-child(3){
+		background: url("../../img/dotted-vertical.png") repeat-y right !important;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft th:nth-child(4),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft th:nth-child(6),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(4),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(5),
+	.wdg_playerdraft_01 .tblDraft td:nth-child(6){
+		display: table-cell;
+	}
+	/*.wdg_playerdraft_01 .tblDraft th:nth-child(1){
+		padding-right: 58px;
+	}
+	.wdg_playerdraft_01 .tblDraft th:nth-child(2){
+		color: blue !important;
+		padding-right: 58px;
+	}*/
+	.wdg_playerdraft_01 .tblDraft th:nth-child(6){
+		font-weight: normal;
+	}
+	
+	.wdg_playerdraft_01 .tblDraft tr:last-child .separador .dotted-top{
+		background: none !important;
+		border-bottom: 1px solid #D5D5D5;
+	}
+}
+/*
+	wdg_playerdraft_01.css
+*/
+@media screen and (min-width: 948px){
+	
+	.wdg_playerdraft_01 .scroll{
+		/*height:1342px;*/
+		overflow: hidden;
+	}
+	.wdg_playerdraft_01 .degradado{
+		
+		display:none;
+	}
+	
+	.wdg_playerdraft_01 .nav_paginator_01{
+		display:block;
+		height: auto !important;
+	}
+	
+}
