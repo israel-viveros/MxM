@@ -1,0 +1,1191 @@
+/*
+	wdg_team_align_01_mobile.css
+*/
+
+@media screen{
+	.wdg_team_align_01{
+		position: relative;
+	}
+	.wdg_team_align_01 .player_td{
+		padding: 6px 0;
+	}
+	.wdg_team_align_01 .player_td div{
+		display: inline-block;
+		margin: 2px 0;
+	}	
+	.wdg_team_align_01 .player_td .dotted-right{
+		height: 15px;
+		width: 1px;
+		padding-top: 15px;		
+	}
+	.wdg_team_align_01 .textcolor-title2{
+		font-size: 16px;
+		font-weight: bold;
+	}
+	.wdg_team_align_01 .referee_title .textcolor-title2{
+        font-size: 14px;
+        font-weight: bold;
+    }
+	.wdg_team_align_01 .player_number{
+		text-align: center;
+		vertical-align: middle;
+		vertical-align: top;
+		width: 33px;
+	}
+	.wdg_team_align_01 .player_number {
+        text-align: center;
+        vertical-align: middle;
+        vertical-align: top;
+        width: 33px;
+    }
+    .wdg_team_align_01 .player_td .container_card{
+        width: 83%;
+    }
+
+	.wdg_team_align_01 .player_name{
+		font-size: 13px;
+		font-weight: bold;
+		width: 53%;
+		vertical-align: top;
+	}
+	.wdg_team_align_01 .player_name p{
+		padding-left: 12px;
+		overflow: hidden;
+  	  	white-space: nowrap;
+		text-overflow: ellipsis;
+	}
+	.wdg_team_align_01 .players_icons{
+		width: 108px;
+		text-align: right;
+	}
+	.wdg_team_align_01 .first_team .player_td .players_icons{
+        margin-right:3px;
+        float:right;
+    }
+    .wdg_team_align_01 .second_team .player_td .players_icons{
+        margin-right:3px;
+        float:right;
+    }
+	.wdg_team_align_01 .players_icons i{
+		font-size: 20px;
+		color: #5b5b5b;
+	}
+	.wdg_team_align_01 .players_icons span{
+		font-size: 12px;
+		color: #5b5b5b;
+	}
+	.wdg_team_align_01 .title div{
+		float: left;
+		height: 40px;
+		line-height: 40px;
+	}
+	.wdg_team_align_01 .title .escudo {
+		vertical-align: middle;
+		width: 40px;
+		text-align: center;	
+	}
+	.wdg_team_align_01 .title p{
+		padding-left: 12px;
+
+	}
+	.wdg_team_align_01 .table_title{
+		height: 40px;
+		line-height: 40px;
+		font-size: 18px;
+		border-bottom:1px solid #CCC;
+		border-top:1px solid #CCC;
+		float: left;
+		width: 92%;
+		font-style: italic;
+		padding-left: 50px;
+		margin-top: 6px;
+	}
+	.wdg_team_align_01 .referee{
+		float: left;
+		width: 100%;
+		padding: 6px 0;
+		border-bottom:1px solid #CCC;
+		margin-bottom: 24px;
+	}
+	.wdg_team_align_01 .referee .dotted-right{
+		float: left;
+		width: 46%;
+		padding-right: 12px;
+		margin-right: 12px;
+		padding-left: 1px;
+	}
+	.wdg_team_align_01 .referee .dotted-none{
+		float: left;
+		width: 49%;
+	}
+	.wdg_team_align_01 .referee .referee-left{
+		height: 28px;
+		line-height: 28px;
+		padding: 6px 0;
+	}
+	.wdg_team_align_01 .referee .referee_title{
+		width: 33%;
+		text-transform: uppercase; 
+		padding-left: 12px;
+	}
+	.wdg_team_align_01 .referee .dotted-left{
+		width: 56%;
+		padding-left: 13px;
+	}
+	.wdg_team_align_01 .referee .referee_title, .wdg_team_align_01 .referee .dotted-left{
+		vertical-align: top;
+		display: inline-block;
+		font-size: 14px;
+	}
+}
+
+@media screen and (max-width: 623px){
+	.wdg_team_align_01 .second_team_table,	
+	.wdg_team_align_01 .referee,
+	.wdg_team_align_01 .referee_title{
+		display: none;
+	}
+	.wdg_team_align_01 .current{
+		background-color: #DFDFDF;
+	}
+	.wdg_team_align_01 .second_team .title{
+		position: absolute;
+		top: 0px;
+		margin-left: 50%;
+		padding-left: 13%;
+	}
+	.wdg_team_align_01 .title{
+		width: 50%;
+		position: absolute;
+		top: 0px;
+	}
+	.first_team .escudo{
+		margin-left: 13%; 
+	}
+	.second_team .title img{
+		margin-top: 4px;
+	}
+	.first_team .title img{
+		margin-top: 4px;
+		float: left;
+	}
+	.wdg_team_align_01 .art_latestnews_01_arrow {
+		width: 0;
+		height: 0;
+		overflow: hidden;
+		position: absolute;
+		border: 10px solid transparent;
+		border-top-color: #DFDFDF;
+		left: 22%;
+	}
+	.wdg_team_align_01{
+		position: relative;
+		overflow: hidden;
+		height: 500px;
+		padding-top: 40px;
+		margin-bottom: 18px;
+	}
+	.wdg_team_align_01 .container{
+		overflow: scroll;
+		height: 500px;
+		width: 106%;
+		overflow-x: hidden;
+	}
+	.wdg_team_align_01 .player_table{
+		background: none!important;
+	}
+}
+@media screen and (max-width: 623px){
+    .wdg_team_align_01 .degraded{
+	   bottom: 0px;
+    }
+}
+
+/*
+	wdg_team_align_01_tablet.css
+*/
+
+@media screen and (min-width: 624px){
+	.wdg_team_align_01 .first_team{
+		float: left;
+		width: 52%;
+	}
+	.wdg_team_align_01 .second_team{
+		float: left;
+		width: 48%;
+	}
+	.wdg_team_align_01 .first_team .title{
+		width: 93%;
+	}
+	 .wdg_team_align_01 .second_team .title{
+	 	width: 100%;
+	 }
+	.wdg_team_align_01 .first_team .player_table{
+		padding-right: 12px;
+		margin-right: 12px;
+		margin-top: 6px;
+	}
+	.wdg_team_align_01 .second_team .player_table{
+		margin-top: 6px;
+	}
+	.wdg_team_align_01 .referee{
+		margin-bottom: 36px;
+	}
+    .wdg_team_align_01 .degraded{
+       display:none;
+    }
+}
+/*
+	wdg_team_align_01.css
+*/
+@media screen and (min-width: 948px){
+		.wdg_team_align_01 .referee{
+		margin-bottom: 24px;
+	}
+
+}
+
+/*
+	btn_print_01_mobile.css
+*/
+
+@media screen{
+    
+	.btn_print_01 .menu{
+		font-size: 14px;
+		font-style:italic;
+		font-weight:bold;
+		width:211px;
+		height:32px;
+		text-align:center;
+	}
+	
+	.btn_print_01 .menu .largo{
+		width:205px;
+	}
+	
+	.btn_print_01 .menu .font_menu{
+		color:#FFF;
+	}
+	
+	.btn_print_01 .menu td{
+		color:#FFF;
+		background-color:#D9A961;
+
+	}
+	
+	.btn_print_01 .menu td a{
+		color:#FFF;
+		background-color:#D9A961;
+	}
+	
+	.btn_print_01 .menu td{
+		border-right:1px dashed #CCC;
+	}
+	.btn_print_01 .menu td:last-child{
+		border-right:none;
+	}
+	.btn_print_01 .menu .letrero{
+		margin-left:6px;
+	}
+	
+    .btn_print_01 .imprime h3 {
+        color: #A41D21 !important;
+        float: left;
+        font-style: italic;
+        padding-bottom: 8px;
+        padding-left: 25px;
+        padding-top: 8px;
+        width: auto;
+    }
+    .btn_print_01
+    {
+		float:right;	
+        width:211px;
+        position:relative;
+        height:auto;
+        margin-bottom: 36px;
+        display:none;
+    }
+    
+}
+/*
+	btn_print_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+	.btn_print_01
+	{
+		position:relative;
+		height:auto;
+		display:block;
+		overflow:hidden;
+	}
+	
+	
+	
+}
+/*
+	btn_print_01.css
+*/
+@media screen and (min-width: 948px){
+.btn_print_01
+	{
+		position:relative;
+		height:auto;
+		display:block;
+		overflow:hidden;	
+	}
+	
+
+}
+
+/*
+	wdg_goalsanoted_01_mobile.css
+*/
+@media screen{	
+.wdg_goalsanoted_01{
+		width: 100%	;
+		overflow: hidden;
+		margin-bottom: 18px;
+		position: relative;
+	}
+	.wdg_goalsanoted_01 .str_pleca_01{
+		margin-bottom: 0px !important;
+	}
+	.wdg_goalsanoted_01 .scroll-carrusel{
+		height: 208px;
+		overflow: hidden;
+		clear: both;
+		width: 100%;
+	}
+	.wdg_goalsanoted_01 .scroll{
+		height: 208px;
+		overflow: auto;
+		 width: 105%;
+	}
+	.wdg_goalsanoted_01 .jugador,
+	.wdg_goalsanoted_01 .estadistica,
+	.wdg_goalsanoted_01 .grado{ float: left;}
+	.wdg_goalsanoted_01 .jugador{
+
+	}
+	.wdg_goalsanoted_01 .convocados{
+		border-bottom: 1px solid #ccc;
+		margin: 0px 0 14px;
+	}
+	.wdg_goalsanoted_01 .block_container{
+		width: 300px;
+		overflow: hidden;
+		clear: both;
+		padding: 11px 0;
+	}
+	.wdg_goalsanoted_01 .jugador{
+		width: 113px;
+		font-size: 13px;
+		padding-left: 5px;
+	}
+	.wdg_goalsanoted_01 .jugador span{
+		display: block;
+		font-size: 10px;
+		font-style: italic;
+		width: 90px;
+		margin-top: 6px;
+	}
+	.wdg_goalsanoted_01 .estadistica{
+		width: 112px;
+		padding-left: 16px;
+	}
+	.wdg_goalsanoted_01 .estadistica i{
+		float: left;
+		padding-right: 6px;
+		color: #232323;
+	}
+	.wdg_goalsanoted_01 .grado{
+		font-size: 13px;
+	}
+	.wdg_goalsanoted_01 .grado span {
+		display: block;
+		margin: 10px 0px 0 -20px;
+		font-style: italic;
+		width: 94px;
+	}
+	.wdg_goalsanoted_01 .marcador{
+		float: left;
+		height: 53px;
+		padding-left: 16px;
+	}
+
+	/*Penales*/
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .titulo{
+		font-style: italic;
+		padding-left: 44px;
+		font-style: italic;
+		border-bottom: 1px solid #ccc;
+		font-size: 18px;
+		padding-bottom: 6px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .block_container{
+		padding: 11px 0;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .convocados{
+		margin-top: 2px;
+		margin-bottom: 0px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .jugador{
+		width: 171px;
+		font-size: 13px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .estadistica{
+		width: 43px;
+		padding-left: 26px;
+		padding-top: 6px;
+		height: 33px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .marcador{
+		height: 39px;
+	}	
+	.wdg_goalsanoted_01 .degraded{
+		top: 236px;
+	}
+	.wdg_goalsanoted_01 .jugador p span{
+        color:#8f8f8f;
+    }
+}
+/*
+	wdg_goalsanoted_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+	.wdg_goalsanoted_01{
+		width: 300px;
+		overflow: hidden;
+		margin-bottom: 36px;
+	}
+	.wdg_goalsanoted_01 .str_pleca_01{
+		margin-bottom: 0px !important;
+	}
+	.wdg_goalsanoted_01 .scroll-carrusel{
+		height: 208px;
+		overflow: hidden;
+		clear: both;
+	}
+	.wdg_goalsanoted_01 .scroll{
+		height: 208px;
+		overflow: auto;
+		 width: 317px;
+	}
+	.wdg_goalsanoted_01 .jugador,
+	.wdg_goalsanoted_01 .estadistica,
+	.wdg_goalsanoted_01 .grado{ float: left;}
+	.wdg_goalsanoted_01 .jugador{
+
+	}
+	.wdg_goalsanoted_01 .convocados{
+		border-bottom: 1px solid #ccc;
+		margin: 0px 0 14px;
+	}
+	.wdg_goalsanoted_01 .block_container{
+		width: 300px;
+		overflow: hidden;
+		clear: both;
+		padding: 11px 0;
+	}
+	.wdg_goalsanoted_01 .jugador{
+		width: 113px;
+		font-size: 13px;
+		padding-left: 5px;
+	}
+	.wdg_goalsanoted_01 .jugador p{
+        font-weight: bold;
+    }
+    .wdg_goalsanoted_01 .jugador span{
+        font-weight: normal;
+    }
+	.wdg_goalsanoted_01 .jugador span{
+		display: block;
+		font-size: 11px;
+		font-style: italic;
+		width: 90px;
+		margin-top: 6px;
+	}
+	.wdg_goalsanoted_01 .estadistica{
+		width: 112px;
+		padding-left: 16px;
+	}
+	.wdg_goalsanoted_01 .estadistica i{
+		float: left;
+		padding-right: 6px;
+		color: #5b5b5b;
+		font-size: 18px;
+	}
+	.wdg_goalsanoted_01 .grado{
+		font-size: 12px;
+	}
+	.wdg_goalsanoted_01 .grado span {
+		display: block;
+		margin: 10px 0px 0 -20px;
+		font-style: italic;
+		width: 94px;
+		font-size: 13px;
+		font-weight: bold;
+	}
+	.wdg_goalsanoted_01 .marcador{
+		float: left;
+		height: 53px;
+		padding-left: 16px;
+	}
+	
+	.wdg_goalsanoted_01 .marcador p{
+        font-size:18px;
+    }
+
+	/*Penales*/
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .titulo{
+		font-style: italic;
+		padding-left: 44px;
+		font-style: italic;
+		border-bottom: 1px solid #ccc;
+		font-size: 18px;
+		padding-bottom: 6px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .block_container{
+		padding: 11px 0;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .convocados{
+		margin-top: 2px;
+		margin-bottom: 0px;
+	}
+	.wdg_goalsanoted_01 .wdg_mxm_penalties_01 .jugador{
+		width: 171px;
+		font-size: 13px;
+	}
+	.wdg_goalsanoted_01 .degraded{
+		top: 230px;
+	}
+}
+/*
+	wdg_goalsanoted_01.css
+*/
+@media screen and (min-width: 948px){
+	
+	.wdg_goalsanoted_01{
+		width: 300px;
+		overflow: hidden;
+		margin-bottom: 36px;
+	}
+	.wdg_goalsanoted_01 .str_pleca_01{
+		margin-bottom: 0px !important;
+	}
+	.wdg_goalsanoted_01 .scroll-carrusel{
+		height: auto;
+		overflow: hidden;
+		clear: both;
+	}
+	.wdg_goalsanoted_01 .scroll{
+		height: auto;
+		overflow: hidden;
+		 width: 317px;
+	}
+	.wdg_goalsanoted_01 .degraded{
+        display: none;
+    }
+}
+
+/*
+	wdg_mxm_plcards_01_mobile.css
+*/
+@media screen and (max-width: 623px){
+    
+    .wdg_mxm_plcards_01 .titulo{
+        font-size:18px;
+        font-style:italic;
+        padding-bottom:15px;
+        padding-left:50px;
+        margin-bottom:5px;
+        border-bottom: 1px solid #CCC;
+    }
+    .wdg_mxm_plcards_01 .convocados{
+        font-size:12px;
+        width:100%;
+        border-spacing:4px;
+        border-collapse: 5px;
+    }
+    
+    .wdg_mxm_plcards_01 .convocados .head {
+        border-bottom: 1px solid #ccc;
+        padding: 0 0px 0px 5px;
+        height: 39px;
+        margin-top: 4px;
+    }
+    
+    .wdg_mxm_plcards_01  .icon-team1,
+    .wdg_mxm_plcards_01  .icon-team2{
+        display:inline-block;
+        padding: 0 5px 0px 5px;
+        height: 28px;
+        float: left;
+        width:18%;
+        text-align: center;
+        margin-top: 3px;
+    }
+    .wdg_mxm_plcards_01 .player{
+        height: 30px;
+        padding: 0 10px 0px 10px;
+        line-height: 30px;
+        text-align: left;
+        font-weight: bold;
+        float:left;
+        display:inline-block;
+        width:51%;
+    }
+    
+    .wdg_mxm_plcards_01 .convocados .bodyt {
+        padding: 0 5px;
+        height: 38px;
+        line-height: 24px;
+        padding-left: 5px;
+        padding-right: 0px;
+    }
+    
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title2 {
+       width: 10%;
+       font-size: 18px;
+       height: 30px;
+       display:inline-block;
+       float: left;
+       margin-top: 4px;
+       padding: 0 5px;
+       text-align: center;
+       font-weight: bold;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title1 {
+       width: 10%;
+       font-size: 19px;
+       height: 30px;
+       display:inline-block;
+       float: left;
+       margin-top: 4px;
+       padding: 0 5px;
+       text-align: center;
+       color: #A70A0B !important;
+       font-weight: bold;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .name {
+       width: 40%;
+       float: left;
+       display:inline-block;
+       margin-top: 4px;
+       padding: 0 5px;
+       text-align: center;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title4{
+       float: left;
+       display:inline-block;
+       margin-top: 4px;
+       padding: 0 5px;
+       width: 19%;
+       text-align: center;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .name p{
+       font-weight: bold;
+    }
+    .str_pleca_01{
+       margin-bottom:0px!important;
+    }
+    .wdg_mxm_plcards_01{
+       border-bottom: 1px solid #CCC;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title4 i{
+        color:#5b5b5b;
+    }
+}
+/*
+	wdg_mxm_plcards_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+    .wdg_mxm_plcards_01{
+        width: 300px;
+        display:block;
+        margin-bottom:36px;
+        border-bottom: 1px solid #ccc;
+    }
+
+    .wdg_mxm_plcards_01 div.str_pleca_01_title h3{
+        width:63.7%;
+    }
+    .wdg_mxm_plcards_01 .convocados{
+        border-spacing: 0px !important;
+    }
+
+    .wdg_mxm_plcards_01 .convocados .bodyt .name{
+        width: 40%;
+    }
+    .wdg_mxm_plcards_01{
+        /*width: 100%;*/
+    }
+    .wdg_mxm_plcards_01 .convocados .head{
+        border-bottom: 1px solid #ccc;
+        padding: 0 0px 0px 5px;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt{
+        height: 38px;
+        line-height: 24px;
+        padding-left: 5px;
+        padding-right: 0px;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .name p{
+        font-size: 13px;
+        font-weight: bold;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+        margin-left: 8px;
+        text-align: left;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title4{
+        width: 55px;
+        font-size: 12px;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title4 i{
+        font-size: 18px;
+        margin-left: -10px;
+        color:#5b5b5b;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title4 span{
+        position: absolute;
+		margin-left: 2px;
+		margin-top: -1px;
+		display: inline-block;
+    }
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title1,
+    .wdg_mxm_plcards_01 .convocados .bodyt .textcolor-title2{
+        width: 9%;
+        font-size: 18px;
+        font-weight: bold;
+    }
+    .wdg_mxm_plcards_01 .convocados .dotted-left{
+        height: 28px;
+    }   
+    .wdg_mxm_plcards_01 .player{
+        line-height: 30px;
+    }
+    
+
+    .wdg_mxm_plcards_01 .convocados div{
+        height:26px;
+        font-size:14px;
+        margin-top: 4px;
+    }
+    .wdg_mxm_plcards_01 .convocados div div{
+        height:30px;
+        float: left;
+    }
+
+    .wdg_mxm_plcards_01 .convocados div:first-child{
+        text-align:left;
+    }
+    .wdg_mxm_plcards_01 .convocados div{
+        padding: 0 5px;
+        height:39px;
+        text-align:center;
+    }
+    .wdg_mxm_plcards_01 .convocados div:first-child{
+        font-weight:bold;
+        color:#569269;
+        font-size:14px;
+        border-left: none;
+        text-align:left;
+        font-weight: bold;
+    }
+    .wdg_mxm_plcards_01 div.str_pleca_01
+    {
+        margin-bottom: 3px;
+        border-bottom: 1px solid #ccc;
+    }
+    .wdg_mxm_plcards_01 .player{
+        width: 49%;
+        padding: 0 10px!important;
+    }
+    .icon-team1{
+        width: 56px;
+    }
+    .icon-team2{
+        width: 54px;
+    }
+}
+/*
+	wdg_avgfield_01_mobile.css
+*/
+@media screen{ 
+   .wdg_avgfield_01{
+        width: 100%;
+        height: auto;
+        display: block;
+        border-bottom: 1px solid #d3d3d3;
+    }
+    .wdg_avgfield_01 .str_pleca_01{
+    	margin-bottom: 0;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_row{
+        height: 42px;
+        width: 100%; 
+        border-top: 1px solid #d3d3d3;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_row:first-child{        
+        border-top: none;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_row > div{
+        float: left;
+        height: 42px;
+        width: 45%;
+        line-height: 42px;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teams.box-gray{
+        background: none repeat scroll 0 0 #E6E6E6;
+        box-shadow: 0 0 7px #DDDDDD inset;
+        box-shadow: inset 0px 0px 12px 4px rgba(0,0,0,0.1);
+        font-weight: bold;
+    }
+
+    .wdg_avgfield_01 .wdg_avgfield_01_row .wdg_avgfield_01_title{
+        width: 55%;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_row .wdg_avgfield_01_title a{
+        margin-left: 7px;
+        font-size: 13px;
+        font-weight: bold;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_row .wdg_avgfield_01_title .wdg_avgfield_01_red{
+        /*color: #A70A0B;*/
+        font-size: 14px;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teams > div{
+        float: left;
+        height: 42px;
+        width: 49%;
+        text-align: center;
+        line-height: 42px;
+        /*color: #D9A961;*/
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teams > div .element{
+        width: 100%;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teams .dotted-right{
+        height: 32px;
+        width: 1px;
+        margin-top: 5px;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teama .element{
+        width: 100%;
+        float: left;
+        text-align: center;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teama .element img{
+        margin-top: 5px;
+    }
+    .wdg_avgfield_01 .wdg_avgfield_01_teamb img{
+        margin-top: 5px;
+    }
+}
+/*
+	wdg_avgfield_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+    .wdg_avgfield_01{
+        width: 300px;
+        margin-bottom: 36px;
+    }
+	.wdg_avgfield_01 div.str_pleca_01_title h3{
+		width:63.7%;
+	}
+}
+/*
+	wdg_smex_strategy_01_mobile.css
+*/
+/* only mobile */
+@media screen and (max-width: 623px) {
+    section.wdg_smex_strategy_01{display:none;}
+}
+/* all devices */
+@media screen {
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdown {
+		background-color: #D3D3D3;
+		box-shadow: 0 0 12px 4px rgba(0, 0, 0, 0.1) inset;
+		cursor: pointer;
+		float: left;
+		height: 30px;
+		width: 100%;
+		cursor: pointer;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdown .wdg_smex_strategy_01_dropdowncontent p {
+		color: #000;
+		display: inline-block;
+		float: left;
+		font-size: 12px;
+		font-weight: bold;
+		line-height: 33px;
+		margin-left: 20px;
+		width: 246px;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdownlist li:hover{
+		background-color: rgba(235,235,235,0.9);  
+	}
+	.wdg_smex_strategy_01 #dropdwon-right {
+		float: right;
+		margin-left: 0;
+		padding-bottom: 0;
+		padding-right: 7px;
+		position: relative;
+		width: 21px;
+		z-index: 1000;
+		line-height:32px;
+		height:32px;
+		text-align:center;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdown .wdg_smex_strategy_01_dropdowncontent span {
+		float: right;
+		margin-right: 9px;
+		margin-top: 10px;
+	}
+	.sprite.dropdown-white {
+		background-position: -188px -6px;
+		height: 7px;
+		width: 12px;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer {
+		clear: both;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer ul {
+		background-color: #F5F5F5;
+		cursor: pointer;
+		position: relative;
+		visibility: hidden;
+		z-index: 1000 !important;
+		font-size: 14px;
+		margin: 0;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer ul li {
+		background-color: rgba(235, 235, 235, 0.6);
+		border-bottom: 1px solid #D3D3D3;
+		box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.1) inset;
+		height: 34px;
+		width: 100%;
+		float: left;
+		font-weight: bold;
+		margin: 0;
+		padding: 5px 0 5px 5px;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_listcontainer ul li p {
+		font-style: italic;
+		font-weight: bold;
+		line-height: 34px;
+		margin-left: 20px;
+		text-align:left;
+	}
+	.wdg_smex_strategy_01 .titulo {
+		font-size: 19px;
+		border-bottom: #CCC 1px solid;
+		padding-bottom: 7px;
+		font-weight: normal;
+		text-align:left;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior {
+		border-bottom: 1px solid #CCCCCC;
+		clear: both;
+		height: 32px;
+		position: relative;
+		width: 100%;
+		margin-bottom: 26px;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior strong {
+		float: left;
+		font-size: 12px;
+		padding: 8px 0 4px 325px;
+		position: relative;
+		text-align:left;
+	}
+	.wdg_smex_strategy_01 .wdg_smex_strategy_01_dropdowncontent {text-align:left;}
+	.wdg_smex_strategy_01 .pleca_inferior .wdg_smex_strategy_01_dropdown {
+		float: right;
+		height: 32px;
+		position: relative;
+		width: 34%;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior .wdg_smex_strategy_01_dropdown .wdg_smex_strategy_01_dropdowncontent p {
+		width: 164px;
+	}
+	.wdg_smex_strategy_01 .pleca_inferior .wdg_smex_strategy_01_listcontainer ul li {
+		width: 207px;
+	}
+	.wdg_smex_strategy_01 ul::-webkit-scrollbar-thumb {
+        background: #d3d3d3;
+        -webkit-border-radius: 1ex;
+        -webkit-box-shadow: 0px 1px 2px rgba(0, 0, 0, 0.75);
+    }
+    .wdg_smex_strategy_01 ul::-webkit-scrollbar {
+        height: 12px;
+        width: 12px;
+        background: #f5f5f5;
+    }
+}
+/*
+	wdg_smex_strategy_01_tablet.css
+*/
+@media screen and (min-width: 624px){
+	.wdg_smex_strategy_01{
+		margin-bottom: 36px;
+		width:624px;
+	}
+	/* basic layout */
+    section.wdg_smex_strategy_01 {
+        width:624px;
+        text-align:center;
+    }
+    
+    section.wdg_smex_strategy_01 div.field {
+        position:relative;
+    }
+    section.wdg_smex_strategy_01 div.players {
+        
+    }
+    section.wdg_smex_strategy_01 span.player {
+        position:absolute;
+        background:url(../img/sombra-cancha.png) no-repeat left 25px;
+        padding-bottom:10px;
+    }
+    
+    /* colors */
+    section.wdg_smex_strategy_01 .player a {position:relative;}
+    section.wdg_smex_strategy_01 .player a span.tooltip {
+        display:none;
+        position:absolute;
+        width:200px;
+        padding:12px 20px;
+        text-align:left;
+        left:-100px; /* 200px width + 40px padding / 2 = 120px */
+    }
+    /*section.wdg_smex_strategy_01 .player a:hover span.tooltip {
+        display:block;
+    }*/
+    
+    section.wdg_smex_strategy_01 .player.grid1 span.tooltip,
+    section.wdg_smex_strategy_01 .player.grid2 span.tooltip {
+        top:55px;
+    }
+    
+    section.wdg_smex_strategy_01 .player.grid3 span.tooltip,
+    section.wdg_smex_strategy_01 .player.grid4 span.tooltip {
+        top:-150px;
+    }
+    
+    section.wdg_smex_strategy_01 .player a span.number {
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;
+        padding:0 6px;
+        font-weight:bold;
+        line-height:25px;
+        display:inline-block;
+    }
+    section.wdg_smex_strategy_01 .smex a span.number,
+    section.wdg_smex_strategy_01 .player a span.number {color:#e43640; background:#FFF;} /* default, strategy smex, etc. */
+    section.wdg_smex_strategy_01 .visit a span.number {color:#ffcc01; background:#a61e22;} /* 2 teams -> add local and visit classes */
+    section.wdg_smex_strategy_01 .local a span.number {color:#ffcc01; background:#012ced;}
+    section.wdg_smex_strategy_01 span.actions {
+        color:#948f8f;
+        font-size:12px;
+        line-height:20px;
+        display:block;
+        width:195px;
+    }
+    section.wdg_smex_strategy_01 span.actions i {
+        color:#FFF;
+        font-size:15px;
+        margin:0 3px 0 4px;
+    }
+    /* menu */
+    section.wdg_smex_strategy_01 ul.menu {
+        text-align:center;
+        border:1px solid #ccc;
+        display:inline-block;
+        height:24px;
+        margin-bottom:20px;
+    }
+    
+    section.wdg_smex_strategy_01 ul.menu li {
+        display:inline-block;
+        background: url("../img/dotted-vertical.png") repeat-y left !important;
+        height:24px;
+    }
+    
+    section.wdg_smex_strategy_01 ul.menu li.first {
+        background-image: none !important;
+    }
+    
+    section.wdg_smex_strategy_01 ul.menu li a {
+        color:#8F8F8F;
+        display:inline-block;
+        font-size:14px;
+        font-style:italic;
+        font-weight:bold;
+        line-height:24px;
+        padding:0 30px;
+    }
+    
+    section.wdg_smex_strategy_01 ul.menu li.active a,
+    section.wdg_smex_strategy_01 ul.menu li a:hover {
+        color:#FFF;
+        background:#D9A961;
+    }
+    
+    section.wdg_smex_strategy_01 span.tooltip {
+        display:block;
+        background: url("../img/95percentblack.png");
+        box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
+        z-index:1000;
+    }
+    
+    section.wdg_smex_strategy_01 span.name {
+        font-size:16px;
+        font-weight:bold;
+        display:block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+    }
+    
+    section.wdg_smex_strategy_01 .tooltip .arrow {
+        display:block;
+        width:55px;
+        height:28px;
+        position:absolute;
+        background:url(../img/flechas-cancha.png) no-repeat;
+        left:125px;
+    }
+    section.wdg_smex_strategy_01 .grid1 .arrow,
+    section.wdg_smex_strategy_01 .grid2 .arrow {
+        top:-27px;
+    }
+    section.wdg_smex_strategy_01 .grid3 .arrow,
+    section.wdg_smex_strategy_01 .grid4 .arrow {
+        bottom:-27px;
+        background:url(../img/flechas-cancha.png) -55px 100%;
+    }
+    section.wdg_smex_strategy_01 .grid4 .arrow {
+        background:url(../img/flechas-cancha.png) 0 100%;
+        left:135px;
+    }
+    section.wdg_smex_strategy_01 .grid3 .arrow {
+        left:45px;
+    }
+    
+    section.wdg_smex_strategy_01 .grid1 .arrow {
+        background-position:-55px 0;
+        left:50px;
+    }
+    
+    section.wdg_smex_strategy_01 .name {display:inline-block;color:#FFF; font-size:14px;}
+    section.wdg_smex_strategy_01 .position { display:inline-block;color:#d6a256;font-size:12px;}
+    section.wdg_smex_strategy_01 img.playerfoto { float:left; margin-right:12px }
+    section.wdg_smex_strategy_01 em {margin-top:15px;font-weight:bold;font-size:12px;color:#747474;padding:2px;display:block;text-align:center;margn-top:-1em;background:url(../img/linea-tooltip.png) no-repeat 50% 50%;}
+}
+
