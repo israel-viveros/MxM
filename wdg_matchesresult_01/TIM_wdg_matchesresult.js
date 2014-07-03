@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.1.1
+ *   Version: 5.1.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -482,7 +482,7 @@
                     //Modulo de altasbajas result (mundial)
                     if (setting.tema === "mundial") {
                         var selectorMundial = $(".JfromTicker" + data.matches.match[o].MatchId);
-                        selectorMundial.find(".versus_time").text(tituloMatch);
+                        selectorMundial.find(".versus_time").html(tituloMatch);
 
                         //Goles
                         var penalesLocalJ = data.matches.match[o].equipos.local.penales;
