@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.9
+ *   Version: 2.3.10
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -681,8 +681,8 @@
 
                 partidoHtml += '</div>';
 
-                var linkLocal = (conjunto.local.name !== "") ? jornadasCalendarDTV.createLink(conjunto.local.name) : '';
-                var linkVisit = (conjunto.visit.name !== "") ? jornadasCalendarDTV.createLink(conjunto.visit.name) : '';
+                var linkLocal = (conjunto.local.name !== "" && settings.tema === "mundial") ? jornadasCalendarDTV.createLink(conjunto.local.name) : '';
+                var linkVisit = (conjunto.visit.name !== "" && settings.tema === "mundial") ? jornadasCalendarDTV.createLink(conjunto.visit.name) : '';
                 var estilosMundial = (settings.tema == "mundial") ? 'style="width:213px;margin-left:-95px;"' : '';
                 console.log(conjunto.periodo)
                 console.log(conjunto.sef.mxmurl)
