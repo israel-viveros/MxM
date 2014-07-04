@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.2.2
+ *   Version: 5.2.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 
@@ -857,7 +857,6 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
             },
 
             funcionesNaat: function() {
-                console.log("haciendo funciones naat");
                 (function(T, $) {
                     // var $widthF = $('.wdg_matchesresult_01 .wdg_matchesresult_01_list').width() - 5;
                     var $x = $('.wdg_matchesresult_01_nav');
