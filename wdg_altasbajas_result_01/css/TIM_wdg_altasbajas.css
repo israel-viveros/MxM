@@ -500,7 +500,8 @@ wdg_altasbajas_result_01_mobile.css
 		text-align: center;
 		color: black;
 		font-size: 13px;
-		padding: 8px 1px 10px 5px;
+		/* vidi padding: 8px 1px 10px 5px; */
+        padding: 2px 1px 2px 5px;
 		float: left;
 		width: 78px;
 		font-weight: bold;
@@ -530,7 +531,7 @@ wdg_altasbajas_result_01_mobile.css
     
     /*BEGIN: sprite*/    	
      	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-	        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/global-sprites.png) no-repeat 0 0;
+	        background: url(http://i2.esmas.com/deportes30/mxm/img/global-sprites.png) no-repeat 0 0;
 	        display:none;
 	        height: 10px;
 	        overflow: hidden;
@@ -741,7 +742,7 @@ wdg_altasbajas_result_01_mobile.css
 /*Style Retina*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
  	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-        background: url(http://lab.israelviveros.com/deportes/wdg_matchesresult_01/img/global-sprites@2x.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/global-sprites@2x.png) no-repeat 0 0;
 		background-size:640px 224px;
 	}
 }
@@ -777,7 +778,8 @@ wdg_altasbajas_result_01_mobile.css
 		bottom:50px;
 	}
 	.wdg_altasbajas_result_01 > ul {
-	    height: 478px;
+	    /* vidi height: 478px; */
+        height: auto;
 		overflow: hidden;
 	}
 	 .wdg_altasbajas_result_01 > div .full-timetable {
@@ -929,4 +931,93 @@ wdg_altasbajas_result_01_mobile.css
 	50% { background-color: #A70A0B }
 	100% { }
 }
+}
+
+
+  .wdg_altasbajas_result_01 > ul li .penalT{
+            position: relative;
+            left: 0;
+            top: -2px;
+            color: #eab11d;
+            font-size: 13px;
+            font-style: normal;
+        }
+        .wdg_altasbajas_result_01 > ul li .golT{
+            position: relative;
+            left: 0;
+            font-size: 18px;
+            color: #eab11d;
+            font-style: normal;
+        }
+
+
+
+
+
+
+/*WDG PARTIDOS wdg_altasbajas_result_01  MOVIL*/
+.wdg_altasbajas_result_01 .division img {
+margin: 0px 0px 0 20px;
+}
+
+.wdg_altasbajas_result_01 .division h2.games {
+font-size: 14px;
+font-weight: bolder;
+width: 184px;
+margin-top: 6px;
+float: left;
+padding-left: 21px;
+}
+
+.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block {
+width: 100%;
+height: auto;
+clear: both;
+overflow: hidden;
+background-clip: border-box;
+background-color: #E7E7E7;
+background-image: none;
+background-origin: padding-box;
+background-repeat: repeat;
+background-size: auto auto;
+text-decoration: none;
+border-bottom: 1px solid #CCCCCC;
+/* box-shadow: inset 20px 0px 12px 4px rgba(0, 0, 0, 0.05); */
+}
+.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .content_versus .versus_time {
+width: 28px;
+height: 15px;
+line-height: 15px;
+font-weight: normal !important;
+color: #948f8f;
+float: left;
+text-align: center;
+}
+.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover {
+background: #B2B2B2!important;
+box-shadow: inset 20px 0px 12px 4px rgba(0, 0, 0, 0.05);
+color: #fff!important;
+}
+.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover .result, .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover .versus_time, .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover .versus {
+color: #fff!important;
+}   
+
+.wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date {
+display: block;
+width: 83px;
+background: none repeat scroll 0 0 #f5f5f5;
+font-size: 12px;
+height: 51px;
+float: left;
+text-align: center;
+line-height: 42px;
+font-weight: bolder;
+position: relative;
+padding-right: 0px;
+}
+
+/*WDG PARTIDOS wdg_altasbajas_result_01  TABLET*/
+
+.wdg_altasbajas_result_01 .division {
+margin-bottom: 22px;
 }

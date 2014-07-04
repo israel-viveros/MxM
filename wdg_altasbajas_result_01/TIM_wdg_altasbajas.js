@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.10
+ *   Version: 2.3.11
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -56,15 +56,17 @@
             timeRecarga: 60000,
             createLink: function(text) {
                 text = text.toLowerCase(); // a minusculas
-                text = text.replace(/[Ã¡]/, 'a');
-                text = text.replace(/[Ã©]/, 'e');
-                text = text.replace(/[Ã­]/, 'i');
-                text = text.replace(/[Ã³]/, 'o');
-                text = text.replace(/[Ãº]/, 'u');
+                text = text.replace(/[á]/, 'a');
+                text = text.replace(/[é]/, 'e');
+                text = text.replace(/[í]/, 'i');
+                text = text.replace(/[ó]/, 'o');
+                text = text.replace(/[ú]/, 'u');
                 text = text.replace(/ /, '-');
                 return "http://televisadeportes.esmas.com/copa-mundial-fifa-brasil-2014/equipos/" + text;
             },
             iniciar: function(fechaCalendar) {
+
+                (settings.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://i2.esmas.com/deportes30/mxm/css/TIM_wdg_altasbajas.min.css">') : '';
                 var num = (settings.tema !== "mundial") ? '1' : '';
                 MaqueWdgAltas = "";
                 MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><h3 class="str_pleca_01_title background-color' + num + '"><a class="textcolor-title3" ><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></h3></div>' : '';
@@ -157,10 +159,17 @@
                                 data = new Array();
                             }
                             jornadasCalendarDTV.dataCalendarH = data;
+                            var arrayFechas = new Array();
+                            var Ahorita = new Date();
                             for (var i = 0; i < jornadasCalendarDTV.dataCalendarH.length; i++) {
                                 var valorj = jornadasCalendarDTV.dataCalendarH[i];
                                 jornadasCalendarDTV.jornadaPresente = i;
                                 name_jor += '<li data-jornada="' + valorj.enddate.replace(/-/gi, "/") + '"><p>' + valorj.name + '</p></li>'
+
+
+                                if (Ahorita >= new Date(valorj.startdate)) {
+                                    arrayFechas.push(valorj.startdate)
+                                }
 
                                 /* if (tiempoActual <= valorj.startstamp) {
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
@@ -168,6 +177,11 @@
                                     i = jornadasCalendarDTV.dataCalendarH.length + 1;
                                 }*/
                             }
+
+
+
+                            jornadasCalendarDTV.jornadaPresente = arrayFechas.length - 1;
+
 
                             $('#name-jornada').html("<p>" + jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name + '</p><span class="tvsa-caret-down"></span>');
                             //$('#title-jornada').html(jornadasCalendarDTV.dataCalendarH[jornadasCalendarDTV.jornadaPresente].name)
@@ -684,8 +698,7 @@
                 var linkLocal = (conjunto.local.name !== "" && settings.tema === "mundial") ? jornadasCalendarDTV.createLink(conjunto.local.name) : '';
                 var linkVisit = (conjunto.visit.name !== "" && settings.tema === "mundial") ? jornadasCalendarDTV.createLink(conjunto.visit.name) : '';
                 var estilosMundial = (settings.tema == "mundial") ? 'style="width:213px;margin-left:-95px;"' : '';
-                console.log(conjunto.periodo)
-                console.log(conjunto.sef.mxmurl)
+
                 var minutostmp = (conjunto.minuto !== "" && conjunto.minuto > 0) ? conjunto.minuto + '\'' : '';
                 var periodoMuestra = (conjunto.sef.mxmurl !== "") ? conjunto.periodo + minutostmp : '';
                 //Just a simple reduction and html5 incorporation to team's image-label 
@@ -731,12 +744,7 @@
             }
 
 
-            if (valorFor < 9 && settings.tema !== "mundial") {
-                var faltantes = parseInt(9 - valorFor);
-                for (var w = 0; w < faltantes; w++) {
-                    jornadasCalendarDTV.contenidoJornada.push('<li class="vacio wdg_altasbajas_result_01_block"><div class="date textcolor-title2"></div><figure></figure><div class="ligaResult"></div><figure></figure></li>');
-                };
-            }
+
 
             jornadasCalendarDTV.Global = jornadasCalendarDTV.contenidoJornada.concat(jornadasCalendarDTV.contenidoJornada2);
             jornadasCalendarDTV.GlobalSort = jornadasCalendarDTV.Global.sort();
@@ -770,7 +778,9 @@
 
 
             (jornadasCalendarDTV.GlobalSort.length > 7) ? $(".controls").css("display", "block") : $(".controls").css("display", "none");
-            $("#circleGLoading").fadeOut("fast");
+            $("#circleGLoading").hide('slow', function() {
+                $(this).css('display', 'none');
+            });
 
             $(".wdg_altasbajas_result_01_block figure, .wdg_altasbajas_result_01_block .ligaResult").click(function(event) {
                 event.preventDefault();
