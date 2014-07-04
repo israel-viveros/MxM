@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.2.1
+ *   Version: 5.2.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 
@@ -306,11 +306,11 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                                 banderavivo = 0;
                             if (periodNow !== 'P' && periodNow !== "F") {
                                 clasevivo = (contenido[y].EventUrl !== "") ? 'vivo' : '';
-                                contenido[y].txtLink = (contenido[y].EventUrl !== "") ? "EN VIVO AHORA" : contenido[y].txtLink;
+                                //contenido[y].txtLink = (contenido[y].EventUrl !== "") ? "EN VIVO AHORA" : contenido[y].txtLink;
                                 banderavivo = 1;
                             }
                             ItemView += ((contenido[y].txtVideo) !== "undefined" && contenido[y].txtVideo !== "" && banderavivo === 0) ? '<i class="txtsefvivo">' + contenido[y].txtVideo + '</i>' : '<i class="txtsefvivo"></i>';
-                            ItemView += '<a class="textcolor-title1 ' + clasevivo + '" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
+                            ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
 
                         } else {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '?' + Math.random() + '">' + contenido[y].EventTournamentName.substring(0, 15);
@@ -504,8 +504,8 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                         if (setting.tema === "mundial") {
                             selectorTMP.find('.txtsefvivo').css('display', 'none');
                             selectorTMP.find('.wdg_match_01_sprite.video').addClass('vivo');
-                            textoLinkNuevo = (data.matches.match[o].EventUrl !== "") ? "EN VIVO AHORA" : data.matches.match[o].txtLink;
-                            (data.matches.match[o].EventUrl !== "") ? selectorTMP.find(".wdg_match_01_extra p a").addClass("vivo") : '';
+                            //textoLinkNuevo = (data.matches.match[o].EventUrl !== "") ? "EN VIVO AHORA" : data.matches.match[o].txtLink;
+                            //(data.matches.match[o].EventUrl !== "") ? selectorTMP.find(".wdg_match_01_extra p a").addClass("vivo") : '';
                         }
 
                     }
