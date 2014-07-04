@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.8
+ *   Version: 2.3.9
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -54,6 +54,16 @@
             callbackJornada: 'jornada',
             callbackListado: 'jornadalistado',
             timeRecarga: 60000,
+            createLink: function(text) {
+                text = text.toLowerCase(); // a minusculas
+                text = text.replace(/[á]/, 'a');
+                text = text.replace(/[é]/, 'e');
+                text = text.replace(/[í]/, 'i');
+                text = text.replace(/[ó]/, 'o');
+                text = text.replace(/[ú]/, 'u');
+                text = text.replace(/ /, '-');
+                return "http://televisadeportes.esmas.com/copa-mundial-fifa-brasil-2014/equipos/" + text;
+            },
             iniciar: function(fechaCalendar) {
                 var num = (settings.tema !== "mundial") ? '1' : '';
                 MaqueWdgAltas = "";
@@ -108,9 +118,13 @@
 
 
                 clearInterval(jornadasCalendarDTV.timerCalendar);
-                jornadasCalendarDTV.timerCalendar = setInterval((function() {
-                    jornadasCalendarDTV.actualizaContenido()
-                }), jornadasCalendarDTV.timeRecarga);
+                if (settings.tema !== "mundial") {
+                    jornadasCalendarDTV.timerCalendar = setInterval((function() {
+                        jornadasCalendarDTV.actualizaContenido()
+                    }), jornadasCalendarDTV.timeRecarga);
+                }
+
+
                 var timeToday = new Date(timeDTV.timeYear + "/" + timeDTV.timeMonth + "/" + timeDTV.timeDay);
                 fechaCalendar = timeDTV.timeYear + "/" + timeDTV.timeMonth + "/" + timeDTV.timeDay;
                 jornadasCalendarDTV.fechaInicio = new Date(fechaCalendar);
@@ -136,7 +150,7 @@
                         url: urFinal,
                         jsonpCallback: jornadasCalendarDTV.callbackListado,
                         dataType: 'jsonp',
-                        cache: true,
+                        cache: false,
                         data: 'v=' + timeDTV.returnData(),
                         success: function(data) {
                             if (data == null) {
@@ -222,9 +236,11 @@
             },
             jornadasCalendarDTV: function(fechaCalendar) {
                 clearInterval(jornadasCalendarDTV.timerCalendar);
-                jornadasCalendarDTV.timerCalendar = setInterval((function() {
-                    jornadasCalendarDTV.actualizaContenido()
-                }), jornadasCalendarDTV.timeRecarga);
+                if (settings.tema !== "mundial") {
+                    jornadasCalendarDTV.timerCalendar = setInterval((function() {
+                        jornadasCalendarDTV.actualizaContenido()
+                    }), jornadasCalendarDTV.timeRecarga);
+                }
 
                 jornadasCalendarDTV.fechaAct = fechaCalendar;
                 //        jornadasCalendarDTV.numeroTorneoAct = (typeof IdTorneo=== "undefined") ? 0 : IdTorneo;
@@ -237,7 +253,7 @@
                         url: jornadasCalendarDTV.jornadaCalendarRoute + jornadasCalendarDTV.numeroTorneoAct + '/jornadas/jornadalistadojsonp.js',
                         jsonpCallback: jornadasCalendarDTV.callbackListado,
                         dataType: 'jsonp',
-                        cache: true,
+                        cache: false,
                         data: 'v=' + timeDTV.returnData(),
                         success: function(data) {
                             if (data == null) {
@@ -344,14 +360,15 @@
                     cache: false,
                     success: function(data) {
                         for (var z = 0; z < data.length; z++) {
-                            GolesNewLocal = data[z].local.team.gol
-                            GolesNewLocal = String(validaGoles(data[z].local.team.gol, data[z].local.team.golstatus, data[z].fechastamp));
-                            GolesNewVisit = String(validaGoles(data[z].visit.team.gol, data[z].visit.team.golstatus, data[z].fechastamp));
-                            GolesActLocal = String($("." + data[z].fechastamp).children('.result').eq(0).text());
-                            GolesActVisit = String($("." + data[z].fechastamp).children('.result').eq(1).text());
 
-                            (GolesActLocal !== GolesNewLocal) ? ($("." + data[z].fechastamp).children('.result').eq(0).text(GolesActLocal)) : '';
-                            (GolesActVisit !== GolesNewVisit) ? ($("." + data[z].fechastamp).children('.result').eq(1).text(GolesActVisit)) : '';
+                            GolesNewLocal = String(data[z].local.team.gol);
+                            GolesNewVisit = String(data[z].visit.team.gol);
+
+                            GolesActLocal = String($(".JfromTicker" + data[z].sef.matchid).children('.result').eq(0).text());
+                            GolesActVisit = String($(".JfromTicker" + data[z].sef.matchid).children('.result').eq(1).text());
+
+                            (GolesActLocal !== GolesNewLocal) ? ($(".JfromTicker" + data[z].sef.matchid).children('.result').eq(0).text(GolesActLocal)) : '';
+                            (GolesActVisit !== GolesNewVisit) ? ($(".JfromTicker" + data[z].sef.matchid).children('.result').eq(1).text(GolesActVisit)) : '';
                         };
 
 
@@ -360,8 +377,6 @@
 
                     }
                 });
-
-
 
 
             }, // End procesoActualiza
@@ -635,31 +650,30 @@
                 var sefMxmHash = (tbaner != undefined && tbaner != null && tbaner != '') ? '#' + tbaner : '';
 
                 var clickUrlTv = (conjunto.eventurl != undefined && conjunto.eventurl != null && conjunto.eventurl != '') ? conjunto.eventurl : '';
-
-                if (typeof(conjunto.sef) !== "undefined") {
-                    var clickUrlSef = (conjunto.sef.mxmurl != undefined && conjunto.sef.mxmurl != null && conjunto.sef.mxmurl != '') ? conjunto.sef.mxmurl + sefMxmHash : '';
-                }
                 var clickUrlSef = "";
+                if (typeof(conjunto.sef) !== "undefined") {
+                    clickUrlSef = (typeof(conjunto.sef.mxmurl) != "undefined" && conjunto.sef.mxmurl != '') ? conjunto.sef.mxmurl : '';
+                }
 
 
-                var imagenLocal = '<img width="24" height="24" src="' + conjunto.local.team.img.logo + '"  alt="' + conjunto.local.name + '">';
+                var imagenLocal = (settings.tema === "deportes") ? '<img width="24" height="24" src="' + conjunto.local.team.img.logo + '"  alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.local.team.img.EscudoMundialF22014 + '"  alt="' + conjunto.local.name + '">';
 
-                var imagenVisit = '<img width="24" height="24" src="' + conjunto.visit.team.img.logo + '"  alt="' + conjunto.local.name + '">';
-
-
+                var imagenVisit = (settings.tema === "deportes") ? '<img width="24" height="24" src="' + conjunto.visit.team.img.logo + '"  alt="' + conjunto.local.name + '">' : '<img width="24" height="24" src="' + conjunto.visit.team.img.EscudoMundialF22014 + '"  alt="' + conjunto.local.name + '">';
 
 
-                var golesLocal = (typeof(conjunto.local.team) !== "undefined") ? validaGoles(conjunto.local.team.gol, conjunto.local.team.golstatus, conjunto.fechastamp) : '';
-                var golesVisit = (typeof(conjunto.visit.team) !== "undefined") ? validaGoles(conjunto.visit.team.gol, conjunto.visit.team.golstatus, conjunto.fechastamp) : '';
+                var golesLocal = (typeof(conjunto.local.team) !== "undefined") ? conjunto.local.team.gol : '';
+                var golesVisit = (typeof(conjunto.visit.team) !== "undefined") ? conjunto.visit.team.gol : '';
 
                 if (typeof(conjunto.local.team) !== "undefined" && typeof(conjunto.visit.team) !== "undefined") {
                     if (parseInt(conjunto.local.team.pen) > 0 || parseInt(conjunto.visit.team.pen) > 0) {
-                        golesLocal = '<div class="result textcolor-title2">(' + conjunto.local.team.pen + ') ' + golesLocal + '</div>';
-                        golesVisit = '<div class="result textcolor-title2">' + golesVisit + ' (' + conjunto.visit.team.pen + ')</div>';
+                        golesLocal = '<div class="result textcolor-title2"><i class="penalT">(' + conjunto.local.team.pen + ')</i><i class="golT">' + golesLocal + '</i></div>';
+                        golesVisit = '<div class="result textcolor-title2" style="position: relative; left: -5px;"><i class="golT">' + golesVisit + '</i><i class="penalT">(' + conjunto.visit.team.pen + ')</i></div>';
                     }
                 }
+                golesLocal = (golesLocal > 0 || conjunto.periodo !== "Previo") ? golesLocal : '';
+                golesVisit = (golesVisit > 0 || conjunto.periodo !== "Previo") ? golesVisit : '';
                 var clasJorname = (typeof jornada2 !== "undefined") ? '2J' : '1J';
-                partidoHtml = '<li class="' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" data-link="' + clickUrlSef + '">';
+                partidoHtml = '<li class="JfromTicker' + conjunto.sef.matchid + ' ' + conjunto.fechastamp + ' ' + conjunto.eventtime + ' ' + clasJorname + ' wdg_altasbajas_result_01_block' + ((conjunto.minuto != "") ? " activo" : "") + '" >';
                 partidoHtml += '<div class="date textcolor-title2">';
 
                 partidoHtml += '<span class="datetext inactive">' + fechaEvento + '</span>';
@@ -667,13 +681,20 @@
 
                 partidoHtml += '</div>';
 
+                var linkLocal = (conjunto.local.name !== "") ? jornadasCalendarDTV.createLink(conjunto.local.name) : '';
+                var linkVisit = (conjunto.visit.name !== "") ? jornadasCalendarDTV.createLink(conjunto.visit.name) : '';
+                var estilosMundial = (settings.tema == "mundial") ? 'style="width:213px;margin-left:-95px;"' : '';
+                console.log(conjunto.periodo)
+                console.log(conjunto.sef.mxmurl)
+                var minutostmp = (conjunto.minuto !== "" && conjunto.minuto > 0) ? conjunto.minuto + '\'' : '';
+                var periodoMuestra = (conjunto.sef.mxmurl !== "") ? conjunto.periodo + minutostmp : '';
                 //Just a simple reduction and html5 incorporation to team's image-label 
-                partidoHtml += '<figure>' + imagenLocal + '<figcaption>' + conjunto.local.abrev + '</figcaption></figure>';
-                partidoHtml += '<div class="ligaResult"><span class="result textcolor-title2">' + golesLocal + '</span>';
+                partidoHtml += '<figure style="cursor:pointer;" data-link="' + linkLocal + '" >' + imagenLocal + '<figcaption>' + conjunto.local.abrev + '</figcaption></figure>';
+                partidoHtml += (clickUrlSef !== "") ? '<div class="ligaResult" style="cursor:pointer" data-link="' + clickUrlSef + '"><span class="result textcolor-title2">' + golesLocal + '</span>' : '<div class="ligaResult" data-link=""><span class="result textcolor-title2">' + golesLocal + '</span>';
                 partidoHtml += '<div class="content_versus"> <span class="versus textcolor-title4">-</span>';
-                partidoHtml += '<span class="versus_time textcolor-title4">' + conjunto.periodo + ' ' + conjunto.minuto + '</span></div>';
+                partidoHtml += '<span class="versus_time textcolor-title4" ' + estilosMundial + '>' + periodoMuestra + '</span></div>';
                 partidoHtml += '<span class="result textcolor-title2">' + golesVisit + '</span></div>';
-                partidoHtml += '<figure><figcaption>' + conjunto.visit.abrev + '</figcaption>' + imagenVisit + '</figure>';
+                partidoHtml += '<figure style="cursor:pointer;" data-link="' + linkVisit + '"><figcaption>' + conjunto.visit.abrev + '</figcaption>' + imagenVisit + '</figure>';
 
 
                 //partidoHtml += '<div class="icon_team">';
@@ -710,7 +731,7 @@
             }
 
 
-            if (valorFor < 9) {
+            if (valorFor < 9 && settings.tema !== "mundial") {
                 var faltantes = parseInt(9 - valorFor);
                 for (var w = 0; w < faltantes; w++) {
                     jornadasCalendarDTV.contenidoJornada.push('<li class="vacio wdg_altasbajas_result_01_block"><div class="date textcolor-title2"></div><figure></figure><div class="ligaResult"></div><figure></figure></li>');
@@ -722,9 +743,17 @@
 
             var visible = "",
                 novisible = "";
-            for (var p = 0; p < jornadasCalendarDTV.GlobalSort.length; p++) {
-                (p < 7) ? visible += jornadasCalendarDTV.GlobalSort[p] : novisible += jornadasCalendarDTV.GlobalSort[p];
-            };
+            if (settings.tema === "deportes") {
+                for (var p = 0; p < jornadasCalendarDTV.GlobalSort.length; p++) {
+                    (p < 7) ? visible += jornadasCalendarDTV.GlobalSort[p] : novisible += jornadasCalendarDTV.GlobalSort[p];
+                };
+            } else {
+                for (var p = 0; p < jornadasCalendarDTV.contenidoJornada.length; p++) {
+                    (p < 7) ? visible += jornadasCalendarDTV.contenidoJornada[p] : novisible += jornadasCalendarDTV.contenidoJornada[p];
+                };
+
+            }
+
 
             // Merge visible and no visible Just for watching
             var allContentVisible = visible + ' ' + novisible;
@@ -735,13 +764,20 @@
             $("#nro_jornadas").html(name_jor).children('li').bind('click', function(event) {
                 actualizar_jornada($(this).data('jornada'));
             });
-            $(".wdg_altasbajas_result_01_block[data-link]").not($("[data-link='']")).css("cursor", "pointer").bind('click', function(event) {
+            /*$(".wdg_altasbajas_result_01_block[data-link]").not($("[data-link='']")).css("cursor", "pointer").bind('click', function(event) {
                 window.location.assign($(this).data("link"));
-            });
+            }); */
 
 
             (jornadasCalendarDTV.GlobalSort.length > 7) ? $(".controls").css("display", "block") : $(".controls").css("display", "none");
             $("#circleGLoading").fadeOut("fast");
+
+            $(".wdg_altasbajas_result_01_block figure, .wdg_altasbajas_result_01_block .ligaResult").click(function(event) {
+                event.preventDefault();
+                if ($(this).attr('data-link') !== "") {
+                    window.open($(this).attr('data-link'), '_blank');
+                }
+            });
 
         }
 

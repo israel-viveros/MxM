@@ -55,21 +55,40 @@
 
         <link rel="stylesheet" href="css/TIM_wdg_altasbajas.js.css">
 
+        <style>
+        .penalT{
+            position: relative!important;
+            left: 0!important;
+            top: -2px!important;
+            color: #eab11d!important;
+            font-size: 13px!important;
+            font-style: normal!important;
+        }
+        .golT{
+            position: relative!important;
+            left: 0!important;
+            font-size: 18px!important;
+            color: #eab11d!important;
+            font-style: normal!important;
+        }
+        </style>
+
     </head>
     <body>
         
 
         <div class="wdg_altasbajas_result_01" data-enhance="false" id="TIMwdg_altasbajas_result"></div>
-
+    
+    
 
         <script type="text/javascript">
             $(function() {
                 $("#TIMwdg_altasbajas_result").wdgAltasBajas({
-                    'idtorneo': 356,
+                    'idtorneo': 359,
                     //'idequipo':1,
                     //'idtorneo2':356,
                     'title':'Jornadas..',
-                    //'tema':'mundial',
+                    'tema':'mundial',
                     'txtdropdown' : 'Jornada'
                 });
             });
