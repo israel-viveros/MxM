@@ -134,6 +134,7 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
 
 
                 (setting.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://i2.esmas.com/deportes30/mxm/css/TIM_wdg_matchesresult.min.css">') : '';
+                //(setting.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://localhost/~israelviveros/mxm/wdg_matchesresult_01/css/TIM_wdg_matchesresult.css">') : '';
 
                 if (setting.tema === "mundial") {
                     Globalthis.attr("data-tema", "mundial");
