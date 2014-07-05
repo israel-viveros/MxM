@@ -1021,3 +1021,28 @@ padding-right: 0px;
 .wdg_altasbajas_result_01 .division {
 margin-bottom: 22px;
 }
+
+
+
+/*
+HARI
+*/
+@media screen and (min-width:624px) {
+    .wdg_altasbajas_result_01 {
+        height: auto;
+        max-height: 100%;
+        position: relative;
+        width: 300px;
+        margin-bottom: 36px;
+        overflow: hidden;
+    }
+    .deg li figure figcaption {
+        display: inline-block;
+        width: 30px;
+        height: 25px;
+        display: block;
+        float: left;
+        margin-right: 2px;
+        font-weight: bold;
+    }
+}

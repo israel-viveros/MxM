@@ -89,4 +89,5 @@
 .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover{background:#b2b2b2!important;box-shadow:inset 20px 0 12px 4px rgba(0,0,0,0.05);color:#fff!important}
 .wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover .result,.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover .versus_time,.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_block:hover .versus{color:#fff!important}
 .wdg_altasbajas_result_01 .deg .wdg_altasbajas_result_01_block .date{display:block;width:83px;background:none repeat scroll 0 0 #f5f5f5;font-size:12px;height:51px;float:left;text-align:center;line-height:42px;font-weight:bolder;position:relative;padding-right:0}
-.wdg_altasbajas_result_01 .division{margin-bottom:22px}
+.wdg_altasbajas_result_01 .division{margin-bottom:22px}@media screen and (min-width:624px){.wdg_altasbajas_result_01{height:auto;max-height:100%;position:relative;width:300px;margin-bottom:36px;overflow:hidden}
+.deg li figure figcaption{display:inline-block;width:30px;height:25px;display:block;float:left;margin-right:2px;font-weight:bold}}

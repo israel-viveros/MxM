@@ -137,6 +137,7 @@
 		margin-top: 35px; /*distancia flechas*/
 		/* vidi  margin-left: 35px; */
 		margin-right: 12px;
+        margin-left: 0;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_mobileleft .wdg_matchesresult_leftmobile{
         background: url(../img/box_arrow_l.png) no-repeat 0 0;
@@ -423,6 +424,7 @@
         /* margin-top: 30%;*/
         position: absolute;
         bottom: 15px;
+        margin-top: 0;
     }
 
     .wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible p a{
@@ -432,6 +434,8 @@
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible p .wdg_matchesresult_hide{
         visibility: visible;
+        top: 0;
+        position: relative;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_left .wdg_matchesresult_visible p .wdg_matchesresult_show{
         visibility: hidden;
@@ -1096,4 +1100,13 @@ font-weight: 900;
 .wdg_matchesresult_01{
 max-height: 460px;
 }
+}
+
+/*
+    Hari
+*/
+@media screen and (min-width:624px) {
+    .wdg_match_01 .wdg_match_01_link .wdg_match_01_extra p {
+        margin-left: 6px;
+    }
 }
