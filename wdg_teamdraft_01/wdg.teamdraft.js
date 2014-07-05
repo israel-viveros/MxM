@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer:
- *   Version: 1.1.1
+ *   Version: 1.1.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -13,10 +13,6 @@
         }, options);
 
         var wdgTeamDraft = {
-            // ....................................................................
-            // -- Creacion y asignacion de valores a las variables
-            // ....................................................................
-            //urlData: 'http://lab.israelviveros.com/draft/' + setting.idTorneo + '/draft.js',
             urlData: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/draft/' + setting.nameTournament + '/teamdraft.js',
             tagWdgTeamDraft: $("#containerwdg_teamdraft_01"),
             arrayAltas: new Array(),
@@ -30,9 +26,7 @@
             flagTypeTransf: 0,
             flagTypePrestamos: 0,
 
-            // ....................................................................
-            // -- Funcion que concatena los registros del array en una variable
-            // ....................................................................
+
             remplazaComas: function(textArray) {
                 var htmlArray = "";
                 for (var m = 0; m < textArray.length; m++) {
@@ -41,14 +35,10 @@
                 return htmlArray;
             },
 
-            // .....................................................................................
-            // Funcion que pinta el html para los casos (ALTA,BAJA,RUMORES,TRANSFERIBLES,PRESTAMO)
-            // .....................................................................................
             typeDraft: function(type, idOperation, namePlayer, lastTeam, transfer, rantingTD, ratingUser, nationality, details, logolastTeam, urlDraft, idPlayer) {
 
                 switch (type) {
                     case 'ALTA':
-                        console.log(logolastTeam);
                         wdgTeamDraft.flagTypeAltas = 1;
                         maquetado = "<tr class='vote_block'>";
                         maquetado += "<td class='dotted-right' data-urlDraft=' " + urlDraft + " ' data-url='http://polls.esmas.com/jugadores/torneo/" + setting.idTorneo + "/partido/" + idOperation + "/jugador/" + idPlayer + "'>";
@@ -200,12 +190,6 @@
                 }
             },
 
-            // ..............................................................................
-            // -- Funcion que recorre la informacion.
-            // -- Pinta el Encabezado del equipo.
-            // -- Hace un llamado a las funciones que contruyen los arreglos con los registros
-            //    de cada uno de los tipos de Draft.
-            // ..............................................................................
             viewHtml: function(data) {
                 var urlDraft = data['draftURL'];
 
@@ -218,7 +202,6 @@
 
                         for (var l = 0; l < data['draftTeams'][i]['logos'].length; l++) {
                             if (l == 0) {
-                                //Logotipo de 70X70...
                                 var logoTeam = data['draftTeams'][i]['logos'][l]['URL'];
                             }
                         }
@@ -385,6 +368,11 @@
 
                 wdgTeamDraft.tagWdgTeamDraft.html(maquetado);
 
+                setTimeout(function() {
+                    wdgTeamDraft.funcionesNaat();
+                }, 100);
+
+
             },
 
             cl_url: function(a) {
@@ -409,9 +397,6 @@
             },
 
             funcionesNaat: function() {
-                console.log("funcionesNaat")
-                // e.event.preventDefault();
-                //alert('funciones de Na-at');
                 // Para IPAD
                 $('containerwdg_teamdraft_01 .wdg_teamdraft_01 .tblDraft .vote_block').on('touchstart', function(e) {
                     //e.event.preventDefault();
@@ -472,17 +457,14 @@
                     var varTr = $(this).parents('tr');
                     var element = varTr.prev();
                     var firstElement = element.children(':first-child');
-                    console.log(firstElement);
+
                     var porcentaje = element.children('.textcolor-title1');
-                    console.log("porcentaje");
-                    console.log(porcentaje.text());
+
                     var url = firstElement.data('url');
-                    console.log("URL");
-                    console.log(url);
+
                     var div_gracias = "";
 
-                    console.log(url);
-                    console.log(num_star + " - " + url + " - " + div_gracias);
+
 
 
                     if (typeof div_gracias == "undefined") {
@@ -492,8 +474,6 @@
                         url = wdg_playerdraft_01.cl_url(url);
                     }
 
-                    console.log(num_star);
-                    console.log(url);
                     porcentaje.html('1');
                     //-------
 
@@ -538,11 +518,9 @@
             },
 
             getDataTeamDraft: function() {
-                console.log("getDataTeamDraft")
-                console.log(wdgTeamDraft.urlData);
+
                 $.ajax({
                     url: wdgTeamDraft.urlData,
-                    // url: 'draft.js',                                       
                     type: "GET",
                     dataType: 'jsonp',
                     jsonpCallback: 'teamDraft',
@@ -557,11 +535,12 @@
             }
         }
 
-        $.when(wdgTeamDraft.getDataTeamDraft()).done(function() {
-            setTimeout(function() {
-                wdgTeamDraft.funcionesNaat();
-            }, 3000);
-        });
+
+        setTimeout(function() {
+            wdgTeamDraft.getDataTeamDraft();
+        }, 500);
+
+
 
     };
 
