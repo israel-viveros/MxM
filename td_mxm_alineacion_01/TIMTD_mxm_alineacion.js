@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.1
+ *   Version: 1.4.2
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1721,7 +1721,7 @@
                             golicon = 'tvsa-mxm-goal';
                         }
                         visitM = "";
-                        visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '">';
+                        visitM += '<div class="' + visit[l].minute + ' dotted-bottom block_container visitTIMGol" id="goal' + visit[l].minute + '">';
                         visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                         visitM += '<div class="estadistica dotted-left"><i class="' + golicon + '"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
                         visitM += (TipoGolVisit !== "") ? '<span class="textcolor-title2">' + TipoGolVisit + '</span></p></div>' : '</div>';
@@ -1794,7 +1794,7 @@
                                 golicon = 'tvsa-mxm-goal';
                             }
                             visitM = "";
-                            visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '" style="display:none">';
+                            visitM += '<div class="' + visit[l].minute + ' dotted-bottom block_container visitTIMGol" id="goal' + visit[l].minute + '" style="display:none">';
                             visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                             visitM += '<div class="estadistica dotted-left"><i class="' + golicon + '"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
                             visitM += (TipoGolVisit !== "") ? '<span class="textcolor-title2">' + TipoGolVisit + '</span></p></div>' : '</div>';
