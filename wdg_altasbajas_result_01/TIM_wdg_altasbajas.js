@@ -592,10 +592,10 @@
                 if (i === 0) {
                     globalThis.find('.division img').attr('src', data[i].tournament.icono);
                     globalThis.find('.division h2').text(data[i].tournament.name);
-                    if (data[i].tournament.icono.length > 0) {
+                    if (typeof(data[i].tournament.icono) !== "undefined" && data[i].tournament.icono !== "") {
                         globalThis.find('#ALtournamentLogo').attr('src', data[i].tournament.icono);
                     } else {
-                        globalThis.find('#ALtournamentLogo').hide();
+                        globalThis.find('#ALtournamentLogo').remove();
                     }
 
 
