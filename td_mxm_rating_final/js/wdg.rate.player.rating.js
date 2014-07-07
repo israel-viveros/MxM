@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.0.3
+ *   Version: 2.0.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -794,7 +794,7 @@
                         }
 
                         localM = "";
-                        localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '">';
+                        localM += '<div class="' + local[i].minute + ' dotted-bottom block_container localTIMGol" id="goal' + local[i].minute + '">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                         localM += '<div class="estadistica dotted-left"><i class="' + golicon + '"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
                         localM += (TipoGolLocal !== "") ? '<span class="textcolor-title2">' + TipoGolLocal + '</span></p></div>' : '</div>';
@@ -815,7 +815,7 @@
                             golicon = 'tvsa-mxm-goal';
                         }
                         visitM = "";
-                        visitM += '<div class="' + visit[l].minute + ' block_container visitTIMGol" id="goal' + visit[l].minute + '">';
+                        visitM += '<div class="' + visit[l].minute + ' dotted-bottom block_container visitTIMGol" id="goal' + visit[l].minute + '">';
                         visitM += '<div class="jugador"><p>' + visit[l].nickName + '<span class="textcolor-title4">' + namevisit + '</span></p></div>';
                         visitM += '<div class="estadistica dotted-left"><i class="' + golicon + '"></i><p class="grado textcolor-title4">' + visit[l].minute + ' \' ';
                         visitM += (TipoGolVisit !== "") ? '<span class="textcolor-title2">' + TipoGolVisit + '</span></p></div>' : '</div>';
@@ -832,6 +832,7 @@
                 maquetado += '</div>';
 
                 globalRating.tagAlineacionGoles.html(maquetado);
+                globalRating.tagAlineacionGoles.find(".block_container:last").removeClass('dotted-bottom');
                 if (local === '' && visit === '') {
                     globalRating.tagAlineacionGoles.hide();
                     globalRating.tagAlineacionGoles.parents('.wdg_goalsanoted_01').hide('fast');
@@ -971,6 +972,7 @@
                         $(this).css('display', 'block');
                     });
                     globalRating.tagExpulsion.find(".convocados").append(itemshtml);
+                    globalRating.tagExpulsion.find(".bodyt:last").removeClass('dotted-bottom');
                     globalRating.tagExpulsion.find(".bodyt").slideDown('slow', function() {
                         $(this).css('display', 'block');
                     });
