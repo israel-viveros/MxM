@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.0.2
+ *   Version: 2.0.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -241,7 +241,8 @@
                         //Equipo local banca
                         maquetado = "";
                         for (var e = 0; e < data.lineupLocal.substitutes.length; e++) {
-                            var arreglo = data.lineupLocal.substitutes[e];
+                            var arreglo = data.lineupLocal.substitutes[e],
+                                positiontmp = (arreglo.position === "") ? 'Banca' : globalRating.givemePosition(arreglo.position);
                             maquetado += '<tr class="evaluation first_child" data-guid="' + arreglo.guid + '"> ';
                             maquetado += '<td>';
                             maquetado += '<div class="conteiner_two">';
@@ -249,7 +250,7 @@
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
                             maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
                             maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">-</p></div> ';
-                            maquetado += '<div class="position"><p class="textcolor-title4">' + (globalRating.givemePosition(arreglo.position) == "undefined") ? "<p style='font-size: 12px;font-style: italic;margin-bottom: 6px;margin-top: -5px;font-weight: normal;'>Banca</p>" : ""; + '</p></div>';
+                            maquetado += '<div class="position"><p class="textcolor-title4">' + positiontmp + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
                             maquetado += '<div><p class="voto5">5</p></div>';
@@ -306,15 +307,16 @@
                         //Equipo visitante banca
                         maquetado = "";
                         for (var r = 0; r < data.lineupVisit.substitutes.length; r++) {
-                            var arreglo = data.lineupVisit.substitutes[r];
+                            var arreglo = data.lineupVisit.substitutes[r],
+                                positiontmp = (arreglo.position === "") ? 'Banca' : globalRating.givemePosition(arreglo.position);
                             maquetado += '<tr class="evaluation first_child" data-guid="' + arreglo.guid + '"> ';
                             maquetado += '<td>';
                             maquetado += '<div class="conteiner_two">';
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
                             maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">-</p></div> ';
-                            maquetado += '<div class="position"><p class="textcolor-title4">' + (globalRating.givemePosition(arreglo.position) == "undefined") ? "<p style='font-size: 12px;font-style: italic;margin-bottom: 6px;margin-top: -5px;font-weight: normal;'>Banca</p>" : ""; + '</p></div>';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">-</p></div>';
+                            maquetado += '<div class="position"><p class="textcolor-title4">' + positiontmp + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
                             maquetado += '<div><p class="voto5">5</p></div>';
