@@ -177,7 +177,7 @@
 
                 setTimeout(function() {
                     if ($("#avgTIMLocal").length) {
-                        var LocalmxmImg = '<img class="linkbanderalocal" src="' + $("#localImgTIM").text() + '" width="24" height="18">';
+                        var LocalmxmImg = '<img class="linkbanderalocal" src="' + $("#localImgTIM").text() + '" width="28" height="28">';
                         var VisitmxmImg = '<img class="linkbanderavisit" src="' + $("#visitImgTIM").text() + '" width="24" height="18">';
                         $("#avgTIMLocal").html(LocalmxmImg);
                         $("#avgTIMVisit").html(VisitmxmImg);
@@ -188,7 +188,7 @@
                     console.log("buscando etiqueta actualizable..");
                     var objTime = $("#timeUpdateMxM");
                     if ($("#avgTIMLocal").length) {
-                        var LocalmxmImg = '<img class="linkbanderalocal" src="' + $("#localImgTIM").text() + '" width="24" height="18">';
+                        var LocalmxmImg = '<img class="linkbanderalocal" src="' + $("#localImgTIM").text() + '" width="28" height="28">';
                         var VisitmxmImg = '<img class="linkbanderavisit" src="' + $("#visitImgTIM").text() + '" width="24" height="18">';
                         $("#avgTIMLocal").html(LocalmxmImg);
                         $("#avgTIMVisit").html(VisitmxmImg);
