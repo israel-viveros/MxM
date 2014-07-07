@@ -3,6 +3,7 @@
  *   Version: 1.2.1
  *   Copyright: Televisa Interactive Media (2014)
  */
+ /*hola*/
 ;
 (function() {
     $.fn.wdgAltasbajas = function(parametros) {
