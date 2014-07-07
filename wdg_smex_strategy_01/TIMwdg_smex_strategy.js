@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 2.0
+ *   Version: 2.0.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -10,7 +10,8 @@
             'ideventomxm': 0,
             'ideventomxmtv': 0,
             'idclub': 0,
-            'title': ''
+            'title': '',
+            'tema': 'deportes'
         }, options);
 
         var GlobalThis = this;
@@ -65,6 +66,8 @@
 
 
                 (setting.ideventomxm !== 0 && setting.ideventomxmtv !== 0 && setting.idclub === 0) ? wdg_smex_strategy.header() : '';
+
+                (setting.tema !== "undefined") ? $('head').append('<link rel="stylesheet" href="http://i2.esmas.com/deportes30/mxm/css/TIMwdg_smex_strategy.min.css">') : '';
 
             },
 
