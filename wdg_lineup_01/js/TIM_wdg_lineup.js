@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.7
+ *   Version: 1.3.8
  *   Copyright: Televisa Interactive Media (2014)
  hols oy un comentarios
  */
@@ -519,12 +519,12 @@
                             ActBL = giveActions(data.lineupLocal.substitutes[l].actions);
                         }
                         if (ActBL !== "") {
-                            var clasebottom = (data.lineupLocal.substitutes.length - 1 === l) ? '' : 'dotted-bottom';
-                            bancalocal += '<div class="jugador_alineacion_partido ' + clasebottom + '" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].nickName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>    </div><div style="clear: both; z-index: 630;"></div></div>';
+                            bancalocal += '<div class="jugador_alineacion_partido dotted-bottom" style="z-index: 680;"><div class="player_alineado dotted-right banca" style="z-index: 670;"><div class="simbolo2 dotted-right" style="z-index: 660;">' + data.lineupLocal.substitutes[l].number + '</div><div class="jugador_info_alineado " style="z-index: 650;"><h1>' + data.lineupLocal.substitutes[l].nickName + '</h1>' + ActBL + '</div><div style="clear: both; z-index: 640;"></div>    </div><div style="clear: both; z-index: 630;"></div></div>';
                         }
                     };
                     $("#bancaLocalTIM").fadeIn('slow', function() {
                         $(this).html(bancalocal);
+                        $(this).find(".jugador_alineacion_partido:last").removeClass('dotted-bottom');
                     });
 
                     //banca visitante
@@ -535,13 +535,13 @@
                             ActBV = giveActions(data.lineupVisit.substitutes[m].actions);
                         }
                         if (ActBV !== "") {
-                            var clasebottom = (data.lineupVisit.substitutes.length - 1 === m) ? '' : 'dotted-bottom';
-                            bancaVisit += '<div class="player_alineado ' + clasebottom + '" style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineupVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineupVisit.substitutes[m].nickName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
+                            bancaVisit += '<div class="player_alineado dotted-bottom" style="z-index: 590;"><div class="simbolo2 dotted-right" style="z-index: 580;">' + data.lineupVisit.substitutes[m].number + '</div><div class="jugador_info_alineado" style="z-index: 570;"><h1>' + data.lineupVisit.substitutes[m].nickName + '</h1>' + ActBV + '</div><div style="clear: both; z-index: 560;"></div></div>';
                         }
 
                     };
                     $("#bancaVisitTIM").fadeIn('slow', function() {
                         $(this).html(bancaVisit);
+                        $(this).find(".player_alineado:last").removeClass('dotted-bottom');
                     });
 
                     if (bancalocal !== "" || bancaVisit !== "") {
@@ -589,7 +589,7 @@
 
 
                     if (flagAusenVisit === 1 && flagAusenLocal === 1) {
-                        $("#ausenciasconta").hide('fast');
+                        $("#ausenciasconta").css('display', 'none');
                     }
 
                     globalthis.slideDown('slow', function() {
