@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.2.3
+ *   Version: 5.2.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 
@@ -86,13 +86,7 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                     cuerpoHTML += '</a> ';
                     cuerpoHTML += '</div>';
                     cuerpoHTML += '<div class="wdg_matchesresult_01_nav">';
-                    cuerpoHTML += '<ul class="wdg_matchesresult_01_theme">';
-                    cuerpoHTML += '<li class="selected">';
-                    cuerpoHTML += '<a href="">';
-                    cuerpoHTML += '<p>F\u00FAtbol</p>';
-                    cuerpoHTML += '</a> ';
-                    cuerpoHTML += '</li>';
-                    cuerpoHTML += '</ul>';
+                    cuerpoHTML += '<ul class="wdg_matchesresult_01_theme"></ul>';
                     cuerpoHTML += '<div class="linedown"></div>    ';
                     cuerpoHTML += '</div>';
                     cuerpoHTML += '<div class="wdg_matchesresult_navarrowright">';
@@ -131,6 +125,27 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                 cuerpoHTML += '</div>';
                 cuerpoHTML += '</div>';
                 Globalthis.html(cuerpoHTML);
+
+                $.ajax({
+                    url: 'http://i2.esmas.com/deportes30/mxm/js/section.js',
+                    type: 'GET',
+                    dataType: 'jsonp',
+                    cache: false,
+                    jsonpCallback: 'section'
+                })
+                    .done(function(data) {
+                        var contentli = "";
+                        for (var h = 0; h < data.length; h++) {
+                            var classitem = (h === 0) ? "selected" : '';
+                            contentli += '<li class="' + classitem + '"><a href="' + data[h].url + '"><p>' + data[h].name + '</p></a></li>';
+                        };
+                        Globalthis.find(".wdg_matchesresult_01_theme").html(contentli);
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    });
+
+
 
 
                 (setting.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://i2.esmas.com/deportes30/mxm/css/TIM_wdg_matchesresult.min.css">') : '';
@@ -314,8 +329,9 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
 
                         } else {
+                            contenido[y].txtLink = (contenido[y].txtLink === "Minuto a Minuto") ? 'MxM' : contenido[y].txtLink;
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '?' + Math.random() + '">' + contenido[y].EventTournamentName.substring(0, 15);
-                            ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink.substring(0, numSplit) + '</span></a>';
+                            ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink + '</span></a>';
                         }
                         ItemView += '</p>';
                         ItemView += '</div>';
