@@ -216,7 +216,7 @@
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
                             maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">-</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + globalRating.givemePosition(arreglo.position) + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
@@ -248,7 +248,7 @@
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
                             maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">-</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + (globalRating.givemePosition(arreglo.position) == "undefined") ? "<p style='font-size: 12px;font-style: italic;margin-bottom: 6px;margin-top: -5px;font-weight: normal;'>Banca</p>" : ""; + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';
@@ -313,7 +313,7 @@
                             maquetado += '<div class="vote_block vote dotted-bottom">';
                             maquetado += '<div class="player_name"><p>' + arreglo.nickName + '</p></div>';
                             maquetado += '<div class="div"><p class="textcolor-title4 porcentajetd">&nbsp;&nbsp;</p></div> ';
-                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">&nbsp;&nbsp;</p></div> ';
+                            maquetado += '<div class="afision"><p class="textcolor-title1 dotted-left porcentajeplayer">-</p></div> ';
                             maquetado += '<div class="position"><p class="textcolor-title4">' + (globalRating.givemePosition(arreglo.position) == "undefined") ? "<p style='font-size: 12px;font-style: italic;margin-bottom: 6px;margin-top: -5px;font-weight: normal;'>Banca</p>" : ""; + '</p></div>';
                             maquetado += '</div>';
                             maquetado += '<div class="calification  textcolor-title4">';

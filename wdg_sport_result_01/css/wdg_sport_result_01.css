@@ -156,4 +156,6 @@
 		line-height:25px;
 		padding-bottom:10px;
 	}
+	.nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li:hover{border-bottom: 2px solid #A70A0B; }
+	.nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li a:hover{color: #A70A0B;}
 }

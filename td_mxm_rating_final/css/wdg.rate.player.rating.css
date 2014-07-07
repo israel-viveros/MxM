@@ -1182,4 +1182,5 @@
     .icon-team2{
         width: 54px;
     }
+    #LocalTIMBanca > tr:nth-child(7) > td > div > div.vote_block.vote.dotted-bottom{ background: none;}
 }
