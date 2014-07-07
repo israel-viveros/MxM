@@ -512,6 +512,7 @@ wdg_altasbajas_result_01_mobile.css
     {
         border-top: 1px solid #CCCCCC;
 		border-bottom: 1px solid #CCCCCC;
+        height: 30px;
     }
 
     .wdg_altasbajas_result_01 .lineaResultado
