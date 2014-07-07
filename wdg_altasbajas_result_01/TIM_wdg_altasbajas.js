@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.11
+ *   Version: 2.3.12
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -105,7 +105,7 @@
                     MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
                     MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
                     MaqueWdgAltas += '</a>';
-                    MaqueWdgAltas += '<a class="next bgactive" title="Link Description" href="#">';
+                    MaqueWdgAltas += '<a class="next bginactive" href="#">';
                     MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
                     MaqueWdgAltas += '</a>';
                     MaqueWdgAltas += '<a class="full-timetable" href="#"> ';
@@ -777,7 +777,11 @@
             }); */
 
 
-            (jornadasCalendarDTV.GlobalSort.length > 7) ? $(".controls").css("display", "block") : $(".controls").css("display", "none");
+            //(jornadasCalendarDTV.GlobalSort.length > 7) ? $(".controls").css("display", "block") : $(".controls").css("display", "none");
+            if (jornadasCalendarDTV.GlobalSort.length > 7) {
+                $(".controls .next").removeClass('bginactive');
+                $(".controls .next").addClass('bgactive');
+            }
             $("#circleGLoading").hide('slow', function() {
                 $(this).css('display', 'none');
             });
