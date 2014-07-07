@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.2
+ *   Version: 1.4.3
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1161,6 +1161,7 @@
                         $(this).css('display', 'block');
                     });
                     wdg_smex_strategy.tagExpulsion.find(".convocados").append(itemshtml);
+                    wdg_smex_strategy.tagExpulsion.find(".bodyt:last").removeClass('dotted-bottom');
                     wdg_smex_strategy.tagExpulsion.find(".bodyt").slideDown('slow', function() {
                         $(this).css('display', 'block');
                     });
@@ -1700,7 +1701,7 @@
                         }
 
                         localM = "";
-                        localM += '<div class="' + local[i].minute + ' block_container localTIMGol" id="goal' + local[i].minute + '">';
+                        localM += '<div class="' + local[i].minute + ' dotted-bottom block_container localTIMGol" id="goal' + local[i].minute + '">';
                         localM += '<div class="jugador"><p>' + local[i].nickName + '<span class="textcolor-title4">' + namelocal + '</span></p></div>';
                         localM += '<div class="estadistica dotted-left"><i class="' + golicon + '"></i><p class="grado textcolor-title4">' + local[i].minute + ' \' ';
                         localM += (TipoGolLocal !== "") ? '<span class="textcolor-title2">' + TipoGolLocal + '</span></p></div>' : '</div>';
@@ -1738,6 +1739,7 @@
                 maquetado += '</div>';
 
                 wdg_smex_strategy.tagAlineacionGoles.html(maquetado);
+                wdg_smex_strategy.tagAlineacionGoles.find(".block_container:last").removeClass('dotted-bottom');
                 if (local === '' && visit === '') {
                     wdg_smex_strategy.tagAlineacionGoles.hide();
                     wdg_smex_strategy.tagAlineacionGoles.parents('.wdg_goalsanoted_01').hide('fast');
