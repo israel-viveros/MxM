@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.0
+ *   Version: 1.4.1
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -1522,15 +1522,15 @@
                     visitF += '</div></div></div>';
                 }
 
-
                 for (var p = 0; p < data.lineupLocal.substitutes.length; p++) {
                     var ActLB = "";
+
 
                     if (typeof(data.lineupLocal.substitutes[p].actions) === "object") {
                         ActLB = giveActions(data.lineupLocal.substitutes[p].actions);
                     }
 
-                    localSub += '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
+                    localSub += (data.lineupLocal.substitutes.length - 1 === p) ? '<div class="player_td EqLTIM" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">' : '<div class="player_td dotted-bottom EqLTIM" data-guid="' + data.lineupLocal.substitutes[p].idjugador + '">';
                     localSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupLocal.substitutes[p].number + '</p></div>';
                     localSub += '<div class="dotted-left container_card">';
                     localSub += '<div class="player_name"><p>' + formatNombre(data.lineupLocal.substitutes[p].nickName) + '</p></div>';
@@ -1545,7 +1545,7 @@
                         ActVB = giveActions(data.lineupVisit.substitutes[o].actions);
                     }
 
-                    visitSub += '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
+                    visitSub += (data.lineupVisit.substitutes.length - 1 === o) ? '<div class="player_td EqVTIM" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">' : '<div class="player_td dotted-bottom EqVTIM" data-guid="' + data.lineupVisit.substitutes[o].idjugador + '">';
                     visitSub += '<div class="player_number"><p class="textcolor-title2">' + data.lineupVisit.substitutes[o].number + '</p></div>';
                     visitSub += '<div class="dotted-left container_card">';
                     visitSub += '<div class="player_name"><p>' + formatNombre(data.lineupVisit.substitutes[o].nickName) + '</p></div>';
