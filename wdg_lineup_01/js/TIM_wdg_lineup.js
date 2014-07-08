@@ -216,7 +216,7 @@
                         if (colapsablesimbo === 467) {
                             $(this).html("Ver Todos <i class=\"tvsa-caret-down\"></i>");
                             $(".simbologia").animate({
-                                'height': '112px'
+                                'height': '125px'
                             }, 200);
                         } else {
                             $(this).html("Ver Menos <i class=\"tvsa-caret-up\"></i>");
