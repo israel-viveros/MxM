@@ -3427,7 +3427,7 @@ font-weight: 900;
     }
     
     .wdg_sport_result_01 .dotted_separator{
-        background: url("../wdg_sport_result_01/img/dotted_pink_vertical.png")repeat-y right !important;
+        background: url("http://i2.esmas.com/deportes30/mxm/img/dotted_pink_vertical.png")repeat-y right !important;
         margin-right: 25px;
         width: 10px;
         display: none;
@@ -3736,7 +3736,7 @@ font-weight: 900;
         width:575px;
         color:#DEB476;
         font-size:11px;
-        background: url("../wdg_sport_result_01/img/dotted_pink_horizontal.png")repeat-x top !important;
+        background: url("http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal-white.png")repeat-x top !important;
         padding-top: 10px;
         clear: both;
         padding-bottom: 7px;
