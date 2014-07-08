@@ -52,8 +52,8 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
             DrawCuerpo: function() {
                 var rndm = Math.random() * 1000000;
                 var ord = Math.round(rndm);
-                var sourceJump = "http://pubads.g.doubleclick.net/gampad/jump?iu=/5644/es.esmas.dep/mxm/contador&sz=37x26&c=" + ord;
-                var sourceAd = "http://pubads.g.doubleclick.net/gampad/ad?iu=/5644/es.esmas.dep/mxm/contador&sz=37x26&c=" + ord;
+                var sourceJump = "http://pubads.g.doubleclick.net/gampad/jump?iu=/5644/es.esmas.dep/mxm/widget&sz=37x26&c=" + ord;
+                var sourceAd = "http://pubads.g.doubleclick.net/gampad/ad?iu=/5644/es.esmas.dep/mxm/widget&sz=37x26&c=" + ord;
 
                 wdg_matchresult.horaServidor();
                 var cuerpoHTML = "";
