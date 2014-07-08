@@ -1,5 +1,5 @@
 /*
-    version: 2.3;
+    version: 2.4;
 */
 
 /*
@@ -62,7 +62,7 @@
 		top: 0;
 	}
 	.img_stage_01 .img_stage_01_sprite {
-		background: url("../img/global-sprites.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+		background: url(http://i2.esmas.com/deportes30/mxm/img/global-sprites.png) no-repeat scroll 0 0 rgba(0, 0, 0, 0);
 		display: block;
 		height: 10px;
 		overflow: hidden;
@@ -177,7 +177,7 @@
         display:none;
     }
     .vid_player_01 .vid_player_01_image{
-        background-image:url(../../img/ajax-loader.gif);
+        background-image:url(http://i2.esmas.com/deportes30/mxm/img/ajax-loader.gif);
         background-position:center center;
         background-repeat:no-repeat;
     }
@@ -260,7 +260,7 @@
         width: 50px;
     }
 	 .vid_player_01 .txt3{
-        background: url(../img/dotted-horizontal.png) repeat-x top;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x top;
     }
     
     .ie7 .vid_player_01 .wdg_social_01 {	
@@ -317,7 +317,7 @@
     	margin-top:10px;
     }
     .vid_player_01 .txt1{
-        background: url(../img/dotted-vertical.png) repeat-y right;        
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y right;        
         float: left;
         height: auto;
         margin-right: 10px;
@@ -332,7 +332,7 @@
 		font-weight: normal;
     } 
     .vid_player_01 .txt2{       
-        background: url(../img/dotted-horizontal.png) repeat-x bottom;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x bottom;
         margin-bottom:10px;
         color:#999;
         font-size: 13px;
@@ -967,7 +967,7 @@
     
     /*BEGIN: sprite*/    	
      	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-	        background: url(../img/global-sprites.png) no-repeat 0 0;
+	        background: url(http://i2.esmas.com/deportes30/mxm/img/global-sprites.png) no-repeat 0 0;
 	        display:none;
 	        height: 10px;
 	        overflow: hidden;
@@ -1177,7 +1177,7 @@
 /*Style Retina*/
 @media only screen and (-webkit-min-device-pixel-ratio: 2),(min-resolution: 192dpi) {
  	.wdg_altasbajas_result_01 .wdg_altasbajas_result_01_sprite {
-        background: url(../img/global-sprites@2x.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/global-sprites@2x.png) no-repeat 0 0;
 		background-size:640px 224px;
 	}
 }
@@ -1332,7 +1332,7 @@
 */
 @media screen {
     .wdg_match_01_sprite {
-        background: url(../img/global-sprites.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/global-sprites.png) no-repeat 0 0;
         display: inline-block;
         height: 10px;
         overflow: hidden;
@@ -1817,13 +1817,13 @@
 		margin-right: 12px;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_mobileleft .wdg_matchesresult_leftmobile{
-        background: url(../img/box_arrow_l.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/box_arrow_l.png) no-repeat 0 0;
         display: inline-block;
         width: 14px;
         height: 20px;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_mobileright .wdg_matchesresult_rightmobile{
-        background: url(../img/box_arrow_r.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/box_arrow_r.png) no-repeat 0 0;
         display: inline-block;
         width: 14px;
         height: 20px;
@@ -1845,13 +1845,13 @@
         visibility: hidden;
 	}
     .wdg_matchesresult_01 .wdg_matchesresult_navlefticon{
-        background: url(../img/home_arrow_l.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/home_arrow_l.png) no-repeat 0 0;
         display: inline-block;
         width: 11px;
         height: 10px;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_navrighticon{
-        background: url(../img/home_arrow_r.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/home_arrow_r.png) no-repeat 0 0;
         display: inline-block;
         width: 11px;
         height: 10px;
@@ -2030,7 +2030,7 @@
     }
 
     .wdg_matchesresult_01 .wdg_matchesresult_lefticon{
-        background: url(../img/home_arrow_l.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/home_arrow_l.png) no-repeat 0 0;
         display: inline-block;
         width: 11px;
         height: 10px;
@@ -2039,7 +2039,7 @@
         margin-right: 5px;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_righticon{
-        background: url(../img/home_arrow_r.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/home_arrow_r.png) no-repeat 0 0;
         display: inline-block;
         width: 11px;
         height: 10px;
@@ -2057,7 +2057,7 @@
         display: none;
     }
     .wdg_matchesresult_01 .wdg_matchesresult_01_top .wdg_matchesresult_nike{
-        background: url(../img/nikelogo.png) no-repeat 0 0;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/nikelogo.png) no-repeat 0 0;
         width: 37px;
         height: 26px;
         display: inline-block;
@@ -2353,7 +2353,7 @@ font-weight: 900;
     }
 	.wdg_mxm_live_02 ul li:last-child{
 		border-bottom: none;
-		background: url(http://lab.israelviveros.com/deportes/wdg_mxm_live_02/dotted-horizontal.png) repeat-x bottom;
+		background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x bottom;
 	}
     .wdg_mxm_live_02 ul li:first-of-type{
         padding: 0px 0px 11px !important;
@@ -2570,7 +2570,7 @@ font-weight: 900;
 		padding-top: 20px;
     }
     .wdg_mxm_live_02 ul li .icon-interactive2{
-        background: url("http://lab.israelviveros.com/deportes/wdg_mxm_live_02/dotted-vertical.png") repeat-y right;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y right;
         padding-right: 4px !important;
         margin-right: 4px !important;
         float: left;
@@ -2849,7 +2849,7 @@ font-weight: 900;
         top:805px;
         width:100%;
         height:12px;
-        background-image:url(http://lab.israelviveros.com/deportes/wdg_mxm_live_02/dotted-horizontal.png);
+        background-image:url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png);
         background-repeat:repeat-x;
         background-position:10px;
     }
@@ -2977,7 +2977,7 @@ font-weight: 900;
         margin-top: 22px;
     }
     .wdg_mxm_live_04 .dotted-right{
-        background: url(http://lab.israelviveros.com/deportes/wdg_mxm_live_02/dotted-vertical.png) repeat-y right !important;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y right !important;
     }
 	
 	.wdg_mxm_live_04 .wdg_mxm_live_04_title{
@@ -3179,7 +3179,7 @@ font-weight: 900;
     }
     section.wdg_smex_strategy_01 span.player {
         position:absolute;
-        background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/sombra-cancha.png) no-repeat left 25px;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/sombra-cancha.png) no-repeat left 25px;
         padding-bottom:10px;
     }
     
@@ -3243,7 +3243,7 @@ font-weight: 900;
     
     section.wdg_smex_strategy_01 ul.menu li {
         display:inline-block;
-        background: url("http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/dotted-vertical.png") repeat-y left !important;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y left !important;
         height:24px;
     }
     
@@ -3269,7 +3269,7 @@ font-weight: 900;
     
     section.wdg_smex_strategy_01 span.tooltip {
         display:block;
-        background: url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/95percentblack.png);
+        background: url(http://i2.esmas.com/deportes30/mxm/img/95percentblack.png);
         box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
         z-index:1000;
     }
@@ -3288,7 +3288,7 @@ font-weight: 900;
         width:55px;
         height:28px;
         position:absolute;
-        background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/flechas-cancha.png) no-repeat;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/flechas-cancha.png) no-repeat;
         left:125px;
     }
     section.wdg_smex_strategy_01 .grid1 .arrow,
@@ -3298,10 +3298,10 @@ font-weight: 900;
     section.wdg_smex_strategy_01 .grid3 .arrow,
     section.wdg_smex_strategy_01 .grid4 .arrow {
         bottom:-27px;
-        background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/flechas-cancha.png) -55px 100%;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/flechas-cancha.png) -55px 100%;
     }
     section.wdg_smex_strategy_01 .grid4 .arrow {
-        background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/img/flechas-cancha.png) 0 100%!important;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/flechas-cancha.png) 0 100%!important;
         left:135px;
     }
     section.wdg_smex_strategy_01 .grid3 .arrow {
@@ -3316,7 +3316,7 @@ font-weight: 900;
     section.wdg_smex_strategy_01 .name {display:inline-block;color:#FFF; font-size:14px;}
     section.wdg_smex_strategy_01 .position { display:inline-block;color:#d6a256;font-size:12px;}
     section.wdg_smex_strategy_01 img.playerfoto { float:left; margin-right:12px }
-    section.wdg_smex_strategy_01 em {margin-top:15px;font-weight:bold;font-size:12px;color:#747474;padding:2px;display:block;text-align:center;margn-top:-1em;background:url(http://lab.israelviveros.com/deportes/wdg_smex_strategy_01/linea-tooltip.png) no-repeat 50% 50%;}
+    section.wdg_smex_strategy_01 em {margin-top:15px;font-weight:bold;font-size:12px;color:#747474;padding:2px;display:block;text-align:center;margn-top:-1em;background:url(http://i2.esmas.com/deportes30/mxm/img/linea-tooltip.png) no-repeat 50% 50%;}
 }
 /*
 	wdg_smex_strategy_01.css
@@ -3831,7 +3831,7 @@ font-weight: 900;
         padding-bottom:10px;
     }
     .wdg_sport_result_01 .deg{
-        background: url(../img/dotted-horizontal-white.png) repeat-x top;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal-white.png) repeat-x top;
         height: 1px;
         width: 584px;
         float: left;
@@ -3870,7 +3870,7 @@ font-weight: 900;
         margin: 0;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li a {
-        background: url(../img/dotted-vertical.png) repeat-y;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y;
         background-position: right;
         color: #8F8F8F;
         font-weight: bold !important;
@@ -4063,7 +4063,7 @@ font-weight: 900;
     }
     section.wdg_alineacion_field_01 span.player {
         position:absolute;
-        background:url(../img/sombra-cancha.png) no-repeat left 25px;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/sombra-cancha.png) no-repeat left 25px;
         padding-bottom:10px;
     }
     
@@ -4129,7 +4129,7 @@ font-weight: 900;
     
     section.wdg_alineacion_field_01 ul.menu li {
         display:inline-block;
-        background: url("../img/dotted-vertical.png") repeat-y left !important;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y left !important;
         height:24px;
     }
     
@@ -4159,7 +4159,7 @@ font-weight: 900;
     
     section.wdg_alineacion_field_01 span.tooltip {
         display:block;
-        background: url("../img/95percentblack.png");
+        background: url(http://i2.esmas.com/deportes30/mxm/img/95percentblack.png);
         box-shadow: 0 3px 4px rgba(0, 0, 0, 0.4);
         z-index:1000;
     }
@@ -4183,7 +4183,7 @@ font-weight: 900;
         width:55px;
         height:28px;
         position:absolute;
-        background:url(../img/flechas-cancha.png) no-repeat;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/flechas-cancha.png) no-repeat;
         left:125px;
     }
     section.wdg_alineacion_field_01 .grid1 .arrow,
@@ -4193,10 +4193,10 @@ font-weight: 900;
     section.wdg_alineacion_field_01 .grid3 .arrow,
     section.wdg_alineacion_field_01 .grid4 .arrow {
         bottom:-27px;
-        background:url(../img/flechas-cancha.png) -55px 100%;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/flechas-cancha.png) -55px 100%;
     }
     section.wdg_alineacion_field_01 .grid4 .arrow {
-        background:url(../img/flechas-cancha.png) 0 100%;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/flechas-cancha.png) 0 100%;
         left:135px;
     }
     section.wdg_alineacion_field_01 .grid3 .arrow {
@@ -4211,7 +4211,7 @@ font-weight: 900;
     section.wdg_alineacion_field_01 .name {display:inline-block;color:#FFF; font-size:14px;}
     section.wdg_alineacion_field_01 .position { display:inline-block;color:#d6a256;font-size:12px;}
     section.wdg_alineacion_field_01 img.playerfoto { float:left; margin-right:12px }
-    section.wdg_alineacion_field_01 em {margin-top:15px;font-weight:bold;font-size:12px;color:#747474;padding:2px;display:block;text-align:center;margn-top:-1em;background:url(../img/linea-tooltip.png) no-repeat 50% 50%;}
+    section.wdg_alineacion_field_01 em {margin-top:15px;font-weight:bold;font-size:12px;color:#747474;padding:2px;display:block;text-align:center;margn-top:-1em;background:url(http://i2.esmas.com/deportes30/mxm/img/linea-tooltip.png) no-repeat 50% 50%;}
 }   /* wdg_alineacion_field_01.css */
 
 @media screen and (min-width: 948px){
@@ -6708,7 +6708,7 @@ wdg_altasbajas_01_mobile.css
         overflow-x: auto;
         overflow-y: hidden;
         height: 155px;
-        background-image: url(../img/degradado_rojo_izq.png), url(../img/degradado_rojo_der.png);
+        background-image: url(http://i2.esmas.com/deportes30/mxm/img/degradado_rojo_izq.png), url(http://i2.esmas.com/deportes30/mxm/img/degradado_rojo_der.png);
         /*background-image: url(../img/left-shadow.png), url(../img/right-shadow.png);*/
         background-position: left, right;
         background-repeat:  repeat-y;
@@ -6778,7 +6778,7 @@ wdg_altasbajas_01_mobile.css
         margin-top:0px;
     }
     .wdg_altasbajas_01 .degraded_left{
-        background-image: url(../img/degradado_rojo_izq.png);
+        background-image: url(http://i2.esmas.com/deportes30/mxm/img/degradado_rojo_izq.png);
         height: 106px;
         width: 22px;
         position: absolute;
@@ -6786,7 +6786,7 @@ wdg_altasbajas_01_mobile.css
         left: 16px;
     }
     .wdg_altasbajas_01 .degraded_right{
-        background-image: url(../img/degradado_rojo_der.png);
+        background-image: url(http://i2.esmas.com/deportes30/mxm/img/degradado_rojo_der.png);
         height: 106px;
         width: 22px;
         position: absolute;
@@ -6855,7 +6855,7 @@ wdg_altasbajas_01_tablet.css
         margin-left: 0px;
     }
     .wdg_altasbajas_01 .degraded_left{
-        background-image: url(../img/degradado_rojo_izq.png);
+        background-image: url(http://i2.esmas.com/deportes30/mxm/img/degradado_rojo_izq.png);
         height: 97px;
         width: 22px;
         position: absolute;
@@ -6863,7 +6863,7 @@ wdg_altasbajas_01_tablet.css
         left: 10%;
     }
     .wdg_altasbajas_01 .degraded_right{
-        background-image: url(../img/degradado_rojo_der.png);
+        background-image: url(http://i2.esmas.com/deportes30/mxm/img/degradado_rojo_der.png);
         height: 97px;
         width: 22px;
         position: absolute;
@@ -7774,7 +7774,7 @@ wdg_playerdraft_01_mobile.css
     }
     
     .wdg_playerdraft_01 .scroll{
-        background: url("../img/dotted-horizontal.png") repeat-x scroll center top transparent ;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x scroll center top transparent ;
         margin-top: 10px;
         padding-top:20px;
         clear:both;
@@ -7928,7 +7928,7 @@ wdg_playerdraft_01_mobile.css
         bottom:0;
         width:100%;
         height:12px;
-        background-image:url(../global/img/degradado_horizontal.png);
+        background-image:url(http://i2.esmas.com/deportes30/mxm/img/degradado_horizontal.png);
         background-repeat:repeat-x;
         background-position:10px;
     }
@@ -7993,7 +7993,7 @@ wdg_playerdraft_01_tablet.css
     .wdg_playerdraft_01 .div2{
         width:115px;
         padding:0 30px;
-        background: url("../img/dotted-vertical.png") repeat-y scroll right center transparent;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y scroll right center transparent;
     }
     .wdg_playerdraft_01 .lineasep{
         display:none;
@@ -8036,7 +8036,7 @@ wdg_playerdraft_01_tablet.css
     }
     
     .wdg_playerdraft_01 .tblDraft td:nth-child(3){
-        background: url("../../img/dotted-vertical.png") repeat-y right !important;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y right !important;
     }
     
     .wdg_playerdraft_01 .tblDraft th:nth-child(4),
@@ -8157,7 +8157,7 @@ wdg_teamdraft_01_mobile.css
         overflow: hidden;
         line-height: 40px;
         background: none;
-        background: url("../img/dotted-horizontal.png"), url("../img/dotted-horizontal.png");
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png), url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png);
         background-position: center bottom, center top;
         background-repeat: repeat-x;
         margin-bottom:11px;
@@ -8453,7 +8453,7 @@ wdg_teamdraft_01_tablet.css
         /*margin-bottom: 8px;PC*/
         margin-left: 0px;
         line-height: 50px;
-        background: url("../img/dotted-vertical.png") repeat-y scroll left center transparent;
+        background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y scroll left center transparent;
     }
     .wdg_teamdraft_01 .subtitle .textcolor-title4 {
         font-style: italic;
@@ -8713,7 +8713,7 @@ wdg_simbology_01_mobile.css
 }
 .wdg_simbology_01 .alineacion_partido .equipo_partido .simbolo2 {
     width: 54px;
-    background: url(../img/dotted-vertical.png) repeat-y 100% 0;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y 100% 0;
     height: auto;
     float: left;
     font-weight: bold;
@@ -8780,7 +8780,7 @@ wdg_simbology_01_mobile.css
     width: 100%;
     height: auto;
     padding-bottom: 5px;
-    background: url(../img/dotted-horizontal.png) repeat-x 0 100%;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x 0 100%;
     position: relative;
     margin-top: 3px;
 }
@@ -8801,7 +8801,7 @@ wdg_simbology_01_mobile.css
 }
 .wdg_simbology_01 .alineacion_partido .separadoizquierda {
     padding-right: 6px;
-    background: url(../img/dotted-vertical.png) repeat-y 100% 0;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y 100% 0;
 }
 .wdg_simbology_01 .alineacion_partido .separadoizquierda_encabezado {
     padding-right: 6px;
@@ -8903,21 +8903,21 @@ wdg_simbology_01_mobile.css
     text-align: center;
 }
 .wdg_simbology_01 .line_left {
-    background: url(../img/dotted-vertical.png) repeat-y 100% 0, url(../img/dotted-horizontal.png) repeat-x 0 100%;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y 100% 0, url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x 0 100%;
 }
 .wdg_simbology_01 .line_last {
     border-right: 0;
-    background: url(../img/dotted-horizontal.png) repeat-x 0 100%;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x 0 100%;
 }
 .wdg_simbology_01 .line_top {
     border-top: 0;
-    background: url(../img/dotted-horizontal.png) repeat-x 0 100%, url(../img/dotted-vertical.png) repeat-y right 0;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x 0 100%, url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y right 0;
 }
 .wdg_simbology_01 .lineaBajo {
     border-bottom: 1px solid #CCC;
 }
 .wdg_simbology_01 .simbologia .tabla_simbologia .icon_simbologia:nth-of-type(even) {
-    background: url(../img/dotted-horizontal.png) repeat-x 0 100%;
+    background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x 0 100%;
 }
 .wdg_simbology_01 .lineaBajoTransform {
     border-bottom: 0px;
@@ -9101,12 +9101,12 @@ wdg_simbology_01_tablet.css
     .wdg_simbology_01 .line_left,
     .wdg_simbology_01 .line_last
     {
-        background:url(../img/dotted-vertical.png) repeat-y 100% 0 !important;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y 100% 0 !important;
     }
     .wdg_simbology_01 .line_top
     {
         border-top: 0;
-        background:url(../img/dotted-vertical.png) repeat-y 100% 0 !important;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/dotted-vertical.png) repeat-y 100% 0 !important;
     }
     .wdg_simbology_01 .see-all{
         display: block;
@@ -9120,7 +9120,7 @@ wdg_simbology_01_tablet.css
     }
     .wdg_simbology_01 .simbologia .tabla_simbologia
     {
-        background:url(../img/dotted-horizontal.png) repeat-x 0 100%;
+        background:url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x 0 100%;
     }
     .wdg_simbology_01 .line_top
     {
