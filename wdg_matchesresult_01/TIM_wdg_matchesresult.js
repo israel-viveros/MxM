@@ -335,7 +335,7 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '? ' + Math.random() + '">' + contenido[y].txtLink + '</a><a class="textcolor-title1"></a>';
 
                         } else {
-                            contenido[y].txtLink = (contenido[y].txtLink === "Minuto a Minuto") ? 'MxM' : contenido[y].txtLink;
+                            contenido[y].txtLink = (contenido[y].txtLink === "Minuto a minuto") ? 'MxM' : contenido[y].txtLink;
                             ItemView += '<a class="textcolor-title1" target="_blank" href="' + contenido[y].Website + '?' + Math.random() + '">' + contenido[y].EventTournamentName.substring(0, 15);
                             ItemView += '<span class="textcolor-title4">' + contenido[y].txtLink + '</span></a>';
                         }
