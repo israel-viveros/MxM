@@ -13,7 +13,10 @@
 
 @media screen {
 	/*previo*/
-
+	.wdg_stadistics_01_container img.imagen{
+		width: 53px;
+		height: 38px;
+	}
 	.wdg_stadistics_01_container img.team-left{
 		width: 28px;
 		height: 28px;
