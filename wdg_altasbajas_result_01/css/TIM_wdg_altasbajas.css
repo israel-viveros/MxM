@@ -782,6 +782,7 @@ wdg_altasbajas_result_01_mobile.css
 	.wdg_altasbajas_result_01 > ul {
 	    /* vidi height: 478px; */
         height: auto;
+        max-height: 478px;
 		overflow: hidden;
 	}
 	 .wdg_altasbajas_result_01 > div .full-timetable {
