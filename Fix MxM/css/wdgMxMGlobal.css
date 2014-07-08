@@ -5048,8 +5048,8 @@ font-weight: 900;
                     {
                         float:left;
                         margin:6px 4px;
-                        width: 32px;
-                        height: 32px;
+                        width: 20px !important;
+                        height: 20px !important;
                     }
                     .wdg_lineup_01 .alineacion_partido .equipo_partido .encabezado_alineacion_partido i
                     {
@@ -9182,5 +9182,20 @@ wdg_simbology_01_tablet.css
         margin-bottom:0;        
     }
     body > section > div.main > div.c2 > div.c2_2.right > div > div.wdg_avgfield_02_content > div:nth-child(1) > div.wdg_avgfield_02_teams > div.wdg_avgfield_02_teama > div > img{width: 28px; height: 28px;}
+    /*Hover Tittle Note*/
+    div.art_title_01_title h1 a:hover {
+        text-decoration: none;
+    }
+    .art_title_01 h1 {
+    margin-bottom: -20px !important;
+    }
+    /*Pleca estadísticas*/
+    div.str_pleca_01 {
+    margin-bottom: 24px;
+    border-bottom: 1px solid #CCC;
+    }
+    /*Dato Experto*/
+    .str_expertcmt_02 .expert_container {
+    height: 100% !important;
 
 }
