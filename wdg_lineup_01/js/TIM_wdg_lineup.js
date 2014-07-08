@@ -1,8 +1,7 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.8
+ *   Version: 1.3.9
  *   Copyright: Televisa Interactive Media (2014)
- hols oy un comentarios
  */
 ;
 (function() {
@@ -211,7 +210,6 @@
                 if ($("#viewmoreTIM").length) {
                     $("#viewmoreTIM").unbind().click(function(event) {
                         var colapsablesimbo = $(".wdg_lineup_01 .simbologia").height();
-                        console.log(colapsablesimbo);
                         event.preventDefault();
                         if (colapsablesimbo === 467) {
                             $(this).html("Ver Todos <i class=\"tvsa-caret-down\"></i>");
@@ -586,7 +584,6 @@
                     if (typeof data.lineupVisit.ausentes !== "undefined" && typeof data.lineupLocal.ausentes !== "undefined") {
                         $("#ausentesLocal").parent('.alineacion_partido').remove();
                     }
-
 
                     if (flagAusenVisit === 1 && flagAusenLocal === 1) {
                         $("#ausenciasconta").css('display', 'none');
