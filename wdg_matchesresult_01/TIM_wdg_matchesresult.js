@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.2.5
+ *   Version: 5.2.6
  *   Copyright: Televisa Interactive Media (2014)
  */
 
@@ -50,6 +50,11 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
             globalTimer: "",
 
             DrawCuerpo: function() {
+                var rndm = Math.random() * 1000000;
+                var ord = Math.round(rndm);
+                var sourceJump = "http://pubads.g.doubleclick.net/gampad/jump?iu=/5644/es.esmas.dep/mxm/contador&sz=37x26&c=" + ord;
+                var sourceAd = "http://pubads.g.doubleclick.net/gampad/ad?iu=/5644/es.esmas.dep/mxm/contador&sz=37x26&c=" + ord;
+
                 wdg_matchresult.horaServidor();
                 var cuerpoHTML = "";
                 cuerpoHTML += '<div class="windows8">';
@@ -64,7 +69,7 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                 cuerpoHTML += '<div class="wdg_matchesresult_01_top">';
                 cuerpoHTML += '<a class="title" href="#">Resultados</a>';
                 cuerpoHTML += '<a class="subtitle" href="#">Minuto a Minuto</a>';
-                cuerpoHTML += (setting.tema === "deportes") ? '<a href=""><span class="wdg_matchesresult_nike"></span></a>' : '';
+                cuerpoHTML += (setting.tema === "deportes") ? '<a target="_blank" href="' + sourceJump + '"><span class="wdg_matchesresult_nike"><img class="adformxm" src="' + sourceAd + '"></span></a>' : '';
                 cuerpoHTML += '</div>';
                 cuerpoHTML += '<div class="wdg_matchesresult_01_bottom">';
                 cuerpoHTML += '<div class="wdg_matchesresult_important" id="FListTournaments">';
