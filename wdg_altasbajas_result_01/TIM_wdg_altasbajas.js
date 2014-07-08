@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 2.3.12
+ *   Version: 2.3.13
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -67,6 +67,7 @@
             iniciar: function(fechaCalendar) {
 
                 (settings.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://i2.esmas.com/deportes30/mxm/css/TIM_wdg_altasbajas.min.css">') : '';
+                //(settings.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://localhost/~israelviveros/mxm/wdg_altasbajas_result_01/css/TIM_wdg_altasbajas.css">') : '';
                 var num = (settings.tema !== "mundial") ? '1' : '';
                 MaqueWdgAltas = "";
                 MaqueWdgAltas += (settings.title !== '') ? '<div class="str_pleca_01"><div class="str_pleca_01_title"><h3 class="str_pleca_01_title background-color' + num + '"><a class="textcolor-title3" ><span id="title-jornada"></span><span class="str_pleca_01_arrowa selected"></span><span class="str_pleca_01_arrowb"></span></a></h3></div>' : '';
@@ -102,10 +103,10 @@
                 MaqueWdgAltas += '</ul>';
                 if (settings.tema != "mundial") {
                     MaqueWdgAltas += '<div class="controls"> ';
-                    MaqueWdgAltas += '<a class="prev bginactive" title="Link Description" href="#">';
+                    MaqueWdgAltas += '<a class="prev bginactive">';
                     MaqueWdgAltas += '<span class="tvsa-caret-up"></span>';
                     MaqueWdgAltas += '</a>';
-                    MaqueWdgAltas += '<a class="next bginactive" href="#">';
+                    MaqueWdgAltas += '<a class="next bginactive">';
                     MaqueWdgAltas += '<span class="tvsa-caret-down"></span>';
                     MaqueWdgAltas += '</a>';
                     MaqueWdgAltas += '<a class="full-timetable" href="#"> ';

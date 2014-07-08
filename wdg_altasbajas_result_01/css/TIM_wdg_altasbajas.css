@@ -712,6 +712,7 @@ wdg_altasbajas_result_01_mobile.css
 	.wdg_altasbajas_result_01 .controls .bgactive{
 		
         background-color:#A70A0B;
+        cursor: pointer;
 	}
 	
 	.wdg_altasbajas_result_01 .controls .bginactive{
