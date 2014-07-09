@@ -131,5 +131,5 @@
 .wdg_matchesresult_vertodos{display:block}#parentWDG_matchresult_01>div.wdg_matchesresult_01_container>div.wdg_matchesresult_01_right>div.wdg_matchesresult_01_components>a>span{font-weight:bold;font-style:italic;margin-bottom:10px;font-weight:900}
 @media screen and (min-width:624px){.wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right{position:relative}}@media screen and (max-width:450px){.wdg_matchesresult_01{max-height:215px}
 .wdg_matchesresult_01 .wdg_matchesresult_01_container .wdg_matchesresult_01_right .wdg_matchesresult_01_components{position:relative}}@media screen and (max-width:650px){.wdg_matchesresult_01 .viewmore{display:none}
-}@media screen and (min-width:625px) and (max-width:950px){.wdg_matchesresult_01{max-height:460px}}@media screen and (min-width:624px){.wdg_match_01 .wdg_match_01_link .wdg_match_01_extra p{margin-left:6px}
+}@media screen and (min-width:625px) and (max-width:950px){.wdg_matchesresult_01{max-height:460px}}@media screen and (min-width:624px){.wdg_match_01 .wdg_match_01_link .wdg_match_01_extra p{margin-left:6px}.onShowItem:before{content:'>>';float: left;}
 }
