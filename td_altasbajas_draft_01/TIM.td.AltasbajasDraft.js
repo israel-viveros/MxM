@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer:
- *   Version: 1.1.0
+ *   Version: 1.1.4
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -10,27 +10,23 @@
             'idTorneo': 0,
             'nameTournament': ''
         }, options);
-        console.log('Altas Bajas Draft');
 
         var wdg_playerdraft_01 = {
-            //urlData:'http://lab.israelviveros.com/draft/'+setting.idTorneo+'/draft.js',
             urlData: 'http://static-televisadeportes.esmas.com/sportsdata/futbol/draft/' + setting.nameTournament + '/teamdraft.js',
             tagWdgPlayerdraft: $("#containerwdg_playerdraft_01"),
 
             viewHtml: function(data) {
-                //Generar variables...
-                var compras = "";
-                var prestamos = "";
-                var transf = "";
-                var urlDraft = "";
-                //Asignamos valores...
+                var compras = "",
+                    prestamos = "",
+                    transf = "",
+                    urlDraft = "";
                 compras = data['draftPurchase'];
                 prestamos = data['draftLoan'];
                 transf = data['draftTransfers'];
                 urlDraft = data['draftURL'];
 
                 maquetado = "<div id='wdg_playerdraft_01' class='wdg_playerdraft_01'>";
-                //Encabezado___
+
                 maquetado += "<div class='titulo textcolor-title2'><h2>Balance en el Draft</h2></div>";
                 maquetado += "<div class='div1 dotted-right'>Compras <div class='gris'>" + compras + "</div></div>";
                 maquetado += "<div class='div2'>Prestamos";
@@ -46,7 +42,7 @@
                 maquetado += "<div class='scroll'>";
                 maquetado += "<table class='tblDraft'>";
                 maquetado += "<tbody>";
-                //Titulos___
+
                 maquetado += "<tr>";
                 maquetado += "<th width='131' class='textcolor-title1'>JUGADOR</th>";
                 maquetado += "<th width='78' class='textcolor-title1'>ADQUIRI&Oacute;</th>";
@@ -56,24 +52,24 @@
                 maquetado += "<th width='45' class='textcolor-title1'>AFICI&Oacute;N</th>";
                 maquetado += "</tr>";
 
-                //Contenido___
+
                 maquetado += "<tr>";
                 maquetado += "<td colspan='6' class='separador' style='position:relative; text-shadow:0px #fff;'></td>";
                 maquetado += "</tr>";
 
 
                 for (var i = 0; i < data['draftTeams'].length; i++) {
-                    //console.log("Team" + i);
-
                     for (var n = 0; n < data['draftTeams'][i]['operation'].length; n++) {
-                        var namePlayer = "";
-                        var acquire = "";
-                        var transfer = "";
-                        var type = "";
-                        var rantingTD = "";
-                        var ratingUser = "";
-                        var idOperation = "";
-                        var idPlayer = "";
+                        var namePlayer = "",
+                            acquire = "",
+                            transfer = "",
+                            type = "",
+                            rantingTD = "",
+                            ratingUser = "",
+                            idOperation = "",
+                            guidpoll = "",
+                            guidsection = "",
+                            guidfield = "";
 
                         idOperation = data['draftTeams'][i]['operation'][n]['id'];
                         namePlayer = data['draftTeams'][i]['operation'][n]['name'];
@@ -82,16 +78,12 @@
                         type = data['draftTeams'][i]['operation'][n]['type'];
                         rantingTD = data['draftTeams'][i]['operation'][n]['rantingTD'];
                         ratingUser = data['draftTeams'][i]['operation'][n]['ratingUser'];
-
-                        idPlayer = data['draftTeams'][i]['operation'][n]['playerURL'].split('/');
-                        idPlayer = idPlayer[4];
-                        //idPlayer = data['draftTeams'][i]['operation'][n]['playerURL'].slice(data['draftTeams'][i]['operation'][n]['playerURL'].length-4);
-                        //console.log(idPlayer);
-
-                        //Datos de Jugador___
-                        maquetado += "<tr class='vote_block'>";
+                        guidpoll = data['draftTeams'][i]['operation'][n].guid_poll;
+                        guidsection = data['draftTeams'][i]['operation'][n].guid_section;
+                        guidfield = data['draftTeams'][i]['operation'][n].guid_field;
+                        maquetado += "<tr class='vote_block' data-guidpoll=\"" + guidpoll + "\" data-guidfield=\"" + guidfield + "\" data-guidsection=\"" + guidsection + "\">";
                         maquetado += "<td class='dotted-right'>";
-                        maquetado += "<h3 data-urlDraft='" + urlDraft + "' data-url='http://polls.esmas.com/jugadores/torneo/" + setting.idTorneo + "/partido/" + idOperation + "/jugador/" + idPlayer + "'>" + namePlayer + "</h3>";
+                        maquetado += "<h3>" + namePlayer + "</h3>";
                         maquetado += "</td>";
                         maquetado += "<td class='dotted-right'>" + acquire + "</td>";
                         maquetado += "<td class='dotted-right'>" + transfer + "</td>";
@@ -99,35 +91,34 @@
                         maquetado += "<td class='dotted-right'>" + rantingTD + "</td>";
                         maquetado += "<td class='textcolor-title1'>" + ratingUser + "</td>";
                         maquetado += "</tr>";
-
-                        //Calificaciones del jugador___
-                        maquetado += "<tr>";
-                        maquetado += "<td colspan='6' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF;'>";
-                        maquetado += "<div class='dotted-top'></div>";
-                        maquetado += "<div class='qualifies'><div>califica al jugador</div></div>";
-                        maquetado += "<div class='calification textcolor-title4'>";
-                        maquetado += "<div><a href='#'>5</a></div>";
-                        maquetado += "<div><a href='#'>6</a></div>";
-                        maquetado += "<div><a href='#'>7</a></div>";
-                        maquetado += "<div><a href='#'>8</a></div>";
-                        maquetado += "<div><a href='#'>9</a></div>";
-                        maquetado += "<div><a href='#'>10</a></div>";
-                        maquetado += "</div>";
-                        maquetado += "<div class='participated  textcolor-title4'>";
-                        maquetado += "<div class='voted'><p>Gracias por votar <i class='tvsa-like'></i></p></div>";
-                        maquetado += "</div>";
-                        maquetado += "</td>";
-                        maquetado += "</tr>";
+                        if (typeof(data['draftTeams'][i]['operation'][n].guid_resp) !== "undefined") {
+                            maquetado += "<tr>";
+                            maquetado += "<td colspan='6' class='separador' style='position:relative; text-shadow: 0px 0px 0px #FFF;'>";
+                            maquetado += "<div class='dotted-top'></div>";
+                            maquetado += "<div class='qualifies'><div>califica al jugador</div></div>";
+                            maquetado += "<div class='calification textcolor-title4'>";
+                            maquetado += "<div><a href='#' data-guidfvl=\"" + data['draftTeams'][i]['operation'][n].guid_resp[0][1] + "\">5</a></div>";
+                            maquetado += "<div><a href='#' data-guidfvl=\"" + data['draftTeams'][i]['operation'][n].guid_resp[1][1] + "\">6</a></div>";
+                            maquetado += "<div><a href='#' data-guidfvl=\"" + data['draftTeams'][i]['operation'][n].guid_resp[2][1] + "\">7</a></div>";
+                            maquetado += "<div><a href='#' data-guidfvl=\"" + data['draftTeams'][i]['operation'][n].guid_resp[3][1] + "\">8</a></div>";
+                            maquetado += "<div><a href='#' data-guidfvl=\"" + data['draftTeams'][i]['operation'][n].guid_resp[4][1] + "\">9</a></div>";
+                            maquetado += "<div><a href='#' data-guidfvl=\"" + data['draftTeams'][i]['operation'][n].guid_resp[5][1] + "\">10</a></div>";
+                            maquetado += "</div>";
+                            maquetado += "<div class='participated  textcolor-title4'>";
+                            maquetado += "<div class='voted'><p>Gracias por votar <i class='tvsa-like'></i></p></div>";
+                            maquetado += "</div>";
+                            maquetado += "</td>";
+                            maquetado += "</tr>";
+                        }
                     }
                 }
-
-
                 maquetado += "</tbody>";
                 maquetado += "</table>";
                 maquetado += "</div>";
                 maquetado += "</div>";
 
                 wdg_playerdraft_01.tagWdgPlayerdraft.html(maquetado);
+                wdg_playerdraft_01.funcionesNaat();
 
             },
 
@@ -153,8 +144,7 @@
             },
 
             funcionesNaat: function() {
-                //e.event.preventDefault();
-                console.log('Funciones...');
+
                 /*Para IPAD*/
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .vote_block').on('touchstart', function(e) {
                     //e.event.preventDefault();
@@ -219,69 +209,17 @@
                 //click calificacion
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .separador .calification a').click(function(event) {
                     event.preventDefault();
-
                     //Votacion...
-                    var num_star = $(this).text();
-                    var varTr = $(this).parents('tr');
-                    var element = varTr.prev();
-                    var firstElement = element.children(':first-child');
-                    console.log(firstElement);
-                    var porcentaje = element.children('.textcolor-title1');
-                    console.log("porcentaje");
-                    console.log(porcentaje.text());
-                    //var urlDraft = firstElement.find('h3').data('urldraft');
-                    //var urlSet = urlDraft+draftOperation;
-                    var url = firstElement.find('h3').data('url');
-                    var div_gracias = "";
-
-                    console.log(url);
-                    console.log(num_star + " - " + url + " - " + div_gracias);
+                    var num_star = $(this).text(),
+                        varTr = $(this).parents('tr'),
+                        element = varTr.prev(),
+                        firstElement = element.children(':first-child'),
+                        porcentaje = element.children('.textcolor-title1');
 
 
-                    if (typeof div_gracias == "undefined") {
-                        div_gracias = null;
-                    }
-                    if (typeof url == "undefined") {
-                        url = wdg_playerdraft_01.cl_url(url);
-                    }
+                    var votewebservicePolls = new Image();
+                    votewebservicePolls.src = "http://polls.esmas.com/calcularesultado/arreglo/@@@" + element.attr('data-guidpoll') + "@@@" + element.attr('data-guidsection') + "@@@" + element.attr('data-guidfield') + "@@@[" + element.attr('data-guidfield') + "&&&" + $(this).attr('data-guidfvl') + "]@@@@@@Sitio@@@MXM@@@Deportes@@@Futbol@@@Token-@@@CSIE-@@@Urlactual@@@SexodelUsuario@@@VIP@@@MX@@@Cuidad@@@Estado@@@1398889521@@@Mozilla@@@an%20unknown%20version@@@Mac@@@1440%20x%20900@@@Yes@@@Previous%20Page@@@es-mx@@@es-mx@@@es/voto/" + element.attr('data-guidfield') + "&&&" + $(this).attr('data-guidfvl');
 
-                    console.log(num_star);
-                    console.log(url);
-                    porcentaje.html('1');
-                    /*
-                    if(num_star == 10){
-                        num_star = 5;
-                    }else if(num_star == 9) {
-                        num_star = 4;
-                    }
-                    else if (num_star == 8){
-                        num_star = 3;
-                    }
-                    else if (num_star == 7){
-                        num_star = 2;
-                    }
-                    else if (num_star == 6){
-                        num_star = 1;
-                    }
-                    else{
-                        num_star = 0;
-                    }                    
-                    console.log(num_star);
-                   
-                    if(num_star<6 && num_star>=0){                        
-                        var positive_votes = num_star;
-                        var negative_votes=5-num_star;
-                        var votes_type = 1;
-                        var url = urlSet;
-                        console.log(negative_votes);
-                        COMM_img_set = document.createElement("IMG");
-                        COMM_img_set.src = "http://v.esmas.com:8081/votos/spacer.gif?1|"+positive_votes+"|"+negative_votes+"|"+votes_type+"|"+url;
-                        console.log(COMM_img_set.src);
-                        document.body.appendChild(COMM_img_set); 
-                    }
-                     */
-
-                    //-------
 
                     $(this).parents('.calification').hide();
 
@@ -296,7 +234,7 @@
 
                 });
 
-                // Mouseput del "gracias por votar"
+
                 $('.containerwdg_playerdraft_01 .wdg_playerdraft_01 .tblDraft .separador .participated').mouseout(function() {
                     $(this).hide();
                     $(this).parents('.separador').find('.qualifies').hide();
@@ -319,7 +257,6 @@
             },
 
             getDataDraft: function() {
-                console.log(wdg_playerdraft_01.urlData);
                 $.ajax({
                     url: wdg_playerdraft_01.urlData,
                     type: "GET",
@@ -336,12 +273,7 @@
             }
         }
 
-        $.when(wdg_playerdraft_01.getDataDraft()).done(function() {
-            setTimeout(function() {
-                wdg_playerdraft_01.funcionesNaat();
-            }, 3000);
-
-        });
+        wdg_playerdraft_01.getDataDraft();
 
     };
 

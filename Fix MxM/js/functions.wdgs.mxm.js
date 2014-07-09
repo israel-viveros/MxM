@@ -332,7 +332,7 @@ $(document).ready(function() {
             if (colapsablesimbo == 447) {
                 $(this).html("Ver Todos <i class=\"tvsa-caret-down\"></i>");
                 $("div.alineacion_partido").animate({
-                    'height': '130px'
+                    'height': '135px'
                 }, 200);
             } else {
                 $(this).html("Ver Menos <i class=\"tvsa-caret-up\"></i>");
