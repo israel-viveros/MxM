@@ -2986,7 +2986,10 @@ font-weight: 900;
 	}
 	
 	.wdg_mxm_live_04 .img_stage_01 div.img_stage_01_image img {
-		height: 466px;
+		width: auto;
+        height: auto;
+        max-width: 100%;
+        max-height: 100%;
 	}
 	.wdg_mxm_live_04 ul li .time-icon{
 		width: 90px;
@@ -9082,7 +9085,7 @@ wdg_simbology_01_tablet.css
     }
     .wdg_simbology_01 .alineacion_partido
     {
-        height:105px;
+        height:135px;
     }
     .wdg_simbology_01 .simbologia
     {
