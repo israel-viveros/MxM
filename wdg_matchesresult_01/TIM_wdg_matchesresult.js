@@ -1,6 +1,6 @@
 /*!
  * TIM Developer: Israel Viveros
- *   Version: 5.2.6
+ *   Version: 5.2.7
  *   Copyright: Televisa Interactive Media (2014)
  */
 
@@ -131,27 +131,32 @@ jQuery.fn.animateAuto = function(prop, speed, callback) {
                 cuerpoHTML += '</div>';
                 Globalthis.html(cuerpoHTML);
 
-                $.ajax({
-                    url: 'http://i2.esmas.com/deportes30/mxm/js/section.js',
-                    type: 'GET',
-                    dataType: 'jsonp',
-                    cache: false,
-                    jsonpCallback: 'section'
-                })
-                    .done(function(data) {
-                        var contentli = "";
-                        for (var h = 0; h < data.length; h++) {
-                            var classitem = (h === 0) ? "selected" : '';
-                            var linkTo = (data[h].url !== "") ? href = "' + data[h].url + '" : '';
-                            contentli += '<li class="' + classitem + '"><a ' + linkTo + '><p>' + data[h].name + '</p></a></li>';
-                        };
-                        Globalthis.find(".wdg_matchesresult_01_theme").html(contentli);
+                if (setting.tema !== "mundial") {
+                    $.ajax({
+                        url: 'http://i2.esmas.com/deportes30/mxm/js/section.js',
+                        type: 'GET',
+                        dataType: 'jsonp',
+                        cache: false,
+                        jsonpCallback: 'section'
                     })
-                    .fail(function() {
-                        console.log("error");
-                    });
-
-
+                        .done(function(data) {
+                            var contentli = "";
+                            for (var h = 0; h < data.length; h++) {
+                                var classitem = (h === 0) ? "selected" : '';
+                                var linkTo = (data[h].url !== "") ? href = "' + data[h].url + '" : '';
+                                contentli += '<li class="' + classitem + '"><a ' + linkTo + '><p>' + data[h].name + '</p></a></li>';
+                            };
+                            Globalthis.find(".wdg_matchesresult_01_theme").html(contentli);
+                            var finalW = 0;
+                            Globalthis.find(".wdg_matchesresult_01_theme li").each(function(index, el) {
+                                finalW = finalW + $(this).outerWidth();
+                            });
+                            Globalthis.find(".wdg_matchesresult_01_theme").css('width', finalW + 'px');
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        });
+                }
 
 
                 (setting.tema !== "mundial") ? $('head').append('<link rel="stylesheet" href="http://i2.esmas.com/deportes30/mxm/css/TIM_wdg_matchesresult.min.css">') : '';

@@ -2,32 +2,29 @@
 	.wdg_sport_result_01 .solid_separator {
 		display: block;
 		float: right;
-		/* margin-top: -95px; */
+		/* margin-top: -95px;
+		*/
 	}
-	.wdg_sport_result_01 .leftside .padre{
+	.wdg_sport_result_01 .leftside .padre {
 		width: 100%;
 	}
-
-
 }
-
 @media screen {
-	/*previo*/
-	.wdg_stadistics_01_container img.imagen{
+	/* previo */
+	.wdg_stadistics_01_container img.imagen {
 		width: 53px;
 		height: 38px;
 	}
-	.wdg_stadistics_01_container img.team-left{
+	.wdg_stadistics_01_container img.team-left {
 		width: 28px;
 		height: 28px;
 	}
-	.wdg_stadistics_01_container div.str_pleca_01{
+	.wdg_stadistics_01_container div.str_pleca_01 {
 		border-bottom: 1px solid #CCC;
 	}
+	
 	/* end previo */
-
-
-	#errorLineup{
+	#errorLineup {
 		z-index: 740;
 		text-align: center;
 		margin: 20px auto;
@@ -38,107 +35,118 @@
 		height: 125px;
 		overflow: hidden;
 	}
-	.wdg_lineup_01 #viewmoreTIM{
+	.wdg_lineup_01 #viewmoreTIM {
 		margin-top: 15px;
 		float: right;
 		font-size: 12px;
 		cursor: pointer;
 	}
-
-	/*
-	Pizarra
-	*/
-	.pizarraContainerTim{
+	
+	/* Pizarra */
+	.pizarraContainerTim {
 		width: 100%;
 		height: auto;
 		position: relative;
 	}
-	.pizarraContainerTim .pizzarrawdg, .pizarraContainerTim .mapacalorwdg{
+	.pizarraContainerTim .pizzarrawdg, .pizarraContainerTim .mapacalorwdg {
 		width: 100%;
 		height: auto;
 		display: block;
 	}
-
-	.pizarraContainerTim .comparacionplayerwdg, .pizarraContainerTim .stadisticasequipowdg{
+	.pizarraContainerTim .comparacionplayerwdg, .pizarraContainerTim .stadisticasequipowdg {
 		width: 48.5%;
 		height: auto;
 		float: left;
 		display: block;
 	}
-	.pizarraContainerTim .comparacionplayerwdg{
+	.pizarraContainerTim .comparacionplayerwdg {
 		margin-right: 3%;
 	}
-	/*
-	End Pizarra
-	*/
-
-	/* 
-		Loader
-	*/
-	#MxMLoaderTIM{
+	
+	/* End Pizarra */
+	/* Loader */
+	#MxMLoaderTIM {
 		position: fixed;
 		left: 0;
-		background: rgba(255,255,255,0.9);
+		background: rgba(255, 255, 255, 0.9);
 		width: 100%;
 		height: 100%;
 		z-index: 1000;
 		top: 0;
 	}
-	#MxMLoaderTIM canvas{
+	#MxMLoaderTIM canvas {
 		top: 50%;
 		position: relative;
 		left: 50%;
 		margin: -60px 0 0 -60px;
 		z-index: 99;
 	}
-
-	#paretnSPortResult #containerSportResult .banneSportResult{
+	#paretnSPortResult #containerSportResult .banneSportResult {
 		display: none;
 	}
-
-	/*
-		End Loader
-	*/
-
+	
+	/* End Loader */
 	/* publicidad */
-	.wdgcuboMxM{ margin: 0 0 33px;}
-	.parentlargeMxM{width: 100%;height: auto;margin: 0 0 33px;}
-	.parentlargeMxM .mediumMxM{width: 730px;height: auto;margin: 0;display: inline-block;}
-	.parentlargeMxM .smallMxM{width: 200px;height: auto;display: inline-block;margin: 0 0 0 10px;}
-
+	.wdgcuboMxM {
+		margin: 0 0 33px;
+	}
+	.parentlargeMxM {
+		width: 100%;
+		height: auto;
+		margin: 0 0 33px;
+	}
+	.parentlargeMxM .mediumMxM {
+		width: 730px;
+		height: auto;
+		margin: 0;
+		display: inline-block;
+	}
+	.parentlargeMxM .smallMxM {
+		width: 200px;
+		height: auto;
+		display: inline-block;
+		margin: 0 0 0 10px;
+	}
+	
 	/* END publicidad */
-
-	.wdg_team_align_01 img, .wdg_avgfield_01 img, .wdg_mxm_plcards_01 img {width: 32px;height: 24px;}
-
-	/*
-	MxM
-	*/
-	.wdg_simbology_01 .simbologia .icon_simbologia h3{
+	.wdg_team_align_01 img, .wdg_avgfield_01 img, .wdg_mxm_plcards_01 img {
+		width: 32px;
+		height: 24px;
+	}
+	
+	/* MxM */
+	.wdg_simbology_01 .simbologia .icon_simbologia h3 {
 		width: 85px;
 	}
-
 }
-
 @media screen and (min-width:945px) {
-	#paretnSPortResult{
-			display: block;
-			position: relative;
-			width: 100%;
-			height: auto;
-			background: #A70A0B !important;
-		}
-	#paretnSPortResult #containerSportResult{
-			width: 906px;
-			margin: 0 auto;
-			display: block;
-			position: relative;
-		}
-		#paretnSPortResult #containerSportResult .banneSportResult{
-			width: 290px;
-			height: 45px;
-			right: 0;
-			position: absolute;
-			display: block;
-			margin-top: 26px;
-		}
+	#paretnSPortResult {
+		display: block;
+		position: relative;
+		width: 100%;
+		height: auto;
+		background: #A70A0B !important;
 	}
+	#paretnSPortResult #containerSportResult {
+		width: 906px;
+		margin: 0 auto;
+		display: block;
+		position: relative;
+	}
+	#paretnSPortResult #containerSportResult .banneSportResult {
+		width: 290px;
+		height: 45px;
+		right: 0;
+		position: absolute;
+		display: block;
+		margin-top: 26px;
+	}
+}
+@media screen and (max-width:624px) {
+	.wdg_simbology_01 .simbologia .icon_simbologia h3 {
+		width: 85px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		white-space: nowrap;
+	}
+}
