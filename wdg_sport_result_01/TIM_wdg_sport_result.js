@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.12
+ *   Version: 1.4.13
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -53,7 +53,7 @@
                 var MaquetadoHEader = "",
                     minuto = (parseInt(data.minuto) !== 0) ? data.minuto + '\'' : '';
                 MaquetadoHEader += '<div class="wrapper"><div class="match_title">';
-                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="linklocalTIM">' + data.equipoLocal.url + '</span> <span id="linkvisitTIM">' + data.equipoVisitante.url + '</span> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + banderaLocalch + '</span> <span id="visitImgTIM" class="hidden">' + banderaVisitch + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoLocal.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span>  </span>';
+                MaquetadoHEader += '<span class="hidden" id="datosTIMHeader"><span id="linklocalTIM">' + data.equipoLocal.url + '</span> <span id="linkvisitTIM">' + data.equipoVisitante.url + '</span> <span id="timeUpdateMxM">0</span> <span id="localAbrevTIM" class="hidden">' + data.equipoLocal.abrev + '</span> <span id="visitAbrevTIM" class="hidden">' + data.equipoVisitante.abrev + '</span> <span id="localImgTIM" class="hidden">' + banderaLocalch + '</span> <span id="visitImgTIM" class="hidden">' + banderaVisitch + '</span> <span id="localGolesTIM" class="hidden">' + data.equipoLocal.goles + '</span> <span id="visitGolesTIM" class="hidden">' + data.equipoVisitante.goles + '</span> <span id="FechaMatchTIM" class="hidden">' + data.fechaPartido + '</span> <span id="HourMatchTIM" class="hidden">' + data.horaPartido + '</span>  </span>';
                 MaquetadoHEader += '<div class="cup_name">';
                 MaquetadoHEader += (data.transmisionVivo !== "") ? '<div class="live-container textcolor-title3 background-color2 hidden" id="TIMVivoHeader" onclick="javascript:window.open(\'' + data.transmisionVivo + '\');" style="cursor:pointer"><div class="icon-video"><i class="tvsa-videocamera"></i></div><div class="see-now">VER AHORA</div><div class="online">EN VIVO</div></div>' : '';
                 MaquetadoHEader += '<div class="titulo textcolor-title3">' + data.torneo.nombre + '</div>';
@@ -296,7 +296,7 @@
                                     if (tagVivo.length) {
                                         tagVivo.removeClass('hidden');
                                     }
-                                    tiempoActualizacion = 30000; // 30 seg
+                                    tiempoActualizacion = 20000; // 20 seg
                                     //GlobalThis.find('.score').css('visibility', 'visible');
                                 } else {
 
@@ -304,7 +304,7 @@
                                     console.log(restaAntes);
                                     if (parseInt(restaAntes) < minutosPrevio && parseInt(restaAntes) > 0) {
                                         console.log("Estamos a menos de 60 min del partido");
-                                        tiempoActualizacion = 30000; // 30 seg
+                                        tiempoActualizacion = 20000; // 20 seg
                                     }
 
                                 }
@@ -322,7 +322,7 @@
                         }
 
                         if (tiempoActualizacion === 0) {
-                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 30000 : 0;
+                            tiempoActualizacion = (validaScore !== "final" && validaScore !== "previo") ? 20000 : 0;
                         }
 
                         console.log("Tiempo de actualizacion: " + tiempoActualizacion);
