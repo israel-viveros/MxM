@@ -9190,9 +9190,6 @@ wdg_simbology_01_tablet.css
     div.art_title_01_title h1 a:hover {
         text-decoration: none;
     }
-    .art_title_01 h1 {
-    margin-bottom: -20px !important;
-    }
     /*Pleca estadísticas*/
     div.str_pleca_01 {
     margin-bottom: 24px;
@@ -9201,5 +9198,11 @@ wdg_simbology_01_tablet.css
     /*Dato Experto*/
     .str_expertcmt_02 .expert_container {
     height: 100% !important;
-
+    }
+    .article .art_title_01 h1 a:hover{
+            text-decoration: none;
+    }
+    div.mix_2arts_06 a.mix_2arts_06_blue:hover{
+        text-decoration: none;
+    }
 }
