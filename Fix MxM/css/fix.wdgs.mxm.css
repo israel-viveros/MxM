@@ -149,4 +149,7 @@
 		overflow: hidden;
 		white-space: nowrap;
 	}
+	.wdg_stadistics_01 .scroll{
+		overflow: auto;
+	}
 }
