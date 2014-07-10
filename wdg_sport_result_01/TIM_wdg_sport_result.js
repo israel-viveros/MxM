@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.4.13
+ *   Version: 1.4.14
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -31,7 +31,7 @@
                 })
                     .done(function(data) {
                         (tipo === "update") ? wdf_sportResult.updateGoles(data) : wdf_sportResult.drawHeader(data);
-                        (tipo === "update" && typeof(data.paginas) !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : '';
+                        (tipo === "update" && typeof(data.paginas) !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas, data.url, data.tiempo) : '';
                     })
                     .fail(function(jqXHR) {
                         console.log("Error al cargar: " + wdf_sportResult.urlFinalHeader);
@@ -43,7 +43,6 @@
 
 
             drawHeader: function(data) {
-                //console.log(data);
                 var logolocal = (settings.tema === "mundial" && typeof(data.equipoLocal.mundialImage) !== "undefined" && data.equipoLocal.mundialImage !== "") ? '<img class="linkbanderalocal" src="' + data.equipoLocal.mundialImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="36">' : '<img class="linkbanderalocal" src="' + data.equipoLocal.lineupImage + '" alt="' + data.equipoLocal.nombre + '" width="48" height="36">';
                 var logoVisit = (settings.tema === "mundial" && typeof(data.equipoVisitante.mundialImage) !== "undefined" && data.equipoVisitante.mundialImage !== "") ? '<img class="linkbanderavisit" src="' + data.equipoVisitante.mundialImage + '" width="48" height="36" alt="' + data.equipoVisitante.nombre + '">' : '<img class="linkbanderavisit" src="' + data.equipoVisitante.lineupImage + '" width="48" height="36" alt="' + data.equipoVisitante.nombre + '">';
                 var banderaLocalch = (settings.tema === "mundial" && typeof(data.equipoLocal.mundialImage) !== "undefined" && data.equipoLocal.mundialImage !== "") ? data.equipoLocal.mundialImage : data.equipoLocal.lineupImage;
@@ -117,7 +116,7 @@
                 }
 
 
-                (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas) : wdf_sportResult.IdPestanasMenu.hide();
+                (typeof data.paginas !== "undefined" && wdf_sportResult.IdPestanasMenu.length) ? wdf_sportResult.drawMenu(data.paginas, data.url, data.tiempo) : wdf_sportResult.IdPestanasMenu.hide();
 
                 if (settings.tema === "mundial" && data.tiempo === "Final") {
                     var arregloNoIntera = new Array(25371, 25374, 25376, 25377, 25379, 25381, 25368, 25370);
@@ -353,20 +352,20 @@
             }, // End timeUpdate()
 
 
-            drawMenu: function(data) {
+            drawMenu: function(data, url, tipo) {
                 var MaqMenu = "";
                 MaqMenu += '<div class="navarrowleft">';
                 MaqMenu += '<a class="wdg_matchesresult_navleft" href="#left"> ';
                 MaqMenu += '<span class="navlefticon"><i class="tvsa-double-caret-left inactive"></i></span></a></div>';
                 MaqMenu += '<div class="container">';
                 MaqMenu += '<div class="nav_smnu_sports_01_bar"><ul>';
-                MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + data.previo + '" target="_parent">Previo</a></li>' : '';
-                MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + data.alineacion + '" target="_parent" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
-                MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "" && settings.tema !== "mundial") ? '<li class="hide1 ratingMenuTim"><a href="' + data.rating + '" title="Rating">Rating</a></li>' : '';
-                MaqMenu += (typeof data.mxm !== 'undefined' && data.mxm !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 mxmMenuTim"><a href="' + data.mxm + '" target="_parent" title="MxM">MxM</a></li>' : '';
-                MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "" && settings.tema !== "mundial") ? '<li class="hide2 pizarraMenuTim"><a href="' + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
-                MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
-                MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
+                MaqMenu += (typeof data.previo !== 'undefined' && data.previo !== "") ? '<li class="previoMenuTim"> <a href="' + url + data.previo + '" target="_parent">Previo</a></li>' : '';
+                MaqMenu += (typeof data.alineacion !== 'undefined' && data.alineacion !== "") ? '<li class="nav_smnu_sports_01_block alineacionMenuTim"><a href="' + url + data.alineacion + '" target="_parent" title="Alineaci\u00F3n">Alineaci\u00F3n</a></li>' : '';
+                MaqMenu += (typeof data.rating !== 'undefined' && data.rating !== "" && settings.tema !== "mundial") ? '<li class="hide1 ratingMenuTim"><a href="' + url + data.rating + '" title="Rating">Rating</a></li>' : '';
+                MaqMenu += (typeof data.mxm !== 'undefined' && data.mxm !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 mxmMenuTim"><a href="' + url + data.mxm + '" target="_parent" title="MxM">MxM</a></li>' : '';
+                MaqMenu += (typeof data.pizarra !== 'undefined' && data.pizarra !== "" && settings.tema !== "mundial") ? '<li class="hide2 pizarraMenuTim"><a href="' + url + data.pizarra + '" title="Pizarra">Pizarra</a></li>' : '';
+                MaqMenu += (typeof data.cronica !== 'undefined' && data.cronica !== "") ? '<li class="nav_smnu_sports_01_block nav_smnu_sports_01_block2 cronicaMenuTim"><a href="' + url + data.cronica + '" target="_parent" title="Cr\u00F3nica">Cr\u00F3nica</a></li>' : '';
+                MaqMenu += (typeof data.video !== 'undefined' && data.video !== "") ? '<li class="last nav_smnu_sports_01_block videoMenuTim"><a href="' + url + data.video + '" title="Video" target="_parent">Video</a></li>' : '';
                 MaqMenu += (settings.idteam === 25521 || settings.idteam === 25395 || settings.idteam === 25487 || settings.idteam === 25488 || settings.idteam === 25335 || settings.idteam === 25334) ? '<li class="last nav_smnu_sports_01_block camara360"><a href="camara360.html" title="camara" target="_parent">C\u00E1mara 360</a></li>' : '';
                 MaqMenu += (settings.tema === "mundial" && settings.idtorneo !== 369) ? '<li class="last nav_smnu_sports_01_block interaMenuTim"><a href="interacciontd.html" title="interacci\u00F3n TD" target="_parent">Interacci\u00F3n TD</a></li>' : '';
                 MaqMenu += '</ul></div></div>';
