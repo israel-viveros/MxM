@@ -1,6 +1,6 @@
 /*!
  *   TIM Developer: Israel Viveros
- *   Version: 1.3.9
+ *   Version: 1.3.10
  *   Copyright: Televisa Interactive Media (2014)
  */
 ;
@@ -447,16 +447,16 @@
                         }
                         switch (data.lineupLocal.team[k].position) {
                             case "GK":
-                                GkLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                GkLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom-right" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
                                 break;
                             case "D":
-                                DLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                DLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom-right" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
                                 break;
                             case "MF":
-                                MFLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                MFLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + '" style="z-index: 740;"><div class="player_alineado dotted-bottom-right" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
                                 break;
                             case "F":
-                                FLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + ' " style="z-index: 740;"><div class="player_alineado dotted-bottom" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
+                                FLocal.push('<div class="jugador_alineacion_partido ' + data.lineupLocal.team[k].position + ' " style="z-index: 740;"><div class="player_alineado dotted-bottom-right" style="z-index: 730;"><div class="simbolo2 dotted-right" style="z-index: 720;">' + data.lineupLocal.team[k].number + '</div><div class="jugador_info_alineado" style="z-index: 710;"><h1>' + data.lineupLocal.team[k].nickName + '</h1>' + ActL + '</div><div style="clear: both; z-index: 700;"></div>  </div><div style="clear: both; z-index: 690;"></div></div>');
                                 break;
                         };
                     };
