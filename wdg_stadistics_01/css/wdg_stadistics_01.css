@@ -1,0 +1,73 @@
+@media screen and (min-width: 948px){  
+
+ .wdg_stadistics_01 .wdg_stadistics_01_container{
+		height:auto;
+    }  
+
+ .wdg_stadistics_01_cnt .carousel_nav{
+        display: none;
+    }
+
+    .wdg_stadistics_01 .scroll{
+        height: 541px;
+        overflow: auto;
+        width: 317px;
+    }
+	.wdg_stadistics_01 .degradado{
+		display:none;
+	}
+    .wdg_stadistics_01 .carousel_nav,
+    .wdg_stadistics_01 .nav{
+        display: block;
+    }
+    .wdg_stadistics_01 .nav {
+        position: relative;
+        border-top:1px solid #CCC;
+        margin-top: 18px;
+        padding-bottom: 30px;
+    }
+
+    .wdg_stadistics_01 a.next {
+        background-color: #A41D21;
+    }
+
+    .wdg_stadistics_01 > div .prev, 
+    .wdg_stadistics_01 > div .next {
+        height: 29px;
+        left: 0;
+        line-height:28px;
+        position: absolute;
+        top: 0;
+        width: 29px;
+    }
+
+    .wdg_stadistics_01 > div .next {
+        left: 29px;
+        margin-left: 1px;
+    }
+
+    .wdg_stadistics_01 > div .full-timetable {
+        background: none repeat scroll 0 0 #E6E6E6;
+        box-shadow: 0 0 7px #C0C0C0 inset;
+        height: 28px;
+        line-height: 28px;
+        margin-left: 83px;
+        padding-left: 21px;
+    }
+
+    .wdg_stadistics_01 > div .full-timetable span {
+        color: #000000;
+        font-size: 14px;
+        font-weight: bold;
+    }
+
+    .wdg_stadistics_01 > div .full-timetable {
+        line-height: 25px;
+    }
+
+    .wdg_stadistics_01 > div .tvsa-caret-up,
+    .wdg_stadistics_01 > div .tvsa-caret-down{
+        margin: 2px 0 0 10px;
+    }
+
+}

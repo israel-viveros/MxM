@@ -1,0 +1,48 @@
+@media screen and (min-width: 624px){
+    .wdg_stadistics_01{
+        width: 300px;
+        margin-bottom: 36px;
+    }
+	
+	.wdg_stadistics_01 .str_pleca_01{
+		margin-bottom:5px;
+	}
+	
+	.wdg_stadistics_01 .scroll{
+		overflow:auto;
+		width:317px;
+		overflow-x:hidden;
+	}
+	
+	.wdg_stadistics_01 .izq{
+        width: 170px;
+	}
+	.wdg_stadistics_01 .degradado{
+		bottom:10px;
+		width:300px;
+	}
+	.ie7 .wdg_stadistics_01 .degradado{
+		top:-10px;
+		width:300px;
+	}
+	
+	.wdg_stadistics_01 table{
+		width: 300px;
+	}
+	
+}
+
+@media (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: portrait) {
+/*iPad portrait*/
+	.wdg_stadistics_01 .scroll{
+			width:300px;
+	}
+}
+
+@media (min-device-width: 768px)
+and (max-device-width: 1024px)
+and (orientation: landscape) {
+/*iPad landscape*/
+}
