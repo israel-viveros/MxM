@@ -18,7 +18,18 @@
     .tvsa-print:before {
     color: #FFFFFF;
     }
-    body > section > div.header1 > header > div.parbase.navHeader.reference > div > div > header > div.subsections.nav_header_01_subsections > div.mainnav > div > nav.social > ul > li > a > i{color:red;}
+    nav.social > ul > li > a > i.tvsa-camera:before{
+    color: #A70A0B;
+    }
+    nav.social > ul > li > a > i.tvsa-twitter:before{
+    color: #00aced;
+    }
+    nav.social > ul > li > a > i.tvsa-facebook:before{
+    color: #3b5998
+    }
+    nav.social > ul > li > a > i.tvsa-home:before{
+    color: #A70A0B
+    }
     div.str_pleca_01_title{
         border-bottom: 1px solid #CCC !important; 
     }
@@ -9175,6 +9186,10 @@ wdg_simbology_01_tablet.css
 */
 
 @media screen and (min-width: 948px){
+    .wdg_stadistics_01 .scroll {
+    height: auto;
+    }
+
     span.textcolor-title4{
         color: #a6a7a8!important;
     }
