@@ -18,6 +18,7 @@
     .tvsa-print:before {
     color: #FFFFFF;
     }
+    body > section > div.header1 > header > div.parbase.navHeader.reference > div > div > header > div.subsections.nav_header_01_subsections > div.mainnav > div > nav.social > ul > li > a > i{color:red;}
     div.str_pleca_01_title{
         border-bottom: 1px solid #CCC !important; 
     }
