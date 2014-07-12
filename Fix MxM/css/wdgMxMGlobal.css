@@ -25,10 +25,10 @@
     color: #00aced;
     }
     nav.social > ul > li > a > i.tvsa-facebook:before{
-    color: #3b5998
+    color: #3b5998;
     }
     nav.social > ul > li > a > i.tvsa-home:before{
-    color: #A70A0B
+    color: #A70A0B;
     }
     div.str_pleca_01_title{
         border-bottom: 1px solid #CCC !important; 
@@ -3040,7 +3040,19 @@ font-weight: 900;
 /*
 	wdg_mxm_live_04.css
 */
-@media screen and (min-width: 948px){    
+@media screen and (min-width: 948px){ 
+nav.social > ul > li > a > i.tvsa-camera:before{
+    color: #A70A0B;
+    }
+    nav.social > ul > li > a > i.tvsa-twitter:before{
+    color: #00aced;
+    }
+    nav.social > ul > li > a > i.tvsa-facebook:before{
+    color: #3b5998;
+    }
+    nav.social > ul > li > a > i.tvsa-home:before{
+    color: #A70A0B;
+    }   
 	.wdg_mxm_live_04 > div .prev, 
     .wdg_mxm_live_04 > div .next {
         display: block;
@@ -3198,6 +3210,18 @@ font-weight: 900;
 	wdg_smex_strategy_01_tablet.css
 */
 @media screen and (min-width: 624px){
+    nav.social > ul > li > a > i.tvsa-camera:before{
+    color: #A70A0B;
+    }
+    nav.social > ul > li > a > i.tvsa-twitter:before{
+    color: #00aced;
+    }
+    nav.social > ul > li > a > i.tvsa-facebook:before{
+    color: #3b5998;
+    }
+    nav.social > ul > li > a > i.tvsa-home:before{
+    color: #A70A0B;
+    }
 	.wdg_smex_strategy_01{
 		margin-bottom: 36px;
 		width:624px;
