@@ -11,23 +11,6 @@
 }
 @media screen {
 	/* previo */
-	.containterNameLineup {
-		display: block;
-		width: 100%;
-		height: auto;
-		margin: -10px 0 10px;
-	}
-	#equipoVistTIM .dotted-bottom-right, #bancaVisitTIM .dotted-bottom-right, #ausentesVisit .dotted-bottom-right,
-	#equipoVistTIM .player_alineado.dotted-right, #bancaVisitTIM .player_alineado.dotted-right, #ausentesVisit .player_alineado.dotted-right{
-	background: url(http://i2.esmas.com/deportes30/mxm/img/dotted-horizontal.png) repeat-x bottom!important;
-}
-	.containterNameLineup .nameTeamLineup {
-		display: inline-block;
-		width: 47%;
-		padding: 0 0 0 3%;
-		color: #A70A0B;
-		font-size: 16px;
-	}
 	.wdg_stadistics_01_container img.imagen {
 		width: 53px;
 		height: 38px;
@@ -135,7 +118,6 @@
 	.wdg_simbology_01 .simbologia .icon_simbologia h3 {
 		width: 85px;
 	}
-	.td_mxm_acciones_02 .main .c2 .c2_2{width: 100%}
 }
 @media screen and (min-width:945px) {
 	#paretnSPortResult {
@@ -159,7 +141,6 @@
 		display: block;
 		margin-top: 26px;
 	}
-	.td_mxm_acciones_02 .main .c2 .c2_2{width: 300px}
 }
 @media screen and (max-width:624px) {
 	.wdg_simbology_01 .simbologia .icon_simbologia h3 {
@@ -170,60 +151,5 @@
 	}
 	.wdg_stadistics_01 .scroll{
 		overflow: auto;
-	}
-	#wdg_avgfieldTIM.right{float: none}
-}
-@media only screen and (min-device-width: 624px){
-	div.commentLikes.wdgComen01.articleComments > div.title{
-        width: 47.7% !important;
-
-    }
-    .wdg_stadistics_01 .degradado {
-	display: block;
-	position: relative;
-	bottom: 12px;
-	width: 100%;
-	height: 12px;
-	background-image: url('http://i2.esmas.com/deportes30/mxm/img/degradado_horizontal.png');
-	background-repeat: repeat-x;
-	background-position: 10px;
-	}
-	.art_note_01{
-	padding: none !important;	
-	}
-	.str_expertcmt_02 .expert_container_block{
-	height: auto !important;
-	max-height: 327px !important;
-	}
-	.wdgPoll01 {
-	margin-bottom: 36px;
-	margin-top: 0px !important;
-	}
-	section.wdg_smex_strategy_01 div.field {
-	position: relative;
-	margin-top: -10px;
-	}
-	.wdg_team_align_01 .first_team .title {
-	padding-bottom: 5px;
-	}
-	.wdg_team_align_01 .second_team .title {
-	padding-bottom: 5px;
-	}
-	.str_expertcmt_02 .expert_container {
-	height: auto !important;
-	max-height: 300px !important;
-	}
-	#TIMAlineacionGoles{
-		display:block !important;
-	}
-	.degraded {
-	border-top: none;
-	display: block;
-	position: absolute;
-	width: 100%;
-	height: 12px;
-	background-image: url('http://i2.esmas.com/deportes30/mxm/img/degradado_horizontal.png');
-	background-repeat: repeat-x;
-	background-position: 10px;
 	}
 }
