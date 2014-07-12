@@ -6,6 +6,21 @@
 	img_stage_01_mobile.css
 */
 @media screen {
+    [class^="tvsa-"], [class*=" tvsa-"]{
+        color: #707070;
+    }
+    .tvsa-camera:before{
+        color: #8a8a8a;
+    }
+    .tvsa-videocamera:before{
+        color: #8a8a8a;
+    }
+    .tvsa-print:before {
+    color: #FFFFFF;
+    }
+    div.str_pleca_01_title{
+        border-bottom: 1px solid #CCC !important; 
+    }
 	.img_stage_01{
 		position:relative;
 		margin-bottom: 1px;
@@ -2721,18 +2736,21 @@ font-weight: 900;
         border-bottom: 1px #ccc solid;
         clear: both;
         overflow: hidden;
-        margin-right: 10px;
+        margin-right: 0px;
     }
     	 
     .wdg_mxm_live_04 ul li .time{
         float: left;
         margin-left: 8px;
         font-weight: bold;
+        width: 40px;
     }
     .wdg_mxm_live_04 ul li .icon-time{
-        margin-left: 13px;
-        margin-right: 5px;
-        float: left;
+        margin-left: 12px;
+        padding-right: 0px;
+        float: right;
+        width: 20px;
+        height: 20px;
     }
     .wdg_mxm_live_04 ul li .icon-interactive{
         float: right;
@@ -2932,7 +2950,7 @@ font-weight: 900;
     }
     .wdg_mxm_live_04 ul li .icon-interactive2{
         padding-right: 4px !important;
-        margin-right: 4px !important;
+        margin-right: 0px !important;
         float: left;
         cursor: pointer;
         padding-left: 0;
@@ -2943,13 +2961,17 @@ font-weight: 900;
 		margin-right: 0;
     }
     .wdg_mxm_live_04 ul li .time{
-        margin-left: 19px;
+        margin-left: 16px;
 		font-size:16px;
+        width: 40px;
+        text-align: right;;
     }
     .wdg_mxm_live_04 ul li .icon-time{
-        margin-left: 17px;
-        margin-right: 5px;
+        margin-left: 12px;
+        padding-right: 0px;
         float: left;
+        width: 20px;
+        height: 20px;
     }
      .wdg_mxm_live_04 ul li .chronic{
         border-left: 1px solid #CCCCCC;
@@ -2992,7 +3014,7 @@ font-weight: 900;
         max-height: 100%;
 	}
 	.wdg_mxm_live_04 ul li .time-icon{
-		width: 90px;
+		width: 93px;
 		overflow: hidden;
 		float: left;
 	}
@@ -3810,7 +3832,7 @@ font-weight: 900;
         padding-top: 0px;
     }
     .wdg_sport_result_01 .team2 .equipo{
-        margin-top: 5px !important;
+        margin-top: 14px !important;
     }
     .ie7 .wdg_sport_result_01 .leftside .team1 .penales{
         margin-top:-2px;
@@ -3845,7 +3867,7 @@ font-weight: 900;
 /* nav_smnu_sports_01_mobile.css */
 @media screen {
     .nav_smnu_sports_01 {
-        width: 300px;
+        width: 80%;
         clear: both;
         overflow: hidden;
         margin: 0 auto;
@@ -3855,12 +3877,12 @@ font-weight: 900;
         position: relative;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar {
-        width: 395px;
+        width: auto;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul {
         margin: 0px;
         padding-bottom: 8px;
-        border-bottom: 1px solid #d5d5d5;
+        border-bottom: none !important;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li {
         font-weight: bold;
@@ -3869,6 +3891,7 @@ font-weight: 900;
         margin: 0px;
         padding: 8px 0;
         margin: 0;
+        border-bottom: 1px solid #d5d5d5;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li:first-child {
         margin: 0;
@@ -3904,8 +3927,8 @@ font-weight: 900;
         float: left;
         overflow: auto;
         position: absolute;
-        height: 55px;
-        width: 235px;
+        height: 45px;
+        width: 85%;
     }
     .nav_smnu_sports_01 .container .nav_smnu_sports_01_bar .hide1,
     .nav_smnu_sports_01 .container .nav_smnu_sports_01_bar .hide2 {
@@ -3965,7 +3988,7 @@ font-weight: 900;
         display:none;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li a{
-        font-size: 18px;
+        /* font-size: 18px; */
         padding: 0 23px;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li{
@@ -4281,8 +4304,8 @@ font-weight: 900;
     .wdg_team_align_01 .player_name p{
         padding-left: 12px;
         overflow: hidden;
-        white-space: nowrap;
-        text-overflow: ellipsis;
+        white-space: normal !important;
+        text-overflow: clip !important;
     }
     .wdg_team_align_01 .players_icons{
         width: 108px;
@@ -4367,6 +4390,7 @@ font-weight: 900;
         vertical-align: top;
         display: inline-block;
         font-size: 14px;
+        margin-top: 7px;
     }
 }
 
@@ -6577,7 +6601,7 @@ wdg_altasbajas_01_mobile.css
         font-size: 20px;
     }
     .one{
-       width:400px;
+       width:100%;
     }
     .wdg_altasbajas_01 .contenedor .sup_der #months .superior,
     .wdg_altasbajas_01 .contenedor .sup_der #months .superior{
@@ -9204,5 +9228,27 @@ wdg_simbology_01_tablet.css
     }
     div.mix_2arts_06 a.mix_2arts_06_blue:hover{
         text-decoration: none;
+    }
+    .str_expertcmt_02 .expert_container_block {
+    height: auto;
+    }
+    .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li:hover a{
+     color: #A70A0B;
+    }
+     .wdg_stadistics_01 .nav {
+        border-top: none;
+    }
+    .wdg_team_align_01 .referee_title .textcolor-title2 {
+    margin-top: 5px;
+    }
+}
+
+@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+.wdg_mxm_live_04 ul li .icon-time{
+        margin-left: 12px;
+        padding-right: 5px;
+        float: none;
+        width: 20px;
+        height: 20px;
     }
 }
