@@ -3882,7 +3882,7 @@ font-weight: 900;
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul {
         margin: 0px;
         padding-bottom: 8px;
-        border-bottom: none !important;
+        border-bottom: 1px solid #d5d5d5;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li {
         font-weight: bold;
@@ -3891,7 +3891,6 @@ font-weight: 900;
         margin: 0px;
         padding: 8px 0;
         margin: 0;
-        border-bottom: 1px solid #d5d5d5;
     }
     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li:first-child {
         margin: 0;
@@ -9248,8 +9247,18 @@ wdg_simbology_01_tablet.css
 .wdg_mxm_live_04 ul li .icon-time{
         margin-left: 12px;
         padding-right: 5px;
-        float: none;
+        float: left;
         width: 20px;
         height: 20px;
     }
+    #super_click1 > div.type1a.showArrows > div.title{
+        margin-top: 10px;
+    }
+    .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul {
+        border-bottom: none !important;
+    }
+     .nav_smnu_sports_01 .nav_smnu_sports_01_bar ul li {
+        border-bottom: 1px solid #d5d5d5;
+    }
+
 }
